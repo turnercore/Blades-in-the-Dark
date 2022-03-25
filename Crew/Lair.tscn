@@ -1,0 +1,113 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Crew/Hideout.jpeg" type="Texture" id=1]
+[ext_resource path="res://Crew/SaveableOptionButton.gd" type="Script" id=2]
+[ext_resource path="res://classes/SaveableField.gd" type="Script" id=3]
+[ext_resource path="res://Crew/SaveableTextEdit.gd" type="Script" id=4]
+
+[node name="Lair" type="VBoxContainer"]
+margin_left = 553.0
+margin_right = 1006.0
+margin_bottom = 554.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lair_name" type="LineEdit" parent="."]
+margin_left = 176.0
+margin_right = 276.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 4
+align = 1
+expand_to_text_length = true
+context_menu_enabled = false
+placeholder_text = "The Lair"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 28.0
+margin_right = 453.0
+margin_bottom = 48.0
+
+[node name="TierLabel" type="Label" parent="HBoxContainer"]
+margin_top = 3.0
+margin_right = 24.0
+margin_bottom = 17.0
+hint_tooltip = "Upon crew advance, each PC gets stach = Tier + 2"
+mouse_filter = 1
+text = "Tier"
+align = 1
+
+[node name="lair_tier" type="OptionButton" parent="HBoxContainer"]
+margin_left = 28.0
+margin_right = 65.0
+margin_bottom = 20.0
+text = "0"
+items = [ "0", null, false, 0, null, "1", null, false, 1, null, "2", null, false, 2, null, "3", null, false, 3, null, "4", null, false, 4, null ]
+selected = 0
+script = ExtResource( 2 )
+property_saved = "selected"
+
+[node name="HoldLabel" type="Label" parent="HBoxContainer"]
+margin_left = 69.0
+margin_top = 3.0
+margin_right = 99.0
+margin_bottom = 17.0
+text = "Hold"
+align = 1
+
+[node name="hold_level" type="OptionButton" parent="HBoxContainer"]
+margin_left = 103.0
+margin_right = 167.0
+margin_bottom = 20.0
+text = "Weak"
+items = [ "Weak", null, false, 0, null, "Strong", null, false, 1, null ]
+selected = 0
+script = ExtResource( 2 )
+
+[node name="LairPicture" type="TextureRect" parent="."]
+margin_top = 52.0
+margin_right = 453.0
+margin_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+hint_tooltip = "This is your lair. It's not the best, but it's yours."
+focus_neighbour_bottom = NodePath("../lair_name")
+size_flags_horizontal = 5
+size_flags_vertical = 7
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="HuntingGroundsLabel" type="Label" parent="."]
+margin_top = 214.0
+margin_right = 453.0
+margin_bottom = 228.0
+text = "Hunting Grounds"
+
+[node name="hunting_grounds" type="TextEdit" parent="."]
+margin_top = 232.0
+margin_right = 453.0
+margin_bottom = 391.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_vertical = 3
+wrap_enabled = true
+script = ExtResource( 4 )
+
+[node name="Padding" type="CenterContainer" parent="."]
+margin_top = 395.0
+margin_bottom = 395.0
+size_flags_horizontal = 0
+size_flags_vertical = 2
+
+[connection signal="text_changed" from="lair_name" to="lair_name" method="_on_updated_data"]
+[connection signal="toggled" from="HBoxContainer/lair_tier" to="HBoxContainer/lair_tier" method="_on_updated_data"]
+[connection signal="toggled" from="HBoxContainer/hold_level" to="HBoxContainer/hold_level" method="_on_updated_data"]
+[connection signal="text_changed" from="hunting_grounds" to="hunting_grounds" method="_on_updated_data"]

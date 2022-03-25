@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://clocks/LinkClockPicker.gd" type="Script" id=1]
+
+[node name="LinkClockPicker" type="PopupMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+items = [ "Item 0", null, 0, false, false, 0, 0, null, "", false ]
+hide_on_checkable_item_selection = false
+allow_search = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="index_pressed" from="." to="." method="_on_LinkClockPicker_index_pressed"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Progress Clocks.gd" type="Script" id=1]
+[ext_resource path="res://clocks/Clock.tscn" type="PackedScene" id=2]
+
+[node name="Progress Clocks" type="ScrollContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+follow_focus = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+clock_scene = ExtResource( 2 )
+
+[node name="Clocks" type="GridContainer" parent="."]
+margin_right = 75.0
+margin_bottom = 20.0
+columns = 2
+
+[node name="AddClock" type="Button" parent="Clocks"]
+margin_right = 75.0
+margin_bottom = 20.0
+text = "Add Clock"
+
+[connection signal="pressed" from="Clocks/AddClock" to="." method="_on_AddClock_pressed"]

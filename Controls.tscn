@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Controls.gd" type="Script" id=1]
+
+[node name="Controls" type="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+auto_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]

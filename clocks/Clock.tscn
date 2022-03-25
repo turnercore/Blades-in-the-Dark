@@ -1,0 +1,331 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://clocks/4clock.png" type="Texture" id=1]
+[ext_resource path="res://clocks/Clock.gd" type="Script" id=2]
+[ext_resource path="res://clocks/lock-vector-icon.jpg" type="Texture" id=3]
+[ext_resource path="res://clocks/6clock.png" type="Texture" id=4]
+[ext_resource path="res://clocks/blue_6clock_0.png" type="Texture" id=5]
+[ext_resource path="res://clocks/blue_4clock_0.png" type="Texture" id=6]
+[ext_resource path="res://clocks/4clock 2.png" type="Texture" id=7]
+[ext_resource path="res://clocks/8clock 2.png" type="Texture" id=8]
+[ext_resource path="res://clocks/blue_12clock_0.png" type="Texture" id=9]
+[ext_resource path="res://clocks/blue_8clock_0.png" type="Texture" id=10]
+[ext_resource path="res://clocks/12clock.png" type="Texture" id=11]
+[ext_resource path="res://clocks/EditWidgetContainer.gd" type="Script" id=12]
+[ext_resource path="res://clocks/UnlocksClockButton.gd" type="Script" id=13]
+[ext_resource path="res://clocks/LinkClockPicker.tscn" type="PackedScene" id=14]
+
+[node name="Clock" type="MarginContainer" groups=["clocks"]]
+margin_right = 571.0
+margin_bottom = 378.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+FOUR_CLOCK_TEXTURE_UNDER = ExtResource( 6 )
+FOUR_CLOCK_TEXTURE_OVER = ExtResource( 7 )
+SIX_CLOCK_TEXTURE_UNDER = ExtResource( 5 )
+SIX_CLOCK_TEXTURE_OVER = ExtResource( 4 )
+EIGHT_CLOCK_TEXTURE_UNDER = ExtResource( 10 )
+EIGHT_CLOCK_TEXTURE_OVER = ExtResource( 8 )
+TWELVE_CLOCK_TEXTURE_UNDER = ExtResource( 9 )
+TWELVE_CLOCK_TEXTURE_OVER = ExtResource( 11 )
+tween = NodePath("Tween")
+segments = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2/HBoxContainer2/segments")
+filled_label = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer/HBoxContainer/FilledLabel")
+clock_texture = NodePath("CenterContainer/HBoxContainer/ClockContainer/HBoxContainer/ClockTexture")
+clock_line_edit = NodePath("CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer/ClockName")
+lock_texture = NodePath("CenterContainer/HBoxContainer/ClockContainer/HBoxContainer/ClockTexture/LockTexture")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_left = 2.0
+margin_right = 569.0
+margin_bottom = 378.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_right = 567.0
+margin_bottom = 378.0
+custom_constants/separation = 0
+
+[node name="ClockContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_right = 350.0
+margin_bottom = 378.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/ClockContainer"]
+margin_right = 350.0
+margin_bottom = 350.0
+
+[node name="ClockTexture" type="TextureProgress" parent="CenterContainer/HBoxContainer/ClockContainer/HBoxContainer"]
+margin_right = 350.0
+margin_bottom = 350.0
+hint_tooltip = "Click to add one, right click to subtract one."
+mouse_filter = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 8.0
+step = 0.05
+value = 5.0
+texture_under = ExtResource( 6 )
+texture_over = ExtResource( 1 )
+texture_progress = ExtResource( 1 )
+fill_mode = 4
+tint_progress = Color( 0, 0, 0, 0.807843 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LockTexture" type="TextureRect" parent="CenterContainer/HBoxContainer/ClockContainer/HBoxContainer/ClockTexture"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.32549 )
+margin_left = 49.0
+margin_top = 56.0
+margin_right = 303.0
+margin_bottom = 291.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClockNameContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/ClockContainer"]
+margin_top = 354.0
+margin_right = 350.0
+margin_bottom = 378.0
+alignment = 1
+
+[node name="Spacer2" type="CheckBox" parent="CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 24.0
+margin_bottom = 24.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClockName" type="LineEdit" parent="CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer"]
+margin_left = 28.0
+margin_right = 322.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+align = 1
+secret_character = "?"
+expand_to_text_length = true
+placeholder_text = "clock"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="EditButton" type="Button" parent="CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer"]
+margin_left = 326.0
+margin_right = 350.0
+margin_bottom = 24.0
+toggle_mode = true
+pressed = true
+text = "..."
+
+[node name="EditWidgetContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_left = 350.0
+margin_right = 567.0
+margin_bottom = 378.0
+custom_constants/separation = 12
+script = ExtResource( 12 )
+
+[node name="Spacer" type="ColorRect" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
+margin_right = 217.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 25 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
+margin_top = 37.0
+margin_right = 217.0
+margin_bottom = 75.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer"]
+margin_right = 217.0
+margin_bottom = 14.0
+
+[node name="FilledLabel" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer/HBoxContainer"]
+margin_right = 8.0
+margin_bottom = 14.0
+text = "0"
+align = 1
+
+[node name="\'filled\'" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer/HBoxContainer"]
+margin_left = 12.0
+margin_right = 44.0
+margin_bottom = 14.0
+text = "filled"
+align = 1
+
+[node name="FilledButtons" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 217.0
+margin_bottom = 38.0
+
+[node name="Plus" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer/FilledButtons"]
+margin_right = 20.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "+"
+
+[node name="Minus" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer/FilledButtons"]
+margin_left = 24.0
+margin_right = 41.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "-"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
+margin_top = 87.0
+margin_right = 217.0
+margin_bottom = 125.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2"]
+margin_right = 217.0
+margin_bottom = 14.0
+
+[node name="segments" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2/HBoxContainer2"]
+margin_right = 8.0
+margin_bottom = 14.0
+text = "4"
+align = 1
+
+[node name="\'max\'" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2/HBoxContainer2"]
+margin_left = 12.0
+margin_right = 39.0
+margin_bottom = 14.0
+text = "max"
+align = 1
+
+[node name="SegementButtons" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 217.0
+margin_bottom = 38.0
+size_flags_vertical = 9
+
+[node name="PlusSegment" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2/SegementButtons"]
+margin_right = 20.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinusSegment" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2/SegementButtons"]
+margin_left = 24.0
+margin_right = 41.0
+margin_bottom = 20.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "-"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
+margin_top = 137.0
+margin_right = 217.0
+margin_bottom = 177.0
+
+[node name="CheckBox" type="CheckButton" parent="CenterContainer/HBoxContainer/EditWidgetContainer/HBoxContainer3"]
+margin_right = 76.0
+margin_bottom = 40.0
+hint_tooltip = "Make Secret"
+size_flags_horizontal = 9
+size_flags_vertical = 4
+
+[node name="\'secret\'" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/HBoxContainer3"]
+margin_left = 80.0
+margin_top = 13.0
+margin_right = 120.0
+margin_bottom = 27.0
+text = "Secret"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
+margin_top = 189.0
+margin_right = 217.0
+margin_bottom = 253.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5"]
+margin_right = 217.0
+margin_bottom = 40.0
+
+[node name="LockCheckBox" type="CheckButton" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer"]
+margin_right = 76.0
+margin_bottom = 40.0
+
+[node name="\'locked\'" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer"]
+margin_left = 80.0
+margin_top = 13.0
+margin_right = 125.0
+margin_bottom = 27.0
+text = "Locked"
+
+[node name="UnlockedByContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5"]
+margin_top = 44.0
+margin_right = 217.0
+margin_bottom = 64.0
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer"]
+margin_top = 3.0
+margin_right = 83.0
+margin_bottom = 17.0
+text = "Unlocked by:"
+
+[node name="UnlockedByClockLabel" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer"]
+margin_left = 87.0
+margin_top = 3.0
+margin_right = 121.0
+margin_bottom = 17.0
+text = "Clock"
+
+[node name="DisconnectButton" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer"]
+margin_left = 125.0
+margin_right = 217.0
+margin_bottom = 20.0
+text = "(Disconnect)"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
+margin_top = 265.0
+margin_right = 217.0
+margin_bottom = 285.0
+
+[node name="UnlocksClockButton" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/HBoxContainer"]
+margin_right = 105.0
+margin_bottom = 20.0
+text = "Unlocks Clock:"
+script = ExtResource( 13 )
+link_picker_scene = ExtResource( 14 )
+clock = NodePath("../../../../..")
+
+[node name="UnlocksClockLabel" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/HBoxContainer"]
+margin_left = 109.0
+margin_top = 3.0
+margin_right = 109.0
+margin_bottom = 17.0
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+visible = false
+margin_right = 571.0
+margin_bottom = 462.0
+
+[connection signal="gui_input" from="CenterContainer/HBoxContainer/ClockContainer/HBoxContainer/ClockTexture" to="." method="_on_ClockTexture_gui_input"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer/Spacer2" to="." method="_on_CheckBox_toggled"]
+[connection signal="text_changed" from="CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer/ClockName" to="." method="_on_ClockName_text_changed"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer/EditButton" to="CenterContainer/HBoxContainer/EditWidgetContainer" method="_on_EditButton_toggled"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer/FilledButtons/Plus" to="." method="_on_Plus_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer/FilledButtons/Minus" to="." method="_on_Minus_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2/SegementButtons/PlusSegment" to="." method="_on_PlusSegment_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2/SegementButtons/MinusSegment" to="." method="_on_MinusSegment_pressed"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/EditWidgetContainer/HBoxContainer3/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="toggled" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer/LockCheckBox" to="." method="_on_LockCheckBox_toggled"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer/DisconnectButton" to="." method="_on_DisconnectButton_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/HBoxContainer/UnlocksClockButton" to="CenterContainer/HBoxContainer/EditWidgetContainer/HBoxContainer/UnlocksClockButton" method="_on_UnlocksClockButton_pressed"]

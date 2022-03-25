@@ -1,0 +1,48 @@
+[gd_scene format=2]
+
+[node name="Crew Special Abilities" type="ScrollContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( -537, 36 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SpecialAbilitiesLabel" type="Label" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "Special Abilities"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ability" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 42.0
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/ability"]
+margin_right = 24.0
+margin_bottom = 24.0
+
+[node name="ability" type="Label" parent="VBoxContainer/ability"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 125.0
+margin_bottom = 19.0
+hint_tooltip = "When you perform a group action, you may count multiple 6s from different rolls as a critical success."
+focus_mode = 2
+text = "Synchronized : "
+
+[node name="Label" type="Label" parent="VBoxContainer/ability"]
+margin_left = 129.0
+margin_top = 5.0
+margin_right = 780.0
+margin_bottom = 19.0
+text = "When you perform a group action, you may count multiple 6s from different rolls as a critical success."

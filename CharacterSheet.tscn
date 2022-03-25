@@ -1,0 +1,25 @@
+[gd_scene format=2]
+
+[node name="CharacterSheet" type="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -980.0
+margin_bottom = -528.0
+
+[node name="Skills" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -980.0
+margin_bottom = -528.0
