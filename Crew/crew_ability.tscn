@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Crew/crew_ability.gd" type="Script" id=1]
+
+[node name="crew_ability" type="HBoxContainer"]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 42.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_right = 24.0
+margin_bottom = 24.0
+
+[node name="ability" type="Label" parent="."]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 125.0
+margin_bottom = 19.0
+hint_tooltip = "When you perform a group action, you may count multiple 6s from different rolls as a critical success."
+focus_mode = 2
+text = "Synchronized : "
+
+[node name="effect" type="Label" parent="."]
+margin_left = 129.0
+margin_top = 5.0
+margin_right = 780.0
+margin_bottom = 19.0
+text = "When you perform a group action, you may count multiple 6s from different rolls as a critical success."

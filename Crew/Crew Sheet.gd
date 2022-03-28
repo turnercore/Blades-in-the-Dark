@@ -1,7 +1,9 @@
 extends ScrollContainer
 
-export (Resource) onready var crew_playbook = crew_playbook as CrewPlaybook setget _change_crew_playbook
+var crew_playbook = CrewPlaybook.new() setget _change_crew_playbook
 var crew_loaded: bool = false
+export (PackedScene) var crew_setup_sceen
+export (PackedScene) var load_sceen
 const ID: String = "crew"
 
 #Not sure if this is needed
@@ -18,13 +20,12 @@ signal saved(crew_playbook)
 
 func _ready() -> void:
 	propagate_set_editable(self, false)
-	if not crew_loaded: show_crew_setup()
-#	load_playbook()
 	connect_to_events()
 
 
 func show_crew_setup()->void:
-	pass
+	var crew_setup_popup = crew_setup_sceen.instance()
+	Events.emit_signal("popup", crew_setup_popup)
 
 
 func load_playbook(playbook: = CrewPlaybook.new(), override:bool = false)-> void:
@@ -37,14 +38,14 @@ func load_playbook(playbook: = CrewPlaybook.new(), override:bool = false)-> void
 		crew_playbook = playbook
 
 	if crew_playbook.needs_setup:
-		crew_playbook.setup(GameSaver.srd_json, "shadows")
-		crew_playbook.needs_setup = false
+		show_crew_setup()
 
+	Globals.crew_playbook = crew_playbook
 	emit_signal("loaded", crew_playbook)
 
 
 func connect_to_events():
-	Events.connect("crew_loaded", self, "_on_crew_loaded")
+#	Events.connect("crew_loaded", self, "_on_crew_loaded")
 
 	var children_with_data: Array = get_all_children_in_group_recursive(self, "data")
 	for node in children_with_data:
@@ -105,6 +106,7 @@ func _on_LairPicture_gui_input(event: InputEvent) -> void:
 func save(save_game: Resource)->void:
 	if not ID in save_game.playbooks: save_game.playbooks[ID] = {}
 	save_game.playbooks[ID] = crew_playbook
+	Globals.crew_playbook = crew_playbook
 	emit_signal("saved", crew_playbook)
 
 
@@ -114,15 +116,23 @@ func load_game(save_game: Resource)->void:
 	else:
 		load_playbook()
 
+func show_load_screen()-> void:
+	var load_screen = load_sceen.instance()
+	Events.emit_signal("popup", load_screen)
+
 
 func _change_crew_playbook(value: CrewPlaybook)->void:
 	crew_playbook = value
+	Globals.crew_playbook = value
 
 
 func _on_LoadButton_pressed() -> void:
-	GameSaver.load_all()
-	emit_signal("loaded", crew_playbook)
+	show_load_screen()
 
 
 func _on_SaveButton_pressed() -> void:
 	GameSaver.save_node(self)
+
+
+func _on_CreateButton_pressed() -> void:
+	show_crew_setup()

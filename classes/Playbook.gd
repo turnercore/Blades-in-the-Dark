@@ -1,6 +1,8 @@
 class_name Playbook
 extends Resource
 
+#Path to the srd_json
+var srd_json: String = ""
 export var name:String
 export var abilities:Dictionary
 export var coin:Dictionary = {
@@ -9,7 +11,7 @@ export var coin:Dictionary = {
 	"stash" : 0
 }
 export var contacts:Dictionary
-export var type:String
+export var type:String setget _change_type
 export var notes:String
 export (Dictionary) var experience
 export var projects:Dictionary
@@ -43,11 +45,12 @@ var resolve: int = 0
 
 
 
+
 var needs_setup: = true
 
 func setup(json: String, type: String, overwrite:bool = false)-> void:
 	needs_setup = false
-	pass
+
 
 
 func get_insight()->int:
@@ -134,3 +137,6 @@ func find(path_map: String):
 				return false
 
 	return updated_property
+
+func _change_type(new_type:String)-> void:
+	pass

@@ -55,9 +55,9 @@ func connect_claims_to_connectors()->void:
 				var split_name: Array = connector.name.split("_", false, 2)
 				for part in split_name:
 					if claim.name == part:
-						if claim.connectors.has(connector): continue
+						if claim.connections.has(connector): continue
 						else:
-							claim.connectors.append(connector)
+							claim.connections.append(connector)
 							connector.connect("partially_connected", claim, "_on_connector_partially_connected")
 							connector.connect("fully_disconnected", claim, "_on_fully_disconnected")
 

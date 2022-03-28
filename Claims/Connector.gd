@@ -1,17 +1,22 @@
+class_name ClaimTreeConnector
 extends ColorRect
 
 var connections:Array
 var has_full_connection:bool = false
 var has_partial_connection:bool = false
-export var active: bool = true setget _set_active
+var active: bool = false setget _set_active
 
 
 signal partially_connected
 signal fully_disconnected
 
 
+func _ready() -> void:
+	self.deactivate()
+
+
 func _process(_delta: float) -> void:
-	check_connections()
+	if active: check_connections()
 
 
 func check_connections()->void:
@@ -39,18 +44,27 @@ func check_connections()->void:
 		emit_signal("fully_disconnected")
 
 
+func activate() ->void:
+	active = true
+	color = Color.white
+
+func deactivate()-> void:
+	active = false
+	color = Color(0, 0, 0, 0)
 
 
 func _set_active(value: bool) -> void:
-	active = value
-
-	if active:
-		modulate = Color.white
+	if value:
+		activate()
 	else:
-		modulate = Color(0, 0, 0, 0)
-
+		deactivate()
 	check_connections()
 
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("right_click"):
+		if active: self.deactivate()
+		elif not active: self.activate()
 
 func _on_neighbor_toggled(_button_pressed:bool)->void:
 	check_connections()

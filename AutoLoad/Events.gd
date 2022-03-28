@@ -12,3 +12,6 @@ func emit_crew_loaded(playbook: CrewPlaybook)-> void:
 	emit_signal("crew_loaded", playbook)
 
 signal main_screen_changed(screen)
+
+signal popup(popup_scene)
+signal popup_finished

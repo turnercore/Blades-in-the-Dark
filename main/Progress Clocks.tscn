@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Progress Clocks.gd" type="Script" id=1]
+[ext_resource path="res://main/Progress Clocks.gd" type="Script" id=1]
 [ext_resource path="res://clocks/Clock.tscn" type="PackedScene" id=2]
 
 [node name="Progress Clocks" type="ScrollContainer"]

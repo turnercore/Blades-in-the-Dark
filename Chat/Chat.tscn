@@ -1,12 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Chat/Chat.gd" type="Script" id=1]
+[ext_resource path="res://Chat/MessageText.gd" type="Script" id=2]
 
 [node name="Chat" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -114.0
-margin_bottom = -350.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,32 +14,31 @@ message_text = NodePath("MarginContainer/HBoxContainer/ChatBox/MessageText")
 chat = NodePath("MarginContainer/HBoxContainer/ChatBox/Chat")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_right = 910.0
-margin_bottom = 250.0
+margin_right = 1024.0
+margin_bottom = 600.0
 custom_constants/margin_right = 2
-custom_constants/margin_top = 10
+custom_constants/margin_top = 0
 custom_constants/margin_left = 2
-custom_constants/margin_bottom = 5
+custom_constants/margin_bottom = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_left = 2.0
-margin_top = 10.0
-margin_right = 908.0
-margin_bottom = 245.0
+margin_right = 1022.0
+margin_bottom = 598.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/separation = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_right = 100.0
-margin_bottom = 235.0
+margin_bottom = 598.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Users" type="ItemList" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 margin_right = 100.0
-margin_bottom = 211.0
+margin_bottom = 598.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 5
 size_flags_vertical = 3
@@ -48,21 +46,22 @@ custom_constants/vseparation = 10
 auto_height = true
 
 [node name="LoadButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 215.0
+visible = false
+margin_top = 578.0
 margin_right = 100.0
-margin_bottom = 235.0
+margin_bottom = 598.0
 text = "Load Chat"
 
 [node name="ChatBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 110.0
-margin_right = 906.0
-margin_bottom = 235.0
+margin_right = 1020.0
+margin_bottom = 598.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Chat" type="RichTextLabel" parent="MarginContainer/HBoxContainer/ChatBox"]
-margin_right = 796.0
-margin_bottom = 183.0
+margin_right = 910.0
+margin_bottom = 546.0
 focus_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -71,13 +70,14 @@ scroll_following = true
 selection_enabled = true
 
 [node name="MessageText" type="LineEdit" parent="MarginContainer/HBoxContainer/ChatBox"]
-margin_top = 187.0
-margin_right = 796.0
-margin_bottom = 211.0
+margin_top = 550.0
+margin_right = 910.0
+margin_bottom = 574.0
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 5
-text = "Chat message here..."
+script = ExtResource( 2 )
+snarky_quips = [ "What do you have to say for yourself?", "Say something clever...", "Don't let your memes be dreams", "Edit twice, send once", "How many of these are there?", "If you don't have anything nice to say, perhaps don't say anything at all", "You must gather your thoughts before venturing forth", "In chat, no one can hear you fart" ]
 
 [node name="PopupMenu" type="PopupMenu" parent="MarginContainer/HBoxContainer/ChatBox"]
 margin_top = 191.0
@@ -86,35 +86,18 @@ margin_bottom = 211.0
 popup_exclusive = true
 
 [node name="ChatButtons" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ChatBox"]
-margin_top = 215.0
-margin_right = 796.0
-margin_bottom = 235.0
+margin_top = 578.0
+margin_right = 910.0
+margin_bottom = 598.0
 
 [node name="Hide" type="Button" parent="MarginContainer/HBoxContainer/ChatBox/ChatButtons"]
 margin_right = 42.0
 margin_bottom = 20.0
 text = "Hide"
 
-[node name="ChatNotifications" type="Label" parent="MarginContainer/HBoxContainer/ChatBox/ChatButtons"]
-margin_left = 46.0
-margin_top = 3.0
-margin_right = 145.0
-margin_bottom = 17.0
-text = "New Messages:"
-
-[node name="NotificationNumber" type="Label" parent="MarginContainer/HBoxContainer/ChatBox/ChatButtons"]
-margin_left = 149.0
-margin_top = 3.0
-margin_right = 157.0
-margin_bottom = 17.0
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="FullscreenButton" type="Button" parent="MarginContainer/HBoxContainer/ChatBox/ChatButtons"]
-margin_left = 161.0
-margin_right = 239.0
+margin_left = 46.0
+margin_right = 124.0
 margin_bottom = 20.0
 toggle_mode = true
 text = "Fullscreen"
@@ -123,25 +106,45 @@ __meta__ = {
 }
 
 [node name="ChangeRoomButton" type="Button" parent="MarginContainer/HBoxContainer/ChatBox/ChatButtons"]
+visible = false
 margin_left = 243.0
 margin_right = 349.0
 margin_bottom = 20.0
 text = "Change Rooms"
 
 [node name="Padding" type="ColorRect" parent="MarginContainer/HBoxContainer/ChatBox/ChatButtons"]
-margin_left = 353.0
-margin_right = 747.0
+margin_left = 128.0
+margin_right = 863.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 color = Color( 1, 1, 1, 0 )
 
+[node name="ChatNotifications" type="Label" parent="MarginContainer/HBoxContainer/ChatBox/ChatButtons"]
+visible = false
+margin_left = 752.0
+margin_top = 3.0
+margin_right = 851.0
+margin_bottom = 17.0
+text = "New Messages:"
+
+[node name="NotificationNumber" type="Label" parent="MarginContainer/HBoxContainer/ChatBox/ChatButtons"]
+visible = false
+margin_left = 855.0
+margin_top = 3.0
+margin_right = 863.0
+margin_bottom = 17.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SendMessageButton" type="Button" parent="MarginContainer/HBoxContainer/ChatBox/ChatButtons"]
-margin_left = 751.0
-margin_right = 796.0
+margin_left = 867.0
+margin_right = 910.0
 margin_bottom = 20.0
 size_flags_horizontal = 9
 size_flags_vertical = 4
-text = "Enter"
+text = "Send"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -151,3 +154,4 @@ __meta__ = {
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ChatBox/ChatButtons/Hide" to="." method="_on_Hide_pressed"]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/ChatBox/ChatButtons/FullscreenButton" to="." method="_on_Fullscreen_toggled"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ChatBox/ChatButtons/SendMessageButton" to="." method="_on_SendMessageButton_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ChatBox/ChatButtons/SendMessageButton" to="MarginContainer/HBoxContainer/ChatBox/MessageText" method="_on_SendMessageButton_pressed"]

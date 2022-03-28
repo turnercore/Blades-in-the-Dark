@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Claims/Connector.gd" type="Script" id=1]
 [ext_resource path="res://Claims/Claim.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Claims/ClaimTree.gd" type="Script" id=3]
 [ext_resource path="res://Claims/Claims.gd" type="Script" id=4]
+[ext_resource path="res://Claims/EditButtons.gd" type="Script" id=5]
 
 [node name="Claims" type="CenterContainer"]
 anchor_right = 1.0
@@ -45,6 +46,7 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c2" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -63,6 +65,7 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c3" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -81,8 +84,8 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
-active = false
 
 [node name="c4" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -100,6 +103,7 @@ margin_bottom = 55.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c5" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -118,6 +122,7 @@ margin_bottom = 120.0
 rect_min_size = Vector2( 10, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="invisble" type="ColorRect" parent="VBoxContainer/ClaimTree"]
@@ -138,8 +143,8 @@ margin_bottom = 120.0
 rect_min_size = Vector2( 10, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
-active = false
 
 [node name="invisble2" type="ColorRect" parent="VBoxContainer/ClaimTree"]
 margin_left = 225.0
@@ -159,6 +164,7 @@ margin_bottom = 120.0
 rect_min_size = Vector2( 10, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="invisble3" type="ColorRect" parent="VBoxContainer/ClaimTree"]
@@ -179,6 +185,7 @@ margin_bottom = 120.0
 rect_min_size = Vector2( 10, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="invisble4" type="ColorRect" parent="VBoxContainer/ClaimTree"]
@@ -199,6 +206,7 @@ margin_bottom = 120.0
 rect_min_size = Vector2( 10, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c6" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -217,6 +225,7 @@ margin_bottom = 175.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c7" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -236,6 +245,7 @@ margin_bottom = 175.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c8" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -256,6 +266,7 @@ margin_bottom = 175.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c9" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -275,6 +286,7 @@ margin_bottom = 175.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c10" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -294,6 +306,7 @@ margin_bottom = 240.0
 rect_min_size = Vector2( 10, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="invisble5" type="ColorRect" parent="VBoxContainer/ClaimTree"]
@@ -314,6 +327,7 @@ margin_bottom = 240.0
 rect_min_size = Vector2( 10, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="invisble6" type="ColorRect" parent="VBoxContainer/ClaimTree"]
@@ -334,6 +348,7 @@ margin_bottom = 240.0
 rect_min_size = Vector2( 10, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="invisble7" type="ColorRect" parent="VBoxContainer/ClaimTree"]
@@ -354,8 +369,8 @@ margin_bottom = 240.0
 rect_min_size = Vector2( 10, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
-active = false
 
 [node name="invisble8" type="ColorRect" parent="VBoxContainer/ClaimTree"]
 margin_left = 465.0
@@ -375,6 +390,7 @@ margin_bottom = 240.0
 rect_min_size = Vector2( 10, 20 )
 size_flags_horizontal = 4
 size_flags_vertical = 5
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c11" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -393,6 +409,7 @@ margin_bottom = 295.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c12" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -412,8 +429,8 @@ margin_bottom = 295.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
-active = false
 
 [node name="c13" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
 anchor_right = 0.0
@@ -432,6 +449,7 @@ margin_bottom = 295.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c14" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -451,6 +469,7 @@ margin_bottom = 295.0
 rect_min_size = Vector2( 20, 10 )
 size_flags_horizontal = 5
 size_flags_vertical = 4
+color = Color( 1, 1, 1, 0 )
 script = ExtResource( 1 )
 
 [node name="c15" parent="VBoxContainer/ClaimTree" instance=ExtResource( 2 )]
@@ -462,13 +481,34 @@ margin_right = 580.0
 margin_bottom = 340.0
 rect_min_size = Vector2( 100, 100 )
 
-[node name="RestrictedPathsButton" type="CheckButton" parent="VBoxContainer"]
-margin_left = 198.0
+[node name="EditButtons" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 344.0
-margin_right = 382.0
+margin_right = 580.0
 margin_bottom = 384.0
-size_flags_horizontal = 4
+script = ExtResource( 5 )
+
+[node name="EditableButton" type="Button" parent="VBoxContainer/EditButtons"]
+margin_right = 24.0
+margin_bottom = 40.0
+toggle_mode = true
+pressed = true
+text = "..."
+
+[node name="RestrictedPathsButton" type="CheckButton" parent="VBoxContainer/EditButtons"]
+margin_left = 344.0
+margin_right = 528.0
+margin_bottom = 40.0
+size_flags_horizontal = 10
 size_flags_vertical = 0
 text = "Restricted Paths"
 
-[connection signal="toggled" from="VBoxContainer/RestrictedPathsButton" to="VBoxContainer/ClaimTree" method="_on_RestrictedPathsButton_toggled"]
+[node name="RecalculateButton" type="Button" parent="VBoxContainer/EditButtons"]
+margin_left = 532.0
+margin_right = 580.0
+margin_bottom = 40.0
+size_flags_horizontal = 8
+text = "Reset"
+
+[connection signal="toggled" from="VBoxContainer/EditButtons/EditableButton" to="VBoxContainer/EditButtons" method="_on_toggle_edit"]
+[connection signal="toggled" from="VBoxContainer/EditButtons/RestrictedPathsButton" to="VBoxContainer/ClaimTree" method="_on_RestrictedPathsButton_toggled"]
+[connection signal="pressed" from="VBoxContainer/EditButtons/RecalculateButton" to="." method="_on_RecalculateButton_pressed"]

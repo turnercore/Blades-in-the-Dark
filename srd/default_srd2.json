@@ -542,6 +542,65 @@
       "class": "whisper"
     }
   },
+  "xp_gain": {
+    "Every time you roll a desperate action, mark xp in that action's attribute.\nAt the end of each session, for each item below, mark 1 xp (in your playbook or\nan attribute) or 2 xp if that item occurred multiple times.": {
+      "class": "all"
+    },
+    "You expressed your beliefs, drives, heritage, or background.": {
+      "class": "all"
+    },
+    "You struggled with issues from your vice or traumas during the session.": {
+      "class": "all"
+    },
+    "You addressed a challenge with violence or coercion.": {
+      "class": "cutter"
+    },
+    "You addressed a challenge with tracking or violence.": {
+      "class": "hound"
+    },
+    "You addressed a challenge with knowledge or arcane power.": {
+      "class": "whisper"
+    },
+    "You addressed a challenge with calculation or conspiracy.": {
+      "class": "spider"
+    },
+    "You addressed a challenge with deception or influence.": {
+      "class": "slide"
+    },
+    "You addressed a challenge with stealth or evasion.": {
+      "class": "lurk"
+    },
+    "You addressed a challenge with technical skill or mayhem.": {
+      "class": "leech"
+    },
+    "Execute a successful accident, disappearance, murder, or ransom operation.": {
+      "class": "assassins"
+    },
+    "Contend with challenges above your current station.": {
+      "class": "all_crew"
+    },
+    "Bolster your crew's reputation or develop a new one.": {
+      "class": "all_crew"
+    },
+    "Express the goals, drives, inner conflict, or essential nature of the crew.": {
+      "class": "all_crew"
+    },
+    "Execute a successful battle, extortion, sabotage, or smash & grab operation.": {
+      "class": "bravos"
+    },
+    "Advance the agenda of your deity or embody its precepts in actioncu.": {
+      "class": "cult"
+    },
+    "Acquire product supply, execute clandestine/covert sales, or secure new territory.": {
+      "class": "hawkers"
+    },
+    "Execute a successful espionage, sabotage, or theft operation.": {
+      "class": "shadows"
+    },
+    "Execute a successful smuggling or acquire new clients or contraband sources.": {
+      "class": "smugglers"
+    }
+  },
   "crew_abilities": {
     "Veteran": {
       "effect": "(3 Skill Points) Choose a special ability from another crew.",
@@ -945,581 +1004,445 @@
       "location": "House of the Weeping Lady",
       "type": "Faith",
       "area": "Six Towers",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Ilacille": {
       "location": "The ruins of the Temple to forgotten gods",
       "type": "Faith",
       "area": "Coalridge",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Nelisanne": {
       "location": "The Church of the Ecstasy of the Flesh",
       "type": "Faith",
       "area": "Brightstone",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Lord Penderyn": {
       "location": "The Archive of Echoes",
       "type": "Faith",
       "area": "Charterhall",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Spogg": {
       "location": "Spogg's Dice game",
       "type": "Gambling",
       "area": "Crow's Foot",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Grist": {
       "location": "Underground Boxing Match",
       "type": "Gambling",
       "area": "the Docks",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Helene": {
       "location": "Silver Stag Casino, Silkshore",
       "type": "Pleasure, Stupor",
       "area": "Silkshore",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Master Vreen": {
       "location": "Hound Racing",
       "type": "Gambling",
       "area": "Nightmarket",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Lady Dusk": {
       "location": "The Dusk Manor Club",
       "type": "Gambling",
       "area": "Whitecrown",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Sergeant Velk": {
       "location": "The Fighting Pits",
       "type": "Gambling",
       "area": "Dunslough",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Singer": {
       "location": "Bath House",
       "type": "Luxury, Pleasure",
       "area": "Crow's Foot",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Harvale Brogan": {
       "location": "The Centuralia Club",
       "type": "Luxury, Pleasure",
       "area": "Brightstone",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Traven": {
       "location": "Traven's Smoke Shop",
       "type": "Pleasure, Stupor",
       "area": "Coalridge",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Dunrige & Son": {
       "location": "Dunrige & Son's Fine Fabrics and Tailoring",
       "type": "Luxury, Pleasure",
       "area": "Nightmarket",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Chef Roselle": {
       "location": "The Golden Plum Resturant",
       "type": "Luxury, Pleasure",
       "area": "Six Towers",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Maestro Helleren": {
       "location": "Spiregarden Theater",
       "type": "Luxury, Pleasure",
       "area": "Whitecrown",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Family Members (heritage) or Former Co-Workers (background)": {
       "location": "Various",
       "type": "Obligation",
       "area": "all",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Hutton, Skovlander Refugees/Revolutionaries": {
       "location": "Charhollow",
       "type": "Obligation",
       "area": "Charhollow",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "The Circle of Flame": {
       "location": "Secret Society",
       "type": "Obligation",
       "area": "all",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Mardin Gull": {
       "location": "The Leaky Bucket Tavern",
       "type": "Pleasure, Stupor",
       "area": "Crow's Foot",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Pux Bolin": {
       "location": "The Harping Monkey Tavern",
       "type": "Pleasure, Stupor",
       "area": "Nightmarket",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Lady Freyla": {
       "location": "The Emperor's Cask Bar, Whitecrown",
       "type": "Pleasure, Stupor",
       "area": "Whitecrown",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Avrick": {
       "location": "Powder Dealer",
       "type": "Pleasure, Stupor",
       "area": "Barrowcleft",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Rolan Volaris": {
       "location": "The Veil Social Club",
       "type": "Pleasure, Stupor",
       "area": "Nightmarket",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Madame Tesslyn": {
       "location": "The Red Lamp Brothel",
       "type": "Pleasure, Stupor",
       "area": "Silkshore",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Eldrin Prichard": {
       "location": "The Silver Swan Pleasure Barge",
       "type": "Pleasure, Stupor",
       "area": "Brightstone Canals",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Jewel, Bird, and Shine": {
       "location": "Catcrawl Alley",
       "type": "Pleasure, Stupor",
       "area": "the Docks",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "The Hooded Proprietor": {
       "location": "A half-flooded grotto tavern near the docks. Strange passageways lead to stranger chambers beyond",
       "type": "Weird",
       "area": "The Docks",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Father Yoren": {
       "location": "House of the Weeping Lady",
       "type": "Weird",
       "area": "Six Towers",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "\"Salia\"": {
       "location": "A spirit of the Reconciled, which moves from body to body at their whim",
       "type": "Weird",
       "area": "all",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Sister Thorn": {
       "location": "Deathlands Scavenger Gang",
       "type": "Weird",
       "area": "Gaddoc Station",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Ojak": {
       "location": "Tycherosi Rooftop Market, Vendor",
       "type": "Weird",
       "area": "Silkshore",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     },
     "Aranna the Blessed, Cultist of a Forgotten God": {
       "location": "Barge, moored",
       "type": "Weird",
       "area": "Nightmarket",
-      "relationship": "none",
-      "notes": null
+      "relationship": "none"
     }
   },
   "contacts": {
     "Trev, a gang boss": {
-      "class": "assassins",
-      "relationship": null,
-      "notes": null
+      "class": "assassins"
     },
     "Lydra, a deal broker": {
-      "class": "hawkers",
-      "relationship": null,
-      "notes": null
+      "class": "hawkers"
     },
     "Irimina, a vicious noble": {
-      "class": "assassins",
-      "relationship": null,
-      "notes": null
+      "class": "assassins"
     },
     "Karlos, a bounty hunter": {
-      "class": "assassins",
-      "relationship": null,
-      "notes": null
+      "class": "assassins"
     },
     "Exeter, a spirit warden": {
-      "class": "assassins",
-      "relationship": null,
-      "notes": null
+      "class": "assassins"
     },
     "Sevoy, a merchant lord": {
-      "class": "assassins",
-      "relationship": null,
-      "notes": null
+      "class": "assassins"
     },
     "Meg, a pit-fighter": {
-      "class": "bravos",
-      "relationship": null,
-      "notes": null
+      "class": "bravos"
     },
     "Conway, a bluecoat": {
-      "class": "bravos",
-      "relationship": null,
-      "notes": null
+      "class": "bravos"
     },
     "Keller, a blacksmith": {
-      "class": "bravos",
-      "relationship": null,
-      "notes": null
+      "class": "bravos"
     },
     "Tomas, a physicker": {
-      "class": "bravos",
-      "relationship": null,
-      "notes": null
+      "class": "bravos"
     },
     "Walker, a ward boss": {
-      "class": "bravos",
-      "relationship": null,
-      "notes": null
+      "class": "bravos"
     },
     "Lutes, a tavern owner": {
-      "class": "bravos",
-      "relationship": null,
-      "notes": null
+      "class": "bravos"
     },
     "Gagan, an academic": {
-      "class": "cult",
-      "relationship": null,
-      "notes": null
+      "class": "cult"
     },
     "Adikin, an occultist": {
-      "class": "cult",
-      "relationship": null,
-      "notes": null
+      "class": "cult"
     },
     "Hutchins, an antiquarian": {
-      "class": "cult",
-      "relationship": null,
-      "notes": null
+      "class": "cult"
     },
     "Moriya, a spirit trafficker": {
-      "class": "cult",
-      "relationship": null,
-      "notes": null
+      "class": "cult"
     },
     "Mateas Kline, a noble": {
-      "class": "cult",
-      "relationship": null,
-      "notes": null
+      "class": "cult"
     },
     "Bennett, an astronomer": {
-      "class": "cult",
-      "relationship": null,
-      "notes": null
+      "class": "cult"
     },
     "Rolan Wott, a magistrate": {
-      "class": "hawkers",
-      "relationship": null,
-      "notes": null
+      "class": "hawkers"
     },
     "Laroze, a bluecoat": {
-      "class": "shadows",
-      "relationship": null,
-      "notes": null
+      "class": "shadows"
     },
     "Hoxley, a smuggler": {
-      "class": "hawkers",
-      "relationship": null,
-      "notes": null
+      "class": "hawkers"
     },
     "Anya, a dillettante": {
-      "class": "hawkers",
-      "relationship": null,
-      "notes": null
+      "class": "hawkers"
     },
     "Marlo, a gang boss": {
-      "class": "hawkers",
-      "relationship": null,
-      "notes": null
+      "class": "hawkers"
     },
     "Dowler, an explorer": {
-      "class": "shadows",
-      "relationship": null,
-      "notes": null
+      "class": "shadows"
     },
     "Amancio, a deal broker": {
-      "class": "shadows",
-      "relationship": null,
-      "notes": null
+      "class": "shadows"
     },
     "Fitz, a collector": {
-      "class": "shadows",
-      "relationship": null,
-      "notes": null
+      "class": "shadows"
     },
     "Adelaide Phroaig, a noble": {
-      "class": "shadows",
-      "relationship": null,
-      "notes": null
+      "class": "shadows"
     },
     "Rigney, a tavern owner": {
-      "class": "shadows",
-      "relationship": null,
-      "notes": null
+      "class": "shadows"
     },
     "Elynn, a dock worker": {
-      "class": "smugglers",
-      "relationship": null,
-      "notes": null
+      "class": "smugglers"
     },
     "Rolan, a drug dealer": {
-      "class": "smugglers",
-      "relationship": null,
-      "notes": null
+      "class": "smugglers"
     },
     "Sera, an arms dealer": {
-      "class": "smugglers",
-      "relationship": null,
-      "notes": null
+      "class": "smugglers"
     },
     "Nyelle, a spirit trafficker": {
-      "class": "smugglers",
-      "relationship": null,
-      "notes": null
+      "class": "smugglers"
     },
     "Decker, an anarchist": {
-      "class": "smugglers",
-      "relationship": null,
-      "notes": null
+      "class": "smugglers"
     },
     "Esme, a tavern owner": {
-      "class": "smugglers",
-      "relationship": null,
-      "notes": null
+      "class": "smugglers"
     }
   },
   "friends_foes": {
     "Marlane, a pugilist": {
       "class": "cutter",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Chael, a vicious thug": {
       "class": "cutter",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Mercy, a cold killer": {
       "class": "cutter",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Grace, an extortionist": {
       "class": "cutter",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Sawtooth, a physicker": {
       "class": "cutter",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Steiner, an assassin": {
       "class": "hound",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Celene, a sentinel": {
       "class": "hound",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Melvir, a physicker": {
       "class": "hound",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Veleris, a spy": {
       "class": "hound",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Casta, a bounty hunter": {
       "class": "hound",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Stazia, an apothecary": {
       "class": "leech",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Veldren, a psychonaut": {
       "class": "leech",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Eckerd, a corpse thief": {
       "class": "leech",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Jul, a blood dealer": {
       "class": "leech",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Malista, a priestess": {
       "class": "leech",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Telda, a beggar": {
       "class": "lurk",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Darmot, a bluecoat": {
       "class": "lurk",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Frake, a locksmith": {
       "class": "lurk",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Roslyn Kellis, a noble": {
       "class": "lurk",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Petra, a city clerk": {
       "class": "lurk",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Bryl, a drug dealer": {
       "class": "slide",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Bazso Baz, a gang leader": {
       "class": "slide",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Klyra, a tavern owner": {
       "class": "slide",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Nyryx, a prostitute": {
       "class": "slide",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Harker, a jail-bird": {
       "class": "slide",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Salia, an information broker": {
       "class": "spider",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Augus, a master architect": {
       "class": "spider",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Jennah, a servant": {
       "class": "spider",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Riven, a chemist": {
       "class": "spider",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Jeren, a bluecoat archivist": {
       "class": "spider",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Nyryx, a possessor ghost": {
       "class": "whisper",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Scurlock, a vampire": {
       "class": "whisper",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Setarra, a demon": {
       "class": "whisper",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Quellyn, a witch": {
       "class": "whisper",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     },
     "Flint, a spirit trafficker": {
       "class": "whisper",
-      "relationship": null,
-      "notes": null
+      "relationship": null
     }
   },
   "claims": {
@@ -1528,1464 +1451,714 @@
       "connections": "e, s",
       "faction": "The Red Bunnies",
       "effect": "You get +1d to gather information for a score.",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c2": {
       "claim": "Turf",
       "connections": "w, e",
       "faction": "The blue bunnies",
       "effect": "Gain a turf",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c3": {
       "claim": "Loyal Fence",
       "connections": "s, w",
       "faction": null,
       "effect": "You get +2 coin in payoff for scores that involve burglary or robbery.",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c4": {
       "claim": "Gambling Den",
       "connections": "s, e",
       "faction": null,
       "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c5": {
       "claim": "Tavern",
       "connections": "w, s",
       "faction": null,
       "effect": "You get +1d to consort and sway rolls on-site.",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c6": {
       "claim": "Drug Den",
       "connections": "n, e, s",
       "faction": null,
       "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c7": {
       "claim": "Informants",
       "connections": "e, s, w",
       "faction": null,
       "effect": "You get +1d to gather information for a score.",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c8": {
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
       "effect": "Home sweet home",
-      "class": "shadows",
-      "is_claimed": 1,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c9": {
       "claim": "Turf",
       "connections": "n, e, w",
       "faction": null,
       "effect": "Gain a turf",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c10": {
       "claim": "Lookouts",
       "connections": "n, s, w",
       "faction": null,
       "effect": "You get +1d to hunt or survey on your turf",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c11": {
       "claim": "Hagfish Farm",
       "connections": "n, e",
       "faction": null,
       "effect": "When you use the reduce heat downtime activity after a score that involves killing, you get +1d to the roll and quiet, convenient disposal of any corpses you left on the job.",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c12": {
       "claim": "Infirmary",
       "connections": "n",
       "faction": null,
       "effect": "You get +1d to healing treatment rolls.",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c13": {
       "claim": "Covert Drop",
       "connections": "n, e",
       "faction": null,
       "effect": "You get +2 coin in payoff for scores that involve espionage or sabotage.",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c14": {
       "claim": "Turf",
       "connections": "e, w",
       "faction": null,
       "effect": "Gain a turf",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "shadows_c15": {
       "claim": "Secret Pathways",
       "connections": "n, w",
       "faction": null,
       "effect": "You get +1d to engagement roll for stealth plans.",
-      "class": "shadows",
-      "is_claimed": 0,
-      "notes": null
+      "class": "shadows"
     },
     "prison_c1": {
       "claim": "Parole Influence",
       "connections": "e, s",
       "faction": null,
       "effect": "Political pressures of various sorts can be applied to the magistrates and warden who oversee sentences for crimes. With this claim, you’re always able to arrange for a shorter prison stay—as if your wanted level was 1 lower. So, if your wanted level was 3 when you went in, you’d spend only several months behind bars (equivalent to level 2) instead of a full year.",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "prison_c2": {
       "claim": "Smuggling",
       "connections": "e, s, w",
       "faction": null,
       "effect": "You arrange smuggling channels inside. You have +2 load while incarcerated, (starting from zero as a prisoner). If you take this claim twice, you’ll have 4 load while you’re serving time in Ironhook. Also, you may choose to have 1 coin in place of a load item for purposes of bribes or acquiring assets while in prison. You may reset your prison load whenever your crew has downtime.",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "prison_c3": {
       "claim": "Allied Claim",
       "connections": "s, w",
       "faction": null,
       "effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "prision_c4": {
       "claim": "Cell Block Control",
       "connections": "s",
       "faction": null,
       "effect": "Your crew has a cell block under their total control—guards and all. You never take trauma from incarceration.",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "prision_c5": {
       "claim": "Guard Payoff",
       "connections": "n, e, s",
       "faction": null,
       "effect": "You claim several Ironhook prison guards on your payroll. Take +1d to your Tier roll when a member of your crew is incarcerated.",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "prison_c6": {
       "claim": "Prison",
       "connections": "n, e, s, w",
       "faction": "Claimed",
       "effect": "Home sweet home, for now.",
-      "class": "prison",
-      "is_claimed": 1,
-      "notes": null
+      "class": "prison"
     },
     "prision_c7": {
       "claim": "Guard Payoff",
       "connections": "n, e, s, w",
       "faction": null,
       "effect": "You claim several Ironhook prison guards on your payroll. Take +1d to your Tier roll when a member of your crew is incarcerated.",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "prision_c8": {
       "claim": "Allied Claim",
       "connections": "n, s, w",
       "faction": null,
       "effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "prision_c9": {
       "claim": "Hardcase",
       "connections": "n, e",
       "faction": null,
       "effect": "Your reputation as a tough inmate bolsters your crew’s image in Duskwall. When your crew advances Tier, it costs 2 fewer coins than it normally would",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "prision_c10": {
       "claim": "Smuggling",
       "connections": "n, e, w",
       "faction": null,
       "effect": "You arrange smuggling channels inside. You have +2 load while incarcerated, (starting from zero as a prisoner). If you take this claim twice, you’ll have 4 load while you’re serving time in Ironhook. Also, you may choose to have 1 coin in place of a load item for purposes of bribes or acquiring assets while in prison. You may reset your prison load whenever your crew has downtime.",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "prision_c11": {
       "claim": "Allied Claim",
       "connections": "n, e, w",
       "faction": null,
       "effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "prision_c12": {
       "claim": "Allied Claim",
       "connections": "n, w",
       "faction": null,
       "effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
-      "class": "prison",
-      "is_claimed": 0,
-      "notes": null
+      "class": "prison"
     },
     "smugglers_c1": {
-      "claim": "Turf",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf",
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "smugglers_c2": {
-      "claim": "Side Business",
-      "connections": "e, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
       "effect": null,
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": null
+      "class": null
     },
     "smugglers_c3": {
-      "claim": "Luxury Fence",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
       "effect": null,
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": null
+      "class": null
     },
     "smugglers_c4": {
-      "claim": "Vice Den",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
       "effect": null,
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": null
+      "class": null
     },
     "smugglers_c5": {
-      "claim": "Tavern",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
       "effect": null,
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": null
+      "class": null
     },
     "smugglers_c6": {
-      "claim": "Ancient Gate",
-      "connections": "n, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Safe passage in the deathlands.",
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": "(When you leave the city through this gate, spirits in the deathlands will not molest you unless directly provoked.)"
+      "effect": null,
+      "class": null
     },
     "smugglers_c7": {
-      "claim": "Turf",
-      "connections": "n, e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf",
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "smugglers_c8": {
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
       "effect": "Home sweet home",
-      "class": "smugglers",
-      "is_claimed": 1,
-      "notes": null
+      "class": null
     },
     "smugglers_c9": {
-      "claim": "Turf",
-      "connections": "n, e, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf",
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "smugglers_c10": {
-      "claim": "Turf",
-      "connections": "n, s, e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf",
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "smugglers_c11": {
-      "claim": "Secret Routes",
-      "connections": "n, e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to the engagement roll for transport plans.",
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": "(You might have access to long-forgotten underground canals, dark streets normally hidden behind debris, or some other route of your choosing.)"
+      "effect": null,
+      "class": null
     },
     "smugglers_c12": {
-      "claim": "Informants",
-      "connections": "n, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to gather information for a score.",
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": "(Your eyes and ears on the streets are always on the lookout for new clients.)"
+      "effect": null,
+      "class": null
     },
     "smugglers_c13": {
-      "claim": "Fleet",
-      "connections": "n",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Your cohorts have their own vehicles.",
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": "(Each cohort has a common vehicle, with quality equal to your Tier.)"
+      "effect": null,
+      "class": null
     },
     "smugglers_c14": {
-      "claim": "Cover Operation",
-      "connections": "n, e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get -2 Heat per score.",
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": "(What's your cover? Who did you seize it from?)"
+      "effect": null,
+      "class": null
     },
     "smugglers_c15": {
-      "claim": "Warehouses",
-      "connections": "n, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to acquire asset rolls.",
-      "class": "smugglers",
-      "is_claimed": 0,
-      "notes": "(You have space to hold all the various items and supplies you end up with from the smuggling runs. They can be useful on their own or for barter when you need it.)"
+      "effect": null,
+      "class": null
     },
     "hawkers_c1": {
-      "claim": "Turf",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "hawkers_c2": {
-      "claim": "Personal Clothier",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to the engagement roll for social plans.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": "(You always arrive on the scene in the most current and alluring fashion.)"
+      "effect": null,
+      "class": null
     },
     "hawkers_c3": {
-      "claim": "Local Graft",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +2 coin in payoff for scores that involve a show of force or socializing.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": "(A few city officials share bribe money with those who show that they're players on the scene.)"
+      "effect": null,
+      "class": null
     },
     "hawkers_c4": {
-      "claim": "Lookouts",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to hunt or survey on your turf.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "hawkers_c5": {
-      "claim": "Informants",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to gather information for a score.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "hawkers_c6": {
-      "claim": "Turf",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "hawkers_c7": {
-      "claim": "Turf",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "hawkers_c8": {
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
       "effect": "Home sweet home",
-      "class": "hawkers",
-      "is_claimed": 1,
-      "notes": null
+      "class": null
     },
     "hawkers_c9": {
-      "claim": "Turf",
-      "connections": "n, e, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "hawkers_c10": {
-      "claim": "Luxury Venue",
-      "connections": "n, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to consort and sway rolls on-site.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": "(Skills, paintings, and crystal impress the clientele.)"
+      "effect": null,
+      "class": null
     },
     "hawkers_c11": {
-      "claim": "Foreign Market",
-      "connections": "n, e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": "(Some of your product makes its way out of the city.)"
+      "effect": null,
+      "class": null
     },
     "hawkers_c12": {
-      "claim": "Vice Den",
-      "connections": "n, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Any time during your downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": "(Is this claim a den you've overtaken from another purveyor, or a new establishment replacing something else?)"
+      "effect": null,
+      "class": null
     },
     "hawkers_c13": {
-      "claim": "Surplus Cache",
-      "connections": "n",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +2 coin in payoff for scores that involve product sale or supply.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": "(You have an abundance of product, which pads your pockets every now and then.)"
+      "effect": null,
+      "class": null
     },
     "hawkers_c14": {
-      "claim": "Cover Operation",
-      "connections": "n, e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get -2 heat per score.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "hawkers_c15": {
-      "claim": "Cover Identities",
-      "connections": "w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to the engagement roll for deception and social plans.",
-      "class": "hawkers",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "cult_c1": {
-      "claim": "Cloister",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Your Adept cohorts get +1 scale.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "cult_c2": {
-      "claim": "Vice Den",
-      "connections": "e, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "cult_c3": {
-      "claim": "Offertory",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +2 coin in your payoff for scores that involve occult operations. (The fightened locals offer you tribute when you perform your dark practices. They don't want to be next)",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "cult_c4": {
-      "claim": "Ancient Obelisk",
-      "connections": "e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "-1 stress cost for all arcane powers and rituals.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": "(This effect applies to all cultists, everywhere - so long as the deity is well-pleased. You don't have to be on-site at the obelisk to benefit from its power.)"
+      "effect": null,
+      "class": null
     },
     "cult_c5": {
-      "claim": "Ancient Tower",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to consort with arcane entities on-site.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": "(This tower was prepared by sorcery from the pre-cataclysm and acts as an arcane lens to focus eldritch energy across the black mirror into the void.)"
+      "effect": null,
+      "class": null
     },
     "cult_c6": {
-      "claim": "Turf",
-      "connections": "n, e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "cult_c7": {
-      "claim": "Turf",
-      "connections": "n, e, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "cult_c8": {
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
       "effect": "Home sweet home",
-      "class": "cult",
-      "is_claimed": 1,
-      "notes": null
+      "class": null
     },
     "cult_c9": {
-      "claim": "Turf",
-      "connections": "e, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "cult_c10": {
-      "claim": "Turf",
-      "connections": "n, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "cult_c11": {
-      "claim": "Spirit Well",
-      "connections": "e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to attune rolls on-site.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": "(A spirit well draws ghosts and other things to its power, which you harness to aid your arts.)"
+      "effect": null,
+      "class": null
     },
     "cult_c12": {
-      "claim": "Ancient Gate",
-      "connections": "n, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Safe passage in the deathlands.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": "(When you leave the city through this gate, the spirits of the deathlands will not molest you unless directly provoked.)"
+      "effect": null,
+      "class": null
     },
     "cult_c13": {
-      "claim": "Sanctuary",
-      "connections": "n",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to command and sway rolls on-site.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": "(Your sanctuary maintains its effect as long as your deity is well-pleased with your service.)"
+      "effect": null,
+      "class": null
     },
     "cult_c14": {
-      "claim": "Sacred Nexus",
-      "connections": "n, e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to healing treatment rolls.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": "(Ancient arcane energy seeps into the wounded here, speeding their recovery, and marking them consecrated by its power.)"
+      "effect": null,
+      "class": null
     },
     "cult_c15": {
-      "claim": "Ancient Altar",
-      "connections": "n, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to the engagement roll for occult plans.",
-      "class": "cult",
-      "is_claimed": 0,
-      "notes": "(Its blessing is with you.)"
+      "effect": null,
+      "class": null
     },
     "bravos_c1": {
-      "claim": "Barracks",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Your Thug cohorts get +1 scale.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c2": {
-      "claim": "Turf",
-      "connections": "e, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c3": {
-      "claim": "Terrorized Citizens",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +2 coin in your payoff for scores that involve battle or extortion.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c4": {
-      "claim": "Informants",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to gather information for a score.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c5": {
-      "claim": "Protection Racket",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c6": {
-      "claim": "Fighting Pits",
-      "connections": "n, e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "During downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c7": {
-      "claim": "Turf",
-      "connections": "e, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c8": {
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
       "effect": "Home sweet home",
-      "class": "bravos",
-      "is_claimed": 1,
-      "notes": null
+      "class": null
     },
     "bravos_c9": {
-      "claim": "Turf",
-      "connections": "n, e, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c10": {
-      "claim": "Turf",
-      "connections": "n, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c11": {
-      "claim": "Infirmary",
-      "connections": "n, e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to healing treatment rolls.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c12": {
-      "claim": "Bluecoat Intimidation",
-      "connections": "n, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get -2 heat per score.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c13": {
-      "claim": "Street Fence",
-      "connections": "n, e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +2 coin in your payoff for scores that involve lower-class targets.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c14": {
-      "claim": "Warehouses",
-      "connections": "n, e, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to acquire asset rolls.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "bravos_c15": {
-      "claim": "Bluecoat Confederates",
-      "connections": "n, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to the engagement roll for assault plans.",
-      "class": "bravos",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c1": {
-      "claim": "Training Rooms",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Your Skulks cohorts get +1 scale.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c2": {
-      "claim": "Vice Den",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c3": {
-      "claim": "Fixer",
-      "connections": "s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +2 coin in payoff for scores that involve lower-class clients.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c4": {
-      "claim": "Informants",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to gather information for a score.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c5": {
-      "claim": "Hagfish Farm",
-      "connections": "s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "When you use the reduce heat downtime activity after a score that involves killing, you get +1d to the roll and quiet, convenient disposal of any corpses you left on the job.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c6": {
-      "claim": "Victim Trophies",
-      "connections": "n, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1 rep per score.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c7": {
-      "claim": "Turf",
-      "connections": "n, e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c8": {
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
       "effect": "Home sweet home",
-      "class": "assassins",
-      "is_claimed": 1,
-      "notes": null
+      "class": null
     },
     "assassins_c9": {
-      "claim": "Turf",
-      "connections": "n, e, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Gain a turf",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c10": {
-      "claim": "Cover Operation",
-      "connections": "n, s, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get -2 heat per score.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c11": {
-      "claim": "Protection Racket",
-      "connections": "n, e",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c12": {
-      "claim": "Infirmary",
-      "connections": "n, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to healing treatment rolls.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c13": {
-      "claim": "Envoy",
-      "connections": "n",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +2 coin in payoff for scores that involves high-class clients.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c14": {
-      "claim": "Cover Identities",
-      "connections": "e, s",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to the engagement roll for deception and social plans.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
+      "effect": null,
+      "class": null
     },
     "assassins_c15": {
-      "claim": "City Records",
-      "connections": "n, w",
+      "claim": null,
+      "connections": null,
       "faction": null,
-      "effect": "You get +1d to the engagement roll for stealth plans.",
-      "class": "assassins",
-      "is_claimed": 0,
-      "notes": null
-    }
-  },
-  "opportunities": {
-    "": {
-      "class": "assassins"
-    }
-  },
-  "xp_gain": {
-    "Every time you roll a desperate action, mark xp in that action's attribute.\nAt the end of each session, for each item below, mark 1 xp (in your playbook or\nan attribute) or 2 xp if that item occurred multiple times.": {
-      "class": "all"
-    },
-    "You expressed your beliefs, drives, heritage, or background.": {
-      "class": "all"
-    },
-    "You struggled with issues from your vice or traumas during the session.": {
-      "class": "all"
-    },
-    "You addressed a challenge with violence or coercion.": {
-      "class": "cutter"
-    },
-    "You addressed a challenge with tracking or violence.": {
-      "class": "hound"
-    },
-    "You addressed a challenge with knowledge or arcane power.": {
-      "class": "whisper"
-    },
-    "You addressed a challenge with calculation or conspiracy.": {
-      "class": "spider"
-    },
-    "You addressed a challenge with deception or influence.": {
-      "class": "slide"
-    },
-    "You addressed a challenge with stealth or evasion.": {
-      "class": "lurk"
-    },
-    "You addressed a challenge with technical skill or mayhem.": {
-      "class": "leech"
-    },
-    "Execute a successful accident, disappearance, murder, or ransom operation.": {
-      "class": "assassins"
-    },
-    "Contend with challenges above your current station.": {
-      "class": "all_crew"
-    },
-    "Bolster your crew's reputation or develop a new one.": {
-      "class": "all_crew"
-    },
-    "Express the goals, drives, inner conflict, or essential nature of the crew.": {
-      "class": "all_crew"
-    },
-    "Execute a successful battle, extortion, sabotage, or smash & grab operation.": {
-      "class": "bravos"
-    },
-    "Advance the agenda of your deity or embody its precepts in actioncu.": {
-      "class": "cult"
-    },
-    "Acquire product supply, execute clandestine/covert sales, or secure new territory.": {
-      "class": "hawkers"
-    },
-    "Execute a successful espionage, sabotage, or theft operation.": {
-      "class": "shadows"
-    },
-    "Execute a successful smuggling or acquire new clients or contraband sources.": {
-      "class": "smugglers"
-    }
-  },
-  "factions": {
-    "1": {
-      "faction": "The Unseen",
-      "tier": 4,
-      "hold": "strong",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "2": {
-      "faction": "The Hive",
-      "tier": 4,
-      "hold": "strong",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "3": {
-      "faction": "The Circle of Flame",
-      "tier": 3,
-      "hold": "strong",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "4": {
-      "faction": "The Silver Nails",
-      "tier": 3,
-      "hold": "strong",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "5": {
-      "faction": "Lord Scurlock",
-      "tier": 3,
-      "hold": "strong",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "6": {
-      "faction": "The Crows",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "7": {
-      "faction": "The Lampblacks",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "8": {
-      "faction": "The Red Sashes",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "9": {
-      "faction": "The Dimmer Sisters",
-      "tier": 2,
-      "hold": "strong",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "10": {
-      "faction": "The Grinders",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "11": {
-      "faction": "The Billhooks",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "12": {
-      "faction": "The Wraiths",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "13": {
-      "faction": "The Gray Cloaks",
-      "tier": 2,
-      "hold": "strong",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "14": {
-      "faction": "Ulf Ironborn",
-      "tier": 1,
-      "hold": "strong",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "15": {
-      "faction": "The Fog Hounds",
-      "tier": 1,
-      "hold": "weak",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "16": {
-      "faction": "The Lost",
-      "tier": 1,
-      "hold": "weak",
-      "type": "Underworld",
-      "primary_location": null,
-      "notes": null
-    },
-    "17": {
-      "faction": "Imperial Military",
-      "tier": 6,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "18": {
-      "faction": "City Council",
-      "tier": 5,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "19": {
-      "faction": "Ministry of Preservation",
-      "tier": 5,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "20": {
-      "faction": "Leviathan Hunters",
-      "tier": 5,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "21": {
-      "faction": "Ironhook Prison",
-      "tier": 4,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "22": {
-      "faction": "Sparkwrights",
-      "tier": 4,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "23": {
-      "faction": "Spirit Wardens",
-      "tier": 4,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "24": {
-      "faction": "Bluecoats",
-      "tier": 3,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "25": {
-      "faction": "Inspectors",
-      "tier": 3,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "26": {
-      "faction": "Iruvian Consulate",
-      "tier": 3,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "27": {
-      "faction": "Skovlan Consulate",
-      "tier": 3,
-      "hold": "weak",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "28": {
-      "faction": "The Brigade",
-      "tier": 2,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "29": {
-      "faction": "Severosi Consulate",
-      "tier": 1,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "30": {
-      "faction": "Dagger Isles Consulate",
-      "tier": 1,
-      "hold": "strong",
-      "type": "Institutions",
-      "primary_location": null,
-      "notes": null
-    },
-    "31": {
-      "faction": "The Foundation",
-      "tier": 4,
-      "hold": "strong",
-      "type": "Labor & Trade",
-      "primary_location": null,
-      "notes": null
-    },
-    "32": {
-      "faction": "Dockers",
-      "tier": 3,
-      "hold": "strong",
-      "type": "Labor & Trade",
-      "primary_location": null,
-      "notes": null
-    },
-    "33": {
-      "faction": "Gondoliers",
-      "tier": 3,
-      "hold": "strong",
-      "type": "Labor & Trade",
-      "primary_location": null,
-      "notes": null
-    },
-    "34": {
-      "faction": "Sailors",
-      "tier": 3,
-      "hold": "weak",
-      "type": "Labor & Trade",
-      "primary_location": null,
-      "notes": null
-    },
-    "35": {
-      "faction": "Laborers",
-      "tier": 3,
-      "hold": "weak",
-      "type": "Labor & Trade",
-      "primary_location": null,
-      "notes": null
-    },
-    "36": {
-      "faction": "Cabbies",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Labor & Trade",
-      "primary_location": null,
-      "notes": null
-    },
-    "37": {
-      "faction": "Cyphers",
-      "tier": 2,
-      "hold": "strong",
-      "type": "Labor & Trade",
-      "primary_location": null,
-      "notes": null
-    },
-    "38": {
-      "faction": "Ink Rakes",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Labor & Trade",
-      "primary_location": null,
-      "notes": null
-    },
-    "39": {
-      "faction": "Rail Jacks",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Labor & Trade",
-      "primary_location": null,
-      "notes": null
-    },
-    "40": {
-      "faction": "Servants",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Labor & Trade",
-      "primary_location": null,
-      "notes": null
-    },
-    "41": {
-      "faction": "The Church of Ecstasy",
-      "tier": 4,
-      "hold": "strong",
-      "type": "The Fringe",
-      "primary_location": null,
-      "notes": null
-    },
-    "42": {
-      "faction": "The Horde",
-      "tier": 3,
-      "hold": "strong",
-      "type": "The Fringe",
-      "primary_location": null,
-      "notes": null
-    },
-    "43": {
-      "faction": "The Path of Echoes",
-      "tier": 3,
-      "hold": "strong",
-      "type": "The Fringe",
-      "primary_location": null,
-      "notes": null
-    },
-    "44": {
-      "faction": "The Forgotten Gods",
-      "tier": 3,
-      "hold": "weak",
-      "type": "The Fringe",
-      "primary_location": null,
-      "notes": null
-    },
-    "45": {
-      "faction": "The Reconciled",
-      "tier": 3,
-      "hold": "strong",
-      "type": "The Fringe",
-      "primary_location": null,
-      "notes": null
-    },
-    "46": {
-      "faction": "Skovlander Refugees",
-      "tier": 3,
-      "hold": "weak",
-      "type": "The Fringe",
-      "primary_location": null,
-      "notes": null
-    },
-    "47": {
-      "faction": "The Weeping Lady",
-      "tier": 2,
-      "hold": "strong",
-      "type": "The Fringe",
-      "primary_location": null,
-      "notes": null
-    },
-    "48": {
-      "faction": "Deathlands Scavengers",
-      "tier": 2,
-      "hold": "weak",
-      "type": "The Fringe",
-      "primary_location": null,
-      "notes": null
-    },
-    "49": {
-      "faction": "Whitecrown",
-      "tier": 5,
-      "hold": "strong",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "50": {
-      "faction": "Brightstone",
-      "tier": 4,
-      "hold": "strong",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "51": {
-      "faction": "Charterhall",
-      "tier": 4,
-      "hold": "strong",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "52": {
-      "faction": "Six Towers",
-      "tier": 3,
-      "hold": "weak",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "53": {
-      "faction": "Silkshore",
-      "tier": 2,
-      "hold": "strong",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "54": {
-      "faction": "Nightmarket",
-      "tier": 2,
-      "hold": "strong",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "55": {
-      "faction": "Crow's Foot",
-      "tier": 2,
-      "hold": "strong",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "56": {
-      "faction": "The Docks",
-      "tier": 2,
-      "hold": "strong",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "57": {
-      "faction": "Barrowcleft",
-      "tier": 2,
-      "hold": "strong",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "58": {
-      "faction": "Coalridge",
-      "tier": 2,
-      "hold": "weak",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "59": {
-      "faction": "Charhollow",
-      "tier": 1,
-      "hold": "strong",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
-    },
-    "60": {
-      "faction": "Dunslough",
-      "tier": 1,
-      "hold": "weak",
-      "type": "Citizenry",
-      "primary_location": null,
-      "notes": null
+      "effect": null,
+      "class": null
     }
   }
 }

@@ -1,8 +1,8 @@
 class_name Clock
 extends Control
 
-export (bool) var locked: = false setget _set_locked
-export (String) var clock_name:String = "clock" + str(randi()%100) setget _set_clock_name
+
+
 
 export (Texture) var FOUR_CLOCK_TEXTURE_UNDER
 export (Texture) var FOUR_CLOCK_TEXTURE_OVER
@@ -13,25 +13,26 @@ export (Texture) var EIGHT_CLOCK_TEXTURE_OVER
 export (Texture) var TWELVE_CLOCK_TEXTURE_UNDER
 export (Texture) var TWELVE_CLOCK_TEXTURE_OVER
 
-export (NodePath) onready var tween = get_node_or_null(tween) as Tween if tween else null
-export (NodePath) onready var segments = get_node_or_null(segments) as Label if segments else null
-export (NodePath) onready var filled_label = get_node_or_null(filled_label) as Label if filled_label else null
-export (NodePath) onready var clock_texture = get_node_or_null(clock_texture) as TextureProgress if clock_texture else null
-export (NodePath) onready var clock_line_edit = get_node_or_null(clock_line_edit) as LineEdit if clock_line_edit else null
-export (NodePath) onready var lock_texture = get_node_or_null(lock_texture) as TextureRect if lock_texture else null
-onready var unlocked_by_container: Container = $CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer
-onready var unlocked_by_clock_label: Label = $CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer/UnlockedByClockLabel
-onready var unlocks_clock_label: Label = $CenterContainer/HBoxContainer/EditWidgetContainer/HBoxContainer/UnlocksClockLabel
+export (NodePath) onready var tween = get_node(tween) as Tween
+export (NodePath) onready var segments = get_node(segments) as Label
+export (NodePath) onready var filled_label = get_node(filled_label) as Label
+export (NodePath) onready var clock_texture = get_node(clock_texture) as TextureProgress
+export (NodePath) onready var clock_line_edit = get_node(clock_line_edit) as LineEdit
+export (NodePath) onready var lock_texture = get_node(lock_texture) as TextureRect
+export (NodePath) onready var unlocked_by_container = get_node(unlocked_by_container) as Container
+export (NodePath) onready var unlocked_by_clock_label = get_node(unlocked_by_clock_label) as Label
+export (NodePath) onready var unlocks_clock_label = get_node(unlocks_clock_label) as Label
+
+var clock_name:String = name setget _set_clock_name
+var locked: = false setget _set_locked
 var unlocked_by_clock setget _set_unlocked_by_clock
 var unlocks_clock setget _set_unlocks_clock
+var filled: = 0 setget _set_filled
+var max_value: = 4 setget _set_max_value
+var is_secret: bool = false setget _set_is_secret
 
-
-export (int) var filled: = 0 setget _set_filled
-export (int) var max_value: = 4 setget _set_max_value
-
-export (bool) var is_secret: bool = false setget _set_is_secret
 signal filled
-signal emptied
+signal unfilled
 signal name_changed(new_name)
 
 
@@ -75,10 +76,10 @@ func _set_filled(new_value: int) -> void:
 	if new_value >= max_value:
 		new_value = max_value
 		emit_signal("filled")
-
-	if new_value < 0:
+	elif filled == max_value and new_value < max_value:
+		emit_signal("unfilled")
+	elif new_value < 0:
 		new_value = 0
-		emit_signal("emptied")
 
 	filled = new_value
 	filled_label.text = str(new_value)
@@ -162,7 +163,19 @@ func _set_unlocked_by_clock(value) -> void:
 		unlocked_by_container.visible = true
 	if not unlocked_by_clock.is_connected("name_changed", self, "_on_unlocked_by_clock_name_change"):
 		unlocked_by_clock.connect("name_changed", self, "_on_unlocked_by_clock_name_change")
+	if not unlocked_by_clock.is_connected("filled", self, "_on_unlocked_by_clock_filled"):
+		unlocked_by_clock.connect("filled", self, "_on_unlocked_by_clock_filled")
+	if not unlocked_by_clock.is_connected("unfilled", self, "_on_unlocked_by_clock_unfilled"):
+		unlocked_by_clock.connect("unfilled", self, "_on_unlocked_by_clock_unfilled")
 	unlocked_by_clock_label.text = unlocked_by_clock.clock_name
+
+
+func _on_unlocked_by_clock_filled()-> void:
+	self.unlock()
+
+
+func _on_unlocked_by_clock_unfilled()-> void:
+	self.lock()
 
 
 func clear_unlocks_clock()-> void:
@@ -173,6 +186,7 @@ func clear_unlocked_by_clock()-> void:
 	unlocked_by_clock = false
 	unlocked_by_clock_label.text = ""
 	unlocked_by_container.visible = false
+	unlock()
 
 func _on_unlocks_clock_name_change(new_name: String)->void:
 	unlocks_clock_label.text = new_name
@@ -239,3 +253,9 @@ func _on_LockCheckBox_toggled(button_pressed: bool) -> void:
 func _on_DisconnectButton_pressed() -> void:
 	self.unlocked_by_clock = false
 	unlock()
+
+
+func _on_DeleteButton_pressed() -> void:
+	if unlocked_by_clock: unlocked_by_clock.clear_unlocks_clock()
+	if unlocks_clock: unlocks_clock.clear_unlocked_by_clock()
+	self.queue_free()
