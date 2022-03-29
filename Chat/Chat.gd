@@ -1,26 +1,53 @@
-extends MarginContainer
+extends PanelContainer
 
 const id: int = 1
-export (NodePath) onready var main_screen = get_node_or_null(main_screen) as HSplitContainer if main_screen else null
 export (NodePath) onready var message_text = get_node_or_null(message_text) as LineEdit if message_text else null
 export (NodePath) onready var chat = get_node_or_null(chat) as RichTextLabel if chat else null
-onready var chat_vsplit: = $MarginContainer/HBoxContainer/ChatBox
-onready var users: = $MarginContainer/HBoxContainer/VBoxContainer/Users
-onready var hide_button: = $MarginContainer/HBoxContainer/ChatBox/ChatButtons/Hide
-onready var send_message_button: = $MarginContainer/HBoxContainer/ChatBox/ChatButtons/SendMessageButton
-onready var notification_number: = $MarginContainer/HBoxContainer/ChatBox/ChatButtons/NotificationNumber
-onready var chat_notification_text: = $MarginContainer/HBoxContainer/ChatBox/ChatButtons/ChatNotifications
-onready var fullscreen_button: = $MarginContainer/HBoxContainer/ChatBox/ChatButtons/FullscreenButton
+export (NodePath) onready var users = get_node(users)
+export (NodePath) onready var hide_button = get_node(hide_button) as Button
+export (NodePath) onready var send_message_button = get_node(send_message_button) as Button
+export (NodePath) onready var notification_number = get_node(notification_number) as Label
+export (NodePath) onready var chat_notification_text = get_node(chat_notification_text) as Label
+export (NodePath) onready var fullscreen_button = get_node(fullscreen_button) as Button
 onready var chat_saver:ChatSaver = ChatSaver.new()
 export (String) var hide_button_show_text:String = "Show Chat"
 var chat_is_hidden: bool = false
 var players: Array = []
 var chat_notifications:int = 0
-var _user: = "Turner"
+var _user: = ""
+var saved_settings: = {
+#	"rect_position": Vector2.ZERO,
+#	"rect_size": Vector2.ZERO,
+	"anchor_left": 0,
+	"anchor_top": 0,
+	"anchor_right": 0,
+	"anchor_bottom": 0,
+	"margin_left": 0,
+	"margin_top": 0,
+	"margin_right": 0,
+	"margin_bottom": 0
+}
 
 
 func _ready() -> void:
+	self.visible = true
 	setup()
+	connect_to_detection_recursive(self)
+
+
+func connect_to_detection_recursive(node:Node)->void:
+	if node.has_signal("focus_entered"):
+		node.connect("focus_entered", self, "_on_Chat_focus_entered")
+	if node.has_signal("focus_exited"):
+		node.connect("focus_exited", self, "_on_Chat_focus_exited")
+	if node.has_signal("mouse_entered"):
+		node.connect("mouse_entered", self, "_on_Chat_mouse_entered")
+	if node.has_signal("mouse_exited"):
+		node.connect("mouse_exited", self, "_on_Chat_mouse_exited")
+
+	for child in node.get_children():
+		connect_to_detection_recursive(child)
+
 
 func setup()->void:
 	for player in players:
@@ -68,25 +95,6 @@ func _on_chat_message_sent(message:String, user)->void:
 		notification_number.text = str(chat_notifications)
 
 
-func _on_Hide_pressed() -> void:
-	if chat_is_hidden:
-		propogate_hide_or_show(self, [hide_button, chat_notification_text, notification_number], false)
-		hide_button.text = "Hide"
-		chat_notification_text.hide()
-		notification_number.hide()
-		notification_number.text = "0"
-		chat_is_hidden = false
-		chat_notifications = 0
-		Events.emit_signal("chat_unhidden")
-	else:
-		propogate_hide_or_show(self, [hide_button], true)
-		hide_button.text = hide_button_show_text
-		chat_notification_text.show()
-		notification_number.show()
-		chat_is_hidden = true
-		Events.emit_signal("chat_hidden")
-
-
 func propogate_hide_or_show(node: Node, exception_nodes: Array = [], hide: bool = true) -> void:
 	if not Node:
 		return
@@ -121,10 +129,76 @@ func _on_LoadButton_pressed() -> void:
 	chat.text = chat_saver.chat_log.text
 
 
+
+func save_settings() ->void:
+	for setting in saved_settings.keys():
+		saved_settings[setting] = get(setting)
+
+
+func load_settings()-> void:
+	for setting in saved_settings.keys():
+		set(setting, saved_settings[setting])
+
+
 func _on_Fullscreen_toggled(button_pressed: bool) -> void:
-	main_screen.visible = not button_pressed
 	if button_pressed:
-		fullscreen_button.text = "Minimize"
+		#Save current position settings, set to fullscreen
+		save_settings()
+		for setting in saved_settings.keys():
+			set(setting, 0)
+		anchor_bottom = 1
+		anchor_right = 1
 	else:
-		fullscreen_button.text = "Fullscreen"
-	print("Fullscreen but plres")
+		#load saved position settings
+		load_settings()
+
+
+func _on_Hide_toggled(is_hidden: bool) -> void:
+	if is_hidden:
+		save_settings()
+		propogate_hide_or_show(self, [hide_button], true)
+		hide_button.text = hide_button_show_text
+		chat_notification_text.show()
+		notification_number.show()
+		chat_is_hidden = true
+		Events.emit_signal("chat_hidden")
+
+		margin_left = 0
+		margin_top = 0
+		margin_right = 25
+		margin_bottom = 0
+		anchor_left = 0.35
+		anchor_top = 0.95
+		anchor_right = 0.5
+		anchor_bottom = 1
+
+	else:
+		load_settings()
+		propogate_hide_or_show(self, [hide_button, chat_notification_text, notification_number], false)
+		hide_button.text = "Hide"
+		chat_notification_text.hide()
+		notification_number.hide()
+		notification_number.text = "0"
+		chat_is_hidden = false
+		chat_notifications = 0
+		Events.emit_signal("chat_unhidden")
+
+
+func set_transparency(is_transparent:bool)->void:
+	modulate.a = 0.4 if is_transparent else 1
+
+
+func _on_Chat_mouse_entered() -> void:
+	set_transparency(false)
+
+
+func _on_Chat_mouse_exited() -> void:
+	set_transparency(true)
+
+
+func _on_Chat_focus_entered() -> void:
+	set_transparency(false)
+
+
+func _on_Chat_focus_exited() -> void:
+	set_transparency(true)

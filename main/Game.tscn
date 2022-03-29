@@ -71,9 +71,11 @@ size_flags_vertical = 3
 
 [node name="Controls" parent="Game/MainView" instance=ExtResource( 5 )]
 anchor_left = 0.0
+anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 846.0
+margin_top = 0.0
 margin_right = 1014.0
 margin_bottom = 533.0
 size_flags_horizontal = 9
@@ -85,12 +87,14 @@ margin_right = 167.0
 margin_bottom = 532.0
 
 [node name="Chat" parent="Game" instance=ExtResource( 7 )]
+anchor_left = 0.0
+anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_left = 0.0
 margin_top = 541.0
 margin_right = 1014.0
 margin_bottom = 595.0
-main_screen = NodePath("../MainView")
 
 [node name="SaveTimer" type="Timer" parent="Game"]
 wait_time = 10.0

@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://saves/SaveGame.gd"
 }, {
-"base": "Reference",
+"base": "Control",
 "class": "SaveableField",
 "language": "GDScript",
 "path": "res://classes/SaveableField.gd"
@@ -76,7 +76,7 @@ _global_script_class_icons={
 
 config/name="Blades in the Dark"
 config/description="A program to help remotely play Blades in the Dark tabletop roleplaying game."
-run/main_scene="res://main/Game.tscn"
+run/main_scene="res://Game.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Icons/icon.png"

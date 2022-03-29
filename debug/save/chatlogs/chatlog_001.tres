@@ -4,9 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-version = "0.1"
+version = "0.2"
 text = "
-Turner: Let's try this out...
-Turner: Hmm...
-Turner: LOOKS LIKE SAVING WORKS!
-Turner: Chat message here..."
+Turner: Hi"
