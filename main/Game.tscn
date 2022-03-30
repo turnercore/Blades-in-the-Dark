@@ -80,7 +80,7 @@ margin_right = 1014.0
 margin_bottom = 533.0
 size_flags_horizontal = 9
 
-[node name="ItemList" parent="Game/MainView/Controls" index="0"]
+[node name="ItemList" parent="Game/MainView/Controls" index="1"]
 margin_left = 1.0
 margin_top = 1.0
 margin_right = 167.0

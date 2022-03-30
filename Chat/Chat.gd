@@ -1,6 +1,7 @@
 extends PanelContainer
 
 const id: int = 1
+
 export (NodePath) onready var message_text = get_node_or_null(message_text) as LineEdit if message_text else null
 export (NodePath) onready var chat = get_node_or_null(chat) as RichTextLabel if chat else null
 export (NodePath) onready var users = get_node(users)
@@ -9,15 +10,15 @@ export (NodePath) onready var send_message_button = get_node(send_message_button
 export (NodePath) onready var notification_number = get_node(notification_number) as Label
 export (NodePath) onready var chat_notification_text = get_node(chat_notification_text) as Label
 export (NodePath) onready var fullscreen_button = get_node(fullscreen_button) as Button
-onready var chat_saver:ChatSaver = ChatSaver.new()
 export (String) var hide_button_show_text:String = "Show Chat"
+
+onready var chat_saver:ChatSaver = ChatSaver.new()
+
 var chat_is_hidden: bool = false
 var players: Array = []
 var chat_notifications:int = 0
 var _user: = ""
 var saved_settings: = {
-#	"rect_position": Vector2.ZERO,
-#	"rect_size": Vector2.ZERO,
 	"anchor_left": 0,
 	"anchor_top": 0,
 	"anchor_right": 0,
@@ -59,6 +60,7 @@ func setup()->void:
 	Events.connect("chat_message_sent", self, "_on_chat_message_sent")
 	Events.connect("player_connected", self, "_on_player_connected")
 	chat_saver.init()
+
 
 func allow_full_collapse()-> void:
 	var children: = get_children()
@@ -116,6 +118,7 @@ func propogate_hide_or_show(node: Node, exception_nodes: Array = [], hide: bool 
 
 func _on_MessageText_text_entered(new_text: String) -> void:
 	send_message_button.emit_signal("pressed")
+
 
 func _on_player_connected(player)->void:
 	players.append(player)

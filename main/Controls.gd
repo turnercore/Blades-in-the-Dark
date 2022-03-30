@@ -16,6 +16,7 @@ func _ready() -> void:
 		for child in main_screen.get_children():
 			item_list.add_item(child.name)
 	connect_to_detection_recursive(self)
+	self.visible = true
 	hide_controls()
 
 
@@ -110,3 +111,9 @@ func _on_mouse_entered()-> void:
 func _on_mouse_exited()-> void:
 	hovered = false
 	hide_controls()
+	release_focus_recursive(self)
+
+func release_focus_recursive(node: Node)-> void:
+	if node.has_method("release_focus"): node.release_focus()
+	for child in node.get_children():
+		release_focus_recursive(child)

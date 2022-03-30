@@ -329,7 +329,7 @@ margin_right = 195.0
 margin_bottom = 40.0
 text = "Load"
 
-[node name="CreateButton" type="Button" parent="CrewPlaybookContainer/Crew/EditButtons"]
+[node name="CreateButton" type="Button" parent="CrewPlaybookContainer/Crew/EditButtons" groups=["skip_disable"]]
 margin_left = 199.0
 margin_right = 319.0
 margin_bottom = 40.0
