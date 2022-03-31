@@ -3,42 +3,44 @@ extends Control
 
 export (float) var scroll_speed:float = 500
 onready var tween: = $Tween
-export (NodePath) onready var camera
+var camera: Camera2D
 var zoom_level: float
-var focused: bool = true
+onready var cursor: = $MapInfo/cursor
+onready var cursor_sprite: = $MapInfo/cursor/Sprite
 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_connect_mouse_entered_recursive(self)
+	set_process(false)
 
-	if camera:
-		camera = get_node_or_null(camera) if camera else null
-		zoom_level = camera.zoom.x
+
+func setup(main_camera: Camera2D)->void:
+	print(main_camera)
+	camera = main_camera
+	print(camera)
+	zoom_level = camera.zoom.x
 	Events.connect("map_scroll_speed_changed", self, "_on_map_scroll_speed_changed")
+	Events.connect("main_screen_changed", self, "_on_screen_changed")
+	Events.connect("chat_selected", self, "_on_chat_selected")
+	Events.connect("chat_deselected", self, "_on_chat_deselected")
+	set_process(true)
 
 
-#func _draw() -> void:
-#	if not camera: return
-#
-#	var rect: = Rect2(camera.global_position, get_tree().root.get_viewport().size * 2)
-#	var color: = Color.black
-#	draw_rect(rect, color, false, 25.0, false)
+func _on_chat_selected()->void:
+	set_process(false)
 
-func _connect_mouse_entered_recursive(node: Node)-> void:
-	if node.has_signal("mouse_entered"):
-		node.connect("mouse_entered", self, "_on_Map_mouse_entered")
-	if node.has_signal("mouse_exited"):
-		node.connect("mouse_exited", self, "_on_Map_mouse_exited")
 
-	for child in node.get_children():
-		_connect_mouse_entered_recursive(child)
+func _on_chat_deselected()-> void:
+	set_process(true)
+
+
+func _on_screen_changed(screen:String)-> void:
+	if screen == "main":
+		set_process(true)
+	else:
+		set_process(false)
 
 
 func _process(delta: float) -> void:
-	if not focused: return
-	if not camera: return
 
 	if Input.is_action_pressed("ui_down"):
 		scroll_down(delta)
@@ -48,9 +50,9 @@ func _process(delta: float) -> void:
 		scroll_left(delta)
 	if Input.is_action_pressed("ui_right"):
 		scroll_right(delta)
-	if Input.is_action_pressed("zoom_in"):
+	if Input.is_action_pressed("zoom_in") or Input.is_action_just_released("zoom_in"):
 		zoom_in(delta)
-	if Input.is_action_pressed("zoom_out"):
+	if Input.is_action_pressed("zoom_out") or Input.is_action_just_released("zoom_out"):
 		zoom_out(delta)
 
 
@@ -83,12 +85,3 @@ func zoom_out(delta:float)->void:
 func _on_map_scroll_speed_changed(new_scroll_speed: float) -> void:
 	scroll_speed = new_scroll_speed
 
-
-func _on_Map_mouse_entered() -> void:
-	print("map lost focus")
-	focused = true
-
-
-func _on_Map_mouse_exited() -> void:
-	print("map focused")
-	focused = false

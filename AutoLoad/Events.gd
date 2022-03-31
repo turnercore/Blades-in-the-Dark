@@ -18,3 +18,6 @@ signal popup_finished
 
 signal map_scroll_speed_changed(scroll_speed)
 signal info_broadcasted(info)
+
+signal chat_selected
+signal chat_deselected

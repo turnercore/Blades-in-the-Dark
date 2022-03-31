@@ -193,15 +193,19 @@ func set_transparency(is_transparent:bool)->void:
 
 func _on_Chat_mouse_entered() -> void:
 	set_transparency(false)
+	Events.emit_signal("chat_selected")
 
 
 func _on_Chat_mouse_exited() -> void:
 	set_transparency(true)
+	Events.emit_signal("chat_deselected")
 
 
 func _on_Chat_focus_entered() -> void:
 	set_transparency(false)
+	Events.emit_signal("chat_selected")
 
 
 func _on_Chat_focus_exited() -> void:
 	set_transparency(true)
+	Events.emit_signal("chat_deselected")
