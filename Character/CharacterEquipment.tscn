@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Character/CharacterEquipment.gd" type="Script" id=1]
+[ext_resource path="res://Character/item_scene.tscn" type="PackedScene" id=3]
+
+[node name="CharacterEquipment" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -387, 15 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+item_scene = ExtResource( 3 )
+
+[node name="item_scene" parent="." instance=ExtResource( 3 )]
+visible = false
+margin_top = 0.0
+margin_bottom = 24.0

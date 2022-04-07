@@ -2,7 +2,7 @@ class_name Playbook
 extends Resource
 
 #Path to the srd_json
-var srd_json: String = ""
+var srd_json: String = 'res://srd/default_srd.json'
 export var name:String
 export var abilities:Dictionary
 export var coin:Dictionary = {
@@ -11,13 +11,15 @@ export var coin:Dictionary = {
 	"stash" : 0
 }
 export var contacts:Dictionary
-export var type:String setget _change_type
+export var type:String
 export var notes:String
-export (Dictionary) var experience
+export (Dictionary) var experience: = {
+	"playbook": 0,
+	"insight": 0,
+	"prowess": 0,
+	"resolve": 0,
+}
 export var projects:Dictionary
-
-#Catch all for random data that isn't properly configured (this didn't work...)
-export var data:Dictionary
 
 export (Dictionary) var stats: Dictionary = {
 	"insight": {
@@ -43,21 +45,46 @@ var insight: int = 0
 var prowess: int = 0
 var resolve: int = 0
 
-
-
-
 var needs_setup: = true
+
+signal property_changed(property)
 
 func setup(json: String, type: String, overwrite:bool = false)-> void:
 	needs_setup = false
 
+
+func set_property(property: String, value)-> void:
+	if property in self:
+		set(property, value)
+		emit_signal("property_changed", property)
+	else:
+		print("Error, " + property + " not found in Playbook properties")
+
+
+func set_ability(key, value)-> void:
+	abilities[key] = value
+	emit_signal("property_changed", "abilities")
+
+
+func set_contacts(key, value)-> void:
+	contacts[key] = value
+	emit_signal("property_changed", "contacts")
+
+
+func set_coin(key, value)-> void:
+	coin[key] = value
+	emit_signal("property_changed", "coin")
+
+func set_projects(key, value)-> void:
+	projects[key] = value
+	emit_signal("property_changed", "projects")
 
 
 func get_insight()->int:
 	var total: = 0
 
 	for stat in stats.insight:
-		if int(stat) >= 1:
+		if stats.insight[stat] >= 1:
 			total += 1
 
 	return total
@@ -66,7 +93,7 @@ func get_prowess()->int:
 	var total: = 0
 
 	for stat in stats.prowess:
-		if stat >= 1:
+		if stats.prowess[stat] >= 1:
 			total += 1
 
 	return total
@@ -75,7 +102,7 @@ func get_resolve()->int:
 	var total: = 0
 
 	for stat in stats.resolve:
-		if stat >= 1:
+		if stats.resolve[stat] >= 1:
 			total += 1
 
 	return total
@@ -91,7 +118,7 @@ func get_defaults(json: String):
 	return data
 
 
-func save_path(path_map: String, value)-> bool:
+func save(path_map: String, value)-> bool:
 	var path: = path_map.split(".", false) as Array
 	var jumps: int = 0
 	var cursor = self
@@ -123,20 +150,52 @@ func find(path_map: String):
 	var jumps: int = 0
 	var updated_property
 	while jumps < path.size():
+		var index: = 0
+		var is_array: = false
+		var check_array: = path[jumps].split("-", false, 2)
+		if check_array.size() > 1:
+			#This is an array
+			index = int(check_array[1])
+			path[jumps] = check_array[0]
+			is_array = true
 		if jumps == 0:
 			if path[jumps] in self:
 				updated_property = self.get(path[jumps])
+				if is_array and updated_property is Array and index < updated_property.size():
+					updated_property = updated_property[index]
 				jumps += 1
 			else:
 				return false
 		else:
 			if path[jumps] in updated_property:
 				updated_property = updated_property[path[jumps]]
+				if is_array and updated_property is Array and index < updated_property.size():
+					updated_property = updated_property[index]
 				jumps += 1
 			else:
 				return false
 
 	return updated_property
 
-func _change_type(new_type:String)-> void:
-	pass
+#
+#func save(path_map: String, value)-> bool:
+#	var path: = path_map.split(".", false)
+#	var cursor: int = 0
+#	var updated_property
+#	while cursor < path.size():
+#		if cursor == 0:
+#			if path[cursor] in self:
+#				updated_property = self.get(path[cursor])
+#				cursor += 1
+#			else:
+#				return false
+#		else:
+#			if path[cursor] in updated_property:
+#				updated_property = updated_property[path[cursor]]
+#				cursor += 1
+#			else:
+#				return false
+#
+#	updated_property = value
+#	emit_signal("property_changed", path[cursor])
+#	return true

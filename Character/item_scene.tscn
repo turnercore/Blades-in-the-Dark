@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Character/item_scene.gd" type="Script" id=1]
+
+[node name="item_scene" type="HBoxContainer"]
+margin_top = 28.0
+margin_right = 1024.0
+margin_bottom = 28.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="load" type="HBoxContainer" parent="."]
+margin_bottom = 14.0
+
+[node name="item_name" type="Label" parent="."]
+margin_left = 4.0
+margin_right = 101.0
+margin_bottom = 14.0
+focus_mode = 2
+text = "Synchronized : "
+
+[node name="description" type="Label" parent="."]
+margin_left = 105.0
+margin_right = 756.0
+margin_bottom = 14.0
+text = "When you perform a group action, you may count multiple 6s from different rolls as a critical success."

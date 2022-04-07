@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "HBoxContainer",
+"class": "AbilityContainer",
+"language": "GDScript",
+"path": "res://Crew/crew_ability.gd"
+}, {
 "base": "Resource",
 "class": "ChatLog",
 "language": "GDScript",
@@ -34,25 +39,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://clocks/Clock.gd"
 }, {
-"base": "HBoxContainer",
-"class": "CrewAbility",
-"language": "GDScript",
-"path": "res://Crew/crew_ability.gd"
-}, {
 "base": "Playbook",
 "class": "CrewPlaybook",
 "language": "GDScript",
-"path": "res://classes/CrewPlaybook.gd"
+"path": "res://Shared/classes/CrewPlaybook.gd"
 }, {
 "base": "Control",
 "class": "Map",
 "language": "GDScript",
-"path": "res://Map.gd"
+"path": "res://maps/Map.gd"
+}, {
+"base": "Control",
+"class": "MarkerButton",
+"language": "GDScript",
+"path": "res://Shared/classes/MarkerButton.gd"
 }, {
 "base": "Resource",
 "class": "Playbook",
 "language": "GDScript",
-"path": "res://classes/Playbook.gd"
+"path": "res://Shared/classes/Playbook.gd"
+}, {
+"base": "Playbook",
+"class": "PlayerPlaybook",
+"language": "GDScript",
+"path": "res://Shared/classes/PlayerPlaybook.gd"
 }, {
 "base": "Resource",
 "class": "SaveGame",
@@ -62,18 +72,20 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "SaveableField",
 "language": "GDScript",
-"path": "res://classes/SaveableField.gd"
+"path": "res://Shared/classes/SaveableField.gd"
 } ]
 _global_script_class_icons={
+"AbilityContainer": "",
 "ChatLog": "",
 "ChatSaver": "",
 "ClaimCell": "",
 "ClaimTreeConnector": "",
 "Clock": "",
-"CrewAbility": "",
 "CrewPlaybook": "",
 "Map": "",
+"MarkerButton": "",
 "Playbook": "",
+"PlayerPlaybook": "",
 "SaveGame": "",
 "SaveableField": ""
 }
@@ -96,6 +108,7 @@ Globals="*res://AutoLoad/Globals.gd"
 
 [debug]
 
+gdscript/warnings/return_value_discarded=false
 settings=false
 settings/debug=true
 

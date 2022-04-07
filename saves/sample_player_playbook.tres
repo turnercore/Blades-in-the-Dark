@@ -1,0 +1,71 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/PlayerPlaybook.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Gladius"
+abilities = {
+}
+coin = {
+"available": 1,
+"max": 4,
+"stash": 5
+}
+contacts = {
+}
+type = "whisper"
+notes = "Good boy"
+experience = {
+"insight": 0,
+"playbook": 0,
+"prowess": 0,
+"resolve": 0
+}
+projects = {
+}
+stats = {
+"insight": {
+"hunt": 0,
+"study": 0,
+"survey": 0,
+"tinker": 0
+},
+"prowess": {
+"finesse": 0,
+"prowl": 0,
+"skirmish": 0,
+"wreck": 0
+},
+"resolve": {
+"attune": 0,
+"command": 0,
+"consort": 0,
+"sway": 0
+}
+}
+player_class = "whisper"
+aliases = "The old hamburgler"
+look = "Shady"
+heritage = "Bla"
+stress = 1
+trauma_level = 2
+traumas = [  ]
+items = {
+}
+vice = ""
+xp_gain = ""
+friends_and_foes = {
+}
+vice_purveyors = [  ]
+current_load = 3
+harms = {
+"level_1": [ null, null ],
+"level_2": [ "Bad tattoo", "Ingrown Hair" ],
+"level_3": "Sausage Smell"
+}
+equipped_items = [  ]
+normal_armor = false
+heavy_armor = false
+speical_armor = false
+crew_name = ""

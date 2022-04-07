@@ -72,4 +72,6 @@ data = {
 crew_playbook = SubResource( 1 )
 pc_playbooks = [  ]
 map = {
+"name": "Duskvol",
+Vector2( 100, 50 ): "Test Map Note"
 }

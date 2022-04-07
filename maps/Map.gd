@@ -7,6 +7,7 @@ var camera: Camera2D
 var zoom_level: float
 onready var cursor: = $MapInfo/cursor
 onready var cursor_sprite: = $MapInfo/cursor/Sprite
+var unfocused: = false
 
 
 func _ready() -> void:
@@ -41,6 +42,7 @@ func _on_screen_changed(screen:String)-> void:
 
 
 func _process(delta: float) -> void:
+	if unfocused: return
 
 	if Input.is_action_pressed("ui_down"):
 		scroll_down(delta)

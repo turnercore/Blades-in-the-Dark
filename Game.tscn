@@ -1,15 +1,18 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://main/Popup Layer.gd" type="Script" id=1]
 [ext_resource path="res://Crew/Crew.tscn" type="PackedScene" id=2]
 [ext_resource path="res://main/MainScreen.gd" type="Script" id=3]
-[ext_resource path="res://main/SaveTimer.gd" type="Script" id=4]
+[ext_resource path="res://Game.gd" type="Script" id=4]
 [ext_resource path="res://main/Progress Clocks.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Chat/Chat.tscn" type="PackedScene" id=6]
 [ext_resource path="res://main/Controls.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Character/CharacterSheet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Play.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Roster.tscn" type="PackedScene" id=10]
 
 [node name="Game" type="Node"]
+script = ExtResource( 4 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 anchor_right = 1.0
@@ -30,10 +33,9 @@ render_target_update_mode = 3
 [node name="Play" parent="ViewportContainer/Viewport" instance=ExtResource( 9 )]
 main_viewport = NodePath("..")
 
-[node name="GUI Layer" type="CanvasLayer" parent="ViewportContainer/Viewport"]
-layer = 5
+[node name="Screen Layer" type="CanvasLayer" parent="ViewportContainer/Viewport"]
 
-[node name="MainScreen" type="MarginContainer" parent="ViewportContainer/Viewport/GUI Layer"]
+[node name="MainScreen" type="MarginContainer" parent="ViewportContainer/Viewport/Screen Layer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -42,11 +44,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Main" type="Control" parent="ViewportContainer/Viewport/GUI Layer/MainScreen"]
+[node name="Main" type="Control" parent="ViewportContainer/Viewport/Screen Layer/MainScreen"]
 margin_right = 1024.0
 margin_bottom = 600.0
 
-[node name="Crew Sheet" parent="ViewportContainer/Viewport/GUI Layer/MainScreen" instance=ExtResource( 2 )]
+[node name="Crew Sheet" parent="ViewportContainer/Viewport/Screen Layer/MainScreen" instance=ExtResource( 2 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -55,13 +57,39 @@ margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Progress Clocks" parent="ViewportContainer/Viewport/GUI Layer/MainScreen" instance=ExtResource( 5 )]
+[node name="Roster" parent="ViewportContainer/Viewport/Screen Layer/MainScreen" instance=ExtResource( 10 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Character Sheet" parent="ViewportContainer/Viewport/Screen Layer/MainScreen" instance=ExtResource( 8 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+playbook = null
+
+[node name="Progress Clocks" parent="ViewportContainer/Viewport/Screen Layer/MainScreen" instance=ExtResource( 5 )]
 visible = false
 anchor_bottom = 0.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="GUI Layer" type="CanvasLayer" parent="ViewportContainer/Viewport"]
+layer = 6
+
+[node name="Chat" parent="ViewportContainer/Viewport/GUI Layer" instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0.321569 )
+margin_left = -277.0
+margin_top = -162.0
+margin_right = 201.0
+margin_bottom = -3.0
+mouse_filter = 0
 
 [node name="Controls" parent="ViewportContainer/Viewport/GUI Layer" instance=ExtResource( 7 )]
 anchor_top = 0.533
@@ -70,19 +98,8 @@ margin_left = -133.0
 margin_top = -119.8
 margin_right = -8.0
 margin_bottom = 80.2
-main_screen = NodePath("../MainScreen")
+main_screen = NodePath("../../Screen Layer/MainScreen")
 trans_distance = 115
-
-[node name="ChatLayer" type="CanvasLayer" parent="ViewportContainer/Viewport"]
-layer = 6
-
-[node name="Chat" parent="ViewportContainer/Viewport/ChatLayer" instance=ExtResource( 6 )]
-modulate = Color( 1, 1, 1, 0.321569 )
-margin_left = -277.0
-margin_top = -162.0
-margin_right = 201.0
-margin_bottom = -3.0
-mouse_filter = 0
 
 [node name="Popup Layer" type="CanvasLayer" parent="ViewportContainer/Viewport"]
 layer = 10
@@ -97,13 +114,3 @@ color = Color( 0, 0, 0, 0.815686 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="SaveTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-script = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": "Saves the game at a fixed interval."
-}
-
-[connection signal="timeout" from="SaveTimer" to="SaveTimer" method="_on_SaveTimer_timeout"]

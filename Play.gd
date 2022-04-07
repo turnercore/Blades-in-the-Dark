@@ -14,6 +14,17 @@ func _ready() -> void:
 		main_viewport = get_tree().root.get_viewport()
 	if not main_camera:
 		main_camera = get_tree().root.get_camera()
-	print(map)
 	map.setup(main_camera)
 	mini_map.setup(main_viewport, mini_viewport, main_camera, mini_camera, zoom_factor)
+	Events.connect("main_screen_changed", self, "_on_main_screen_changed")
+
+func _on_main_screen_changed(screen: String)->void:
+	screen = screen.to_lower()
+	if screen == "main":
+		self.visible = true
+		$PlayLayer/PlayControls.visible = true
+		map.unfocused = false
+	else:
+		self.visible = false
+		$PlayLayer/PlayControls.visible = false
+		map.unfocused = true

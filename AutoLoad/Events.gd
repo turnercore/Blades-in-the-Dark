@@ -11,6 +11,10 @@ signal crew_loaded(playbook)
 func emit_crew_loaded(playbook: CrewPlaybook)-> void:
 	emit_signal("crew_loaded", playbook)
 
+signal character_changed(playbook)
+func emit_character_changed(playbook: Playbook)-> void:
+	emit_signal("character_changed", playbook)
+
 signal main_screen_changed(screen)
 
 signal popup(popup_scene)

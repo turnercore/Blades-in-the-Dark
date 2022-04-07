@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Crew/Hideout.jpeg" type="Texture" id=1]
 [ext_resource path="res://Crew/SaveableOptionButton.gd" type="Script" id=2]
-[ext_resource path="res://classes/SaveableField.gd" type="Script" id=3]
+[ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=3]
 [ext_resource path="res://Crew/SaveableTextEdit.gd" type="Script" id=4]
 
 [node name="Lair" type="VBoxContainer"]

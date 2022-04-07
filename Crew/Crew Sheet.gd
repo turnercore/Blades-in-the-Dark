@@ -1,6 +1,6 @@
 extends ScrollContainer
 
-var crew_playbook = CrewPlaybook.new() setget _change_crew_playbook
+var playbook = CrewPlaybook.new() setget _change_playbook
 var crew_loaded: bool = false
 export (PackedScene) var crew_setup_sceen
 export (PackedScene) var load_sceen
@@ -15,12 +15,10 @@ enum tabs {
 }
 
 
-signal loaded(crew_playbook)
-signal saved(crew_playbook)
-
 func _ready() -> void:
 	propagate_set_editable(self, false)
 	connect_to_events()
+	propogate_set_playbook_recursive(self)
 
 
 func show_crew_setup()->void:
@@ -28,37 +26,28 @@ func show_crew_setup()->void:
 	Events.emit_signal("popup", crew_setup_popup)
 
 
-func load_playbook(playbook: = CrewPlaybook.new(), override:bool = false)-> void:
-	var game_saver_crew_playbook = GameSaver.save_game.playbooks[ID] if ID in GameSaver.save_game.playbooks else null
+func propogate_set_playbook_recursive(node: Node)-> void:
+	if "playbook" in node and node != self:
+		node.set("playbook", playbook)
+	for child in node.get_children():
+		propogate_set_playbook_recursive(child)
+
+
+func load_playbook(new_playbook: = CrewPlaybook.new(), override:bool = false)-> void:
+	var save_crew_playbook = GameSaver.save_game.crew_playbook
 	if override:
-		crew_playbook = playbook
-	elif game_saver_crew_playbook is CrewPlaybook:
-		crew_playbook = GameSaver.save_game.playbooks[ID]
+		self.playbook = new_playbook
+	elif save_crew_playbook is CrewPlaybook:
+		self.playbook = GameSaver.save_game.crew_playbook
 	else:
-		crew_playbook = playbook
+		self.playbook = new_playbook
 
-	if crew_playbook.needs_setup:
+	if playbook.needs_setup:
 		show_crew_setup()
-
-	Globals.crew_playbook = crew_playbook
-	emit_signal("loaded", crew_playbook)
 
 
 func connect_to_events():
-#	Events.connect("crew_loaded", self, "_on_crew_loaded")
-
-	var children_with_data: Array = get_all_children_in_group_recursive(self, "data")
-	for node in children_with_data:
-		node.connect("property_updated", self, "_on_child_property_updated")
-		connect("loaded", node, "_on_load")
-
-
-func _on_child_property_updated(playbook_field: String, property_value)->void:
-	if crew_playbook.save_path(playbook_field, property_value):
-		GameSaver.data_changed = true
-	else:
-		print("error saving " + playbook_field)
-
+	GameSaver.connect("game_loaded", self, "_on_game_loaded")
 
 
 func get_all_children_in_group_recursive(node: Node, group: String)->Array:
@@ -103,13 +92,6 @@ func _on_LairPicture_gui_input(event: InputEvent) -> void:
 		get_parent().current_tab = tabs.LAIR
 
 
-func save(save_game: Resource)->void:
-	if not ID in save_game.playbooks: save_game.playbooks[ID] = {}
-	save_game.playbooks[ID] = crew_playbook
-	Globals.crew_playbook = crew_playbook
-	emit_signal("saved", crew_playbook)
-
-
 func load_game(save_game: Resource)->void:
 	if ID in save_game.playbooks:
 		load_playbook(save_game.playbooks[ID], true)
@@ -121,18 +103,18 @@ func show_load_screen()-> void:
 	Events.emit_signal("popup", load_screen)
 
 
-func _change_crew_playbook(value: CrewPlaybook)->void:
-	crew_playbook = value
-	Globals.crew_playbook = value
+func _change_playbook(value: CrewPlaybook)->void:
+	playbook = value
+	propogate_set_playbook_recursive(self)
 
 
 func _on_LoadButton_pressed() -> void:
 	show_load_screen()
 
 
-func _on_SaveButton_pressed() -> void:
-	GameSaver.save_node(self)
-
-
 func _on_CreateButton_pressed() -> void:
 	show_crew_setup()
+
+
+func _on_game_loaded()-> void:
+	self.playbook = GameSaver.save_game.crew_playbook

@@ -1,14 +1,14 @@
 extends ScrollContainer
 
-enum AbilityTypes {Crew, PC}
+enum AbilityTypes {CREW, PC}
 
-export (AbilityTypes) var type: = AbilityTypes.Crew
+export (AbilityTypes) var type: = AbilityTypes.CREW
 export (PackedScene) var ability_scene: PackedScene
 onready var ability_list: VBoxContainer = $AbilityContainer
 
 func _ready() -> void:
 	match type:
-		AbilityTypes.Crew:
+		AbilityTypes.CREW:
 			Events.connect("crew_loaded", self, "_on_playbook_loaded")
 		AbilityTypes.PC:
 			Events.connect("character_changed", self, "_on_playbook_loaded")
@@ -28,5 +28,4 @@ func _on_playbook_loaded(playbook: Playbook)-> void:
 	for child in ability_list.get_children():
 		if child is AbilityContainer:
 			child.queue_free()
-
 	setup(playbook)

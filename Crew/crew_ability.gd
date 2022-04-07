@@ -1,4 +1,4 @@
-class_name CrewAbility
+class_name AbilityContainer
 extends HBoxContainer
 
 var ability: String = ""

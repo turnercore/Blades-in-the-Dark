@@ -23,7 +23,8 @@ func setup(json: String, crew_type: String, overwrite:bool = false)-> void:
 
 	needs_setup = false
 	crew_type = crew_type.to_lower()
-	if experience is Dictionary: experience = 0
+	experience.clear()
+	experience["playbook"] = 0
 	self.srd_json = json
 	var defaults = get_defaults(json)
 	type = crew_type

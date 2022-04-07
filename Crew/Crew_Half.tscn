@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Crew/Markers.tscn" type="PackedScene" id=1]
-[ext_resource path="res://classes/Markers.gd" type="Script" id=2]
-[ext_resource path="res://Icons/Coin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Shared/Markers.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Shared/classes/Markers.gd" type="Script" id=2]
+[ext_resource path="res://Shared/Coin.tscn" type="PackedScene" id=3]
 [ext_resource path="res://trash/NoDisabled.gd" type="Script" id=4]
 [ext_resource path="res://Crew/SaveableTextEdit.gd" type="Script" id=5]
 [ext_resource path="res://Crew/SaveableOptionButton.gd" type="Script" id=6]
-[ext_resource path="res://classes/SaveableField.gd" type="Script" id=7]
-[ext_resource path="res://Icons/ExpPoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=7]
+[ext_resource path="res://Shared/ExpPoint.tscn" type="PackedScene" id=8]
 
 [node name="Crew" type="VBoxContainer"]
 margin_right = 191.0
