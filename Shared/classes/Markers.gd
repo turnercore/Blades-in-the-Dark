@@ -1,8 +1,9 @@
+class_name Markers
 extends SaveableField
 
 export (PackedScene) var exp_point_scene
 export (int, 0, 100) var total_points: = 0
-export (int, 0, 100) var filled_points: = 0 setget _set_filled_points
+export (int, 0, 100) var filled_points:int = 0 setget _set_filled_points
 export (String) var label: = ""
 #export (String) var property_saved:String = "filled_points"
 var points: = []
@@ -19,11 +20,11 @@ func _ready() -> void:
 		return
 
 	$Label.text = label
+	load_from_playbook()
 	var start_filled_points: = filled_points
-	for point in range(total_points):
+	for _point in range(total_points):
 		var new_point: Control = exp_point_scene.instance()
 		if start_filled_points > 0:
-			print("setting point to pressed")
 			new_point.load_set()
 			start_filled_points -= 1
 		add_child(new_point)
@@ -36,9 +37,10 @@ func _set_filled_points(value: int)-> void:
 	if points.size() <= 0:
 		filled_points = value
 	else:
-		filled_points = clamp(value, 0, points.size())
+		filled_points = int(clamp(value, 0, points.size()))
 	changes_locked = true
 	for i in filled_points:
+		if points.size() <= 0: break
 		if points[i].pressed != true: points[i].pressed = true
 	for point in points.slice(filled_points, -1):
 		if point.pressed != false: point.pressed = false

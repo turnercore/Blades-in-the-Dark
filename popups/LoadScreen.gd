@@ -1,7 +1,7 @@
 extends Popup
 
 onready var saves_list: = $LoadContainer/SavesList
-onready var SAVE_FOLDER: = GameSaver.SAVE_FOLDER
+onready var SAVE_FOLDER = GameSaver.SAVE_FOLDER
 var save_files: = []
 
 
@@ -17,7 +17,7 @@ func _ready()->void:
 
 
 func _button_clicked(id: String)-> void:
-	GameSaver.load_id(id)
+	GameSaver.load_save(id)
 	Events.emit_signal("popup_finished")
 	queue_free()
 

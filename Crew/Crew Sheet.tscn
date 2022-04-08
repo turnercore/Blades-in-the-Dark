@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Shared/Markers.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=2]
 [ext_resource path="res://Shared/classes/SaveableList.gd" type="Script" id=3]
 [ext_resource path="res://trash/NoDisabled.gd" type="Script" id=4]
 [ext_resource path="res://Crew/Crew Sheet.gd" type="Script" id=5]
-[ext_resource path="res://Crew/CrewSetup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://popups/CrewSetup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Crew/Hideout.jpeg" type="Texture" id=7]
 [ext_resource path="res://Shared/Coin.tscn" type="PackedScene" id=8]
-[ext_resource path="res://popups/LoadScreen.tscn" type="PackedScene" id=9]
 
 [node name="Crew Sheet" type="ScrollContainer" groups=["save"]]
 anchor_right = 1.0
@@ -20,7 +19,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 crew_setup_sceen = ExtResource( 6 )
-load_sceen = ExtResource( 9 )
 
 [node name="CrewPlaybookContainer" type="HBoxContainer" parent="."]
 margin_right = 1024.0
@@ -36,6 +34,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 10
 
+[node name="LineEdit" type="LineEdit" parent="CrewPlaybookContainer/Crew"]
+margin_right = 462.0
+margin_bottom = 29.0
+placeholder_text = "Crew Name"
+script = ExtResource( 2 )
+playbook_field = "name"
+
 [node name="CrewLabel" type="Label" parent="CrewPlaybookContainer/Crew"]
 visible = false
 margin_right = 462.0
@@ -43,37 +48,22 @@ margin_bottom = 14.0
 text = "The Crew"
 align = 1
 
-[node name="crew_name" type="LineEdit" parent="CrewPlaybookContainer/Crew" groups=["data"]]
-margin_right = 462.0
-margin_bottom = 24.0
-align = 1
-expand_to_text_length = true
-context_menu_enabled = false
-placeholder_text = "Crew Name"
-caret_blink = true
-caret_blink_speed = 0.5
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-playbook_field = "name"
-
 [node name="CrewTypeContainer" type="HBoxContainer" parent="CrewPlaybookContainer/Crew"]
-margin_top = 34.0
+margin_top = 39.0
 margin_right = 462.0
-margin_bottom = 54.0
+margin_bottom = 64.0
 alignment = 1
 
 [node name="CrewTypeLabel" type="Label" parent="CrewPlaybookContainer/Crew/CrewTypeContainer"]
 margin_top = 3.0
-margin_right = 34.0
-margin_bottom = 17.0
+margin_right = 31.0
+margin_bottom = 22.0
 text = "Type:"
 
 [node name="type" type="OptionButton" parent="CrewPlaybookContainer/Crew/CrewTypeContainer"]
-margin_left = 38.0
-margin_right = 130.0
-margin_bottom = 20.0
+margin_left = 35.0
+margin_right = 122.0
+margin_bottom = 25.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Assassins"
@@ -87,17 +77,17 @@ __meta__ = {
 playbook_field = "type"
 
 [node name="ReputationLabel" type="Label" parent="CrewPlaybookContainer/Crew/CrewTypeContainer"]
-margin_left = 290.0
+margin_left = 299.0
 margin_top = 3.0
-margin_right = 363.0
-margin_bottom = 17.0
+margin_right = 369.0
+margin_bottom = 22.0
 size_flags_horizontal = 10
 text = "Reputation:"
 
 [node name="reputation" type="OptionButton" parent="CrewPlaybookContainer/Crew/CrewTypeContainer"]
-margin_left = 367.0
+margin_left = 373.0
 margin_right = 462.0
-margin_bottom = 20.0
+margin_bottom = 25.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Ambitious"
@@ -108,54 +98,53 @@ script = ExtResource( 2 )
 playbook_field = "reputation"
 
 [node name="HeatContainer" type="HBoxContainer" parent="CrewPlaybookContainer/Crew"]
-margin_left = 95.0
-margin_top = 64.0
-margin_right = 366.0
-margin_bottom = 78.0
+margin_left = 99.0
+margin_top = 74.0
+margin_right = 362.0
+margin_bottom = 93.0
 size_flags_horizontal = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HeatLabel" type="Label" parent="CrewPlaybookContainer/Crew/HeatContainer"]
-margin_right = 30.0
-margin_bottom = 14.0
+margin_right = 29.0
+margin_bottom = 19.0
 text = "Heat"
 
 [node name="heat" parent="CrewPlaybookContainer/Crew/HeatContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
-margin_left = 34.0
-margin_right = 105.0
-margin_bottom = 14.0
+margin_left = 33.0
+margin_right = 103.0
+margin_bottom = 19.0
 playbook_field = "heat"
 total_points = 9
 
 [node name="WantedLevelLabel" type="Label" parent="CrewPlaybookContainer/Crew/HeatContainer"]
-margin_left = 109.0
-margin_right = 196.0
-margin_bottom = 14.0
+margin_left = 107.0
+margin_right = 189.0
+margin_bottom = 19.0
 text = "Wanted Level"
 
 [node name="wanted_level" parent="CrewPlaybookContainer/Crew/HeatContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
-margin_left = 200.0
-margin_right = 271.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
+margin_left = 193.0
+margin_right = 263.0
+margin_bottom = 19.0
 playbook_field = "wanted_level"
 total_points = 4
 
 [node name="ExpAndRepContainer" type="HBoxContainer" parent="CrewPlaybookContainer/Crew"]
-margin_top = 88.0
+margin_top = 103.0
 margin_right = 462.0
-margin_bottom = 102.0
+margin_bottom = 122.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CrewExpLabel" type="Label" parent="CrewPlaybookContainer/Crew/ExpAndRepContainer"]
-margin_right = 51.0
-margin_bottom = 14.0
+margin_right = 49.0
+margin_bottom = 19.0
 hint_tooltip = "At the end of each session, for each item below, mark 1 xp (or 2xp if that item occurred multiple times)
 - Execute a successful espionage, sabotage, or theft operation.
 - Content with challenges above your current station
@@ -166,76 +155,75 @@ text = "Crew XP"
 
 [node name="crew_exp" parent="CrewPlaybookContainer/Crew/ExpAndRepContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
-margin_left = 55.0
-margin_right = 276.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
+margin_left = 53.0
+margin_right = 202.0
+margin_bottom = 19.0
 playbook_field = "experience.playbook"
 total_points = 10
 
 [node name="ReputationLevelLabel" type="Label" parent="CrewPlaybookContainer/Crew/ExpAndRepContainer"]
-margin_left = 280.0
-margin_right = 387.0
-margin_bottom = 14.0
+margin_left = 206.0
+margin_right = 308.0
+margin_bottom = 19.0
 text = "Reputation Level"
 
 [node name="reputation" parent="CrewPlaybookContainer/Crew/ExpAndRepContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
-margin_left = 391.0
+margin_left = 312.0
 margin_right = 462.0
-margin_bottom = 14.0
+margin_bottom = 19.0
 playbook_field = "reputation"
 total_points = 11
 
 [node name="SpecialAbilitiesContainer" type="ScrollContainer" parent="CrewPlaybookContainer/Crew"]
-margin_top = 112.0
+margin_top = 132.0
 margin_right = 462.0
-margin_bottom = 241.0
+margin_bottom = 254.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="special_abilities" type="VBoxContainer" parent="CrewPlaybookContainer/Crew/SpecialAbilitiesContainer"]
-margin_right = 102.0
-margin_bottom = 32.0
+margin_right = 100.0
+margin_bottom = 42.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="SpecialAbilitiesLabel" type="Label" parent="CrewPlaybookContainer/Crew/SpecialAbilitiesContainer/special_abilities"]
-margin_right = 102.0
-margin_bottom = 14.0
+margin_right = 100.0
+margin_bottom = 19.0
 text = "Special Abilities"
 
 [node name="connected" type="LinkButton" parent="CrewPlaybookContainer/Crew/SpecialAbilitiesContainer/special_abilities"]
-margin_top = 18.0
-margin_right = 102.0
-margin_bottom = 32.0
+margin_top = 23.0
+margin_right = 100.0
+margin_bottom = 42.0
 hint_tooltip = "When you perform a group action, you may count multiple 6s from different rolls as a critical success."
 focus_mode = 2
 text = "Synchronized"
 underline = 1
 
 [node name="ContactsContainer" type="ScrollContainer" parent="CrewPlaybookContainer/Crew"]
-margin_top = 251.0
+margin_top = 264.0
 margin_right = 462.0
-margin_bottom = 380.0
+margin_bottom = 387.0
 size_flags_vertical = 3
 
 [node name="contacts" type="VBoxContainer" parent="CrewPlaybookContainer/Crew/ContactsContainer"]
-margin_right = 125.0
-margin_bottom = 32.0
+margin_right = 121.0
+margin_bottom = 42.0
 script = ExtResource( 3 )
 
 [node name="ContactsLabel" type="Label" parent="CrewPlaybookContainer/Crew/ContactsContainer/contacts"]
-margin_right = 125.0
-margin_bottom = 14.0
+margin_right = 121.0
+margin_bottom = 19.0
 text = "Contacts:"
 
 [node name="contact1" type="LinkButton" parent="CrewPlaybookContainer/Crew/ContactsContainer/contacts"]
-margin_top = 18.0
-margin_right = 125.0
-margin_bottom = 32.0
+margin_top = 23.0
+margin_right = 121.0
+margin_bottom = 42.0
 focus_mode = 2
 text = "Dowler, an explorer"
 __meta__ = {
@@ -243,35 +231,35 @@ __meta__ = {
 }
 
 [node name="CrewUpgradesContainer" type="ScrollContainer" parent="CrewPlaybookContainer/Crew"]
-margin_top = 390.0
+margin_top = 397.0
 margin_right = 462.0
 margin_bottom = 519.0
 size_flags_vertical = 3
 
 [node name="crew_upgrades" type="VBoxContainer" parent="CrewPlaybookContainer/Crew/CrewUpgradesContainer"]
-margin_right = 102.0
-margin_bottom = 42.0
+margin_right = 95.0
+margin_bottom = 50.0
 script = ExtResource( 3 )
 
 [node name="CrewUpgradesLabel" type="Label" parent="CrewPlaybookContainer/Crew/CrewUpgradesContainer/crew_upgrades"]
-margin_right = 102.0
-margin_bottom = 14.0
+margin_right = 95.0
+margin_bottom = 19.0
 text = "Crew Upgrades"
 
 [node name="upgrade1" type="HBoxContainer" parent="CrewPlaybookContainer/Crew/CrewUpgradesContainer/crew_upgrades"]
-margin_top = 18.0
-margin_right = 102.0
-margin_bottom = 42.0
+margin_top = 23.0
+margin_right = 95.0
+margin_bottom = 50.0
 
 [node name="CheckBox" type="CheckBox" parent="CrewPlaybookContainer/Crew/CrewUpgradesContainer/crew_upgrades/upgrade1"]
 margin_right = 24.0
-margin_bottom = 24.0
+margin_bottom = 27.0
 pressed = true
 
 [node name="LinkButton" type="LinkButton" parent="CrewPlaybookContainer/Crew/CrewUpgradesContainer/crew_upgrades/upgrade1"]
 margin_left = 28.0
-margin_right = 102.0
-margin_bottom = 24.0
+margin_right = 95.0
+margin_bottom = 27.0
 hint_tooltip = "Click for addtional information."
 focus_mode = 2
 text = "Documents"
@@ -282,18 +270,16 @@ margin_right = 462.0
 margin_bottom = 549.0
 
 [node name="CoinVaultLabel" type="Label" parent="CrewPlaybookContainer/Crew/CoinVaultContainer"]
-margin_top = 3.0
-margin_right = 64.0
-margin_bottom = 17.0
+margin_right = 63.0
+margin_bottom = 19.0
 text = "Coin Vault"
 
 [node name="coin_vault" parent="CrewPlaybookContainer/Crew/CoinVaultContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
-margin_left = 68.0
+margin_left = 67.0
 margin_right = 462.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
-size_flags_horizontal = 3
 playbook_field = "coin.available"
 exp_point_scene = ExtResource( 8 )
 total_points = 15
@@ -313,27 +299,6 @@ size_flags_horizontal = 0
 text = "Edit"
 script = ExtResource( 4 )
 
-[node name="SaveButton" type="Button" parent="CrewPlaybookContainer/Crew/EditButtons" groups=["skip_disable"]]
-margin_left = 108.0
-margin_right = 149.0
-margin_bottom = 40.0
-text = "Save"
-
-[node name="LoadButton" type="Button" parent="CrewPlaybookContainer/Crew/EditButtons" groups=["skip_disable"]]
-margin_left = 153.0
-margin_right = 195.0
-margin_bottom = 40.0
-text = "Load"
-
-[node name="CreateButton" type="Button" parent="CrewPlaybookContainer/Crew/EditButtons" groups=["skip_disable"]]
-margin_left = 199.0
-margin_right = 319.0
-margin_bottom = 40.0
-text = "Create New Crew"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Lair" type="VBoxContainer" parent="CrewPlaybookContainer"]
 margin_left = 562.0
 margin_right = 1024.0
@@ -347,7 +312,7 @@ __meta__ = {
 
 [node name="lair_name" type="LineEdit" parent="CrewPlaybookContainer/Lair" groups=["linked_field"]]
 margin_right = 462.0
-margin_bottom = 24.0
+margin_bottom = 29.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 5
 align = 1
@@ -363,51 +328,51 @@ __meta__ = {
 playbook_field = "lair.name"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CrewPlaybookContainer/Lair"]
-margin_top = 28.0
+margin_top = 33.0
 margin_right = 462.0
-margin_bottom = 48.0
+margin_bottom = 58.0
 alignment = 1
 
 [node name="TierLabel" type="Label" parent="CrewPlaybookContainer/Lair/HBoxContainer"]
-margin_left = 147.0
+margin_left = 149.0
 margin_top = 3.0
-margin_right = 171.0
-margin_bottom = 17.0
+margin_right = 173.0
+margin_bottom = 22.0
 hint_tooltip = "Upon crew advance, each PC gets stach = Tier + 2"
 mouse_filter = 1
 text = "Tier"
 align = 1
 
 [node name="lair_tier" type="OptionButton" parent="CrewPlaybookContainer/Lair/HBoxContainer"]
-margin_left = 175.0
-margin_right = 212.0
-margin_bottom = 20.0
+margin_left = 177.0
+margin_right = 214.0
+margin_bottom = 25.0
 text = "0"
 items = [ "0", null, false, 0, null, "1", null, false, 1, null, "2", null, false, 2, null, "3", null, false, 3, null, "4", null, false, 4, null ]
 selected = 0
 script = ExtResource( 2 )
 
 [node name="HoldLabel" type="Label" parent="CrewPlaybookContainer/Lair/HBoxContainer"]
-margin_left = 216.0
+margin_left = 218.0
 margin_top = 3.0
-margin_right = 246.0
-margin_bottom = 17.0
+margin_right = 245.0
+margin_bottom = 22.0
 text = "Hold"
 align = 1
 
 [node name="hold_level" type="OptionButton" parent="CrewPlaybookContainer/Lair/HBoxContainer"]
-margin_left = 250.0
-margin_right = 314.0
-margin_bottom = 20.0
+margin_left = 249.0
+margin_right = 312.0
+margin_bottom = 25.0
 text = "Weak"
 items = [ "Weak", null, false, 0, null, "Strong", null, false, 1, null ]
 selected = 0
 script = ExtResource( 2 )
 
 [node name="LairPicture" type="TextureRect" parent="CrewPlaybookContainer/Lair"]
-margin_top = 52.0
+margin_top = 62.0
 margin_right = 462.0
-margin_bottom = 222.0
+margin_bottom = 227.0
 grow_horizontal = 2
 grow_vertical = 2
 hint_tooltip = "This is your lair. It's not the best, but it's yours."
@@ -422,23 +387,23 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CrewPlaybookContainer/Lair"]
-margin_top = 226.0
+margin_top = 231.0
 margin_right = 462.0
-margin_bottom = 250.0
+margin_bottom = 260.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HuntingGroundsLabel" type="Label" parent="CrewPlaybookContainer/Lair/HBoxContainer2"]
 margin_top = 5.0
-margin_right = 116.0
-margin_bottom = 19.0
+margin_right = 108.0
+margin_bottom = 24.0
 text = "Hunting Grounds: "
 
 [node name="hunting_grounds" type="LineEdit" parent="CrewPlaybookContainer/Lair/HBoxContainer2"]
-margin_left = 120.0
+margin_left = 112.0
 margin_right = 462.0
-margin_bottom = 24.0
+margin_bottom = 29.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -447,118 +412,118 @@ caret_blink_speed = 0.5
 script = ExtResource( 2 )
 
 [node name="LairUpgradesContainer" type="ScrollContainer" parent="CrewPlaybookContainer/Lair"]
-margin_top = 254.0
+margin_top = 264.0
 margin_right = 462.0
-margin_bottom = 425.0
+margin_bottom = 430.0
 size_flags_vertical = 3
 
 [node name="lair_upgrades" type="VBoxContainer" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer"]
-margin_right = 89.0
-margin_bottom = 70.0
+margin_right = 88.0
+margin_bottom = 81.0
 script = ExtResource( 3 )
 
 [node name="LairUpgradesLabel" type="Label" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades"]
-margin_right = 89.0
-margin_bottom = 14.0
+margin_right = 88.0
+margin_bottom = 19.0
 text = "Lair upgrades:"
 
 [node name="upgrade1" type="HBoxContainer" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades"]
-margin_top = 18.0
-margin_right = 89.0
-margin_bottom = 42.0
+margin_top = 23.0
+margin_right = 88.0
+margin_bottom = 50.0
 custom_constants/separation = 0
 
 [node name="level1" type="CheckBox" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade1"]
 margin_right = 24.0
-margin_bottom = 24.0
+margin_bottom = 27.0
 pressed = true
 
 [node name="level2" type="CheckBox" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade1"]
 margin_left = 24.0
 margin_right = 48.0
-margin_bottom = 24.0
+margin_bottom = 27.0
 
 [node name="upgrade" type="LinkButton" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade1"]
 margin_left = 48.0
-margin_right = 77.0
-margin_bottom = 24.0
+margin_right = 76.0
+margin_bottom = 27.0
 focus_mode = 2
 text = "Boat"
 
 [node name="upgrade2" type="HBoxContainer" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades"]
-margin_top = 46.0
-margin_right = 89.0
-margin_bottom = 70.0
+margin_top = 54.0
+margin_right = 88.0
+margin_bottom = 81.0
 
 [node name="level1" type="CheckBox" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade2"]
 margin_right = 24.0
-margin_bottom = 24.0
+margin_bottom = 27.0
 pressed = true
 
 [node name="upgrade" type="LinkButton" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade2"]
 margin_left = 28.0
-margin_right = 74.0
-margin_bottom = 24.0
+margin_right = 70.0
+margin_bottom = 27.0
 focus_mode = 2
 text = "Hidden"
 
 [node name="GainingXPInfoContainer" type="ScrollContainer" parent="CrewPlaybookContainer/Lair"]
-margin_top = 429.0
+margin_top = 434.0
 margin_right = 462.0
 margin_bottom = 600.0
 size_flags_vertical = 11
 
 [node name="GainingXPInfo" type="VBoxContainer" parent="CrewPlaybookContainer/Lair/GainingXPInfoContainer"]
 margin_right = 462.0
-margin_bottom = 142.0
+margin_bottom = 160.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="CrewPlaybookContainer/Lair/GainingXPInfoContainer/GainingXPInfo"]
-margin_right = 161.0
-margin_bottom = 14.0
+margin_right = 157.0
+margin_bottom = 19.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Gaining Crew Experience:"
 
 [node name="Label2" type="Label" parent="CrewPlaybookContainer/Lair/GainingXPInfoContainer/GainingXPInfo"]
-margin_top = 18.0
+margin_top = 23.0
 margin_right = 462.0
-margin_bottom = 49.0
+margin_bottom = 64.0
 text = "At the end of each session, for each item below, mark 1xp (or instead mark 2xp if that item occurred multiple times.)"
 autowrap = true
 
 [node name="Label3" type="Label" parent="CrewPlaybookContainer/Lair/GainingXPInfoContainer/GainingXPInfo"]
-margin_top = 53.0
+margin_top = 68.0
 margin_right = 462.0
-margin_bottom = 67.0
+margin_bottom = 87.0
 text = "- Execute a successful espionage, sabotage, or theft operation."
 autowrap = true
 
 [node name="Label4" type="Label" parent="CrewPlaybookContainer/Lair/GainingXPInfoContainer/GainingXPInfo"]
-margin_top = 71.0
+margin_top = 91.0
 margin_right = 462.0
-margin_bottom = 85.0
+margin_bottom = 110.0
 text = "- Contend with challenges above your current station."
 autowrap = true
 
 [node name="Label5" type="Label" parent="CrewPlaybookContainer/Lair/GainingXPInfoContainer/GainingXPInfo"]
-margin_top = 89.0
+margin_top = 114.0
 margin_right = 462.0
-margin_bottom = 103.0
+margin_bottom = 133.0
 text = "- Bolster your crew's reputation, or develop a new one."
 autowrap = true
 
 [node name="Label6" type="Label" parent="CrewPlaybookContainer/Lair/GainingXPInfoContainer/GainingXPInfo"]
-margin_top = 107.0
+margin_top = 137.0
 margin_right = 462.0
-margin_bottom = 138.0
+margin_bottom = 156.0
 text = "- Express the goals, drives, inner conflict, or essential nature of the crew."
 autowrap = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CrewPlaybookContainer/Lair/GainingXPInfoContainer/GainingXPInfo"]
-margin_top = 142.0
+margin_top = 160.0
 margin_right = 462.0
-margin_bottom = 142.0
+margin_bottom = 160.0
 text = "At the end of each session, for each item below, mark 1 xp (or instead mark 2xp if that item occurred multiple times).
  Execute a successful espionage, sabotage, or theft operation.
  Contend with challenges above your current station.
@@ -566,13 +531,9 @@ text = "At the end of each session, for each item below, mark 1 xp (or instead m
  Express the 
 goals, drives, inner conflict, or essential nature of the crew."
 
-[connection signal="text_changed" from="CrewPlaybookContainer/Crew/crew_name" to="CrewPlaybookContainer/Crew/crew_name" method="_on_updated_data"]
 [connection signal="toggled" from="CrewPlaybookContainer/Crew/CrewTypeContainer/type" to="CrewPlaybookContainer/Crew/CrewTypeContainer/type" method="_on_updated_data"]
 [connection signal="toggled" from="CrewPlaybookContainer/Crew/CrewTypeContainer/reputation" to="CrewPlaybookContainer/Crew/CrewTypeContainer/reputation" method="_on_updated_data"]
 [connection signal="toggled" from="CrewPlaybookContainer/Crew/EditButtons/EditButton" to="." method="_on_CheckButton_toggled"]
-[connection signal="pressed" from="CrewPlaybookContainer/Crew/EditButtons/SaveButton" to="." method="_on_SaveButton_pressed"]
-[connection signal="pressed" from="CrewPlaybookContainer/Crew/EditButtons/LoadButton" to="." method="_on_LoadButton_pressed"]
-[connection signal="pressed" from="CrewPlaybookContainer/Crew/EditButtons/CreateButton" to="." method="_on_CreateButton_pressed"]
 [connection signal="text_changed" from="CrewPlaybookContainer/Lair/lair_name" to="CrewPlaybookContainer/Lair/lair_name" method="_on_updated_data"]
 [connection signal="toggled" from="CrewPlaybookContainer/Lair/HBoxContainer/lair_tier" to="CrewPlaybookContainer/Lair/HBoxContainer/lair_tier" method="_on_updated_data"]
 [connection signal="toggled" from="CrewPlaybookContainer/Lair/HBoxContainer/hold_level" to="CrewPlaybookContainer/Lair/HBoxContainer/hold_level" method="_on_updated_data"]

@@ -9,8 +9,12 @@ export (Dictionary) var upgrades
 export (Dictionary) var lair: = {
 	"name" : "",
 	"location" : "",
+	"description": ""
 }
-export (String) var hunting_grounds
+export (Dictionary) var hunting_grounds: = {
+	"location": "",
+	"description": ""
+}
 export (Dictionary) var cohorts
 export (Dictionary) var claims
 export (Dictionary) var prison_claims
@@ -19,16 +23,26 @@ export (Dictionary) var map
 
 
 
-func setup(json: String, crew_type: String, overwrite:bool = false)-> void:
+func setup(json_or_file_path_to_json, crew_type: String, overwrite:bool = false)-> void:
+	if not needs_setup and not overwrite: return
+
+	var json = json_or_file_path_to_json
+	var defaults: Dictionary = {}
 
 	needs_setup = false
 	crew_type = crew_type.to_lower()
 	experience.clear()
 	experience["playbook"] = 0
-	self.srd_json = json
-	var defaults = get_defaults(json)
+
+
+	if json is String:
+		defaults = get_defaults(json)
+	else:
+		defaults = json
+
+
 	type = crew_type
-	setup_abilities(defaults, crew_type)
+	setup_abilities(defaults, crew_type, overwrite)
 	setup_upgrades(defaults, crew_type)
 	setup_contacts(defaults, crew_type)
 	setup_claims(defaults, crew_type)
@@ -85,17 +99,18 @@ func setup_upgrades(defaults:Dictionary, crew_type: String)->void:
 				self.upgrades[key] = upgrade
 
 
-func setup_abilities(defaults:Dictionary, crew_type: String)->void:
+func setup_abilities(defaults:Dictionary, crew_type: String, overwrite: bool = true)->void:
 	#clear defaults if any exist
-	for key in self.abilities:
-		if abilities[key].default: abilities.erase(key)
+	if overwrite:
+		abilities.clear()
 
 	for key in defaults.crew_abilities.keys():
+		var esc_key:String = key.strip_edges().to_lower().replace(" ", "_")
 		var ability = defaults.crew_abilities[key]
 		ability.default = true
 		if ability.class == crew_type or ability.class == "all":
-			if not (key in self.abilities.keys()) or self.abilities[key].default:
-				self.abilities[key] = ability
+			if not (esc_key in self.abilities.keys()) or abilities[esc_key].default:
+				self.abilities[esc_key] = ability
 
 
 func _change_type(new_type:String)-> void:

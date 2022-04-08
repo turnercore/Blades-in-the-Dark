@@ -35,7 +35,7 @@ func setup(main_viewport: Viewport, mini_viewport: Viewport, main_camera:Camera2
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not visible: return
 
 	_mini_camera.global_position = _main_camera.global_position

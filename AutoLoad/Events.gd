@@ -17,7 +17,17 @@ func emit_character_changed(playbook: Playbook)-> void:
 
 signal main_screen_changed(screen)
 
-signal popup(popup_scene)
+signal popup(popup)
+func popup(popup)-> void:
+	var new_popup
+	if popup is PackedScene:
+		new_popup = popup.instance()
+	elif popup is Node:
+		new_popup = popup
+	emit_signal("popup", new_popup)
+
+#Not passing the actual popup that emits this, because there should be only one,
+#This may need to change in MULTIPLAYER
 signal popup_finished
 
 signal map_scroll_speed_changed(scroll_speed)

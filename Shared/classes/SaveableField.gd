@@ -23,7 +23,8 @@ func _set_playbook(value: Playbook)-> void:
 	playbook = value
 	if not value: return
 	playbook.connect("property_changed", self, "_on_property_changed")
-	set(property, playbook.find(playbook_field))
+	load_from_playbook()
+#	set(property, playbook.find(playbook_field))
 
 
 func connect_to_self_signal()->void:
@@ -44,13 +45,25 @@ func add_self_to_groups()-> void:
 			add_to_group(GROUP)
 
 
-func _on_load(playbook: Playbook)->void:
+func _on_load(_playbook: Playbook)->void:
 	load_from_playbook()
 
 
 func load_from_playbook()-> void:
+	if not playbook: return
+
 	var updated_property = playbook.find(playbook_field)
 	if updated_property:
+		#Ensure the type is correct, so if updating a text field with a number it still works
+		if get(property) is String:
+			updated_property = str(updated_property)
+		if get(property) is int:
+			updated_property = int(updated_property)
+		if get(property) is float:
+			updated_property = float(updated_property)
+		if get(property) is bool:
+			updated_property = bool(updated_property)
+
 		if get(property) == updated_property: return
 		else: set(property, updated_property)
 

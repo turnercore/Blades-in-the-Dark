@@ -1,14 +1,14 @@
 extends Control
 
-const marker_scene: = preload("res://Shared/Markers.tscn")
 
+export (PackedScene) var marker_scene
 onready var stat_name_label: = $VBoxContainer/HBoxContainer/stat_name
 onready var stat_level_label: = $VBoxContainer/HBoxContainer/stat_level
 onready var stat_container: = $VBoxContainer
-onready var stats: = []
+var stats: = []
+var stat_containers: = []
 onready var xp: = $VBoxContainer/HBoxContainer/xp
-onready var parent: = get_parent()
-
+var playbook: Playbook setget _set_playbook
 var level: = 0 setget _set_level
 export (String) var stat_name: = ""
 export (Array, String) var substats
@@ -18,35 +18,60 @@ export (bool) var verticle_sort: = true
 func _ready() -> void:
 	name = stat_name
 	stat_name_label.text = stat_name
+	stat_name = stat_name.to_lower()
+	xp.playbook_field = "experience."+stat_name
+	stat_level_label.playbook_field = stat_name
 	if not verticle_sort:
 		var new_hbox: = HBoxContainer.new()
 		for child in stat_container.get_children():
 			stat_container.remove_child(child)
 			new_hbox.add_child(child)
+
 		stat_container.queue_free()
 		stat_container = new_hbox
 		add_child(stat_container)
 
+	if not stat_containers.empty():
+		for container in stat_containers:
+			stat_container.add_child(container)
+
+
+func setup()-> void:
+	clear_substats()
 	create_substats()
 	_connect_to_signals()
 	calculate_level()
-	if get_parent() is Container:
-		parent = parent as Container
-		parent.queue_sort()
+
+
+func _set_playbook(value: Playbook)-> void:
+	playbook = value
+	setup()
+
+func clear_substats()-> void:
+	for stat in stats:
+		stat.queue_free()
+	stats.clear()
+	stat_containers.clear()
+	level = 0
 
 
 func create_substats()-> void:
+	if not playbook: return
 	for stat in substats:
 		var hbox: = HBoxContainer.new()
-		var stat_marker: = marker_scene.instance()
+		var stat_marker: = marker_scene.instance() as Markers
 		stat_marker.total_points = stat_max_level
 		stat_marker.label = stat
+		stat_marker.playbook = playbook
+		stat_marker.playbook_field = "stats."+ stat_name.to_lower() +"."+stat.to_lower()
 		stats.append(stat_marker)
-
 		hbox.add_child(stat_marker)
-		stat_container.add_child(hbox)
+		if stat_container:
+			stat_container.add_child(hbox)
+		else:
+			stat_containers.append(hbox)
 
-func _on_filled_points_changed(filled_points: int)-> void:
+func _on_filled_points_changed(_filled_points: int)-> void:
 	calculate_level()
 
 
@@ -64,4 +89,5 @@ func _connect_to_signals()-> void:
 
 func _set_level(value: int)-> void:
 	level = value
-	stat_level_label.text = "(Level: " + str(level) + ")"
+	if stat_level_label:
+		stat_level_label.text = "(Level: " + str(level) + ")"

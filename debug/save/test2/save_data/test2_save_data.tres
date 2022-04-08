@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://saves/SaveGame.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_save_id = "test2"
+_save_folder = "res://debug/save"
+version = "0.35"
+map = {
+"name": "Duskvol",
+Vector2( 100, 50 ): "Test Map Note"
+}
+clocks = [  ]

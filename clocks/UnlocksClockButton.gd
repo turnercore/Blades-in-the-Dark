@@ -1,7 +1,7 @@
 extends Button
 
 export (PackedScene) onready var link_picker_scene
-export (NodePath) onready var clock = get_node_or_null(clock) as Clock if clock else null
+export (NodePath) onready var clock = get_node_or_null(clock) as Clock if clock is NodePath else clock
 
 
 func _on_UnlocksClockButton_pressed() -> void:

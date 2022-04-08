@@ -45,12 +45,22 @@ var insight: int = 0
 var prowess: int = 0
 var resolve: int = 0
 
-var needs_setup: = true
+export (bool) var needs_setup: = true
 
 signal property_changed(property)
 
-func setup(json: String, type: String, overwrite:bool = false)-> void:
+func _init() -> void:
+	if not self.is_connected("property_changed", self, "_on_property_changed"):
+		connect("property_changed", self, '_on_property_changed')
+
+func setup(json_or_file_path_to_json, starting_type: String, _overwrite:bool = false)-> void:
 	needs_setup = false
+	if not self.is_connected("property_changed", self, "_on_property_changed"):
+		connect("property_changed", self, '_on_property_changed')
+
+
+func _on_property_changed(_data)-> void:
+	emit_changed()
 
 
 func set_property(property: String, value)-> void:
@@ -112,7 +122,7 @@ func get_resolve()->int:
 func get_defaults(json: String):
 	var file = File.new()
 	if not file.file_exists(json):
-		print("unable to find file: " + json)
+		print("unable to find json file: " + json)
 	file.open(json, File.READ)
 	var data = parse_json(file.get_as_text())
 	return data
@@ -176,26 +186,3 @@ func find(path_map: String):
 				return false
 
 	return updated_property
-
-#
-#func save(path_map: String, value)-> bool:
-#	var path: = path_map.split(".", false)
-#	var cursor: int = 0
-#	var updated_property
-#	while cursor < path.size():
-#		if cursor == 0:
-#			if path[cursor] in self:
-#				updated_property = self.get(path[cursor])
-#				cursor += 1
-#			else:
-#				return false
-#		else:
-#			if path[cursor] in updated_property:
-#				updated_property = updated_property[path[cursor]]
-#				cursor += 1
-#			else:
-#				return false
-#
-#	updated_property = value
-#	emit_signal("property_changed", path[cursor])
-#	return true

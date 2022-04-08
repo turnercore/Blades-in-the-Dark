@@ -27,12 +27,12 @@ _global_script_classes=[ {
 "base": "TextureButton",
 "class": "ClaimCell",
 "language": "GDScript",
-"path": "res://Claims/Claim.gd"
+"path": "res://Crew/Claims/Claim.gd"
 }, {
 "base": "ColorRect",
 "class": "ClaimTreeConnector",
 "language": "GDScript",
-"path": "res://Claims/Connector.gd"
+"path": "res://Crew/Claims/Connector.gd"
 }, {
 "base": "Control",
 "class": "Clock",
@@ -53,6 +53,11 @@ _global_script_classes=[ {
 "class": "MarkerButton",
 "language": "GDScript",
 "path": "res://Shared/classes/MarkerButton.gd"
+}, {
+"base": "SaveableField",
+"class": "Markers",
+"language": "GDScript",
+"path": "res://Shared/classes/Markers.gd"
 }, {
 "base": "Resource",
 "class": "Playbook",
@@ -84,6 +89,7 @@ _global_script_class_icons={
 "CrewPlaybook": "",
 "Map": "",
 "MarkerButton": "",
+"Markers": "",
 "Playbook": "",
 "PlayerPlaybook": "",
 "SaveGame": "",
@@ -94,23 +100,29 @@ _global_script_class_icons={
 
 config/name="Blades in the Dark"
 config/description="A program to help remotely play Blades in the Dark tabletop roleplaying game."
-run/main_scene="res://Game.tscn"
+run/main_scene="res://StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Icons/icon.png"
-config/version="0.2"
+config/version="0.35"
 
 [autoload]
 
 Events="*res://AutoLoad/Events.gd"
 GameSaver="*res://AutoLoad/GameSaver.gd"
 Globals="*res://AutoLoad/Globals.gd"
+GameData="*res://AutoLoad/GameData.gd"
 
 [debug]
 
+gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 settings=false
 settings/debug=true
+
+[gui]
+
+theme/custom_font="res://default_font.tres"
 
 [input]
 

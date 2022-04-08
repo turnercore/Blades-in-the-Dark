@@ -44,16 +44,19 @@ stats = {
 "sway": 0
 }
 }
+needs_setup = true
 player_class = "whisper"
 aliases = "The old hamburgler"
 look = "Shady"
 heritage = "Bla"
+background = ""
 stress = 1
 trauma_level = 2
 traumas = [  ]
 items = {
 }
 vice = ""
+vice_type = ""
 xp_gain = ""
 friends_and_foes = {
 }

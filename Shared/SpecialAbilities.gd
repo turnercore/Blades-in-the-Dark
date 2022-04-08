@@ -18,7 +18,7 @@ func setup(playbook:Playbook)->void:
 		var ability = playbook.abilities[ability_name]
 		var new_ability: = ability_scene.instance()
 		new_ability.name = ability_name
-		new_ability.ability = ability_name
+		new_ability.ability = ability.ability
 		new_ability.effect = ability.effect
 		new_ability.claimed = ability.claimed if "claimed" in ability else false
 		ability_list.add_child(new_ability)

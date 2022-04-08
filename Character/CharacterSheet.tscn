@@ -465,15 +465,14 @@ custom_constants/separation = 25
 [node name="insight" parent="PanelContainer/Stats/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1016.0
-margin_bottom = 152.0
+margin_right = 3.0
 stat_name = "Insight"
 substats = [ "Hunt", "Study", "Survey", "Tinker" ]
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/Stats/VBoxContainer"]
-margin_top = 177.0
-margin_right = 1016.0
-margin_bottom = 181.0
+margin_top = 25.0
+margin_right = 3.0
+margin_bottom = 29.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -481,14 +480,14 @@ __meta__ = {
 [node name="prowess" parent="PanelContainer/Stats/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 206.0
-margin_right = 1016.0
-margin_bottom = 358.0
+margin_top = 54.0
+margin_right = 3.0
+margin_bottom = 54.0
 
 [node name="HSeparator2" type="HSeparator" parent="PanelContainer/Stats/VBoxContainer"]
-margin_top = 383.0
-margin_right = 1016.0
-margin_bottom = 387.0
+margin_top = 79.0
+margin_right = 3.0
+margin_bottom = 83.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -496,9 +495,9 @@ __meta__ = {
 [node name="resolve" parent="PanelContainer/Stats/VBoxContainer" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 412.0
-margin_right = 1016.0
-margin_bottom = 564.0
+margin_top = 108.0
+margin_right = 3.0
+margin_bottom = 108.0
 stat_name = "Resolve"
 substats = [ "Attune", "Command", "Consort", "Sway" ]
 

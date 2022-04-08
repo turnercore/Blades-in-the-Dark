@@ -1,0 +1,442 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=1]
+[ext_resource path="res://popups/CrewSetup.gd" type="Script" id=2]
+[ext_resource path="res://popups/StartingAbilityOption.gd" type="Script" id=3]
+
+[node name="CrewSetup" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+popup_exclusive = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+type_options = NodePath("SetupPages/CrewChoices/type_options")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -281.5
+margin_top = -255.5
+margin_right = 281.5
+margin_bottom = 255.5
+color = Color( 0.196078, 0.0980392, 0.27451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SetupPages" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -268.0
+margin_top = -250.0
+margin_right = 268.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 500, 500 )
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CrewChoices" type="VBoxContainer" parent="SetupPages"]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 526.0
+margin_bottom = 490.0
+alignment = 1
+
+[node name="Label" type="Label" parent="SetupPages/CrewChoices"]
+margin_top = 172.0
+margin_right = 516.0
+margin_bottom = 191.0
+text = "Choose a crew type:"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="type_options" type="OptionButton" parent="SetupPages/CrewChoices"]
+margin_top = 195.0
+margin_right = 516.0
+margin_bottom = 220.0
+text = "Crew Type"
+items = [ "Crew Type", null, false, 0, null ]
+selected = 0
+
+[node name="Label2" type="Label" parent="SetupPages/CrewChoices"]
+margin_top = 224.0
+margin_right = 516.0
+margin_bottom = 287.0
+text = "This determines the scores you'll focus on, as well as your default special abilities, claims, and other game mechanics. Everything can be edited after creation as determined by the GM and the group."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="SetupPages/CrewChoices"]
+margin_left = 237.0
+margin_top = 291.0
+margin_right = 278.0
+margin_bottom = 316.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+disabled = true
+text = "Next"
+
+[node name="CrewChoices-1" type="VBoxContainer" parent="SetupPages"]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 526.0
+margin_bottom = 490.0
+custom_constants/separation = 12
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="LineEdit" parent="SetupPages/CrewChoices-1"]
+margin_right = 516.0
+margin_bottom = 29.0
+align = 1
+placeholder_text = "What is your crew name?"
+script = ExtResource( 1 )
+playbook_field = "name"
+
+[node name="Label3" type="Label" parent="SetupPages/CrewChoices-1"]
+margin_top = 41.0
+margin_right = 516.0
+margin_bottom = 60.0
+text = "You start with 2 coins to form the crew, spend them wisely. "
+
+[node name="HSeparator3" type="HSeparator" parent="SetupPages/CrewChoices-1"]
+margin_top = 72.0
+margin_right = 516.0
+margin_bottom = 76.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="SetupPages/CrewChoices-1"]
+margin_top = 88.0
+margin_right = 516.0
+margin_bottom = 107.0
+text = "Choose an inital reputation:"
+align = 1
+
+[node name="reputation" type="OptionButton" parent="SetupPages/CrewChoices-1"]
+margin_top = 119.0
+margin_right = 516.0
+margin_bottom = 144.0
+text = "Ambitious"
+items = [ "Ambitious", null, false, 0, null, "Brutal", null, false, 1, null, "Daring", null, false, 2, null, "Honorable", null, false, 3, null, "Professional", null, false, 4, null, "Savvy", null, false, 5, null, "Subtle", null, false, 6, null, "Strange", null, false, 7, null ]
+selected = 0
+script = ExtResource( 1 )
+playbook_field = "reputation"
+
+[node name="HSeparator" type="HSeparator" parent="SetupPages/CrewChoices-1"]
+margin_top = 156.0
+margin_right = 516.0
+margin_bottom = 160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="SetupPages/CrewChoices-1"]
+margin_top = 172.0
+margin_right = 516.0
+margin_bottom = 191.0
+text = "Choose an inital lair:"
+align = 1
+
+[node name="lair" type="OptionButton" parent="SetupPages/CrewChoices-1"]
+margin_top = 203.0
+margin_right = 516.0
+margin_bottom = 228.0
+text = "A half-sunken grotto in the city's maze-like underground canals."
+items = [ "A half-sunken grotto in the city's maze-like underground canals.", null, false, 0, null, "A small, abondoned house at the end of a dark lane.", null, false, 1, null, "An abandoned watch tower atop an ancient, crumbling wall.", null, false, 2, null, "A rickety, tin-roofed shack perched on a rooftop.", null, false, 3, null, "The unassuming back rooms of a merchant's shop.", null, false, 4, null, "A junked rail-car, rusted in place on its old, overgrown tracks.", null, false, 5, null, "An crumbling, old church overlooking a wayward canal. ", null, false, 6, null ]
+selected = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+playbook_field = "lair.description"
+
+[node name="lair_location" type="OptionButton" parent="SetupPages/CrewChoices-1"]
+margin_top = 240.0
+margin_right = 516.0
+margin_bottom = 265.0
+text = "Lair Location"
+script = ExtResource( 1 )
+playbook_field = "lair.location"
+
+[node name="NextButton" type="Button" parent="SetupPages/CrewChoices-1"]
+margin_top = 463.0
+margin_right = 516.0
+margin_bottom = 488.0
+size_flags_vertical = 10
+text = "Next"
+
+[node name="CrewChoices-2" type="VBoxContainer" parent="SetupPages"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 526.0
+margin_bottom = 490.0
+custom_constants/separation = 12
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="SetupPages/CrewChoices-2"]
+margin_right = 516.0
+margin_bottom = 19.0
+text = "Establish your hunting grounds."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hunting_grounds" type="OptionButton" parent="SetupPages/CrewChoices-2"]
+margin_top = 31.0
+margin_right = 516.0
+margin_bottom = 56.0
+text = "Hunting Ground Location"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+playbook_field = "hunting_grounds.location"
+
+[node name="hunting_description" type="TextEdit" parent="SetupPages/CrewChoices-2"]
+margin_top = 68.0
+margin_right = 516.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Describe your hunting grounds. What part of the above district is it located in? Why do you prefer it or what gives your crew an advantage here?"
+wrap_enabled = true
+script = ExtResource( 1 )
+playbook_field = "hunting_grounds.description"
+
+[node name="Label7" type="Label" parent="SetupPages/CrewChoices-2"]
+margin_top = 156.0
+margin_right = 516.0
+margin_bottom = 307.0
+text = "Your hunting grounds are a small part of a district, the area you normally target for your scores. This is an area your crew knows well. 
+When you prepare to execute an operation of your preferred type on your hunting grounds, you get +1d to any gather information rolls and a free addtional downtime activity to contribute to that operation.
+
+This will expand as you get turf."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="SetupPages/CrewChoices-2"]
+margin_top = 319.0
+margin_right = 516.0
+margin_bottom = 323.0
+
+[node name="Label" type="Label" parent="SetupPages/CrewChoices-2"]
+margin_top = 335.0
+margin_right = 516.0
+margin_bottom = 354.0
+text = "What is your preferred opration type?"
+align = 1
+autowrap = true
+
+[node name="operation_type" type="OptionButton" parent="SetupPages/CrewChoices-2"]
+margin_top = 366.0
+margin_right = 516.0
+margin_bottom = 391.0
+text = "Operation Type"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+playbook_field = "operation_type"
+
+[node name="NextButton" type="Button" parent="SetupPages/CrewChoices-2"]
+margin_top = 455.0
+margin_right = 516.0
+margin_bottom = 480.0
+size_flags_vertical = 10
+text = "Next"
+
+[node name="CrewChoices-3" type="VBoxContainer" parent="SetupPages"]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 526.0
+margin_bottom = 498.0
+custom_constants/separation = 12
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="SetupPages/CrewChoices-3"]
+margin_right = 516.0
+margin_bottom = 19.0
+text = "What's your crew's special ability?"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartingAbility" type="Panel" parent="SetupPages/CrewChoices-3"]
+margin_top = 31.0
+margin_right = 516.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 50, 75 )
+script = ExtResource( 3 )
+property = "claimed"
+playbook_field = "abilities"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SetupPages/CrewChoices-3/StartingAbility"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartingAbilityOption" type="OptionButton" parent="SetupPages/CrewChoices-3/StartingAbility/VBoxContainer"]
+margin_left = 201.0
+margin_right = 314.0
+margin_bottom = 25.0
+hint_tooltip = "Every crew is a snowflake. What makes yours special?"
+size_flags_horizontal = 4
+text = "Crew Abilities"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AbilityDescription" type="Label" parent="SetupPages/CrewChoices-3/StartingAbility/VBoxContainer"]
+margin_top = 29.0
+margin_right = 516.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Description"
+autowrap = true
+
+[node name="HSeparator2" type="HSeparator" parent="SetupPages/CrewChoices-3"]
+margin_top = 118.0
+margin_right = 516.0
+margin_bottom = 122.0
+
+[node name="Label7" type="Label" parent="SetupPages/CrewChoices-3"]
+margin_top = 134.0
+margin_right = 516.0
+margin_bottom = 153.0
+text = "Choose intial crew upgrades:"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="SetupPages/CrewChoices-3"]
+margin_top = 165.0
+margin_right = 516.0
+margin_bottom = 184.0
+text = "Starting upgrades:"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="initial_upgrade1" type="Label" parent="SetupPages/CrewChoices-3"]
+margin_top = 196.0
+margin_right = 516.0
+margin_bottom = 215.0
+text = "upgrade 1"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="initial_upgrade2" type="Label" parent="SetupPages/CrewChoices-3"]
+margin_top = 227.0
+margin_right = 516.0
+margin_bottom = 246.0
+text = "upgrade 2"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton3" type="OptionButton" parent="SetupPages/CrewChoices-3"]
+margin_top = 258.0
+margin_right = 516.0
+margin_bottom = 283.0
+hint_tooltip = "Every crew is a snowflake. What makes yours special?"
+text = "Upgrade 3"
+
+[node name="OptionButton2" type="OptionButton" parent="SetupPages/CrewChoices-3"]
+margin_top = 295.0
+margin_right = 516.0
+margin_bottom = 320.0
+hint_tooltip = "Every crew is a snowflake. What makes yours special?"
+text = "Upgrade 4"
+
+[node name="HSeparator3" type="HSeparator" parent="SetupPages/CrewChoices-3"]
+margin_top = 332.0
+margin_right = 516.0
+margin_bottom = 336.0
+
+[node name="Label" type="Label" parent="SetupPages/CrewChoices-3"]
+margin_top = 348.0
+margin_right = 516.0
+margin_bottom = 367.0
+text = "No crew is an island. Who helped you get to where you are?"
+align = 1
+
+[node name="OptionButton4" type="OptionButton" parent="SetupPages/CrewChoices-3"]
+margin_top = 379.0
+margin_right = 516.0
+margin_bottom = 404.0
+hint_tooltip = "Every crew is a snowflake. What makes yours special?"
+text = "Favorite Contact"
+
+[node name="HSeparator4" type="HSeparator" parent="SetupPages/CrewChoices-3"]
+margin_top = 416.0
+margin_right = 516.0
+margin_bottom = 420.0
+
+[node name="Label3" type="Label" parent="SetupPages/CrewChoices-3"]
+margin_top = 432.0
+margin_right = 516.0
+margin_bottom = 451.0
+size_flags_vertical = 10
+text = "Your crew begins at Tier 0, with a STRONG hold and 0 REP points."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FinishedButton" type="Button" parent="SetupPages/CrewChoices-3"]
+margin_top = 463.0
+margin_right = 516.0
+margin_bottom = 488.0
+text = "Finished"
+
+[connection signal="item_selected" from="SetupPages/CrewChoices/type_options" to="." method="_on_type_options_item_selected"]
+[connection signal="pressed" from="SetupPages/CrewChoices/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="SetupPages/CrewChoices-1/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="SetupPages/CrewChoices-2/NextButton" to="." method="_on_next"]
+[connection signal="item_selected" from="SetupPages/CrewChoices-3/StartingAbility/VBoxContainer/StartingAbilityOption" to="SetupPages/CrewChoices-3/StartingAbility" method="_on_StartingAbilityOption_item_selected"]
+[connection signal="pressed" from="SetupPages/CrewChoices-3/FinishedButton" to="." method="_on_FinishedButton_pressed"]

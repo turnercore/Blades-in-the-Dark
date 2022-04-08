@@ -1,0 +1,365 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://CreateCharacterPopup.gd" type="Script" id=1]
+[ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=2]
+[ext_resource path="res://Stat.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.254902, 0, 0.32549, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.227451, 0, 0.321569, 1 )
+
+[node name="CreateCharacterPopup" type="PopupPanel"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+type_options = NodePath("MarginContainer/Page1/VBox/type_options")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Page1" type="ScrollContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+custom_styles/bg = SubResource( 1 )
+scroll_horizontal_enabled = false
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Page1"]
+margin_right = 1004.0
+margin_bottom = 580.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="\'create a new character\'" type="Label" parent="MarginContainer/Page1/VBox"]
+margin_top = 251.0
+margin_right = 1004.0
+margin_bottom = 270.0
+text = "Create a new character"
+align = 1
+uppercase = true
+
+[node name="type_options" type="OptionButton" parent="MarginContainer/Page1/VBox"]
+margin_left = 471.0
+margin_top = 274.0
+margin_right = 532.0
+margin_bottom = 299.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "None"
+items = [ "None", null, false, 0, null ]
+selected = 0
+
+[node name="NextButton" type="Button" parent="MarginContainer/Page1/VBox"]
+margin_left = 481.0
+margin_top = 303.0
+margin_right = 522.0
+margin_bottom = 328.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+disabled = true
+text = "Next"
+
+[node name="Page2" type="ScrollContainer" parent="MarginContainer"]
+visible = false
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+custom_styles/bg = SubResource( 1 )
+scroll_horizontal_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Page2"]
+margin_right = 1004.0
+margin_bottom = 580.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 15
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 5
+
+[node name="\'create a new character\'" type="Label" parent="MarginContainer/Page2/MarginContainer"]
+margin_left = 10.0
+margin_top = 15.0
+margin_right = 994.0
+margin_bottom = 34.0
+size_flags_vertical = 0
+text = "Create a new character"
+align = 1
+uppercase = true
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Page2/MarginContainer"]
+margin_left = 10.0
+margin_top = 15.0
+margin_right = 994.0
+margin_bottom = 575.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox"]
+margin_top = 143.0
+margin_right = 984.0
+margin_bottom = 157.0
+text = "Basic Info:"
+uppercase = true
+
+[node name="Field" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
+margin_top = 161.0
+margin_right = 984.0
+margin_bottom = 185.0
+
+[node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field"]
+margin_top = 5.0
+margin_right = 46.0
+margin_bottom = 19.0
+text = "name: "
+uppercase = true
+
+[node name="name" type="LineEdit" parent="MarginContainer/Page2/MarginContainer/VBox/Field"]
+margin_left = 50.0
+margin_right = 200.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 150, 0 )
+expand_to_text_length = true
+placeholder_text = "Character Name"
+script = ExtResource( 2 )
+playbook_field = "name"
+
+[node name="Field2" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
+margin_top = 189.0
+margin_right = 984.0
+margin_bottom = 213.0
+
+[node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field2"]
+margin_top = 5.0
+margin_right = 41.0
+margin_bottom = 19.0
+text = "alias:"
+uppercase = true
+
+[node name="aliases" type="LineEdit" parent="MarginContainer/Page2/MarginContainer/VBox/Field2"]
+margin_left = 45.0
+margin_right = 195.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 150, 0 )
+expand_to_text_length = true
+placeholder_text = "Aliases"
+script = ExtResource( 2 )
+playbook_field = "aliases-0"
+
+[node name="Field3" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
+margin_top = 217.0
+margin_right = 984.0
+margin_bottom = 317.0
+
+[node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field3"]
+margin_top = 43.0
+margin_right = 41.0
+margin_bottom = 57.0
+text = "Look:"
+uppercase = true
+
+[node name="look" type="TextEdit" parent="MarginContainer/Page2/MarginContainer/VBox/Field3"]
+margin_left = 45.0
+margin_right = 445.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 400, 100 )
+script = ExtResource( 2 )
+playbook_field = "look"
+
+[node name="Field4" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
+margin_top = 321.0
+margin_right = 984.0
+margin_bottom = 341.0
+
+[node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field4"]
+margin_top = 3.0
+margin_right = 67.0
+margin_bottom = 17.0
+text = "Heritage:"
+uppercase = true
+
+[node name="heritage" type="OptionButton" parent="MarginContainer/Page2/MarginContainer/VBox/Field4"]
+margin_left = 71.0
+margin_right = 144.0
+margin_bottom = 20.0
+text = "Akoros"
+items = [ "Akoros", null, false, 0, null, "The Dagger Isles", null, false, 1, null, "Iruvia", null, false, 2, null, "Severos", null, false, 3, null, "Skovlan", null, false, 4, null, "Tycheros", null, false, 5, null ]
+selected = 0
+script = ExtResource( 2 )
+playbook_field = "heritage"
+
+[node name="Field5" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
+margin_top = 345.0
+margin_right = 984.0
+margin_bottom = 365.0
+
+[node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field5"]
+margin_top = 3.0
+margin_right = 97.0
+margin_bottom = 17.0
+text = "Background:"
+uppercase = true
+
+[node name="background2" type="OptionButton" parent="MarginContainer/Page2/MarginContainer/VBox/Field5"]
+margin_left = 101.0
+margin_right = 193.0
+margin_bottom = 20.0
+text = "Academic"
+items = [ "Academic", null, false, 0, null, "Labor", null, false, 1, null, "Law", null, false, 2, null, "Trade", null, false, 3, null, "Military", null, false, 4, null, "Noble", null, false, 5, null, "Underworld", null, false, 6, null ]
+selected = 0
+script = ExtResource( 2 )
+playbook_field = "background"
+
+[node name="Field6" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
+margin_top = 369.0
+margin_right = 984.0
+margin_bottom = 393.0
+
+[node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field6"]
+margin_top = 5.0
+margin_right = 32.0
+margin_bottom = 19.0
+text = "Vice:"
+uppercase = true
+
+[node name="vice" type="LineEdit" parent="MarginContainer/Page2/MarginContainer/VBox/Field6"]
+margin_left = 36.0
+margin_right = 186.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 150, 0 )
+expand_to_text_length = true
+placeholder_text = "Specific Vice"
+script = ExtResource( 2 )
+playbook_field = "vice"
+
+[node name="Label2" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field6"]
+margin_left = 190.0
+margin_top = 5.0
+margin_right = 255.0
+margin_bottom = 19.0
+text = "Vice Type:"
+uppercase = true
+
+[node name="vice_type" type="OptionButton" parent="MarginContainer/Page2/MarginContainer/VBox/Field6"]
+margin_left = 259.0
+margin_right = 319.0
+margin_bottom = 24.0
+text = "Faith"
+items = [ "Faith", null, false, 0, null, "Gambling", null, false, 1, null, "Luxury", null, false, 2, null, "Obligation", null, false, 3, null, "Pleasure", null, false, 4, null, "Stupor", null, false, 5, null, "Weird", null, false, 6, null ]
+selected = 0
+script = ExtResource( 2 )
+playbook_field = "vice_type"
+
+[node name="NextButton2" type="Button" parent="MarginContainer/Page2/MarginContainer/VBox"]
+margin_left = 471.0
+margin_top = 397.0
+margin_right = 513.0
+margin_bottom = 417.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Next"
+
+[node name="Page3" type="ScrollContainer" parent="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 590.0
+custom_styles/bg = SubResource( 1 )
+scroll_horizontal_enabled = false
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Page3"]
+margin_right = 1004.0
+margin_bottom = 505.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 15
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 5
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Page3/MarginContainer"]
+margin_left = 10.0
+margin_top = 15.0
+margin_right = 994.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="title" type="Label" parent="MarginContainer/Page3/MarginContainer/VBox"]
+margin_right = 984.0
+margin_bottom = 19.0
+size_flags_vertical = 1
+text = "Assign Starting Stats "
+align = 1
+uppercase = true
+
+[node name="title2" type="Label" parent="MarginContainer/Page3/MarginContainer/VBox"]
+margin_top = 23.0
+margin_right = 984.0
+margin_bottom = 42.0
+size_flags_vertical = 1
+text = "(Add 3 points, no stat can be above 2 total)"
+align = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/Page3/MarginContainer/VBox"]
+margin_top = 46.0
+margin_right = 984.0
+margin_bottom = 456.0
+custom_constants/separation = 25
+
+[node name="insight" parent="MarginContainer/Page3/MarginContainer/VBox/StatsContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 984.0
+margin_bottom = 120.0
+stat_name = "Insight"
+substats = [ "Hunt", "Study", "Survey", "Tinker" ]
+
+[node name="prowess" parent="MarginContainer/Page3/MarginContainer/VBox/StatsContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 145.0
+margin_right = 984.0
+margin_bottom = 265.0
+
+[node name="resolve" parent="MarginContainer/Page3/MarginContainer/VBox/StatsContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 290.0
+margin_right = 984.0
+margin_bottom = 410.0
+stat_name = "Resolve"
+substats = [ "Attune", "Command", "Consort", "Sway" ]
+
+[node name="FinishButton" type="Button" parent="MarginContainer/Page3/MarginContainer/VBox"]
+margin_left = 461.0
+margin_top = 460.0
+margin_right = 522.0
+margin_bottom = 485.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Finished"
+
+[connection signal="item_selected" from="MarginContainer/Page1/VBox/type_options" to="." method="_on_type_options_item_selected"]
+[connection signal="pressed" from="MarginContainer/Page1/VBox/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Page2/MarginContainer/VBox/NextButton2" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Page3/MarginContainer/VBox/FinishButton" to="." method="_on_FinishButton_pressed"]

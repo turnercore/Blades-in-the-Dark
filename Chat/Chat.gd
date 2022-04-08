@@ -97,26 +97,26 @@ func _on_chat_message_sent(message:String, user)->void:
 		notification_number.text = str(chat_notifications)
 
 
-func propogate_hide_or_show(node: Node, exception_nodes: Array = [], hide: bool = true) -> void:
+func propagate_hide_or_show(node: Node, exception_nodes: Array = [], hide: bool = true) -> void:
 	if not Node:
 		return
 
 	if hide:
 		for child in node.get_children():
 			if child is Container:
-				propogate_hide_or_show(child, exception_nodes, true)
+				propagate_hide_or_show(child, exception_nodes, true)
 			elif child is Control and not exception_nodes.has(child):
 				child.hide()
 
 	elif not hide:
 		for child in node.get_children():
 			if child is Container:
-				propogate_hide_or_show(child, exception_nodes, false)
+				propagate_hide_or_show(child, exception_nodes, false)
 			elif child is Control and not exception_nodes.has(child):
 				child.show()
 
 
-func _on_MessageText_text_entered(new_text: String) -> void:
+func _on_MessageText_text_entered(_new_text: String) -> void:
 	send_message_button.emit_signal("pressed")
 
 
@@ -159,7 +159,7 @@ func _on_Fullscreen_toggled(button_pressed: bool) -> void:
 func _on_Hide_toggled(is_hidden: bool) -> void:
 	if is_hidden:
 		save_settings()
-		propogate_hide_or_show(self, [hide_button], true)
+		propagate_hide_or_show(self, [hide_button], true)
 		hide_button.text = hide_button_show_text
 		chat_notification_text.show()
 		notification_number.show()
@@ -177,7 +177,7 @@ func _on_Hide_toggled(is_hidden: bool) -> void:
 
 	else:
 		load_settings()
-		propogate_hide_or_show(self, [hide_button, chat_notification_text, notification_number], false)
+		propagate_hide_or_show(self, [hide_button, chat_notification_text, notification_number], false)
 		hide_button.text = "Hide"
 		chat_notification_text.hide()
 		notification_number.hide()
@@ -188,7 +188,7 @@ func _on_Hide_toggled(is_hidden: bool) -> void:
 
 
 func set_transparency(is_transparent:bool)->void:
-	modulate.a = 0.4 if is_transparent else 1
+	modulate.a = 0.4 if is_transparent else 1.0
 
 
 func _on_Chat_mouse_entered() -> void:

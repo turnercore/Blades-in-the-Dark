@@ -1,15 +1,21 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://main/Popup Layer.gd" type="Script" id=1]
+[ext_resource path="res://Popup Layer.gd" type="Script" id=1]
 [ext_resource path="res://Crew/Crew.tscn" type="PackedScene" id=2]
-[ext_resource path="res://main/MainScreen.gd" type="Script" id=3]
+[ext_resource path="res://trash/MainScreen.gd" type="Script" id=3]
 [ext_resource path="res://Game.gd" type="Script" id=4]
-[ext_resource path="res://main/Progress Clocks.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Progress Clocks.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Chat/Chat.tscn" type="PackedScene" id=6]
-[ext_resource path="res://main/Controls.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Controls.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Character/CharacterSheet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Play.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Roster.tscn" type="PackedScene" id=10]
+[ext_resource path="res://LoadButton.gd" type="Script" id=11]
+[ext_resource path="res://popups/LoadScreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://GameTheme.tres" type="Theme" id=13]
+[ext_resource path="res://CreateNewCrewButton.gd" type="Script" id=14]
+[ext_resource path="res://popups/CrewSetup.tscn" type="PackedScene" id=15]
+[ext_resource path="res://SaveButton.gd" type="Script" id=16]
 
 [node name="Game" type="Node"]
 script = ExtResource( 4 )
@@ -18,6 +24,7 @@ script = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+theme = ExtResource( 13 )
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,6 +87,49 @@ margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Settings" type="PanelContainer" parent="ViewportContainer/Viewport/Screen Layer/MainScreen"]
+visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ViewportContainer/Viewport/Screen Layer/MainScreen/Settings"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="LoadButton" type="Button" parent="ViewportContainer/Viewport/Screen Layer/MainScreen/Settings/VBoxContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Load"
+script = ExtResource( 11 )
+load_screen = ExtResource( 12 )
+
+[node name="SaveButton" type="Button" parent="ViewportContainer/Viewport/Screen Layer/MainScreen/Settings/VBoxContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Save"
+script = ExtResource( 16 )
+
+[node name="CreateNewCrewButton" type="Button" parent="ViewportContainer/Viewport/Screen Layer/MainScreen/Settings/VBoxContainer"]
+margin_left = 108.0
+margin_right = 225.0
+margin_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Create New Crew"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+crew_setup_sceen = ExtResource( 15 )
+
 [node name="GUI Layer" type="CanvasLayer" parent="ViewportContainer/Viewport"]
 layer = 6
 
@@ -114,3 +164,7 @@ color = Color( 0, 0, 0, 0.815686 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="ViewportContainer/Viewport/Screen Layer/MainScreen/Settings/VBoxContainer/LoadButton" to="ViewportContainer/Viewport/Screen Layer/MainScreen/Settings/VBoxContainer/LoadButton" method="_on_LoadButton_pressed"]
+[connection signal="pressed" from="ViewportContainer/Viewport/Screen Layer/MainScreen/Settings/VBoxContainer/SaveButton" to="ViewportContainer/Viewport/Screen Layer/MainScreen/Settings/VBoxContainer/SaveButton" method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="ViewportContainer/Viewport/Screen Layer/MainScreen/Settings/VBoxContainer/CreateNewCrewButton" to="ViewportContainer/Viewport/Screen Layer/MainScreen/Settings/VBoxContainer/CreateNewCrewButton" method="_on_CreateNewCrewButton_pressed"]

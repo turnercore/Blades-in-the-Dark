@@ -1,9 +1,6 @@
 class_name Clock
 extends Control
 
-
-
-
 export (Texture) var FOUR_CLOCK_TEXTURE_UNDER
 export (Texture) var FOUR_CLOCK_TEXTURE_OVER
 export (Texture) var SIX_CLOCK_TEXTURE_UNDER
@@ -13,23 +10,23 @@ export (Texture) var EIGHT_CLOCK_TEXTURE_OVER
 export (Texture) var TWELVE_CLOCK_TEXTURE_UNDER
 export (Texture) var TWELVE_CLOCK_TEXTURE_OVER
 
-export (NodePath) onready var tween = get_node(tween) as Tween
-export (NodePath) onready var segments = get_node(segments) as Label
-export (NodePath) onready var filled_label = get_node(filled_label) as Label
-export (NodePath) onready var clock_texture = get_node(clock_texture) as TextureProgress
-export (NodePath) onready var clock_line_edit = get_node(clock_line_edit) as LineEdit
-export (NodePath) onready var lock_texture = get_node(lock_texture) as TextureRect
-export (NodePath) onready var unlocked_by_container = get_node(unlocked_by_container) as Container
-export (NodePath) onready var unlocked_by_clock_label = get_node(unlocked_by_clock_label) as Label
-export (NodePath) onready var unlocks_clock_label = get_node(unlocks_clock_label) as Label
+export (NodePath) onready var tween = get_node(tween) as Tween if tween is NodePath else tween
+export (NodePath) onready var segments = get_node(segments) as Label if segments is NodePath else segments
+export (NodePath) onready var filled_label = get_node(filled_label) as Label if filled_label is NodePath else filled_label
+export (NodePath) onready var clock_texture = get_node(clock_texture) as TextureProgress if clock_texture is NodePath else clock_texture
+export (NodePath) onready var clock_line_edit = get_node(clock_line_edit) as LineEdit if clock_line_edit is NodePath else clock_line_edit
+export (NodePath) onready var lock_texture = get_node(lock_texture) as TextureRect if lock_texture is NodePath else lock_texture
+export (NodePath) onready var unlocked_by_container = get_node(unlocked_by_container) as Container if unlocked_by_container is NodePath else unlocked_by_container
+export (NodePath) onready var unlocked_by_clock_label = get_node(unlocked_by_clock_label) as Label if unlocked_by_clock_label is NodePath else unlocked_by_clock_label
+export (NodePath) onready var unlocks_clock_label = get_node(unlocks_clock_label) as Label if unlocks_clock_label is NodePath else unlocks_clock_label
 
-var clock_name:String = name setget _set_clock_name
-var locked: = false setget _set_locked
+export var clock_name:String = name setget _set_clock_name
+export var locked: = false setget _set_locked
 var unlocked_by_clock setget _set_unlocked_by_clock
 var unlocks_clock setget _set_unlocks_clock
-var filled: = 0 setget _set_filled
-var max_value: = 4 setget _set_max_value
-var is_secret: bool = false setget _set_is_secret
+export var filled: = 0 setget _set_filled
+export var max_value: = 4 setget _set_max_value
+export var is_secret: bool = false setget _set_is_secret
 
 signal filled
 signal unfilled
@@ -59,7 +56,7 @@ func lock()->void:
 
 
 func _set_locked(value: bool)->void:
-	var locked_check_box: = 	$CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer/LockCheckBox
+	var locked_check_box: = $CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer/LockCheckBox
 	locked = value
 	locked_check_box.pressed = value
 
@@ -258,4 +255,5 @@ func _on_DisconnectButton_pressed() -> void:
 func _on_DeleteButton_pressed() -> void:
 	if unlocked_by_clock: unlocked_by_clock.clear_unlocks_clock()
 	if unlocks_clock: unlocks_clock.clear_unlocked_by_clock()
-	self.queue_free()
+
+	queue_free()
