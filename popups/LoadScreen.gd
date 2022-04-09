@@ -1,43 +1,42 @@
 extends Popup
 
-onready var saves_list: = $LoadContainer/SavesList
-onready var SAVE_FOLDER = GameSaver.SAVE_FOLDER
-var save_files: = []
-
+onready var saves_list: = $LoadContainer/PanelContainer/ScrollContainer/SavesList
+onready var cancel_button: = $LoadContainer/PanelContainer/ScrollContainer/SavesList/CancelButton
+var on_start_screen:= false
 
 func _ready()->void:
-	save_files = list_files_in_directory(SAVE_FOLDER)
-	for file in save_files:
+	var dir:= Directory.new()
+	var folders:Array = Globals.list_folders_in_directory(GameSaver.SAVE_FOLDER)
+
+	for folder in folders:
+		if folder.begins_with("chat"): continue
+		if folder.ends_with(".tres"): continue
+
+		dir.open(folder)
 		var button: = Button.new()
-		var file_parts:PoolStringArray = file.split("_", false, 2)
-		var file_id:String = file_parts[1].replace(".tres", "")
-		button.text = file_id
-		button.connect("pressed", self, "_button_clicked", [file_id])
+		var save_id:String = folder
+		var button_text: = save_id.capitalize()
+		button.text = button_text
+		button.connect("pressed", self, "_button_clicked", [save_id])
 		saves_list.add_child(button)
+		saves_list.move_child(cancel_button, saves_list.get_child_count())
 
 
 func _button_clicked(id: String)-> void:
-	GameSaver.load_save(id)
+	GameSaver.load_all(id)
+	print("load game id: " + id)
+	Events.emit_signal("popup_finished")
+	if on_start_screen:
+		get_tree().change_scene(Globals.GAME_SCENE_PATH)
+	else:
+		queue_free()
+
+
+func _on_LoadScreen_popup_hide() -> void:
 	Events.emit_signal("popup_finished")
 	queue_free()
 
 
-func list_files_in_directory(path):
-	var files: = []
-	var dir: = Directory.new()
-	dir.open(path)
-	dir.list_dir_begin()
-
-	while true:
-		var file = dir.get_next()
-		if file == "": break
-		elif file.ends_with(".tres") and not file.begins_with("."):
-			files.append(file)
-
-	dir.list_dir_end()
-	return files
-
-
-func _on_LoadScreen_popup_hide() -> void:
+func _on_CancelButton_pressed() -> void:
 	Events.emit_signal("popup_finished")
 	queue_free()

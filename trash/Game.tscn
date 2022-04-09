@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://trash/Game.gd" type="Script" id=1]
-[ext_resource path="res://trash/MainScreen.gd" type="Script" id=2]
+[ext_resource path="res://game/MainScreen.gd" type="Script" id=2]
 [ext_resource path="res://main/SaveTimer.gd" type="Script" id=3]
-[ext_resource path="res://GameTheme.tres" type="Theme" id=4]
-[ext_resource path="res://Controls.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Shared/theme/GameTheme.tres" type="Theme" id=4]
+[ext_resource path="res://game/Controls.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Crew/Crew.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Chat/Chat.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Progress Clocks.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Popup Layer.gd" type="Script" id=9]
+[ext_resource path="res://clocks/Progress Clocks.tscn" type="PackedScene" id=8]
+[ext_resource path="res://popups/Popup Layer.gd" type="Script" id=9]
 
 [node name="GameMargin" type="MarginContainer"]
 anchor_right = 1.0

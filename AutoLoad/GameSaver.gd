@@ -1,8 +1,9 @@
 extends Node
 
-const SAVE_INTERVAL: = 1
 const DEFAULT_SRD: = 'res://srd/default_srd.json'
 const DEFAULT_SAVE_ID: = "default"
+
+var save_interval:float
 var version = ProjectSettings.get_setting("application/config/version")
 var current_save_id: = DEFAULT_SAVE_ID
 
@@ -10,8 +11,9 @@ onready var debug:bool = ProjectSettings.get_setting("debug/settings/debug")
 onready var SAVE_FOLDER:String = "res://debug/save" if debug else "user://save"
 onready var srd_json: = DEFAULT_SRD
 
-var save_on_interval: = false
+var save_on_interval: = false setget _set_save_on_interval
 var data_changed: = false
+var save_timer:Timer
 
 signal save_loaded(save_game)
 signal crew_loaded(crew_playbook)
@@ -20,15 +22,13 @@ signal game_saved
 
 
 func _ready() -> void:
-	var dir: = Directory.new()
-	if not dir.dir_exists(SAVE_FOLDER+current_save_id): dir.make_dir_recursive(SAVE_FOLDER+current_save_id)
 	if save_on_interval: setup_save_timer()
 
 
 func setup_save_timer()-> void:
-	var save_timer: Timer = Timer.new()
+	save_timer = Timer.new()
 	save_timer.one_shot = false
-	save_timer.wait_time = SAVE_INTERVAL
+	save_timer.wait_time = save_interval
 	save_timer.connect("timeout", self, "_on_save_timer_timeout")
 	add_child(save_timer)
 	save_timer.start()
@@ -70,43 +70,49 @@ func load_save(id:= current_save_id, folder:= SAVE_FOLDER):
 func load_crew_playbook(save_id:= current_save_id, save_folder:= SAVE_FOLDER)-> void:
 	var dir: = Directory.new()
 	var crew_playbook: = CrewPlaybook.new()
-	var crew_file_path:String = save_folder + "/" + save_id
+	var crew_file_path:String = save_folder + "/" + save_id + "/crew"
 	if not dir.dir_exists(crew_file_path): dir.make_dir_recursive(crew_file_path)
-	var crew_file:String = crew_file_path.plus_file("crew.tres")
+	var crew_list: Array = Globals.list_files_in_directory(crew_file_path)
+	print(crew_list)
+	var crew_file_name:String = "crew.tres"
+	if crew_list.size() > 1:
+		print("multiple crew files found, don't have it set up for that, picking first one sorry not sorry...")
+	if crew_list.size() > 0:
+		crew_file_name = crew_list.front()
+	var crew_file:String = crew_file_path.plus_file(crew_file_name)
 
 	var file: File = File.new()
-	if file.file_exists(crew_file_path):
-		crew_playbook = ResourceLoader.load(crew_file_path)
+	if file.file_exists(crew_file):
+		crew_playbook = ResourceLoader.load(crew_file)
 		print("loaded crew from file")
 	else:
-		print(crew_file_path)
+		print(crew_file)
 		print("no crew file found, creating new crew")
 
 	emit_signal("crew_loaded", crew_playbook)
 
-
-func load_pc_playbooks(save_id:=current_save_id, save_folder:=SAVE_FOLDER)-> void:
-	var pc_playbooks:Dictionary
+#untested
+func load_pc_playbooks(id:=current_save_id, save_folder:=SAVE_FOLDER)-> void:
+	var pc_playbooks:Array
 
 	var dir: = Directory.new()
-	var file_dir:String = save_folder + "/" + save_id + "/players"
+	var file_dir:String = save_folder + "/" + id + "/pc_playbooks"
 	if not dir.dir_exists(file_dir): dir.make_dir_recursive(file_dir)
 
 	var save_files = Globals.list_files_in_directory(file_dir)
 	for file in save_files:
-		var pc_file_path:String = save_folder + "/" + save_id + "/players".plus_file(file)
-		if not "roster" in pc_playbooks: pc_playbooks["roster"] = []
-		pc_playbooks["roster"].append(ResourceLoader.load(pc_file_path))
+		var pc_file_path:String = file_dir.plus_file(file)
+		pc_playbooks.append(ResourceLoader.load(pc_file_path))
 
 	emit_signal("pc_playbooks_loaded", pc_playbooks)
 
-
+#untested
 func load_all(id:= current_save_id, folder:= SAVE_FOLDER)-> void:
 	load_save(id, folder)
 	load_crew_playbook(id, folder)
 	load_pc_playbooks(id, folder)
 
-
+#works
 func save(resource = null, id: = current_save_id, overwrite: = true)->void:
 	if not resource:
 		print("must have something to save")
@@ -119,7 +125,7 @@ func save(resource = null, id: = current_save_id, overwrite: = true)->void:
 	elif resource is Dictionary or resource is Array or resource is PlayerPlaybook:
 		save_pc_playbooks(resource, id, overwrite)
 
-
+#works
 func save_game(save_game:SaveGame, id:= current_save_id, overwrite:=true)-> bool:
 	var dir: = Directory.new()
 
@@ -150,7 +156,7 @@ func save_game(save_game:SaveGame, id:= current_save_id, overwrite:=true)-> bool
 		emit_signal("game_saved")
 		return true
 
-
+#works
 func save_crew(crew_playbook:CrewPlaybook, id:= current_save_id, overwrite:=true) -> bool:
 	var dir: = Directory.new()
 	var save_path:String = SAVE_FOLDER+"/"+id+"/crew"
@@ -176,7 +182,7 @@ func save_crew(crew_playbook:CrewPlaybook, id:= current_save_id, overwrite:=true
 	else:
 		return true
 
-
+#works (I think)
 func save_pc_playbooks(pc_playbooks, id:= current_save_id, overwrite: = true)-> bool:
 	var playbooks: = []
 	var is_an_error: = false
@@ -190,10 +196,13 @@ func save_pc_playbooks(pc_playbooks, id:= current_save_id, overwrite: = true)-> 
 		else: print("no roster to save")
 	elif pc_playbooks is Array:
 		playbooks.append_array(pc_playbooks)
-
+	print(playbooks)
+	var dir: = Directory.new()
 	for playbook in playbooks:
+		print(playbook)
 		#Save the playbook in folder
 		var save_path:String = SAVE_FOLDER+"/"+id+"/pc_playbooks"
+		if not dir.dir_exists(save_path): dir.make_dir_recursive(save_path)
 		var escaped_name:String = playbook.name.strip_edges().c_escape().strip_escapes()
 		var save_file:String = save_path.plus_file(escaped_name+".tres")
 
@@ -234,3 +243,14 @@ func _on_save_timer_timeout()-> void:
 	if data_changed:
 		GameData.save_all()
 		data_changed = false
+
+
+func _set_save_on_interval(value:bool)-> void:
+	if value:
+		if save_timer:
+			save_timer.wait_time = save_interval
+			save_timer.start(save_interval)
+		else: setup_save_timer()
+	else:
+		if save_timer:
+			save_timer.stop()

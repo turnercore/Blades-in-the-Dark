@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Shared/ExpPoint.gd" type="Script" id=1]
-[ext_resource path="res://Icons/Screen Shot 2022-03-16 at 1.13.41 PM.png" type="Texture" id=2]
-[ext_resource path="res://Icons/Screen Shot 2022-03-16 at 1.13.05 PM.png" type="Texture" id=3]
+[ext_resource path="res://Shared/Art/Icons/Screen Shot 2022-03-16 at 1.13.41 PM.png" type="Texture" id=2]
+[ext_resource path="res://Shared/Art/Icons/Screen Shot 2022-03-16 at 1.13.05 PM.png" type="Texture" id=3]
 
 [node name="ExpPoint" type="TextureButton"]
 anchor_right = 1.0

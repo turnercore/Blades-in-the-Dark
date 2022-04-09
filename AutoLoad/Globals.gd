@@ -1,7 +1,10 @@
-extends Node
+class_name Globals
+extends Reference
 
 #This is being used for the new game popup
-const GAME_SCENE_PATH: = "res://Game.tscn"
+const GAME_SCENE_PATH: = "res://game/Game.tscn"
+
+
 #Unsure if this is being used
 var popup_layer: CanvasLayer
 
@@ -28,6 +31,24 @@ func list_files_in_directory(path:String)->Array:
 
 	dir.list_dir_end()
 	return files
+
+func list_folders_in_directory(path:String)->Array:
+	var folders: = []
+	var dir:= Directory.new()
+	if dir.open(path) == OK:
+		dir.list_dir_begin()
+		var file_name:String = dir.get_next()
+		while file_name != "":
+			if dir.current_is_dir():
+				print("Found directory: " + file_name)
+				if not file_name.begins_with("."):
+					folders.append(file_name)
+			else:
+				print("Found file: " + file_name)
+			file_name = dir.get_next()
+	else:
+		print("An error occurred when trying to access the path.")
+	return folders
 
 
 func get_all_children_in_group_recursive(node: Node, group: String)->Array:

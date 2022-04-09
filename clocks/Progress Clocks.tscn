@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://clocks/Progress Clocks.gd" type="Script" id=1]
+[ext_resource path="res://clocks/Clock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Shared/theme/GameTheme.tres" type="Theme" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 25.0
+content_margin_right = 25.0
+content_margin_top = 25.0
+content_margin_bottom = 25.0
+bg_color = Color( 0, 0.027451, 0.211765, 0.890196 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[node name="Progress Clocks" type="ScrollContainer"]
+anchor_bottom = 1.0
+margin_right = 50.0
+rect_min_size = Vector2( 750, 0 )
+rect_clip_content = false
+custom_styles/bg = SubResource( 1 )
+follow_focus = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+clock_scene = ExtResource( 2 )
+
+[node name="Clocks" type="GridContainer" parent="."]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 96.0
+margin_bottom = 50.0
+theme = ExtResource( 3 )
+columns = 3
+
+[node name="AddClock" type="Button" parent="Clocks"]
+margin_right = 71.0
+margin_bottom = 25.0
+text = "Add Clock"
+
+[connection signal="pressed" from="Clocks/AddClock" to="." method="_on_AddClock_pressed"]

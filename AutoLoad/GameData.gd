@@ -1,15 +1,16 @@
 extends Node
 
 export (Resource) var crew_playbook = null
-export (Dictionary) var pc_playbooks: = {
+export (Dictionary) var pc_playbooks:Dictionary
+#{
 	#Has player ID as key
-	"player_id": PlayerPlaybook.new(),
+	#"player_id": PlayerPlaybook.new(),
 	#Roster is an array of inactive playbooks
-	"roster": [
+	#"roster": [
 #		PlayerPlaybook,
 #		PlayerPlaybook
-	]
-}
+	#]
+#}
 
 export (Resource) var save_game setget _set_save_game
 var srd
@@ -37,10 +38,7 @@ signal pc_playbooks_changed
 
 func _ready() -> void:
 	connect_to_signals()
-
-	if not "roster" in pc_playbooks:
-		pc_playbooks["roster"] = []
-	else:
+	if pc_playbooks and "roster" in pc_playbooks:
 		for playbook in pc_playbooks:
 			if not playbook is PlayerPlaybook: continue
 			if not playbook.is_connected("changed", self, "_on_playbook_updated"):
@@ -56,8 +54,16 @@ func connect_to_signals()-> void:
 		GameSaver.connect("pc_playbooks_loaded", self, "_on_pc_playbooks_loaded")
 
 
-func _on_pc_playbooks_loaded(playbooks:Dictionary)-> void:
-	pc_playbooks = playbooks
+func _on_pc_playbooks_loaded(playbooks:Array)-> void:
+	pc_playbooks = {}
+	if not pc_playbooks: pc_playbooks = {"roster": []}
+	elif not "roster" in pc_playbooks: pc_playbooks["roster"] = []
+	pc_playbooks["roster"] = playbooks
+
+	for playbook in playbooks:
+		if not playbook is PlayerPlaybook: continue
+		if not playbook.is_connected("changed", self, "_on_playbook_updated"):
+			playbook.connect("changed", self, "_on_playbook_updated", [playbook])
 
 
 func _on_playbook_updated(playbook:Playbook)->void:
@@ -83,8 +89,11 @@ func _set_clocks_being_saved(value: bool)-> void:
 
 #Save all current game data to disk. Package the data, push it to GameSaver
 func save_all()-> void:
-	print("Saving all data")
-	pass
+	var data: = []
+	save_clocks()
+	save_map()
+	data = [save_game, crew_playbook, pc_playbooks]
+	GameSaver.save_all(data)
 
 
 func add_pc_to_roster(pc:PlayerPlaybook)-> void:
