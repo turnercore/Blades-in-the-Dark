@@ -34,6 +34,8 @@ var clocks_being_saved: = false
 signal clocks_free
 signal crew_changed
 signal pc_playbooks_changed
+signal clocks_loaded(clocks)
+signal map_loaded(map)
 
 
 func _ready() -> void:
@@ -73,6 +75,10 @@ func _on_playbook_updated(playbook:Playbook)->void:
 func _on_save_loaded(save:SaveGame)->void:
 	self.save_game = save
 	self.srd = save.srd_data
+	self.clocks = save.clocks
+	emit_signal("clocks_loaded", clocks)
+	self.map = save.map
+	emit_signal("map_loaded", map)
 
 
 func _set_save_game(new_save: SaveGame)-> void:

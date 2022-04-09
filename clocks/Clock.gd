@@ -17,28 +17,42 @@ export (NodePath) onready var clock_texture = get_node(clock_texture) as Texture
 export (NodePath) onready var clock_line_edit = get_node(clock_line_edit) as LineEdit if clock_line_edit is NodePath else clock_line_edit
 export (NodePath) onready var lock_texture = get_node(lock_texture) as TextureRect if lock_texture is NodePath else lock_texture
 export (NodePath) onready var unlocked_by_container = get_node(unlocked_by_container) as Container if unlocked_by_container is NodePath else unlocked_by_container
-export (NodePath) onready var unlocked_by_clock_label = get_node(unlocked_by_clock_label) as Label if unlocked_by_clock_label is NodePath else unlocked_by_clock_label
+export (NodePath) onready var locked_by_clock_label = get_node(locked_by_clock_label) as Label if locked_by_clock_label is NodePath else locked_by_clock_label
 export (NodePath) onready var unlocks_clock_label = get_node(unlocks_clock_label) as Label if unlocks_clock_label is NodePath else unlocks_clock_label
 
+export (String) var id:String setget _set_id
 export var clock_name:String = name setget _set_clock_name
 export var locked: = false setget _set_locked
-var unlocked_by_clock setget _set_unlocked_by_clock
+var locked_by_clock setget _set_locked_by_clock
 var unlocks_clock setget _set_unlocks_clock
 export var filled: = 0 setget _set_filled
 export var max_value: = 4 setget _set_max_value
 export var is_secret: bool = false setget _set_is_secret
+var type:String
 
 signal filled
 signal unfilled
 signal name_changed(new_name)
 
+#		"id": 0,
+#		"clock_name": "",
+#		"filled": 0,
+#		"max_value": 4,
+#		"locked": false,
+#		"locked_by_clock": -1, #-1 if it's not locked by anything, otherwise clock id
+#		"unlocks_clock": -1,
+#		"type": "Obstacle Clock"
+#		"is_secret": false
 
 func _ready()->void:
 	self.max_value = 4
 	self.filled = 0
-	if not unlocked_by_clock:
+	if not locked_by_clock:
 		unlocked_by_container.visible = false
 
+
+func _set_id(value)-> void:
+	id = clock_name+"_"+str(value)
 
 func link_to_clock(clock: Clock)->void:
 	clock.linked_clock = self
@@ -111,14 +125,14 @@ func _set_unlocks_clock(value) -> void:
 		if unlocks_clock:
 			if value == unlocks_clock:
 				return
-		if unlocked_by_clock:
-			if value == unlocked_by_clock:
+		if locked_by_clock:
+			if value == locked_by_clock:
 				return
 
 	if unlocks_clock:
 		if unlocks_clock.is_connected("name_changed", self, "_on_unlocks_clock_name_change"):
 			unlocks_clock.disconnect("name_changed", self, "_on_unlocks_clock_name_change")
-		unlocks_clock.clear_unlocked_by_clock()
+		unlocks_clock.clear_locked_by_clock()
 
 	unlocks_clock = value
 
@@ -130,48 +144,48 @@ func _set_unlocks_clock(value) -> void:
 		unlocks_clock.connect("name_changed", self, "_on_unlocks_clock_name_change")
 	unlocks_clock_label.text = unlocks_clock.clock_name if unlocks_clock else ""
 
-func _set_unlocked_by_clock(value) -> void:
+func _set_locked_by_clock(value) -> void:
 	if value:
 		if unlocks_clock:
 			if value == unlocks_clock:
 				return
-		if unlocked_by_clock:
-			if value == unlocked_by_clock:
+		if locked_by_clock:
+			if value == locked_by_clock:
 				return
 
 
-	if unlocked_by_clock:
-		unlocked_by_clock_label.text = ""
+	if locked_by_clock:
+		locked_by_clock_label.text = ""
 		self.unlocked_by_container.visible = false
-		if unlocked_by_clock.is_connected("name_changed", self, "_on_unlocked_by_clock_name_change"):
-			unlocked_by_clock.disconnect("name_changed", self, "_on_unlocked_by_clock_name_change")
-		unlocked_by_clock.clear_unlocks_clock()
+		if locked_by_clock.is_connected("name_changed", self, "_on_locked_by_clock_name_change"):
+			locked_by_clock.disconnect("name_changed", self, "_on_locked_by_clock_name_change")
+		locked_by_clock.clear_unlocks_clock()
 
 
-	unlocked_by_clock = value
+	locked_by_clock = value
 
-	if not unlocked_by_clock:
+	if not locked_by_clock:
 		unlocked_by_container.visible = false
-		unlocked_by_clock_label.text = ""
+		locked_by_clock_label.text = ""
 		unlock()
 		return
 
 	else:
 		unlocked_by_container.visible = true
-	if not unlocked_by_clock.is_connected("name_changed", self, "_on_unlocked_by_clock_name_change"):
-		unlocked_by_clock.connect("name_changed", self, "_on_unlocked_by_clock_name_change")
-	if not unlocked_by_clock.is_connected("filled", self, "_on_unlocked_by_clock_filled"):
-		unlocked_by_clock.connect("filled", self, "_on_unlocked_by_clock_filled")
-	if not unlocked_by_clock.is_connected("unfilled", self, "_on_unlocked_by_clock_unfilled"):
-		unlocked_by_clock.connect("unfilled", self, "_on_unlocked_by_clock_unfilled")
-	unlocked_by_clock_label.text = unlocked_by_clock.clock_name
+	if not locked_by_clock.is_connected("name_changed", self, "_on_locked_by_clock_name_change"):
+		locked_by_clock.connect("name_changed", self, "_on_locked_by_clock_name_change")
+	if not locked_by_clock.is_connected("filled", self, "_on_locked_by_clock_filled"):
+		locked_by_clock.connect("filled", self, "_on_locked_by_clock_filled")
+	if not locked_by_clock.is_connected("unfilled", self, "_on_locked_by_clock_unfilled"):
+		locked_by_clock.connect("unfilled", self, "_on_locked_by_clock_unfilled")
+	locked_by_clock_label.text = locked_by_clock.clock_name
 
 
-func _on_unlocked_by_clock_filled()-> void:
+func _on_locked_by_clock_filled()-> void:
 	self.unlock()
 
 
-func _on_unlocked_by_clock_unfilled()-> void:
+func _on_locked_by_clock_unfilled()-> void:
 	self.lock()
 
 
@@ -179,17 +193,17 @@ func clear_unlocks_clock()-> void:
 	unlocks_clock = false
 	unlocks_clock_label.text = ""
 
-func clear_unlocked_by_clock()-> void:
-	unlocked_by_clock = false
-	unlocked_by_clock_label.text = ""
+func clear_locked_by_clock()-> void:
+	locked_by_clock = false
+	locked_by_clock_label.text = ""
 	unlocked_by_container.visible = false
 	unlock()
 
 func _on_unlocks_clock_name_change(new_name: String)->void:
 	unlocks_clock_label.text = new_name
 
-func _on_unlocked_by_clock_name_change(new_name: String)->void:
-	unlocked_by_clock_label.text = new_name
+func _on_locked_by_clock_name_change(new_name: String)->void:
+	locked_by_clock_label.text = new_name
 
 func change_clock_texture(node: TextureProgress, texture_over: Texture, texture_progress: Texture)->void:
 		node.texture_under = texture_progress
@@ -248,12 +262,12 @@ func _on_LockCheckBox_toggled(button_pressed: bool) -> void:
 
 
 func _on_DisconnectButton_pressed() -> void:
-	self.unlocked_by_clock = false
+	self.locked_by_clock = false
 	unlock()
 
 
 func _on_DeleteButton_pressed() -> void:
-	if unlocked_by_clock: unlocked_by_clock.clear_unlocks_clock()
-	if unlocks_clock: unlocks_clock.clear_unlocked_by_clock()
+	if locked_by_clock: locked_by_clock.clear_unlocks_clock()
+	if unlocks_clock: unlocks_clock.clear_locked_by_clock()
 
 	queue_free()

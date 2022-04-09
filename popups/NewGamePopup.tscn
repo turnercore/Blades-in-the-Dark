@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Shared/theme/GameTheme.tres" type="Theme" id=1]
 [ext_resource path="res://settings/CreateNewCrewButton.gd" type="Script" id=2]
 [ext_resource path="res://popups/NewGamePopup.gd" type="Script" id=3]
 [ext_resource path="res://popups/CrewSetup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shared/theme/menu.tres" type="StyleBox" id=5]
 
 [node name="NewGamePopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -32,23 +34,25 @@ margin_top = 75.0
 margin_right = 874.0
 margin_bottom = 525.0
 rect_min_size = Vector2( 250, 250 )
+theme = ExtResource( 1 )
+custom_styles/panel = ExtResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PopupPanel"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 723.0
-margin_bottom = 449.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 714.0
+margin_bottom = 440.0
 custom_constants/separation = 40
 
 [node name="Label" type="Label" parent="MarginContainer/PopupPanel/VBoxContainer"]
-margin_right = 722.0
+margin_right = 704.0
 margin_bottom = 24.0
 text = "New Game"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PopupPanel/VBoxContainer"]
 margin_top = 64.0
-margin_right = 722.0
+margin_right = 704.0
 margin_bottom = 93.0
 
 [node name="Label" type="Label" parent="MarginContainer/PopupPanel/VBoxContainer/HBoxContainer"]
@@ -59,16 +63,16 @@ text = "Save Game ID:"
 
 [node name="TextEdit" type="LineEdit" parent="MarginContainer/PopupPanel/VBoxContainer/HBoxContainer"]
 margin_left = 118.0
-margin_right = 722.0
+margin_right = 704.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 align = 1
 placeholder_text = "Save Game ID"
 
 [node name="CreateNewCrewButton" type="Button" parent="MarginContainer/PopupPanel/VBoxContainer"]
-margin_left = 302.0
+margin_left = 293.0
 margin_top = 133.0
-margin_right = 419.0
+margin_right = 410.0
 margin_bottom = 158.0
 size_flags_horizontal = 4
 size_flags_vertical = 4

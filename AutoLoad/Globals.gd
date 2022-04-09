@@ -1,5 +1,4 @@
-class_name Globals
-extends Reference
+extends Node
 
 #This is being used for the new game popup
 const GAME_SCENE_PATH: = "res://game/Game.tscn"

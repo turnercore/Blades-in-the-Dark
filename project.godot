@@ -44,11 +44,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Shared/classes/CrewPlaybook.gd"
 }, {
-"base": "Reference",
-"class": "Globals",
-"language": "GDScript",
-"path": "res://AutoLoad/Globals.gd"
-}, {
 "base": "Control",
 "class": "Map",
 "language": "GDScript",
@@ -92,7 +87,6 @@ _global_script_class_icons={
 "ClaimTreeConnector": "",
 "Clock": "",
 "CrewPlaybook": "",
-"Globals": "",
 "Map": "",
 "MarkerButton": "",
 "Markers": "",
@@ -114,9 +108,10 @@ config/version="0.35"
 
 [autoload]
 
+Globals="*res://AutoLoad/Globals.gd"
 Events="*res://AutoLoad/Events.gd"
-GameSaver="*res://AutoLoad/GameSaver.gd"
 GameData="*res://AutoLoad/GameData.gd"
+GameSaver="*res://AutoLoad/GameSaver.gd"
 
 [debug]
 
