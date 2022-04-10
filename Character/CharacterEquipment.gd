@@ -3,7 +3,7 @@ extends VBoxContainer
 export (PackedScene) var item_scene
 
 func _ready() -> void:
-	Events.connect("character_changed", self, "_on_playbook_loaded")
+	Events.connect("character_selected", self, "_on_playbook_loaded")
 
 func setup(playbook: Playbook)->void:
 	if not "items" in playbook: return

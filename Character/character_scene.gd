@@ -17,4 +17,4 @@ func _set_playbook(value: Playbook)-> void:
 
 
 func _on_Button_pressed() -> void:
-	Events.emit_character_changed(playbook)
+	Events.emit_character_selected(playbook)

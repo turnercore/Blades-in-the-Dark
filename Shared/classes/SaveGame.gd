@@ -13,6 +13,10 @@ export (Dictionary) var map: = {
 	Vector2(100,50): "Test Map Note"
 } setget _set_map
 
+
+export (Array) var maps:=[]
+
+
 export (Dictionary) var clocks  setget _set_clocks
 
 var needs_setup:bool = true

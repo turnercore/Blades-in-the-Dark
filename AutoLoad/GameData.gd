@@ -1,5 +1,7 @@
 extends Node
 
+const DEFAULT_MAP_IMAGE:= "res://maps/blades_detailedmap_highres.jpg"
+
 export (Resource) var crew_playbook = null
 export (Dictionary) var pc_playbooks:Dictionary
 #{
@@ -13,6 +15,9 @@ export (Dictionary) var pc_playbooks:Dictionary
 #}
 
 export (Resource) var save_game = SaveGame.new() setget _set_save_game
+
+var active_pc: PlayerPlaybook setget _set_active_pc
+
 var srd
 var clocks: = {
 #	"clock_0" : {
@@ -28,7 +33,17 @@ var clocks: = {
 #		}
 }
 
-var map:Dictionary
+var map:Dictionary = {
+	"map_index": 0,
+	"map_name": "Duskvol Full Map",
+	"image": DEFAULT_MAP_IMAGE,
+	"notes": {
+		Vector2(50, 50): {
+			"info_text": "Hello world WOO!",
+		}
+	}
+}
+
 var clocks_being_saved: = false
 
 signal clocks_free
@@ -50,7 +65,7 @@ func _ready() -> void:
 
 func connect_to_signals()-> void:
 	Events.connect("clock_updated", self,"_on_clock_updated")
-
+	Events.connect("map_created", self, "_on_map_created")
 	if not GameSaver.is_connected("save_loaded", self, "_on_save_loaded"):
 		GameSaver.connect("save_loaded", self, "_on_save_loaded")
 	if not GameSaver.is_connected("crew_loaded", self, "_on_crew_loaded"):
@@ -90,6 +105,7 @@ func _on_save_loaded(save:SaveGame)->void:
 	emit_signal("clocks_loaded", clocks)
 	self.map = save.map
 	emit_signal("map_loaded", map)
+	print('map-loaded')
 
 
 func _set_save_game(new_save: SaveGame)-> void:
@@ -151,3 +167,28 @@ func _on_crew_loaded(crew: CrewPlaybook)-> void:
 	if not crew.is_connected("changed", self, "_on_playbook_updated"):
 		crew.connect("changed", self, "_on_playbook_updated",[crew])
 	crew_playbook = crew
+
+
+func _set_active_pc(playbook: PlayerPlaybook)->void:
+	active_pc = playbook
+	Events.emit_character_selected(playbook)
+
+
+func _on_map_created(image_path: String)-> void:
+	var index: = 0
+	if "map_index" in map:
+		index = map.map_index
+		if save_game.maps.size() >= index:
+			map.map_index = save_game.maps.size()
+			save_game.maps.append(map)
+		else:
+			save_game.maps[index] = map
+	else:
+		map["map_index"] = save_game.maps.size()
+		save_game.maps.append(map)
+
+
+	map.notes = {}
+	map.map_name = "New Map"
+	map.image = image_path
+	emit_signal("map_loaded", map)

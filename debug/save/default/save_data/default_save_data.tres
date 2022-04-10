@@ -1,0 +1,30 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/SaveGame.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_save_id = "default"
+_save_folder = "res://debug/save"
+version = "0.35"
+map = {
+"notes": {
+Vector2( -572, -160 ): {
+"info_text": "Hello world",
+"location": Vector2( -572, -160 )
+},
+Vector2( 50, 50 ): {
+"info_text": "Hello world WOO!"
+},
+Vector2( 98, -156 ): {
+"info_text": "Hello world",
+"location": Vector2( 98, -156 )
+},
+Vector2( 610, -420 ): {
+"info_text": "Hello world",
+"location": Vector2( 610, -420 )
+}
+}
+}
+clocks = {
+}

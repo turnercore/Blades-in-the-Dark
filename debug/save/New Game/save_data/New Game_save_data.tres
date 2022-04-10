@@ -1,0 +1,104 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/SaveGame.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_save_id = "New Game"
+_save_folder = "res://debug/save"
+version = "0.4"
+map = {
+"name": "Duskvol",
+"notes": {
+Vector2( -16566, 5676 ): {
+"info_text": "Hello world",
+"location": Vector2( -16566, 5676 )
+},
+Vector2( -16214, 330 ): {
+"info_text": "Hello world",
+"location": Vector2( -16214, 330 )
+},
+Vector2( -16104, 2332 ): {
+"info_text": "Hello world",
+"location": Vector2( -16104, 2332 )
+},
+Vector2( -13376, 1144 ): {
+"info_text": "Hello world",
+"location": Vector2( -13376, 1144 )
+},
+Vector2( -8096, 5060 ): {
+"info_text": "Hello world",
+"location": Vector2( -8096, 5060 )
+},
+Vector2( -6116, 6534 ): {
+"info_text": "Hello world",
+"location": Vector2( -6116, 6534 )
+},
+Vector2( -5016, 2530 ): {
+"info_text": "Hello world",
+"location": Vector2( -5016, 2530 )
+},
+Vector2( -3014, -110 ): {
+"info_text": "Hello world",
+"location": Vector2( -3014, -110 )
+},
+Vector2( -241, 43 ): {
+"info_text": "Hello world",
+"location": Vector2( -241, 43 )
+},
+Vector2( -225.007, -200 ): {
+"info_text": "Hello world",
+"location": Vector2( -225.007, -200 )
+},
+Vector2( -220, -109 ): {
+"info_text": "Hello world",
+"location": Vector2( -220, -109 )
+},
+Vector2( -30.5546, -372.146 ): {
+"info_text": "Hello world",
+"location": Vector2( -30.5546, -372.146 )
+},
+Vector2( -6, 15 ): {
+"info_text": "Hello world",
+"location": Vector2( -6, 15 )
+},
+Vector2( 225, -220 ): {
+"info_text": "Hello world",
+"location": Vector2( 225, -220 )
+},
+Vector2( 353.367, 2.62476 ): {
+"info_text": "Hello world",
+"location": Vector2( 353.367, 2.62476 )
+},
+Vector2( 537.326, -262.387 ): {
+"info_text": "Hello world",
+"location": Vector2( 537.326, -262.387 )
+}
+},
+Vector2( 100, 50 ): "Test Map Note"
+}
+maps = [  ]
+clocks = {
+"clock_511": {
+"clock_name": "clock",
+"filled": 2,
+"id": "clock_511",
+"is_secret": false,
+"locked": false,
+"locked_by_clock": null,
+"max_value": 6,
+"type": 1,
+"unlocks_clock": null
+},
+"clock_687": {
+"clock_name": "clock",
+"filled": 1,
+"id": "clock_687",
+"is_secret": false,
+"locked": false,
+"locked_by_clock": null,
+"max_value": 4,
+"type": 1,
+"unlocks_clock": null
+}
+}

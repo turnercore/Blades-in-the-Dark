@@ -1,0 +1,123 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://settings/LoadButton.gd" type="Script" id=1]
+[ext_resource path="res://popups/LoadScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Shared/theme/menu.tres" type="StyleBox" id=3]
+[ext_resource path="res://settings/CreateNewCrewButton.gd" type="Script" id=4]
+[ext_resource path="res://settings/SaveButton.gd" type="Script" id=5]
+[ext_resource path="res://popups/CrewSetup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Shared/theme/GameTheme.tres" type="Theme" id=7]
+[ext_resource path="res://settings/QuitButton.gd" type="Script" id=8]
+[ext_resource path="res://settings/ChangeMapButton.gd" type="Script" id=9]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 250
+custom_constants/margin_top = 150
+custom_constants/margin_left = 250
+custom_constants/margin_bottom = 150
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="PanelContainer" parent="MarginContainer"]
+margin_left = 250.0
+margin_top = 150.0
+margin_right = 774.0
+margin_bottom = 450.0
+theme = ExtResource( 7 )
+custom_styles/panel = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Settings"]
+margin_left = 162.0
+margin_top = 81.0
+margin_right = 362.0
+margin_bottom = 219.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 10
+
+[node name="SaveButton" type="Button" parent="MarginContainer/Settings/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Save"
+script = ExtResource( 5 )
+
+[node name="LoadButton" type="Button" parent="MarginContainer/Settings/VBoxContainer"]
+margin_top = 37.0
+margin_right = 200.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Load"
+script = ExtResource( 1 )
+load_screen = ExtResource( 2 )
+
+[node name="ChangeMapButton" type="Button" parent="MarginContainer/Settings/VBoxContainer"]
+margin_top = 74.0
+margin_right = 200.0
+margin_bottom = 101.0
+text = "Change Map"
+script = ExtResource( 9 )
+file_dialog = NodePath("FileDialog")
+
+[node name="FileDialog" type="FileDialog" parent="MarginContainer/Settings/VBoxContainer/ChangeMapButton"]
+margin_left = -162.0
+margin_top = -155.0
+margin_right = 362.0
+margin_bottom = 145.0
+rect_min_size = Vector2( 400, 140 )
+window_title = "Open a map image"
+resizable = true
+dialog_text = "Select a map image"
+mode = 0
+current_dir = "res://maps/District Images"
+current_path = "res://maps/District Images/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateNewCrewButton" type="Button" parent="MarginContainer/Settings/VBoxContainer"]
+visible = false
+margin_top = 70.0
+margin_right = 117.0
+margin_bottom = 95.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Create New Crew"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+crew_setup_sceen = ExtResource( 6 )
+
+[node name="QuitButton" type="Button" parent="MarginContainer/Settings/VBoxContainer"]
+margin_top = 111.0
+margin_right = 200.0
+margin_bottom = 138.0
+text = "Quit"
+script = ExtResource( 8 )
+
+[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/SaveButton" to="MarginContainer/Settings/VBoxContainer/SaveButton" method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/LoadButton" to="MarginContainer/Settings/VBoxContainer/LoadButton" method="_on_LoadButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/ChangeMapButton" to="MarginContainer/Settings/VBoxContainer/ChangeMapButton" method="_on_ChangeMapButton_pressed"]
+[connection signal="file_selected" from="MarginContainer/Settings/VBoxContainer/ChangeMapButton/FileDialog" to="MarginContainer/Settings/VBoxContainer/ChangeMapButton" method="_on_FileDialog_file_selected"]
+[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/CreateNewCrewButton" to="MarginContainer/Settings/VBoxContainer/CreateNewCrewButton" method="_on_CreateNewCrewButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/QuitButton" to="MarginContainer/Settings/VBoxContainer/QuitButton" method="_on_QuitButton_pressed"]

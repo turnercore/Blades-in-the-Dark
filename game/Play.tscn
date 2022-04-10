@@ -29,19 +29,13 @@ __meta__ = {
 }
 mini_viewport = NodePath("PlayLayer/PlayControls/VBoxContainer3/MiniMap/ViewportContainer/Viewport")
 mini_camera = NodePath("PlayLayer/PlayControls/VBoxContainer3/MiniMap/ViewportContainer/Viewport/MiniMapCamera")
-main_camera = NodePath("MainCamera")
 mini_map = NodePath("PlayLayer/PlayControls/VBoxContainer3/MiniMap")
 map = NodePath("Map")
-
-[node name="MainCamera" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 2, 2 )
-smoothing_enabled = true
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
 
 [node name="PlayLayer" type="CanvasLayer" parent="."]
-layer = 3
+layer = 0
 
 [node name="PlayControls" type="HBoxContainer" parent="PlayLayer"]
 anchor_right = 1.0

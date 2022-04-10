@@ -1,4 +1,4 @@
-extends PanelContainer
+extends WindowDialog
 
 const id: int = 1
 
@@ -34,6 +34,11 @@ func _ready() -> void:
 	self.visible = true
 	setup()
 	connect_to_detection_recursive(self)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("open_chat"):
+		popup_centered_clamped()
 
 
 func connect_to_detection_recursive(node:Node)->void:
@@ -209,3 +214,11 @@ func _on_Chat_focus_entered() -> void:
 func _on_Chat_focus_exited() -> void:
 	set_transparency(true)
 	Events.emit_signal("chat_deselected")
+
+
+func _on_HideButton_toggled(button_pressed: bool) -> void:
+	pass # Replace with function body.
+
+
+func _on_FullscreenButton_toggled(button_pressed: bool) -> void:
+	pass # Replace with function body.

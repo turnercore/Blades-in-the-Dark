@@ -1,42 +1,31 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://maps/MapNote.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/Map.gd" type="Script" id=3]
-[ext_resource path="res://maps/blades_detailedmap_highres.jpg" type="Texture" id=4]
 [ext_resource path="res://game/cursor.gd" type="Script" id=5]
 [ext_resource path="res://Shared/Art/Icons/icon.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 24.0416
 
-[node name="Map" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-focus_mode = 2
+[node name="Map" type="Node2D"]
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+scroll_speed = 600.0
+tween = NodePath("Tween")
+cursor = NodePath("Cursor")
+cursor_sprite = NodePath("Cursor/Sprite")
+notes = NodePath("MapGrid/Notes")
+camera = NodePath("Camera2D")
+map_texture = NodePath("MapGrid/MapTexture")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="MapTexture" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -4523.0
-margin_top = -6025.0
-margin_right = 4523.0
-margin_bottom = 6025.0
-mouse_filter = 0
-texture = ExtResource( 4 )
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Cursor" type="Area2D" parent="."]
+z_index = 10
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Cursor"]
@@ -50,10 +39,31 @@ shape = SubResource( 2 )
 position = Vector2( 0.5, 0.499997 )
 scale = Vector2( 2.55, 2.55 )
 
-[node name="Notes" type="Node" parent="."]
+[node name="MapGrid" type="TileMap" parent="."]
+cell_size = Vector2( 32, 32 )
+format = 1
 
-[node name="MapNote" parent="Notes" instance=ExtResource( 2 )]
-position = Vector2( 253, -74 )
+[node name="MapTexture" type="TextureRect" parent="MapGrid"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -4523.0
+margin_top = -6025.0
+margin_right = 4523.0
+margin_bottom = 6025.0
+mouse_filter = 0
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Notes" type="Node2D" parent="MapGrid"]
+
+[node name="MapNote" parent="MapGrid/Notes" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 439, 55 )
+z_index = 2
 
 [connection signal="area_entered" from="Cursor" to="Cursor" method="_on_cursor_area_entered"]
 [connection signal="area_exited" from="Cursor" to="Cursor" method="_on_cursor_area_exited"]

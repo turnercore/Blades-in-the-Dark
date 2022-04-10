@@ -8,8 +8,10 @@ onready var abilities: = $"PanelContainer/Skills/Special Abilities"
 onready var character_equipment: = $PanelContainer/Equipment/CharacterEquipment
 
 func _ready() -> void:
-	Events.connect("character_changed", self, "_on_character_changed")
-
+	Events.connect("character_selected", self, "_on_character_selected")
+	if GameData.active_pc:
+		self.playbook = GameData.active_pc
+		setup()
 
 
 func setup()-> void:
@@ -18,19 +20,12 @@ func setup()-> void:
 	character_equipment.setup(playbook)
 
 
-func propagate_set_playbook_recursive(node: Node)-> void:
-	if "playbook" in node and node != self:
-		node.set("playbook", playbook)
-	for child in node.get_children():
-		propagate_set_playbook_recursive(child)
-
-
-func _on_character_changed(character_playbook: PlayerPlaybook)-> void:
+func _on_character_selected(character_playbook: PlayerPlaybook)-> void:
 	self.playbook = character_playbook
 
 
 func _set_playbook(value: PlayerPlaybook)-> void:
 	playbook = value
-	propagate_set_playbook_recursive(self)
+	Globals.propagate_set_playbook_recursive(self, playbook, self)
 
 

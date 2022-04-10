@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Character/Roster.gd" type="Script" id=1]
 [ext_resource path="res://Character/character_scene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://popups/CreateCharacterPopup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Shared/theme/menu.tres" type="StyleBox" id=4]
 
 [node name="Roster" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -203.0
+margin_top = -147.5
+margin_right = 203.0
+margin_bottom = 147.5
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -18,28 +25,36 @@ create_character_popup = ExtResource( 3 )
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 593.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 396.0
+margin_bottom = 285.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer"]
-margin_right = 168.0
-margin_bottom = 29.0
+margin_right = 386.0
+margin_bottom = 275.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
 
 [node name="CharacterContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
-margin_right = 168.0
+margin_top = 122.0
+margin_right = 386.0
+margin_bottom = 122.0
 
 [node name="NewPlayerCharacterButton" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 4.0
-margin_right = 168.0
-margin_bottom = 29.0
+margin_top = 126.0
+margin_right = 386.0
+margin_bottom = 153.0
 text = "+ New Player Character +"
 
 [connection signal="pressed" from="PanelContainer/ScrollContainer/VBoxContainer/NewPlayerCharacterButton" to="." method="_on_NewPlayerCharacterButton_pressed"]

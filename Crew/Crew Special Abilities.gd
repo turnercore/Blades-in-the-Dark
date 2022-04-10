@@ -11,7 +11,7 @@ func _ready() -> void:
 		AbilityTypes.Crew:
 			Events.connect("crew_loaded", self, "_on_playbook_loaded")
 		AbilityTypes.PC:
-			Events.connect("character_changed", self, "_on_playbook_loaded")
+			Events.connect("character_selected", self, "_on_playbook_loaded")
 
 func setup(playbook:Playbook)->void:
 	for ability_name in playbook.abilities.keys():
@@ -28,5 +28,4 @@ func _on_playbook_loaded(playbook: Playbook)-> void:
 	for child in ability_list.get_children():
 		if child is AbilityContainer:
 			child.queue_free()
-
 	setup(playbook)

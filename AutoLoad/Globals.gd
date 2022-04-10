@@ -5,6 +5,7 @@ const GAME_SCENE_PATH: = "res://game/Game.tscn"
 const GAME_SCENE:PackedScene = preload(GAME_SCENE_PATH)
 
 enum CLOCK_TYPE {
+	ALL,
 	OBSTACLE,
 	HEALING,
 	LONG_TERM_PROJECT,
@@ -12,10 +13,6 @@ enum CLOCK_TYPE {
 	PC_PROJECT,
 	FACTION_PROJECT
 }
-
-#Unsure if this is being used
-var popup_layer: CanvasLayer
-
 
 #Helper Functions
 func propagate_set_playbook_recursive(node: Node, playbook: Playbook, starting_node: Node)-> void:

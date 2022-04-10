@@ -1,19 +1,18 @@
 extends Node
 
-var active_character:PlayerPlaybook setget _set_active_character
-
+export (NodePath) onready var roster = get_node(roster) as Control
+export (NodePath) onready var clock_screen = get_node(clock_screen) as Control
 
 func _ready() -> void:
-	Events.connect("character_changed", self, "_on_character_change")
 	if GameData.pc_playbooks and "roster" in GameData.pc_playbooks:
-		$"ViewportContainer/Viewport/Screen Layer/MainScreen/Roster".setup(GameData.pc_playbooks.roster)
-	if not GameData.clocks.empty():
-		$'ViewportContainer/Viewport/Screen Layer/MainScreen/Progress Clocks'.add_loaded_clocks(GameData.clocks)
+		roster.setup(GameData.pc_playbooks.roster)
+	if GameData.clocks:
+		 clock_screen.add_loaded_clocks(GameData.clocks)
+	if GameData.map:
+		yield(get_tree(), "idle_frame")
+		GameData.emit_signal("map_loaded", GameData.map)
 
-func _set_active_character(value: PlayerPlaybook)-> void:
-	active_character = value
-	Events.emit_character_changed(value)
 
-
-func _on_character_change(character: PlayerPlaybook)-> void:
-	active_character = character
+func _on_MainScreenButtons_mouse_entered() -> void:
+	#This is where I need to disable the map interactions and other shit
+	pass

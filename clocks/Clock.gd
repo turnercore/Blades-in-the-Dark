@@ -22,6 +22,8 @@ export (NodePath) onready var lock_texture = get_node(lock_texture) as TextureRe
 export (NodePath) onready var locked_by_container = get_node(locked_by_container) as Container
 export (NodePath) onready var locked_by_clock_label = get_node(locked_by_clock_label) as Label
 export (NodePath) onready var unlocks_clock_label = get_node(unlocks_clock_label) as Label
+export(NodePath) onready var clock_type_option = get_node(clock_type_option) as OptionButton
+
 
 export (String) var id:String setget _set_id
 export var clock_name:String = name setget _set_clock_name
@@ -32,6 +34,7 @@ export var filled: = 0 setget _set_filled
 export var max_value: = 4 setget _set_max_value
 export var is_secret: bool = false setget _set_is_secret
 var type:int setget _set_type
+onready var fill_color:Color = clock_texture.tint_progress setget _set_fill_color
 var clock_data: = {
 	"id": id,
 	"clock_name": clock_name,
@@ -41,7 +44,8 @@ var clock_data: = {
 	"locked_by_clock": locked_by_clock,
 	"unlocks_clock": unlocks_clock,
 	"type": type,
-	"is_secret": is_secret
+	"is_secret": is_secret,
+	"fill_color": fill_color
 }
 
 var is_setup:= false
@@ -50,15 +54,21 @@ var is_saving:= false
 signal filled
 signal unfilled
 signal name_changed(new_name)
+signal type_changed(type)
 
 func _ready()->void:
 	if not locked_by_clock:
 		locked_by_container.visible = false
 
+	for type in Globals.CLOCK_TYPE:
+		var type_str: String = str(type).to_lower().replace("_", " ").capitalize()
+		clock_type_option.add_item(type_str)
+
 
 func setup(new_clock_data:Dictionary)->void:
 	name = new_clock_data.clock_name
 	clock_name = new_clock_data.clock_name
+	clock_type_option.selected = new_clock_data.type
 	self.id = new_clock_data.id
 	for property in new_clock_data:
 		if property == "clock_name" or property == "id":
@@ -249,6 +259,7 @@ func _set_locked_by_clock(value) -> void:
 
 func _set_type(value)-> void:
 	type = value
+	emit_signal("type_changed", value)
 	save_clock()
 
 
@@ -354,3 +365,17 @@ func _on_DeleteButton_pressed() -> void:
 	if unlocks_clock: unlocks_clock.clear_locked_by_clock()
 	Events.emit_clock_updated(id, {})
 	queue_free()
+
+
+func _on_ClockTypeOption_item_selected(index: int) -> void:
+	self.type = index
+
+
+func _set_fill_color(color: Color)-> void:
+	fill_color = color
+	save_clock()
+
+
+func _on_ColorPickerButton_color_changed(color: Color) -> void:
+	self.fill_color = color
+	clock_texture.tint_progress = color

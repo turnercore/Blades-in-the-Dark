@@ -1,0 +1,651 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/CrewPlaybook.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = ""
+abilities = {
+"everyone_steals": {
+"ability": "Everyone Steals",
+"claimed": 0.0,
+"class": "shadows",
+"default": true,
+"effect": "Each PC may add +1 action rating to Prowl, Finesse, or Tinker (up to a max rating of 3)."
+},
+"ghost_echoes": {
+"ability": "Ghost Echoes",
+"claimed": 0.0,
+"class": "shadows",
+"default": true,
+"effect": "From weird experience or occult ritual, all crew members gain the ability to see and interact with the ghostly structures, streets, and objects within the echo of Doskvol that exists in the ghost field."
+},
+"pack_rats": {
+"ability": "Pack Rats",
+"claimed": 0.0,
+"class": "shadows",
+"default": true,
+"effect": "Your lair is a jumble of stolen items. When you roll to acquire an asset, take +1d."
+},
+"patron": {
+"ability": "Patron",
+"claimed": 0.0,
+"class": "shadows",
+"default": true,
+"effect": "When you advance your Tier, it costs half the coin it normally would. Who is your patron? Why do they help you? (Add the patron as a contact)"
+},
+"second_story": {
+"ability": "Second Story",
+"claimed": 0.0,
+"class": "shadows",
+"default": true,
+"effect": "When you execute a clandestine infiltration, you get +1d to the engagement roll."
+},
+"slippery": {
+"ability": "Slippery",
+"claimed": true,
+"class": "shadows",
+"default": true,
+"effect": "When you roll entanglements, roll twice and keep the one you want. When you reduce heat on the crew, take +1d."
+},
+"synchronized": {
+"ability": "Synchronized",
+"claimed": 0.0,
+"class": "shadows",
+"default": true,
+"effect": "When you perform a group action, you may count multiple 6s from different rolls as a critical success."
+},
+"veteran": {
+"ability": "Veteran",
+"claimed": 0.0,
+"class": "all",
+"default": true,
+"effect": "(3 Skill Points) Choose a special ability from another crew."
+}
+}
+coin = {
+"available": 0,
+"max": 4,
+"stash": 0
+}
+contacts = {
+"Adelaide Phroaig, a noble": {
+"class": "shadows",
+"contact": "Adelaide Phroaig, a noble",
+"default": true,
+"notes": null,
+"relationship": null
+},
+"Amancio, a deal broker": {
+"class": "shadows",
+"contact": "Amancio, a deal broker",
+"default": true,
+"notes": null,
+"relationship": null
+},
+"Dowler, an explorer": {
+"class": "shadows",
+"contact": "Dowler, an explorer",
+"default": true,
+"notes": null,
+"relationship": null
+},
+"Fitz, a collector": {
+"class": "shadows",
+"contact": "Fitz, a collector",
+"default": true,
+"notes": null,
+"relationship": null
+},
+"Laroze, a bluecoat": {
+"class": "shadows",
+"contact": "Laroze, a bluecoat",
+"default": true,
+"notes": null,
+"relationship": null
+},
+"Rigney, a tavern owner": {
+"class": "shadows",
+"contact": "Rigney, a tavern owner",
+"default": true,
+"notes": null,
+"relationship": null
+}
+}
+type = "shadows"
+notes = ""
+experience = {
+"playbook": 0
+}
+projects = {
+}
+stats = {
+"insight": {
+"hunt": 0,
+"study": 0,
+"survey": 0,
+"tinker": 0
+},
+"prowess": {
+"finesse": 0,
+"prowl": 0,
+"skirmish": 0,
+"wreck": 0
+},
+"resolve": {
+"attune": 0,
+"command": 0,
+"consort": 0,
+"sway": 0
+}
+}
+needs_setup = false
+heat = 0
+wanted_level = 0
+reputation = ""
+upgrades = {
+"Boat": {
+"catagory": "lair",
+"class": "all",
+"cost": 2.0,
+"default": true,
+"effect": "You have a boat, a dock on a waterway, and a small shack to store boating supplies. A second upgrade improves the boat with armor and more cargo capacity.",
+"upgrade": "Boat"
+},
+"Carriage": {
+"catagory": "lair",
+"class": "all",
+"cost": 2.0,
+"default": true,
+"effect": "You have a carriage, two goats to pull it, and a stable. A second upgrade improves the carriage with armor and larger, swifter goats. Horses are very rare in Doskvol—most carriages in the city use the large Akorosian goat as their draft animal.",
+"upgrade": "Carriage"
+},
+"Cohort": {
+"catagory": "special",
+"class": "all",
+"cost": 2.0,
+"default": true,
+"effect": null,
+"upgrade": "Cohort"
+},
+"Documents": {
+"catagory": "quality",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.
+So, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
+"upgrade": "Documents"
+},
+"Elite Rooks": {
+"catagory": "quality",
+"class": "shadows",
+"cost": 1.0,
+"default": true,
+"effect": null,
+"upgrade": "Elite Rooks"
+},
+"Elite Skulks": {
+"catagory": "quality",
+"class": "shadows",
+"cost": 1.0,
+"default": true,
+"effect": null,
+"upgrade": "Elite Skulks"
+},
+"Gear": {
+"catagory": "quality",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.
+So, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
+"upgrade": "Gear"
+},
+"Hidden": {
+"catagory": "lair",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "Your lair has a secret location and is disguised to hide it from view. If your lair is discovered, use two downtime activities and pay coin equal to your Tier to relocate it and hide it once again.",
+"upgrade": "Hidden"
+},
+"Implements": {
+"catagory": "quality",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.
+So, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
+"upgrade": "Implements"
+},
+"Insight": {
+"catagory": "training",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
+"upgrade": "Insight"
+},
+"Mastery": {
+"catagory": "training",
+"class": "all",
+"cost": 4.0,
+"default": true,
+"effect": "Your crew has access to master level training. You may advance your PCs’ action ratings to 4 (until you unlock this upgrade, PC action ratings are capped at 3). This costs four upgrade boxes to unlock.",
+"upgrade": "Mastery"
+},
+"Personal": {
+"catagory": "training",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
+"upgrade": "Personal"
+},
+"Prowess": {
+"catagory": "training",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
+"upgrade": "Prowess"
+},
+"Quarters": {
+"catagory": "lair",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "Your lair includes living quarters for the crew. Without this upgrade, each PC sleeps elsewhere, and is vulnerable when they do so.",
+"upgrade": "Quarters"
+},
+"Resolve": {
+"catagory": "training",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
+"upgrade": "Resolve"
+},
+"Secure": {
+"catagory": "lair",
+"class": "all",
+"cost": 2.0,
+"default": true,
+"effect": "Your lair has locks, alarms, and traps to thwart intruders. A second upgrade improves the defenses to include arcane measures that work against spirits. You might roll your crew’s Tier if these measures are ever put to the test, to see how well they thwart an intruder.",
+"upgrade": "Secure"
+},
+"Supplies": {
+"catagory": "quality",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.
+So, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
+"upgrade": "Supplies"
+},
+"Thief Rigging": {
+"catagory": "special",
+"class": "shadows",
+"cost": 1.0,
+"default": true,
+"effect": "(2 free load of tools or gear)",
+"upgrade": "Thief Rigging"
+},
+"Tools": {
+"catagory": "quality",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.
+So, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
+"upgrade": "Tools"
+},
+"Underground Maps & Passkeys": {
+"catagory": "special",
+"class": "shadows",
+"cost": 1.0,
+"default": true,
+"effect": null,
+"upgrade": "Underground Maps & Passkeys"
+},
+"Vault": {
+"catagory": "lair",
+"class": "all",
+"cost": 2.0,
+"default": true,
+"effect": "Your lair has a secure vault, increasing your storage capacity for coin to 8. A second upgrade increases your capacity to 16. A separate part of your vault can be used as a holding cell.",
+"upgrade": "Vault"
+},
+"Weapons": {
+"catagory": "quality",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.
+So, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
+"upgrade": "Weapons"
+},
+"Workshop": {
+"catagory": "lair",
+"class": "all",
+"cost": 1.0,
+"default": true,
+"effect": "Your lair has a workshop appointed with tools for tinkering and alchemy, as well as a small library of books, documents, and maps. You may accomplish long-term projects with these assets without leaving your lair.",
+"upgrade": "Workshop"
+}
+}
+lair = {
+"description": "",
+"location": "",
+"name": ""
+}
+hunting_grounds = {
+"description": "",
+"location": ""
+}
+cohorts = {
+}
+claims = {
+"c1": {
+"cell": "shadows_c1",
+"claim": "Interrogation Chamber",
+"class": "shadows",
+"connections": "e, s",
+"default": true,
+"effect": "You get +1d to gather information for a score.",
+"faction": "The Red Bunnies",
+"is_claimed": 0,
+"notes": null
+},
+"c10": {
+"cell": "shadows_c10",
+"claim": "Lookouts",
+"class": "shadows",
+"connections": "n, s, w",
+"default": true,
+"effect": "You get +1d to hunt or survey on your turf",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c11": {
+"cell": "shadows_c11",
+"claim": "Hagfish Farm",
+"class": "shadows",
+"connections": "n, e",
+"default": true,
+"effect": "When you use the reduce heat downtime activity after a score that involves killing, you get +1d to the roll and quiet, convenient disposal of any corpses you left on the job.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c12": {
+"cell": "shadows_c12",
+"claim": "Infirmary",
+"class": "shadows",
+"connections": "n",
+"default": true,
+"effect": "You get +1d to healing treatment rolls.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c13": {
+"cell": "shadows_c13",
+"claim": "Covert Drop",
+"class": "shadows",
+"connections": "n, e",
+"default": true,
+"effect": "You get +2 coin in payoff for scores that involve espionage or sabotage.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c14": {
+"cell": "shadows_c14",
+"claim": "Turf",
+"class": "shadows",
+"connections": "e, w",
+"default": true,
+"effect": "Gain a turf",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c15": {
+"cell": "shadows_c15",
+"claim": "Secret Pathways",
+"class": "shadows",
+"connections": "n, w",
+"default": true,
+"effect": "You get +1d to engagement roll for stealth plans.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c2": {
+"cell": "shadows_c2",
+"claim": "Turf",
+"class": "shadows",
+"connections": "w, e",
+"default": true,
+"effect": "Gain a turf",
+"faction": "The blue bunnies",
+"is_claimed": 0,
+"notes": null
+},
+"c3": {
+"cell": "shadows_c3",
+"claim": "Loyal Fence",
+"class": "shadows",
+"connections": "s, w",
+"default": true,
+"effect": "You get +2 coin in payoff for scores that involve burglary or robbery.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c4": {
+"cell": "shadows_c4",
+"claim": "Gambling Den",
+"class": "shadows",
+"connections": "s, e",
+"default": true,
+"effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c5": {
+"cell": "shadows_c5",
+"claim": "Tavern",
+"class": "shadows",
+"connections": "w, s",
+"default": true,
+"effect": "You get +1d to consort and sway rolls on-site.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c6": {
+"cell": "shadows_c6",
+"claim": "Drug Den",
+"class": "shadows",
+"connections": "n, e, s",
+"default": true,
+"effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c7": {
+"cell": "shadows_c7",
+"claim": "Informants",
+"class": "shadows",
+"connections": "e, s, w",
+"default": true,
+"effect": "You get +1d to gather information for a score.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c8": {
+"cell": "shadows_c8",
+"claim": "Lair",
+"class": "shadows",
+"connections": "n, e, s, w",
+"default": true,
+"effect": "Home sweet home",
+"faction": "Claimed",
+"is_claimed": 1,
+"notes": null
+},
+"c9": {
+"cell": "shadows_c9",
+"claim": "Turf",
+"class": "shadows",
+"connections": "n, e, w",
+"default": true,
+"effect": "Gain a turf",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+}
+}
+prison_claims = {
+"c1": {
+"cell": "prison_c1",
+"claim": "Parole Influence",
+"class": "prison",
+"connections": "e, s",
+"default": true,
+"effect": "Political pressures of various sorts can be applied to the magistrates and warden who oversee sentences for crimes. With this claim, you’re always able to arrange for a shorter prison stay—as if your wanted level was 1 lower. So, if your wanted level was 3 when you went in, you’d spend only several months behind bars (equivalent to level 2) instead of a full year.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c10": {
+"cell": "prision_c10",
+"claim": "Smuggling",
+"class": "prison",
+"connections": "n, e, w",
+"default": true,
+"effect": "You arrange smuggling channels inside. You have +2 load while incarcerated, (starting from zero as a prisoner). If you take this claim twice, you’ll have 4 load while you’re serving time in Ironhook. Also, you may choose to have 1 coin in place of a load item for purposes of bribes or acquiring assets while in prison. You may reset your prison load whenever your crew has downtime.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c11": {
+"cell": "prision_c11",
+"claim": "Allied Claim",
+"class": "prison",
+"connections": "n, e, w",
+"default": true,
+"effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c12": {
+"cell": "prision_c12",
+"claim": "Allied Claim",
+"class": "prison",
+"connections": "n, w",
+"default": true,
+"effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c2": {
+"cell": "prison_c2",
+"claim": "Smuggling",
+"class": "prison",
+"connections": "e, s, w",
+"default": true,
+"effect": "You arrange smuggling channels inside. You have +2 load while incarcerated, (starting from zero as a prisoner). If you take this claim twice, you’ll have 4 load while you’re serving time in Ironhook. Also, you may choose to have 1 coin in place of a load item for purposes of bribes or acquiring assets while in prison. You may reset your prison load whenever your crew has downtime.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c3": {
+"cell": "prison_c3",
+"claim": "Allied Claim",
+"class": "prison",
+"connections": "s, w",
+"default": true,
+"effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c4": {
+"cell": "prision_c4",
+"claim": "Cell Block Control",
+"class": "prison",
+"connections": "s",
+"default": true,
+"effect": "Your crew has a cell block under their total control—guards and all. You never take trauma from incarceration.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c5": {
+"cell": "prision_c5",
+"claim": "Guard Payoff",
+"class": "prison",
+"connections": "n, e, s",
+"default": true,
+"effect": "You claim several Ironhook prison guards on your payroll. Take +1d to your Tier roll when a member of your crew is incarcerated.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c6": {
+"cell": "prison_c6",
+"claim": "Prison",
+"class": "prison",
+"connections": "n, e, s, w",
+"default": true,
+"effect": "Home sweet home, for now.",
+"faction": "Claimed",
+"is_claimed": 1,
+"notes": null
+},
+"c7": {
+"cell": "prision_c7",
+"claim": "Guard Payoff",
+"class": "prison",
+"connections": "n, e, s, w",
+"default": true,
+"effect": "You claim several Ironhook prison guards on your payroll. Take +1d to your Tier roll when a member of your crew is incarcerated.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c8": {
+"cell": "prision_c8",
+"claim": "Allied Claim",
+"class": "prison",
+"connections": "n, s, w",
+"default": true,
+"effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c9": {
+"cell": "prision_c9",
+"claim": "Hardcase",
+"class": "prison",
+"connections": "n, e",
+"default": true,
+"effect": "Your reputation as a tough inmate bolsters your crew’s image in Duskwall. When your crew advances Tier, it costs 2 fewer coins than it normally would",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+}
+}
+map = {
+}

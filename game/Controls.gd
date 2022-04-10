@@ -16,7 +16,6 @@ func _ready() -> void:
 		for child in main_screen.get_children():
 			item_list.add_item(child.name)
 	connect_to_detection_recursive(self)
-	self.visible = true
 	hide_controls()
 
 

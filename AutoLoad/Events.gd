@@ -11,9 +11,9 @@ signal crew_loaded(playbook)
 func emit_crew_loaded(playbook: CrewPlaybook)-> void:
 	emit_signal("crew_loaded", playbook)
 
-signal character_changed(playbook)
-func emit_character_changed(playbook: Playbook)-> void:
-	emit_signal("character_changed", playbook)
+signal character_selected(playbook)
+func emit_character_selected(playbook: Playbook)-> void:
+	emit_signal("character_selected", playbook)
 
 signal main_screen_changed(screen)
 
@@ -41,3 +41,8 @@ signal chat_deselected
 signal clock_updated(id, clock_data)
 func emit_clock_updated(id:String, clock_data:Dictionary)->void:
 	emit_signal("clock_updated", id, clock_data)
+
+
+signal map_created(map_texture_path)
+func emit_map_created(map_texture_path:String)->void:
+	emit_signal("map_created", map_texture_path)

@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Control
 
 var current_screen: Node
 var screens: Dictionary = {}
@@ -25,5 +25,3 @@ func _on_main_screen_changed(screen: String) -> void:
 	screen = screen.to_lower()
 	if screens.has(screen):
 		change_screen_to(screen)
-	else:
-		change_screen_to("gameplay")

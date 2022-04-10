@@ -11,7 +11,7 @@ func _ready() -> void:
 		AbilityTypes.CREW:
 			Events.connect("crew_loaded", self, "_on_playbook_loaded")
 		AbilityTypes.PC:
-			Events.connect("character_changed", self, "_on_playbook_loaded")
+			Events.connect("character_selected", self, "_on_playbook_loaded")
 
 func setup(playbook:Playbook)->void:
 	for ability_name in playbook.abilities.keys():
