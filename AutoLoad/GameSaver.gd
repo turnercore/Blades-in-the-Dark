@@ -108,6 +108,7 @@ func load_pc_playbooks(id:=current_save_id, save_folder:=SAVE_FOLDER)-> void:
 
 #untested
 func load_all(id:= current_save_id, folder:= SAVE_FOLDER)-> void:
+	self.current_save_id = id
 	load_save(id, folder)
 	load_crew_playbook(id, folder)
 	load_pc_playbooks(id, folder)
@@ -184,6 +185,7 @@ func save_crew(crew_playbook:CrewPlaybook, id:= current_save_id, overwrite:=true
 
 #works (I think)
 func save_pc_playbooks(pc_playbooks, id:= current_save_id, overwrite: = true)-> bool:
+	print("Saving pc playbooks")
 	var playbooks: = []
 	var is_an_error: = false
 	if pc_playbooks is Playbook:

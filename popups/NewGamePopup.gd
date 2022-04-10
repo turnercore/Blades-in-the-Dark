@@ -19,6 +19,7 @@ func _on_CreateNewCrewButton_pressed() -> void:
 	GameSaver.save(new_save, save_game_id, false)
 
 
+
 func _on_TextEdit_text_changed(new_text: String) -> void:
 	self.save_game_id = new_text
 
@@ -26,3 +27,13 @@ func _on_TextEdit_text_changed(new_text: String) -> void:
 func _set_id(value:String)-> void:
 	var new_id = value.strip_edges().c_escape().strip_escapes()
 	save_game_id = new_id
+
+
+func _on_NewGamePopup_popup_hide() -> void:
+	Events.emit_signal("popup_finished")
+	queue_free()
+
+
+func _on_CancelButton_pressed() -> void:
+	Events.emit_signal("popup_finished")
+	queue_free()

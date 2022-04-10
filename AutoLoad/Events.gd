@@ -33,5 +33,11 @@ signal popup_finished
 signal map_scroll_speed_changed(scroll_speed)
 signal info_broadcasted(info)
 
+signal roster_updated
+
 signal chat_selected
 signal chat_deselected
+
+signal clock_updated(id, clock_data)
+func emit_clock_updated(id:String, clock_data:Dictionary)->void:
+	emit_signal("clock_updated", id, clock_data)

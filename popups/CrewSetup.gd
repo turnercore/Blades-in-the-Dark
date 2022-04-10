@@ -60,6 +60,8 @@ func _on_FinishedButton_pressed() -> void:
 	GameSaver.save(new_playbook)
 	GameSaver.emit_signal("crew_loaded", new_playbook)
 	Events.emit_signal("popup_finished")
-	if on_start_screen: get_tree().change_scene(Globals.GAME_SCENE_PATH)
+	if on_start_screen:
+		get_tree().change_scene_to(Globals.GAME_SCENE)
+#		get_tree().change_scene(Globals.GAME_SCENE_PATH)
 	else: queue_free()
 

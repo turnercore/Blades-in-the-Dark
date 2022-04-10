@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=2]
-
-[ext_resource path="res://Chat/ChatLog.gd" type="Script" id=1]
-
-[resource]
-script = ExtResource( 1 )
-version = "0.35"
-text = "
-: Farts and Otters"

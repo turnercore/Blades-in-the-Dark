@@ -16,6 +16,7 @@
 [ext_resource path="res://clocks/LinkClockPicker.tscn" type="PackedScene" id=14]
 
 [node name="Clock" type="MarginContainer" groups=["clocks"]]
+visible = false
 margin_right = 571.0
 margin_bottom = 378.0
 size_flags_horizontal = 4
@@ -38,7 +39,8 @@ filled_label = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxC
 clock_texture = NodePath("CenterContainer/HBoxContainer/ClockContainer/HBoxContainer/ClockTexture")
 clock_line_edit = NodePath("CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer/ClockName")
 lock_texture = NodePath("CenterContainer/HBoxContainer/ClockContainer/HBoxContainer/ClockTexture/LockTexture")
-unlocked_by_container = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer")
+locked_by_container = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer")
+locked_by_clock_label = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer/UnlockedByClockLabel")
 unlocks_clock_label = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer2/UnlocksClockLabel")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

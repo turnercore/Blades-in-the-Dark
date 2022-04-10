@@ -12,23 +12,23 @@ export (Dictionary) var pc_playbooks:Dictionary
 	#]
 #}
 
-export (Resource) var save_game setget _set_save_game
+export (Resource) var save_game = SaveGame.new() setget _set_save_game
 var srd
-var clocks: Array = [
-	#Clock data structure
-	{
-		"id": 0,
-		"name": "Doom Clock",
-		"filled": 0,
-		"max": 4,
-		"locked": false,
-		"locked_by": -1, #-1 if it's not locked by anything, otherwise clock id
-		"locking": -1,
-		"type": "Long Term Project"
-		}
-]
+var clocks: = {
+#	"clock_0" : {
+#		"id": "clock_0",
+#		"clock_name": "clock",
+#		"filled": 0,
+#		"max_value": 4,
+#		"locked": false,
+#		"locked_by_clock": null,
+#		"unlocks_clock": null,
+#		"type": Globals.CLOCK_TYPE.OBSTACLE,
+#		"is_secret": false
+#		}
+}
 
-var map
+var map:Dictionary
 var clocks_being_saved: = false
 
 signal clocks_free
@@ -40,6 +40,7 @@ signal map_loaded(map)
 
 func _ready() -> void:
 	connect_to_signals()
+
 	if pc_playbooks and "roster" in pc_playbooks:
 		for playbook in pc_playbooks:
 			if not playbook is PlayerPlaybook: continue
@@ -48,6 +49,8 @@ func _ready() -> void:
 
 
 func connect_to_signals()-> void:
+	Events.connect("clock_updated", self,"_on_clock_updated")
+
 	if not GameSaver.is_connected("save_loaded", self, "_on_save_loaded"):
 		GameSaver.connect("save_loaded", self, "_on_save_loaded")
 	if not GameSaver.is_connected("crew_loaded", self, "_on_crew_loaded"):
@@ -72,6 +75,14 @@ func _on_playbook_updated(playbook:Playbook)->void:
 	GameSaver.save(playbook)
 
 
+func _on_clock_updated(id:String, clock_data:={})->void:
+	if clock_data.empty():
+		clocks.erase(id)
+	else:
+		clocks[id] = clock_data
+	save_clocks()
+
+
 func _on_save_loaded(save:SaveGame)->void:
 	self.save_game = save
 	self.srd = save.srd_data
@@ -93,6 +104,7 @@ func _set_clocks_being_saved(value: bool)-> void:
 	if not value: emit_signal("clocks_free")
 	clocks_being_saved = value
 
+
 #Save all current game data to disk. Package the data, push it to GameSaver
 func save_all()-> void:
 	var data: = []
@@ -109,14 +121,20 @@ func add_pc_to_roster(pc:PlayerPlaybook)-> void:
 
 func save_map()-> void:
 	save_game.map = map
-	save_game.emit_changed()
+
+
+func add_map_note(pos:Vector2, data:Dictionary)-> void:
+	if not "notes" in map:
+		map["notes"] = {}
+
+	map.notes[pos] = data
+	save_map()
 
 
 func save_clocks()->void:
 	self.clocks_being_saved = true
 	save_game.clocks = clocks
 	self.clocks_being_saved = false
-	save_game.emit_changed()
 
 
 func get_clocks()-> Array:

@@ -8,17 +8,12 @@ var srd_data
 export (String) var _save_id: = "default"
 export (String) var _save_folder: = "res://debug/save"
 export (String) var version: String = ''
-#export (Resource) var crew_playbook = CrewPlaybook.new() setget _set_crew_playbook
-#export (Array, Resource) var pc_playbooks
 export (Dictionary) var map: = {
 	"name": "Duskvol",
 	Vector2(100,50): "Test Map Note"
-}
-#I think this is temporary way to store the progress clocks, eventually they will be incoroprated into
-#the regular playbooks where players and such can keep track of their own, and the interface can
-#put them togeather as needed
+} setget _set_map
 
-export (Array) var clocks: = []
+export (Dictionary) var clocks  setget _set_clocks
 
 var needs_setup:bool = true
 
@@ -35,6 +30,17 @@ func setup_save(srd_json_path: String = "")->void:
 	else:
 		file.open(srd_json_path, File.READ)
 		srd_data = parse_json(file.get_as_text())
+
+
+func _set_clocks(value:Dictionary)-> void:
+	clocks = value
+	emit_changed()
+
+
+func _set_map(value:Dictionary)-> void:
+	map = value
+	emit_changed()
+
 
 #	load_crew_playbook(save_id, save_folder)
 #	load_pc_playbooks(save_id, save_folder)
@@ -92,17 +98,6 @@ func setup_save(srd_json_path: String = "")->void:
 #	dir.list_dir_end()
 #	return files
 
-
-func add_clock(clock: Clock)-> void:
-	var scene = PackedScene.new()
-	scene.pack(clock)
-	clocks.append(scene)
-	emit_changed()
-
-
-func remove_clock(clock:Clock)-> void:
-	clocks.erase(clock)
-	emit_changed()
 
 #
 #func set_crew_playbook(playbook: CrewPlaybook)-> void:

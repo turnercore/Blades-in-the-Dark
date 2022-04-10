@@ -46,5 +46,7 @@ func _on_FinishButton_pressed() -> void:
 	if not "roster" in GameData.pc_playbooks:
 		GameData.pc_playbooks["roster"] = []
 	GameData.pc_playbooks.roster.append(new_pc_playbook)
+	GameData.save_all()
 	Events.emit_signal("popup_finished")
+	Events.emit_signal("roster_updated")
 	queue_free()

@@ -3,6 +3,7 @@ extends Resource
 
 #Path to the srd_json
 var srd_json: String = 'res://srd/default_srd.json'
+var version:= ""
 export var name:String
 export var abilities:Dictionary
 export var coin:Dictionary = {
@@ -20,7 +21,6 @@ export (Dictionary) var experience: = {
 	"resolve": 0,
 }
 export var projects:Dictionary
-
 export (Dictionary) var stats: Dictionary = {
 	"insight": {
 		"hunt": 0,

@@ -2,7 +2,16 @@ extends Node
 
 #This is being used for the new game popup
 const GAME_SCENE_PATH: = "res://game/Game.tscn"
+const GAME_SCENE:PackedScene = preload(GAME_SCENE_PATH)
 
+enum CLOCK_TYPE {
+	OBSTACLE,
+	HEALING,
+	LONG_TERM_PROJECT,
+	LAIR_PROJECT,
+	PC_PROJECT,
+	FACTION_PROJECT
+}
 
 #Unsure if this is being used
 var popup_layer: CanvasLayer

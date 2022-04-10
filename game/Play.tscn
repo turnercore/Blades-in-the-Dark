@@ -166,6 +166,7 @@ rect_min_size = Vector2( 300, 0 )
 size_flags_vertical = 3
 
 [node name="MiniMap" type="MarginContainer" parent="PlayLayer/PlayControls/VBoxContainer3"]
+visible = false
 margin_right = 300.0
 margin_bottom = 170.0
 custom_constants/margin_right = 10
@@ -196,7 +197,7 @@ size = Vector2( 280, 150 )
 handle_input_locally = false
 disable_3d = true
 usage = 0
-render_target_update_mode = 3
+render_target_update_mode = 0
 gui_disable_input = true
 
 [node name="Map" parent="PlayLayer/PlayControls/VBoxContainer3/MiniMap/ViewportContainer/Viewport" instance=ExtResource( 1 )]
@@ -208,15 +209,14 @@ smoothing_enabled = true
 smoothing_speed = 10.0
 
 [node name="Spacer" type="ColorRect" parent="PlayLayer/PlayControls/VBoxContainer3"]
-margin_top = 174.0
 margin_right = 300.0
-margin_bottom = 385.0
+margin_bottom = 298.0
 mouse_filter = 2
 size_flags_vertical = 3
 color = Color( 1, 1, 1, 0 )
 
 [node name="MapInfoMarginContainer" type="MarginContainer" parent="PlayLayer/PlayControls/VBoxContainer3"]
-margin_top = 389.0
+margin_top = 302.0
 margin_right = 300.0
 margin_bottom = 600.0
 size_flags_vertical = 3
@@ -232,11 +232,12 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 25.0
 margin_right = 290.0
-margin_bottom = 201.0
+margin_bottom = 288.0
 
 [node name="MapInfo" type="PanelContainer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.85098 )
 margin_right = 280.0
-margin_bottom = 152.0
+margin_bottom = 263.0
 mouse_filter = 2
 size_flags_vertical = 3
 script = ExtResource( 2 )
@@ -249,12 +250,12 @@ info_label = NodePath("ScrollContainer/InfoLabel")
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 273.0
-margin_bottom = 145.0
+margin_bottom = 256.0
 scroll_horizontal_enabled = false
 
 [node name="InfoLabel" type="Label" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer/MapInfo/ScrollContainer"]
 margin_right = 266.0
-margin_bottom = 138.0
+margin_bottom = 249.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "This is where the map info goes when you highlight map regions."
@@ -269,8 +270,9 @@ one_shot = true
 autostart = true
 
 [node name="AddMapNoteButton" type="Button" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer"]
-margin_top = 156.0
-margin_right = 80.0
+visible = false
+margin_top = 151.0
+margin_right = 74.0
 margin_bottom = 176.0
 size_flags_horizontal = 0
 size_flags_vertical = 9

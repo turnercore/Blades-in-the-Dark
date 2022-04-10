@@ -1,6 +1,9 @@
 class_name Clock
 extends Control
 
+const RAND_LIMIT: = 1000
+const SAVE_INTERVAL: = 0.5
+
 export (Texture) var FOUR_CLOCK_TEXTURE_UNDER
 export (Texture) var FOUR_CLOCK_TEXTURE_OVER
 export (Texture) var SIX_CLOCK_TEXTURE_UNDER
@@ -10,15 +13,15 @@ export (Texture) var EIGHT_CLOCK_TEXTURE_OVER
 export (Texture) var TWELVE_CLOCK_TEXTURE_UNDER
 export (Texture) var TWELVE_CLOCK_TEXTURE_OVER
 
-export (NodePath) onready var tween = get_node(tween) as Tween if tween is NodePath else tween
-export (NodePath) onready var segments = get_node(segments) as Label if segments is NodePath else segments
-export (NodePath) onready var filled_label = get_node(filled_label) as Label if filled_label is NodePath else filled_label
-export (NodePath) onready var clock_texture = get_node(clock_texture) as TextureProgress if clock_texture is NodePath else clock_texture
-export (NodePath) onready var clock_line_edit = get_node(clock_line_edit) as LineEdit if clock_line_edit is NodePath else clock_line_edit
-export (NodePath) onready var lock_texture = get_node(lock_texture) as TextureRect if lock_texture is NodePath else lock_texture
-export (NodePath) onready var unlocked_by_container = get_node(unlocked_by_container) as Container if unlocked_by_container is NodePath else unlocked_by_container
-export (NodePath) onready var locked_by_clock_label = get_node(locked_by_clock_label) as Label if locked_by_clock_label is NodePath else locked_by_clock_label
-export (NodePath) onready var unlocks_clock_label = get_node(unlocks_clock_label) as Label if unlocks_clock_label is NodePath else unlocks_clock_label
+export (NodePath) onready var tween = get_node(tween) as Tween
+export (NodePath) onready var segments = get_node(segments) as Label
+export (NodePath) onready var filled_label = get_node(filled_label) as Label
+export (NodePath) onready var clock_texture = get_node(clock_texture) as TextureProgress
+export (NodePath) onready var clock_line_edit = get_node(clock_line_edit) as LineEdit
+export (NodePath) onready var lock_texture = get_node(lock_texture) as TextureRect
+export (NodePath) onready var locked_by_container = get_node(locked_by_container) as Container
+export (NodePath) onready var locked_by_clock_label = get_node(locked_by_clock_label) as Label
+export (NodePath) onready var unlocks_clock_label = get_node(unlocks_clock_label) as Label
 
 export (String) var id:String setget _set_id
 export var clock_name:String = name setget _set_clock_name
@@ -28,31 +31,68 @@ var unlocks_clock setget _set_unlocks_clock
 export var filled: = 0 setget _set_filled
 export var max_value: = 4 setget _set_max_value
 export var is_secret: bool = false setget _set_is_secret
-var type:String
+var type:int setget _set_type
+var clock_data: = {
+	"id": id,
+	"clock_name": clock_name,
+	"filled": filled,
+	"max_value": max_value,
+	"locked": locked,
+	"locked_by_clock": locked_by_clock,
+	"unlocks_clock": unlocks_clock,
+	"type": type,
+	"is_secret": is_secret
+}
+
+var is_setup:= false
+var is_saving:= false
 
 signal filled
 signal unfilled
 signal name_changed(new_name)
 
-#		"id": 0,
-#		"clock_name": "",
-#		"filled": 0,
-#		"max_value": 4,
-#		"locked": false,
-#		"locked_by_clock": -1, #-1 if it's not locked by anything, otherwise clock id
-#		"unlocks_clock": -1,
-#		"type": "Obstacle Clock"
-#		"is_secret": false
-
 func _ready()->void:
-	self.max_value = 4
-	self.filled = 0
 	if not locked_by_clock:
-		unlocked_by_container.visible = false
+		locked_by_container.visible = false
 
 
-func _set_id(value)-> void:
-	id = clock_name+"_"+str(value)
+func setup(new_clock_data:Dictionary)->void:
+	name = new_clock_data.clock_name
+	clock_name = new_clock_data.clock_name
+	self.id = new_clock_data.id
+	for property in new_clock_data:
+		if property == "clock_name" or property == "id":
+			continue
+		elif property in self:
+			set(property, new_clock_data[property])
+	visible = true
+	is_setup = true
+
+
+func save_clock()->void:
+	if not is_setup or is_saving: return
+	is_saving = true
+
+	yield(get_tree().create_timer(SAVE_INTERVAL), "timeout")
+	package_clock_data()
+	Events.emit_clock_updated(id, clock_data)
+	print("saved clock " + id)
+	is_saving = false
+
+
+func package_clock_data()->void:
+	clock_data = {
+		"id": id,
+		"clock_name": clock_name,
+		"filled": filled,
+		"max_value": max_value,
+		"locked": locked,
+		"locked_by_clock": locked_by_clock,
+		"unlocks_clock": unlocks_clock,
+		"type": type,
+		"is_secret": is_secret
+	}
+
 
 func link_to_clock(clock: Clock)->void:
 	clock.linked_clock = self
@@ -63,15 +103,19 @@ func link_to_clock(clock: Clock)->void:
 func unlock()->void:
 	if locked:
 		self.locked = false
+		save_clock()
+
 
 func lock()->void:
 	if not locked:
 		self.locked = true
+		save_clock()
 
 
 func _set_locked(value: bool)->void:
 	var locked_check_box: = $CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer/LockCheckBox
 	locked = value
+	save_clock()
 	locked_check_box.pressed = value
 
 	if locked:
@@ -81,6 +125,22 @@ func _set_locked(value: bool)->void:
 	elif not locked:
 		clock_texture.mouse_filter = Control.MOUSE_FILTER_STOP
 		lock_texture.visible = false
+
+
+func _set_id(value:String)->void:
+	if value == "new_id":
+		randomize()
+		var unique_id_helper: = 0
+		var new_id = clock_name + "_" + str((randi() % RAND_LIMIT))
+		yield(get_tree().create_timer(SAVE_INTERVAL), "timeout")
+		while GameData.clocks.has(new_id):
+			print("same clock id found in clocks, what are the odds, trying again")
+			unique_id_helper+= randi() % (RAND_LIMIT/100)
+			new_id = clock_name + "_" + str((randi() % RAND_LIMIT)+unique_id_helper)
+		id = new_id
+	else:
+		id = value
+	save_clock()
 
 
 func _set_filled(new_value: int) -> void:
@@ -96,6 +156,8 @@ func _set_filled(new_value: int) -> void:
 	filled_label.text = str(new_value)
 	tween.interpolate_property(clock_texture, "value", null, new_value, 0.25, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 	tween.start()
+	yield(tween, "tween_all_completed")
+	save_clock()
 
 
 func _set_max_value(value: int) -> void:
@@ -114,10 +176,14 @@ func _set_max_value(value: int) -> void:
 
 	tween.interpolate_property(clock_texture, "max_value", null, value, 0.25, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 	tween.start()
+	yield(tween, "tween_all_completed")
+	save_clock()
+
 
 func _set_clock_name(value: String) -> void:
+	clock_name = value
 	emit_signal("name_changed", value)
-	clock_line_edit.text = value
+	save_clock()
 
 
 func _set_unlocks_clock(value) -> void:
@@ -135,6 +201,7 @@ func _set_unlocks_clock(value) -> void:
 		unlocks_clock.clear_locked_by_clock()
 
 	unlocks_clock = value
+	save_clock()
 
 	if not unlocks_clock:
 		unlocks_clock_label.text = ""
@@ -144,34 +211,33 @@ func _set_unlocks_clock(value) -> void:
 		unlocks_clock.connect("name_changed", self, "_on_unlocks_clock_name_change")
 	unlocks_clock_label.text = unlocks_clock.clock_name if unlocks_clock else ""
 
+
 func _set_locked_by_clock(value) -> void:
 	if value:
 		if unlocks_clock:
 			if value == unlocks_clock:
 				return
-		if locked_by_clock:
+		elif locked_by_clock:
 			if value == locked_by_clock:
 				return
 
-
 	if locked_by_clock:
 		locked_by_clock_label.text = ""
-		self.unlocked_by_container.visible = false
+		self.locked_by_container.visible = false
 		if locked_by_clock.is_connected("name_changed", self, "_on_locked_by_clock_name_change"):
 			locked_by_clock.disconnect("name_changed", self, "_on_locked_by_clock_name_change")
 		locked_by_clock.clear_unlocks_clock()
 
-
 	locked_by_clock = value
+	save_clock()
 
 	if not locked_by_clock:
-		unlocked_by_container.visible = false
+		locked_by_container.visible = false
 		locked_by_clock_label.text = ""
 		unlock()
 		return
-
 	else:
-		unlocked_by_container.visible = true
+		locked_by_container.visible = true
 	if not locked_by_clock.is_connected("name_changed", self, "_on_locked_by_clock_name_change"):
 		locked_by_clock.connect("name_changed", self, "_on_locked_by_clock_name_change")
 	if not locked_by_clock.is_connected("filled", self, "_on_locked_by_clock_filled"):
@@ -179,6 +245,17 @@ func _set_locked_by_clock(value) -> void:
 	if not locked_by_clock.is_connected("unfilled", self, "_on_locked_by_clock_unfilled"):
 		locked_by_clock.connect("unfilled", self, "_on_locked_by_clock_unfilled")
 	locked_by_clock_label.text = locked_by_clock.clock_name
+
+
+func _set_type(value)-> void:
+	type = value
+	save_clock()
+
+
+func _set_is_secret(value: bool) -> void:
+	is_secret = value
+	clock_line_edit.secret = value
+	save_clock()
 
 
 func _on_locked_by_clock_filled()-> void:
@@ -190,52 +267,56 @@ func _on_locked_by_clock_unfilled()-> void:
 
 
 func clear_unlocks_clock()-> void:
-	unlocks_clock = false
+	unlocks_clock = null
 	unlocks_clock_label.text = ""
+	save_clock()
+
 
 func clear_locked_by_clock()-> void:
-	locked_by_clock = false
+	locked_by_clock = null
 	locked_by_clock_label.text = ""
-	unlocked_by_container.visible = false
+	locked_by_container.visible = false
 	unlock()
+	save_clock()
+
 
 func _on_unlocks_clock_name_change(new_name: String)->void:
 	unlocks_clock_label.text = new_name
 
+
 func _on_locked_by_clock_name_change(new_name: String)->void:
 	locked_by_clock_label.text = new_name
 
+
 func change_clock_texture(node: TextureProgress, texture_over: Texture, texture_progress: Texture)->void:
-		node.texture_under = texture_progress
-		node.texture_progress = texture_progress
-		node.texture_over = texture_over
+	node.texture_under = texture_progress
+	node.texture_progress = texture_progress
+	node.texture_over = texture_over
 
-
-func _set_is_secret(value: bool) -> void:
-	is_secret = value
-	clock_line_edit.secret = value
 
 
 func _on_PlusSegment_pressed() -> void:
 	if max_value <=4: self.max_value = 6
 	elif max_value == 6: self.max_value = 8
 	elif max_value == 8: self.max_value = 12
-	else: return
+	save_clock()
 
 
 func _on_MinusSegment_pressed() -> void:
 	if max_value <=6: self.max_value = 4
 	elif max_value == 8: self.max_value = 6
 	elif max_value == 12: self.max_value = 8
-	else: return
+	save_clock()
 
 
 func _on_Plus_pressed() -> void:
 	self.filled += 1
+	save_clock()
 
 
 func _on_Minus_pressed() -> void:
 	self.filled -= 1
+	save_clock()
 
 
 func _on_ClockTexture_gui_input(event: InputEvent) -> void:
@@ -246,8 +327,8 @@ func _on_ClockTexture_gui_input(event: InputEvent) -> void:
 
 
 func _on_ClockName_text_changed(new_text: String) -> void:
-	if clock_name != new_text:
-		clock_name = new_text
+	self.clock_name = new_text
+	print(clock_name)
 
 
 func _on_CheckBox_toggled(button_pressed: bool) -> void:
@@ -259,15 +340,17 @@ func _on_LockCheckBox_toggled(button_pressed: bool) -> void:
 		lock()
 	else:
 		unlock()
+	Events.emit_clock_updated(id, clock_data)
 
 
 func _on_DisconnectButton_pressed() -> void:
 	self.locked_by_clock = false
 	unlock()
+	Events.emit_clock_updated(id, clock_data)
 
 
 func _on_DeleteButton_pressed() -> void:
 	if locked_by_clock: locked_by_clock.clear_unlocks_clock()
 	if unlocks_clock: unlocks_clock.clear_locked_by_clock()
-
+	Events.emit_clock_updated(id, {})
 	queue_free()
