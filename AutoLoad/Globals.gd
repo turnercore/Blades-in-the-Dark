@@ -3,7 +3,7 @@ extends Node
 #This is being used for the new game popup
 const GAME_SCENE_PATH: = "res://game/Game.tscn"
 const GAME_SCENE:PackedScene = preload(GAME_SCENE_PATH)
-const DEFAULT_MAP_IMAGE:= "res://maps/blades_detailedmap_highres.jpg"
+var DEFAULT_MAP_IMAGE: = preload("res://maps/blades_detailedmap_highres.jpg")
 
 enum CLOCK_TYPE {
 	ALL,
@@ -46,7 +46,7 @@ func list_folders_in_directory(path:String)->Array:
 		var file_name:String = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
-				print("Found directory: " + file_name)
+#				print("Found directory: " + file_name)
 				if not file_name.begins_with("."):
 					folders.append(file_name)
 			else:

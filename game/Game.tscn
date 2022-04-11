@@ -107,7 +107,6 @@ __meta__ = {
 }
 
 [node name="Settings" parent="ViewportContainer/Viewport/Popups" instance=ExtResource( 11 )]
-visible = false
 
 [connection signal="focus_entered" from="ViewportContainer/Viewport/GUI/MainScreenButtons" to="." method="_on_MainScreenButtons_focus_entered"]
 [connection signal="mouse_entered" from="ViewportContainer/Viewport/GUI/MainScreenButtons" to="." method="_on_MainScreenButtons_mouse_entered"]

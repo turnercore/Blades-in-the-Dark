@@ -1,5 +1,16 @@
 extends Node
 
+const DEFAULT_MAP_NOTE_ICON:String= "res://Shared/Art/Icons/MapNoteIcon.png"
+
+const DEFAULT_NOTE: = {
+	"info_text": "",
+	"location_name": "",
+	"tags": "",
+	"pos": Vector2.ZERO,
+	"icon": DEFAULT_MAP_NOTE_ICON,
+	"shortcut": false
+}
+
 export (Resource) var crew_playbook = null
 
 #This should be updated to remove the "roster" checks and just be an Array itself
@@ -37,9 +48,13 @@ var clocks: = {
 var map:Dictionary = {
 	"map_index": 0,
 	"map_name": "Duskvol",
-	"image": Globals.DEFAULT_MAP_IMAGE,
+	"image": null,
 	"notes": {}
 	}
+
+#ARRAY OF MAP NOTES a map note is a location
+var map_shortcuts:Array
+
 
 var clocks_being_saved: = false
 
@@ -65,6 +80,8 @@ func connect_to_signals()-> void:
 	Events.connect("map_created", self, "_on_map_created")
 	Events.connect("map_changed", self, "_on_map_changed")
 	Events.connect("map_removed", self, "_on_map_removed")
+	Events.connect("map_note_updated", self, "_on_map_note_updated")
+	Events.connect("map_note_removed", self, "_on_map_note_removed")
 	if not GameSaver.is_connected("save_loaded", self, "_on_save_loaded"):
 		GameSaver.connect("save_loaded", self, "_on_save_loaded")
 	if not GameSaver.is_connected("crew_loaded", self, "_on_crew_loaded"):
@@ -103,8 +120,10 @@ func _on_save_loaded(save:SaveGame)->void:
 	self.clocks = save.clocks
 	emit_signal("clocks_loaded", clocks)
 	self.map = save.map
+	for location in map.notes:
+		if map.notes[location].shortcut:
+			self.map_shortcuts.append(map.notes[location])
 	emit_signal("map_loaded", map)
-	print('map-loaded')
 
 
 func _set_save_game(new_save: SaveGame)-> void:
@@ -153,8 +172,16 @@ func save_map()-> void:
 func add_map_note(pos:Vector2, data:Dictionary)-> void:
 	if not "notes" in map:
 		map["notes"] = {}
+	map.notes[pos] = DEFAULT_NOTE
 
-	map.notes[pos] = data
+	for value in data:
+		if value in map.notes[pos]:
+			map.notes[pos][value] = data[value]
+
+	if "shortcut" in data:
+		if data.shortcut:
+			map_shortcuts.append(map.notes[pos])
+
 	save_map()
 
 #I'm no longer completely sure why I have a lockout variable (and signal) to save the clocks...
@@ -210,3 +237,19 @@ func _on_map_removed(index:int)->void:
 		save_game.maps.remove(index)
 	else:
 		print("Error map index out of range")
+
+
+func _on_map_note_updated(data: Dictionary)-> void:
+	var note:Dictionary = map.notes[data.pos]
+	for value in data:
+		if value in note:
+			note[value] = data[value]
+	save_map()
+	emit_signal("map_loaded", map)
+
+
+func _on_map_note_removed(note_pos: Vector2)-> void:
+	if map.notes.has(note_pos):
+		map.notes.erase(note_pos)
+	save_map()
+	emit_signal("map_loaded", map)

@@ -20,6 +20,5 @@ func _on_LoadMap_pressed() -> void:
 	map_chooser.clear()
 	add_title_item()
 	for map in GameData.save_game.maps:
-		print(map)
 		map_chooser.add_icon_item(MAP_ICON, map.map_name)
 	map_chooser.popup()

@@ -17,10 +17,13 @@ var unfocused: = false
 
 func _ready() -> void:
 	GameData.connect("map_loaded", self, "_on_map_loaded")
+	load_map(GameData.map)
 	Events.connect("map_scroll_speed_changed", self, "_on_map_scroll_speed_changed")
 	Events.connect("main_screen_changed", self, "_on_screen_changed")
 	Events.connect("chat_selected", self, "_on_chat_selected")
 	Events.connect("chat_deselected", self, "_on_chat_deselected")
+	Events.connect("popup", self, "_on_popup")
+	Events.connect("popup_finished", self, "_on_popup_finished")
 	zoom_level = camera.zoom.x
 
 
@@ -45,16 +48,12 @@ func _process(delta: float) -> void:
 func add_note(pos:=Vector2.ZERO, note_data:={})->void:
 	var map_note = map_note_scene.instance()
 	if pos == Vector2.ZERO and note_data.empty():
-		print("adding a new note")
-		pos = get_global_mouse_position()
+		pos = get_global_mouse_position().round()
+		#Check to see if there's already a note in this pos:
+		if pos in GameData.map.notes: return
 		#Need to do the a popup and yeild for it to finish or somehting here to get the rest of the data
-		note_data["info_text"] = "Hello world"
-		note_data["location"] = pos
+		note_data = GameData.DEFAULT_NOTE
 		GameData.add_map_note(pos, note_data)
-	else:
-		print("adding a pre-existing note")
-		#Need to do setup on the map note to load it with the data
-
 
 	for property in note_data:
 		if property in map_note:
@@ -94,17 +93,15 @@ func load_map(map:Dictionary)->void:
 	for child in notes.get_children():
 		child.queue_free()
 
-	if map and "image" in map:
+	if map and "image" in map and map.image:
 		var texture = load(map.image)
 		map_texture.texture = texture
 	else:
-		var texture = load(Globals.DEFAULT_MAP_IMAGE)
+		var texture = Globals.DEFAULT_MAP_IMAGE
 		map_texture.texture = texture
 
 	if map and "notes" in map:
 		for pos in map.notes:
-			print('loading a note at this pos:')
-			print(pos)
 			add_note(pos, map.notes[pos])
 
 
@@ -113,8 +110,6 @@ func _on_map_scroll_speed_changed(new_scroll_speed: float) -> void:
 
 
 func _on_map_loaded(map:Dictionary)->void:
-	print("MAP LOADED")
-	print("___________")
 	load_map(map)
 
 
@@ -132,3 +127,9 @@ func _on_screen_changed(screen:String)-> void:
 	else:
 		set_process(false)
 
+
+func _on_popup(_data)-> void:
+	set_process(false)
+
+func _on_popup_finished()-> void:
+	set_process(true)

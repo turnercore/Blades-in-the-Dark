@@ -204,15 +204,24 @@ smoothing_speed = 10.0
 
 [node name="Spacer" type="ColorRect" parent="PlayLayer/PlayControls/VBoxContainer3"]
 margin_right = 300.0
-margin_bottom = 298.0
+margin_bottom = 171.0
+mouse_filter = 2
+size_flags_vertical = 3
+color = Color( 1, 1, 1, 0 )
+
+[node name="Spacer2" type="ColorRect" parent="PlayLayer/PlayControls/VBoxContainer3"]
+margin_top = 175.0
+margin_right = 300.0
+margin_bottom = 346.0
 mouse_filter = 2
 size_flags_vertical = 3
 color = Color( 1, 1, 1, 0 )
 
 [node name="MapInfoMarginContainer" type="MarginContainer" parent="PlayLayer/PlayControls/VBoxContainer3"]
-margin_top = 302.0
+margin_top = 350.0
 margin_right = 300.0
 margin_bottom = 600.0
+rect_min_size = Vector2( 0, 250 )
 size_flags_vertical = 3
 custom_constants/margin_right = 10
 custom_constants/margin_top = 25
@@ -222,16 +231,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer"]
 margin_left = 10.0
 margin_top = 25.0
 margin_right = 290.0
-margin_bottom = 288.0
+margin_bottom = 240.0
 
-[node name="MapInfo" type="PanelContainer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer"]
+margin_right = 241.0
+margin_bottom = 215.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MapInfo" type="PanelContainer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0.85098 )
-margin_right = 280.0
-margin_bottom = 263.0
+margin_right = 241.0
+margin_bottom = 215.0
 mouse_filter = 2
 size_flags_vertical = 3
 script = ExtResource( 2 )
@@ -240,30 +255,30 @@ __meta__ = {
 }
 info_label = NodePath("ScrollContainer/InfoLabel")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer/MapInfo"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 273.0
-margin_bottom = 256.0
+margin_right = 234.0
+margin_bottom = 208.0
 scroll_horizontal_enabled = false
 
-[node name="InfoLabel" type="Label" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer/MapInfo/ScrollContainer"]
-margin_right = 266.0
-margin_bottom = 249.0
+[node name="InfoLabel" type="Label" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo/ScrollContainer"]
+margin_right = 227.0
+margin_bottom = 201.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "This is where the map info goes when you highlight map regions."
 align = 1
 autowrap = true
 
-[node name="Tween" type="Tween" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer/MapInfo"]
+[node name="Tween" type="Tween" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo"]
 
-[node name="DismissTimer" type="Timer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer/MapInfo"]
+[node name="DismissTimer" type="Timer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo"]
 wait_time = 0.05
 one_shot = true
 autostart = true
 
-[node name="AddMapNoteButton" type="Button" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer"]
+[node name="AddMapNoteButton" type="Button" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer"]
 visible = false
 margin_top = 151.0
 margin_right = 74.0
@@ -274,4 +289,51 @@ toggle_mode = true
 text = "+Add Note"
 script = ExtResource( 5 )
 
-[connection signal="timeout" from="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer/MapInfo/DismissTimer" to="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/VBoxContainer/MapInfo" method="_on_DismissTimer_timeout"]
+[node name="Map Shortcuts" type="VBoxContainer" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer"]
+margin_left = 245.0
+margin_right = 280.0
+margin_bottom = 215.0
+rect_min_size = Vector2( 35, 0 )
+
+[node name="Button" type="Button" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/Map Shortcuts"]
+margin_right = 35.0
+margin_bottom = 27.0
+text = "1"
+
+[node name="Button2" type="Button" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/Map Shortcuts"]
+margin_top = 31.0
+margin_right = 35.0
+margin_bottom = 58.0
+text = "2"
+
+[node name="Button3" type="Button" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/Map Shortcuts"]
+margin_top = 62.0
+margin_right = 35.0
+margin_bottom = 89.0
+text = "3"
+
+[node name="Button4" type="Button" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/Map Shortcuts"]
+margin_top = 93.0
+margin_right = 35.0
+margin_bottom = 120.0
+text = "4"
+
+[node name="Button5" type="Button" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/Map Shortcuts"]
+margin_top = 124.0
+margin_right = 35.0
+margin_bottom = 151.0
+text = "5"
+
+[node name="Button6" type="Button" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/Map Shortcuts"]
+margin_top = 155.0
+margin_right = 35.0
+margin_bottom = 182.0
+text = "6"
+
+[node name="Button7" type="Button" parent="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/Map Shortcuts"]
+margin_top = 186.0
+margin_right = 35.0
+margin_bottom = 213.0
+text = "7"
+
+[connection signal="timeout" from="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo/DismissTimer" to="PlayLayer/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo" method="_on_DismissTimer_timeout"]

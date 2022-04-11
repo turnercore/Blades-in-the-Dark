@@ -33,7 +33,7 @@ func setup_save_timer()-> void:
 	add_child(save_timer)
 	save_timer.start()
 
-
+#works
 func load_save(id:= current_save_id, folder:= SAVE_FOLDER):
 #	if not SAVE_FOLDER: SAVE_FOLDER = "res://debug/save" if debug else "user://save"
 	var save_game: SaveGame
@@ -66,7 +66,7 @@ func load_save(id:= current_save_id, folder:= SAVE_FOLDER):
 
 	emit_signal("save_loaded", save_game)
 
-
+#works
 func load_crew_playbook(save_id:= current_save_id, save_folder:= SAVE_FOLDER)-> void:
 	var dir: = Directory.new()
 	var crew_playbook: = CrewPlaybook.new()
@@ -91,7 +91,7 @@ func load_crew_playbook(save_id:= current_save_id, save_folder:= SAVE_FOLDER)-> 
 
 	emit_signal("crew_loaded", crew_playbook)
 
-#untested
+#works
 func load_pc_playbooks(id:=current_save_id, save_folder:=SAVE_FOLDER)-> void:
 	var pc_playbooks:Array
 
@@ -106,7 +106,7 @@ func load_pc_playbooks(id:=current_save_id, save_folder:=SAVE_FOLDER)-> void:
 
 	emit_signal("pc_playbooks_loaded", pc_playbooks)
 
-#untested
+#works
 func load_all(id:= current_save_id, folder:= SAVE_FOLDER)-> void:
 	self.current_save_id = id
 	load_save(id, folder)
@@ -230,7 +230,7 @@ func save_pc_playbooks(pc_playbooks, id:= current_save_id, overwrite: = true)-> 
 	else:
 		return true
 
-
+#works
 func save_all(resources: Array, id:=current_save_id, overwrite:= true)->void:
 	for resource in resources:
 		save(resource, id, overwrite)
