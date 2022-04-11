@@ -42,10 +42,4 @@ func create_popup()-> EditNotePopup:
 	var popup:EditNotePopup = edit_note_popup.instance()
 	popup.location_name = location_name
 	popup.info_text = info_text
-
 	return popup
-#
-#func _on_MapNote_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-#	if event.is_action_pressed("left_click"):
-#
-#		print("WHHAH")
