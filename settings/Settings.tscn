@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://settings/LoadButton.gd" type="Script" id=1]
 [ext_resource path="res://popups/LoadScreen.tscn" type="PackedScene" id=2]
@@ -9,48 +9,68 @@
 [ext_resource path="res://Shared/theme/GameTheme.tres" type="Theme" id=7]
 [ext_resource path="res://settings/QuitButton.gd" type="Script" id=8]
 [ext_resource path="res://settings/ChangeMapButton.gd" type="Script" id=9]
+[ext_resource path="res://settings/LoadMap.gd" type="Script" id=10]
+[ext_resource path="res://settings/DeleteMap.gd" type="Script" id=11]
+[ext_resource path="res://settings/EditMap.gd" type="Script" id=12]
+[ext_resource path="res://settings/Settings.gd" type="Script" id=13]
 
-[node name="Settings" type="Control"]
+[node name="Settings" type="Popup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 13 )
+
+[node name="OverlayBackground" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.839216 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Settings" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -125.0
+margin_right = 125.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 250, 250 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 250
-custom_constants/margin_top = 150
-custom_constants/margin_left = 250
-custom_constants/margin_bottom = 150
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Settings" type="PanelContainer" parent="MarginContainer"]
-margin_left = 250.0
-margin_top = 150.0
-margin_right = 774.0
-margin_bottom = 450.0
 theme = ExtResource( 7 )
 custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Settings"]
-margin_left = 162.0
-margin_top = 81.0
-margin_right = 362.0
-margin_bottom = 219.0
+[node name="Title" type="Label" parent="Settings"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 240.0
+margin_bottom = 240.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Blades in the Dark"
+align = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="Settings"]
+margin_left = 25.0
+margin_top = 56.0
+margin_right = 225.0
+margin_bottom = 194.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/separation = 10
 
-[node name="SaveButton" type="Button" parent="MarginContainer/Settings/VBoxContainer"]
+[node name="SaveButton" type="Button" parent="Settings/MenuButtons"]
 margin_right = 200.0
 margin_bottom = 27.0
 rect_min_size = Vector2( 200, 0 )
@@ -59,7 +79,7 @@ size_flags_vertical = 4
 text = "Save"
 script = ExtResource( 5 )
 
-[node name="LoadButton" type="Button" parent="MarginContainer/Settings/VBoxContainer"]
+[node name="LoadButton" type="Button" parent="Settings/MenuButtons"]
 margin_top = 37.0
 margin_right = 200.0
 margin_bottom = 64.0
@@ -70,21 +90,60 @@ text = "Load"
 script = ExtResource( 1 )
 load_screen = ExtResource( 2 )
 
-[node name="ChangeMapButton" type="Button" parent="MarginContainer/Settings/VBoxContainer"]
+[node name="EditMap" type="Button" parent="Settings/MenuButtons"]
 margin_top = 74.0
 margin_right = 200.0
 margin_bottom = 101.0
-text = "Change Map"
-script = ExtResource( 9 )
-file_dialog = NodePath("FileDialog")
+text = "Edit Map"
+script = ExtResource( 12 )
 
-[node name="FileDialog" type="FileDialog" parent="MarginContainer/Settings/VBoxContainer/ChangeMapButton"]
+[node name="EditMapDialog" type="PopupDialog" parent="Settings/MenuButtons/EditMap"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -149.0
+margin_top = -185.5
+margin_right = 140.0
+margin_bottom = -38.5
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MenuButtons/EditMap/EditMapDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -104.0
+margin_top = -53.0
+margin_right = 104.0
+margin_bottom = 53.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateNewMap" type="Button" parent="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer"]
+margin_right = 208.0
+margin_bottom = 27.0
+text = "Create New Map"
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+file_dialog = NodePath("FileDialog")
+map_name_line_edit = NodePath("MapNameChooser/VBoxContainer/MapNameLineEdit")
+confirm_button = NodePath("MapNameChooser/VBoxContainer/MapNameConfirm")
+map_name_chooser = NodePath("MapNameChooser")
+
+[node name="FileDialog" type="FileDialog" parent="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap"]
 margin_left = -162.0
 margin_top = -155.0
 margin_right = 362.0
 margin_bottom = 145.0
 rect_min_size = Vector2( 400, 140 )
-window_title = "Open a map image"
+window_title = "Open a File"
 resizable = true
 dialog_text = "Select a map image"
 mode = 0
@@ -94,11 +153,98 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CreateNewCrewButton" type="Button" parent="MarginContainer/Settings/VBoxContainer"]
+[node name="MapNameChooser" type="PopupDialog" parent="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -114.0
+margin_top = -182.5
+margin_right = 114.0
+margin_bottom = -28.5
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap/MapNameChooser"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -96.5
+margin_top = -31.0
+margin_right = 96.5
+margin_bottom = 31.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MapNameLineEdit" type="LineEdit" parent="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap/MapNameChooser/VBoxContainer"]
+margin_right = 193.0
+margin_bottom = 31.0
+placeholder_text = "Map Name"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="MapNameConfirm" type="Button" parent="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap/MapNameChooser/VBoxContainer"]
+margin_top = 35.0
+margin_right = 193.0
+margin_bottom = 62.0
+disabled = true
+text = "Accept"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadMap" type="Button" parent="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer"]
+margin_top = 31.0
+margin_right = 208.0
+margin_bottom = 58.0
+text = "Load Map"
+script = ExtResource( 10 )
+
+[node name="MapChooser" type="PopupMenu" parent="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/LoadMap"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -224.0
+margin_top = -177.5
+margin_right = 224.0
+margin_bottom = 177.5
+allow_search = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteMap" type="Button" parent="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer"]
+margin_top = 62.0
+margin_right = 208.0
+margin_bottom = 89.0
+text = "Delete Map"
+script = ExtResource( 11 )
+
+[node name="MapChooser" type="PopupMenu" parent="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/DeleteMap"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -224.0
+margin_top = -177.5
+margin_right = 224.0
+margin_bottom = 177.5
+allow_search = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateNewCrewButton" type="Button" parent="Settings/MenuButtons"]
 visible = false
-margin_top = 70.0
-margin_right = 117.0
-margin_bottom = 95.0
+margin_left = 33.0
+margin_top = 148.0
+margin_right = 167.0
+margin_bottom = 175.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Create New Crew"
@@ -108,16 +254,30 @@ __meta__ = {
 }
 crew_setup_sceen = ExtResource( 6 )
 
-[node name="QuitButton" type="Button" parent="MarginContainer/Settings/VBoxContainer"]
+[node name="GameSettingsButton" type="Button" parent="Settings/MenuButtons"]
+visible = false
+margin_top = 148.0
+margin_right = 200.0
+margin_bottom = 175.0
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="Settings/MenuButtons"]
 margin_top = 111.0
 margin_right = 200.0
 margin_bottom = 138.0
 text = "Quit"
 script = ExtResource( 8 )
 
-[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/SaveButton" to="MarginContainer/Settings/VBoxContainer/SaveButton" method="_on_SaveButton_pressed"]
-[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/LoadButton" to="MarginContainer/Settings/VBoxContainer/LoadButton" method="_on_LoadButton_pressed"]
-[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/ChangeMapButton" to="MarginContainer/Settings/VBoxContainer/ChangeMapButton" method="_on_ChangeMapButton_pressed"]
-[connection signal="file_selected" from="MarginContainer/Settings/VBoxContainer/ChangeMapButton/FileDialog" to="MarginContainer/Settings/VBoxContainer/ChangeMapButton" method="_on_FileDialog_file_selected"]
-[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/CreateNewCrewButton" to="MarginContainer/Settings/VBoxContainer/CreateNewCrewButton" method="_on_CreateNewCrewButton_pressed"]
-[connection signal="pressed" from="MarginContainer/Settings/VBoxContainer/QuitButton" to="MarginContainer/Settings/VBoxContainer/QuitButton" method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="Settings/MenuButtons/SaveButton" to="Settings/MenuButtons/SaveButton" method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="Settings/MenuButtons/LoadButton" to="Settings/MenuButtons/LoadButton" method="_on_LoadButton_pressed"]
+[connection signal="pressed" from="Settings/MenuButtons/EditMap" to="Settings/MenuButtons/EditMap" method="_on_EditMap_pressed"]
+[connection signal="pressed" from="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap" to="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap" method="_on_ChangeMapButton_pressed"]
+[connection signal="file_selected" from="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap/FileDialog" to="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap" method="_on_FileDialog_file_selected"]
+[connection signal="text_changed" from="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap/MapNameChooser/VBoxContainer/MapNameLineEdit" to="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap" method="_on_MapNameLineEdit_text_changed"]
+[connection signal="pressed" from="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap/MapNameChooser/VBoxContainer/MapNameConfirm" to="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/CreateNewMap" method="_on_MapNameConfirm_pressed"]
+[connection signal="pressed" from="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/LoadMap" to="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/LoadMap" method="_on_LoadMap_pressed"]
+[connection signal="index_pressed" from="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/LoadMap/MapChooser" to="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/LoadMap" method="_on_MapChooser_index_pressed"]
+[connection signal="pressed" from="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/DeleteMap" to="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/DeleteMap" method="_on_LoadMap_pressed"]
+[connection signal="index_pressed" from="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/DeleteMap/MapChooser" to="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/DeleteMap" method="_on_MapChooser_index_pressed"]
+[connection signal="pressed" from="Settings/MenuButtons/CreateNewCrewButton" to="Settings/MenuButtons/CreateNewCrewButton" method="_on_CreateNewCrewButton_pressed"]
+[connection signal="pressed" from="Settings/MenuButtons/QuitButton" to="Settings/MenuButtons/QuitButton" method="_on_QuitButton_pressed"]

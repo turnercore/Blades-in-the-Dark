@@ -6,25 +6,20 @@
 script = ExtResource( 1 )
 _save_id = "default"
 _save_folder = "res://debug/save"
-version = "0.35"
+version = "0.4"
 map = {
+"image": "res://maps/District Images/doskvol_brightstone.jpg",
+"map_index": 1,
+"map_name": "Brighstone",
 "notes": {
-Vector2( -572, -160 ): {
-"info_text": "Hello world",
-"location": Vector2( -572, -160 )
-},
-Vector2( 50, 50 ): {
-"info_text": "Hello world WOO!"
-},
-Vector2( 98, -156 ): {
-"info_text": "Hello world",
-"location": Vector2( 98, -156 )
-},
-Vector2( 610, -420 ): {
-"info_text": "Hello world",
-"location": Vector2( 610, -420 )
 }
 }
+maps = [ {
+"image": "res://maps/District Images/doskvol_brightstone.jpg",
+"map_index": 1,
+"map_name": "Brighstone",
+"notes": {
 }
+} ]
 clocks = {
 }

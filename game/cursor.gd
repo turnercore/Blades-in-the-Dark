@@ -5,6 +5,7 @@ onready var sprite: = $Sprite
 var default_texture: Texture = preload("res://Shared/Art/Icons/icon.png")
 var default_scale: = Vector2(1, 1)
 
+var current_note_target = null
 var current_target = null
 var current_target_type:String = "none"
 
@@ -16,8 +17,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		match current_target_type:
 			"info":
-				print("note clicked")
-				print("This is where we'd make it so you can edit the note")
+				print(current_target)
+				Events.emit_signal("map_note_clicked", current_note_target)
 			_:
 				pass
 
@@ -32,7 +33,7 @@ func _on_cursor_area_entered(area: Area2D) -> void:
 
 		sprite.texture = load("res://Shared/Art/Icons/info_icon.png")
 		sprite.scale = Vector2(0.05, 0.05)
-		current_target = area
+		current_note_target = area
 		current_target_type = "info"
 
 

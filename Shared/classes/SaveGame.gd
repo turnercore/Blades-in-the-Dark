@@ -9,8 +9,10 @@ export (String) var _save_id: = "default"
 export (String) var _save_folder: = "res://debug/save"
 export (String) var version: String = ''
 export (Dictionary) var map: = {
-	"name": "Duskvol",
-	Vector2(100,50): "Test Map Note"
+	"map_index": 0,
+	"map_name": "Duskvol",
+	"image": '',
+	"notes": {}
 } setget _set_map
 
 

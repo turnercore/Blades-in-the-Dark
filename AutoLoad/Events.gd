@@ -43,6 +43,16 @@ func emit_clock_updated(id:String, clock_data:Dictionary)->void:
 	emit_signal("clock_updated", id, clock_data)
 
 
-signal map_created(map_texture_path)
-func emit_map_created(map_texture_path:String)->void:
-	emit_signal("map_created", map_texture_path)
+signal map_created(map_texture_path, map_name)
+func emit_map_created(map_texture_path:String, map_name:String)->void:
+	emit_signal("map_created", map_texture_path, map_name)
+
+signal map_changed(index)
+func emit_map_changed(index: int)->void:
+	emit_signal("map_changed", index)
+
+signal map_removed(index)
+func emit_map_removed(index: int)->void:
+	emit_signal("map_removed", index)
+
+signal map_note_clicked(note)

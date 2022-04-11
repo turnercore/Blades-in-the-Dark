@@ -166,9 +166,12 @@ script = ExtResource( 6 )
 
 [node name="OverlayBackground" type="ColorRect" parent="Popup Layer"]
 visible = false
+show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color( 0, 0, 0, 0.815686 )
 __meta__ = {
 "_edit_use_anchors_": false

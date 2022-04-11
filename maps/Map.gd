@@ -98,7 +98,7 @@ func load_map(map:Dictionary)->void:
 		var texture = load(map.image)
 		map_texture.texture = texture
 	else:
-		var texture = load(GameData.DEFAULT_MAP_IMAGE)
+		var texture = load(Globals.DEFAULT_MAP_IMAGE)
 		map_texture.texture = texture
 
 	if map and "notes" in map:

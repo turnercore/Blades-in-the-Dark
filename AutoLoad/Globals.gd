@@ -3,6 +3,7 @@ extends Node
 #This is being used for the new game popup
 const GAME_SCENE_PATH: = "res://game/Game.tscn"
 const GAME_SCENE:PackedScene = preload(GAME_SCENE_PATH)
+const DEFAULT_MAP_IMAGE:= "res://maps/blades_detailedmap_highres.jpg"
 
 enum CLOCK_TYPE {
 	ALL,

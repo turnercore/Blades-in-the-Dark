@@ -3,7 +3,7 @@ extends CanvasLayer
 onready var overlay: = $OverlayBackground
 
 func _ready() -> void:
-	overlay.visible = false
+#	overlay.visible = false
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 	Events.connect("popup", self, "_on_popup")

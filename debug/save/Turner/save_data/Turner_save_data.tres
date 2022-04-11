@@ -1,0 +1,104 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/SaveGame.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_save_id = "Turner"
+_save_folder = "res://debug/save"
+version = "0.4"
+map = {
+"name": "Duskvol",
+"notes": {
+Vector2( -11924, 770 ): {
+"info_text": "Hello world",
+"location": Vector2( -11924, 770 )
+},
+Vector2( -11814, 4796 ): {
+"info_text": "Hello world",
+"location": Vector2( -11814, 4796 )
+},
+Vector2( -3322, 4642 ): {
+"info_text": "Hello world",
+"location": Vector2( -3322, 4642 )
+},
+Vector2( -180, -180 ): {
+"info_text": "Hello world",
+"location": Vector2( -180, -180 )
+},
+Vector2( -175, 3 ): {
+"info_text": "Hello world",
+"location": Vector2( -175, 3 )
+},
+Vector2( 211, -4 ): {
+"info_text": "Hello world",
+"location": Vector2( 211, -4 )
+}
+},
+Vector2( 100, 50 ): "Test Map Note"
+}
+maps = [ {
+"name": "Duskvol",
+"notes": {
+Vector2( -11924, 770 ): {
+"info_text": "Hello world",
+"location": Vector2( -11924, 770 )
+},
+Vector2( -11814, 4796 ): {
+"info_text": "Hello world",
+"location": Vector2( -11814, 4796 )
+},
+Vector2( -3322, 4642 ): {
+"info_text": "Hello world",
+"location": Vector2( -3322, 4642 )
+},
+Vector2( -180, -180 ): {
+"info_text": "Hello world",
+"location": Vector2( -180, -180 )
+},
+Vector2( -175, 3 ): {
+"info_text": "Hello world",
+"location": Vector2( -175, 3 )
+},
+Vector2( 211, -4 ): {
+"info_text": "Hello world",
+"location": Vector2( 211, -4 )
+}
+},
+Vector2( 100, 50 ): "Test Map Note"
+} ]
+clocks = {
+"clock_139": {
+"clock_name": "clock",
+"filled": 2,
+"id": "clock_139",
+"is_secret": false,
+"locked": false,
+"locked_by_clock": null,
+"max_value": 4,
+"type": 1,
+"unlocks_clock": null
+},
+"clock_33": {
+"clock_name": "clock",
+"filled": 0,
+"id": "clock_33",
+"is_secret": false,
+"locked": false,
+"locked_by_clock": null,
+"max_value": 4,
+"type": 1,
+"unlocks_clock": null
+},
+"clock_947": {
+"clock_name": "clock",
+"filled": 0,
+"id": "clock_947",
+"is_secret": false,
+"locked": false,
+"locked_by_clock": null,
+"max_value": 4,
+"type": 1,
+"unlocks_clock": null
+}
+}

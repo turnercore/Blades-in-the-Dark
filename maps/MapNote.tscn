@@ -1,43 +1,441 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Shared/Art/Icons/MapNoteIcon.png" type="Texture" id=1]
 [ext_resource path="res://maps/MapLocation.gd" type="Script" id=2]
+[ext_resource path="res://Shared/theme/fonts/Schoolbell-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://maps/EditNotePopup.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 69.5, 29.5 )
+extents = Vector2( 39.75, 14.5 )
+
+[sub_resource type="DynamicFont" id=7]
+resource_local_to_scene = true
+size = 25
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -4
+extra_spacing_bottom = -4
+extra_spacing_char = 1
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+resource_local_to_scene = true
+size = 25
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -4
+extra_spacing_bottom = -4
+extra_spacing_char = 1
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MapNoteTexture:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 91, 38 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MapNoteTexture:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.490196 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 39.75, 14.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MapNoteTexture:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -45, -20 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MapNoteTexture/Label:custom_fonts/font:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 25 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MapNoteTexture/Label:valign")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MapNoteTexture/Label:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 40 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MapNoteTexture/Label2:percent_visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "enlarge"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MapNoteTexture:rect_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 91, 38 ), Vector2( 455, 190 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MapNoteTexture:self_modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.490196 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:shape:extents")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 39.75, 14.5 ), Vector2( 192, 72.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MapNoteTexture:rect_position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -45, -20 ), Vector2( -225, -100 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -1 ), Vector2( 1, -4.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MapNoteTexture/Label:custom_fonts/font:size")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 11, 25 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MapNoteTexture/Label:valign")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MapNoteTexture/Label:rect_position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 40 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MapNoteTexture/Label2:percent_visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "open"
+
+[sub_resource type="Animation" id=4]
+resource_name = "shrink"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MapNoteTexture:rect_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 455, 190 ), Vector2( 91, 38 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MapNoteTexture:self_modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.490196 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:shape:extents")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 192, 72.5 ), Vector2( 39.75, 14.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MapNoteTexture:rect_position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -225, -100 ), Vector2( -45, -20 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CollisionShape2D:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, -4.5 ), Vector2( 0, -1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MapNoteTexture/Label:custom_fonts/font:size")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 25, 11 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MapNoteTexture/Label:valign")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MapNoteTexture/Label:rect_position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 40 ), Vector2( 0, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("MapNoteTexture/Label2:percent_visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 
 [node name="MapNote" type="Area2D" groups=["info"]]
-modulate = Color( 1, 1, 1, 0.333333 )
 script = ExtResource( 2 )
-info_text = "Bellweather Crematorium: 
-
-The site of the spirit bells and the rookery for the deathseeker crows. Bodies recovered by the Spirit Wardens are incinerated in electroplasm here to destroy their ghosts."
+info_text = "The site of the spirit bells and the rookery for the deathseeker crows. Bodies recovered by the Spirit Wardens are incinerated in electroplasm here to destroy their ghosts."
+edit_note_popup = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1 )
 shape = SubResource( 1 )
 
 [node name="MapNoteTexture" type="NinePatchRect" parent="."]
-margin_left = -75.0
-margin_top = -40.0
-margin_right = 79.0
-margin_bottom = 37.0
-rect_min_size = Vector2( 100, 50 )
-rect_pivot_offset = Vector2( -170, -76 )
+self_modulate = Color( 1, 1, 1, 0.490196 )
+margin_left = -45.0
+margin_top = -20.0
+margin_right = 46.0
+margin_bottom = 18.0
+rect_clip_content = true
 texture = ExtResource( 1 )
+region_rect = Rect2( -4, 11, 813, 379 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="MapNoteTexture"]
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Bellweather
-Cremetorium"
+margin_top = 40.0
+margin_right = 91.0
+margin_bottom = 78.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 7 )
+text = "Bellweather Cremetorium"
 align = 1
-valign = 1
+autowrap = true
+clip_text = true
+max_lines_visible = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label2" type="Label" parent="MapNoteTexture"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 36.0
+margin_right = -44.0
+margin_bottom = -5.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 8 )
+text = "The site of the spirit bells and the rookery for the deathseeker crows."
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+percent_visible = 0.0
+max_lines_visible = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 3.0
+anims/RESET = SubResource( 6 )
+anims/enlarge = SubResource( 2 )
+anims/open = SubResource( 3 )
+anims/shrink = SubResource( 4 )
 
 [connection signal="area_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="area_exited" from="." to="." method="_on_mouse_exited"]
