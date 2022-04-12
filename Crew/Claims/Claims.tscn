@@ -488,22 +488,22 @@ margin_bottom = 384.0
 script = ExtResource( 5 )
 
 [node name="EditableButton" type="Button" parent="VBoxContainer/EditButtons"]
-margin_right = 24.0
+margin_right = 21.0
 margin_bottom = 40.0
 toggle_mode = true
 pressed = true
 text = "..."
 
 [node name="RestrictedPathsButton" type="CheckButton" parent="VBoxContainer/EditButtons"]
-margin_left = 344.0
-margin_right = 528.0
+margin_left = 333.0
+margin_right = 527.0
 margin_bottom = 40.0
 size_flags_horizontal = 10
 size_flags_vertical = 0
 text = "Restricted Paths"
 
 [node name="RecalculateButton" type="Button" parent="VBoxContainer/EditButtons"]
-margin_left = 532.0
+margin_left = 531.0
 margin_right = 580.0
 margin_bottom = 40.0
 size_flags_horizontal = 8

@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Crew/ability.gd" type="Script" id=1]
+[ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=2]
+
+[node name="ability" type="VBoxContainer"]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 42.0
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 29.0
+
+[node name="claimed" type="CheckBox" parent="HBoxContainer"]
+margin_right = 24.0
+margin_bottom = 29.0
+script = ExtResource( 2 )
+property = "pressed"
+
+[node name="ability" type="Label" parent="HBoxContainer"]
+margin_left = 28.0
+margin_top = 4.0
+margin_right = 128.0
+margin_bottom = 25.0
+focus_mode = 2
+text = "Synchronized "
+script = ExtResource( 2 )
+
+[node name="effect" type="Label" parent="."]
+margin_top = 33.0
+margin_right = 1024.0
+margin_bottom = 54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "When you perform a group action, you may count multiple 6s from different rolls as a critical success."
+autowrap = true
+script = ExtResource( 2 )

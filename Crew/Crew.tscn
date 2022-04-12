@@ -1,64 +1,79 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Crew/Crew Contacts.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Crew/Crew Special Abilities.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Crew/Hideout.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Crew/Crew Sheet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=5]
+[ext_resource path="res://Crew/Contacts.gd" type="Script" id=6]
 [ext_resource path="res://Crew/Claims/Claims.tscn" type="PackedScene" id=7]
 
-[node name="Crew" type="TabContainer"]
+[node name="Crew" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-tab_align = 0
-drag_to_rearrange_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Crew Sheet" parent="." instance=ExtResource( 4 )]
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crew Sheet" parent="TabContainer" instance=ExtResource( 4 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="The Lair" parent="." instance=ExtResource( 3 )]
+[node name="The Lair" parent="TabContainer" instance=ExtResource( 3 )]
 visible = false
 margin_left = 4.0
 margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="lair_name" parent="The Lair" index="0"]
-margin_left = 458.0
-margin_right = 558.0
+[node name="lair_name" parent="TabContainer/The Lair" index="0"]
+margin_left = 508.0
+margin_right = 608.0
+margin_bottom = 31.0
+caret_blink = true
+caret_blink_speed = 0.5
 
-[node name="TextureRect" parent="The Lair" index="1"]
-margin_right = 1016.0
-margin_bottom = 294.0
+[node name="TextureRect" parent="TabContainer/The Lair" index="1"]
+margin_top = 35.0
+margin_right = 1116.0
+margin_bottom = 592.0
 
-[node name="Claims" parent="." instance=ExtResource( 7 )]
+[node name="Claims" parent="TabContainer" instance=ExtResource( 7 )]
 visible = false
 margin_left = 4.0
 margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Crew Special Abilities" parent="." instance=ExtResource( 2 )]
+[node name="Crew Special Abilities" parent="TabContainer" instance=ExtResource( 2 )]
 visible = false
 margin_left = 4.0
 margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Crew Contacts" parent="." instance=ExtResource( 1 )]
+[node name="Crew Contacts" parent="TabContainer" instance=ExtResource( 1 )]
 visible = false
 margin_left = 4.0
 margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
+script = ExtResource( 6 )
 
-[node name="Notes" type="VBoxContainer" parent="."]
+[node name="Notes" type="VBoxContainer" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -68,18 +83,20 @@ margin_right = -4.0
 margin_bottom = -4.0
 alignment = 1
 
-[node name="Label" type="Label" parent="Notes"]
+[node name="Label" type="Label" parent="TabContainer/Notes"]
 margin_right = 40.0
 margin_bottom = 14.0
 size_flags_horizontal = 5
 text = "Crew Notes:"
 
-[node name="TextEdit" type="TextEdit" parent="Notes"]
+[node name="TextEdit" type="TextEdit" parent="TabContainer/Notes"]
 margin_right = 1016.0
 margin_bottom = 564.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 smooth_scrolling = true
 wrap_enabled = true
+script = ExtResource( 5 )
+playbook_field = "notes"
 
-[editable path="The Lair"]
+[editable path="TabContainer/The Lair"]

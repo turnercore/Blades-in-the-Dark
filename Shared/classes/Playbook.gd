@@ -159,6 +159,7 @@ func find(path_map: String):
 	var path: = path_map.split(".", false)
 	var jumps: int = 0
 	var updated_property
+
 	while jumps < path.size():
 		var index: = 0
 		var is_array: = false
@@ -168,6 +169,7 @@ func find(path_map: String):
 			index = int(check_array[1])
 			path[jumps] = check_array[0]
 			is_array = true
+
 		if jumps == 0:
 			if path[jumps] in self:
 				updated_property = self.get(path[jumps])
@@ -184,5 +186,4 @@ func find(path_map: String):
 				jumps += 1
 			else:
 				return false
-
 	return updated_property

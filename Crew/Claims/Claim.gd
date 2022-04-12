@@ -6,12 +6,11 @@ export (NodePath) onready var claim_label = get_node(claim_label) as Label
 export (NodePath) onready var faction_label = get_node(faction_label) as Label
 export(bool) var starting_claim:bool = false
 
+var _playbook:CrewPlaybook
 
 var restricted_paths:bool = false
 
-
-
-var is_claimed:bool = false
+var is_claimed:bool = false setget _set_is_claimed
 var is_available:bool = true
 var is_prison:bool = false
 var faction: String
@@ -23,12 +22,13 @@ var connectors:Dictionary
 var connection_node_names:Array
 
 
-
 func _ready() -> void:
 	claim_label.text = claim_name
 
 
 func setup(playbook: CrewPlaybook) -> void:
+	_playbook = playbook
+
 	if not name in playbook.claims:
 		print("can't find cell " + name + " in playbook.claims")
 		return
@@ -91,8 +91,6 @@ func _set_connections(connection_str: String)-> void:
 			if connectors[connector].has_method("activate"): connectors[connector].activate()
 
 
-
-
 func _process(_delta: float) -> void:
 	if not visible: return
 
@@ -122,8 +120,6 @@ func _process(_delta: float) -> void:
 	hint_tooltip = effect
 	claim_label.text = claim_name
 
-#	check_connections()
-
 
 func check_connections() -> void:
 	var is_connected_to_something: = false
@@ -149,4 +145,11 @@ func _on_connector_partially_connected()-> void:
 
 
 func _on_Claim_toggled(button_pressed: bool) -> void:
-	is_claimed = button_pressed
+	self.is_claimed = button_pressed
+
+
+func _set_is_claimed(value:bool)->void:
+	is_claimed = value
+	pressed = is_claimed
+	_playbook.claims[name].is_claimed = is_claimed
+	GameSaver.save_crew(_playbook)

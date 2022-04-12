@@ -15,10 +15,13 @@ func _ready() -> void:
 
 
 func change_screen_to(screen: String)-> void:
-	screen = screen.to_lower()
-	current_screen.visible = false
-	screens[screen].visible = true
-	current_screen = screens[screen]
+	if screens[screen] is Popup:
+		print("using popup instead")
+		screens[screen].popup()
+	else:
+		current_screen.visible = false
+		screens[screen].visible = true
+		current_screen = screens[screen]
 
 
 func _on_main_screen_changed(screen: String) -> void:

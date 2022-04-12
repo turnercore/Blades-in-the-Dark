@@ -7,11 +7,11 @@ export(String) var property: = "text"
 #Playbook field should be a dot-notation map to the path
 #Example: If you wanted to updated an item is being used
 #playbook_field = items.item_name.using
-export(String) var playbook_field:String = ""
+export(String) var playbook_field:String = "" setget _set_playbook_field
 
 
 func _ready() -> void:
-	add_self_to_groups()
+#	add_self_to_groups()
 	connect_to_self_signal()
 	if playbook and not playbook.is_connected("property_changed", self, "_on_property_changed"):
 		playbook.connect("property_changed", self, "_on_property_changed")
@@ -24,7 +24,12 @@ func _set_playbook(value: Playbook)-> void:
 	if not value: return
 	playbook.connect("property_changed", self, "_on_property_changed")
 	load_from_playbook()
-#	set(property, playbook.find(playbook_field))
+
+
+func _set_playbook_field(value:String)->void:
+	playbook_field = value
+	if playbook:
+		load_from_playbook()
 
 
 func connect_to_self_signal()->void:
@@ -39,10 +44,10 @@ func connect_to_self_signal()->void:
 		self.connect("filled_points_changed", self, "_on_updated_data")
 
 
-func add_self_to_groups()-> void:
-	for GROUP in GROUPS:
-		if not is_in_group(GROUP):
-			add_to_group(GROUP)
+#func add_self_to_groups()-> void:
+#	for GROUP in GROUPS:
+#		if not is_in_group(GROUP):
+#			add_to_group(GROUP)
 
 
 func _on_load(_playbook: Playbook)->void:
@@ -78,4 +83,3 @@ func _on_updated_data(_ignored = null)-> void:
 func _on_property_changed(updated_property)-> void:
 	if updated_property == playbook_field:
 		load_from_playbook()
-

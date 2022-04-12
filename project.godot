@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "HBoxContainer",
-"class": "AbilityContainer",
+"base": "VBoxContainer",
+"class": "Ability",
 "language": "GDScript",
-"path": "res://Crew/crew_ability.gd"
+"path": "res://Crew/ability.gd"
 }, {
 "base": "Resource",
 "class": "ChatLog",
@@ -95,7 +95,7 @@ _global_script_classes=[ {
 "path": "res://Shared/classes/SaveableField.gd"
 } ]
 _global_script_class_icons={
-"AbilityContainer": "",
+"Ability": "",
 "ChatLog": "",
 "ChatSaver": "",
 "ClaimCell": "",

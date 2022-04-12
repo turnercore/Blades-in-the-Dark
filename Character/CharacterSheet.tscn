@@ -30,170 +30,170 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 37.0
+margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Info"]
-margin_right = 497.0
-margin_bottom = 536.0
+margin_right = 549.0
+margin_bottom = 560.0
 
 [node name="Field" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_right = 497.0
-margin_bottom = 29.0
+margin_right = 549.0
+margin_bottom = 31.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Field"]
 margin_top = 5.0
-margin_right = 30.0
-margin_bottom = 24.0
+margin_right = 35.0
+margin_bottom = 26.0
 text = "Crew"
 
 [node name="crew_name" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Field"]
-margin_left = 34.0
-margin_right = 234.0
-margin_bottom = 29.0
+margin_left = 39.0
+margin_right = 239.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 200, 0 )
 script = ExtResource( 9 )
 playbook_field = "crew_name"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_top = 33.0
-margin_right = 497.0
-margin_bottom = 95.0
+margin_top = 35.0
+margin_right = 549.0
+margin_bottom = 101.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer"]
-margin_right = 246.0
-margin_bottom = 62.0
+margin_right = 272.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 
 [node name="Field" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 246.0
-margin_bottom = 29.0
+margin_right = 272.0
+margin_bottom = 31.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer/Field"]
 margin_top = 5.0
-margin_right = 36.0
-margin_bottom = 24.0
+margin_right = 42.0
+margin_bottom = 26.0
 text = "Name"
 
 [node name="name" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer/Field"]
-margin_left = 40.0
-margin_right = 190.0
-margin_bottom = 29.0
+margin_left = 46.0
+margin_right = 196.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 150, 0 )
 script = ExtResource( 9 )
 playbook_field = "name"
 
 [node name="Field2" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_top = 33.0
-margin_right = 246.0
-margin_bottom = 62.0
+margin_top = 35.0
+margin_right = 272.0
+margin_bottom = 66.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer/Field2"]
 margin_top = 5.0
-margin_right = 53.0
-margin_bottom = 24.0
+margin_right = 61.0
+margin_bottom = 26.0
 text = "Heritage"
 
 [node name="heritage" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer/Field2"]
-margin_left = 57.0
-margin_right = 207.0
-margin_bottom = 29.0
+margin_left = 65.0
+margin_right = 215.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 150, 0 )
 script = ExtResource( 9 )
 playbook_field = "heritage"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer"]
-margin_left = 250.0
-margin_right = 497.0
-margin_bottom = 62.0
+margin_left = 276.0
+margin_right = 549.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 
 [node name="Field" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 247.0
-margin_bottom = 29.0
+margin_right = 273.0
+margin_bottom = 31.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer2/Field"]
 margin_top = 5.0
-margin_right = 43.0
-margin_bottom = 24.0
+margin_right = 49.0
+margin_bottom = 26.0
 text = "Aliases"
 
 [node name="aliases" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer2/Field"]
-margin_left = 47.0
-margin_right = 197.0
-margin_bottom = 29.0
+margin_left = 53.0
+margin_right = 203.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 150, 0 )
 script = ExtResource( 9 )
 playbook_field = "aliases"
 
 [node name="Field2" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 33.0
-margin_right = 247.0
-margin_bottom = 62.0
+margin_top = 35.0
+margin_right = 273.0
+margin_bottom = 66.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer2/Field2"]
 margin_top = 5.0
-margin_right = 72.0
-margin_bottom = 24.0
+margin_right = 85.0
+margin_bottom = 26.0
 text = "Background"
 
 [node name="background" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer2/Field2"]
-margin_left = 76.0
-margin_right = 226.0
-margin_bottom = 29.0
+margin_left = 89.0
+margin_right = 239.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 150, 0 )
 script = ExtResource( 9 )
 playbook_field = "background"
 
 [node name="Field2" type="VBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_top = 99.0
-margin_right = 497.0
-margin_bottom = 272.0
+margin_top = 105.0
+margin_right = 549.0
+margin_bottom = 280.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Field2"]
-margin_right = 497.0
-margin_bottom = 19.0
+margin_right = 549.0
+margin_bottom = 21.0
 text = "Look"
 
 [node name="look" type="TextEdit" parent="PanelContainer/Info/VBoxContainer/Field2"]
-margin_top = 23.0
-margin_right = 497.0
-margin_bottom = 173.0
+margin_top = 25.0
+margin_right = 549.0
+margin_bottom = 175.0
 rect_min_size = Vector2( 150, 150 )
 script = ExtResource( 9 )
 playbook_field = "look"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/Info/VBoxContainer"]
-margin_top = 276.0
-margin_right = 497.0
-margin_bottom = 280.0
+margin_top = 284.0
+margin_right = 549.0
+margin_bottom = 288.0
 
 [node name="StressContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_top = 284.0
-margin_right = 497.0
-margin_bottom = 309.0
+margin_top = 292.0
+margin_right = 549.0
+margin_bottom = 319.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
 margin_top = 3.0
-margin_right = 38.0
-margin_bottom = 22.0
+margin_right = 42.0
+margin_bottom = 24.0
 text = "Stress"
 
 [node name="stress" parent="PanelContainer/Info/VBoxContainer/StressContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
-margin_left = 42.0
-margin_right = 112.0
-margin_bottom = 25.0
+margin_left = 46.0
+margin_right = 125.0
+margin_bottom = 27.0
 playbook_field = "stress"
 total_points = 9
 
 [node name="Label2" type="Label" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
-margin_left = 116.0
+margin_left = 129.0
 margin_top = 3.0
-margin_right = 163.0
-margin_bottom = 22.0
+margin_right = 182.0
+margin_bottom = 24.0
 text = "Trauma"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -201,16 +201,16 @@ __meta__ = {
 
 [node name="trauma" parent="PanelContainer/Info/VBoxContainer/StressContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
-margin_left = 167.0
-margin_right = 237.0
-margin_bottom = 25.0
+margin_left = 186.0
+margin_right = 265.0
+margin_bottom = 27.0
 playbook_field = "trauma_level"
 total_points = 4
 
 [node name="trauma1" type="OptionButton" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
-margin_left = 241.0
-margin_right = 302.0
-margin_bottom = 25.0
+margin_left = 269.0
+margin_right = 336.0
+margin_bottom = 27.0
 text = "None"
 items = [ "Cold", null, false, 0, null, "Haunted", null, false, 1, null, "Obsessed", null, false, 2, null, "Paranoid", null, false, 3, null, "Reckless", null, false, 4, null, "Soft", null, false, 5, null, "Unstable", null, false, 6, null, "Vicious", null, false, 7, null, "None", null, false, 100, null ]
 selected = 8
@@ -218,9 +218,9 @@ script = ExtResource( 9 )
 playbook_field = "traumas-0"
 
 [node name="trauma2" type="OptionButton" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
-margin_left = 306.0
-margin_right = 367.0
-margin_bottom = 25.0
+margin_left = 340.0
+margin_right = 407.0
+margin_bottom = 27.0
 text = "None"
 items = [ "Cold", null, false, 0, null, "Haunted", null, false, 1, null, "Obsessed", null, false, 2, null, "Paranoid", null, false, 3, null, "Reckless", null, false, 4, null, "Soft", null, false, 5, null, "Unstable", null, false, 6, null, "Vicious", null, false, 7, null, "None", null, false, 100, null ]
 selected = 8
@@ -228,9 +228,9 @@ script = ExtResource( 9 )
 playbook_field = "traumas-1"
 
 [node name="trauma3" type="OptionButton" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
-margin_left = 371.0
-margin_right = 432.0
-margin_bottom = 25.0
+margin_left = 411.0
+margin_right = 478.0
+margin_bottom = 27.0
 text = "None"
 items = [ "Cold", null, false, 0, null, "Haunted", null, false, 1, null, "Obsessed", null, false, 2, null, "Paranoid", null, false, 3, null, "Reckless", null, false, 4, null, "Soft", null, false, 5, null, "Unstable", null, false, 6, null, "Vicious", null, false, 7, null, "None", null, false, 100, null ]
 selected = 8
@@ -238,9 +238,9 @@ script = ExtResource( 9 )
 playbook_field = "traumas-2"
 
 [node name="trauma4" type="OptionButton" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
-margin_left = 436.0
-margin_right = 497.0
-margin_bottom = 25.0
+margin_left = 482.0
+margin_right = 549.0
+margin_bottom = 27.0
 text = "None"
 items = [ "Cold", null, false, 0, null, "Haunted", null, false, 1, null, "Obsessed", null, false, 2, null, "Paranoid", null, false, 3, null, "Reckless", null, false, 4, null, "Soft", null, false, 5, null, "Unstable", null, false, 6, null, "Vicious", null, false, 7, null, "None", null, false, 100, null ]
 selected = 8
@@ -248,200 +248,200 @@ script = ExtResource( 9 )
 playbook_field = "traumas-3"
 
 [node name="ArmorUsesContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_top = 313.0
-margin_right = 497.0
-margin_bottom = 340.0
+margin_top = 323.0
+margin_right = 549.0
+margin_bottom = 352.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/ArmorUsesContainer"]
 margin_top = 4.0
-margin_right = 73.0
-margin_bottom = 23.0
+margin_right = 85.0
+margin_bottom = 25.0
 text = "Armor Uses:"
 
 [node name="armor" type="CheckBox" parent="PanelContainer/Info/VBoxContainer/ArmorUsesContainer"]
-margin_left = 77.0
-margin_right = 143.0
-margin_bottom = 27.0
+margin_left = 89.0
+margin_right = 160.0
+margin_bottom = 29.0
 text = "Armor"
 script = ExtResource( 9 )
 playbook_field = "armor"
 
 [node name="heavy_armor" type="CheckBox" parent="PanelContainer/Info/VBoxContainer/ArmorUsesContainer"]
-margin_left = 147.0
-margin_right = 253.0
-margin_bottom = 27.0
+margin_left = 164.0
+margin_right = 282.0
+margin_bottom = 29.0
 text = "Heavy Armor"
 script = ExtResource( 9 )
 playbook_field = "heavy_armor"
 
 [node name="special_amror" type="CheckBox" parent="PanelContainer/Info/VBoxContainer/ArmorUsesContainer"]
-margin_left = 257.0
-margin_right = 373.0
-margin_bottom = 27.0
+margin_left = 286.0
+margin_right = 414.0
+margin_bottom = 29.0
 text = "Special Armor"
 script = ExtResource( 9 )
 playbook_field = "special_armor"
 
 [node name="Harms" type="PanelContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_top = 344.0
-margin_right = 497.0
-margin_bottom = 476.0
+margin_top = 356.0
+margin_right = 549.0
+margin_bottom = 496.0
 
 [node name="HarmTable" type="VBoxContainer" parent="PanelContainer/Info/VBoxContainer/Harms"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 490.0
-margin_bottom = 125.0
+margin_right = 542.0
+margin_bottom = 133.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable"]
-margin_right = 483.0
-margin_bottom = 19.0
+margin_right = 535.0
+margin_bottom = 21.0
 text = "Harm"
 align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable"]
-margin_top = 23.0
-margin_right = 483.0
-margin_bottom = 52.0
+margin_top = 25.0
+margin_right = 535.0
+margin_bottom = 56.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer"]
 margin_top = 5.0
-margin_right = 7.0
-margin_bottom = 24.0
+margin_right = 8.0
+margin_bottom = 26.0
 text = "3"
 
 [node name="harm3" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer"]
-margin_left = 11.0
-margin_right = 416.0
-margin_bottom = 29.0
+margin_left = 12.0
+margin_right = 457.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 script = ExtResource( 9 )
 playbook_field = "harms.level_3"
 
 [node name="Label2" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer"]
-margin_left = 420.0
+margin_left = 461.0
 margin_top = 5.0
-margin_right = 483.0
-margin_bottom = 24.0
+margin_right = 535.0
+margin_bottom = 26.0
 text = "Need Help"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable"]
-margin_top = 56.0
-margin_right = 483.0
-margin_bottom = 85.0
+margin_top = 60.0
+margin_right = 535.0
+margin_bottom = 91.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer2"]
 margin_top = 5.0
-margin_right = 7.0
-margin_bottom = 24.0
+margin_right = 8.0
+margin_bottom = 26.0
 text = "2"
 
 [node name="harm_lvl2-1" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer2"]
-margin_left = 11.0
-margin_right = 232.0
-margin_bottom = 29.0
+margin_left = 12.0
+margin_right = 257.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 script = ExtResource( 9 )
 playbook_field = "harms.level_2-0"
 
 [node name="harm_lvl2-2" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer2"]
-margin_left = 236.0
-margin_right = 458.0
-margin_bottom = 29.0
+margin_left = 261.0
+margin_right = 506.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 script = ExtResource( 9 )
 playbook_field = "harms.level_2-1"
 
 [node name="Label2" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer2"]
-margin_left = 462.0
+margin_left = 510.0
 margin_top = 5.0
-margin_right = 483.0
-margin_bottom = 24.0
+margin_right = 535.0
+margin_bottom = 26.0
 text = "-1D"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable"]
-margin_top = 89.0
-margin_right = 483.0
-margin_bottom = 118.0
+margin_top = 95.0
+margin_right = 535.0
+margin_bottom = 126.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer3"]
 margin_top = 5.0
-margin_right = 6.0
-margin_bottom = 24.0
+margin_right = 7.0
+margin_bottom = 26.0
 text = "1"
 
 [node name="LineEdit" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer3"]
-margin_left = 10.0
-margin_right = 209.0
-margin_bottom = 29.0
+margin_left = 11.0
+margin_right = 230.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="LineEdit2" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer3"]
-margin_left = 213.0
-margin_right = 412.0
-margin_bottom = 29.0
+margin_left = 234.0
+margin_right = 454.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 
 [node name="Label2" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer3"]
-margin_left = 416.0
+margin_left = 458.0
 margin_top = 5.0
-margin_right = 483.0
-margin_bottom = 24.0
+margin_right = 535.0
+margin_bottom = 26.0
 text = "Less Effect"
 
 [node name="Stash" type="PanelContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_top = 480.0
-margin_right = 497.0
-margin_bottom = 536.0
+margin_top = 500.0
+margin_right = 549.0
+margin_bottom = 560.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Info/VBoxContainer/Stash"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 490.0
-margin_bottom = 49.0
+margin_right = 542.0
+margin_bottom = 53.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer"]
-margin_right = 483.0
-margin_bottom = 19.0
+margin_right = 535.0
+margin_bottom = 21.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer"]
-margin_right = 27.0
-margin_bottom = 19.0
+margin_right = 33.0
+margin_bottom = 21.0
 text = "Coin"
 
 [node name="coins" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
-margin_left = 31.0
-margin_right = 483.0
-margin_bottom = 19.0
+margin_left = 37.0
+margin_right = 535.0
+margin_bottom = 21.0
 playbook_field = "coin.available"
 exp_point_scene = ExtResource( 2 )
 total_points = 4
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer"]
-margin_top = 23.0
-margin_right = 483.0
-margin_bottom = 42.0
+margin_top = 25.0
+margin_right = 535.0
+margin_bottom = 46.0
 
 [node name="Label2" type="Label" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer2"]
-margin_right = 34.0
-margin_bottom = 19.0
+margin_right = 39.0
+margin_bottom = 21.0
 text = "Stash"
 
 [node name="stash" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer2" instance=ExtResource( 1 )]
 anchor_right = 0.0
-margin_left = 38.0
-margin_right = 389.0
-margin_bottom = 19.0
+margin_left = 43.0
+margin_right = 425.0
+margin_bottom = 21.0
 playbook_field = "coin.stash"
 exp_point_scene = ExtResource( 2 )
 total_points = 40
 
 [node name="Label3" type="Label" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer2"]
-margin_left = 393.0
-margin_right = 483.0
-margin_bottom = 19.0
+margin_left = 429.0
+margin_right = 535.0
+margin_bottom = 21.0
 text = "Lifestyle (Poor)"
 
 [node name="Stats" type="ScrollContainer" parent="PanelContainer"]
@@ -449,7 +449,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 37.0
+margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
@@ -502,7 +502,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 37.0
+margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
@@ -510,32 +510,31 @@ margin_bottom = -4.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1016.0
-margin_bottom = 559.0
+margin_bottom = 557.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 scroll_vertical_enabled = false
-type = 1
 
 [node name="Strange Friends" type="ScrollContainer" parent="PanelContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 37.0
+margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="contacts" parent="PanelContainer/Strange Friends" instance=ExtResource( 6 )]
 margin_right = 1016.0
-margin_bottom = 559.0
+margin_bottom = 557.0
 
 [node name="Equipment" type="ScrollContainer" parent="PanelContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 37.0
+margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 

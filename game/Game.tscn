@@ -51,8 +51,7 @@ margin_right = 1024.0
 margin_bottom = 600.0
 mouse_filter = 2
 
-[node name="Crew Sheet" parent="ViewportContainer/Viewport/GUI/MainScreens" instance=ExtResource( 2 )]
-visible = false
+[node name="Crew" parent="ViewportContainer/Viewport/GUI/MainScreens" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/SaveGame.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_save_id = "New Test Save"
+_save_folder = "res://debug/save"
+version = "0.41"
+map = {
+"image": "",
+"map_index": 0,
+"map_name": "Duskvol",
+"notes": {
+}
+}
+maps = [ {
+"image": "",
+"map_index": 0,
+"map_name": "Duskvol",
+"notes": {
+}
+} ]
+clocks = {
+}

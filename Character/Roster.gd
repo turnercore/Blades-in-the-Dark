@@ -1,4 +1,4 @@
-extends Control
+extends Popup
 
 export (PackedScene) var character_scene
 export (NodePath) onready var character_container = get_node(character_container) as VBoxContainer
@@ -33,3 +33,7 @@ func _on_NewPlayerCharacterButton_pressed() -> void:
 	#Create new character popup
 	var new_popup = create_character_popup.instance()
 	Events.emit_signal("popup", new_popup)
+
+
+func _on_Roster_modal_closed() -> void:
+	Events.emit_signal("popup_finished")

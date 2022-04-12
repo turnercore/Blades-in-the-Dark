@@ -5,7 +5,7 @@
 [ext_resource path="res://popups/CreateCharacterPopup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Shared/theme/menu.tres" type="StyleBox" id=4]
 
-[node name="Roster" type="Control"]
+[node name="Roster" type="Popup"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -15,9 +15,6 @@ margin_top = -147.5
 margin_right = 203.0
 margin_bottom = 147.5
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 character_scene = ExtResource( 2 )
 character_container = NodePath("PanelContainer/ScrollContainer/VBoxContainer/CharacterContainer")
 create_character_popup = ExtResource( 3 )
@@ -57,4 +54,5 @@ margin_right = 386.0
 margin_bottom = 153.0
 text = "+ New Player Character +"
 
+[connection signal="modal_closed" from="." to="." method="_on_Roster_modal_closed"]
 [connection signal="pressed" from="PanelContainer/ScrollContainer/VBoxContainer/NewPlayerCharacterButton" to="." method="_on_NewPlayerCharacterButton_pressed"]

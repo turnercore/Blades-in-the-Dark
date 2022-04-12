@@ -1,6 +1,6 @@
 extends Container
 
-var crew_playbook: CrewPlaybook setget _set_crew_playbook
+var _playbook: CrewPlaybook setget _set_crew_playbook
 var crew_loaded: bool = false
 export (PackedScene) var crew_setup_sceen
 
@@ -17,12 +17,12 @@ enum tabs {
 
 func _ready() -> void:
 	GameSaver.connect("crew_loaded", self, "_on_crew_loaded")
-	if GameData.crew_playbook: self.crew_playbook = GameData.crew_playbook
+	if GameData.crew_playbook: self._playbook = GameData.crew_playbook
 	propagate_set_editable(self, false)
 
 
 func _on_crew_loaded(playbook:CrewPlaybook)-> void:
-	crew_playbook = playbook
+	_playbook = playbook
 	Globals.propagate_set_playbook_recursive(self, playbook, self)
 
 
@@ -33,7 +33,7 @@ func show_crew_setup()->void:
 
 
 func _set_crew_playbook(playbook:CrewPlaybook)-> void:
-	crew_playbook = playbook
+	_playbook = playbook
 	Globals.propagate_set_playbook_recursive(self, playbook, self)
 
 

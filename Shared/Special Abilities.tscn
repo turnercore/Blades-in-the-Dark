@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Crew/crew_ability.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Crew/ability.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shared/SpecialAbilities.gd" type="Script" id=2]
 
 [node name="Special Abilities" type="ScrollContainer"]
@@ -21,7 +21,7 @@ size_flags_vertical = 3
 
 [node name="SpecialAbilitiesLabel" type="Label" parent="AbilityContainer"]
 margin_right = 1024.0
-margin_bottom = 14.0
+margin_bottom = 21.0
 text = "Special Abilities:"
 __meta__ = {
 "_edit_use_anchors_": false

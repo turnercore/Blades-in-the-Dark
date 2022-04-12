@@ -9,8 +9,8 @@
 [ext_resource path="res://Shared/Coin.tscn" type="PackedScene" id=8]
 
 [node name="Crew Sheet" type="ScrollContainer" groups=["save"]]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 1024.0
+margin_bottom = 600.0
 mouse_filter = 1
 scroll_horizontal_enabled = false
 script = ExtResource( 5 )

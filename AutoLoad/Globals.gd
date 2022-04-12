@@ -19,6 +19,9 @@ enum CLOCK_TYPE {
 func propagate_set_playbook_recursive(node: Node, playbook: Playbook, starting_node: Node)-> void:
 	if "playbook" in node and node != starting_node:
 		node.set("playbook", playbook)
+	elif "_playbook" in node and node != starting_node:
+		node.set("playbook", playbook)
+
 	for child in node.get_children():
 		propagate_set_playbook_recursive(child, playbook, starting_node)
 
