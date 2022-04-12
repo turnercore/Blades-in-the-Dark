@@ -187,3 +187,40 @@ func find(path_map: String):
 			else:
 				return false
 	return updated_property
+
+
+#Put in the playbook property you want, the srd, and the field and get all the defaults added. Bosh
+func setup_property(property:String, srd:Dictionary, srd_field:String = "", overwrite: bool = false) -> void:
+	var current_property = get(property)
+	if srd_field == "": srd_field = property
+	var claimed_properties: = {}
+	if not overwrite:
+		for key in current_property:
+			if "claimed" in current_property[key] and current_property[key].claimed:
+				claimed_properties[key] = current_property[key].duplicate()
+			elif "notes" in current_property[key] and current_property[key].notes:
+				claimed_properties[key] = current_property[key].duplicate()
+			elif "relationship" in current_property[key] and current_property[key].relationship:
+				claimed_properties[key] = current_property[key].duplicate()
+
+	set(property, claimed_properties)
+
+	var field = srd[srd_field] if srd_field in srd else false
+	if not field:
+		print("ERROR setting up Playbook: could not find "+ srd_field +" in srd provided")
+		return
+
+	for key in field:
+		if not ("class" in srd[srd_field][key]) or srd[srd_field][key].class == self.type or srd[srd_field][key].class == "all":
+			var new_property:Dictionary = srd[srd_field][key]
+			var esc_key:String = escape_key(key)
+			var self_property = get(property)
+			self_property[esc_key] = new_property
+
+
+func escape_key(key:String)->String:
+	return key.c_escape().strip_edges().to_lower().replace(" ", "_")
+
+
+func unescape_key(key:String)->String:
+	return key.c_unescape().replace("_", " ").capitalize()

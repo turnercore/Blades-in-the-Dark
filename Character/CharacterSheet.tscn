@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Shared/Markers.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shared/Coin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Character/Stat.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Shared/Special Abilities.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shared/FieldList.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Character/CharacterSheet.gd" type="Script" id=5]
 [ext_resource path="res://Shared/contacts.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Character/CharacterEquipment.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Crew/ability.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=9]
+[ext_resource path="res://Character/item_scene.tscn" type="PackedScene" id=10]
 
 [node name="CharacterSheet" type="Control"]
 anchor_right = 1.0
@@ -27,6 +28,7 @@ __meta__ = {
 }
 
 [node name="Info" type="ScrollContainer" parent="PanelContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -36,7 +38,7 @@ margin_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Info"]
 margin_right = 549.0
-margin_bottom = 560.0
+margin_bottom = 388.0
 
 [node name="Field" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
 margin_right = 549.0
@@ -497,7 +499,7 @@ margin_bottom = 108.0
 stat_name = "Resolve"
 substats = [ "Attune", "Command", "Consort", "Sway" ]
 
-[node name="Skills" type="ScrollContainer" parent="PanelContainer"]
+[node name="Skills" type="MarginContainer" parent="PanelContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -506,7 +508,7 @@ margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Special Abilities" parent="PanelContainer/Skills" instance=ExtResource( 4 )]
+[node name="abilities" parent="PanelContainer/Skills" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1016.0
@@ -514,7 +516,9 @@ margin_bottom = 557.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
-scroll_vertical_enabled = false
+playbook_data = "abilities"
+title = "Player Special Abilities:"
+field_scene = ExtResource( 7 )
 
 [node name="Strange Friends" type="ScrollContainer" parent="PanelContainer"]
 visible = false
@@ -530,14 +534,22 @@ margin_right = 1016.0
 margin_bottom = 557.0
 
 [node name="Equipment" type="ScrollContainer" parent="PanelContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="CharacterEquipment" parent="PanelContainer/Equipment" instance=ExtResource( 8 )]
+[node name="items" parent="PanelContainer/Equipment" instance=ExtResource( 4 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
+margin_right = 1016.0
+margin_bottom = 557.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+playbook_data = "items"
+title = "Items: "
+field_scene = ExtResource( 10 )

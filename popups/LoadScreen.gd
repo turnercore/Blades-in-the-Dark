@@ -28,7 +28,6 @@ func _button_clicked(id: String)-> void:
 	Events.emit_signal("popup_finished")
 	if on_start_screen:
 		get_tree().change_scene_to(Globals.GAME_SCENE)
-#		get_tree().change_scene(Globals.GAME_SCENE_PATH)
 	else:
 		queue_free()
 

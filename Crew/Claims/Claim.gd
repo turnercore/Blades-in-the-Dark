@@ -151,5 +151,6 @@ func _on_Claim_toggled(button_pressed: bool) -> void:
 func _set_is_claimed(value:bool)->void:
 	is_claimed = value
 	pressed = is_claimed
+	if not _playbook: return
 	_playbook.claims[name].is_claimed = is_claimed
 	GameSaver.save_crew(_playbook)

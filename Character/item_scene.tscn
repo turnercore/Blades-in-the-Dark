@@ -1,28 +1,39 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Character/item_scene.gd" type="Script" id=1]
+[ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=2]
 
 [node name="item_scene" type="HBoxContainer"]
-margin_top = 28.0
-margin_right = 1024.0
-margin_bottom = 28.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="using" type="CheckButton" parent="."]
+visible = false
+margin_right = 76.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+property = "pressed"
+
 [node name="load" type="HBoxContainer" parent="."]
-margin_bottom = 14.0
+margin_bottom = 600.0
 
 [node name="item_name" type="Label" parent="."]
 margin_left = 4.0
-margin_right = 101.0
-margin_bottom = 14.0
+margin_top = 289.0
+margin_right = 35.0
+margin_bottom = 310.0
 focus_mode = 2
-text = "Synchronized : "
+text = "item"
+script = ExtResource( 2 )
 
 [node name="description" type="Label" parent="."]
-margin_left = 105.0
-margin_right = 756.0
-margin_bottom = 14.0
-text = "When you perform a group action, you may count multiple 6s from different rolls as a critical success."
+margin_left = 39.0
+margin_top = 289.0
+margin_right = 119.0
+margin_bottom = 310.0
+text = "description"
+script = ExtResource( 2 )

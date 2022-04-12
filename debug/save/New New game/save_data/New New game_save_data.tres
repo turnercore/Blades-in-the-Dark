@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-_save_id = "New Test Save"
+_save_id = "New New game"
 _save_folder = "res://debug/save"
 version = "0.42"
 map = {

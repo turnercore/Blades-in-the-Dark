@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://maps/EditNotePopup.gd"
 }, {
+"base": "ScrollContainer",
+"class": "FieldList",
+"language": "GDScript",
+"path": "res://Shared/FieldList.gd"
+}, {
 "base": "Node2D",
 "class": "Map",
 "language": "GDScript",
@@ -104,6 +109,7 @@ _global_script_class_icons={
 "CrewPlaybook": "",
 "Cursor": "",
 "EditNotePopup": "",
+"FieldList": "",
 "Map": "",
 "MapNote": "",
 "MarkerButton": "",
@@ -122,7 +128,7 @@ run/main_scene="res://start_screen/StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Shared/Art/Icons/icon.png"
-config/version="0.42"
+config/version="0.43"
 
 [autoload]
 

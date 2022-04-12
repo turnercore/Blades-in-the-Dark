@@ -1,8 +1,6 @@
 class_name PlayerPlaybook
 extends Playbook
 
-
-export var player_class: String
 export var aliases: String
 export var look: String
 export var heritage: String
@@ -16,7 +14,7 @@ export var vice: String
 export var vice_type: String
 export var xp_gain: String
 export var friends_and_foes: Dictionary
-export var vice_purveyors: Array
+export var vice_purveyors: Dictionary
 export var current_load:int = 3
 export var harms: = {
 	"level_3": null,
@@ -37,7 +35,7 @@ func setup(json_or_file_path_to_json, pc_class: String, overwrite:bool = false)-
 
 	needs_setup = false
 	pc_class = pc_class.to_lower()
-	player_class = pc_class
+	type = pc_class
 	experience = {
 		"playbook": 0,
 		"insight" : 0,
@@ -49,13 +47,18 @@ func setup(json_or_file_path_to_json, pc_class: String, overwrite:bool = false)-
 		defaults = get_defaults(json)
 	else:
 		defaults = json
+
 	self.type = pc_class
 
-	setup_abilities(defaults, pc_class, overwrite)
-	setup_items(defaults, pc_class)
-	setup_friends_and_foes(defaults, pc_class)
+	var properties_to_setup: = [
+		"items",
+		"friends_and_foes",
+		"vice_purveyors"]
+	for property in properties_to_setup:
+		setup_property(property, defaults)
+
+	setup_property("abilities", defaults, "character_abilities")
 	setup_xp_gain(defaults, pc_class)
-	setup_vice_purveyors(defaults, pc_class)
 	set_starting_stats(pc_class, overwrite)
 
 
@@ -112,15 +115,6 @@ func set_starting_stats(pc_class: String, overwrite: bool = true)->void:
 	emit_signal("property_changed", "resolve")
 
 
-func setup_vice_purveyors(defaults:Dictionary, pc_class: String, overwrite: bool = true)->void:
-	if overwrite: vice_purveyors.clear()
-
-	for key in defaults.vice_purveyors.keys():
-		var purveyor = defaults.vice_purveyors[key]
-		purveyor.name = key
-		self.vice_purveyors.append(purveyor)
-
-
 func setup_xp_gain(defaults:Dictionary, pc_class: String)->void:
 	for key in defaults.xp_gain.keys():
 		if key == pc_class:
@@ -128,51 +122,7 @@ func setup_xp_gain(defaults:Dictionary, pc_class: String)->void:
 			return
 
 
-func setup_friends_and_foes(defaults:Dictionary, pc_class: String, overwrite: bool = true)->void:
-	if overwrite: friends_and_foes.clear()
-	for key in defaults.friends_foes.keys():
-		var esc_key:String = key.strip_edges().to_lower().replace(" ", "_")
-		var person = defaults.friends_foes[key]
-		if person.class == pc_class or person.class == "all":
-			self.friends_and_foes[esc_key] = person
-
-
-func setup_abilities(defaults:Dictionary, pc_class: String, overwrite:bool = true)->void:
-	if overwrite: abilities.clear()
-	else:
-		var claimed_abilities: = {}
-		for ability in abilities:
-			if abilities[ability].claimed:
-				claimed_abilities[ability] = abilities[ability].duplicate()
-		abilities.clear()
-		abilities = claimed_abilities.duplicate()
-
-	for key in defaults.character_abilities.keys():
-		var esc_key:String = key.strip_edges().to_lower().replace(" ", "_")
-		var ability = defaults.character_abilities[key]
-		if ability.class == pc_class or ability.class == "all":
-			self.abilities[esc_key] = ability
-
-
-func setup_items(defaults:Dictionary, pc_class: String, overwrite: bool = true)->void:
-	if overwrite: items.clear()
-
-	for key in defaults.items.keys():
-		var item: = {
-			"name" : "",
-			"description" : "",
-			"load" : 0,
-			"using" : false
-		}
-		var esc_key:String = key.strip_edges().to_lower().replace(" ", "_")
-		item.name = key
-		item.load = defaults.items[key].load
-		item.description = defaults.items[key].description
-		if defaults.items[key].class == pc_class or defaults.items[key].class == "all":
-			self.items[esc_key] = item
-
-
 func set_items(key:String, value:Dictionary)->void:
-	var esc_key:String = key.strip_edges().to_lower().replace(" ", "_")
+	var esc_key:String = key.c_escape().strip_edges().to_lower().replace(" ", "_")
 	items[esc_key] = value
 	emit_signal("property_changed", "items")

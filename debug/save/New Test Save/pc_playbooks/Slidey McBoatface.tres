@@ -1,0 +1,276 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/PlayerPlaybook.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "Slidey McBoatface"
+abilities = {
+"a_little_something_on_the_side": {
+"ability": "A Little Something on the Side",
+"class": "slide",
+"effect": "At the end of each downtime phase, you earn +2 stash."
+},
+"cloak_&_dagger": {
+"ability": "Cloak & Dagger",
+"class": "slide",
+"effect": "When you use a disguise or other form of covert misdirection, you get +1d to rolls to confuse or deflect suspicion. When you throw off your disguise, the resulting surprise gives you the initiative in the situation."
+},
+"ghost_voice": {
+"ability": "Ghost Voice",
+"class": "slide",
+"effect": "You know the secret method to interact with a ghost or demon as if it was a normal human, regardless of how wild or feral it appears. You gain potency when communicating with the supernatural."
+},
+"like_looking_into_a_mirror": {
+"ability": "Like Looking into a Mirror",
+"class": "slide",
+"effect": "You can always tell when someone is lying to you."
+},
+"mesmerism": {
+"ability": "Mesmerism",
+"class": "slide",
+"effect": "When you Sway someone, you may cause them to forget that it's happened until they next interact with you."
+},
+"rook's_gambit": {
+"ability": "Rook's Gambit",
+"class": "slide",
+"effect": "Take 2 stress to roll your best action rating while performing a different action. Say how you adapt your skill to this use."
+},
+"subterfuge": {
+"ability": "Subterfuge",
+"class": "slide",
+"effect": "You may expend your special armor to resist a consequence from suspicion or persuasion, or to push yourself for subterfuge."
+},
+"trust_in_me": {
+"ability": "Trust in Me",
+"class": "slide",
+"effect": "You get +1d vs. a target with whom you have an intimate relationship."
+},
+"veteran": {
+"ability": "Veteran",
+"class": "all",
+"effect": "(3 Skill Points) Choose a special ability from another source."
+}
+}
+coin = {
+"available": 0,
+"max": 4,
+"stash": 0
+}
+contacts = {
+}
+type = "slide"
+notes = ""
+experience = {
+"insight": 0,
+"playbook": 0,
+"prowess": 0,
+"resolve": 0
+}
+projects = {
+}
+stats = {
+"insight": {
+"hunt": 0,
+"study": 0,
+"survey": 0,
+"tinker": 0
+},
+"prowess": {
+"finesse": 0,
+"prowl": 0,
+"skirmish": 0,
+"wreck": 0,
+"wrek": 0
+},
+"resolve": {
+"attune": 0,
+"command": 0,
+"consort": 1,
+"sway": 2
+}
+}
+needs_setup = false
+aliases = ""
+look = ""
+heritage = ""
+background = ""
+stress = 0
+trauma_level = 0
+traumas = [  ]
+items = {
+"a_blade_or_two": {
+"description": "Perhaps you carry a simple fighting knife. Or two curved swords. Or a rapier and stiletto.",
+"load": 1.0,
+"name": "A Blade or Two",
+"using": false
+},
+"a_cane-sword": {
+"description": "A slim sword and its sheath, disguised as a noble's cane. (The disguise will fool a cursory inspection)",
+"load": 1.0,
+"name": "A Cane-Sword",
+"using": false
+},
+"a_large_weapon": {
+"description": "A weapon meant for two hands. A battle-axe, greatsword, warhammer, or pole-arm. A hunting rifle. A blunderbuss. A bow or crossbow.",
+"load": 2.0,
+"name": "A Large Weapon",
+"using": false
+},
+"a_pistol": {
+"description": "A heavy, single-shot, breech-loading firearm. Devastating at 20 paces, slow to reload.",
+"load": 1.0,
+"name": "A Pistol",
+"using": false
+},
+"an_unusual_weapon": {
+"description": "A curiosity or tool turned into a weapon. A whip, a flial, a hatchet, a shovel, a length of chain, a razor-edged fan, steel-toed boots.",
+"load": 1.0,
+"name": "An Unusual Weapon",
+"using": false
+},
+"arcane_implements": {
+"description": "A vial of quicksilver A pouch of black salt. A spirit anchor in the form of a small stone. A spirit bottle. A vial of electroplasm, designed to break and splatter on impact.",
+"load": 1.0,
+"name": "Arcane Implements",
+"using": false
+},
+"armor": {
+"description": "A thick leather tunic plus reinforced gloves and boots.",
+"load": 2.0,
+"name": "Armor",
+"using": false
+},
+"armor_(heavy)": {
+"description": "Armor with the addtion of chain mail, metal plates, and a metal helm.",
+"load": 3.0,
+"name": "Armor (Heavy)",
+"using": false
+},
+"burglary_gear": {
+"description": "A set of lockpicks. A small pry-bar. Vials of oil to silence squeaky hinges. A coil of wire and fishing hooks. A small pouch of fine sand.",
+"load": 1.0,
+"name": "Burglary Gear",
+"using": false
+},
+"climbing_gear": {
+"description": "A large coil of rope. A small coil of rope. Grappling hooks. A small pouch of chalk dust. A climbing harness with loops and metal rings. A set of iron pitons and a small mallet.",
+"load": 1.0,
+"name": "Climbing Gear",
+"using": false
+},
+"demolition_tools": {
+"description": "A sledgehammer and iron spikes. Heavy drill. Crowbar.",
+"load": 2.0,
+"name": "Demolition Tools",
+"using": false
+},
+"documents": {
+"description": "A collection of slim volumes on a variety of topics, including a registry of th enobility, City Watch commanders, and other notable citizens. Blank pages, a vial of ink, a pen. A number of interesting maps.",
+"load": 1.0,
+"name": "Documents",
+"using": false
+},
+"fine_clothes_and_jewelry": {
+"description": "An outfit that appears to be of such fine make as to pass you off as a wealthy noble. (If you're carrying this item as a second outfit to change into it counts as 2 load)",
+"load": 0.0,
+"name": "Fine Clothes and Jewelry",
+"using": false
+},
+"fine_disguise_kit": {
+"description": "A theatrical make-up kit equipped with an impressive array of expert appliances to fool the eye. (The fine quality of this kit may increase the effect of your deceptive actions when you use it.)",
+"load": 1.0,
+"name": "Fine Disguise Kit",
+"using": false
+},
+"fine_loaded_dice,_trick_cards": {
+"description": "Gambling accouterments subtly altered to favor particular outcomes. (The fine quality of this kit may increase the effect of your deceptive actions when you use it.)",
+"load": 0.0,
+"name": "Fine Loaded Dice, Trick Cards",
+"using": false
+},
+"lantern": {
+"description": "A simple oil lantern, a fancy electroplasmic lamp, or other similar light source",
+"load": 1.0,
+"name": "Lantern",
+"using": false
+},
+"spiritbane_charm": {
+"description": "A small arcane trinket that ghosts prefer to avoid.",
+"load": 0.0,
+"name": "Spiritbane Charm",
+"using": false
+},
+"subterfuge_supplies": {
+"description": "A theatrical make-up kit. A selection of blank documents, ready for the forger's hand. Costume jewelry. A reversible cloak and distinctive hat. A forged bage of office.",
+"load": 1.0,
+"name": "Subterfuge Supplies",
+"using": false
+},
+"throwing_knives": {
+"description": "Six small, light blades.",
+"load": 1.0,
+"name": "Throwing Knives",
+"using": false
+},
+"tinkering_tools": {
+"description": "An assortment for detailed mechanist work: jeweler's loupe, tweezers, a small hammer, pliers, screwdriver, etc.",
+"load": 1.0,
+"name": "Tinkering Tools",
+"using": false
+},
+"trance_powder": {
+"description": "A dose of the popular drug, which induces an altered mental state. (The victim of this powder is not fully unconscious, but rather retreats into a clam, suggestible mental state, similar to hypnotism.)",
+"load": 0.0,
+"name": "Trance Powder",
+"using": false
+}
+}
+vice = ""
+vice_type = ""
+xp_gain = ""
+friends_and_foes = {
+"bazso_baz,_a_gang_leader": {
+"class": "slide",
+"contact": "Bazso Baz, a gang leader",
+"notes": null,
+"relationship": null
+},
+"bryl,_a_drug_dealer": {
+"class": "slide",
+"contact": "Bryl, a drug dealer",
+"notes": null,
+"relationship": null
+},
+"harker,_a_jail-bird": {
+"class": "slide",
+"contact": "Harker, a jail-bird",
+"notes": null,
+"relationship": null
+},
+"klyra,_a_tavern_owner": {
+"class": "slide",
+"contact": "Klyra, a tavern owner",
+"notes": null,
+"relationship": null
+},
+"nyryx,_a_prostitute": {
+"class": "slide",
+"contact": "Nyryx, a prostitute",
+"notes": null,
+"relationship": null
+}
+}
+vice_purveyors = {
+}
+current_load = 3
+harms = {
+"level_1": [ null, null ],
+"level_2": [ null, null ],
+"level_3": null
+}
+equipped_items = [  ]
+normal_armor = false
+heavy_armor = false
+speical_armor = false
+crew_name = ""
