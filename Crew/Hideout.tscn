@@ -13,7 +13,7 @@ __meta__ = {
 [node name="lair_name" type="LineEdit" parent="." groups=["linked_field"]]
 margin_left = 462.0
 margin_right = 562.0
-margin_bottom = 29.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 4
 align = 1
@@ -24,9 +24,10 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+playbook_field = "lair.name"
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_top = 33.0
+margin_top = 35.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3

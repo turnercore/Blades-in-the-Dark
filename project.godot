@@ -134,7 +134,7 @@ run/main_scene="res://start_screen/StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Shared/Art/Icons/icon.png"
-config/version="0.44"
+config/version="0.45"
 
 [autoload]
 
@@ -148,7 +148,7 @@ GameSaver="*res://AutoLoad/GameSaver.gd"
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 settings=false
-settings/debug=true
+settings/debug=false
 
 [gui]
 

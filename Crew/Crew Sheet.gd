@@ -16,15 +16,15 @@ enum tabs {
 
 
 func _ready() -> void:
-	GameSaver.connect("crew_loaded", self, "_on_crew_loaded")
-	if GameData.crew_playbook: self._playbook = GameData.crew_playbook
+#	GameSaver.connect("crew_loaded", self, "_on_crew_loaded")
+#	if GameData.crew_playbook: self._playbook = GameData.crew_playbook
 	propagate_set_editable(self, false)
 
-
-func _on_crew_loaded(playbook:CrewPlaybook)-> void:
-	_playbook = playbook
-	Globals.propagate_set_playbook_recursive(self, playbook, self)
-
+#
+#func _on_crew_loaded(playbook:CrewPlaybook)-> void:
+#	_playbook = playbook
+#	Globals.propagate_set_playbook_recursive(self, playbook, self)
+##
 
 func show_crew_setup()->void:
 	print("showing crew setup")

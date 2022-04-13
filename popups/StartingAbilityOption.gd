@@ -22,7 +22,7 @@ func update_playbook_field(ability_key: String)-> void:
 			playbook.emit_signal("property_changed", playbook_field)
 			playbook.emit_changed()
 
-	ability_description.text = playbook.find("abilities."+ability_key+".effect")
+	ability_description.text = playbook.find("abilities."+ability_key+".description")
 
 
 func _on_StartingAbilityOption_item_selected(index: int) -> void:
@@ -43,5 +43,5 @@ func _set_playbook(value: Playbook)-> void:
 
 	for ability in playbook.abilities:
 		if ability == "veteran": continue
-		else: option_button.add_item(playbook.abilities[ability].ability)
+		else: option_button.add_item(playbook.abilities[ability].name)
 

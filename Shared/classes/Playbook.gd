@@ -138,7 +138,7 @@ func save(path_map: String, value)-> bool:
 
 	#Check to see if the property exists in the Resource
 	if not (path[0] in self):
-		print(path_map + " is not in the property list for crew playbook")
+		print(path_map + " is not in the property list for playbook " + name)
 		return false
 
 	while jumps < path.size() - 1:

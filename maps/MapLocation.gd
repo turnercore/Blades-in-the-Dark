@@ -2,39 +2,51 @@ class_name MapNote
 extends Area2D
 
 export(PackedScene) var edit_note_popup
+export(NodePath) onready var location_name_label = get_node(location_name_label) as Label
+export(NodePath) onready var info_text_label = get_node(info_text_label) as Label
+onready var map_note_texture:= $MapNoteTexture
 onready var anim:= $AnimationPlayer
 
+#Note Data
 var tags:= ""
 var pos:Vector2
 var icon:String= GameData.DEFAULT_MAP_NOTE_ICON setget _set_icon
 var shortcut: = false
-var location_name:String
-var info_text:String
+var location_name:String setget _set_location_name
+var info_text:String setget _set_info_text
 
 var cursor_hovered: = false
 var locked: = false
+var is_ready: = false
+var enlarged: = false
+var shrunk:= true
+
+
+signal cursor_hovered
+
+onready var icon_texture: = load(icon)
 
 func _ready() -> void:
-	$MapNoteTexture/Label.text = location_name.c_unescape()
-	$MapNoteTexture/Label2.text = info_text.c_unescape()
-	$MapNoteTexture.texture = load(icon)
+	if not icon: self.icon = GameData.DEFAULT_MAP_NOTE_ICON
+	else: map_note_texture.texture = icon_texture
+	connect("area_entered", self, "_on_MapNote_area_entered")
+	connect("area_exited", self, "_on_MapNote_area_exited")
 	Events.connect("map_note_clicked", self, "_on_clicked")
-	Events.connect("cursor_hovered", self, "_on_cursor_hovered")
-	Events.connect("cursor_free", self, "_on_cursor_free")
 	Events.connect("popup", self, "_on_popup")
-	Events.connect("popup_finished" ,self, "_on_popup_finished")
-#	Events.connect("cursor_hovered", self, "_on_cursor_hovered")
-#	Events.connect("cursor_left", self, "_on_cursor_hovered")
-	shrink()
+	if not Events.is_connected("popup_finished" ,self, "_on_popup_finished"):
+		Events.connect("popup_finished" ,self, "_on_popup_finished")
+	Events.connect("cursor_free", self, "_on_cursor_free")
+#	shrink()
+	is_ready = true
 
 
 func _set_icon(value: String)-> void:
+	if not value:
+		value = GameData.DEFAULT_MAP_NOTE_ICON
 	icon = value
-	$MapNoteTexture.texture = load(icon)
-
-
-func _on_cursor_hovered()-> void:
-	cursor_hovered = true
+	icon_texture = load(icon)
+	if not is_ready: yield(self, "ready")
+	map_note_texture.texture = icon_texture
 
 
 func _on_cursor_free()->void:
@@ -49,18 +61,37 @@ func _on_clicked(note)->void:
 
 
 func enlarge()-> void:
-	anim.play("enlarge")
+	if not locked and not enlarged:
+		print("enlarging "+name)
+		anim.play("enlarge")
+		enlarged = true
+		shrunk = false
 
 
 func shrink()-> void:
-	anim.play("shrink")
+	if not locked and not shrunk:
+		anim.play("shrink")
+		shrunk = true
+		enlarged = false
 
 
 func create_popup()-> EditNotePopup:
 	var popup:EditNotePopup = edit_note_popup.instance()
-	popup.location_name = location_name
-	popup.info_text = info_text
-	popup.pos = self.global_position
+	var data: = {
+		"tags": tags,
+		"pos": global_position,
+		"icon": icon,
+		"shortcut": shortcut,
+		"location_name": location_name,
+		"info_text": info_text
+	}
+
+	for property in data:
+		if property in popup:
+			popup.set(property, data[property])
+		if property in popup.data:
+			popup.data[property] = data[property]
+
 	return popup
 
 
@@ -68,26 +99,42 @@ func _on_MapNote_area_entered(area: Area2D) -> void:
 	if locked: return
 
 	if area is Cursor and not cursor_hovered:
-		Events.emit_signal("cursor_hovered")
+		cursor_hovered = true
 		if not info_text:
-			return
+			info_text = "Info text missing"
 		Events.emit_signal("info_broadcasted", info_text.c_unescape())
 		enlarge()
 
 
 func _on_MapNote_area_exited(area: Area2D) -> void:
-	if locked: return
-
+	cursor_hovered = false
 	if area is Cursor:
-		Events.emit_signal("info_broadcasted", "")
-		shrink()
-		Events.emit_signal("cursor_free")
+		if not locked:
+			Events.emit_signal("info_broadcasted", "")
+			shrink()
+			Events.emit_signal("cursor_free")
 
 
 func _on_popup_finished()-> void:
-	shrink()
-	cursor_hovered = false
-	locked = false
+	if locked: self.locked = false
+
+
+func _set_locked(value: bool)-> void:
+	locked = value
+
+	if not cursor_hovered:
+		shrink()
+
 
 func _on_popup(_data)->void:
 	locked = true
+
+
+func _set_location_name(value:String)-> void:
+	location_name = value.c_escape()
+	location_name_label.text = location_name.c_unescape().capitalize()
+
+
+func _set_info_text(value: String)-> void:
+	info_text = value
+	info_text_label.text = info_text.c_unescape()

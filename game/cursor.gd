@@ -9,6 +9,12 @@ var current_note_target = null
 var current_target = null
 var current_target_type:String = "none"
 
+
+func _ready() -> void:
+	Events.connect("popup", self, "_on_popup")
+	Events.connect("popup_finished", self, "_on_popup_finished")
+
+
 func _process(_delta: float) -> void:
 	global_position = get_global_mouse_position()
 
@@ -21,7 +27,6 @@ func _input(event: InputEvent) -> void:
 				Events.emit_signal("map_note_clicked", current_note_target)
 			_:
 				pass
-
 
 
 func _on_cursor_area_entered(area: Area2D) -> void:
@@ -54,3 +59,14 @@ func _on_VisibilityNotifier2D_viewport_exited(_viewport: Viewport) -> void:
 	self.visible = false
 	self.monitorable = false
 	self.monitoring = false
+
+
+func _on_popup(_ignored)-> void:
+	set_process(false)
+	monitorable = false
+	monitoring = false
+
+func _on_popup_finished()-> void:
+	set_process(true)
+	monitorable = true
+	monitoring = true

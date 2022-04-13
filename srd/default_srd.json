@@ -1,677 +1,905 @@
 {
   "crew_types": {
-    "assassins": {},
-    "bravos": {},
-    "cult": {},
-    "hawkers": {},
-    "shadows": {},
-    "smugglers": {}
+    "assassins": {
+      "name": "assassins"
+    },
+    "bravos": {
+      "name": "bravos"
+    },
+    "cult": {
+      "name": "cult"
+    },
+    "hawkers": {
+      "name": "hawkers"
+    },
+    "shadows": {
+      "name": "shadows"
+    },
+    "smugglers": {
+      "name": "smugglers"
+    }
   },
   "character_abilities": {
     "Veteran": {
+      "name": "Veteran",
       "effect": "(3 Skill Points) Choose a special ability from another source.",
       "class": "all",
       "claimed": false
     },
     "Battleborn": {
+      "name": "Battleborn",
       "effect": "You may expend your special armor to reduce harm from an attack in combat or to push yourself during a fight.",
       "class": "cutter",
       "claimed": false
     },
     "Bodyguard": {
+      "name": "Bodyguard",
       "effect": "When you protect a teammate, take +1d to your resistance roll. When you gather info to anticipate possible threats in the current situation, you get +1 effect.",
       "class": "cutter",
       "claimed": false
     },
     "Ghost Fighter": {
+      "name": "Ghost Fighter",
       "effect": "You may imbue your hands, melee weapons, or tools with spirit energy. You gain potency in combat vs. the supernatural. You may grapple with spirits to restrain and capture them.",
       "class": "cutter",
       "claimed": false
     },
     "Leader": {
+      "name": "Leader",
       "effect": "When you Command a cohort in combat, they continue to fight when they would otherwise break (they're not taken out when they suffer level 3 harm). They gain +1 effect and 1 armor.",
       "class": "cutter",
       "claimed": false
     },
     "Mule": {
-      "effect": "Your load limits are higher. Light: 5. Normal: 7. Heavy: 8",
+      "name": "Mule",
+      "effect": "Your load limits are higher. Light: 5, Normal: 7, Heavy: 8",
       "class": "cutter",
       "claimed": false
     },
     "Not to be Trifled With": {
+      "name": "Not to be Trifled With",
       "effect": "You can push yourself to do one of the following: perform a feat of physical force that verges on the superhuman—engage a small gang on equal footing in close combat.",
       "class": "cutter",
       "claimed": false
     },
     "Savage": {
+      "name": "Savage",
       "effect": "When you unleash physical violence, it's especially frightening. When you Command a frightened target, take +1d.",
       "class": "cutter",
       "claimed": false
     },
     "Vigorous": {
+      "name": "Vigorous",
       "effect": "You recover from harm faster. Permanently fill in one of your healing clock segments. Take +1d to healing treatment rolls.",
       "class": "cutter",
       "claimed": false
     },
     "Sharpshooter": {
+      "name": "Sharpshooter",
       "effect": "You can push yourself to do one of the following: make a ranged attack at extreme distance beyond what’s normal for the weapon—unleash a barrage of rapid fire to suppress the enemy.",
       "class": "hound",
       "claimed": false
     },
     "Focused": {
+      "name": "Focused",
       "effect": "You may expend your special armor to resist a consequence of surprise or mental harm (fear, confusion, losing track of someone) or to push yourself for ranged combat or tracking.",
       "class": "hound",
       "claimed": false
     },
     "Ghost Hunter": {
+      "name": "Ghost Hunter",
       "effect": "(2 Skill Points) Your hunting pet is imbued with spirit energy. It gains potency when tracking or fighting the supernatural, and gains an arcane ability: ghost-form, mind-link, or arrow-swift. Take this ability again to choose an additional arcane ability for your pet.",
       "class": "hound",
       "claimed": false
     },
     "Scout": {
+      "name": "Scout",
       "effect": "When you gather info to locate a target, you get +1 effect. When you hide in a prepared position or use camouflage, you get +1d to rolls to avoid detection.",
       "class": "hound",
       "claimed": false
     },
     "Survivor": {
+      "name": "Survivor",
       "effect": "From hard won experience or occult ritual, you are immune to the poisonous miasma of the deathlands and are able to subsist on the strange flora and fauna there. You get +1 stress box.",
       "class": "hound",
       "claimed": false
     },
     "Tough as Nails": {
+      "name": "Tough as Nails",
       "effect": "Penalties from harm are one level less severe (though level 4 harm is still fatal).",
       "class": "hound",
       "claimed": false
     },
     "Vengeful": {
+      "name": "Vengeful",
       "effect": "You gain an additional xp trigger: You got payback against someone who harmed you or someone you care about. If your crew helped you get payback, also mark crew xp.",
       "class": "hound",
       "claimed": false
     },
     "Alchemist": {
+      "name": "Alchemist",
       "effect": "When you invent or craft a creation with alchemical features, take +1 result level to your roll. You begin with one special formula already known.",
       "class": "leech",
       "claimed": false
     },
     "Analyst": {
+      "name": "Analyst",
       "effect": "During downtime, you get two ticks to distribute among any long term project clocks that involve investigation or learning a new formula or design plan.",
       "class": "leech",
       "claimed": false
     },
     "Artificer": {
+      "name": "Artificer",
       "effect": "When you invent or craft a creation with spark-craft features, take +1 result level to your roll. You begin with one special design already known.",
       "class": "leech",
       "claimed": false
     },
     "Fortitude": {
+      "name": "Fortitude",
       "effect": "You may expend your special armor to resist a consequence of fatigue, weakness, or chemical effects, or to push yourself when working with technical skill or handling alchemicals.",
       "class": "leech",
       "claimed": false
     },
     "Ghost Ward": {
+      "name": "Ghost Ward",
       "effect": "You know how to Wreck an area with arcane substances and methods so it is either anathema or enticing to spirits (your choice).",
       "class": "leech",
       "claimed": false
     },
     "Physicker": {
+      "name": "Physicker",
       "effect": "You can Tinker with bones, blood, and bodily humours to treat wounds or stabilize the dying. You may study a malady or corpse. Everyone in your crew gets +1d to their healing treatment rolls.",
       "class": "leech",
       "claimed": false
     },
     "Saboteur": {
+      "name": "Saboteur",
       "effect": "When you Wreck, the work is much quieter than it should be and the damage is hidden from casual inspection.",
       "class": "leech",
       "claimed": false
     },
     "Venomous": {
+      "name": "Venomous",
       "effect": "Choose a drug or poison (from your bandolier stock) to which you have become immune. You can push yourself to secrete it through your skin or saliva or exhale it as a vapor.",
       "class": "leech",
       "claimed": false
     },
     "Infiltrator": {
+      "name": "Infiltrator",
       "effect": "You are not affected by quality or Tier when you bypass security measures.",
       "class": "lurk",
       "claimed": false
     },
     "Ambush": {
+      "name": "Ambush",
       "effect": "When you attack from hiding or spring a trap, you get +1d.",
       "class": "lurk",
       "claimed": false
     },
     "Daredevil": {
+      "name": "Daredevil",
       "effect": "When you roll a desperate action, you get +1d to your roll if you also take -1d to any resistance rolls against consequences from your action.",
       "class": "lurk",
       "claimed": false
     },
     " The Devil's Footsteps": {
+      "name": "The Devil's Footsteps",
       "effect": "When you push yourself, choose one of the following additional benefits: perform a feat of athletics that verges on the superhuman—maneuver to confuse your enemies so they mistakenly attack each other.",
       "class": "lurk",
       "claimed": false
     },
     "Expertise": {
+      "name": "Expertise",
       "effect": "Choose one of your action ratings. When you lead a group action using that action, you can suffer only 1 stress at most regardless of the number of failed rolls.",
       "class": "lurk",
       "claimed": false
     },
     "Ghost Veil": {
+      "name": "Ghost Veil",
       "effect": "You may shift partially into the ghost field, becoming shadowy and insubstantial for a few moments. Take 2 stress when you shift, plus 1 stress for each extra feature: It lasts for a few minutes rather than moments—you are invisible rather than shadowy—you may float through the air like a ghost",
       "class": "lurk",
       "claimed": false
     },
     "Reflexes": {
+      "name": "Reflexes",
       "effect": "When there's a question about who acts first, the answer is you (two characters with Reflexes act simultaneously)",
       "class": "lurk",
       "claimed": false
     },
     "Shadow": {
+      "name": "Shadow",
       "effect": "You may expend your special armor to resist a consequence from detection or security measures, or to push yourself for a feat of athletics or stealth.",
       "class": "lurk",
       "claimed": false
     },
     "Rook's Gambit": {
+      "name": "Rook's Gambit",
       "effect": "Take 2 stress to roll your best action rating while performing a different action. Say how you adapt your skill to this use.",
       "class": "slide",
       "claimed": false
     },
     "Cloak & Dagger": {
+      "name": "Cloak & Dagger",
       "effect": "When you use a disguise or other form of covert misdirection, you get +1d to rolls to confuse or deflect suspicion. When you throw off your disguise, the resulting surprise gives you the initiative in the situation.",
       "class": "slide",
       "claimed": false
     },
     "Ghost Voice": {
+      "name": "Ghost Voice",
       "effect": "You know the secret method to interact with a ghost or demon as if it was a normal human, regardless of how wild or feral it appears. You gain potency when communicating with the supernatural.",
       "class": "slide",
       "claimed": false
     },
     "Like Looking into a Mirror": {
+      "name": "Like Looking into a Mirror",
       "effect": "You can always tell when someone is lying to you.",
       "class": "slide",
       "claimed": false
     },
     "A Little Something on the Side": {
+      "name": "A Little Something on the Side",
       "effect": "At the end of each downtime phase, you earn +2 stash.",
       "class": "slide",
       "claimed": false
     },
     "Mesmerism": {
+      "name": "Mesmerism",
       "effect": "When you Sway someone, you may cause them to forget that it's happened until they next interact with you.",
       "class": "slide",
       "claimed": false
     },
     "Subterfuge": {
+      "name": "Subterfuge",
       "effect": "You may expend your special armor to resist a consequence from suspicion or persuasion, or to push yourself for subterfuge.",
       "class": "slide",
       "claimed": false
     },
     "Trust in Me": {
+      "name": "Trust in Me",
       "effect": "You get +1d vs. a target with whom you have an intimate relationship.",
       "class": "slide",
       "claimed": false
     },
     "Foresight": {
+      "name": "Foresight",
       "effect": "Two times per score you can assist a teammate without paying stress. Tell us how you prepared for this.",
       "class": "spider",
       "claimed": false
     },
     "Calculating": {
+      "name": "Calculating",
       "effect": "Due to your careful planning, during downtime, you may give yourself or another crew member +1 downtime action.",
       "class": "spider",
       "claimed": false
     },
     "Connected": {
+      "name": "Connected",
       "effect": "During downtime, you get +1 result level when you acquire an asset or reduce heat.",
       "class": "spider",
       "claimed": false
     },
     "Functioning Vice": {
+      "name": "Functioning Vice",
       "effect": "When you indulge your vice, you may adjust the dice outcome by 1 or 2 (up or down). An ally who joins in your vice may do the same.",
       "class": "spider",
       "claimed": false
     },
     "Ghost Contract": {
+      "name": "Ghost Contract",
       "effect": "When you shake on a deal, you and your partner—human or otherwise—both bear a mark of your oath. If either breaks the contract, they take level 3 harm, \"Cursed\".",
       "class": "spider",
       "claimed": false
     },
     "Jail Bird": {
+      "name": "Jail Bird",
       "effect": "When incarcerated, your wanted level counts as 1 less, your Tier as 1 more, and you gain +1 faction status with a faction you help on the inside (in addition to your incarceration roll).",
       "class": "spider",
       "claimed": false
     },
     "Mastermind": {
+      "name": "Mastermind",
       "effect": "You may expend your special armor to protect a teammate, or to push yourself when you gather information or work on a long-term project.",
       "class": "spider",
       "claimed": false
     },
     "Weaving the Web": {
+      "name": "Weaving the Web",
       "effect": "You gain +1d to Consort when you gather information on a target for a score. You get +1d to the engagement roll for that operation.",
       "class": "spider",
       "claimed": false
     },
     "Compel": {
+      "name": "Compel",
       "effect": "You can Attune to the ghost field to force a nearby ghost to appear and obey a command you give it. You are not supernaturally terrified by a ghost you summon or compel (though your allies may be).",
       "class": "whisper",
       "claimed": false
     },
     "Ghost Mind": {
+      "name": "Ghost Mind",
       "effect": "You’re always aware of supernatural entities in your presence. Take +1d when you gather info about the supernatural.",
       "class": "whisper",
       "claimed": false
     },
     "Iron Will": {
+      "name": "Iron Will",
       "effect": "You're immune to the terror that some supernatural entities inflict on sight. Take +1d to resistance rolls with Resolve.",
       "class": "whisper",
       "claimed": false
     },
     "Occultist": {
+      "name": "Occultist",
       "effect": "You know the secret ways to Consort with ancient powers, forgotten gods or demons. Once you've consorted with one, you get +1d to command cultists who worship it.",
       "class": "whisper",
       "claimed": false
     },
     "Ritual": {
+      "name": "Ritual",
       "effect": "You can Study an occult ritual (or create a new one) to summon a supernatural effect or being. You know the arcane methods to perform ritual sorcery. You begin with one ritual already learned.",
       "class": "whisper",
       "claimed": false
     },
     "Strange Methods": {
+      "name": "Strange Methods",
       "effect": "When you invent or craft a creation with arcane features, take +1 result level to your roll. You begin with one arcane design already known.",
       "class": "whisper",
       "claimed": false
     },
     "Tempest": {
+      "name": "Tempest",
       "effect": "You can push yourself to do one of the following: unleash a stroke of lightning as a weapon—summon a storm in your immediate vicinity (torrential rain, roaring winds, heavy fog, chilling frost/snow, etc.).",
       "class": "whisper",
       "claimed": false
     },
     "Warded": {
+      "name": "Warded",
       "effect": "You may expend your special armor to resist a supernatural consequence, or to push yourself when you deal with arcane forces.",
       "class": "whisper",
       "claimed": false
     }
   },
+  "heritages": {
+    "Akoros": {
+      "name": "Akoros",
+      "description": null
+    },
+    "The Dagger Isles": {
+      "name": "The Dagger Isles",
+      "description": null
+    },
+    "Iruvia": {
+      "name": "Iruvia",
+      "description": null
+    },
+    "Severos": {
+      "name": "Severos",
+      "description": null
+    },
+    "Skovlan": {
+      "name": "Skovlan",
+      "description": null
+    },
+    "Tycheros": {
+      "name": "Tycheros",
+      "description": null
+    }
+  },
   "pc_types": {
-    "cutter": {},
-    "hound": {},
-    "leech": {},
-    "lurk": {},
-    "slide": {},
-    "spider": {},
-    "whisper": {}
+    "cutter": {
+      "name": "cutter"
+    },
+    "hound": {
+      "name": "hound"
+    },
+    "leech": {
+      "name": "leech"
+    },
+    "lurk": {
+      "name": "lurk"
+    },
+    "slide": {
+      "name": "slide"
+    },
+    "spider": {
+      "name": "spider"
+    },
+    "whisper": {
+      "name": "whisper"
+    }
+  },
+  "traumas": {
+    "cold": {
+      "name": "cold",
+      "description": null
+    },
+    "haunted": {
+      "name": "haunted",
+      "description": null
+    },
+    "obsessed": {
+      "name": "obsessed",
+      "description": null
+    },
+    "paranoid": {
+      "name": "paranoid",
+      "description": null
+    },
+    "reckless": {
+      "name": "reckless",
+      "description": null
+    },
+    "soft": {
+      "name": "soft",
+      "description": null
+    },
+    "unstable": {
+      "name": "unstable",
+      "description": null
+    },
+    "vicious": {
+      "name": "vicious",
+      "description": null
+    }
+  },
+  "backgrounds": {
+    "Academic": {
+      "name": "Academic"
+    },
+    "Labor": {
+      "name": "Labor"
+    },
+    "Law": {
+      "name": "Law"
+    },
+    "Trade": {
+      "name": "Trade"
+    },
+    "Military ": {
+      "name": "Military"
+    },
+    "Noble": {
+      "name": "Noble"
+    },
+    "Underworld": {
+      "name": "Underworld"
+    }
   },
   "items": {
     "A Blade or Two": {
+      "name": "A Blade or Two",
       "description": "Perhaps you carry a simple fighting knife. Or two curved swords. Or a rapier and stiletto.",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "Throwing Knives": {
+      "name": "Throwing Knives",
       "description": "Six small, light blades.",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "A Pistol": {
+      "name": "A Pistol",
       "description": "A heavy, single-shot, breech-loading firearm. Devastating at 20 paces, slow to reload.",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "A Large Weapon": {
+      "name": "A Large Weapon",
       "description": "A weapon meant for two hands. A battle-axe, greatsword, warhammer, or pole-arm. A hunting rifle. A blunderbuss. A bow or crossbow.",
       "class": "all",
       "carry_load": 2,
       "using": false
     },
     "An Unusual Weapon": {
+      "name": "An Unusual Weapon",
       "description": "A curiosity or tool turned into a weapon. A whip, a flial, a hatchet, a shovel, a length of chain, a razor-edged fan, steel-toed boots.",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "Armor": {
+      "name": "Armor",
       "description": "A thick leather tunic plus reinforced gloves and boots.",
       "class": "all",
       "carry_load": 2,
       "using": false
     },
     "Armor (Heavy)": {
+      "name": "Armor (Heavy)",
       "description": "Armor with the addtion of chain mail, metal plates, and a metal helm.",
       "class": "all",
       "carry_load": 3,
       "using": false
     },
     "Burglary Gear": {
+      "name": "Burglary Gear",
       "description": "A set of lockpicks. A small pry-bar. Vials of oil to silence squeaky hinges. A coil of wire and fishing hooks. A small pouch of fine sand.",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "Climbing Gear": {
+      "name": "Climbing Gear",
       "description": "A large coil of rope. A small coil of rope. Grappling hooks. A small pouch of chalk dust. A climbing harness with loops and metal rings. A set of iron pitons and a small mallet.",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "Documents": {
+      "name": "Documents",
       "description": "A collection of slim volumes on a variety of topics, including a registry of th enobility, City Watch commanders, and other notable citizens. Blank pages, a vial of ink, a pen. A number of interesting maps.",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "Arcane Implements": {
+      "name": "Arcane Implements",
       "description": "A vial of quicksilver A pouch of black salt. A spirit anchor in the form of a small stone. A spirit bottle. A vial of electroplasm, designed to break and splatter on impact.",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "Subterfuge Supplies": {
+      "name": "Subterfuge Supplies",
       "description": "A theatrical make-up kit. A selection of blank documents, ready for the forger's hand. Costume jewelry. A reversible cloak and distinctive hat. A forged bage of office.",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "Demolition Tools": {
+      "name": "Demolition Tools",
       "description": "A sledgehammer and iron spikes. Heavy drill. Crowbar.",
       "class": "all",
       "carry_load": 2,
       "using": false
     },
     "Tinkering Tools": {
+      "name": "Tinkering Tools",
       "description": "An assortment for detailed mechanist work: jeweler's loupe, tweezers, a small hammer, pliers, screwdriver, etc.",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "Lantern": {
+      "name": "Lantern",
       "description": "A simple oil lantern, a fancy electroplasmic lamp, or other similar light source",
       "class": "all",
       "carry_load": 1,
       "using": false
     },
     "Spiritbane Charm": {
+      "name": "Spiritbane Charm",
       "description": "A small arcane trinket that ghosts prefer to avoid.",
       "class": "all",
       "carry_load": 0,
       "using": false
     },
     "": {
+      "name": null,
       "description": null,
       "class": null,
       "carry_load": null,
       "using": false
     },
     "Fine Hand Weapon": {
+      "name": "Fine Hand Weapon",
       "description": "A finely crafted one-handed melee weapon of your choice.",
       "class": "cutter",
       "carry_load": 1,
       "using": false
     },
     "Fine Heavy Weapon": {
+      "name": "Fine Heavy Weapon",
       "description": "A finely crafted two-handed melee weapon of your choice.",
       "class": "cutter",
       "carry_load": 2,
       "using": false
     },
     "Scary Weapon or Tool": {
+      "name": "Scary Weapon or Tool",
       "description": "A scary-looking hand weapon or tool. This item grants increased effect when you intimidate, not increased harm in combat.",
       "class": "cutter",
       "carry_load": 1,
       "using": false
     },
     "Manacles and Chain": {
+      "name": "Manacles and Chain",
       "description": "A set of heavy manacles and chain, sutiable for restraining a prisoner",
       "class": "cutter",
       "carry_load": 0,
       "using": false
     },
     "Rage Essence Vial": {
+      "name": "Rage Essence Vial",
       "description": "A single dose, which greatly enhances the user's strength, resistance to pain, and irrational aggression for the span of sevral minutes. The GM will modify your position and effect accordingly when you fight on rage essence. Also, you suffer two consequences: \"Can't Tell Friend From Foe\" and \"Can't Stop Until They're All Broken.\" You may resist these as usual.",
       "class": "cutter",
       "carry_load": 0,
       "using": false
     },
     "Fine Pair of Pistols": {
+      "name": "Fine Pair of Pistols",
       "description": "A matched pair of handguns, made for greater accuracy, with a double barrel that allows for two shots before reloading.",
       "class": "hound",
       "carry_load": 1,
       "using": false
     },
     "Fine Long Rifle": {
+      "name": "Fine Long Rifle",
       "description": "A finely crafted hunting rifle, deadly at long range, unwieldy in close quarters. (Long rifles are usually illegal for private citizens in Doskvol, but you have - real or forged - military paperwork for this one.)",
       "class": "hound",
       "carry_load": 2,
       "using": false
     },
     "Electroplasmic Ammunition": {
+      "name": "Electroplasmic Ammunition",
       "description": "A bandolier of electroplasmic ammo, especially potent against spirits, but less effective against physical targets. (The electrical charge is enough to stun a person, but does very little real harm. Several hits might incapacitate a human target. This ammunition is especially reactive in the ghost field - make a 4-clock called \"Attention from the Spirit Wardens\" and tick it for every operation in which this ammo was used.)",
       "class": "hound",
       "carry_load": 1,
       "using": false
     },
     "A Trained Hunting Pet": {
+      "name": "A Trained Hunting Pet",
       "description": "Your animal companion obeys your commands and anticipates your actions.",
       "class": "hound",
       "carry_load": 0,
       "using": false
     },
     "Spyglass": {
+      "name": "Spyglass",
       "description": "A brass tube with lenses that allow long-distance vision. Collapsible. May attach to a rifle.",
       "class": "hound",
       "carry_load": 1,
       "using": false
     },
     "Fine Tinkering Tools": {
+      "name": "Fine Tinkering Tools",
       "description": "A finely crafted set of tools for detailed mechanist work. A jeweler's loupe. Measuring devices.",
       "class": "leech",
       "carry_load": 1,
       "using": false
     },
     "Fine Wrecking Tools": {
+      "name": "Fine Wrecking Tools",
       "description": "A specialized set of tools for sabotage and destruction. A small, powerful drill. A mallet and steel spikes. A prybar. An electroplasmic battery, clamps, wire. Vials of acid. A spark-torch cutter and fuel tank.",
       "class": "leech",
       "carry_load": 2,
       "using": false
     },
     "Blowgun and Darts, syringes": {
+      "name": "Blowgun and Darts, syringes",
       "description": "A small tube and darts that can be filled from alchemy flasks. Empty syringes.",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Bandolier": {
+      "name": "Bandolier",
       "description": "A strap worn across the body fitted with specially-padded pouches to hold three alchemical agents or spark-craft bombs. When you employ an alchemical bomb from a bandolier, choose one from the list at the right (or one of your custom-made forumulas).",
       "class": "leech",
       "carry_load": 1,
       "using": false
     },
     "Gadgets": {
+      "name": "Gadgets",
       "description": "You may create gadgets during downtime by tinkering with tools and materials. Gadgets have their own load cost",
       "class": "leech",
       "carry_load": 1,
       "using": false
     },
     "Alcahest": {
+      "name": "Alcahest",
       "description": "A fluid that stops the effects of any other alchemical. (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Binding Oil": {
+      "name": "Binding Oil",
       "description": "Permanently fuses two surfaces until dissolved by alcahest or electroplasm. (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Drift Oil": {
+      "name": "Drift Oil",
       "description": "Creates neutral buoyancy when poured on an object, causing it to float in the air for an hour. (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Drown Powder": {
+      "name": "Drown Powder",
       "description": "A fine dust that incapacitates by giving the sensation of drowning. (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Fire Oil": {
+      "name": "Fire Oil",
       "description": "Erupts in searing flame upon contact with air. (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Grenade": {
+      "name": "Grenade",
       "description": "A small explosive charge with a short fuse that detonates into metal shrapnel. (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Quicksilver": {
+      "name": "Quicksilver",
       "description": "A toxic metallic fluid. The user's mind opens further to the ghost field. Take +1d to Attune roll upon use, suffer level 2 harm \"Zoned-Out\". (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Skullfire Poison": {
+      "name": "Skullfire Poison",
       "description": "Toxic fumes from overly heated leviathan blood. Causes incapacitating migraines. (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Smoke Bomb": {
+      "name": "Smoke Bomb",
       "description": "Creates a cloud of acrid smoke that's difficult to breathe and stings the eyes. (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Spark (Drug)": {
+      "name": "Spark (Drug)",
       "description": "A measure of raw electroplasm blended with seawater. The user feels empowered and emits mild electrical energy. (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Standstill Poison": {
+      "name": "Standstill Poison",
       "description": "A powder that causes temporary paralysis. (Can pick up to three with bandolier equipped)",
       "class": "leech",
       "carry_load": 0,
       "using": false
     },
     "Trance Powder": {
+      "name": "Trance Powder",
       "description": "A dose of the popular drug, which induces an altered mental state. (The victim of this powder is not fully unconscious, but rather retreats into a clam, suggestible mental state, similar to hypnotism.)",
       "class": "slide",
       "carry_load": 0,
       "using": false
     },
     "Fine Lockpicks": {
+      "name": "Fine Lockpicks",
       "description": "A finely crafted set of tools to disable and circumvent locks.",
       "class": "lurk",
       "carry_load": 0,
       "using": false
     },
     "Fine Shadow Cloak": {
+      "name": "Fine Shadow Cloak",
       "description": "A hooded cloak made of rare Iruvian shadow-silk that blends into the darkness around it. This item improves your effect level when you sneak around.",
       "class": "lurk",
       "carry_load": 1,
       "using": false
     },
     "Light Climbing Gear": {
+      "name": "Light Climbing Gear",
       "description": "A well-crafted set of climbing gear that is less bulky and heavy than a standard set.",
       "class": "lurk",
       "carry_load": 1,
       "using": false
     },
     "Silence Potion Vial": {
+      "name": "Silence Potion Vial",
       "description": "A vial of golden liquid that negates all sound within 10 paces of the drinker for a span of several moments.",
       "class": "lurk",
       "carry_load": 0,
       "using": false
     },
     "Dark-sight Goggles": {
+      "name": "Dark-sight Goggles",
       "description": "An arcane device that allows the wearer to see in pitch darkness as if it were well-lit.",
       "class": "lurk",
       "carry_load": 1,
       "using": false
     },
     "Fine Clothes and Jewelry": {
+      "name": "Fine Clothes and Jewelry",
       "description": "An outfit that appears to be of such fine make as to pass you off as a wealthy noble. (If you're carrying this item as a second outfit to change into it counts as 2 load)",
       "class": "slide",
       "carry_load": 0,
       "using": false
     },
     "Fine Disguise Kit": {
+      "name": "Fine Disguise Kit",
       "description": "A theatrical make-up kit equipped with an impressive array of expert appliances to fool the eye. (The fine quality of this kit may increase the effect of your deceptive actions when you use it.)",
       "class": "slide",
       "carry_load": 1,
       "using": false
     },
     "Fine Loaded Dice, Trick Cards": {
+      "name": "Fine Loaded Dice, Trick Cards",
       "description": "Gambling accouterments subtly altered to favor particular outcomes. (The fine quality of this kit may increase the effect of your deceptive actions when you use it.)",
       "class": "slide",
       "carry_load": 0,
       "using": false
     },
     "A Cane-Sword": {
+      "name": "A Cane-Sword",
       "description": "A slim sword and its sheath, disguised as a noble's cane. (The disguise will fool a cursory inspection)",
       "class": "slide",
       "carry_load": 1,
       "using": false
     },
     "Fine Cover Identity": {
+      "name": "Fine Cover Identity",
       "description": "Paperwork, planted stories and rumors, and false relationships sufficient to pass as a different person.",
       "class": "spider",
       "carry_load": 0,
       "using": false
     },
     " sleep for an hour.": {
+      "name": "sleep for an hour.",
       "description": "A rare distillation from your personal collection, potent both in its alcohol and its ability to impress.",
       "class": "spider",
       "carry_load": 1,
       "using": false
     },
     "Blueprints": {
+      "name": "Blueprints",
       "description": "A folio of useful architectural drawings and city plans. (Feel free to specifiy which plans you're carrying when you choose this item)",
       "class": "spider",
       "carry_load": 1,
       "using": false
     },
     "Vial of Slumber Essence": {
+      "name": "Vial of Slumber Essence",
       "description": "A dose of slumber essence sufficient to put someone to sleep for an hour.",
       "class": "spider",
       "carry_load": 0,
       "using": false
     },
     "Concealed Palm Pistol": {
+      "name": "Concealed Palm Pistol",
       "description": "A small firearm with a weak charge, easily concealed in a sleeve or waistcoat. (This pistol has extreamly limited range, only a few feet. It's very difficult to detect on your person, even if you're searched)",
       "class": "spider",
       "carry_load": 0,
       "using": false
     },
     "Fine Lightning Hook": {
+      "name": "Fine Lightning Hook",
       "description": "A long, two-handed pole with a loop of heavy wire at the end, connected to an electroplasmic capacitor. Suitable for grappling a spirit and dragging it into a spirit bottle. (This custom-made hook collapses into a compact form, thus reducing its load to 1, even though it's two-handed)",
       "class": "whisper",
       "carry_load": 1,
       "using": false
     },
     "Fine Spirit Mask": {
+      "name": "Fine Spirit Mask",
       "description": "An arcane item that allows the trained user to see supernatural energies in great detail. Also affords some measure of protection against ghostly possession. (Each spirit mask is unique. What does yours look like? What makes it strange and disturbing to see?)",
       "class": "whisper",
       "carry_load": 1,
       "using": false
     },
     "Spirit Bottles (2)": {
+      "name": "Spirit Bottles (2)",
       "description": "An arcane device used to trap a spirit. A metal and crystalline cylinder, the size of a loaf of bread.",
       "class": "whisper",
       "carry_load": 1,
       "using": false
     },
     "Ghost Key": {
+      "name": "Ghost Key",
       "description": "An arcane device that can open ghost doors. (There's an echo of the entire city, across the ages, trapped in the ghost field. Sometimes a door to that place can be found.)",
       "class": "whisper",
       "carry_load": 0,
       "using": false
     },
     "Demonbane charm": {
+      "name": "Demonbane charm",
       "description": "An arcane trinket that demons prefer to avoid.",
       "class": "whisper",
       "carry_load": 0,
@@ -680,201 +908,241 @@
   },
   "crew_abilities": {
     "Veteran": {
+      "name": "Veteran",
       "effect": "(3 Skill Points) Choose a special ability from another crew.",
       "class": "all",
       "claimed": false
     },
     "Deadly": {
+      "name": "Deadly",
       "effect": "Each PC may add +1 action rating to Hunt, Prowl, or Skirmish (up to a max rating of 3).",
       "class": "assassins",
       "claimed": false
     },
     "Crow's Veil": {
+      "name": "Crow's Veil",
       "effect": "Due to hard-won experience or occult ritual, your activities are hidden from the notice of the death-seeker crows. You don't take extra heat when killing is involved on a score.",
       "class": "assassins",
       "claimed": false
     },
     "Emberdeath": {
+      "name": "Emberdeath",
       "effect": "Due to hard-won experience or occult ritual, you know the arcane method to destroy a living victim's spirit at the moment you kill them. Take 3 stress to channel electroplasmic energy from the ghost field to disintegrate the spirit and dead body in a shower of sparking embers.",
       "class": "assassins",
       "claimed": false
     },
     "No Traces": {
+      "name": "No Traces",
       "effect": "When you keep an operation quiet or make it look like an accident, you get half the rep value of the target (round up) instead of zero. When you end downtime with zero heat, take +1 rep.",
       "class": "assassins",
       "claimed": false
     },
     "Patron": {
+      "name": "Patron",
       "effect": "When you advance your Tier, it costs half the coin it normally would. Who is your patron? Why do they help you? (Add the patron as a contact)",
       "class": "shadows",
       "claimed": false
     },
     "Predators": {
+      "name": "Predators",
       "effect": "When you use stealth or subterfuge to commit murder, take +1d to the engagement roll.",
       "class": "assassins",
       "claimed": false
     },
     "Vipers": {
+      "name": "Vipers",
       "effect": "When you acquire or craft poisons, you get +1 result level to your roll. When you employ a poison, you are specially prepared to be immune to its effects.",
       "class": "assassins",
       "claimed": false
     },
     "Dangerous": {
+      "name": "Dangerous",
       "effect": "Each PC may add +1 action rating to Hunt, Skirmish, or Wreck (up to a max rating of 3)",
       "class": "bravos",
       "claimed": false
     },
     "Blood Brothers": {
+      "name": "Blood Brothers",
       "effect": "When you fight alongside your cohorts in combat, they get +1d for teamwork rolls (setup and group actions). All of your cohorts get the Thugs type for free (if they're already Thugs, add another type).",
       "class": "bravos",
       "claimed": false
     },
     "Door Kickers": {
+      "name": "Door Kickers",
       "effect": "When you execute an assault plan, take +1d to the engagement roll.",
       "class": "bravos",
       "claimed": false
     },
     "Fiends": {
+      "name": "Fiends",
       "effect": "Fear is as good as respect. You may count each wanted level as if it was turf.",
       "class": "bravos",
       "claimed": false
     },
     "Forged in the Fire": {
+      "name": "Forged in the Fire",
       "effect": "Each PC has been toughened by cruel experience. You get +1d to resistance rolls.",
       "class": "bravos",
       "claimed": false
     },
     "War Dogs": {
+      "name": "War Dogs",
       "effect": "When you’re at war (-3 faction status), your crew does not suffer -1 hold and PCs still get two downtime activities, instead of just one.",
       "class": "bravos",
       "claimed": false
     },
     "Chosen": {
+      "name": "Chosen",
       "effect": "Each PC may add +1 action rating to Attune, Study, or Sway (up to a max rating of 3).",
       "class": "cult",
       "claimed": false
     },
     "Anointed": {
+      "name": "Anointed",
       "effect": "You get +1d to resistance rolls against supernatural threats. You get +1d to healing rolls when you have supernatural harm.",
       "class": "cult",
       "claimed": false
     },
     "Bound in Darkness": {
+      "name": "Bound in Darkness",
       "effect": "You may use teamwork with any cult member, regardless of the distance separating you. By taking 1 stress, your whispered message is heard by every cultist.",
       "class": "cult",
       "claimed": false
     },
     "Conviction": {
+      "name": "Conviction",
       "effect": "Each PC gains an additional Vice: Worship. When you indulge this vice and bring a pleasing sacrifice, you don't overindulge if you clear excess stress. In addition, your deity will assist any one action roll you make—from now until you indulge this vice again.",
       "class": "cult",
       "claimed": false
     },
     "Glory Incarnate": {
+      "name": "Glory Incarnate",
       "effect": "Your deity sometimes manifests in the physical world. This can be a great boon, but the priorities and values of a god are not those of mortals. You have been warned.",
       "class": "cult",
       "claimed": false
     },
     "Sealed in Blood": {
+      "name": "Sealed in Blood",
       "effect": "Each human sacrifice yields -3 stress cost for any ritual you perform.",
       "class": "cult",
       "claimed": false
     },
     "Zealotry": {
+      "name": "Zealotry",
       "effect": "Your cohorts have abandoned their reason to devote themselves to the cult. They will undertake any service, no matter how dangerous or strange. They gain +1d to rolls against enemies of the faith.",
       "class": "cult",
       "claimed": false
     },
     "Silver Tongues": {
+      "name": "Silver Tongues",
       "effect": "Each PC may add +1 action rating to Command, Consort, or Sway (up to a max rating of 3).",
       "class": "hawkers",
       "claimed": false
     },
     "Accord": {
+      "name": "Accord",
       "effect": "Sometimes friends are as good as territory. You may count up to three +3 faction statuses you hold as if they are turf.",
       "class": "hawkers",
       "claimed": false
     },
     "The Good Stuff": {
+      "name": "The Good Stuff",
       "effect": "Your merchandise is exquisite. The product quality is equal to your Tier+2. When you deal with a crew or faction, the GM will tell you who among them is hooked on your product (one, a few, many, or all).",
       "class": "hawkers",
       "claimed": false
     },
     "Ghost Market": {
+      "name": "Ghost Market",
       "effect": "Through arcane ritual or hard-won experience, you have discovered how to prepare your product for sale to ghosts and/or demons. They do not pay in coin. What do they pay with?",
       "class": "hawkers",
       "claimed": false
     },
     "High Society": {
+      "name": "High Society",
       "effect": "It's all about who you know. Take -1 heat during downtime and +1d to gather info about the city's elite.",
       "class": "hawkers",
       "claimed": false
     },
     "Hooked": {
+      "name": "Hooked",
       "effect": "Your gang members use your product. Add the savage, unreliable, or wild flaw to your gangs to give them +1 quality.",
       "class": "hawkers",
       "claimed": false
     },
     "Everyone Steals": {
+      "name": "Everyone Steals",
       "effect": "Each PC may add +1 action rating to Prowl, Finesse, or Tinker (up to a max rating of 3).",
       "class": "shadows",
       "claimed": false
     },
     "Ghost Echoes": {
+      "name": "Ghost Echoes",
       "effect": "From weird experience or occult ritual, all crew members gain the ability to see and interact with the ghostly structures, streets, and objects within the echo of Doskvol that exists in the ghost field.",
       "class": "shadows",
       "claimed": false
     },
     "Pack Rats": {
+      "name": "Pack Rats",
       "effect": "Your lair is a jumble of stolen items. When you roll to acquire an asset, take +1d.",
       "class": "shadows",
       "claimed": false
     },
     "Second Story": {
+      "name": "Second Story",
       "effect": "When you execute a clandestine infiltration, you get +1d to the engagement roll.",
       "class": "shadows",
       "claimed": false
     },
     "Slippery": {
+      "name": "Slippery",
       "effect": "When you roll entanglements, roll twice and keep the one you want. When you reduce heat on the crew, take +1d.",
       "class": "shadows",
       "claimed": false
     },
     "Synchronized": {
+      "name": "Synchronized",
       "effect": "When you perform a group action, you may count multiple 6s from different rolls as a critical success.",
       "class": "shadows",
       "claimed": false
     },
     "Like Part of the Family": {
+      "name": "Like Part of the Family",
       "effect": "Create one of your vehicles as a cohort (use the vehicle edges and flaws, below). Its quality is equal to your Tier +1.",
       "class": "smugglers",
       "claimed": false
     },
     "All Hands": {
+      "name": "All Hands",
       "effect": "During downtime, one of your cohorts may perform a downtime activity for the crew to acquire an asset, reduce heat, or work on a long-term project.",
       "class": "smugglers",
       "claimed": false
     },
     "Ghost Passage": {
+      "name": "Ghost Passage",
       "effect": "From harsh experience or occult ritual, all crew members become immune to possession by spirits, but may choose to \"carry\" a second ghost as a passenger within their body.",
       "class": "smugglers",
       "claimed": false
     },
     "Just Passing Through ": {
+      "name": "Just Passing Through",
       "effect": "During downtime, take -1 heat. When your heat is 4 or less, you get +1d to deceive people when you pass yourselves off as ordinary citizens.",
       "class": "smugglers",
       "claimed": false
     },
     "Leverage": {
+      "name": "Leverage",
       "effect": "Your crew supplies contraband for other factions. Your success is good for them. Whenever you gain rep, gain +1 rep.",
       "class": "smugglers",
       "claimed": false
     },
     "Reavers": {
+      "name": "Reavers",
       "effect": "When you go into conflict aboard a vehicle, you gain +1 effect for vehicle damage and speed. Your vehicle gains armor.",
       "class": "smugglers",
       "claimed": false
     },
     "Renegades": {
+      "name": "Renegades",
       "effect": "Each PC may add +1 action rating to Finesse, Prowl, or Skirmish (up to a max rating of 3).",
       "class": "smugglers",
       "claimed": false
@@ -882,6 +1150,7 @@
   },
   "crew_upgrades": {
     "Carriage": {
+      "name": "Carriage",
       "effect": "You have a carriage, two goats to pull it, and a stable. A second upgrade improves the carriage with armor and larger, swifter goats. Horses are very rare in Doskvol—most carriages in the city use the large Akorosian goat as their draft animal.",
       "cost": 2,
       "catagory": "lair",
@@ -889,6 +1158,7 @@
       "claimed": false
     },
     "Boat": {
+      "name": "Boat",
       "effect": "You have a boat, a dock on a waterway, and a small shack to store boating supplies. A second upgrade improves the boat with armor and more cargo capacity.",
       "cost": 2,
       "catagory": "lair",
@@ -896,6 +1166,7 @@
       "claimed": false
     },
     "Hidden": {
+      "name": "Hidden",
       "effect": "Your lair has a secret location and is disguised to hide it from view. If your lair is discovered, use two downtime activities and pay coin equal to your Tier to relocate it and hide it once again.",
       "cost": 1,
       "catagory": "lair",
@@ -903,6 +1174,7 @@
       "claimed": false
     },
     "Quarters": {
+      "name": "Quarters",
       "effect": "Your lair includes living quarters for the crew. Without this upgrade, each PC sleeps elsewhere, and is vulnerable when they do so.",
       "cost": 1,
       "catagory": "lair",
@@ -910,6 +1182,7 @@
       "claimed": false
     },
     "Secure": {
+      "name": "Secure",
       "effect": "Your lair has locks, alarms, and traps to thwart intruders. A second upgrade improves the defenses to include arcane measures that work against spirits. You might roll your crew’s Tier if these measures are ever put to the test, to see how well they thwart an intruder.",
       "cost": 2,
       "catagory": "lair",
@@ -917,6 +1190,7 @@
       "claimed": false
     },
     "Vault": {
+      "name": "Vault",
       "effect": "Your lair has a secure vault, increasing your storage capacity for coin to 8. A second upgrade increases your capacity to 16. A separate part of your vault can be used as a holding cell.",
       "cost": 2,
       "catagory": "lair",
@@ -924,6 +1198,7 @@
       "claimed": false
     },
     "Workshop": {
+      "name": "Workshop",
       "effect": "Your lair has a workshop appointed with tools for tinkering and alchemy, as well as a small library of books, documents, and maps. You may accomplish long-term projects with these assets without leaving your lair.",
       "cost": 1,
       "catagory": "lair",
@@ -931,6 +1206,7 @@
       "claimed": false
     },
     "Insight": {
+      "name": "Insight",
       "effect": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
       "cost": 1,
       "catagory": "training",
@@ -938,6 +1214,7 @@
       "claimed": false
     },
     "Prowess": {
+      "name": "Prowess",
       "effect": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
       "cost": 1,
       "catagory": "training",
@@ -945,6 +1222,7 @@
       "claimed": false
     },
     "Resolve": {
+      "name": "Resolve",
       "effect": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
       "cost": 1,
       "catagory": "training",
@@ -952,6 +1230,7 @@
       "claimed": false
     },
     "Personal": {
+      "name": "Personal",
       "effect": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
       "cost": 1,
       "catagory": "training",
@@ -959,6 +1238,7 @@
       "claimed": false
     },
     "Mastery": {
+      "name": "Mastery",
       "effect": "Your crew has access to master level training. You may advance your PCs’ action ratings to 4 (until you unlock this upgrade, PC action ratings are capped at 3). This costs four upgrade boxes to unlock.",
       "cost": 4,
       "catagory": "training",
@@ -966,6 +1246,7 @@
       "claimed": false
     },
     "Documents": {
+      "name": "Documents",
       "effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
@@ -973,6 +1254,7 @@
       "claimed": false
     },
     "Gear": {
+      "name": "Gear",
       "effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
@@ -980,6 +1262,7 @@
       "claimed": false
     },
     "Implements": {
+      "name": "Implements",
       "effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
@@ -987,6 +1270,7 @@
       "claimed": false
     },
     "Supplies": {
+      "name": "Supplies",
       "effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
@@ -994,6 +1278,7 @@
       "claimed": false
     },
     "Tools": {
+      "name": "Tools",
       "effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
@@ -1001,6 +1286,7 @@
       "claimed": false
     },
     "Weapons": {
+      "name": "Weapons",
       "effect": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
@@ -1008,6 +1294,7 @@
       "claimed": false
     },
     "Assassin Rigging": {
+      "name": "Assassin Rigging",
       "effect": "(2 free load of weapons or gear)",
       "cost": 1,
       "catagory": "special",
@@ -1015,6 +1302,7 @@
       "claimed": false
     },
     "Ironhook Contacts": {
+      "name": "Ironhook Contacts",
       "effect": "(+1 Tier in prison)",
       "cost": 1,
       "catagory": "special",
@@ -1022,6 +1310,7 @@
       "claimed": false
     },
     "Elite Skulks": {
+      "name": "Elite Skulks",
       "effect": null,
       "cost": 1,
       "catagory": "quality",
@@ -1029,6 +1318,7 @@
       "claimed": false
     },
     "Elite Thugs": {
+      "name": "Elite Thugs",
       "effect": null,
       "cost": 1,
       "catagory": "quality",
@@ -1036,6 +1326,7 @@
       "claimed": false
     },
     "Hardened": {
+      "name": "Hardened",
       "effect": "(+1 trauma box)",
       "cost": 3,
       "catagory": "special",
@@ -1043,6 +1334,7 @@
       "claimed": false
     },
     "Bravos Rigging": {
+      "name": "Bravos Rigging",
       "effect": "(2 free load of weapons or armor)",
       "cost": 1,
       "catagory": "special",
@@ -1050,6 +1342,7 @@
       "claimed": false
     },
     "Elite Rovers": {
+      "name": "Elite Rovers",
       "effect": null,
       "cost": 1,
       "catagory": "quality",
@@ -1057,6 +1350,7 @@
       "claimed": false
     },
     "Cult Rigging": {
+      "name": "Cult Rigging",
       "effect": "(2 free load of documents or implements)",
       "cost": 1,
       "catagory": "special",
@@ -1064,6 +1358,7 @@
       "claimed": false
     },
     "Ritual Sanctum in Lair": {
+      "name": "Ritual Sanctum in Lair",
       "effect": null,
       "cost": 1,
       "catagory": "lair",
@@ -1071,6 +1366,7 @@
       "claimed": false
     },
     "Elite Adepts": {
+      "name": "Elite Adepts",
       "effect": null,
       "cost": 1,
       "catagory": "quality",
@@ -1078,6 +1374,7 @@
       "claimed": false
     },
     "Ordained": {
+      "name": "Ordained",
       "effect": "(+1 trauma box)",
       "cost": 3,
       "catagory": "special",
@@ -1085,6 +1382,7 @@
       "claimed": false
     },
     "Hawker's Rigging": {
+      "name": "Hawker's Rigging",
       "effect": "(1 carried item is concealed and has no load)",
       "cost": 1,
       "catagory": "special",
@@ -1092,6 +1390,7 @@
       "claimed": false
     },
     "Elite Rooks": {
+      "name": "Elite Rooks",
       "effect": null,
       "cost": 1,
       "catagory": "quality",
@@ -1099,6 +1398,7 @@
       "claimed": false
     },
     "Composed": {
+      "name": "Composed",
       "effect": "(+1 stress box)",
       "cost": 3,
       "catagory": "special",
@@ -1106,6 +1406,7 @@
       "claimed": false
     },
     "Thief Rigging": {
+      "name": "Thief Rigging",
       "effect": "(2 free load of tools or gear)",
       "cost": 1,
       "catagory": "special",
@@ -1113,6 +1414,7 @@
       "claimed": false
     },
     "Underground Maps & Passkeys": {
+      "name": "Underground Maps & Passkeys",
       "effect": null,
       "cost": 1,
       "catagory": "special",
@@ -1120,6 +1422,7 @@
       "claimed": false
     },
     "Steady": {
+      "name": "Steady",
       "effect": "(+1 stress box)",
       "cost": 3,
       "catagory": "special",
@@ -1127,6 +1430,7 @@
       "claimed": false
     },
     "Smuggler's Rigging": {
+      "name": "Smuggler's Rigging",
       "effect": "(2 items carried are perfectly concealed)",
       "cost": 1,
       "catagory": "special",
@@ -1134,6 +1438,7 @@
       "claimed": false
     },
     "Camouflage": {
+      "name": "Camouflage",
       "effect": "(vehicles are perfectly concealed at rest)",
       "cost": 1,
       "catagory": "special",
@@ -1141,6 +1446,7 @@
       "claimed": false
     },
     "Barge": {
+      "name": "Barge",
       "effect": "(+mobility for lair)",
       "cost": 1,
       "catagory": "lair",
@@ -1148,6 +1454,7 @@
       "claimed": false
     },
     "Cohort": {
+      "name": "Cohort",
       "effect": null,
       "cost": 2,
       "catagory": "special",
@@ -1157,6 +1464,7 @@
   },
   "vice_purveyors": {
     "Mother Narya": {
+      "name": "Mother Narya",
       "location": "none",
       "type": "Faith",
       "area": "Six Towers",
@@ -1165,6 +1473,7 @@
       "description": null
     },
     "Ilacille": {
+      "name": "Ilacille",
       "location": "none",
       "type": "Faith",
       "area": "Coalridge",
@@ -1173,6 +1482,7 @@
       "description": null
     },
     "Nelisanne": {
+      "name": "Nelisanne",
       "location": "none",
       "type": "Faith",
       "area": "Brightstone",
@@ -1181,6 +1491,7 @@
       "description": null
     },
     "Lord Penderyn": {
+      "name": "Lord Penderyn",
       "location": "none",
       "type": "Faith",
       "area": "Charterhall",
@@ -1189,6 +1500,7 @@
       "description": null
     },
     "Spogg": {
+      "name": "Spogg",
       "location": "none",
       "type": "Gambling",
       "area": "Crow's Foot",
@@ -1197,6 +1509,7 @@
       "description": null
     },
     "Grist": {
+      "name": "Grist",
       "location": "none",
       "type": "Gambling",
       "area": "the Docks",
@@ -1205,6 +1518,7 @@
       "description": null
     },
     "Helene": {
+      "name": "Helene",
       "location": "none",
       "type": "Pleasure, Stupor",
       "area": "Silkshore",
@@ -1213,6 +1527,7 @@
       "description": null
     },
     "Master Vreen": {
+      "name": "Master Vreen",
       "location": "none",
       "type": "Gambling",
       "area": "Nightmarket",
@@ -1221,6 +1536,7 @@
       "description": null
     },
     "Lady Dusk": {
+      "name": "Lady Dusk",
       "location": "none",
       "type": "Gambling",
       "area": "Whitecrown",
@@ -1229,6 +1545,7 @@
       "description": null
     },
     "Sergeant Velk": {
+      "name": "Sergeant Velk",
       "location": "none",
       "type": "Gambling",
       "area": "Dunslough",
@@ -1237,6 +1554,7 @@
       "description": null
     },
     "Singer": {
+      "name": "Singer",
       "location": "none",
       "type": "Luxury, Pleasure",
       "area": "Crow's Foot",
@@ -1245,6 +1563,7 @@
       "description": null
     },
     "Harvale Brogan": {
+      "name": "Harvale Brogan",
       "location": "none",
       "type": "Luxury, Pleasure",
       "area": "Brightstone",
@@ -1253,6 +1572,7 @@
       "description": null
     },
     "Traven": {
+      "name": "Traven",
       "location": "none",
       "type": "Pleasure, Stupor",
       "area": "Coalridge",
@@ -1261,6 +1581,7 @@
       "description": null
     },
     "Dunrige & Son": {
+      "name": "Dunrige & Son",
       "location": "none",
       "type": "Luxury, Pleasure",
       "area": "Nightmarket",
@@ -1269,6 +1590,7 @@
       "description": null
     },
     "Chef Roselle": {
+      "name": "Chef Roselle",
       "location": "none",
       "type": "Luxury, Pleasure",
       "area": "Six Towers",
@@ -1277,6 +1599,7 @@
       "description": null
     },
     "Maestro Helleren": {
+      "name": "Maestro Helleren",
       "location": "none",
       "type": "Luxury, Pleasure",
       "area": "Whitecrown",
@@ -1285,6 +1608,7 @@
       "description": null
     },
     "Family Members (heritage) or Former Co-Workers (background)": {
+      "name": "Family Members (heritage) or Former Co-Workers (background)",
       "location": "none",
       "type": "Obligation",
       "area": "all",
@@ -1293,6 +1617,7 @@
       "description": null
     },
     "Hutton, Skovlander Refugees/Revolutionaries": {
+      "name": "Hutton, Skovlander Refugees/Revolutionaries",
       "location": "none",
       "type": "Obligation",
       "area": "Charhollow",
@@ -1301,6 +1626,7 @@
       "description": null
     },
     "The Circle of Flame": {
+      "name": "The Circle of Flame",
       "location": "none",
       "type": "Obligation",
       "area": "all",
@@ -1309,6 +1635,7 @@
       "description": null
     },
     "Mardin Gull": {
+      "name": "Mardin Gull",
       "location": "none",
       "type": "Pleasure, Stupor",
       "area": "Crow's Foot",
@@ -1317,6 +1644,7 @@
       "description": null
     },
     "Pux Bolin": {
+      "name": "Pux Bolin",
       "location": "none",
       "type": "Pleasure, Stupor",
       "area": "Nightmarket",
@@ -1325,6 +1653,7 @@
       "description": null
     },
     "Lady Freyla": {
+      "name": "Lady Freyla",
       "location": "none",
       "type": "Pleasure, Stupor",
       "area": "Whitecrown",
@@ -1333,6 +1662,7 @@
       "description": null
     },
     "Avrick": {
+      "name": "Avrick",
       "location": "none",
       "type": "Pleasure, Stupor",
       "area": "Barrowcleft",
@@ -1341,6 +1671,7 @@
       "description": null
     },
     "Rolan Volaris": {
+      "name": "Rolan Volaris",
       "location": "none",
       "type": "Pleasure, Stupor",
       "area": "Nightmarket",
@@ -1349,6 +1680,7 @@
       "description": null
     },
     "Madame Tesslyn": {
+      "name": "Madame Tesslyn",
       "location": "none",
       "type": "Pleasure, Stupor",
       "area": "Silkshore",
@@ -1357,6 +1689,7 @@
       "description": null
     },
     "Eldrin Prichard": {
+      "name": "Eldrin Prichard",
       "location": "none",
       "type": "Pleasure, Stupor",
       "area": "Brightstone Canals",
@@ -1365,6 +1698,7 @@
       "description": null
     },
     "Jewel, Bird, and Shine": {
+      "name": "Jewel, Bird, and Shine",
       "location": "none",
       "type": "Pleasure, Stupor",
       "area": "the Docks",
@@ -1373,6 +1707,7 @@
       "description": null
     },
     "The Hooded Proprietor": {
+      "name": "The Hooded Proprietor",
       "location": "none",
       "type": "Weird",
       "area": "The Docks",
@@ -1381,6 +1716,7 @@
       "description": null
     },
     "Father Yoren": {
+      "name": "Father Yoren",
       "location": "none",
       "type": "Weird",
       "area": "Six Towers",
@@ -1389,6 +1725,7 @@
       "description": null
     },
     "\"Salia\"": {
+      "name": "\"Salia\"",
       "location": "none",
       "type": "Weird",
       "area": "all",
@@ -1397,6 +1734,7 @@
       "description": null
     },
     "Sister Thorn": {
+      "name": "Sister Thorn",
       "location": "none",
       "type": "Weird",
       "area": "Gaddoc Station",
@@ -1405,6 +1743,7 @@
       "description": null
     },
     "Ojak": {
+      "name": "Ojak",
       "location": "none",
       "type": "Weird",
       "area": "Silkshore",
@@ -1413,6 +1752,7 @@
       "description": null
     },
     "Aranna the Blessed, Cultist of a Forgotten God": {
+      "name": "Aranna the Blessed, Cultist of a Forgotten God",
       "location": "none",
       "type": "Weird",
       "area": "Nightmarket",
@@ -1423,6 +1763,7 @@
   },
   "contacts": {
     "Trev, a gang boss": {
+      "name": "Trev, a gang boss",
       "class": "assassins",
       "relationship": 0,
       "notes": "\"\"",
@@ -1430,6 +1771,7 @@
       "description": "\"\""
     },
     "Lydra, a deal broker": {
+      "name": "Lydra, a deal broker",
       "class": "hawkers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1437,6 +1779,7 @@
       "description": "\"\""
     },
     "Irimina, a vicious noble": {
+      "name": "Irimina, a vicious noble",
       "class": "assassins",
       "relationship": 0,
       "notes": "\"\"",
@@ -1444,6 +1787,7 @@
       "description": "\"\""
     },
     "Karlos, a bounty hunter": {
+      "name": "Karlos, a bounty hunter",
       "class": "assassins",
       "relationship": 0,
       "notes": "\"\"",
@@ -1451,6 +1795,7 @@
       "description": "\"\""
     },
     "Exeter, a spirit warden": {
+      "name": "Exeter, a spirit warden",
       "class": "assassins",
       "relationship": 0,
       "notes": "\"\"",
@@ -1458,6 +1803,7 @@
       "description": "\"\""
     },
     "Sevoy, a merchant lord": {
+      "name": "Sevoy, a merchant lord",
       "class": "assassins",
       "relationship": 0,
       "notes": "\"\"",
@@ -1465,6 +1811,7 @@
       "description": "\"\""
     },
     "Meg, a pit-fighter": {
+      "name": "Meg, a pit-fighter",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
@@ -1472,6 +1819,7 @@
       "description": "\"\""
     },
     "Conway, a bluecoat": {
+      "name": "Conway, a bluecoat",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
@@ -1479,6 +1827,7 @@
       "description": "\"\""
     },
     "Keller, a blacksmith": {
+      "name": "Keller, a blacksmith",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
@@ -1486,6 +1835,7 @@
       "description": "\"\""
     },
     "Tomas, a physicker": {
+      "name": "Tomas, a physicker",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
@@ -1493,6 +1843,7 @@
       "description": "\"\""
     },
     "Walker, a ward boss": {
+      "name": "Walker, a ward boss",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
@@ -1500,6 +1851,7 @@
       "description": "\"\""
     },
     "Lutes, a tavern owner": {
+      "name": "Lutes, a tavern owner",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
@@ -1507,6 +1859,7 @@
       "description": "\"\""
     },
     "Gagan, an academic": {
+      "name": "Gagan, an academic",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
@@ -1514,6 +1867,7 @@
       "description": "\"\""
     },
     "Adikin, an occultist": {
+      "name": "Adikin, an occultist",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
@@ -1521,6 +1875,7 @@
       "description": "\"\""
     },
     "Hutchins, an antiquarian": {
+      "name": "Hutchins, an antiquarian",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
@@ -1528,6 +1883,7 @@
       "description": "\"\""
     },
     "Moriya, a spirit trafficker": {
+      "name": "Moriya, a spirit trafficker",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
@@ -1535,6 +1891,7 @@
       "description": "\"\""
     },
     "Mateas Kline, a noble": {
+      "name": "Mateas Kline, a noble",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
@@ -1542,6 +1899,7 @@
       "description": "\"\""
     },
     "Bennett, an astronomer": {
+      "name": "Bennett, an astronomer",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
@@ -1549,6 +1907,7 @@
       "description": "\"\""
     },
     "Rolan Wott, a magistrate": {
+      "name": "Rolan Wott, a magistrate",
       "class": "hawkers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1556,6 +1915,7 @@
       "description": "\"\""
     },
     "Laroze, a bluecoat": {
+      "name": "Laroze, a bluecoat",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
@@ -1563,6 +1923,7 @@
       "description": "\"\""
     },
     "Hoxley, a smuggler": {
+      "name": "Hoxley, a smuggler",
       "class": "hawkers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1570,6 +1931,7 @@
       "description": "\"\""
     },
     "Anya, a dillettante": {
+      "name": "Anya, a dillettante",
       "class": "hawkers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1577,6 +1939,7 @@
       "description": "\"\""
     },
     "Marlo, a gang boss": {
+      "name": "Marlo, a gang boss",
       "class": "hawkers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1584,6 +1947,7 @@
       "description": "\"\""
     },
     "Dowler, an explorer": {
+      "name": "Dowler, an explorer",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
@@ -1591,6 +1955,7 @@
       "description": "\"\""
     },
     "Amancio, a deal broker": {
+      "name": "Amancio, a deal broker",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
@@ -1598,6 +1963,7 @@
       "description": "\"\""
     },
     "Fitz, a collector": {
+      "name": "Fitz, a collector",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
@@ -1605,6 +1971,7 @@
       "description": "\"\""
     },
     "Adelaide Phroaig, a noble": {
+      "name": "Adelaide Phroaig, a noble",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
@@ -1612,6 +1979,7 @@
       "description": "\"\""
     },
     "Rigney, a tavern owner": {
+      "name": "Rigney, a tavern owner",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
@@ -1619,6 +1987,7 @@
       "description": "\"\""
     },
     "Elynn, a dock worker": {
+      "name": "Elynn, a dock worker",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1626,6 +1995,7 @@
       "description": "\"\""
     },
     "Rolan, a drug dealer": {
+      "name": "Rolan, a drug dealer",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1633,6 +2003,7 @@
       "description": "\"\""
     },
     "Sera, an arms dealer": {
+      "name": "Sera, an arms dealer",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1640,6 +2011,7 @@
       "description": "\"\""
     },
     "Nyelle, a spirit trafficker": {
+      "name": "Nyelle, a spirit trafficker",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1647,6 +2019,7 @@
       "description": "\"\""
     },
     "Decker, an anarchist": {
+      "name": "Decker, an anarchist",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1654,6 +2027,7 @@
       "description": "\"\""
     },
     "Esme, a tavern owner": {
+      "name": "Esme, a tavern owner",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
@@ -1663,176 +2037,211 @@
   },
   "friends_and_foes": {
     "Marlane, a pugilist": {
+      "name": "Marlane, a pugilist",
       "class": "cutter",
       "relationship": 0,
       "notes": null
     },
     "Chael, a vicious thug": {
+      "name": "Chael, a vicious thug",
       "class": "cutter",
       "relationship": 0,
       "notes": null
     },
     "Mercy, a cold killer": {
+      "name": "Mercy, a cold killer",
       "class": "cutter",
       "relationship": 0,
       "notes": null
     },
     "Grace, an extortionist": {
+      "name": "Grace, an extortionist",
       "class": "cutter",
       "relationship": 0,
       "notes": null
     },
     "Sawtooth, a physicker": {
+      "name": "Sawtooth, a physicker",
       "class": "cutter",
       "relationship": 0,
       "notes": null
     },
     "Steiner, an assassin": {
+      "name": "Steiner, an assassin",
       "class": "hound",
       "relationship": 0,
       "notes": null
     },
     "Celene, a sentinel": {
+      "name": "Celene, a sentinel",
       "class": "hound",
       "relationship": 0,
       "notes": null
     },
     "Melvir, a physicker": {
+      "name": "Melvir, a physicker",
       "class": "hound",
       "relationship": 0,
       "notes": null
     },
     "Veleris, a spy": {
+      "name": "Veleris, a spy",
       "class": "hound",
       "relationship": 0,
       "notes": null
     },
     "Casta, a bounty hunter": {
+      "name": "Casta, a bounty hunter",
       "class": "hound",
       "relationship": 0,
       "notes": null
     },
     "Stazia, an apothecary": {
+      "name": "Stazia, an apothecary",
       "class": "leech",
       "relationship": 0,
       "notes": null
     },
     "Veldren, a psychonaut": {
+      "name": "Veldren, a psychonaut",
       "class": "leech",
       "relationship": 0,
       "notes": null
     },
     "Eckerd, a corpse thief": {
+      "name": "Eckerd, a corpse thief",
       "class": "leech",
       "relationship": 0,
       "notes": null
     },
     "Jul, a blood dealer": {
+      "name": "Jul, a blood dealer",
       "class": "leech",
       "relationship": 0,
       "notes": null
     },
     "Malista, a priestess": {
+      "name": "Malista, a priestess",
       "class": "leech",
       "relationship": 0,
       "notes": null
     },
     "Telda, a beggar": {
+      "name": "Telda, a beggar",
       "class": "lurk",
       "relationship": 0,
       "notes": null
     },
     "Darmot, a bluecoat": {
+      "name": "Darmot, a bluecoat",
       "class": "lurk",
       "relationship": 0,
       "notes": null
     },
     "Frake, a locksmith": {
+      "name": "Frake, a locksmith",
       "class": "lurk",
       "relationship": 0,
       "notes": null
     },
     "Roslyn Kellis, a noble": {
+      "name": "Roslyn Kellis, a noble",
       "class": "lurk",
       "relationship": 0,
       "notes": null
     },
     "Petra, a city clerk": {
+      "name": "Petra, a city clerk",
       "class": "lurk",
       "relationship": 0,
       "notes": null
     },
     "Bryl, a drug dealer": {
+      "name": "Bryl, a drug dealer",
       "class": "slide",
       "relationship": 0,
       "notes": null
     },
     "Bazso Baz, a gang leader": {
+      "name": "Bazso Baz, a gang leader",
       "class": "slide",
       "relationship": 0,
       "notes": null
     },
     "Klyra, a tavern owner": {
+      "name": "Klyra, a tavern owner",
       "class": "slide",
       "relationship": 0,
       "notes": null
     },
     "Nyryx, a prostitute": {
+      "name": "Nyryx, a prostitute",
       "class": "slide",
       "relationship": 0,
       "notes": null
     },
     "Harker, a jail-bird": {
+      "name": "Harker, a jail-bird",
       "class": "slide",
       "relationship": 0,
       "notes": null
     },
     "Salia, an information broker": {
+      "name": "Salia, an information broker",
       "class": "spider",
       "relationship": 0,
       "notes": null
     },
     "Augus, a master architect": {
+      "name": "Augus, a master architect",
       "class": "spider",
       "relationship": 0,
       "notes": null
     },
     "Jennah, a servant": {
+      "name": "Jennah, a servant",
       "class": "spider",
       "relationship": 0,
       "notes": null
     },
     "Riven, a chemist": {
+      "name": "Riven, a chemist",
       "class": "spider",
       "relationship": 0,
       "notes": null
     },
     "Jeren, a bluecoat archivist": {
+      "name": "Jeren, a bluecoat archivist",
       "class": "spider",
       "relationship": 0,
       "notes": null
     },
     "Nyryx, a possessor ghost": {
+      "name": "Nyryx, a possessor ghost",
       "class": "whisper",
       "relationship": 0,
       "notes": null
     },
     "Scurlock, a vampire": {
+      "name": "Scurlock, a vampire",
       "class": "whisper",
       "relationship": 0,
       "notes": null
     },
     "Setarra, a demon": {
+      "name": "Setarra, a demon",
       "class": "whisper",
       "relationship": 0,
       "notes": null
     },
     "Quellyn, a witch": {
+      "name": "Quellyn, a witch",
       "class": "whisper",
       "relationship": 0,
       "notes": null
     },
     "Flint, a spirit trafficker": {
+      "name": "Flint, a spirit trafficker",
       "class": "whisper",
       "relationship": 0,
       "notes": null
@@ -1840,6 +2249,7 @@
   },
   "claims": {
     "shadows_c1": {
+      "cell": "shadows_c1",
       "claim": "Interrogation Chamber",
       "connections": "e, s",
       "faction": "The Red Bunnies",
@@ -1849,6 +2259,7 @@
       "notes": null
     },
     "shadows_c2": {
+      "cell": "shadows_c2",
       "claim": "Turf",
       "connections": "w, e",
       "faction": "The blue bunnies",
@@ -1858,6 +2269,7 @@
       "notes": null
     },
     "shadows_c3": {
+      "cell": "shadows_c3",
       "claim": "Loyal Fence",
       "connections": "s, w",
       "faction": null,
@@ -1867,6 +2279,7 @@
       "notes": null
     },
     "shadows_c4": {
+      "cell": "shadows_c4",
       "claim": "Gambling Den",
       "connections": "s, e",
       "faction": null,
@@ -1876,6 +2289,7 @@
       "notes": null
     },
     "shadows_c5": {
+      "cell": "shadows_c5",
       "claim": "Tavern",
       "connections": "w, s",
       "faction": null,
@@ -1885,6 +2299,7 @@
       "notes": null
     },
     "shadows_c6": {
+      "cell": "shadows_c6",
       "claim": "Drug Den",
       "connections": "n, e, s",
       "faction": null,
@@ -1894,6 +2309,7 @@
       "notes": null
     },
     "shadows_c7": {
+      "cell": "shadows_c7",
       "claim": "Informants",
       "connections": "e, s, w",
       "faction": null,
@@ -1903,6 +2319,7 @@
       "notes": null
     },
     "shadows_c8": {
+      "cell": "shadows_c8",
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
@@ -1912,6 +2329,7 @@
       "notes": null
     },
     "shadows_c9": {
+      "cell": "shadows_c9",
       "claim": "Turf",
       "connections": "n, e, w",
       "faction": null,
@@ -1921,6 +2339,7 @@
       "notes": null
     },
     "shadows_c10": {
+      "cell": "shadows_c10",
       "claim": "Lookouts",
       "connections": "n, s, w",
       "faction": null,
@@ -1930,6 +2349,7 @@
       "notes": null
     },
     "shadows_c11": {
+      "cell": "shadows_c11",
       "claim": "Hagfish Farm",
       "connections": "n, e",
       "faction": null,
@@ -1939,6 +2359,7 @@
       "notes": null
     },
     "shadows_c12": {
+      "cell": "shadows_c12",
       "claim": "Infirmary",
       "connections": "n",
       "faction": null,
@@ -1948,6 +2369,7 @@
       "notes": null
     },
     "shadows_c13": {
+      "cell": "shadows_c13",
       "claim": "Covert Drop",
       "connections": "n, e",
       "faction": null,
@@ -1957,6 +2379,7 @@
       "notes": null
     },
     "shadows_c14": {
+      "cell": "shadows_c14",
       "claim": "Turf",
       "connections": "e, w",
       "faction": null,
@@ -1966,6 +2389,7 @@
       "notes": null
     },
     "shadows_c15": {
+      "cell": "shadows_c15",
       "claim": "Secret Pathways",
       "connections": "n, w",
       "faction": null,
@@ -1975,6 +2399,7 @@
       "notes": null
     },
     "prison_c1": {
+      "cell": "prison_c1",
       "claim": "Parole Influence",
       "connections": "e, s",
       "faction": null,
@@ -1984,6 +2409,7 @@
       "notes": null
     },
     "prison_c2": {
+      "cell": "prison_c2",
       "claim": "Smuggling",
       "connections": "e, s, w",
       "faction": null,
@@ -1993,6 +2419,7 @@
       "notes": null
     },
     "prison_c3": {
+      "cell": "prison_c3",
       "claim": "Allied Claim",
       "connections": "s, w",
       "faction": null,
@@ -2002,6 +2429,7 @@
       "notes": null
     },
     "prision_c4": {
+      "cell": "prision_c4",
       "claim": "Cell Block Control",
       "connections": "s",
       "faction": null,
@@ -2011,6 +2439,7 @@
       "notes": null
     },
     "prision_c5": {
+      "cell": "prision_c5",
       "claim": "Guard Payoff",
       "connections": "n, e, s",
       "faction": null,
@@ -2020,6 +2449,7 @@
       "notes": null
     },
     "prison_c6": {
+      "cell": "prison_c6",
       "claim": "Prison",
       "connections": "n, e, s, w",
       "faction": "Claimed",
@@ -2029,6 +2459,7 @@
       "notes": null
     },
     "prision_c7": {
+      "cell": "prision_c7",
       "claim": "Guard Payoff",
       "connections": "n, e, s, w",
       "faction": null,
@@ -2038,6 +2469,7 @@
       "notes": null
     },
     "prision_c8": {
+      "cell": "prision_c8",
       "claim": "Allied Claim",
       "connections": "n, s, w",
       "faction": null,
@@ -2047,6 +2479,7 @@
       "notes": null
     },
     "prision_c9": {
+      "cell": "prision_c9",
       "claim": "Hardcase",
       "connections": "n, e",
       "faction": null,
@@ -2056,6 +2489,7 @@
       "notes": null
     },
     "prision_c10": {
+      "cell": "prision_c10",
       "claim": "Smuggling",
       "connections": "n, e, w",
       "faction": null,
@@ -2065,6 +2499,7 @@
       "notes": null
     },
     "prision_c11": {
+      "cell": "prision_c11",
       "claim": "Allied Claim",
       "connections": "n, e, w",
       "faction": null,
@@ -2074,6 +2509,7 @@
       "notes": null
     },
     "prision_c12": {
+      "cell": "prision_c12",
       "claim": "Allied Claim",
       "connections": "n, w",
       "faction": null,
@@ -2083,6 +2519,7 @@
       "notes": null
     },
     "smugglers_c1": {
+      "cell": "smugglers_c1",
       "claim": "Turf",
       "connections": "e, s",
       "faction": null,
@@ -2092,6 +2529,7 @@
       "notes": null
     },
     "smugglers_c2": {
+      "cell": "smugglers_c2",
       "claim": "Side Business",
       "connections": "e, s, w",
       "faction": null,
@@ -2101,6 +2539,7 @@
       "notes": null
     },
     "smugglers_c3": {
+      "cell": "smugglers_c3",
       "claim": "Luxury Fence",
       "connections": "s, w",
       "faction": null,
@@ -2110,6 +2549,7 @@
       "notes": null
     },
     "smugglers_c4": {
+      "cell": "smugglers_c4",
       "claim": "Vice Den",
       "connections": "e, s",
       "faction": null,
@@ -2119,6 +2559,7 @@
       "notes": null
     },
     "smugglers_c5": {
+      "cell": "smugglers_c5",
       "claim": "Tavern",
       "connections": "s, w",
       "faction": null,
@@ -2128,6 +2569,7 @@
       "notes": null
     },
     "smugglers_c6": {
+      "cell": "smugglers_c6",
       "claim": "Ancient Gate",
       "connections": "n, s",
       "faction": null,
@@ -2137,6 +2579,7 @@
       "notes": "(When you leave the city through this gate, spirits in the deathlands will not molest you unless directly provoked.)"
     },
     "smugglers_c7": {
+      "cell": "smugglers_c7",
       "claim": "Turf",
       "connections": "n, e, s",
       "faction": null,
@@ -2146,6 +2589,7 @@
       "notes": null
     },
     "smugglers_c8": {
+      "cell": "smugglers_c8",
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
@@ -2155,6 +2599,7 @@
       "notes": null
     },
     "smugglers_c9": {
+      "cell": "smugglers_c9",
       "claim": "Turf",
       "connections": "n, e, s, w",
       "faction": null,
@@ -2164,6 +2609,7 @@
       "notes": null
     },
     "smugglers_c10": {
+      "cell": "smugglers_c10",
       "claim": "Turf",
       "connections": "n, s, e",
       "faction": null,
@@ -2173,6 +2619,7 @@
       "notes": null
     },
     "smugglers_c11": {
+      "cell": "smugglers_c11",
       "claim": "Secret Routes",
       "connections": "n, e",
       "faction": null,
@@ -2182,6 +2629,7 @@
       "notes": "(You might have access to long-forgotten underground canals, dark streets normally hidden behind debris, or some other route of your choosing.)"
     },
     "smugglers_c12": {
+      "cell": "smugglers_c12",
       "claim": "Informants",
       "connections": "n, w",
       "faction": null,
@@ -2191,6 +2639,7 @@
       "notes": "(Your eyes and ears on the streets are always on the lookout for new clients.)"
     },
     "smugglers_c13": {
+      "cell": "smugglers_c13",
       "claim": "Fleet",
       "connections": "n",
       "faction": null,
@@ -2200,6 +2649,7 @@
       "notes": "(Each cohort has a common vehicle, with quality equal to your Tier.)"
     },
     "smugglers_c14": {
+      "cell": "smugglers_c14",
       "claim": "Cover Operation",
       "connections": "n, e",
       "faction": null,
@@ -2209,6 +2659,7 @@
       "notes": "(What's your cover? Who did you seize it from?)"
     },
     "smugglers_c15": {
+      "cell": "smugglers_c15",
       "claim": "Warehouses",
       "connections": "n, w",
       "faction": null,
@@ -2218,6 +2669,7 @@
       "notes": "(You have space to hold all the various items and supplies you end up with from the smuggling runs. They can be useful on their own or for barter when you need it.)"
     },
     "hawkers_c1": {
+      "cell": "hawkers_c1",
       "claim": "Turf",
       "connections": "e, s",
       "faction": null,
@@ -2227,6 +2679,7 @@
       "notes": null
     },
     "hawkers_c2": {
+      "cell": "hawkers_c2",
       "claim": "Personal Clothier",
       "connections": "s, w",
       "faction": null,
@@ -2236,6 +2689,7 @@
       "notes": "(You always arrive on the scene in the most current and alluring fashion.)"
     },
     "hawkers_c3": {
+      "cell": "hawkers_c3",
       "claim": "Local Graft",
       "connections": "s, w",
       "faction": null,
@@ -2245,6 +2699,7 @@
       "notes": "(A few city officials share bribe money with those who show that they're players on the scene.)"
     },
     "hawkers_c4": {
+      "cell": "hawkers_c4",
       "claim": "Lookouts",
       "connections": "e, s",
       "faction": null,
@@ -2254,6 +2709,7 @@
       "notes": null
     },
     "hawkers_c5": {
+      "cell": "hawkers_c5",
       "claim": "Informants",
       "connections": "s, w",
       "faction": null,
@@ -2263,6 +2719,7 @@
       "notes": null
     },
     "hawkers_c6": {
+      "cell": "hawkers_c6",
       "claim": "Turf",
       "connections": "s, w",
       "faction": null,
@@ -2272,6 +2729,7 @@
       "notes": null
     },
     "hawkers_c7": {
+      "cell": "hawkers_c7",
       "claim": "Turf",
       "connections": "e, s",
       "faction": null,
@@ -2281,6 +2739,7 @@
       "notes": null
     },
     "hawkers_c8": {
+      "cell": "hawkers_c8",
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
@@ -2290,6 +2749,7 @@
       "notes": null
     },
     "hawkers_c9": {
+      "cell": "hawkers_c9",
       "claim": "Turf",
       "connections": "n, e, s, w",
       "faction": null,
@@ -2299,6 +2759,7 @@
       "notes": null
     },
     "hawkers_c10": {
+      "cell": "hawkers_c10",
       "claim": "Luxury Venue",
       "connections": "n, w",
       "faction": null,
@@ -2308,6 +2769,7 @@
       "notes": "(Skills, paintings, and crystal impress the clientele.)"
     },
     "hawkers_c11": {
+      "cell": "hawkers_c11",
       "claim": "Foreign Market",
       "connections": "n, e",
       "faction": null,
@@ -2317,6 +2779,7 @@
       "notes": "(Some of your product makes its way out of the city.)"
     },
     "hawkers_c12": {
+      "cell": "hawkers_c12",
       "claim": "Vice Den",
       "connections": "n, w",
       "faction": null,
@@ -2326,6 +2789,7 @@
       "notes": "(Is this claim a den you've overtaken from another purveyor, or a new establishment replacing something else?)"
     },
     "hawkers_c13": {
+      "cell": "hawkers_c13",
       "claim": "Surplus Cache",
       "connections": "n",
       "faction": null,
@@ -2335,6 +2799,7 @@
       "notes": "(You have an abundance of product, which pads your pockets every now and then.)"
     },
     "hawkers_c14": {
+      "cell": "hawkers_c14",
       "claim": "Cover Operation",
       "connections": "n, e",
       "faction": null,
@@ -2344,6 +2809,7 @@
       "notes": null
     },
     "hawkers_c15": {
+      "cell": "hawkers_c15",
       "claim": "Cover Identities",
       "connections": "w",
       "faction": null,
@@ -2353,6 +2819,7 @@
       "notes": null
     },
     "cult_c1": {
+      "cell": "cult_c1",
       "claim": "Cloister",
       "connections": "e, s",
       "faction": null,
@@ -2362,6 +2829,7 @@
       "notes": null
     },
     "cult_c2": {
+      "cell": "cult_c2",
       "claim": "Vice Den",
       "connections": "e, s, w",
       "faction": null,
@@ -2371,6 +2839,7 @@
       "notes": null
     },
     "cult_c3": {
+      "cell": "cult_c3",
       "claim": "Offertory",
       "connections": "s, w",
       "faction": null,
@@ -2380,6 +2849,7 @@
       "notes": null
     },
     "cult_c4": {
+      "cell": "cult_c4",
       "claim": "Ancient Obelisk",
       "connections": "e",
       "faction": null,
@@ -2389,6 +2859,7 @@
       "notes": "(This effect applies to all cultists, everywhere - so long as the deity is well-pleased. You don't have to be on-site at the obelisk to benefit from its power.)"
     },
     "cult_c5": {
+      "cell": "cult_c5",
       "claim": "Ancient Tower",
       "connections": "s, w",
       "faction": null,
@@ -2398,6 +2869,7 @@
       "notes": "(This tower was prepared by sorcery from the pre-cataclysm and acts as an arcane lens to focus eldritch energy across the black mirror into the void.)"
     },
     "cult_c6": {
+      "cell": "cult_c6",
       "claim": "Turf",
       "connections": "n, e",
       "faction": null,
@@ -2407,6 +2879,7 @@
       "notes": null
     },
     "cult_c7": {
+      "cell": "cult_c7",
       "claim": "Turf",
       "connections": "n, e, s, w",
       "faction": null,
@@ -2416,6 +2889,7 @@
       "notes": null
     },
     "cult_c8": {
+      "cell": "cult_c8",
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
@@ -2425,6 +2899,7 @@
       "notes": null
     },
     "cult_c9": {
+      "cell": "cult_c9",
       "claim": "Turf",
       "connections": "e, s, w",
       "faction": null,
@@ -2434,6 +2909,7 @@
       "notes": null
     },
     "cult_c10": {
+      "cell": "cult_c10",
       "claim": "Turf",
       "connections": "n, s, w",
       "faction": null,
@@ -2443,6 +2919,7 @@
       "notes": null
     },
     "cult_c11": {
+      "cell": "cult_c11",
       "claim": "Spirit Well",
       "connections": "e",
       "faction": null,
@@ -2452,6 +2929,7 @@
       "notes": "(A spirit well draws ghosts and other things to its power, which you harness to aid your arts.)"
     },
     "cult_c12": {
+      "cell": "cult_c12",
       "claim": "Ancient Gate",
       "connections": "n, w",
       "faction": null,
@@ -2461,6 +2939,7 @@
       "notes": "(When you leave the city through this gate, the spirits of the deathlands will not molest you unless directly provoked.)"
     },
     "cult_c13": {
+      "cell": "cult_c13",
       "claim": "Sanctuary",
       "connections": "n",
       "faction": null,
@@ -2470,6 +2949,7 @@
       "notes": "(Your sanctuary maintains its effect as long as your deity is well-pleased with your service.)"
     },
     "cult_c14": {
+      "cell": "cult_c14",
       "claim": "Sacred Nexus",
       "connections": "n, e",
       "faction": null,
@@ -2479,6 +2959,7 @@
       "notes": "(Ancient arcane energy seeps into the wounded here, speeding their recovery, and marking them consecrated by its power.)"
     },
     "cult_c15": {
+      "cell": "cult_c15",
       "claim": "Ancient Altar",
       "connections": "n, w",
       "faction": null,
@@ -2488,6 +2969,7 @@
       "notes": "(Its blessing is with you.)"
     },
     "bravos_c1": {
+      "cell": "bravos_c1",
       "claim": "Barracks",
       "connections": "e, s",
       "faction": null,
@@ -2497,6 +2979,7 @@
       "notes": null
     },
     "bravos_c2": {
+      "cell": "bravos_c2",
       "claim": "Turf",
       "connections": "e, w",
       "faction": null,
@@ -2506,6 +2989,7 @@
       "notes": null
     },
     "bravos_c3": {
+      "cell": "bravos_c3",
       "claim": "Terrorized Citizens",
       "connections": "s, w",
       "faction": null,
@@ -2515,6 +2999,7 @@
       "notes": null
     },
     "bravos_c4": {
+      "cell": "bravos_c4",
       "claim": "Informants",
       "connections": "e, s",
       "faction": null,
@@ -2524,6 +3009,7 @@
       "notes": null
     },
     "bravos_c5": {
+      "cell": "bravos_c5",
       "claim": "Protection Racket",
       "connections": "s, w",
       "faction": null,
@@ -2533,6 +3019,7 @@
       "notes": null
     },
     "bravos_c6": {
+      "cell": "bravos_c6",
       "claim": "Fighting Pits",
       "connections": "n, e, s",
       "faction": null,
@@ -2542,6 +3029,7 @@
       "notes": null
     },
     "bravos_c7": {
+      "cell": "bravos_c7",
       "claim": "Turf",
       "connections": "e, s, w",
       "faction": null,
@@ -2551,6 +3039,7 @@
       "notes": null
     },
     "bravos_c8": {
+      "cell": "bravos_c8",
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
@@ -2560,6 +3049,7 @@
       "notes": null
     },
     "bravos_c9": {
+      "cell": "bravos_c9",
       "claim": "Turf",
       "connections": "n, e, s, w",
       "faction": null,
@@ -2569,6 +3059,7 @@
       "notes": null
     },
     "bravos_c10": {
+      "cell": "bravos_c10",
       "claim": "Turf",
       "connections": "n, s, w",
       "faction": null,
@@ -2578,6 +3069,7 @@
       "notes": null
     },
     "bravos_c11": {
+      "cell": "bravos_c11",
       "claim": "Infirmary",
       "connections": "n, e",
       "faction": null,
@@ -2587,6 +3079,7 @@
       "notes": null
     },
     "bravos_c12": {
+      "cell": "bravos_c12",
       "claim": "Bluecoat Intimidation",
       "connections": "n, w",
       "faction": null,
@@ -2596,6 +3089,7 @@
       "notes": null
     },
     "bravos_c13": {
+      "cell": "bravos_c13",
       "claim": "Street Fence",
       "connections": "n, e",
       "faction": null,
@@ -2605,6 +3099,7 @@
       "notes": null
     },
     "bravos_c14": {
+      "cell": "bravos_c14",
       "claim": "Warehouses",
       "connections": "n, e, w",
       "faction": null,
@@ -2614,6 +3109,7 @@
       "notes": null
     },
     "bravos_c15": {
+      "cell": "bravos_c15",
       "claim": "Bluecoat Confederates",
       "connections": "n, w",
       "faction": null,
@@ -2623,6 +3119,7 @@
       "notes": null
     },
     "assassins_c1": {
+      "cell": "assassins_c1",
       "claim": "Training Rooms",
       "connections": "e, s",
       "faction": null,
@@ -2632,6 +3129,7 @@
       "notes": null
     },
     "assassins_c2": {
+      "cell": "assassins_c2",
       "claim": "Vice Den",
       "connections": "s, w",
       "faction": null,
@@ -2641,6 +3139,7 @@
       "notes": null
     },
     "assassins_c3": {
+      "cell": "assassins_c3",
       "claim": "Fixer",
       "connections": "s",
       "faction": null,
@@ -2650,6 +3149,7 @@
       "notes": null
     },
     "assassins_c4": {
+      "cell": "assassins_c4",
       "claim": "Informants",
       "connections": "e, s",
       "faction": null,
@@ -2659,6 +3159,7 @@
       "notes": null
     },
     "assassins_c5": {
+      "cell": "assassins_c5",
       "claim": "Hagfish Farm",
       "connections": "s, w",
       "faction": null,
@@ -2668,6 +3169,7 @@
       "notes": null
     },
     "assassins_c6": {
+      "cell": "assassins_c6",
       "claim": "Victim Trophies",
       "connections": "n, s",
       "faction": null,
@@ -2677,6 +3179,7 @@
       "notes": null
     },
     "assassins_c7": {
+      "cell": "assassins_c7",
       "claim": "Turf",
       "connections": "n, e, s",
       "faction": null,
@@ -2686,6 +3189,7 @@
       "notes": null
     },
     "assassins_c8": {
+      "cell": "assassins_c8",
       "claim": "Lair",
       "connections": "n, e, s, w",
       "faction": "Claimed",
@@ -2695,6 +3199,7 @@
       "notes": null
     },
     "assassins_c9": {
+      "cell": "assassins_c9",
       "claim": "Turf",
       "connections": "n, e, w",
       "faction": null,
@@ -2704,6 +3209,7 @@
       "notes": null
     },
     "assassins_c10": {
+      "cell": "assassins_c10",
       "claim": "Cover Operation",
       "connections": "n, s, w",
       "faction": null,
@@ -2713,6 +3219,7 @@
       "notes": null
     },
     "assassins_c11": {
+      "cell": "assassins_c11",
       "claim": "Protection Racket",
       "connections": "n, e",
       "faction": null,
@@ -2722,6 +3229,7 @@
       "notes": null
     },
     "assassins_c12": {
+      "cell": "assassins_c12",
       "claim": "Infirmary",
       "connections": "n, w",
       "faction": null,
@@ -2731,6 +3239,7 @@
       "notes": null
     },
     "assassins_c13": {
+      "cell": "assassins_c13",
       "claim": "Envoy",
       "connections": "n",
       "faction": null,
@@ -2740,6 +3249,7 @@
       "notes": null
     },
     "assassins_c14": {
+      "cell": "assassins_c14",
       "claim": "Cover Identities",
       "connections": "e, s",
       "faction": null,
@@ -2749,6 +3259,7 @@
       "notes": null
     },
     "assassins_c15": {
+      "cell": "assassins_c15",
       "claim": "City Records",
       "connections": "n, w",
       "faction": null,
@@ -2760,93 +3271,115 @@
   },
   "opportunities": {
     "": {
+      "name": null,
       "class": "assassins"
     }
   },
   "xp_gain": {
     "0": {
+      "id": 0,
       "description": "Every time you roll a desperate action, mark xp in that action's attribute.\nAt the end of each session, for each item below, mark 1 xp (in your playbook or\nan attribute) or 2 xp if that item occurred multiple times.",
       "class": "all"
     },
     "1": {
+      "id": 1,
       "description": "You expressed your beliefs, drives, heritage, or background.",
       "class": "all"
     },
     "2": {
+      "id": 2,
       "description": "You struggled with issues from your vice or traumas during the session.",
       "class": "all"
     },
     "3": {
+      "id": 3,
       "description": "You addressed a challenge with violence or coercion.",
       "class": "cutter"
     },
     "4": {
+      "id": 4,
       "description": "You addressed a challenge with tracking or violence.",
       "class": "hound"
     },
     "5": {
+      "id": 5,
       "description": "You addressed a challenge with knowledge or arcane power.",
       "class": "whisper"
     },
     "6": {
+      "id": 6,
       "description": "You addressed a challenge with calculation or conspiracy.",
       "class": "spider"
     },
     "7": {
+      "id": 7,
       "description": "You addressed a challenge with deception or influence.",
       "class": "slide"
     },
     "8": {
+      "id": 8,
       "description": "You addressed a challenge with stealth or evasion.",
       "class": "lurk"
     },
     "9": {
+      "id": 9,
       "description": "You addressed a challenge with technical skill or mayhem.",
       "class": "leech"
     },
     "10": {
+      "id": 10,
       "description": "Execute a successful accident, disappearance, murder, or ransom operation.",
       "class": "assassins"
     },
     "11": {
+      "id": 11,
       "description": "Contend with challenges above your current station.",
       "class": "all_crew"
     },
     "12": {
+      "id": 12,
       "description": "Bolster your crew's reputation or develop a new one.",
       "class": "all_crew"
     },
     "13": {
+      "id": 13,
       "description": "Express the goals, drives, inner conflict, or essential nature of the crew.",
       "class": "all_crew"
     },
     "14": {
+      "id": 14,
       "description": "Execute a successful battle, extortion, sabotage, or smash & grab operation.",
       "class": "bravos"
     },
     "15": {
+      "id": 15,
       "description": "Advance the agenda of your deity or embody its precepts in actioncu.",
       "class": "cult"
     },
     "16": {
+      "id": 16,
       "description": "Acquire product supply, execute clandestine/covert sales, or secure new territory.",
       "class": "hawkers"
     },
     "17": {
+      "id": 17,
       "description": "Execute a successful espionage, sabotage, or theft operation.",
       "class": "shadows"
     },
     "18": {
+      "id": 18,
       "description": "Execute a successful smuggling or acquire new clients or contraband sources.",
       "class": "smugglers"
     },
     "s": {
+      "id": "s",
       "description": null,
       "class": null
     }
   },
   "factions": {
     "The Unseen": {
+      "name": "The Unseen",
       "tier": 4,
       "hold": "strong",
       "type": "Underworld",
@@ -2855,6 +3388,7 @@
       "description": null
     },
     "The Hive": {
+      "name": "The Hive",
       "tier": 4,
       "hold": "strong",
       "type": "Underworld",
@@ -2863,6 +3397,7 @@
       "description": null
     },
     "The Circle of Flame ": {
+      "name": "The Circle of Flame",
       "tier": 3,
       "hold": "strong",
       "type": "Underworld",
@@ -2871,6 +3406,7 @@
       "description": null
     },
     "The Silver Nails": {
+      "name": "The Silver Nails",
       "tier": 3,
       "hold": "strong",
       "type": "Underworld",
@@ -2879,6 +3415,7 @@
       "description": null
     },
     "Lord Scurlock": {
+      "name": "Lord Scurlock",
       "tier": 3,
       "hold": "strong",
       "type": "Underworld",
@@ -2887,6 +3424,7 @@
       "description": null
     },
     "The Crows": {
+      "name": "The Crows",
       "tier": 2,
       "hold": "weak",
       "type": "Underworld",
@@ -2895,6 +3433,7 @@
       "description": null
     },
     "The Lampblacks": {
+      "name": "The Lampblacks",
       "tier": 2,
       "hold": "weak",
       "type": "Underworld",
@@ -2903,6 +3442,7 @@
       "description": null
     },
     "The Red Sashes": {
+      "name": "The Red Sashes",
       "tier": 2,
       "hold": "weak",
       "type": "Underworld",
@@ -2911,6 +3451,7 @@
       "description": null
     },
     "The Dimmer Sisters": {
+      "name": "The Dimmer Sisters",
       "tier": 2,
       "hold": "strong",
       "type": "Underworld",
@@ -2919,6 +3460,7 @@
       "description": null
     },
     "The Grinders": {
+      "name": "The Grinders",
       "tier": 2,
       "hold": "weak",
       "type": "Underworld",
@@ -2927,6 +3469,7 @@
       "description": null
     },
     "The Billhooks": {
+      "name": "The Billhooks",
       "tier": 2,
       "hold": "weak",
       "type": "Underworld",
@@ -2935,6 +3478,7 @@
       "description": null
     },
     "The Wraiths": {
+      "name": "The Wraiths",
       "tier": 2,
       "hold": "weak",
       "type": "Underworld",
@@ -2943,6 +3487,7 @@
       "description": null
     },
     "The Gray Cloaks": {
+      "name": "The Gray Cloaks",
       "tier": 2,
       "hold": "strong",
       "type": "Underworld",
@@ -2951,6 +3496,7 @@
       "description": null
     },
     "Ulf Ironborn": {
+      "name": "Ulf Ironborn",
       "tier": 1,
       "hold": "strong",
       "type": "Underworld",
@@ -2959,6 +3505,7 @@
       "description": null
     },
     "The Fog Hounds ": {
+      "name": "The Fog Hounds",
       "tier": 1,
       "hold": "weak",
       "type": "Underworld",
@@ -2967,6 +3514,7 @@
       "description": null
     },
     "The Lost": {
+      "name": "The Lost",
       "tier": 1,
       "hold": "weak",
       "type": "Underworld",
@@ -2975,6 +3523,7 @@
       "description": null
     },
     "Imperial Military": {
+      "name": "Imperial Military",
       "tier": 6,
       "hold": "strong",
       "type": "Institutions",
@@ -2983,6 +3532,7 @@
       "description": null
     },
     "City Council": {
+      "name": "City Council",
       "tier": 5,
       "hold": "strong",
       "type": "Institutions",
@@ -2991,6 +3541,7 @@
       "description": null
     },
     "Ministry of Preservation": {
+      "name": "Ministry of Preservation",
       "tier": 5,
       "hold": "strong",
       "type": "Institutions",
@@ -2999,6 +3550,7 @@
       "description": null
     },
     "Leviathan Hunters": {
+      "name": "Leviathan Hunters",
       "tier": 5,
       "hold": "strong",
       "type": "Institutions",
@@ -3007,6 +3559,7 @@
       "description": null
     },
     "Ironhook Prison": {
+      "name": "Ironhook Prison",
       "tier": 4,
       "hold": "strong",
       "type": "Institutions",
@@ -3015,6 +3568,7 @@
       "description": null
     },
     "Sparkwrights": {
+      "name": "Sparkwrights",
       "tier": 4,
       "hold": "strong",
       "type": "Institutions",
@@ -3023,6 +3577,7 @@
       "description": null
     },
     "Spirit Wardens": {
+      "name": "Spirit Wardens",
       "tier": 4,
       "hold": "strong",
       "type": "Institutions",
@@ -3031,6 +3586,7 @@
       "description": null
     },
     "Bluecoats": {
+      "name": "Bluecoats",
       "tier": 3,
       "hold": "strong",
       "type": "Institutions",
@@ -3039,6 +3595,7 @@
       "description": null
     },
     "Inspectors": {
+      "name": "Inspectors",
       "tier": 3,
       "hold": "strong",
       "type": "Institutions",
@@ -3047,6 +3604,7 @@
       "description": null
     },
     "Iruvian Consulate": {
+      "name": "Iruvian Consulate",
       "tier": 3,
       "hold": "strong",
       "type": "Institutions",
@@ -3055,6 +3613,7 @@
       "description": null
     },
     "Skovlan Consulate": {
+      "name": "Skovlan Consulate",
       "tier": 3,
       "hold": "weak",
       "type": "Institutions",
@@ -3063,6 +3622,7 @@
       "description": null
     },
     "The Brigade": {
+      "name": "The Brigade",
       "tier": 2,
       "hold": "strong",
       "type": "Institutions",
@@ -3071,6 +3631,7 @@
       "description": null
     },
     "Severosi Consulate": {
+      "name": "Severosi Consulate",
       "tier": 1,
       "hold": "strong",
       "type": "Institutions",
@@ -3079,6 +3640,7 @@
       "description": null
     },
     "Dagger Isles Consulate": {
+      "name": "Dagger Isles Consulate",
       "tier": 1,
       "hold": "strong",
       "type": "Institutions",
@@ -3087,6 +3649,7 @@
       "description": null
     },
     "The Foundation": {
+      "name": "The Foundation",
       "tier": 4,
       "hold": "strong",
       "type": "Labor & Trade",
@@ -3095,6 +3658,7 @@
       "description": null
     },
     "Dockers": {
+      "name": "Dockers",
       "tier": 3,
       "hold": "strong",
       "type": "Labor & Trade",
@@ -3103,6 +3667,7 @@
       "description": null
     },
     "Gondoliers": {
+      "name": "Gondoliers",
       "tier": 3,
       "hold": "strong",
       "type": "Labor & Trade",
@@ -3111,6 +3676,7 @@
       "description": null
     },
     "Sailors": {
+      "name": "Sailors",
       "tier": 3,
       "hold": "weak",
       "type": "Labor & Trade",
@@ -3119,6 +3685,7 @@
       "description": null
     },
     "Laborers": {
+      "name": "Laborers",
       "tier": 3,
       "hold": "weak",
       "type": "Labor & Trade",
@@ -3127,6 +3694,7 @@
       "description": null
     },
     "Cabbies": {
+      "name": "Cabbies",
       "tier": 2,
       "hold": "weak",
       "type": "Labor & Trade",
@@ -3135,6 +3703,7 @@
       "description": null
     },
     "Cyphers": {
+      "name": "Cyphers",
       "tier": 2,
       "hold": "strong",
       "type": "Labor & Trade",
@@ -3143,6 +3712,7 @@
       "description": null
     },
     "Ink Rakes": {
+      "name": "Ink Rakes",
       "tier": 2,
       "hold": "weak",
       "type": "Labor & Trade",
@@ -3151,6 +3721,7 @@
       "description": null
     },
     "Rail Jacks": {
+      "name": "Rail Jacks",
       "tier": 2,
       "hold": "weak",
       "type": "Labor & Trade",
@@ -3159,6 +3730,7 @@
       "description": null
     },
     "Servants": {
+      "name": "Servants",
       "tier": 2,
       "hold": "weak",
       "type": "Labor & Trade",
@@ -3167,6 +3739,7 @@
       "description": null
     },
     "The Church of Ecstasy": {
+      "name": "The Church of Ecstasy",
       "tier": 4,
       "hold": "strong",
       "type": "The Fringe",
@@ -3175,6 +3748,7 @@
       "description": null
     },
     "The Horde": {
+      "name": "The Horde",
       "tier": 3,
       "hold": "strong",
       "type": "The Fringe",
@@ -3183,6 +3757,7 @@
       "description": null
     },
     "The Path of Echoes": {
+      "name": "The Path of Echoes",
       "tier": 3,
       "hold": "strong",
       "type": "The Fringe",
@@ -3191,6 +3766,7 @@
       "description": null
     },
     "The Forgotten Gods": {
+      "name": "The Forgotten Gods",
       "tier": 3,
       "hold": "weak",
       "type": "The Fringe",
@@ -3199,6 +3775,7 @@
       "description": null
     },
     "The Reconciled": {
+      "name": "The Reconciled",
       "tier": 3,
       "hold": "strong",
       "type": "The Fringe",
@@ -3207,6 +3784,7 @@
       "description": null
     },
     "Skovlander Refugees": {
+      "name": "Skovlander Refugees",
       "tier": 3,
       "hold": "weak",
       "type": "The Fringe",
@@ -3215,6 +3793,7 @@
       "description": null
     },
     "The Weeping Lady": {
+      "name": "The Weeping Lady",
       "tier": 2,
       "hold": "strong",
       "type": "The Fringe",
@@ -3223,6 +3802,7 @@
       "description": null
     },
     "Deathlands Scavengers": {
+      "name": "Deathlands Scavengers",
       "tier": 2,
       "hold": "weak",
       "type": "The Fringe",
@@ -3231,6 +3811,7 @@
       "description": null
     },
     "Whitecrown": {
+      "name": "Whitecrown",
       "tier": 5,
       "hold": "strong",
       "type": "Citizenry",
@@ -3239,6 +3820,7 @@
       "description": null
     },
     "Brightstone": {
+      "name": "Brightstone",
       "tier": 4,
       "hold": "strong",
       "type": "Citizenry",
@@ -3247,6 +3829,7 @@
       "description": null
     },
     "Charterhall": {
+      "name": "Charterhall",
       "tier": 4,
       "hold": "strong",
       "type": "Citizenry",
@@ -3255,6 +3838,7 @@
       "description": null
     },
     "Six Towers": {
+      "name": "Six Towers",
       "tier": 3,
       "hold": "weak",
       "type": "Citizenry",
@@ -3263,6 +3847,7 @@
       "description": null
     },
     "Silkshore": {
+      "name": "Silkshore",
       "tier": 2,
       "hold": "strong",
       "type": "Citizenry",
@@ -3271,6 +3856,7 @@
       "description": null
     },
     "Nightmarket": {
+      "name": "Nightmarket",
       "tier": 2,
       "hold": "strong",
       "type": "Citizenry",
@@ -3279,6 +3865,7 @@
       "description": null
     },
     "Crow's Foot": {
+      "name": "Crow's Foot",
       "tier": 2,
       "hold": "strong",
       "type": "Citizenry",
@@ -3287,6 +3874,7 @@
       "description": null
     },
     "The Docks": {
+      "name": "The Docks",
       "tier": 2,
       "hold": "strong",
       "type": "Citizenry",
@@ -3295,6 +3883,7 @@
       "description": null
     },
     "Barrowcleft": {
+      "name": "Barrowcleft",
       "tier": 2,
       "hold": "strong",
       "type": "Citizenry",
@@ -3303,6 +3892,7 @@
       "description": null
     },
     "Coalridge": {
+      "name": "Coalridge",
       "tier": 2,
       "hold": "weak",
       "type": "Citizenry",
@@ -3311,6 +3901,7 @@
       "description": null
     },
     "Charhollow": {
+      "name": "Charhollow",
       "tier": 1,
       "hold": "strong",
       "type": "Citizenry",
@@ -3319,6 +3910,7 @@
       "description": null
     },
     "Dunslough": {
+      "name": "Dunslough",
       "tier": 1,
       "hold": "weak",
       "type": "Citizenry",
@@ -3329,6 +3921,7 @@
   },
   "default_locations": {},
   "default_maps": {
+    "name": "Duskvol Full City",
     "description": "The full city of Duskvol",
     "file_path": null
   }

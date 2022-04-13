@@ -5,7 +5,7 @@ export (String) var playbook_data
 export (String) var title setget _set_title
 export (PackedScene) var field_scene: PackedScene
 
-var _playbook:Playbook setget _on_playbook_loaded
+export (Resource) var _playbook setget _on_playbook_loaded
 onready var list: = $List
 onready var title_label: = $List/Title
 
@@ -26,7 +26,11 @@ func setup(playbook:Playbook)->void:
 
 		var playbook_field = playbook[playbook_data][key]
 		for property in playbook_field:
-			if property in field:
+			if property == "name":
+				field.set(property, playbook_field[property])
+				if "id" in field:
+					field.set("id", playbook_field[property])
+			elif property in field:
 				field.set(property, playbook_field[property])
 
 		#Set the playbook on the field (this may be redundent

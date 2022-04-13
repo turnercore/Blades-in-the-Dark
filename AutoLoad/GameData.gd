@@ -1,10 +1,10 @@
 extends Node
 
-const DEFAULT_MAP_NOTE_ICON:String= "res://Shared/Art/Icons/MapNoteIcon.png"
+const DEFAULT_MAP_NOTE_ICON:String= "res://Shared/Art/Icons/MapNoteIconTex.tres"
 
 const DEFAULT_NOTE: = {
-	"info_text": "",
-	"location_name": "",
+	"info_text": "DEFAULT INFO TEXT",
+	"location_name": "LOCATION",
 	"tags": "",
 	"pos": Vector2.ZERO,
 	"icon": DEFAULT_MAP_NOTE_ICON,
@@ -50,7 +50,7 @@ var map:Dictionary = {
 	"map_name": "Duskvol",
 	"image": null,
 	"notes": {}
-	}
+	} setget _set_map
 
 #ARRAY OF MAP NOTES a map note is a location
 var map_shortcuts:Array
@@ -64,6 +64,8 @@ signal map_loaded(map)
 #I think these are unused
 signal pc_playbooks_changed
 signal clocks_free
+signal map_shortcut_added
+signal map_shortcut_removed
 
 func _ready() -> void:
 	connect_to_signals()
@@ -81,6 +83,7 @@ func connect_to_signals()-> void:
 	Events.connect("map_changed", self, "_on_map_changed")
 	Events.connect("map_removed", self, "_on_map_removed")
 	Events.connect("map_note_updated", self, "_on_map_note_updated")
+	Events.connect("map_note_created", self, "_on_map_note_created")
 	Events.connect("map_note_removed", self, "_on_map_note_removed")
 	if not GameSaver.is_connected("save_loaded", self, "_on_save_loaded"):
 		GameSaver.connect("save_loaded", self, "_on_save_loaded")
@@ -120,9 +123,6 @@ func _on_save_loaded(save:SaveGame)->void:
 	self.clocks = save.clocks
 	emit_signal("clocks_loaded", clocks)
 	self.map = save.map
-	for location in map.notes:
-		if map.notes[location].shortcut:
-			self.map_shortcuts.append(map.notes[location])
 	emit_signal("map_loaded", map)
 
 
@@ -169,19 +169,18 @@ func save_map()-> void:
 	save_game.map = map
 
 #Add or edit the map note
-func add_map_note(pos:Vector2, data:Dictionary)-> void:
+func add_map_note(data:Dictionary)-> void:
+	var pos:Vector2 = data.pos
+
 	if not "notes" in map:
 		map["notes"] = {}
-	map.notes[pos] = DEFAULT_NOTE
 
-	for value in data:
-		if value in map.notes[pos]:
-			map.notes[pos][value] = data[value]
+	if pos in map.notes: return
 
+	map.notes[pos] = data
+#	map.notes[pos]["pos"] = pos
 	if "shortcut" in data:
-		if data.shortcut:
-			map_shortcuts.append(map.notes[pos])
-
+		add_map_shortcut(data)
 	save_map()
 
 #I'm no longer completely sure why I have a lockout variable (and signal) to save the clocks...
@@ -240,16 +239,49 @@ func _on_map_removed(index:int)->void:
 
 
 func _on_map_note_updated(data: Dictionary)-> void:
+	if not data.pos in map.notes:
+		print("error somehow couldn't find note in map")
+		return
+
+
 	var note:Dictionary = map.notes[data.pos]
 	for value in data:
 		if value in note:
 			note[value] = data[value]
+
+	add_map_shortcut(note)
 	save_map()
 	emit_signal("map_loaded", map)
 
 
-func _on_map_note_removed(note_pos: Vector2)-> void:
-	if map.notes.has(note_pos):
-		map.notes.erase(note_pos)
+func add_map_shortcut(note:Dictionary)-> void:
+	if note.shortcut and not map_shortcuts.has(note):
+		map_shortcuts.append(note)
+	emit_signal("map_shortcut_added")
+
+
+func remove_map_shortcut(note:Dictionary)-> void:
+	if map_shortcuts.has(note):
+			map_shortcuts.erase(note)
+	emit_signal("map_shortcut_removed")
+
+
+func _on_map_note_removed(note: Vector2)-> void:
+	if map.notes.has(note):
+		remove_map_shortcut(map.notes.get(note))
+		map.notes.erase(note)
+
 	save_map()
 	emit_signal("map_loaded", map)
+
+
+func _set_map(value:Dictionary)-> void:
+	map_shortcuts = []
+	map = value
+	for location in map.notes:
+		if "shortcut" in map.notes[location] and map.notes[location].shortcut:
+			add_map_shortcut(map.notes[location])
+
+
+func _on_map_note_created(note_data:Dictionary)-> void:
+	add_map_note(note_data)

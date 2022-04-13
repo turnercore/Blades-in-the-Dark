@@ -10,12 +10,15 @@ export (NodePath) onready var cursor_sprite = get_node(cursor_sprite) as Sprite
 export (NodePath) onready var notes = get_node(notes) as Node2D
 export (NodePath) onready var camera = get_node(camera) as Camera2D
 export (NodePath) onready var map_texture = get_node(map_texture) as TextureRect
+export (NodePath) onready var grid = get_node(grid) as TileMap
 
 var zoom_level: float
 var unfocused: = false
+var creating_note: = false
 
 
 func _ready() -> void:
+	Globals.grid = grid
 	GameData.connect("map_loaded", self, "_on_map_loaded")
 	load_map(GameData.map)
 	Events.connect("map_scroll_speed_changed", self, "_on_map_scroll_speed_changed")
@@ -29,7 +32,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if unfocused: return
-	if Input.is_action_just_pressed("right_click"):
+	if Input.is_action_just_pressed("right_click") and not creating_note:
+		creating_note = true
 		add_note()
 	if Input.is_action_pressed("ui_down"):
 		scroll_down(delta)
@@ -45,22 +49,30 @@ func _process(delta: float) -> void:
 		zoom_out(delta)
 
 
+#func convert_to_cellv(global_pos:Vector2)->Vector2:
+#	var local_pos:Vector2 = grid.to_local(global_pos)
+#	return grid.world_to_map(local_pos)
+
+
 func add_note(pos:=Vector2.ZERO, note_data:={})->void:
-	var map_note = map_note_scene.instance()
 	if pos == Vector2.ZERO and note_data.empty():
-		pos = get_global_mouse_position().round()
-		#Check to see if there's already a note in this pos:
-		if pos in GameData.map.notes: return
-		#Need to do the a popup and yeild for it to finish or somehting here to get the rest of the data
-		note_data = GameData.DEFAULT_NOTE
-		GameData.add_map_note(pos, note_data)
+		note_data = GameData.DEFAULT_NOTE.duplicate()
+		pos = Globals.convert_to_grid(get_global_mouse_position())
+		note_data.pos = pos
+		if pos in GameData.map.notes:
+			return
+
+	var map_note = map_note_scene.instance()
+	notes.add_child(map_note)
 
 	for property in note_data:
 		if property in map_note:
 			map_note.set(property, note_data[property])
 
-	map_note.global_position = pos
-	notes.add_child(map_note)
+	map_note.global_position = grid.map_to_world(pos)
+	Events.emit_signal("map_note_created", note_data)
+	creating_note = false
+
 
 
 func scroll_up(delta: float)->void:

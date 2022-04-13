@@ -58,6 +58,7 @@ func emit_map_removed(index: int)->void:
 signal map_note_clicked(note)
 signal map_note_updated(data)
 signal map_note_removed(pos)
+signal map_note_created(note_data)
 
 
 signal cursor_hovered

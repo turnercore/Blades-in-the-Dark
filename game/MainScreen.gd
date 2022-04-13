@@ -15,6 +15,9 @@ func _ready() -> void:
 		if child == overlay: continue
 		var child_name = child.name.to_lower()
 		screens[child_name] = child
+		if child.has_signal("popup_hide"):
+			child.connect("popup_hide", self, "_on_popup_hidden")
+		else: print("error setting up popups")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -47,6 +50,11 @@ func _on_popup(popup)-> void:
 		change_screen_to(popup)
 
 
+func _on_popup_hidden()-> void:
+	Events.emit_signal("popup_finished")
+
+
 func _on_popup_finished()-> void:
 	overlay.visible = false
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+

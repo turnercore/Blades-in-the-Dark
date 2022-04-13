@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://maps/Map.gd" type="Script" id=1]
+[ext_resource path="res://maps/MiniMap.gd" type="Script" id=2]
+[ext_resource path="res://maps/Map.tscn" type="PackedScene" id=3]
+
+[node name="MiniMap" type="MarginContainer"]
+visible = false
+margin_right = 300.0
+margin_bottom = 170.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 290.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 150, 150 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 280, 150 )
+handle_input_locally = false
+disable_3d = true
+usage = 0
+render_target_update_mode = 0
+gui_disable_input = true
+
+[node name="Map" type="Node2D" parent="ViewportContainer/Viewport" instance=ExtResource( 3 )]
+script = ExtResource( 1 )
+scroll_speed = 600.0
+tween = NodePath("Tween")
+cursor = NodePath("Cursor")
+cursor_sprite = NodePath("Cursor/Sprite")
+notes = NodePath("MapGrid/Notes")
+camera = NodePath("Camera2D")
+map_texture = NodePath("MapGrid/MapTexture")
+grid = NodePath("MapGrid")
+
+[node name="MiniMapCamera" type="Camera2D" parent="ViewportContainer/Viewport"]
+current = true
+zoom = Vector2( 22, 22 )
+smoothing_enabled = true
+smoothing_speed = 10.0

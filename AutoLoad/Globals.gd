@@ -4,7 +4,7 @@ extends Node
 const GAME_SCENE_PATH: = "res://game/Game.tscn"
 const GAME_SCENE:PackedScene = preload(GAME_SCENE_PATH)
 var DEFAULT_MAP_IMAGE: = preload("res://maps/blades_detailedmap_highres.jpg")
-
+var grid: TileMap
 enum CLOCK_TYPE {
 	ALL,
 	OBSTACLE,
@@ -73,3 +73,9 @@ func get_all_children_in_group_recursive(node: Node, group: String)->Array:
 			if child.is_in_group(group):
 				nodes.append(child)
 	return nodes
+
+
+func convert_to_grid(position:Vector2)-> Vector2:
+	var converted_pos:Vector2 = grid.to_local(position)
+	converted_pos = grid.world_to_map(converted_pos)
+	return converted_pos

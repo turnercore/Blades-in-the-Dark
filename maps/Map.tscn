@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://maps/MainCamera.gd" type="Script" id=1]
-[ext_resource path="res://maps/MapNote.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/Map.gd" type="Script" id=3]
 [ext_resource path="res://game/cursor.gd" type="Script" id=5]
 [ext_resource path="res://Shared/Art/Icons/icon.png" type="Texture" id=6]
@@ -18,6 +17,7 @@ cursor_sprite = NodePath("Cursor/Sprite")
 notes = NodePath("MapGrid/Notes")
 camera = NodePath("Camera2D")
 map_texture = NodePath("MapGrid/MapTexture")
+grid = NodePath("MapGrid")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -44,7 +44,6 @@ position = Vector2( 0.5, 0.499997 )
 scale = Vector2( 2.55, 2.55 )
 
 [node name="MapGrid" type="TileMap" parent="."]
-cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="MapTexture" type="TextureRect" parent="MapGrid"]
@@ -63,11 +62,6 @@ __meta__ = {
 }
 
 [node name="Notes" type="Node2D" parent="MapGrid"]
-
-[node name="MapNote" parent="MapGrid/Notes" instance=ExtResource( 2 )]
-visible = false
-position = Vector2( 439, 55 )
-z_index = 2
 
 [connection signal="area_entered" from="Cursor" to="Cursor" method="_on_cursor_area_entered"]
 [connection signal="area_exited" from="Cursor" to="Cursor" method="_on_cursor_area_exited"]

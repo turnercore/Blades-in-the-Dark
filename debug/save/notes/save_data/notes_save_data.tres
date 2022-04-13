@@ -1,0 +1,95 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/SaveGame.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_save_id = "notes"
+_save_folder = "res://debug/save"
+version = "0.44"
+map = {
+"image": "",
+"map_index": 0,
+"map_name": "Duskvol",
+"notes": {
+Vector2( -2, 0 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "DEFAULT INFO TEXT",
+"location_name": "LOCATION 4",
+"pos": Vector2( -2, 0 ),
+"shortcut": true,
+"tags": ""
+},
+Vector2( 1, -1 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "DEFAULT INFO TEXT",
+"location_name": "LOCATION 2",
+"pos": Vector2( 1, -1 ),
+"shortcut": false,
+"tags": ""
+},
+Vector2( 51, -47 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "You don\\'t want to go here\\n",
+"location_name": "Forbidden Zone",
+"pos": Vector2( 51, -47 ),
+"shortcut": true,
+"tags": ""
+}
+}
+}
+maps = [ {
+"image": "",
+"map_index": 0,
+"map_name": "Duskvol",
+"notes": {
+Vector2( -2, 0 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "DEFAULT INFO TEXT",
+"location_name": "LOCATION 4",
+"pos": Vector2( -2, 0 ),
+"shortcut": true,
+"tags": ""
+},
+Vector2( 1, -1 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "DEFAULT INFO TEXT",
+"location_name": "LOCATION 2",
+"pos": Vector2( 1, -1 ),
+"shortcut": false,
+"tags": ""
+},
+Vector2( 51, -47 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "You don\\'t want to go here\\n",
+"location_name": "Forbidden Zone",
+"pos": Vector2( 51, -47 ),
+"shortcut": true,
+"tags": ""
+}
+}
+} ]
+clocks = {
+"clock_174": {
+"clock_name": "clock",
+"filled": 2,
+"id": "clock_174",
+"is_secret": false,
+"locked": false,
+"locked_by_clock": null,
+"max_value": 4,
+"type": 1,
+"unlocks_clock": null
+},
+"clock_919": {
+"clock_name": "clock",
+"filled": 0,
+"id": "clock_919",
+"is_secret": false,
+"locked": false,
+"locked_by_clock": null,
+"max_value": 4,
+"type": 1,
+"unlocks_clock": null
+}
+}
