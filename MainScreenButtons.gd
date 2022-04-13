@@ -20,20 +20,16 @@ func _on_character_selected(_playbook)->void:
 
 
 func _on_CrewSheetButton_pressed() -> void:
-	Events.emit_signal("main_screen_changed", "Crew Sheet")
+	Events.popup("crew")
 
 
 func _on_RosterButton_pressed() -> void:
-	Events.emit_signal("main_screen_changed", "Roster")
+	Events.popup("roster")
 
 
 func _on_ClocksButton_pressed() -> void:
-	Events.emit_signal("main_screen_changed", "Progress Clocks")
-
-
-func _on_PlayButton_pressed() -> void:
-	Events.emit_signal("main_screen_changed", "Main")
+	Events.popup("clocks")
 
 
 func _on_CharacterButton_pressed() -> void:
-	Events.emit_signal("main_screen_changed", "Character Sheet")
+	Events.popup("character")

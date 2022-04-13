@@ -13,16 +13,16 @@ var DEFAULT_CLOCK_DATA: = {
 		}
 
 export (PackedScene) var clock_scene
-onready var grid: = $ScrollContainer/VBoxContainer/Clocks
-onready var add_clock_button: = $ScrollContainer/VBoxContainer/Settings/AddClock
-onready var clock_sort_button: = $ScrollContainer/VBoxContainer/Settings/ClockSort
+onready var grid: = $VBoxContainer/Clocks
+onready var add_clock_button: = $VBoxContainer/Settings/AddClock
+onready var clock_sort_button: = $VBoxContainer/Settings/ClockSort
 
 var current_clock_scale: = BASE_CLOCK_SIZE
 var current_type_displayed: = 0
 
 
 func _ready() -> void:
-	$ScrollContainer/VBoxContainer/Settings/GridColumnOption.selected = grid.columns
+	$VBoxContainer/Settings/GridColumnOption.selected = grid.columns
 	GameData.connect("clocks_loaded", self, "_on_clocks_loaded")
 	for type in Globals.CLOCK_TYPE:
 		var type_str: String = str(type).to_lower().replace("_", " ").capitalize()

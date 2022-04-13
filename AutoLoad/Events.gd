@@ -22,7 +22,7 @@ func popup(popup)-> void:
 	var new_popup
 	if popup is PackedScene:
 		new_popup = popup.instance()
-	elif popup is Node:
+	else:
 		new_popup = popup
 	emit_signal("popup", new_popup)
 
@@ -62,3 +62,7 @@ signal map_note_removed(pos)
 
 signal cursor_hovered
 signal cursor_free
+
+signal move_camera(pos)
+func move_camera(pos: Vector2)->void:
+	emit_signal("move_camera", pos)

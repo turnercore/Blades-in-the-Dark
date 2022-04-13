@@ -35,7 +35,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 177.0
-margin_bottom = 243.0
+margin_bottom = 150.0
 size_flags_horizontal = 5
 size_flags_vertical = 4
 custom_styles/panel = ExtResource( 1 )
@@ -44,59 +44,54 @@ custom_styles/panel = ExtResource( 1 )
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 157.0
-margin_bottom = 223.0
+margin_bottom = 130.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+[node name="CrewSheetButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 margin_right = 147.0
 margin_bottom = 27.0
-text = "Play"
-
-[node name="CrewSheetButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
-margin_top = 31.0
-margin_right = 147.0
-margin_bottom = 58.0
 text = "Crew"
 
 [node name="RosterButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
-margin_top = 62.0
+margin_top = 31.0
 margin_right = 147.0
-margin_bottom = 89.0
+margin_bottom = 58.0
 text = "Roster"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ClocksButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
-margin_top = 93.0
+margin_top = 62.0
 margin_right = 147.0
-margin_bottom = 120.0
+margin_bottom = 89.0
 text = "Clocks"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CharacterButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
-margin_top = 124.0
+margin_top = 93.0
 margin_right = 147.0
-margin_bottom = 151.0
+margin_bottom = 120.0
 text = "Character"
 
 [node name="srdButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
-margin_top = 155.0
+visible = false
+margin_top = 124.0
 margin_right = 147.0
-margin_bottom = 182.0
+margin_bottom = 151.0
 text = "Game Info"
 
 [node name="GMButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
-margin_top = 186.0
+visible = false
+margin_top = 124.0
 margin_right = 147.0
-margin_bottom = 213.0
+margin_bottom = 151.0
 text = "GM"
 
-[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/CrewSheetButton" to="." method="_on_CrewSheetButton_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/RosterButton" to="." method="_on_RosterButton_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/ClocksButton" to="." method="_on_ClocksButton_pressed"]

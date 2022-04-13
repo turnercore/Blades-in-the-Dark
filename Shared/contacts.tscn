@@ -1,4 +1,7 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Shared/Contacts.gd" type="Script" id=1]
+[ext_resource path="res://Contact.tscn" type="PackedScene" id=2]
 
 [node name="contacts" type="GridContainer"]
 margin_right = 1024.0
@@ -6,49 +9,12 @@ margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="contact" type="VBoxContainer" parent="."]
-margin_right = 250.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 250, 250 )
-
-[node name="ColorRect" type="ColorRect" parent="contact"]
-margin_left = 65.0
-margin_right = 185.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 120, 120 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="contact"]
-margin_top = 124.0
-margin_right = 250.0
-margin_bottom = 138.0
-text = "name"
-align = 1
-
-[node name="Label2" type="Label" parent="contact"]
-margin_top = 142.0
-margin_right = 250.0
-margin_bottom = 156.0
-text = "occuptation"
-align = 1
-
-[node name="Label3" type="Label" parent="contact"]
-margin_top = 160.0
-margin_right = 250.0
-margin_bottom = 174.0
-text = "info"
-
-[node name="TextEdit" type="TextEdit" parent="contact"]
-margin_top = 178.0
-margin_right = 250.0
-margin_bottom = 250.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="contact" parent="." instance=ExtResource( 2 )]
 
 [node name="contact2" type="VBoxContainer" parent="."]
 margin_left = 254.0
@@ -67,25 +33,25 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="contact2"]
 margin_top = 124.0
 margin_right = 250.0
-margin_bottom = 138.0
+margin_bottom = 145.0
 text = "name"
 align = 1
 
 [node name="Label2" type="Label" parent="contact2"]
-margin_top = 142.0
+margin_top = 149.0
 margin_right = 250.0
-margin_bottom = 156.0
+margin_bottom = 170.0
 text = "occuptation"
 align = 1
 
 [node name="Label3" type="Label" parent="contact2"]
-margin_top = 160.0
+margin_top = 174.0
 margin_right = 250.0
-margin_bottom = 174.0
+margin_bottom = 195.0
 text = "info"
 
 [node name="TextEdit" type="TextEdit" parent="contact2"]
-margin_top = 178.0
+margin_top = 199.0
 margin_right = 250.0
 margin_bottom = 250.0
 size_flags_horizontal = 3
@@ -108,25 +74,25 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="contact3"]
 margin_top = 124.0
 margin_right = 250.0
-margin_bottom = 138.0
+margin_bottom = 145.0
 text = "name"
 align = 1
 
 [node name="Label2" type="Label" parent="contact3"]
-margin_top = 142.0
+margin_top = 149.0
 margin_right = 250.0
-margin_bottom = 156.0
+margin_bottom = 170.0
 text = "occuptation"
 align = 1
 
 [node name="Label3" type="Label" parent="contact3"]
-margin_top = 160.0
+margin_top = 174.0
 margin_right = 250.0
-margin_bottom = 174.0
+margin_bottom = 195.0
 text = "info"
 
 [node name="TextEdit" type="TextEdit" parent="contact3"]
-margin_top = 178.0
+margin_top = 199.0
 margin_right = 250.0
 margin_bottom = 250.0
 size_flags_horizontal = 3
@@ -149,25 +115,25 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="contact4"]
 margin_top = 124.0
 margin_right = 250.0
-margin_bottom = 138.0
+margin_bottom = 145.0
 text = "name"
 align = 1
 
 [node name="Label2" type="Label" parent="contact4"]
-margin_top = 142.0
+margin_top = 149.0
 margin_right = 250.0
-margin_bottom = 156.0
+margin_bottom = 170.0
 text = "occuptation"
 align = 1
 
 [node name="Label3" type="Label" parent="contact4"]
-margin_top = 160.0
+margin_top = 174.0
 margin_right = 250.0
-margin_bottom = 174.0
+margin_bottom = 195.0
 text = "info"
 
 [node name="TextEdit" type="TextEdit" parent="contact4"]
-margin_top = 178.0
+margin_top = 199.0
 margin_right = 250.0
 margin_bottom = 250.0
 size_flags_horizontal = 3
@@ -191,25 +157,25 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="contact5"]
 margin_top = 124.0
 margin_right = 250.0
-margin_bottom = 138.0
+margin_bottom = 145.0
 text = "name"
 align = 1
 
 [node name="Label2" type="Label" parent="contact5"]
-margin_top = 142.0
+margin_top = 149.0
 margin_right = 250.0
-margin_bottom = 156.0
+margin_bottom = 170.0
 text = "occuptation"
 align = 1
 
 [node name="Label3" type="Label" parent="contact5"]
-margin_top = 160.0
+margin_top = 174.0
 margin_right = 250.0
-margin_bottom = 174.0
+margin_bottom = 195.0
 text = "info"
 
 [node name="TextEdit" type="TextEdit" parent="contact5"]
-margin_top = 178.0
+margin_top = 199.0
 margin_right = 250.0
 margin_bottom = 250.0
 size_flags_horizontal = 3

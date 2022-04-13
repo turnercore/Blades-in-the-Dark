@@ -26,6 +26,7 @@ export var normal_armor: bool = false
 export var heavy_armor: bool = false
 export var speical_armor: bool = false
 export var crew_name: String = ""
+export var lifestyle: String setget ,_get_lifestyle
 
 
 func setup(json_or_file_path_to_json, pc_class: String, overwrite:bool = false)-> void:
@@ -60,7 +61,6 @@ func setup(json_or_file_path_to_json, pc_class: String, overwrite:bool = false)-
 	setup_property("abilities", defaults, "character_abilities")
 	setup_xp_gain(defaults, pc_class)
 	set_starting_stats(pc_class, overwrite)
-
 
 
 func set_starting_stats(pc_class: String, overwrite: bool = true)->void:
@@ -126,3 +126,12 @@ func set_items(key:String, value:Dictionary)->void:
 	var esc_key:String = key.c_escape().strip_edges().to_lower().replace(" ", "_")
 	items[esc_key] = value
 	emit_signal("property_changed", "items")
+
+
+func _get_lifestyle()->String:
+	if coin.stash == 0:
+		lifestyle = "poor"
+	else:
+		lifestyle = "wealthy"
+
+	return lifestyle

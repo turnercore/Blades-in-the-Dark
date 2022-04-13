@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://clocks/Clock.gd"
 }, {
+"base": "VBoxContainer",
+"class": "Contact",
+"language": "GDScript",
+"path": "res://Contact.gd"
+}, {
 "base": "Playbook",
 "class": "CrewPlaybook",
 "language": "GDScript",
@@ -106,6 +111,7 @@ _global_script_class_icons={
 "ClaimCell": "",
 "ClaimTreeConnector": "",
 "Clock": "",
+"Contact": "",
 "CrewPlaybook": "",
 "Cursor": "",
 "EditNotePopup": "",
@@ -128,7 +134,7 @@ run/main_scene="res://start_screen/StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Shared/Art/Icons/icon.png"
-config/version="0.43"
+config/version="0.44"
 
 [autoload]
 

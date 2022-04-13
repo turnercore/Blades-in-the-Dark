@@ -1,4 +1,4 @@
-extends Control
+extends Popup
 
 const defaults_json: = 'res://srd/default_srd.json'
 
@@ -22,6 +22,3 @@ func _on_character_selected(character_playbook: PlayerPlaybook)-> void:
 func _set_playbook(value: PlayerPlaybook)-> void:
 	_playbook = value
 	setup(_playbook)
-
-
-

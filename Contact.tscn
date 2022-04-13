@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Contact.gd" type="Script" id=1]
+
+[node name="contact" type="VBoxContainer"]
+margin_right = 250.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 250, 250 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 65.0
+margin_right = 185.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 120, 120 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="."]
+margin_top = 124.0
+margin_right = 250.0
+margin_bottom = 145.0
+text = "name"
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_top = 149.0
+margin_right = 250.0
+margin_bottom = 170.0
+text = "occuptation"
+align = 1
+
+[node name="Label3" type="Label" parent="."]
+margin_top = 174.0
+margin_right = 250.0
+margin_bottom = 195.0
+text = "info"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_top = 199.0
+margin_right = 250.0
+margin_bottom = 250.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

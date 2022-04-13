@@ -53,6 +53,7 @@ func _init() -> void:
 	if not self.is_connected("property_changed", self, "_on_property_changed"):
 		connect("property_changed", self, '_on_property_changed')
 
+
 func setup(json_or_file_path_to_json, starting_type: String, _overwrite:bool = false)-> void:
 	needs_setup = false
 	if not self.is_connected("property_changed", self, "_on_property_changed"):
@@ -85,6 +86,7 @@ func set_coin(key, value)-> void:
 	coin[key] = value
 	emit_signal("property_changed", "coin")
 
+
 func set_projects(key, value)-> void:
 	projects[key] = value
 	emit_signal("property_changed", "projects")
@@ -99,6 +101,7 @@ func get_insight()->int:
 
 	return total
 
+
 func get_prowess()->int:
 	var total: = 0
 
@@ -108,6 +111,7 @@ func get_prowess()->int:
 
 	return total
 
+
 func get_resolve()->int:
 	var total: = 0
 
@@ -116,7 +120,6 @@ func get_resolve()->int:
 			total += 1
 
 	return total
-
 
 
 func get_defaults(json: String):
