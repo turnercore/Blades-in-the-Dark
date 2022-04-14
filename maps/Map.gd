@@ -32,6 +32,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if unfocused: return
+	if Input.is_action_pressed("display_map_coords"):
+		var info_string:= "Map Grid Coords: \n" + str(Globals.convert_to_grid(get_global_mouse_position()))
+		Events.emit_signal("info_broadcasted", info_string)
 	if Input.is_action_just_pressed("right_click") and not creating_note:
 		creating_note = true
 		add_note()
@@ -47,11 +50,6 @@ func _process(delta: float) -> void:
 		zoom_in(delta)
 	if Input.is_action_pressed("zoom_out") or Input.is_action_just_released("zoom_out"):
 		zoom_out(delta)
-
-
-#func convert_to_cellv(global_pos:Vector2)->Vector2:
-#	var local_pos:Vector2 = grid.to_local(global_pos)
-#	return grid.world_to_map(local_pos)
 
 
 func add_note(pos:=Vector2.ZERO, note_data:={})->void:
@@ -112,9 +110,18 @@ func load_map(map:Dictionary)->void:
 		var texture = Globals.DEFAULT_MAP_IMAGE
 		map_texture.texture = texture
 
+
 	if map and "notes" in map:
 		for pos in map.notes:
 			add_note(pos, map.notes[pos])
+	if map and "srd_notes" in map:
+		for pos in map.srd_notes:
+			var vec_pos:Vector2
+			if pos is String:
+				vec_pos = Globals.str_to_vec2(pos)
+			else:
+				vec_pos = pos
+			add_note(vec_pos, map.srd_notes[pos])
 
 
 func _on_map_scroll_speed_changed(new_scroll_speed: float) -> void:

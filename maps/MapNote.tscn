@@ -379,7 +379,7 @@ tracks/13/keys = {
 resource_local_to_scene = true
 extents = Vector2( 35, 10 )
 
-[node name="MapNote" type="Area2D"]
+[node name="MapNote" type="Area2D" groups=["location"]]
 z_index = 100
 script = ExtResource( 2 )
 edit_note_popup = ExtResource( 4 )

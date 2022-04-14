@@ -49,7 +49,8 @@ var map:Dictionary = {
 	"map_index": 0,
 	"map_name": "Duskvol",
 	"image": null,
-	"notes": {}
+	"notes": {},
+	"srd_notes": {}
 	} setget _set_map
 
 #ARRAY OF MAP NOTES a map note is a location
@@ -122,15 +123,25 @@ func _on_save_loaded(save:SaveGame)->void:
 	self.srd = save.srd_data
 	self.clocks = save.clocks
 	emit_signal("clocks_loaded", clocks)
-	self.map = save.map
+	save.setup_srd_maps()
+	self.map = save.map if save.map else save.maps[0]
 	emit_signal("map_loaded", map)
 
+
+#func load_map_from(save:SaveGame)-> Dictionary:
+#	var loaded_map:= save.map if save.map else save.maps[0]
+#	#reload the srd notes in case they've changed
+#	if "srd_notes" in loaded_map and loaded_map.srd_notes.empty():
+#		loaded_map.srd_notes = srd.default_locations
+#
+#
+#	emit_signal("map_loaded", loaded_map)
+#	return loaded_map
 
 func _set_save_game(new_save: SaveGame)-> void:
 	if new_save.needs_setup: new_save.setup_save()
 	clocks = new_save.clocks
 	map = new_save.map
-
 	save_game = new_save
 
 
@@ -170,7 +181,7 @@ func save_map()-> void:
 
 #Add or edit the map note
 func add_map_note(data:Dictionary)-> void:
-	var pos:Vector2 = data.pos
+	var pos:Vector2 = data.pos if data.pos is Vector2 else Globals.str_to_vec2(data.pos)
 
 	if not "notes" in map:
 		map["notes"] = {}

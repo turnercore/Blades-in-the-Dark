@@ -22,337 +22,337 @@
   "character_abilities": {
     "Veteran": {
       "name": "Veteran",
-      "effect": "(3 Skill Points) Choose a special ability from another source.",
+      "description": "(3 Skill Points) Choose a special ability from another source.",
       "class": "all",
       "claimed": false
     },
     "Battleborn": {
       "name": "Battleborn",
-      "effect": "You may expend your special armor to reduce harm from an attack in combat or to push yourself during a fight.",
+      "description": "You may expend your special armor to reduce harm from an attack in combat or to push yourself during a fight.",
       "class": "cutter",
       "claimed": false
     },
     "Bodyguard": {
       "name": "Bodyguard",
-      "effect": "When you protect a teammate, take +1d to your resistance roll. When you gather info to anticipate possible threats in the current situation, you get +1 effect.",
+      "description": "When you protect a teammate, take +1d to your resistance roll. When you gather info to anticipate possible threats in the current situation, you get +1 effect.",
       "class": "cutter",
       "claimed": false
     },
     "Ghost Fighter": {
       "name": "Ghost Fighter",
-      "effect": "You may imbue your hands, melee weapons, or tools with spirit energy. You gain potency in combat vs. the supernatural. You may grapple with spirits to restrain and capture them.",
+      "description": "You may imbue your hands, melee weapons, or tools with spirit energy. You gain potency in combat vs. the supernatural. You may grapple with spirits to restrain and capture them.",
       "class": "cutter",
       "claimed": false
     },
     "Leader": {
       "name": "Leader",
-      "effect": "When you Command a cohort in combat, they continue to fight when they would otherwise break (they're not taken out when they suffer level 3 harm). They gain +1 effect and 1 armor.",
+      "description": "When you Command a cohort in combat, they continue to fight when they would otherwise break (they're not taken out when they suffer level 3 harm). They gain +1 effect and 1 armor.",
       "class": "cutter",
       "claimed": false
     },
     "Mule": {
       "name": "Mule",
-      "effect": "Your load limits are higher. Light: 5, Normal: 7, Heavy: 8",
+      "description": "Your load limits are higher. Light: 5, Normal: 7, Heavy: 8",
       "class": "cutter",
       "claimed": false
     },
     "Not to be Trifled With": {
       "name": "Not to be Trifled With",
-      "effect": "You can push yourself to do one of the following: perform a feat of physical force that verges on the superhuman—engage a small gang on equal footing in close combat.",
+      "description": "You can push yourself to do one of the following: perform a feat of physical force that verges on the superhuman—engage a small gang on equal footing in close combat.",
       "class": "cutter",
       "claimed": false
     },
     "Savage": {
       "name": "Savage",
-      "effect": "When you unleash physical violence, it's especially frightening. When you Command a frightened target, take +1d.",
+      "description": "When you unleash physical violence, it's especially frightening. When you Command a frightened target, take +1d.",
       "class": "cutter",
       "claimed": false
     },
     "Vigorous": {
       "name": "Vigorous",
-      "effect": "You recover from harm faster. Permanently fill in one of your healing clock segments. Take +1d to healing treatment rolls.",
+      "description": "You recover from harm faster. Permanently fill in one of your healing clock segments. Take +1d to healing treatment rolls.",
       "class": "cutter",
       "claimed": false
     },
     "Sharpshooter": {
       "name": "Sharpshooter",
-      "effect": "You can push yourself to do one of the following: make a ranged attack at extreme distance beyond what’s normal for the weapon—unleash a barrage of rapid fire to suppress the enemy.",
+      "description": "You can push yourself to do one of the following: make a ranged attack at extreme distance beyond what’s normal for the weapon—unleash a barrage of rapid fire to suppress the enemy.",
       "class": "hound",
       "claimed": false
     },
     "Focused": {
       "name": "Focused",
-      "effect": "You may expend your special armor to resist a consequence of surprise or mental harm (fear, confusion, losing track of someone) or to push yourself for ranged combat or tracking.",
+      "description": "You may expend your special armor to resist a consequence of surprise or mental harm (fear, confusion, losing track of someone) or to push yourself for ranged combat or tracking.",
       "class": "hound",
       "claimed": false
     },
     "Ghost Hunter": {
       "name": "Ghost Hunter",
-      "effect": "(2 Skill Points) Your hunting pet is imbued with spirit energy. It gains potency when tracking or fighting the supernatural, and gains an arcane ability: ghost-form, mind-link, or arrow-swift. Take this ability again to choose an additional arcane ability for your pet.",
+      "description": "(2 Skill Points) Your hunting pet is imbued with spirit energy. It gains potency when tracking or fighting the supernatural, and gains an arcane ability: ghost-form, mind-link, or arrow-swift. Take this ability again to choose an additional arcane ability for your pet.",
       "class": "hound",
       "claimed": false
     },
     "Scout": {
       "name": "Scout",
-      "effect": "When you gather info to locate a target, you get +1 effect. When you hide in a prepared position or use camouflage, you get +1d to rolls to avoid detection.",
+      "description": "When you gather info to locate a target, you get +1 effect. When you hide in a prepared position or use camouflage, you get +1d to rolls to avoid detection.",
       "class": "hound",
       "claimed": false
     },
     "Survivor": {
       "name": "Survivor",
-      "effect": "From hard won experience or occult ritual, you are immune to the poisonous miasma of the deathlands and are able to subsist on the strange flora and fauna there. You get +1 stress box.",
+      "description": "From hard won experience or occult ritual, you are immune to the poisonous miasma of the deathlands and are able to subsist on the strange flora and fauna there. You get +1 stress box.",
       "class": "hound",
       "claimed": false
     },
     "Tough as Nails": {
       "name": "Tough as Nails",
-      "effect": "Penalties from harm are one level less severe (though level 4 harm is still fatal).",
+      "description": "Penalties from harm are one level less severe (though level 4 harm is still fatal).",
       "class": "hound",
       "claimed": false
     },
     "Vengeful": {
       "name": "Vengeful",
-      "effect": "You gain an additional xp trigger: You got payback against someone who harmed you or someone you care about. If your crew helped you get payback, also mark crew xp.",
+      "description": "You gain an additional xp trigger: You got payback against someone who harmed you or someone you care about. If your crew helped you get payback, also mark crew xp.",
       "class": "hound",
       "claimed": false
     },
     "Alchemist": {
       "name": "Alchemist",
-      "effect": "When you invent or craft a creation with alchemical features, take +1 result level to your roll. You begin with one special formula already known.",
+      "description": "When you invent or craft a creation with alchemical features, take +1 result level to your roll. You begin with one special formula already known.",
       "class": "leech",
       "claimed": false
     },
     "Analyst": {
       "name": "Analyst",
-      "effect": "During downtime, you get two ticks to distribute among any long term project clocks that involve investigation or learning a new formula or design plan.",
+      "description": "During downtime, you get two ticks to distribute among any long term project clocks that involve investigation or learning a new formula or design plan.",
       "class": "leech",
       "claimed": false
     },
     "Artificer": {
       "name": "Artificer",
-      "effect": "When you invent or craft a creation with spark-craft features, take +1 result level to your roll. You begin with one special design already known.",
+      "description": "When you invent or craft a creation with spark-craft features, take +1 result level to your roll. You begin with one special design already known.",
       "class": "leech",
       "claimed": false
     },
     "Fortitude": {
       "name": "Fortitude",
-      "effect": "You may expend your special armor to resist a consequence of fatigue, weakness, or chemical effects, or to push yourself when working with technical skill or handling alchemicals.",
+      "description": "You may expend your special armor to resist a consequence of fatigue, weakness, or chemical effects, or to push yourself when working with technical skill or handling alchemicals.",
       "class": "leech",
       "claimed": false
     },
     "Ghost Ward": {
       "name": "Ghost Ward",
-      "effect": "You know how to Wreck an area with arcane substances and methods so it is either anathema or enticing to spirits (your choice).",
+      "description": "You know how to Wreck an area with arcane substances and methods so it is either anathema or enticing to spirits (your choice).",
       "class": "leech",
       "claimed": false
     },
     "Physicker": {
       "name": "Physicker",
-      "effect": "You can Tinker with bones, blood, and bodily humours to treat wounds or stabilize the dying. You may study a malady or corpse. Everyone in your crew gets +1d to their healing treatment rolls.",
+      "description": "You can Tinker with bones, blood, and bodily humours to treat wounds or stabilize the dying. You may study a malady or corpse. Everyone in your crew gets +1d to their healing treatment rolls.",
       "class": "leech",
       "claimed": false
     },
     "Saboteur": {
       "name": "Saboteur",
-      "effect": "When you Wreck, the work is much quieter than it should be and the damage is hidden from casual inspection.",
+      "description": "When you Wreck, the work is much quieter than it should be and the damage is hidden from casual inspection.",
       "class": "leech",
       "claimed": false
     },
     "Venomous": {
       "name": "Venomous",
-      "effect": "Choose a drug or poison (from your bandolier stock) to which you have become immune. You can push yourself to secrete it through your skin or saliva or exhale it as a vapor.",
+      "description": "Choose a drug or poison (from your bandolier stock) to which you have become immune. You can push yourself to secrete it through your skin or saliva or exhale it as a vapor.",
       "class": "leech",
       "claimed": false
     },
     "Infiltrator": {
       "name": "Infiltrator",
-      "effect": "You are not affected by quality or Tier when you bypass security measures.",
+      "description": "You are not affected by quality or Tier when you bypass security measures.",
       "class": "lurk",
       "claimed": false
     },
     "Ambush": {
       "name": "Ambush",
-      "effect": "When you attack from hiding or spring a trap, you get +1d.",
+      "description": "When you attack from hiding or spring a trap, you get +1d.",
       "class": "lurk",
       "claimed": false
     },
     "Daredevil": {
       "name": "Daredevil",
-      "effect": "When you roll a desperate action, you get +1d to your roll if you also take -1d to any resistance rolls against consequences from your action.",
+      "description": "When you roll a desperate action, you get +1d to your roll if you also take -1d to any resistance rolls against consequences from your action.",
       "class": "lurk",
       "claimed": false
     },
     " The Devil's Footsteps": {
       "name": "The Devil's Footsteps",
-      "effect": "When you push yourself, choose one of the following additional benefits: perform a feat of athletics that verges on the superhuman—maneuver to confuse your enemies so they mistakenly attack each other.",
+      "description": "When you push yourself, choose one of the following additional benefits: perform a feat of athletics that verges on the superhuman—maneuver to confuse your enemies so they mistakenly attack each other.",
       "class": "lurk",
       "claimed": false
     },
     "Expertise": {
       "name": "Expertise",
-      "effect": "Choose one of your action ratings. When you lead a group action using that action, you can suffer only 1 stress at most regardless of the number of failed rolls.",
+      "description": "Choose one of your action ratings. When you lead a group action using that action, you can suffer only 1 stress at most regardless of the number of failed rolls.",
       "class": "lurk",
       "claimed": false
     },
     "Ghost Veil": {
       "name": "Ghost Veil",
-      "effect": "You may shift partially into the ghost field, becoming shadowy and insubstantial for a few moments. Take 2 stress when you shift, plus 1 stress for each extra feature: It lasts for a few minutes rather than moments—you are invisible rather than shadowy—you may float through the air like a ghost",
+      "description": "You may shift partially into the ghost field, becoming shadowy and insubstantial for a few moments. Take 2 stress when you shift, plus 1 stress for each extra feature: It lasts for a few minutes rather than moments—you are invisible rather than shadowy—you may float through the air like a ghost",
       "class": "lurk",
       "claimed": false
     },
     "Reflexes": {
       "name": "Reflexes",
-      "effect": "When there's a question about who acts first, the answer is you (two characters with Reflexes act simultaneously)",
+      "description": "When there's a question about who acts first, the answer is you (two characters with Reflexes act simultaneously)",
       "class": "lurk",
       "claimed": false
     },
     "Shadow": {
       "name": "Shadow",
-      "effect": "You may expend your special armor to resist a consequence from detection or security measures, or to push yourself for a feat of athletics or stealth.",
+      "description": "You may expend your special armor to resist a consequence from detection or security measures, or to push yourself for a feat of athletics or stealth.",
       "class": "lurk",
       "claimed": false
     },
     "Rook's Gambit": {
       "name": "Rook's Gambit",
-      "effect": "Take 2 stress to roll your best action rating while performing a different action. Say how you adapt your skill to this use.",
+      "description": "Take 2 stress to roll your best action rating while performing a different action. Say how you adapt your skill to this use.",
       "class": "slide",
       "claimed": false
     },
     "Cloak & Dagger": {
       "name": "Cloak & Dagger",
-      "effect": "When you use a disguise or other form of covert misdirection, you get +1d to rolls to confuse or deflect suspicion. When you throw off your disguise, the resulting surprise gives you the initiative in the situation.",
+      "description": "When you use a disguise or other form of covert misdirection, you get +1d to rolls to confuse or deflect suspicion. When you throw off your disguise, the resulting surprise gives you the initiative in the situation.",
       "class": "slide",
       "claimed": false
     },
     "Ghost Voice": {
       "name": "Ghost Voice",
-      "effect": "You know the secret method to interact with a ghost or demon as if it was a normal human, regardless of how wild or feral it appears. You gain potency when communicating with the supernatural.",
+      "description": "You know the secret method to interact with a ghost or demon as if it was a normal human, regardless of how wild or feral it appears. You gain potency when communicating with the supernatural.",
       "class": "slide",
       "claimed": false
     },
     "Like Looking into a Mirror": {
       "name": "Like Looking into a Mirror",
-      "effect": "You can always tell when someone is lying to you.",
+      "description": "You can always tell when someone is lying to you.",
       "class": "slide",
       "claimed": false
     },
     "A Little Something on the Side": {
       "name": "A Little Something on the Side",
-      "effect": "At the end of each downtime phase, you earn +2 stash.",
+      "description": "At the end of each downtime phase, you earn +2 stash.",
       "class": "slide",
       "claimed": false
     },
     "Mesmerism": {
       "name": "Mesmerism",
-      "effect": "When you Sway someone, you may cause them to forget that it's happened until they next interact with you.",
+      "description": "When you Sway someone, you may cause them to forget that it's happened until they next interact with you.",
       "class": "slide",
       "claimed": false
     },
     "Subterfuge": {
       "name": "Subterfuge",
-      "effect": "You may expend your special armor to resist a consequence from suspicion or persuasion, or to push yourself for subterfuge.",
+      "description": "You may expend your special armor to resist a consequence from suspicion or persuasion, or to push yourself for subterfuge.",
       "class": "slide",
       "claimed": false
     },
     "Trust in Me": {
       "name": "Trust in Me",
-      "effect": "You get +1d vs. a target with whom you have an intimate relationship.",
+      "description": "You get +1d vs. a target with whom you have an intimate relationship.",
       "class": "slide",
       "claimed": false
     },
     "Foresight": {
       "name": "Foresight",
-      "effect": "Two times per score you can assist a teammate without paying stress. Tell us how you prepared for this.",
+      "description": "Two times per score you can assist a teammate without paying stress. Tell us how you prepared for this.",
       "class": "spider",
       "claimed": false
     },
     "Calculating": {
       "name": "Calculating",
-      "effect": "Due to your careful planning, during downtime, you may give yourself or another crew member +1 downtime action.",
+      "description": "Due to your careful planning, during downtime, you may give yourself or another crew member +1 downtime action.",
       "class": "spider",
       "claimed": false
     },
     "Connected": {
       "name": "Connected",
-      "effect": "During downtime, you get +1 result level when you acquire an asset or reduce heat.",
+      "description": "During downtime, you get +1 result level when you acquire an asset or reduce heat.",
       "class": "spider",
       "claimed": false
     },
     "Functioning Vice": {
       "name": "Functioning Vice",
-      "effect": "When you indulge your vice, you may adjust the dice outcome by 1 or 2 (up or down). An ally who joins in your vice may do the same.",
+      "description": "When you indulge your vice, you may adjust the dice outcome by 1 or 2 (up or down). An ally who joins in your vice may do the same.",
       "class": "spider",
       "claimed": false
     },
     "Ghost Contract": {
       "name": "Ghost Contract",
-      "effect": "When you shake on a deal, you and your partner—human or otherwise—both bear a mark of your oath. If either breaks the contract, they take level 3 harm, \"Cursed\".",
+      "description": "When you shake on a deal, you and your partner—human or otherwise—both bear a mark of your oath. If either breaks the contract, they take level 3 harm, \"Cursed\".",
       "class": "spider",
       "claimed": false
     },
     "Jail Bird": {
       "name": "Jail Bird",
-      "effect": "When incarcerated, your wanted level counts as 1 less, your Tier as 1 more, and you gain +1 faction status with a faction you help on the inside (in addition to your incarceration roll).",
+      "description": "When incarcerated, your wanted level counts as 1 less, your Tier as 1 more, and you gain +1 faction status with a faction you help on the inside (in addition to your incarceration roll).",
       "class": "spider",
       "claimed": false
     },
     "Mastermind": {
       "name": "Mastermind",
-      "effect": "You may expend your special armor to protect a teammate, or to push yourself when you gather information or work on a long-term project.",
+      "description": "You may expend your special armor to protect a teammate, or to push yourself when you gather information or work on a long-term project.",
       "class": "spider",
       "claimed": false
     },
     "Weaving the Web": {
       "name": "Weaving the Web",
-      "effect": "You gain +1d to Consort when you gather information on a target for a score. You get +1d to the engagement roll for that operation.",
+      "description": "You gain +1d to Consort when you gather information on a target for a score. You get +1d to the engagement roll for that operation.",
       "class": "spider",
       "claimed": false
     },
     "Compel": {
       "name": "Compel",
-      "effect": "You can Attune to the ghost field to force a nearby ghost to appear and obey a command you give it. You are not supernaturally terrified by a ghost you summon or compel (though your allies may be).",
+      "description": "You can Attune to the ghost field to force a nearby ghost to appear and obey a command you give it. You are not supernaturally terrified by a ghost you summon or compel (though your allies may be).",
       "class": "whisper",
       "claimed": false
     },
     "Ghost Mind": {
       "name": "Ghost Mind",
-      "effect": "You’re always aware of supernatural entities in your presence. Take +1d when you gather info about the supernatural.",
+      "description": "You’re always aware of supernatural entities in your presence. Take +1d when you gather info about the supernatural.",
       "class": "whisper",
       "claimed": false
     },
     "Iron Will": {
       "name": "Iron Will",
-      "effect": "You're immune to the terror that some supernatural entities inflict on sight. Take +1d to resistance rolls with Resolve.",
+      "description": "You're immune to the terror that some supernatural entities inflict on sight. Take +1d to resistance rolls with Resolve.",
       "class": "whisper",
       "claimed": false
     },
     "Occultist": {
       "name": "Occultist",
-      "effect": "You know the secret ways to Consort with ancient powers, forgotten gods or demons. Once you've consorted with one, you get +1d to command cultists who worship it.",
+      "description": "You know the secret ways to Consort with ancient powers, forgotten gods or demons. Once you've consorted with one, you get +1d to command cultists who worship it.",
       "class": "whisper",
       "claimed": false
     },
     "Ritual": {
       "name": "Ritual",
-      "effect": "You can Study an occult ritual (or create a new one) to summon a supernatural effect or being. You know the arcane methods to perform ritual sorcery. You begin with one ritual already learned.",
+      "description": "You can Study an occult ritual (or create a new one) to summon a supernatural effect or being. You know the arcane methods to perform ritual sorcery. You begin with one ritual already learned.",
       "class": "whisper",
       "claimed": false
     },
     "Strange Methods": {
       "name": "Strange Methods",
-      "effect": "When you invent or craft a creation with arcane features, take +1 result level to your roll. You begin with one arcane design already known.",
+      "description": "When you invent or craft a creation with arcane features, take +1 result level to your roll. You begin with one arcane design already known.",
       "class": "whisper",
       "claimed": false
     },
     "Tempest": {
       "name": "Tempest",
-      "effect": "You can push yourself to do one of the following: unleash a stroke of lightning as a weapon—summon a storm in your immediate vicinity (torrential rain, roaring winds, heavy fog, chilling frost/snow, etc.).",
+      "description": "You can push yourself to do one of the following: unleash a stroke of lightning as a weapon—summon a storm in your immediate vicinity (torrential rain, roaring winds, heavy fog, chilling frost/snow, etc.).",
       "class": "whisper",
       "claimed": false
     },
     "Warded": {
       "name": "Warded",
-      "effect": "You may expend your special armor to resist a supernatural consequence, or to push yourself when you deal with arcane forces.",
+      "description": "You may expend your special armor to resist a supernatural consequence, or to push yourself when you deal with arcane forces.",
       "class": "whisper",
       "claimed": false
     }
@@ -909,241 +909,241 @@
   "crew_abilities": {
     "Veteran": {
       "name": "Veteran",
-      "effect": "(3 Skill Points) Choose a special ability from another crew.",
+      "description": "(3 Skill Points) Choose a special ability from another crew.",
       "class": "all",
       "claimed": false
     },
     "Deadly": {
       "name": "Deadly",
-      "effect": "Each PC may add +1 action rating to Hunt, Prowl, or Skirmish (up to a max rating of 3).",
+      "description": "Each PC may add +1 action rating to Hunt, Prowl, or Skirmish (up to a max rating of 3).",
       "class": "assassins",
       "claimed": false
     },
     "Crow's Veil": {
       "name": "Crow's Veil",
-      "effect": "Due to hard-won experience or occult ritual, your activities are hidden from the notice of the death-seeker crows. You don't take extra heat when killing is involved on a score.",
+      "description": "Due to hard-won experience or occult ritual, your activities are hidden from the notice of the death-seeker crows. You don't take extra heat when killing is involved on a score.",
       "class": "assassins",
       "claimed": false
     },
     "Emberdeath": {
       "name": "Emberdeath",
-      "effect": "Due to hard-won experience or occult ritual, you know the arcane method to destroy a living victim's spirit at the moment you kill them. Take 3 stress to channel electroplasmic energy from the ghost field to disintegrate the spirit and dead body in a shower of sparking embers.",
+      "description": "Due to hard-won experience or occult ritual, you know the arcane method to destroy a living victim's spirit at the moment you kill them. Take 3 stress to channel electroplasmic energy from the ghost field to disintegrate the spirit and dead body in a shower of sparking embers.",
       "class": "assassins",
       "claimed": false
     },
     "No Traces": {
       "name": "No Traces",
-      "effect": "When you keep an operation quiet or make it look like an accident, you get half the rep value of the target (round up) instead of zero. When you end downtime with zero heat, take +1 rep.",
+      "description": "When you keep an operation quiet or make it look like an accident, you get half the rep value of the target (round up) instead of zero. When you end downtime with zero heat, take +1 rep.",
       "class": "assassins",
       "claimed": false
     },
     "Patron": {
       "name": "Patron",
-      "effect": "When you advance your Tier, it costs half the coin it normally would. Who is your patron? Why do they help you? (Add the patron as a contact)",
+      "description": "When you advance your Tier, it costs half the coin it normally would. Who is your patron? Why do they help you? (Add the patron as a contact)",
       "class": "shadows",
       "claimed": false
     },
     "Predators": {
       "name": "Predators",
-      "effect": "When you use stealth or subterfuge to commit murder, take +1d to the engagement roll.",
+      "description": "When you use stealth or subterfuge to commit murder, take +1d to the engagement roll.",
       "class": "assassins",
       "claimed": false
     },
     "Vipers": {
       "name": "Vipers",
-      "effect": "When you acquire or craft poisons, you get +1 result level to your roll. When you employ a poison, you are specially prepared to be immune to its effects.",
+      "description": "When you acquire or craft poisons, you get +1 result level to your roll. When you employ a poison, you are specially prepared to be immune to its effects.",
       "class": "assassins",
       "claimed": false
     },
     "Dangerous": {
       "name": "Dangerous",
-      "effect": "Each PC may add +1 action rating to Hunt, Skirmish, or Wreck (up to a max rating of 3)",
+      "description": "Each PC may add +1 action rating to Hunt, Skirmish, or Wreck (up to a max rating of 3)",
       "class": "bravos",
       "claimed": false
     },
     "Blood Brothers": {
       "name": "Blood Brothers",
-      "effect": "When you fight alongside your cohorts in combat, they get +1d for teamwork rolls (setup and group actions). All of your cohorts get the Thugs type for free (if they're already Thugs, add another type).",
+      "description": "When you fight alongside your cohorts in combat, they get +1d for teamwork rolls (setup and group actions). All of your cohorts get the Thugs type for free (if they're already Thugs, add another type).",
       "class": "bravos",
       "claimed": false
     },
     "Door Kickers": {
       "name": "Door Kickers",
-      "effect": "When you execute an assault plan, take +1d to the engagement roll.",
+      "description": "When you execute an assault plan, take +1d to the engagement roll.",
       "class": "bravos",
       "claimed": false
     },
     "Fiends": {
       "name": "Fiends",
-      "effect": "Fear is as good as respect. You may count each wanted level as if it was turf.",
+      "description": "Fear is as good as respect. You may count each wanted level as if it was turf.",
       "class": "bravos",
       "claimed": false
     },
     "Forged in the Fire": {
       "name": "Forged in the Fire",
-      "effect": "Each PC has been toughened by cruel experience. You get +1d to resistance rolls.",
+      "description": "Each PC has been toughened by cruel experience. You get +1d to resistance rolls.",
       "class": "bravos",
       "claimed": false
     },
     "War Dogs": {
       "name": "War Dogs",
-      "effect": "When you’re at war (-3 faction status), your crew does not suffer -1 hold and PCs still get two downtime activities, instead of just one.",
+      "description": "When you’re at war (-3 faction status), your crew does not suffer -1 hold and PCs still get two downtime activities, instead of just one.",
       "class": "bravos",
       "claimed": false
     },
     "Chosen": {
       "name": "Chosen",
-      "effect": "Each PC may add +1 action rating to Attune, Study, or Sway (up to a max rating of 3).",
+      "description": "Each PC may add +1 action rating to Attune, Study, or Sway (up to a max rating of 3).",
       "class": "cult",
       "claimed": false
     },
     "Anointed": {
       "name": "Anointed",
-      "effect": "You get +1d to resistance rolls against supernatural threats. You get +1d to healing rolls when you have supernatural harm.",
+      "description": "You get +1d to resistance rolls against supernatural threats. You get +1d to healing rolls when you have supernatural harm.",
       "class": "cult",
       "claimed": false
     },
     "Bound in Darkness": {
       "name": "Bound in Darkness",
-      "effect": "You may use teamwork with any cult member, regardless of the distance separating you. By taking 1 stress, your whispered message is heard by every cultist.",
+      "description": "You may use teamwork with any cult member, regardless of the distance separating you. By taking 1 stress, your whispered message is heard by every cultist.",
       "class": "cult",
       "claimed": false
     },
     "Conviction": {
       "name": "Conviction",
-      "effect": "Each PC gains an additional Vice: Worship. When you indulge this vice and bring a pleasing sacrifice, you don't overindulge if you clear excess stress. In addition, your deity will assist any one action roll you make—from now until you indulge this vice again.",
+      "description": "Each PC gains an additional Vice: Worship. When you indulge this vice and bring a pleasing sacrifice, you don't overindulge if you clear excess stress. In addition, your deity will assist any one action roll you make—from now until you indulge this vice again.",
       "class": "cult",
       "claimed": false
     },
     "Glory Incarnate": {
       "name": "Glory Incarnate",
-      "effect": "Your deity sometimes manifests in the physical world. This can be a great boon, but the priorities and values of a god are not those of mortals. You have been warned.",
+      "description": "Your deity sometimes manifests in the physical world. This can be a great boon, but the priorities and values of a god are not those of mortals. You have been warned.",
       "class": "cult",
       "claimed": false
     },
     "Sealed in Blood": {
       "name": "Sealed in Blood",
-      "effect": "Each human sacrifice yields -3 stress cost for any ritual you perform.",
+      "description": "Each human sacrifice yields -3 stress cost for any ritual you perform.",
       "class": "cult",
       "claimed": false
     },
     "Zealotry": {
       "name": "Zealotry",
-      "effect": "Your cohorts have abandoned their reason to devote themselves to the cult. They will undertake any service, no matter how dangerous or strange. They gain +1d to rolls against enemies of the faith.",
+      "description": "Your cohorts have abandoned their reason to devote themselves to the cult. They will undertake any service, no matter how dangerous or strange. They gain +1d to rolls against enemies of the faith.",
       "class": "cult",
       "claimed": false
     },
     "Silver Tongues": {
       "name": "Silver Tongues",
-      "effect": "Each PC may add +1 action rating to Command, Consort, or Sway (up to a max rating of 3).",
+      "description": "Each PC may add +1 action rating to Command, Consort, or Sway (up to a max rating of 3).",
       "class": "hawkers",
       "claimed": false
     },
     "Accord": {
       "name": "Accord",
-      "effect": "Sometimes friends are as good as territory. You may count up to three +3 faction statuses you hold as if they are turf.",
+      "description": "Sometimes friends are as good as territory. You may count up to three +3 faction statuses you hold as if they are turf.",
       "class": "hawkers",
       "claimed": false
     },
     "The Good Stuff": {
       "name": "The Good Stuff",
-      "effect": "Your merchandise is exquisite. The product quality is equal to your Tier+2. When you deal with a crew or faction, the GM will tell you who among them is hooked on your product (one, a few, many, or all).",
+      "description": "Your merchandise is exquisite. The product quality is equal to your Tier+2. When you deal with a crew or faction, the GM will tell you who among them is hooked on your product (one, a few, many, or all).",
       "class": "hawkers",
       "claimed": false
     },
     "Ghost Market": {
       "name": "Ghost Market",
-      "effect": "Through arcane ritual or hard-won experience, you have discovered how to prepare your product for sale to ghosts and/or demons. They do not pay in coin. What do they pay with?",
+      "description": "Through arcane ritual or hard-won experience, you have discovered how to prepare your product for sale to ghosts and/or demons. They do not pay in coin. What do they pay with?",
       "class": "hawkers",
       "claimed": false
     },
     "High Society": {
       "name": "High Society",
-      "effect": "It's all about who you know. Take -1 heat during downtime and +1d to gather info about the city's elite.",
+      "description": "It's all about who you know. Take -1 heat during downtime and +1d to gather info about the city's elite.",
       "class": "hawkers",
       "claimed": false
     },
     "Hooked": {
       "name": "Hooked",
-      "effect": "Your gang members use your product. Add the savage, unreliable, or wild flaw to your gangs to give them +1 quality.",
+      "description": "Your gang members use your product. Add the savage, unreliable, or wild flaw to your gangs to give them +1 quality.",
       "class": "hawkers",
       "claimed": false
     },
     "Everyone Steals": {
       "name": "Everyone Steals",
-      "effect": "Each PC may add +1 action rating to Prowl, Finesse, or Tinker (up to a max rating of 3).",
+      "description": "Each PC may add +1 action rating to Prowl, Finesse, or Tinker (up to a max rating of 3).",
       "class": "shadows",
       "claimed": false
     },
     "Ghost Echoes": {
       "name": "Ghost Echoes",
-      "effect": "From weird experience or occult ritual, all crew members gain the ability to see and interact with the ghostly structures, streets, and objects within the echo of Doskvol that exists in the ghost field.",
+      "description": "From weird experience or occult ritual, all crew members gain the ability to see and interact with the ghostly structures, streets, and objects within the echo of Doskvol that exists in the ghost field.",
       "class": "shadows",
       "claimed": false
     },
     "Pack Rats": {
       "name": "Pack Rats",
-      "effect": "Your lair is a jumble of stolen items. When you roll to acquire an asset, take +1d.",
+      "description": "Your lair is a jumble of stolen items. When you roll to acquire an asset, take +1d.",
       "class": "shadows",
       "claimed": false
     },
     "Second Story": {
       "name": "Second Story",
-      "effect": "When you execute a clandestine infiltration, you get +1d to the engagement roll.",
+      "description": "When you execute a clandestine infiltration, you get +1d to the engagement roll.",
       "class": "shadows",
       "claimed": false
     },
     "Slippery": {
       "name": "Slippery",
-      "effect": "When you roll entanglements, roll twice and keep the one you want. When you reduce heat on the crew, take +1d.",
+      "description": "When you roll entanglements, roll twice and keep the one you want. When you reduce heat on the crew, take +1d.",
       "class": "shadows",
       "claimed": false
     },
     "Synchronized": {
       "name": "Synchronized",
-      "effect": "When you perform a group action, you may count multiple 6s from different rolls as a critical success.",
+      "description": "When you perform a group action, you may count multiple 6s from different rolls as a critical success.",
       "class": "shadows",
       "claimed": false
     },
     "Like Part of the Family": {
       "name": "Like Part of the Family",
-      "effect": "Create one of your vehicles as a cohort (use the vehicle edges and flaws, below). Its quality is equal to your Tier +1.",
+      "description": "Create one of your vehicles as a cohort (use the vehicle edges and flaws, below). Its quality is equal to your Tier +1.",
       "class": "smugglers",
       "claimed": false
     },
     "All Hands": {
       "name": "All Hands",
-      "effect": "During downtime, one of your cohorts may perform a downtime activity for the crew to acquire an asset, reduce heat, or work on a long-term project.",
+      "description": "During downtime, one of your cohorts may perform a downtime activity for the crew to acquire an asset, reduce heat, or work on a long-term project.",
       "class": "smugglers",
       "claimed": false
     },
     "Ghost Passage": {
       "name": "Ghost Passage",
-      "effect": "From harsh experience or occult ritual, all crew members become immune to possession by spirits, but may choose to \"carry\" a second ghost as a passenger within their body.",
+      "description": "From harsh experience or occult ritual, all crew members become immune to possession by spirits, but may choose to \"carry\" a second ghost as a passenger within their body.",
       "class": "smugglers",
       "claimed": false
     },
     "Just Passing Through ": {
       "name": "Just Passing Through",
-      "effect": "During downtime, take -1 heat. When your heat is 4 or less, you get +1d to deceive people when you pass yourselves off as ordinary citizens.",
+      "description": "During downtime, take -1 heat. When your heat is 4 or less, you get +1d to deceive people when you pass yourselves off as ordinary citizens.",
       "class": "smugglers",
       "claimed": false
     },
     "Leverage": {
       "name": "Leverage",
-      "effect": "Your crew supplies contraband for other factions. Your success is good for them. Whenever you gain rep, gain +1 rep.",
+      "description": "Your crew supplies contraband for other factions. Your success is good for them. Whenever you gain rep, gain +1 rep.",
       "class": "smugglers",
       "claimed": false
     },
     "Reavers": {
       "name": "Reavers",
-      "effect": "When you go into conflict aboard a vehicle, you gain +1 effect for vehicle damage and speed. Your vehicle gains armor.",
+      "description": "When you go into conflict aboard a vehicle, you gain +1 effect for vehicle damage and speed. Your vehicle gains armor.",
       "class": "smugglers",
       "claimed": false
     },
     "Renegades": {
       "name": "Renegades",
-      "effect": "Each PC may add +1 action rating to Finesse, Prowl, or Skirmish (up to a max rating of 3).",
+      "description": "Each PC may add +1 action rating to Finesse, Prowl, or Skirmish (up to a max rating of 3).",
       "class": "smugglers",
       "claimed": false
     }
@@ -3919,10 +3919,88 @@
       "description": null
     }
   },
-  "default_locations": {},
+  "default_locations": {
+    "(-24, 92)": {
+      "pos": "(-24, 92)",
+      "location_name": "The Void Sea",
+      "description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+      "tags": null,
+      "icon": null,
+      "shortcut": false,
+      "image": null,
+      "map": "Duskvol"
+    },
+    "(47, -70)": {
+      "pos": "(47, -70)",
+      "location_name": "The Lost District",
+      "description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+      "tags": null,
+      "icon": null,
+      "shortcut": false,
+      "image": null,
+      "map": "Duskvol"
+    },
+    "(-4, 47)": {
+      "pos": "(-4, 47)",
+      "location_name": "Ironhook Prison",
+      "description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+      "tags": null,
+      "icon": null,
+      "shortcut": false,
+      "image": null,
+      "map": "Duskvol"
+    },
+    "(37, 46)": {
+      "pos": "(37, 46)",
+      "location_name": "Gaddoc Rail Station",
+      "description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+      "tags": null,
+      "icon": "NONE",
+      "shortcut": false,
+      "image": null,
+      "map": "Duskvol"
+    },
+    "(-24, 67)": {
+      "pos": "(-24, 67)",
+      "location_name": "Eeleries & Farms",
+      "description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+      "tags": null,
+      "icon": null,
+      "shortcut": false,
+      "image": null,
+      "map": "Duskvol"
+    },
+    "(-51, 83)": {
+      "pos": "(-51, 83)",
+      "location_name": "Old North Port",
+      "description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+      "tags": null,
+      "icon": "NONE",
+      "shortcut": false,
+      "image": null,
+      "map": "Duskvol"
+    },
+    "(-3, 92)": {
+      "pos": "(-3, 92)",
+      "location_name": "The Deathlands",
+      "description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+      "tags": null,
+      "icon": null,
+      "shortcut": false,
+      "image": null,
+      "map": "Duskvol"
+    }
+  },
   "default_maps": {
-    "name": "Duskvol Full City",
-    "description": "The full city of Duskvol",
-    "file_path": null
+    "Duskvol": {
+      "name": "Duskvol",
+      "description": "The full city of Duskvol",
+      "image": "res://maps/District Images/Duskvol.jpg"
+    },
+    "Brightstone": {
+      "name": "Brightstone",
+      "description": "The district of Brightstone",
+      "image": "res://maps/District Images/doskvol_brightstone.jpg"
+    }
   }
 }

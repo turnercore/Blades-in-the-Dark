@@ -73,6 +73,7 @@ mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="Character" type="ColorRect" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer"]
+visible = false
 margin_right = 200.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
@@ -93,9 +94,9 @@ __meta__ = {
 }
 
 [node name="Stats" type="ColorRect" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer"]
-margin_top = 204.0
+visible = false
 margin_right = 200.0
-margin_bottom = 400.0
+margin_bottom = 298.0
 rect_min_size = Vector2( 0, 150 )
 size_flags_vertical = 3
 color = Color( 1, 1, 1, 0.0941176 )
@@ -114,7 +115,7 @@ __meta__ = {
 }
 
 [node name="StressAndCoins" type="ColorRect" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer"]
-margin_top = 404.0
+visible = false
 margin_right = 200.0
 margin_bottom = 600.0
 size_flags_vertical = 3

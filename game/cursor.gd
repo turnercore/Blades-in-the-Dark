@@ -22,7 +22,7 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		match current_target_type:
-			"info":
+			"location":
 				print(current_target)
 				Events.emit_signal("map_note_clicked", current_note_target)
 			_:
@@ -32,14 +32,14 @@ func _input(event: InputEvent) -> void:
 func _on_cursor_area_entered(area: Area2D) -> void:
 	if not visible: return
 
-	if area.is_in_group("info"):
+	if area.is_in_group("location"):
 		default_texture = sprite.texture
 		default_scale = sprite.scale
 
 		sprite.texture = load("res://Shared/Art/Icons/info_icon.png")
 		sprite.scale = Vector2(0.05, 0.05)
 		current_note_target = area
-		current_target_type = "info"
+		current_target_type = "location"
 
 
 func _on_cursor_area_exited(_area: Area2D) -> void:

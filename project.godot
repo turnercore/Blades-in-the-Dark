@@ -148,7 +148,7 @@ GameSaver="*res://AutoLoad/GameSaver.gd"
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 settings=false
-settings/debug=false
+settings/debug=true
 
 [gui]
 
@@ -216,6 +216,11 @@ settings_menu={
 open_chat={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+display_map_coords={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":76,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 

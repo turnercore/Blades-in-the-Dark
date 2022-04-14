@@ -1,0 +1,339 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/SaveGame.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_save_id = "New Game"
+_save_folder = "res://debug/save"
+version = "0.45"
+map = {
+"description": "The full city of Duskvol",
+"image": "res://maps/District Images/Duskvol.jpg",
+"map_index": 0,
+"map_name": "Duskvol",
+"name": "Duskvol",
+"notes": {
+Vector2( -51, 83 ): {
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"icon": "NONE",
+"image": null,
+"location_name": "Old North Port",
+"map": "Duskvol",
+"pos": "(-51, 83)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"icon": null,
+"image": null,
+"location_name": "Eeleries & Farms",
+"map": "Duskvol",
+"pos": "(-24, 67)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"icon": null,
+"image": null,
+"location_name": "The Void Sea",
+"map": "Duskvol",
+"pos": "(-24, 92)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"image": null,
+"location_name": "Ironhook Prison",
+"map": "Duskvol",
+"pos": Vector2( -4, 47 ),
+"shortcut": true,
+"tags": ""
+},
+Vector2( -3, 92 ): {
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"icon": null,
+"image": null,
+"location_name": "The Deathlands",
+"map": "Duskvol",
+"pos": "(-3, 92)",
+"shortcut": false,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"icon": "NONE",
+"image": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Duskvol",
+"pos": "(37, 46)",
+"shortcut": false,
+"tags": null
+},
+Vector2( 44, -29 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "DEFAULT INFO TEXT",
+"location_name": "Church",
+"pos": Vector2( 44, -29 ),
+"shortcut": true,
+"tags": ""
+},
+Vector2( 47, -70 ): {
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"icon": null,
+"image": null,
+"location_name": "The Lost District",
+"map": "Duskvol",
+"pos": "(47, -70)",
+"shortcut": false,
+"tags": null
+}
+},
+"srd_notes": {
+Vector2( -51, 83 ): {
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"icon": "NONE",
+"image": null,
+"location_name": "Old North Port",
+"map": "Duskvol",
+"pos": "(-51, 83)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"icon": null,
+"image": null,
+"location_name": "Eeleries & Farms",
+"map": "Duskvol",
+"pos": "(-24, 67)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"icon": null,
+"image": null,
+"location_name": "The Void Sea",
+"map": "Duskvol",
+"pos": "(-24, 92)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"image": null,
+"location_name": "Ironhook Prison",
+"map": "Duskvol",
+"pos": Vector2( -4, 47 ),
+"shortcut": true,
+"tags": ""
+},
+Vector2( -3, 92 ): {
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"icon": null,
+"image": null,
+"location_name": "The Deathlands",
+"map": "Duskvol",
+"pos": "(-3, 92)",
+"shortcut": false,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"icon": "NONE",
+"image": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Duskvol",
+"pos": "(37, 46)",
+"shortcut": false,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"icon": null,
+"image": null,
+"location_name": "The Lost District",
+"map": "Duskvol",
+"pos": "(47, -70)",
+"shortcut": false,
+"tags": null
+}
+}
+}
+maps = [ {
+"description": "The full city of Duskvol",
+"image": "res://maps/District Images/Duskvol.jpg",
+"map_index": 0,
+"map_name": "Duskvol",
+"name": "Duskvol",
+"notes": {
+Vector2( -51, 83 ): {
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"icon": "NONE",
+"image": null,
+"location_name": "Old North Port",
+"map": "Duskvol",
+"pos": "(-51, 83)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"icon": null,
+"image": null,
+"location_name": "Eeleries & Farms",
+"map": "Duskvol",
+"pos": "(-24, 67)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"icon": null,
+"image": null,
+"location_name": "The Void Sea",
+"map": "Duskvol",
+"pos": "(-24, 92)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"image": null,
+"location_name": "Ironhook Prison",
+"map": "Duskvol",
+"pos": Vector2( -4, 47 ),
+"shortcut": true,
+"tags": ""
+},
+Vector2( -3, 92 ): {
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"icon": null,
+"image": null,
+"location_name": "The Deathlands",
+"map": "Duskvol",
+"pos": "(-3, 92)",
+"shortcut": false,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"icon": "NONE",
+"image": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Duskvol",
+"pos": "(37, 46)",
+"shortcut": false,
+"tags": null
+},
+Vector2( 44, -29 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "DEFAULT INFO TEXT",
+"location_name": "Church",
+"pos": Vector2( 44, -29 ),
+"shortcut": true,
+"tags": ""
+},
+Vector2( 47, -70 ): {
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"icon": null,
+"image": null,
+"location_name": "The Lost District",
+"map": "Duskvol",
+"pos": "(47, -70)",
+"shortcut": false,
+"tags": null
+}
+},
+"srd_notes": {
+Vector2( -51, 83 ): {
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"icon": "NONE",
+"image": null,
+"location_name": "Old North Port",
+"map": "Duskvol",
+"pos": "(-51, 83)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"icon": null,
+"image": null,
+"location_name": "Eeleries & Farms",
+"map": "Duskvol",
+"pos": "(-24, 67)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"icon": null,
+"image": null,
+"location_name": "The Void Sea",
+"map": "Duskvol",
+"pos": "(-24, 92)",
+"shortcut": false,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"image": null,
+"location_name": "Ironhook Prison",
+"map": "Duskvol",
+"pos": Vector2( -4, 47 ),
+"shortcut": true,
+"tags": ""
+},
+Vector2( -3, 92 ): {
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"icon": null,
+"image": null,
+"location_name": "The Deathlands",
+"map": "Duskvol",
+"pos": "(-3, 92)",
+"shortcut": false,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"icon": "NONE",
+"image": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Duskvol",
+"pos": "(37, 46)",
+"shortcut": false,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"icon": null,
+"image": null,
+"location_name": "The Lost District",
+"map": "Duskvol",
+"pos": "(47, -70)",
+"shortcut": false,
+"tags": null
+}
+}
+}, {
+"description": "The district of Brightstone",
+"image": "res://maps/District Images/doskvol_brightstone.jpg",
+"map_index": 1,
+"map_name": "Brightstone",
+"name": "Brightstone",
+"notes": {
+},
+"srd_notes": {
+}
+} ]
+clocks = {
+}

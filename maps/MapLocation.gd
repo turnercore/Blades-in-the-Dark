@@ -14,6 +14,7 @@ var icon:String= GameData.DEFAULT_MAP_NOTE_ICON setget _set_icon
 var shortcut: = false
 var location_name:String setget _set_location_name
 var info_text:String setget _set_info_text
+var description:String setget _set_description
 
 var cursor_hovered: = false
 var locked: = false
@@ -44,13 +45,18 @@ func _set_icon(value: String)-> void:
 	if not value:
 		value = GameData.DEFAULT_MAP_NOTE_ICON
 	icon = value
-	icon_texture = load(icon)
+	#add a file exists check
+	icon_texture = load(icon) if not icon == "NONE" else null
 	if not is_ready: yield(self, "ready")
 	map_note_texture.texture = icon_texture
 
 
 func _on_cursor_free()->void:
 	cursor_hovered = false
+
+func _set_description(value: String)-> void:
+	self.info_text = value
+	description = value
 
 
 func _on_clicked(note)->void:
