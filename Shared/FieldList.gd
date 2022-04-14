@@ -1,30 +1,44 @@
 class_name FieldList
-extends ScrollContainer
+extends Container
 
 export (String) var playbook_data
 export (String) var title setget _set_title
+export (String) var include_only: = ""
 export (PackedScene) var field_scene: PackedScene
 
 export (Resource) var _playbook setget _on_playbook_loaded
-onready var list: = $List
-onready var title_label: = $List/Title
+export (NodePath) onready var list = get_node(list)
+export (NodePath) onready var title_label = get_node(title_label)
 
+export (bool) var keep_updated: = true
+export (bool) var compact: = false
 
 func _ready()-> void:
 	title_label.text = title
 
 
+func setup()->void:
+	var playbook = _playbook
+	if not playbook_data in playbook:
+		print("playbook data not found " + str(playbook_data) + " in playbook " + str(playbook))
+		return
 
-func setup(playbook:Playbook)->void:
-	_playbook = playbook
+	for child in list.get_children():
+		if not child == title_label:
+			child.queue_free()
 
 	for key in playbook[playbook_data]:
+		var playbook_field = playbook[playbook_data][key]
+		#if an include is set, only include those that have that property as well
+		if include_only:
+			if not include_only in playbook_field or not playbook_field[include_only]:
+				continue
+
 		#add the field scene to the list
 		var field: = field_scene.instance()
+		if "compact" in field: field.compact = self.compact
 		list.add_child(field)
 
-
-		var playbook_field = playbook[playbook_data][key]
 		for property in playbook_field:
 			if property == "name":
 				field.set(property, playbook_field[property])
@@ -34,22 +48,23 @@ func setup(playbook:Playbook)->void:
 				field.set(property, playbook_field[property])
 
 		#Set the playbook on the field (this may be redundent
-		field.playbook = playbook
-		if "setup" in field: field.setup(playbook)
-
+		if "playbook" in field: field.playbook = playbook
+		if "_playbook" in field: field._playbook = playbook
+#		if "setup" in field: field.setup(playbook)
 
 
 func _on_playbook_loaded(playbook: Playbook)-> void:
-	print("playbook loaded to abilities")
 	_playbook = playbook
-
-	for child in list.get_children():
-		if child is Ability:
-			child.queue_free()
-
-	setup(playbook)
+	if not _playbook.is_connected("property_changed", self, "_on_playbook_property_changed"):
+		_playbook.connect("property_changed", self, "_on_playbook_property_changed")
+	setup()
 
 
 func _set_title(value:String)-> void:
 	title = value
-	if title_label: title_label.text = value
+	if title_label is Node: title_label.text = value
+
+
+func _on_playbook_property_changed(updated_property:String)-> void:
+	if playbook_data in updated_property and _playbook and keep_updated:
+		setup()

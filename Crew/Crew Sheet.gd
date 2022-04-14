@@ -54,6 +54,11 @@ func propagate_set_editable(parent: Node, editable: bool = false)->void:
 				child.readonly = disabled
 			if "flat" in child:
 				child.flat = disabled
+			if child is SaveableField and child is LineEdit:
+				print("double typing works")
+				child.visible = editable
+			if child is SaveableField and child is Label:
+				child.visible = not editable
 
 
 func _on_CheckButton_toggled(button_pressed: bool) -> void:

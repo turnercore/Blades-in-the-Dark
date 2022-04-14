@@ -278,10 +278,10 @@ func remove_map_shortcut(note:Dictionary)-> void:
 
 
 func _on_map_note_removed(note: Vector2)-> void:
-	if map.notes.has(note):
-		remove_map_shortcut(map.notes.get(note))
-		map.notes.erase(note)
-
+	var grid_pos: = Globals.convert_to_grid(note)
+	if map.notes.has(grid_pos):
+		remove_map_shortcut(map.notes.get(grid_pos))
+		map.notes.erase(grid_pos)
 	save_map()
 	emit_signal("map_loaded", map)
 

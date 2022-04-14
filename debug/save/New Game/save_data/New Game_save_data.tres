@@ -44,6 +44,14 @@ Vector2( -24, 92 ): {
 "shortcut": false,
 "tags": null
 },
+Vector2( -4, -10 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "DEFAULT INFO TEXT",
+"location_name": "LOCATION",
+"pos": Vector2( -4, -10 ),
+"shortcut": false,
+"tags": ""
+},
 Vector2( -4, 47 ): {
 "description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
 "icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
@@ -63,6 +71,14 @@ Vector2( -3, 92 ): {
 "pos": "(-3, 92)",
 "shortcut": false,
 "tags": null
+},
+Vector2( 4, -11 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "DEFAULT INFO TEXT",
+"location_name": "LOCATION",
+"pos": Vector2( 4, -11 ),
+"shortcut": false,
+"tags": ""
 },
 Vector2( 37, 46 ): {
 "description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
@@ -203,6 +219,14 @@ Vector2( -24, 92 ): {
 "shortcut": false,
 "tags": null
 },
+Vector2( -4, -10 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "DEFAULT INFO TEXT",
+"location_name": "LOCATION",
+"pos": Vector2( -4, -10 ),
+"shortcut": false,
+"tags": ""
+},
 Vector2( -4, 47 ): {
 "description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
 "icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
@@ -222,6 +246,14 @@ Vector2( -3, 92 ): {
 "pos": "(-3, 92)",
 "shortcut": false,
 "tags": null
+},
+Vector2( 4, -11 ): {
+"icon": "res://Shared/Art/Icons/MapNoteIconTex.tres",
+"info_text": "DEFAULT INFO TEXT",
+"location_name": "LOCATION",
+"pos": Vector2( 4, -11 ),
+"shortcut": false,
+"tags": ""
 },
 Vector2( 37, 46 ): {
 "description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
@@ -336,4 +368,15 @@ Vector2( 47, -70 ): {
 }
 } ]
 clocks = {
+"clock_831": {
+"clock_name": "clock",
+"filled": 0,
+"id": "clock_831",
+"is_secret": false,
+"locked": false,
+"locked_by_clock": null,
+"max_value": 4,
+"type": 1,
+"unlocks_clock": null
+}
 }

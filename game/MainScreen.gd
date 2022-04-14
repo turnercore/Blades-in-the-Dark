@@ -3,7 +3,6 @@ onready var overlay: = $OverlayBackground
 var screens: Dictionary = {}
 
 func _ready() -> void:
-
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	overlay.visible = false
 

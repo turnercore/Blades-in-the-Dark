@@ -82,9 +82,7 @@ func convert_to_grid(position:Vector2)-> Vector2:
 
 
 func str_to_vec2(string:="")->Vector2:
-	print(string)
 	var formatted_str: = string.replace("(", "").replace(")", "").strip_edges()
 	var str_array: Array = formatted_str.split_floats(",")
 	var vec2:= Vector2(str_array[0], str_array[1])
-	print(vec2)
 	return vec2

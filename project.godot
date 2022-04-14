@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://clocks/Clock.gd"
 }, {
-"base": "VBoxContainer",
+"base": "Control",
 "class": "Contact",
 "language": "GDScript",
 "path": "res://Contact.gd"
@@ -59,7 +59,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://maps/EditNotePopup.gd"
 }, {
-"base": "ScrollContainer",
+"base": "Container",
 "class": "FieldList",
 "language": "GDScript",
 "path": "res://Shared/FieldList.gd"
@@ -134,7 +134,7 @@ run/main_scene="res://start_screen/StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Shared/Art/Icons/icon.png"
-config/version="0.45"
+config/version="0.46"
 
 [autoload]
 

@@ -1762,277 +1762,379 @@
     }
   },
   "contacts": {
-    "Trev, a gang boss": {
-      "name": "Trev, a gang boss",
+    "Trev": {
+      "name": "Trev",
+      "occupation": "A Gang Boss",
       "class": "assassins",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Lydra, a deal broker": {
-      "name": "Lydra, a deal broker",
+    "Lydra": {
+      "name": "Lydra",
+      "occupation": "A Deal Broker",
       "class": "hawkers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Irimina, a vicious noble": {
-      "name": "Irimina, a vicious noble",
+    "Irimina": {
+      "name": "Irimina",
+      "occupation": "A Vicious Noble",
       "class": "assassins",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Karlos, a bounty hunter": {
-      "name": "Karlos, a bounty hunter",
+    "Karlos": {
+      "name": "Karlos",
+      "occupation": "A Bounty Hunter",
       "class": "assassins",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Exeter, a spirit warden": {
-      "name": "Exeter, a spirit warden",
+    "Exeter": {
+      "name": "Exeter",
+      "occupation": "A Spirit Warden",
       "class": "assassins",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Sevoy, a merchant lord": {
-      "name": "Sevoy, a merchant lord",
+    "Sevoy": {
+      "name": "Sevoy",
+      "occupation": "A Merchant Lord",
       "class": "assassins",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Meg, a pit-fighter": {
-      "name": "Meg, a pit-fighter",
+    "Meg": {
+      "name": "Meg",
+      "occupation": "A Pit-Fighter",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Conway, a bluecoat": {
-      "name": "Conway, a bluecoat",
+    "Conway": {
+      "name": "Conway",
+      "occupation": "A Bluecoat",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Keller, a blacksmith": {
-      "name": "Keller, a blacksmith",
+    "Keller": {
+      "name": "Keller",
+      "occupation": "A Blacksmith",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Tomas, a physicker": {
-      "name": "Tomas, a physicker",
+    "Tomas": {
+      "name": "Tomas",
+      "occupation": "A Physicker",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Walker, a ward boss": {
-      "name": "Walker, a ward boss",
+    "Walker": {
+      "name": "Walker",
+      "occupation": "A Ward Boss",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Lutes, a tavern owner": {
-      "name": "Lutes, a tavern owner",
+    "Lutes": {
+      "name": "Lutes",
+      "occupation": "A Tavern Owner",
       "class": "bravos",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Gagan, an academic": {
-      "name": "Gagan, an academic",
+    "Gagan": {
+      "name": "Gagan",
+      "occupation": "An Academic",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Adikin, an occultist": {
-      "name": "Adikin, an occultist",
+    "Adikin": {
+      "name": "Adikin",
+      "occupation": "An Occultist",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Hutchins, an antiquarian": {
-      "name": "Hutchins, an antiquarian",
+    "Hutchins": {
+      "name": "Hutchins",
+      "occupation": "An Antiquarian",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Moriya, a spirit trafficker": {
-      "name": "Moriya, a spirit trafficker",
+    "Moriya": {
+      "name": "Moriya",
+      "occupation": "A Spirit Trafficker",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Mateas Kline, a noble": {
-      "name": "Mateas Kline, a noble",
+    "Mateas Kline": {
+      "name": "Mateas Kline",
+      "occupation": "A Noble",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Bennett, an astronomer": {
-      "name": "Bennett, an astronomer",
+    "Bennett": {
+      "name": "Bennett",
+      "occupation": "An Astronomer",
       "class": "cult",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Rolan Wott, a magistrate": {
-      "name": "Rolan Wott, a magistrate",
+    "Rolan Wott": {
+      "name": "Rolan Wott",
+      "occupation": "A Magistrate",
       "class": "hawkers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Laroze, a bluecoat": {
-      "name": "Laroze, a bluecoat",
+    "Laroze": {
+      "name": "Laroze",
+      "occupation": "A Bluecoat",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Hoxley, a smuggler": {
-      "name": "Hoxley, a smuggler",
+    "Hoxley": {
+      "name": "Hoxley",
+      "occupation": "A Smuggler",
       "class": "hawkers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Anya, a dillettante": {
-      "name": "Anya, a dillettante",
+    "Anya": {
+      "name": "Anya",
+      "occupation": "A Dillettante",
       "class": "hawkers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Marlo, a gang boss": {
-      "name": "Marlo, a gang boss",
+    "Marlo": {
+      "name": "Marlo",
+      "occupation": "A Gang Boss",
       "class": "hawkers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Dowler, an explorer": {
-      "name": "Dowler, an explorer",
+    "Dowler": {
+      "name": "Dowler",
+      "occupation": "An Explorer",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Amancio, a deal broker": {
-      "name": "Amancio, a deal broker",
+    "Amancio": {
+      "name": "Amancio",
+      "occupation": "A Deal Broker",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Fitz, a collector": {
-      "name": "Fitz, a collector",
+    "Fitz": {
+      "name": "Fitz",
+      "occupation": "A Collector",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Adelaide Phroaig, a noble": {
-      "name": "Adelaide Phroaig, a noble",
+    "Adelaide Phroaig": {
+      "name": "Adelaide Phroaig",
+      "occupation": "A Noble",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Rigney, a tavern owner": {
-      "name": "Rigney, a tavern owner",
+    "Rigney": {
+      "name": "Rigney",
+      "occupation": "A Tavern Owner",
       "class": "shadows",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Elynn, a dock worker": {
-      "name": "Elynn, a dock worker",
+    "Elynn": {
+      "name": "Elynn",
+      "occupation": "A Dock Worker",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Rolan, a drug dealer": {
-      "name": "Rolan, a drug dealer",
+    "Rolan": {
+      "name": "Rolan",
+      "occupation": "A Drug Dealer",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Sera, an arms dealer": {
-      "name": "Sera, an arms dealer",
+    "Sera": {
+      "name": "Sera",
+      "occupation": "An Arms Dealer",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Nyelle, a spirit trafficker": {
-      "name": "Nyelle, a spirit trafficker",
+    "Nyelle": {
+      "name": "Nyelle",
+      "occupation": "A Spirit Trafficker",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Decker, an anarchist": {
-      "name": "Decker, an anarchist",
+    "Decker": {
+      "name": "Decker",
+      "occupation": "An Anarchist",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     },
-    "Esme, a tavern owner": {
-      "name": "Esme, a tavern owner",
+    "Esme": {
+      "name": "Esme",
+      "occupation": "A Tavern Owner",
       "class": "smugglers",
       "relationship": 0,
       "notes": "\"\"",
       "location": "none",
-      "description": "\"\""
+      "description": "\"\"",
+      "image": "NONE",
+      "icon": "NONE"
     }
   },
   "friends_and_foes": {

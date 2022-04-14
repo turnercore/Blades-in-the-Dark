@@ -8,6 +8,7 @@ export(String) var property: = "text"
 #Example: If you wanted to updated an item is being used
 #playbook_field = items.item_name.using
 export(String) var playbook_field:String = "" setget _set_playbook_field
+export(String) var modular_playbook_field_ending:String
 
 
 func _ready() -> void:
@@ -69,6 +70,8 @@ func load_from_playbook()-> void:
 func _on_updated_data(_ignored = null)-> void:
 	if not playbook: return
 	var updated_value = self.get(property)
+	if updated_value == playbook.find(playbook_field):
+		return
 	if playbook.save(playbook_field, updated_value):
 		playbook.emit_signal("property_changed", playbook_field)
 		playbook.emit_changed()
