@@ -9,10 +9,9 @@
 [ext_resource path="res://Crew/ability.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Crew/Crew.gd" type="Script" id=9]
 
-[node name="Crew" type="Popup"]
+[node name="Crew" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 9 )

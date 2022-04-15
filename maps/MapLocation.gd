@@ -68,7 +68,6 @@ func _on_clicked(note)->void:
 
 func enlarge()-> void:
 	if not locked and not enlarged:
-		print("enlarging "+name)
 		anim.play("enlarge")
 		enlarged = true
 		shrunk = false
@@ -108,7 +107,9 @@ func _on_MapNote_area_entered(area: Area2D) -> void:
 		cursor_hovered = true
 		if not info_text:
 			info_text = "Info text missing"
-		Events.emit_signal("info_broadcasted", info_text.c_unescape())
+
+		Tooltip.display_tooltip(location_name, info_text)
+#		Events.emit_signal("info_broadcasted", info_text.c_unescape())
 		enlarge()
 
 
@@ -116,7 +117,8 @@ func _on_MapNote_area_exited(area: Area2D) -> void:
 	cursor_hovered = false
 	if area is Cursor:
 		if not locked:
-			Events.emit_signal("info_broadcasted", "")
+			Tooltip.finish_tooltip()
+#			Events.emit_signal("info_broadcasted", "")
 			shrink()
 			Events.emit_signal("cursor_free")
 
@@ -132,7 +134,7 @@ func _set_locked(value: bool)-> void:
 		shrink()
 
 
-func _on_popup(_data)->void:
+func _on_popup(_data, _overlay)->void:
 	locked = true
 
 

@@ -1,10 +1,11 @@
-class_name ClaimCell
+class_name Claim
 extends TextureButton
 
 export (String) var claim_name: String = "claim"
 export (NodePath) onready var claim_label = get_node(claim_label) as Label
 export (NodePath) onready var faction_label = get_node(faction_label) as Label
 export(bool) var starting_claim:bool = false
+var tooltip:String
 
 var _playbook:CrewPlaybook
 
@@ -12,7 +13,7 @@ var restricted_paths:bool = false
 
 var is_claimed:bool = false setget _set_is_claimed
 var is_available:bool = true
-var is_prison:bool = false
+export (bool) var is_prison:bool = false
 var faction: String
 var effect: String
 var notes: String
@@ -117,7 +118,7 @@ func _process(_delta: float) -> void:
 		disabled = false
 
 	faction_label.text = faction
-	hint_tooltip = effect
+	tooltip = effect
 	claim_label.text = claim_name
 
 
@@ -154,3 +155,12 @@ func _set_is_claimed(value:bool)->void:
 	if not _playbook: return
 	_playbook.claims[name].is_claimed = is_claimed
 	GameSaver.save_crew(_playbook)
+
+
+func _on_Claim_mouse_entered() -> void:
+	Tooltip.display_tooltip(claim_name, tooltip)
+
+
+
+func _on_Claim_mouse_exited() -> void:
+	Tooltip.finish_tooltip(claim_name, tooltip)

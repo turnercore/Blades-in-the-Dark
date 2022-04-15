@@ -1,4 +1,4 @@
-extends Popup
+extends PopupScreen
 
 const defaults_json: = 'res://srd/default_srd.json'
 

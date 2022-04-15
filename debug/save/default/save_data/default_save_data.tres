@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 _save_id = "default"
 _save_folder = "res://debug/save"
-version = "0.45"
+version = "0.47"
 map = {
 "image": null,
 "map_index": 0,

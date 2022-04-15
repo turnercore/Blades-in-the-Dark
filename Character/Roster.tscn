@@ -5,8 +5,7 @@
 [ext_resource path="res://popups/CreateCharacterPopup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Shared/theme/menu.tres" type="StyleBox" id=4]
 
-[node name="Roster" type="Popup"]
-visible = true
+[node name="Roster" type="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -44,15 +43,23 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="CharacterContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 122.0
+[node name="Label" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 margin_right = 386.0
-margin_bottom = 122.0
+margin_bottom = 21.0
+text = "Roster"
+align = 1
+
+[node name="CharacterContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+margin_top = 25.0
+margin_right = 386.0
+margin_bottom = 244.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="NewPlayerCharacterButton" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 126.0
+margin_top = 248.0
 margin_right = 386.0
-margin_bottom = 153.0
+margin_bottom = 275.0
 text = "+ New Player Character +"
 
 [connection signal="modal_closed" from="." to="." method="_on_Roster_modal_closed"]

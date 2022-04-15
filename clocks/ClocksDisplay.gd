@@ -1,4 +1,4 @@
-extends Popup
+extends PopupScreen
 const BASE_CLOCK_SIZE: = Vector2(1, 1)
 var DEFAULT_CLOCK_DATA: = {
 		"clock_name": "clock",

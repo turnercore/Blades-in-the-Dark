@@ -10,7 +10,7 @@
 [ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=9]
 [ext_resource path="res://Character/item_scene.tscn" type="PackedScene" id=10]
 
-[node name="CharacterSheet" type="Popup"]
+[node name="CharacterSheet" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 5 )
@@ -34,7 +34,7 @@ margin_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Info"]
 margin_right = 549.0
-margin_bottom = 353.0
+margin_bottom = 525.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
 margin_right = 549.0
@@ -516,8 +516,6 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1016.0
 margin_bottom = 557.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 scroll_horizontal_enabled = false
 playbook_data = "abilities"
 title = "Player Special Abilities:"
@@ -552,8 +550,6 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1016.0
 margin_bottom = 557.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 playbook_data = "items"
 title = "Items: "
 field_scene = ExtResource( 10 )

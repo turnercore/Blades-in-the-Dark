@@ -1,4 +1,4 @@
-extends Popup
+extends PopupScreen
 
 export (PackedScene) var character_scene
 export (NodePath) onready var character_container = get_node(character_container) as VBoxContainer

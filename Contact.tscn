@@ -97,6 +97,7 @@ __meta__ = {
 [node name="name" type="Label" parent="contact_compact"]
 margin_right = 126.0
 margin_bottom = 21.0
+mouse_filter = 0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Contact Name"
@@ -125,3 +126,5 @@ align = 1
 valign = 1
 script = ExtResource( 2 )
 modular_playbook_field_ending = ".relationship"
+
+[connection signal="mouse_entered" from="contact_compact" to="." method="_on_contact_compact_mouse_entered"]

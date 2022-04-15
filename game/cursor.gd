@@ -61,7 +61,7 @@ func _on_VisibilityNotifier2D_viewport_exited(_viewport: Viewport) -> void:
 	self.monitoring = false
 
 
-func _on_popup(_ignored)-> void:
+func _on_popup(_ignored, _overlay)-> void:
 	set_process(false)
 	monitorable = false
 	monitoring = false

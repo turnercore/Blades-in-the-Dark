@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Gest Ostur Cult"
+name = "The Best Cul"
 abilities = {
 "anointed": {
 "claimed": true,
@@ -322,7 +322,7 @@ claims = {
 "default": true,
 "effect": "Home sweet home",
 "faction": "Claimed",
-"is_claimed": false,
+"is_claimed": true,
 "notes": null
 },
 "c9": {

@@ -1,4 +1,4 @@
-extends Popup
+extends PopupScreen
 
 const defaults_json: = 'res://srd/default_srd.json'
 
@@ -8,6 +8,7 @@ export (Resource) var _playbook setget _set_playbook
 func _ready() -> void:
 	if GameData.crew_playbook: self._playbook = GameData.crew_playbook
 	GameData.connect("crew_changed", self, "_on_crew_changed")
+#	set_process_input(false)
 
 
 func setup(crew_playbook:CrewPlaybook)-> void:
@@ -23,3 +24,21 @@ func _on_crew_changed(crew_playbook: CrewPlaybook)-> void:
 func _set_playbook(value: CrewPlaybook)-> void:
 	_playbook = value
 	setup(_playbook)
+
+
+#func popup()-> void:
+#	visible = true
+#	set_process_input(true)
+#
+#
+#func hide()-> void:
+#	visible = false
+#	set_process_input(false)
+#	Events.emit_signal("popup_finished")
+#
+#
+#func _input(event: InputEvent) -> void:
+#	if event.is_action_pressed("ui_cancel"):
+#		get_tree().set_input_as_handled()
+#		hide()
+

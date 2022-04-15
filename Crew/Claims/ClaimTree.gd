@@ -2,14 +2,22 @@ extends GridContainer
 
 export (bool) var restricted_paths: = false
 
+export (bool) var is_prison: = false
+
 onready var children: = get_children()
 
 
 func _ready() -> void:
+	set_is_prison_children()
 	connect_claims_to_connectors()
 	connect_connectors_to_claims()
 	set_starting_states()
 
+
+func set_is_prison_children()-> void:
+	for child in children:
+		if "is_prison" in child:
+			child.is_prison = self.is_prison
 
 
 func set_starting_states()->void:

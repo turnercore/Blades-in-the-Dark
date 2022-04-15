@@ -17,3 +17,12 @@ func _ready() -> void:
 		$contact_compact.visible = false
 		rect_min_size = MIN_SIZE_FULL
 	Globals.propagate_set_playbook_fields_recursive(self, FIELD_TEMPLATE%id)
+
+
+func _on_name_mouse_entered() -> void:
+	Tooltip.display_tooltip($contact_compact/name.text, $contact_full_sized/description.text)
+
+
+func _on_contact_compact_mouse_entered() -> void:
+	Tooltip.display_tooltip($contact_compact/name.text, $contact_full_sized/description.text)
+

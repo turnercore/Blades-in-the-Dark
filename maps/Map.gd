@@ -22,7 +22,6 @@ func _ready() -> void:
 	GameData.connect("map_loaded", self, "_on_map_loaded")
 	load_map(GameData.map)
 	Events.connect("map_scroll_speed_changed", self, "_on_map_scroll_speed_changed")
-	Events.connect("main_screen_changed", self, "_on_screen_changed")
 	Events.connect("chat_selected", self, "_on_chat_selected")
 	Events.connect("chat_deselected", self, "_on_chat_deselected")
 	Events.connect("popup", self, "_on_popup")
@@ -147,8 +146,9 @@ func _on_screen_changed(screen:String)-> void:
 		set_process(false)
 
 
-func _on_popup(_data)-> void:
+func _on_popup(_data, _overlay)-> void:
 	set_process(false)
+
 
 func _on_popup_finished()-> void:
 	set_process(true)

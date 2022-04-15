@@ -55,7 +55,6 @@ func propagate_set_editable(parent: Node, editable: bool = false)->void:
 			if "flat" in child:
 				child.flat = disabled
 			if child is SaveableField and child is LineEdit:
-				print("double typing works")
 				child.visible = editable
 			if child is SaveableField and child is Label:
 				child.visible = not editable

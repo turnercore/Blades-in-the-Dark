@@ -15,23 +15,29 @@ signal character_selected(playbook)
 func emit_character_selected(playbook: Playbook)-> void:
 	emit_signal("character_selected", playbook)
 
-signal main_screen_changed(screen)
+#signal main_screen_changed(screen)
 
-signal popup(popup)
-func popup(popup)-> void:
-	var new_popup
+signal popup(popup, use_overlay)
+func popup(popup, use_overlay:=false)-> void:
+	var new_popup = popup
 	if popup is PackedScene:
 		new_popup = popup.instance()
-	else:
-		new_popup = popup
-	emit_signal("popup", new_popup)
-
-#Not passing the actual popup that emits this, because there should be only one,
-#This may need to change in MULTIPLAYER
+#	elif popup is Popup:
+#		new_popup = popup
+#	elif popup is String:
+#		new_popup = popup
+	emit_signal("popup", new_popup, use_overlay)
 signal popup_finished
 
 signal map_scroll_speed_changed(scroll_speed)
+
+signal tooltip_frozen(tooltip)
+signal tooltip_container_transfered(tooltip_container)
+signal popup_layer_ready
 signal info_broadcasted(info)
+func emit_tooltip(tooltip)-> void:
+	emit_signal("info_broadcasted", tooltip)
+
 
 signal roster_updated
 

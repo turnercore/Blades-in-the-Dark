@@ -8,7 +8,6 @@ func _ready() -> void:
 
 	Events.connect("popup", self, "_on_popup")
 	Events.connect("popup_finished", self, "_on_popup_finished")
-	Events.connect("main_screen_changed", self, "_on_main_screen_changed")
 
 	for child in get_children():
 		if child == overlay: continue
@@ -20,29 +19,25 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("settings_menu"):
+	if event.is_action_pressed("ui_cancel"):
 		change_screen_to("settings")
 
 
 func change_screen_to(screen: String)-> void:
 	screen = screen.to_lower()
 	if screen in screens:
-		if screens[screen] is Popup:
-			print("using popup instead")
+		if screens[screen] is Node:
+			print("using popup")
 			screens[screen].popup()
 
 
-func _on_main_screen_changed(screen: String) -> void:
-	screen = screen.to_lower()
-	if screens.has(screen):
-		change_screen_to(screen)
+func _on_popup(popup, use_overlay: = false)-> void:
+	print(popup)
+	if use_overlay:
+		overlay.visible = true
+		overlay.mouse_filter = Control.MOUSE_FILTER_STOP
 
-
-func _on_popup(popup)-> void:
-	$OverlayBackground.visible = true
-	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
-
-	if popup is Popup:
+	if popup is Node:
 		add_child(popup)
 		popup.popup()
 	elif popup is String:

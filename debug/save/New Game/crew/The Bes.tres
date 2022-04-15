@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Gest Ostur Cult"
+name = "The Bes"
 abilities = {
 "anointed": {
 "claimed": true,

@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Tooltip.gd" type="Script" id=1]
+[ext_resource path="res://tooltip/FrozenTooltip.tscn" type="PackedScene" id=2]
+
+[node name="Tooltip" type="Position2D"]
+z_index = 1000
+script = ExtResource( 1 )
+frozen_tooltip = ExtResource( 2 )
+info_label = NodePath("TooltipContainer/VBoxContainer/description")
+title_label = NodePath("TooltipContainer/VBoxContainer/name")
+tooltip_container = NodePath("TooltipContainer")
+
+[node name="TooltipContainer" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -203.5
+margin_top = -31.0
+margin_right = 203.5
+margin_bottom = 31.0
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TooltipContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 400.0
+margin_bottom = 55.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+alignment = 1
+
+[node name="name" type="RichTextLabel" parent="TooltipContainer/VBoxContainer"]
+margin_right = 393.0
+margin_bottom = 22.0
+text = "Title"
+fit_content_height = true
+scroll_active = false
+
+[node name="description" type="RichTextLabel" parent="TooltipContainer/VBoxContainer"]
+margin_top = 26.0
+margin_right = 393.0
+margin_bottom = 48.0
+focus_mode = 2
+text = "Descripton"
+fit_content_height = true
+scroll_active = false
+selection_enabled = true
+
+[node name="DismissTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HoverTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
