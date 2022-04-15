@@ -5,6 +5,8 @@ extends Playbook
 export (int) var heat: int = 0
 export (int) var wanted_level: int = 0
 export (String) var reputation
+export (int) var hold_level: int = 0
+export (int) var tier: int = 0
 export (Dictionary) var upgrades:Dictionary
 export (Dictionary) var lair: = {
 	"name" : "",

@@ -86,3 +86,14 @@ func str_to_vec2(string:="")->Vector2:
 	var str_array: Array = formatted_str.split_floats(",")
 	var vec2:= Vector2(str_array[0], str_array[1])
 	return vec2
+
+
+func propagate_set_playbook_fields_recursive(node:Node, field_template:String)-> void:
+	for child in node.get_children():
+		if "playbook_field" in child:
+			if "modular_playbook_field_ending" in child and child.modular_playbook_field_ending:
+				child.playbook_field = field_template + child.modular_playbook_field_ending
+			else:
+				child.playbook_field = field_template
+		if child.get_child_count() > 0:
+			propagate_set_playbook_fields_recursive(child, field_template)

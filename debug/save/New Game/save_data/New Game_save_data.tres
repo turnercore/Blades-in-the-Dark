@@ -6,7 +6,7 @@
 script = ExtResource( 1 )
 _save_id = "New Game"
 _save_folder = "res://debug/save"
-version = "0.45"
+version = "0.46"
 map = {
 "description": "The full city of Duskvol",
 "image": "res://maps/District Images/Duskvol.jpg",

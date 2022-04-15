@@ -31,7 +31,7 @@ abilities = {
 "name": "Conviction"
 },
 "glory_incarnate": {
-"claimed": true,
+"claimed": false,
 "class": "cult",
 "description": "Your deity sometimes manifests in the physical world. This can be a great boon, but the priorities and values of a god are not those of mortals. You have been warned.",
 "name": "Glory Incarnate"
@@ -56,7 +56,7 @@ abilities = {
 }
 }
 coin = {
-"available": 0,
+"available": 4,
 "max": 4,
 "stash": 0
 }
@@ -141,6 +141,8 @@ needs_setup = false
 heat = 0
 wanted_level = 0
 reputation = "Strange"
+hold_level = 0
+tier = 0
 upgrades = {
 }
 lair = {

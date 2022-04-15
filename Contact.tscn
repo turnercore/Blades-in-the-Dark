@@ -9,6 +9,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+FIELD_TEMPLATE = "contacts.%s"
 
 [node name="contact_full_sized" type="VBoxContainer" parent="."]
 anchor_right = 1.0

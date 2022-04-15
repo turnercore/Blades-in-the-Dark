@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Shared/Markers.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=2]
@@ -8,28 +8,16 @@
 [ext_resource path="res://popups/CrewSetup.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Crew/Hideout.jpeg" type="Texture" id=7]
 [ext_resource path="res://Shared/Coin.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Crew/ability.gd" type="Script" id=9]
-
-[sub_resource type="PackedScene" id=1]
-resource_local_to_scene = true
-_bundled = {
-"conn_count": 0,
-"conns": PoolIntArray(  ),
-"editable_instances": [  ],
-"names": PoolStringArray( "ability", "margin_top", "margin_right", "margin_bottom", "script", "__meta__", "VBoxContainer", "HBoxContainer", "claimed", "property", "CheckBox", "margin_left", "focus_mode", "text", "Label", "effect", "size_flags_horizontal", "size_flags_vertical", "autowrap" ),
-"node_count": 5,
-"node_paths": [  ],
-"nodes": PoolIntArray( -1, -1, 6, 0, -1, 5, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 0, 0, 0, 7, 7, -1, 2, 2, 1, 3, 5, 0, 1, 0, 10, 8, -1, 4, 2, 6, 3, 5, 4, 7, 9, 8, 0, 1, 0, 14, 0, -1, 7, 11, 9, 1, 10, 2, 11, 3, 12, 12, 13, 13, 14, 4, 7, 0, 0, 0, 14, 15, -1, 8, 1, 15, 2, 1, 3, 16, 16, 17, 17, 17, 13, 18, 18, 19, 4, 7, 0 ),
-"variants": [ 18.0, 1024.0, 42.0, ExtResource( 9 ), {
-"_edit_use_anchors_": false
-}, 29.0, 24.0, ExtResource( 2 ), "pressed", 28.0, 4.0, 128.0, 25.0, 2, "Synchronized ", 33.0, 54.0, 3, "When you perform a group action, you may count multiple 6s from different rolls as a critical success.", true ],
-"version": 2
-}
+[ext_resource path="res://Crew/ability.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Contact.tscn" type="PackedScene" id=10]
+[ext_resource path="res://CrewUpgrade.tscn" type="PackedScene" id=11]
 
 [node name="Crew Sheet" type="ScrollContainer" groups=["save"]]
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 scroll_horizontal_enabled = false
 script = ExtResource( 5 )
 __meta__ = {
@@ -209,7 +197,7 @@ margin_bottom = 259.0
 playbook_data = "abilities"
 title = "Special Abilties"
 include_only = "claimed"
-field_scene = SubResource( 1 )
+field_scene = ExtResource( 9 )
 
 [node name="contacts" parent="CrewPlaybookContainer/Crew" instance=ExtResource( 4 )]
 anchor_right = 0.0
@@ -217,40 +205,23 @@ anchor_bottom = 0.0
 margin_top = 269.0
 margin_right = 462.0
 margin_bottom = 389.0
+playbook_data = "contacts"
+title = "Cew Contacts:"
+field_scene = ExtResource( 10 )
+keep_updated = false
+compact = true
 
-[node name="CrewUpgradesContainer" type="ScrollContainer" parent="CrewPlaybookContainer/Crew"]
+[node name="crew_upgrades" parent="CrewPlaybookContainer/Crew" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 399.0
 margin_right = 462.0
 margin_bottom = 518.0
-size_flags_vertical = 3
-
-[node name="crew_upgrades" type="VBoxContainer" parent="CrewPlaybookContainer/Crew/CrewUpgradesContainer"]
-margin_right = 108.0
-margin_bottom = 54.0
-script = ExtResource( 3 )
-
-[node name="CrewUpgradesLabel" type="Label" parent="CrewPlaybookContainer/Crew/CrewUpgradesContainer/crew_upgrades"]
-margin_right = 108.0
-margin_bottom = 21.0
-text = "Crew Upgrades"
-
-[node name="upgrade1" type="HBoxContainer" parent="CrewPlaybookContainer/Crew/CrewUpgradesContainer/crew_upgrades"]
-margin_top = 25.0
-margin_right = 108.0
-margin_bottom = 54.0
-
-[node name="CheckBox" type="CheckBox" parent="CrewPlaybookContainer/Crew/CrewUpgradesContainer/crew_upgrades/upgrade1"]
-margin_right = 24.0
-margin_bottom = 29.0
-pressed = true
-
-[node name="LinkButton" type="LinkButton" parent="CrewPlaybookContainer/Crew/CrewUpgradesContainer/crew_upgrades/upgrade1"]
-margin_left = 28.0
-margin_right = 106.0
-margin_bottom = 29.0
-hint_tooltip = "Click for addtional information."
-focus_mode = 2
-text = "Documents"
+playbook_data = "upgrades"
+title = "Upgrades:"
+field_scene = ExtResource( 11 )
+keep_updated = false
+compact = true
 
 [node name="CoinVaultContainer" type="HBoxContainer" parent="CrewPlaybookContainer/Crew"]
 margin_top = 528.0
@@ -338,6 +309,8 @@ text = "0"
 items = [ "0", null, false, 0, null, "1", null, false, 1, null, "2", null, false, 2, null, "3", null, false, 3, null, "4", null, false, 4, null ]
 selected = 0
 script = ExtResource( 2 )
+property = "selected"
+playbook_field = "tier"
 
 [node name="HoldLabel" type="Label" parent="CrewPlaybookContainer/Lair/HBoxContainer"]
 margin_left = 215.0
@@ -355,6 +328,8 @@ text = "Weak"
 items = [ "Weak", null, false, 0, null, "Strong", null, false, 1, null ]
 selected = 0
 script = ExtResource( 2 )
+property = "selected"
+playbook_field = "hold_level"
 
 [node name="LairPicture" type="TextureRect" parent="CrewPlaybookContainer/Lair"]
 margin_top = 66.0
@@ -397,6 +372,7 @@ size_flags_vertical = 3
 caret_blink = true
 caret_blink_speed = 0.5
 script = ExtResource( 2 )
+playbook_field = "hunting_grounds.description"
 
 [node name="LairUpgradesContainer" type="ScrollContainer" parent="CrewPlaybookContainer/Lair"]
 margin_top = 268.0
@@ -414,23 +390,23 @@ margin_right = 102.0
 margin_bottom = 21.0
 text = "Lair upgrades:"
 
-[node name="upgrade1" type="HBoxContainer" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades"]
+[node name="upgrade" type="HBoxContainer" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades"]
 margin_top = 25.0
 margin_right = 102.0
 margin_bottom = 54.0
 custom_constants/separation = 0
 
-[node name="level1" type="CheckBox" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade1"]
+[node name="level1" type="CheckBox" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade"]
 margin_right = 24.0
 margin_bottom = 29.0
 pressed = true
 
-[node name="level2" type="CheckBox" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade1"]
+[node name="level2" type="CheckBox" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade"]
 margin_left = 24.0
 margin_right = 48.0
 margin_bottom = 29.0
 
-[node name="upgrade" type="LinkButton" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade1"]
+[node name="upgrade" type="LinkButton" parent="CrewPlaybookContainer/Lair/LairUpgradesContainer/lair_upgrades/upgrade"]
 margin_left = 48.0
 margin_right = 81.0
 margin_bottom = 29.0

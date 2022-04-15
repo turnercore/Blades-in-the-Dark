@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=1]
+[ext_resource path="res://CrewUpgrade.gd" type="Script" id=2]
+
+[node name="crew_upgrade" type="HBoxContainer"]
+margin_right = 106.0
+margin_bottom = 29.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_right = 24.0
+margin_bottom = 29.0
+script = ExtResource( 1 )
+property = "pressed"
+modular_playbook_field_ending = ".claimed"
+
+[node name="LinkButton" type="LinkButton" parent="."]
+margin_left = 28.0
+margin_right = 106.0
+margin_bottom = 29.0
+hint_tooltip = "Click for addtional information."
+focus_mode = 2
+text = "Documents"
+script = ExtResource( 1 )
+modular_playbook_field_ending = ".name"

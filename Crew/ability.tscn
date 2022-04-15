@@ -11,6 +11,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+FIELD_TEMPLATE = "abilities.%s"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 1024.0
@@ -21,22 +22,25 @@ margin_right = 24.0
 margin_bottom = 29.0
 script = ExtResource( 2 )
 property = "pressed"
+modular_playbook_field_ending = ".claimed"
 
 [node name="ability" type="Label" parent="HBoxContainer"]
 margin_left = 28.0
 margin_top = 4.0
-margin_right = 128.0
+margin_right = 119.0
 margin_bottom = 25.0
 focus_mode = 2
-text = "Synchronized "
+text = "Ability Name"
 script = ExtResource( 2 )
+modular_playbook_field_ending = ".name"
 
-[node name="effect" type="Label" parent="."]
+[node name="description" type="Label" parent="."]
 margin_top = 33.0
 margin_right = 1024.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "When you perform a group action, you may count multiple 6s from different rolls as a critical success."
+text = "Ability Description"
 autowrap = true
 script = ExtResource( 2 )
+modular_playbook_field_ending = ".description"

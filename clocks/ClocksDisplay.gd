@@ -43,7 +43,6 @@ func add_clock(clock_data:={})-> void:
 	grid.add_child(new_clock)
 	new_clock.setup(clock_data)
 	new_clock.connect("type_changed", self, "_on_clock_type_changed")
-	print(current_clock_scale)
 
 
 func add_loaded_clocks(clocks:={}, type:int= 0)->void:#This :=[] looks like a screaming robot
@@ -74,7 +73,6 @@ func _on_save_loaded(_save_game)->void:
 
 
 func _on_ClockSort_item_selected(type: int) -> void:
-	print(type)
 	current_type_displayed = type
 	clear_clocks()
 	add_loaded_clocks(GameData.clocks, type)
@@ -89,7 +87,6 @@ func _on_clock_type_changed(type: int, clock) -> void:
 func _on_ScaleSlider_value_changed(value: float) -> void:
 	for clock in grid.get_children():
 		current_clock_scale = BASE_CLOCK_SIZE * (value / 50)
-		print (current_clock_scale)
 		clock.rect_scale = current_clock_scale
 
 

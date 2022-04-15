@@ -145,10 +145,12 @@ text = "+ Add Clock +"
 margin_top = 45.0
 margin_right = 811.0
 margin_bottom = 45.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource( 3 )
 columns = 2
 
-[connection signal="item_selected" from="ScrollContainer/VBoxContainer/Settings/ClockSort" to="ScrollContainer" method="_on_ClockSort_item_selected"]
-[connection signal="value_changed" from="ScrollContainer/VBoxContainer/Settings/ClockSizeContainer/ScaleSlider" to="ScrollContainer" method="_on_ScaleSlider_value_changed"]
-[connection signal="item_selected" from="ScrollContainer/VBoxContainer/Settings/GridColumnOption" to="ScrollContainer" method="_on_GridColumnOption_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/Settings/ClockSort" to="." method="_on_ClockSort_item_selected"]
+[connection signal="value_changed" from="ScrollContainer/VBoxContainer/Settings/ClockSizeContainer/ScaleSlider" to="." method="_on_ScaleSlider_value_changed"]
+[connection signal="item_selected" from="ScrollContainer/VBoxContainer/Settings/GridColumnOption" to="." method="_on_GridColumnOption_item_selected"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/Settings/AddClock" to="." method="_on_AddClock_pressed"]

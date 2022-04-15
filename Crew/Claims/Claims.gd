@@ -22,3 +22,7 @@ func _on_crew_loaded(playbook: CrewPlaybook) -> void:
 
 func _on_RecalculateButton_pressed() -> void:
 	setup_claims(GameData.crew_playbook)
+
+
+func _on_PrisonToggle_toggled(button_pressed: bool) -> void:
+	pass # Replace with function body.

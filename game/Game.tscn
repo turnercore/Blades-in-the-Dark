@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://maps/MapShortcuts.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Crew/Crew.tscn" type="PackedScene" id=2]
@@ -6,14 +6,13 @@
 [ext_resource path="res://game/Game.gd" type="Script" id=4]
 [ext_resource path="res://clocks/ClocksDisplay.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Chat/Chat.tscn" type="PackedScene" id=6]
-[ext_resource path="res://maps/AddMapNoteButton.gd" type="Script" id=7]
 [ext_resource path="res://Character/CharacterSheet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://maps/Map.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Character/Roster.tscn" type="PackedScene" id=10]
 [ext_resource path="res://settings/Settings.tscn" type="PackedScene" id=11]
-[ext_resource path="res://maps/InfoContainer.gd" type="Script" id=12]
 [ext_resource path="res://Shared/theme/GameTheme.tres" type="Theme" id=13]
 [ext_resource path="res://MainScreenButtons.tscn" type="PackedScene" id=14]
+[ext_resource path="res://tooltip/Tooltip.tscn" type="PackedScene" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -202,58 +201,7 @@ margin_left = 10.0
 margin_top = 25.0
 margin_right = 290.0
 margin_bottom = 190.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer"]
-margin_right = 241.0
-margin_bottom = 165.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="MapInfo" type="PanelContainer" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer"]
-self_modulate = Color( 1, 1, 1, 0.85098 )
-margin_right = 241.0
-margin_bottom = 165.0
-mouse_filter = 2
-size_flags_vertical = 3
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-info_label = NodePath("ScrollContainer/InfoLabel")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 234.0
-margin_bottom = 158.0
-scroll_horizontal_enabled = false
-
-[node name="InfoLabel" type="Label" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo/ScrollContainer"]
-margin_right = 227.0
-margin_bottom = 151.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "This is where the map info goes when you highlight map regions."
-align = 1
-autowrap = true
-
-[node name="Tween" type="Tween" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo"]
-
-[node name="DismissTimer" type="Timer" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo"]
-wait_time = 0.05
-one_shot = true
-autostart = true
-
-[node name="AddMapNoteButton" type="Button" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer"]
-visible = false
-margin_top = 151.0
-margin_right = 74.0
-margin_bottom = 176.0
-size_flags_horizontal = 0
-size_flags_vertical = 9
-toggle_mode = true
-text = "+Add Note"
-script = ExtResource( 7 )
+alignment = 2
 
 [node name="MapShortcuts" parent="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer" instance=ExtResource( 1 )]
 anchor_bottom = 0.0
@@ -295,14 +243,13 @@ __meta__ = {
 }
 
 [node name="Crew" parent="ViewportContainer/Viewport/PopupLayer/Popups" instance=ExtResource( 2 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+visible = false
 
 [node name="Roster" parent="ViewportContainer/Viewport/PopupLayer/Popups" instance=ExtResource( 10 )]
+margin_left = 0.0
+margin_top = 0.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Character" parent="ViewportContainer/Viewport/PopupLayer/Popups" instance=ExtResource( 8 )]
 anchor_right = 0.0
@@ -311,13 +258,13 @@ margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="Clocks" parent="ViewportContainer/Viewport/PopupLayer/Popups" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 600.0
 
 [node name="Settings" parent="ViewportContainer/Viewport/PopupLayer/Popups" instance=ExtResource( 11 )]
 
+[node name="TooltipLayer" type="CanvasLayer" parent="ViewportContainer/Viewport"]
+layer = 20
+
+[node name="Tooltip" parent="ViewportContainer/Viewport/TooltipLayer" instance=ExtResource( 15 )]
+
 [connection signal="focus_entered" from="ViewportContainer/Viewport/GUI/MainScreenButtons" to="." method="_on_MainScreenButtons_focus_entered"]
 [connection signal="mouse_entered" from="ViewportContainer/Viewport/GUI/MainScreenButtons" to="." method="_on_MainScreenButtons_mouse_entered"]
-[connection signal="timeout" from="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo/DismissTimer" to="ViewportContainer/Viewport/GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer/VBoxContainer/MapInfo" method="_on_DismissTimer_timeout"]

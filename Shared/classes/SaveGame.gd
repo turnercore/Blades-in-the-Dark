@@ -52,7 +52,8 @@ func setup_srd_maps()-> void:
 				i += 1
 
 		new_map["map_index"] = i if map_exists else maps.size()
-		new_map["description"] = maps[i].description if map_exists else srd_map.description
+		if map_exists and "description" in maps[i]:
+			new_map["description"] = maps[i].description if map_exists else srd_map.description
 		new_map["image"] = maps[i].image if map_exists else srd_map.image
 		new_map["notes"] = maps[i].notes if map_exists else {}
 		new_map["srd_notes"] = maps[i].srd_notes if map_exists else {}
