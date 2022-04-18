@@ -20,7 +20,8 @@ func setup()-> void:
 		var new_shortcut = shortcut_scene.instance() as Button
 		new_shortcut.pos = shortcut.pos
 		new_shortcut.text = str(i)
-		new_shortcut.hint_tooltip = shortcut.location if "location" in shortcut else ""
+		new_shortcut.location = shortcut.location_name if "location_name" in shortcut else ""
+		new_shortcut.description = shortcut.description if "description" in shortcut else ""
 		new_shortcut.connect("pressed", self, "_on_shortcut_pressed", [shortcut.pos])
 		add_child(new_shortcut)
 		i+=1

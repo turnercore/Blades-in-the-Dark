@@ -15,6 +15,8 @@ __meta__ = {
 }
 
 [node name="contact" parent="." instance=ExtResource( 2 )]
+margin_right = 250.0
+margin_bottom = 250.0
 
 [node name="contact2" type="VBoxContainer" parent="."]
 margin_left = 254.0

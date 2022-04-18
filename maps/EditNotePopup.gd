@@ -4,7 +4,7 @@ extends WindowDialog
 
 var pos: = Vector2.ZERO
 var location_name: = "" setget _set_loc_name
-var info_text: = "" setget _set_info_text
+var description: = "" setget _set_description
 var icon: = "" setget _set_icon
 var shortcut: = false
 var tags: = ""
@@ -33,7 +33,7 @@ func update_data()-> void:
 	data= {
 	"pos": Globals.convert_to_grid(pos),
 	"location_name": location_name,
-	"info_text": info_text,
+	"description": description,
 	"icon": icon,
 	"shortcut": shortcut,
 	"tags": tags
@@ -65,8 +65,8 @@ func set_icon_button(icon: String)-> void:
 	pass
 
 
-func _set_info_text(value:String)-> void:
-	info_text = value.c_escape()
+func _set_description(value:String)-> void:
+	description = value.c_escape()
 	if not is_ready: yield(self, "finished_ready")
 	note_info_label.text = value.c_unescape()
 
@@ -95,8 +95,8 @@ func _on_location_name_text_changed(new_text: String) -> void:
 	location_name = new_text.c_escape()
 
 
-func _on_note_info_text_changed() -> void:
-	info_text = $VBoxContainer/note_info.text.c_escape()
+func _on_note_description_changed() -> void:
+	description = $VBoxContainer/note_info.text.c_escape()
 
 
 func _on_SaveButton_pressed() -> void:

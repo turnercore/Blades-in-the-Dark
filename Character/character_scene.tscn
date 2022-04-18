@@ -12,8 +12,8 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_right = 111.0
-margin_bottom = 20.0
+margin_right = 124.0
+margin_bottom = 27.0
 text = "character name"
 script = ExtResource( 1 )
 playbook_field = "name"

@@ -11,7 +11,6 @@ bg_color = Color( 0.254902, 0, 0.32549, 1 )
 bg_color = Color( 0.227451, 0, 0.321569, 1 )
 
 [node name="CreateCharacterPopup" type="PopupPanel"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/panel = SubResource( 2 )
@@ -48,18 +47,18 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="\'create a new character\'" type="Label" parent="MarginContainer/Page1/VBox"]
-margin_top = 251.0
+margin_top = 248.0
 margin_right = 1004.0
-margin_bottom = 270.0
+margin_bottom = 269.0
 text = "Create a new character"
 align = 1
 uppercase = true
 
 [node name="type_options" type="OptionButton" parent="MarginContainer/Page1/VBox"]
-margin_left = 471.0
-margin_top = 274.0
-margin_right = 532.0
-margin_bottom = 299.0
+margin_left = 468.0
+margin_top = 273.0
+margin_right = 535.0
+margin_bottom = 300.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "None"
@@ -67,10 +66,10 @@ items = [ "None", null, false, 0, null ]
 selected = 0
 
 [node name="NextButton" type="Button" parent="MarginContainer/Page1/VBox"]
-margin_left = 481.0
-margin_top = 303.0
-margin_right = 522.0
-margin_bottom = 328.0
+margin_left = 479.0
+margin_top = 304.0
+margin_right = 524.0
+margin_bottom = 331.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 disabled = true
@@ -99,7 +98,7 @@ custom_constants/margin_bottom = 5
 margin_left = 10.0
 margin_top = 15.0
 margin_right = 994.0
-margin_bottom = 34.0
+margin_bottom = 36.0
 size_flags_vertical = 0
 text = "Create a new character"
 align = 1
@@ -288,7 +287,7 @@ scroll_horizontal_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Page3"]
 margin_right = 1004.0
-margin_bottom = 505.0
+margin_bottom = 511.0
 size_flags_horizontal = 3
 custom_constants/margin_right = 10
 custom_constants/margin_top = 15
@@ -299,31 +298,31 @@ custom_constants/margin_bottom = 5
 margin_left = 10.0
 margin_top = 15.0
 margin_right = 994.0
-margin_bottom = 500.0
+margin_bottom = 506.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="title" type="Label" parent="MarginContainer/Page3/MarginContainer/VBox"]
 margin_right = 984.0
-margin_bottom = 19.0
+margin_bottom = 21.0
 size_flags_vertical = 1
 text = "Assign Starting Stats "
 align = 1
 uppercase = true
 
 [node name="title2" type="Label" parent="MarginContainer/Page3/MarginContainer/VBox"]
-margin_top = 23.0
+margin_top = 25.0
 margin_right = 984.0
-margin_bottom = 42.0
+margin_bottom = 46.0
 size_flags_vertical = 1
 text = "(Add 3 points, no stat can be above 2 total)"
 align = 1
 
 [node name="StatsContainer" type="VBoxContainer" parent="MarginContainer/Page3/MarginContainer/VBox"]
-margin_top = 46.0
+margin_top = 50.0
 margin_right = 984.0
-margin_bottom = 456.0
+margin_bottom = 460.0
 custom_constants/separation = 25
 
 [node name="insight" parent="MarginContainer/Page3/MarginContainer/VBox/StatsContainer" instance=ExtResource( 3 )]
@@ -351,10 +350,10 @@ stat_name = "Resolve"
 substats = [ "Attune", "Command", "Consort", "Sway" ]
 
 [node name="FinishButton" type="Button" parent="MarginContainer/Page3/MarginContainer/VBox"]
-margin_left = 461.0
-margin_top = 460.0
-margin_right = 522.0
-margin_bottom = 485.0
+margin_left = 456.0
+margin_top = 464.0
+margin_right = 527.0
+margin_bottom = 491.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Finished"

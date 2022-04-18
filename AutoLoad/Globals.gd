@@ -92,7 +92,7 @@ func propagate_set_playbook_fields_recursive(node:Node, field_template:String)->
 	for child in node.get_children():
 		if "playbook_field" in child:
 			if "modular_playbook_field_ending" in child and child.modular_playbook_field_ending:
-				child.playbook_field = field_template + child.modular_playbook_field_ending
+				child.playbook_field = (field_template + child.modular_playbook_field_ending).trim_prefix(".")
 			else:
 				child.playbook_field = field_template
 		if child.get_child_count() > 0:

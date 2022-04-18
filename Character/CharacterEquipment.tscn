@@ -15,5 +15,4 @@ item_scene = ExtResource( 3 )
 
 [node name="item_scene" parent="." instance=ExtResource( 3 )]
 visible = false
-margin_top = 0.0
 margin_bottom = 24.0

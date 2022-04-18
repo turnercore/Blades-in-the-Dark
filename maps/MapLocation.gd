@@ -2,8 +2,8 @@ class_name MapNote
 extends Area2D
 
 export(PackedScene) var edit_note_popup
-export(NodePath) onready var location_name_label = get_node(location_name_label) as Label
-export(NodePath) onready var info_text_label = get_node(info_text_label) as Label
+onready var location_name_label: = $MapNoteTexture/location_name
+onready var description_label: = $MapNoteTexture/description
 onready var map_note_texture:= $MapNoteTexture
 onready var anim:= $AnimationPlayer
 
@@ -13,8 +13,8 @@ var pos:Vector2
 var icon:String= GameData.DEFAULT_MAP_NOTE_ICON setget _set_icon
 var shortcut: = false
 var location_name:String setget _set_location_name
-var info_text:String setget _set_info_text
 var description:String setget _set_description
+
 
 var cursor_hovered: = false
 var locked: = false
@@ -54,10 +54,6 @@ func _set_icon(value: String)-> void:
 func _on_cursor_free()->void:
 	cursor_hovered = false
 
-func _set_description(value: String)-> void:
-	self.info_text = value
-	description = value
-
 
 func _on_clicked(note)->void:
 	if locked: return
@@ -88,7 +84,7 @@ func create_popup()-> EditNotePopup:
 		"icon": icon,
 		"shortcut": shortcut,
 		"location_name": location_name,
-		"info_text": info_text
+		"description": description
 	}
 
 	for property in data:
@@ -105,11 +101,11 @@ func _on_MapNote_area_entered(area: Area2D) -> void:
 
 	if area is Cursor and not cursor_hovered:
 		cursor_hovered = true
-		if not info_text:
-			info_text = "Info text missing"
+		if not description:
+			description = "Info text missing"
 
-		Tooltip.display_tooltip(location_name, info_text)
-#		Events.emit_signal("info_broadcasted", info_text.c_unescape())
+		Tooltip.display_tooltip(location_name, description)
+#		Events.emit_signal("info_broadcasted", description.c_unescape())
 		enlarge()
 
 
@@ -143,6 +139,6 @@ func _set_location_name(value:String)-> void:
 	location_name_label.text = location_name.c_unescape().capitalize()
 
 
-func _set_info_text(value: String)-> void:
-	info_text = value
-	info_text_label.text = info_text.c_unescape()
+func _set_description(value: String)-> void:
+	description = value
+	description_label.text = description.c_unescape()

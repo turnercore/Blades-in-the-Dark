@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://maps/MapShortcuts.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/MapShortcuts.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Crew/Crew.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/MainScreen.gd" type="Script" id=3]
 [ext_resource path="res://game/Game.gd" type="Script" id=4]
@@ -12,7 +12,12 @@
 [ext_resource path="res://Character/Roster.tscn" type="PackedScene" id=10]
 [ext_resource path="res://settings/Settings.tscn" type="PackedScene" id=11]
 [ext_resource path="res://TooltipLayer.gd" type="Script" id=12]
+[ext_resource path="res://UI/GameStateLabel.gd" type="Script" id=13]
 [ext_resource path="res://MainScreenButtons.tscn" type="PackedScene" id=14]
+[ext_resource path="res://UI/DowntimeButton.gd" type="Script" id=15]
+[ext_resource path="res://UI/FreePlayButton.gd" type="Script" id=16]
+[ext_resource path="res://UI/ScoreButton.gd" type="Script" id=17]
+[ext_resource path="res://UI/SelectedCharacter.tscn" type="PackedScene" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -36,139 +41,132 @@ clock_screen = NodePath("PopupLayer/Popups/Clocks")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="MainScreenButtons" parent="GUI" instance=ExtResource( 14 )]
-mouse_filter = 0
-
-[node name="PlayControls" type="HBoxContainer" parent="GUI"]
+[node name="UI" type="VBoxContainer" parent="GUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/PlayControls"]
-margin_right = 200.0
-margin_bottom = 600.0
+[node name="TopHalfUI" type="HBoxContainer" parent="GUI/UI"]
+margin_right = 1024.0
+margin_bottom = 298.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirstThird" type="VBoxContainer" parent="GUI/UI/TopHalfUI"]
+margin_right = 338.0
+margin_bottom = 298.0
 rect_min_size = Vector2( 200, 0 )
 mouse_filter = 2
-size_flags_vertical = 3
-
-[node name="Character" type="ColorRect" parent="GUI/PlayControls/VBoxContainer"]
-visible = false
-margin_right = 200.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 200 )
-size_flags_vertical = 3
-color = Color( 1, 1, 1, 0.0941176 )
-
-[node name="Label" type="Label" parent="GUI/PlayControls/VBoxContainer/Character"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 4
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Character"
-align = 1
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Stats" type="ColorRect" parent="GUI/PlayControls/VBoxContainer"]
-visible = false
-margin_right = 200.0
-margin_bottom = 298.0
-rect_min_size = Vector2( 0, 150 )
-size_flags_vertical = 3
-color = Color( 1, 1, 1, 0.0941176 )
-
-[node name="Label" type="Label" parent="GUI/PlayControls/VBoxContainer/Stats"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 4
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Stats"
-align = 1
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StressAndCoins" type="ColorRect" parent="GUI/PlayControls/VBoxContainer"]
-visible = false
-margin_right = 200.0
-margin_bottom = 600.0
-size_flags_vertical = 3
-color = Color( 1, 1, 1, 0.0941176 )
-
-[node name="Label" type="Label" parent="GUI/PlayControls/VBoxContainer/StressAndCoins"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 4
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "stress and coin"
-align = 1
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="GUI/PlayControls"]
-margin_left = 204.0
-margin_right = 720.0
-margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI/PlayControls/VBoxContainer2"]
-margin_left = 123.0
-margin_right = 393.0
-margin_bottom = 55.0
+[node name="SelectedCharacter" parent="GUI/UI/TopHalfUI/FirstThird" instance=ExtResource( 18 )]
+margin_right = 338.0
+playbook = null
+
+[node name="MiddleThird" type="VBoxContainer" parent="GUI/UI/TopHalfUI"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 298.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GameStateMargin" type="MarginContainer" parent="GUI/UI/TopHalfUI/MiddleThird"]
+margin_left = 67.0
+margin_right = 271.0
+margin_bottom = 91.0
 size_flags_horizontal = 4
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
-custom_constants/margin_left = 110
+custom_constants/margin_left = 10
 custom_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/PlayControls/VBoxContainer2/MarginContainer"]
-margin_left = 110.0
+[node name="GameStateContainer" type="VBoxContainer" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin"]
+margin_left = 10.0
 margin_top = 10.0
-margin_right = 260.0
-margin_bottom = 45.0
+margin_right = 194.0
+margin_bottom = 81.0
 size_flags_horizontal = 5
 
-[node name="Panel" type="Panel" parent="GUI/PlayControls/VBoxContainer2/MarginContainer/VBoxContainer"]
-margin_right = 150.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 150, 35 )
+[node name="GameState" type="PanelContainer" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer"]
+margin_right = 184.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 175, 40 )
 custom_styles/panel = SubResource( 1 )
 
-[node name="Label" type="Label" parent="GUI/PlayControls/VBoxContainer2/MarginContainer/VBoxContainer/Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="GameStateLabel" type="Label" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/GameState"]
+margin_left = 60.0
+margin_top = 9.0
+margin_right = 123.0
+margin_bottom = 30.0
 size_flags_horizontal = 4
 text = "Free Play"
 align = 1
 valign = 1
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="GUI/PlayControls"]
-margin_left = 724.0
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer"]
+margin_top = 44.0
+margin_right = 184.0
+margin_bottom = 71.0
+
+[node name="FreePlayButton" type="Button" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer"]
+margin_right = 41.0
+margin_bottom = 27.0
+size_flags_horizontal = 0
+text = "Free"
+script = ExtResource( 16 )
+
+[node name="ScoreButton" type="Button" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer"]
+margin_left = 45.0
+margin_right = 97.0
+margin_bottom = 27.0
+size_flags_horizontal = 0
+text = "Score"
+script = ExtResource( 17 )
+
+[node name="DowntimeButton" type="Button" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer"]
+margin_left = 101.0
+margin_right = 184.0
+margin_bottom = 27.0
+size_flags_horizontal = 0
+text = "Downtime"
+script = ExtResource( 15 )
+
+[node name="LastThird" type="VBoxContainer" parent="GUI/UI/TopHalfUI"]
+margin_left = 685.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 298.0
 rect_min_size = Vector2( 300, 0 )
 mouse_filter = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MapInfoMarginContainer" type="MarginContainer" parent="GUI/PlayControls/VBoxContainer3"]
-margin_top = 400.0
+[node name="MainScreenButtons" parent="GUI/UI/TopHalfUI/LastThird" instance=ExtResource( 14 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 0.0
+margin_right = 339.0
+margin_bottom = 0.0
+mouse_filter = 0
+
+[node name="MapInfoMarginContainer" type="MarginContainer" parent="GUI/UI/TopHalfUI/LastThird"]
+visible = false
+margin_top = 94.0
 margin_right = 300.0
-margin_bottom = 600.0
+margin_bottom = 294.0
 rect_min_size = Vector2( 0, 200 )
 size_flags_vertical = 10
 custom_constants/margin_right = 10
@@ -179,18 +177,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/UI/TopHalfUI/LastThird/MapInfoMarginContainer"]
 margin_left = 10.0
 margin_top = 25.0
 margin_right = 290.0
 margin_bottom = 190.0
 alignment = 2
 
-[node name="MapShortcuts" parent="GUI/PlayControls/VBoxContainer3/MapInfoMarginContainer/HBoxContainer" instance=ExtResource( 1 )]
+[node name="MapShortcuts" parent="GUI/UI/TopHalfUI/LastThird/MapInfoMarginContainer/HBoxContainer" instance=ExtResource( 1 )]
 anchor_bottom = 0.0
 margin_left = 245.0
 margin_right = 280.0
 margin_bottom = 165.0
+
+[node name="BottomHalfUI" type="HBoxContainer" parent="GUI/UI"]
+margin_top = 302.0
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FirstThird" type="VBoxContainer" parent="GUI/UI/BottomHalfUI"]
+margin_right = 338.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MiddleThird" type="VBoxContainer" parent="GUI/UI/BottomHalfUI"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LastThird" type="VBoxContainer" parent="GUI/UI/BottomHalfUI"]
+margin_left = 685.0
+margin_right = 1024.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MapShortcuts" parent="GUI/UI/BottomHalfUI/LastThird" instance=ExtResource( 1 )]
+anchor_bottom = 0.0
+margin_left = 304.0
+margin_right = 339.0
+size_flags_horizontal = 8
+size_flags_vertical = 9
 
 [node name="Chat" type="CanvasLayer" parent="."]
 layer = 2
@@ -254,5 +287,8 @@ visible = false
 
 [node name="Settings" parent="PopupLayer/Popups" instance=ExtResource( 11 )]
 
-[connection signal="focus_entered" from="GUI/MainScreenButtons" to="." method="_on_MainScreenButtons_focus_entered"]
-[connection signal="mouse_entered" from="GUI/MainScreenButtons" to="." method="_on_MainScreenButtons_mouse_entered"]
+[connection signal="pressed" from="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/FreePlayButton" to="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/FreePlayButton" method="_on_FreePlayButton_pressed"]
+[connection signal="pressed" from="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/ScoreButton" to="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/ScoreButton" method="_on_ScoreButton_pressed"]
+[connection signal="pressed" from="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/DowntimeButton" to="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/DowntimeButton" method="_on_DowntimeButton_pressed"]
+[connection signal="focus_entered" from="GUI/UI/TopHalfUI/LastThird/MainScreenButtons" to="." method="_on_MainScreenButtons_focus_entered"]
+[connection signal="mouse_entered" from="GUI/UI/TopHalfUI/LastThird/MainScreenButtons" to="." method="_on_MainScreenButtons_mouse_entered"]

@@ -10,8 +10,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 FIELD_TEMPLATE = "contacts.%s"
+contact_full_sized_editable = NodePath("contact_full_sized_editable")
+contact_full_sized_static = NodePath("contact_full_sized_static")
+contact_compact = NodePath("contact_compact")
 
-[node name="contact_full_sized" type="VBoxContainer" parent="."]
+[node name="contact_full_sized_editable" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 250, 250 )
@@ -19,65 +22,106 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="contact_full_sized"]
+[node name="MarginContainer" type="MarginContainer" parent="contact_full_sized_editable"]
 margin_right = 250.0
-margin_bottom = 125.0
+margin_bottom = 131.0
+custom_constants/margin_right = 2
+custom_constants/margin_top = 6
+custom_constants/margin_left = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="contact_full_sized_editable/MarginContainer"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 248.0
+margin_bottom = 131.0
+rect_min_size = Vector2( 125, 125 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="contact_full_sized_editable/MarginContainer"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 248.0
+margin_bottom = 131.0
 size_flags_vertical = 3
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="contact_full_sized/HBoxContainer"]
-margin_right = 58.0
-margin_bottom = 125.0
+[node name="VBoxContainer" type="VBoxContainer" parent="contact_full_sized_editable/MarginContainer/HBoxContainer"]
+margin_right = 226.0
+margin_bottom = 27.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 0
 
-[node name="Button" type="Button" parent="contact_full_sized/HBoxContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="contact_full_sized_editable/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_right = 40.0
 margin_bottom = 27.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 text = "Edit"
 
-[node name="TextureRect" type="TextureRect" parent="contact_full_sized/HBoxContainer"]
-margin_left = 62.0
-margin_right = 187.0
+[node name="reputation" type="VBoxContainer" parent="contact_full_sized_editable/MarginContainer/HBoxContainer"]
+margin_left = 230.0
+margin_right = 246.0
 margin_bottom = 125.0
-rect_min_size = Vector2( 125, 125 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 1
 
-[node name="VSlider" type="VSlider" parent="contact_full_sized/HBoxContainer"]
-margin_left = 234.0
-margin_right = 250.0
-margin_bottom = 125.0
+[node name="reputation_slider" type="VSlider" parent="contact_full_sized_editable/MarginContainer/HBoxContainer/reputation"]
+margin_right = 16.0
+margin_bottom = 100.0
 size_flags_horizontal = 10
+size_flags_vertical = 3
 min_value = -5.0
 max_value = 5.0
 rounded = true
+script = ExtResource( 2 )
+property = "value"
+modular_playbook_field_ending = ".reputation"
 
-[node name="name" type="Label" parent="contact_full_sized"]
-margin_top = 129.0
+[node name="reputation_label" type="Label" parent="contact_full_sized_editable/MarginContainer/HBoxContainer/reputation"]
+margin_top = 104.0
+margin_right = 16.0
+margin_bottom = 125.0
+text = "0"
+script = ExtResource( 2 )
+modular_playbook_field_ending = ".reputation"
+
+[node name="name" type="Label" parent="contact_full_sized_editable"]
+margin_top = 135.0
 margin_right = 250.0
-margin_bottom = 150.0
+margin_bottom = 156.0
 text = "name"
 align = 1
 script = ExtResource( 2 )
 modular_playbook_field_ending = ".name"
 
-[node name="occupation" type="Label" parent="contact_full_sized"]
-margin_top = 154.0
+[node name="TypeContainer" type="HBoxContainer" parent="contact_full_sized_editable"]
+margin_top = 160.0
 margin_right = 250.0
-margin_bottom = 175.0
-text = "occuptation"
+margin_bottom = 181.0
+alignment = 1
+
+[node name="occupation" type="Label" parent="contact_full_sized_editable/TypeContainer"]
+margin_left = 123.0
+margin_right = 123.0
+margin_bottom = 21.0
 align = 1
 script = ExtResource( 2 )
 modular_playbook_field_ending = ".occupation"
 
-[node name="description" type="TextEdit" parent="contact_full_sized"]
-margin_top = 179.0
+[node name="type" type="Label" parent="contact_full_sized_editable/TypeContainer"]
+margin_left = 127.0
+margin_right = 127.0
+margin_bottom = 21.0
+script = ExtResource( 2 )
+modular_playbook_field_ending = ".type"
+
+[node name="description" type="TextEdit" parent="contact_full_sized_editable"]
+margin_top = 185.0
 margin_right = 250.0
 margin_bottom = 250.0
 size_flags_horizontal = 3
@@ -86,7 +130,106 @@ wrap_enabled = true
 script = ExtResource( 2 )
 modular_playbook_field_ending = ".description"
 
+[node name="contact_full_sized_static" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 250.0
+margin_bottom = 181.0
+rect_min_size = Vector2( 250, 150 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="contact_full_sized_static"]
+margin_right = 250.0
+margin_bottom = 131.0
+custom_constants/margin_right = 2
+custom_constants/margin_top = 6
+custom_constants/margin_left = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="contact_full_sized_static/MarginContainer"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 248.0
+margin_bottom = 131.0
+rect_min_size = Vector2( 125, 125 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="contact_full_sized_static/MarginContainer"]
+margin_left = 2.0
+margin_top = 6.0
+margin_right = 248.0
+margin_bottom = 131.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="reputation" type="VBoxContainer" parent="contact_full_sized_static/MarginContainer/HBoxContainer"]
+margin_right = 246.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+
+[node name="reputation_slider" type="VSlider" parent="contact_full_sized_static/MarginContainer/HBoxContainer/reputation"]
+margin_left = 230.0
+margin_right = 246.0
+margin_bottom = 100.0
+size_flags_horizontal = 10
+size_flags_vertical = 3
+min_value = -5.0
+max_value = 5.0
+rounded = true
+script = ExtResource( 2 )
+property = "value"
+modular_playbook_field_ending = ".reputation"
+
+[node name="reputation_label" type="Label" parent="contact_full_sized_static/MarginContainer/HBoxContainer/reputation"]
+margin_top = 104.0
+margin_right = 246.0
+margin_bottom = 125.0
+text = "0"
+align = 2
+script = ExtResource( 2 )
+modular_playbook_field_ending = ".reputation"
+
+[node name="name" type="Label" parent="contact_full_sized_static"]
+margin_top = 135.0
+margin_right = 250.0
+margin_bottom = 156.0
+text = "name"
+align = 1
+script = ExtResource( 2 )
+modular_playbook_field_ending = ".name"
+
+[node name="TypeContainer" type="HBoxContainer" parent="contact_full_sized_static"]
+margin_top = 160.0
+margin_right = 250.0
+margin_bottom = 181.0
+alignment = 1
+
+[node name="occupation" type="Label" parent="contact_full_sized_static/TypeContainer"]
+margin_left = 123.0
+margin_right = 123.0
+margin_bottom = 21.0
+align = 1
+script = ExtResource( 2 )
+modular_playbook_field_ending = ".occupation"
+
+[node name="type" type="Label" parent="contact_full_sized_static/TypeContainer"]
+margin_left = 127.0
+margin_right = 127.0
+margin_bottom = 21.0
+script = ExtResource( 2 )
+modular_playbook_field_ending = ".type"
+
 [node name="contact_compact" type="HBoxContainer" parent="."]
+visible = false
 margin_right = 286.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 200, 20 )

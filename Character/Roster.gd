@@ -18,6 +18,7 @@ func setup(playbooks:Array)-> void:
 		var new_character_scene = character_scene.instance()
 		new_character_scene.playbook = playbook
 		character_container.add_child(new_character_scene)
+		new_character_scene.connect("pressed", self, "_on_character_selected")
 
 
 func _on_roster_updated()->void:
@@ -27,6 +28,10 @@ func _on_roster_updated()->void:
 
 func _on_pc_playbooks_loaded(pc_playbooks:Array)-> void:
 	setup(pc_playbooks)
+
+
+func _on_character_selected()-> void:
+	self.hide()
 
 
 func _on_NewPlayerCharacterButton_pressed() -> void:

@@ -14,6 +14,9 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PanelContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
@@ -251,7 +254,8 @@ margin_right = 160.0
 margin_bottom = 29.0
 text = "Armor"
 script = ExtResource( 9 )
-playbook_field = "armor"
+property = "pressed"
+playbook_field = "normal_armor"
 
 [node name="heavy_armor" type="CheckBox" parent="PanelContainer/Info/VBoxContainer/ArmorUsesContainer"]
 margin_left = 164.0
@@ -259,6 +263,7 @@ margin_right = 282.0
 margin_bottom = 29.0
 text = "Heavy Armor"
 script = ExtResource( 9 )
+property = "pressed"
 playbook_field = "heavy_armor"
 
 [node name="special_amror" type="CheckBox" parent="PanelContainer/Info/VBoxContainer/ArmorUsesContainer"]
@@ -267,6 +272,7 @@ margin_right = 414.0
 margin_bottom = 29.0
 text = "Special Armor"
 script = ExtResource( 9 )
+property = "pressed"
 playbook_field = "special_armor"
 
 [node name="Harms" type="PanelContainer" parent="PanelContainer/Info/VBoxContainer"]

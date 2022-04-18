@@ -15,17 +15,13 @@ signal character_selected(playbook)
 func emit_character_selected(playbook: Playbook)-> void:
 	emit_signal("character_selected", playbook)
 
-#signal main_screen_changed(screen)
+signal open_screen(screen)
 
 signal popup(popup, use_overlay)
 func popup(popup, use_overlay:=false)-> void:
 	var new_popup = popup
 	if popup is PackedScene:
 		new_popup = popup.instance()
-#	elif popup is Popup:
-#		new_popup = popup
-#	elif popup is String:
-#		new_popup = popup
 	emit_signal("popup", new_popup, use_overlay)
 signal popup_finished
 

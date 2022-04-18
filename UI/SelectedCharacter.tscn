@@ -1,0 +1,198 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/SelectedCharacterUI.gd" type="Script" id=1]
+[ext_resource path="res://Shared/Art/Icons/icon.png" type="Texture" id=2]
+[ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=3]
+[ext_resource path="res://Character/Stat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Shared/Coin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Shared/Markers.tscn" type="PackedScene" id=7]
+
+[node name="SelectedCharacter" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_bottom = 1.0
+margin_right = 428.0
+margin_bottom = 594.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 421.0
+margin_bottom = 587.0
+rect_pivot_offset = Vector2( -626, 60 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterImage" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+margin_right = 414.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 150, 150 )
+texture = ExtResource( 2 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 414.0
+margin_bottom = 175.0
+text = "name"
+align = 1
+autowrap = true
+script = ExtResource( 3 )
+playbook_field = "name"
+
+[node name="class" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_top = 179.0
+margin_right = 414.0
+margin_bottom = 200.0
+text = "type"
+align = 1
+autowrap = true
+script = ExtResource( 3 )
+playbook_field = "type"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_top = 204.0
+margin_right = 414.0
+margin_bottom = 225.0
+text = "Stress"
+
+[node name="stress" parent="PanelContainer/VBoxContainer" instance=ExtResource( 7 )]
+anchor_right = 0.0
+margin_top = 229.0
+margin_right = 414.0
+margin_bottom = 250.0
+playbook_field = "stress"
+total_points = 9
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_top = 254.0
+margin_right = 414.0
+margin_bottom = 275.0
+text = "Trauma"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trauma" parent="PanelContainer/VBoxContainer" instance=ExtResource( 7 )]
+anchor_right = 0.0
+margin_top = 279.0
+margin_right = 414.0
+margin_bottom = 300.0
+playbook_field = "trauma_level"
+total_points = 4
+
+[node name="insight" parent="PanelContainer/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 304.0
+margin_right = 414.0
+margin_bottom = 374.0
+rect_min_size = Vector2( 100, 70 )
+size_flags_vertical = 1
+stat_name = "Insight"
+substats = [ "Hunt", "Study", "Survey", "Tinker" ]
+verticle_sort = false
+
+[node name="prowess" parent="PanelContainer/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 378.0
+margin_right = 414.0
+margin_bottom = 448.0
+rect_min_size = Vector2( 100, 70 )
+size_flags_vertical = 1
+verticle_sort = false
+
+[node name="resolve" parent="PanelContainer/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 452.0
+margin_right = 414.0
+margin_bottom = 522.0
+rect_min_size = Vector2( 100, 70 )
+size_flags_vertical = 1
+stat_name = "Resolve"
+substats = [ "Attune", "Command", "Consort", "Sway" ]
+verticle_sort = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 526.0
+margin_right = 414.0
+margin_bottom = 547.0
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_right = 33.0
+margin_bottom = 21.0
+text = "Coin"
+
+[node name="coins" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 7 )]
+anchor_right = 0.0
+margin_left = 37.0
+margin_right = 414.0
+margin_bottom = 21.0
+playbook_field = "coin.available"
+exp_point_scene = ExtResource( 6 )
+total_points = 4
+
+[node name="ArmorUsesContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 551.0
+margin_right = 414.0
+margin_bottom = 580.0
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ArmorUsesContainer"]
+margin_top = 4.0
+margin_right = 85.0
+margin_bottom = 25.0
+text = "Armor Uses:"
+
+[node name="armor" type="CheckBox" parent="PanelContainer/VBoxContainer/ArmorUsesContainer"]
+margin_left = 89.0
+margin_right = 160.0
+margin_bottom = 29.0
+text = "Armor"
+script = ExtResource( 3 )
+property = "pressed"
+playbook_field = "normal_armor"
+
+[node name="heavy_armor" type="CheckBox" parent="PanelContainer/VBoxContainer/ArmorUsesContainer"]
+margin_left = 164.0
+margin_right = 282.0
+margin_bottom = 29.0
+text = "Heavy Armor"
+script = ExtResource( 3 )
+property = "pressed"
+playbook_field = "heavy_armor"
+
+[node name="special_armor" type="CheckBox" parent="PanelContainer/VBoxContainer/ArmorUsesContainer"]
+margin_left = 286.0
+margin_right = 414.0
+margin_bottom = 29.0
+text = "Special Armor"
+script = ExtResource( 3 )
+property = "pressed"
+playbook_field = "special_armor"
+
+[node name="HideButton" type="Button" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 52.0
+margin_bottom = 34.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+toggle_mode = true
+text = "Hide"
+align = 0
+
+[connection signal="gui_input" from="PanelContainer/VBoxContainer/CharacterImage" to="." method="_on_CharacterImage_gui_input"]
+[connection signal="toggled" from="PanelContainer/HideButton" to="." method="_on_HideButton_toggled"]

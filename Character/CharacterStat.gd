@@ -5,6 +5,7 @@ export (PackedScene) var marker_scene
 onready var stat_name_label: = $VBoxContainer/HBoxContainer/stat_name
 onready var stat_level_label: = $VBoxContainer/HBoxContainer/stat_level
 onready var stat_container: = $VBoxContainer
+onready var stat_hbox: = $VBoxContainer/HBoxContainer
 var stats: = []
 var stat_containers: = []
 onready var xp: = $VBoxContainer/HBoxContainer/xp
@@ -29,7 +30,11 @@ func _ready() -> void:
 
 		stat_container.queue_free()
 		stat_container = new_hbox
-		add_child(stat_container)
+		var new_vbox: = VBoxContainer.new()
+		add_child(new_vbox)
+		stat_container.remove_child(stat_hbox)
+		new_vbox.add_child(stat_hbox)
+		new_vbox.add_child(stat_container)
 
 	if not stat_containers.empty():
 		for container in stat_containers:

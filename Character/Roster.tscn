@@ -15,6 +15,9 @@ margin_top = -147.5
 margin_right = 203.0
 margin_bottom = 147.5
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 character_scene = ExtResource( 2 )
 character_container = NodePath("PanelContainer/ScrollContainer/VBoxContainer/CharacterContainer")
 create_character_popup = ExtResource( 3 )

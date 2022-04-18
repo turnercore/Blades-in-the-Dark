@@ -24,7 +24,7 @@ export var harms: = {
 export var equipped_items: Array
 export var normal_armor: bool = false
 export var heavy_armor: bool = false
-export var speical_armor: bool = false
+export var special_armor: bool = false
 export var crew_name: String = ""
 export var lifestyle: String setget ,_get_lifestyle
 

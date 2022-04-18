@@ -3,7 +3,7 @@ extends Node
 const DEFAULT_MAP_NOTE_ICON:String= "res://Shared/Art/Icons/MapNoteIconTex.tres"
 
 const DEFAULT_NOTE: = {
-	"info_text": "DEFAULT INFO TEXT",
+	"description": "DEFAULT INFO TEXT",
 	"location_name": "LOCATION",
 	"tags": "",
 	"pos": Vector2.ZERO,
@@ -55,10 +55,12 @@ var map:Dictionary = {
 
 #ARRAY OF MAP NOTES a map note is a location
 var map_shortcuts:Array
-
-
 var clocks_being_saved: = false
 
+var game_state:String = "Free Play" setget _set_game_state
+
+
+#Signals
 signal crew_changed
 signal clocks_loaded(clocks)
 signal map_loaded(map)
@@ -67,6 +69,7 @@ signal pc_playbooks_changed
 signal clocks_free
 signal map_shortcut_added
 signal map_shortcut_removed
+signal game_state_changed(game_state)
 
 func _ready() -> void:
 	connect_to_signals()
@@ -296,3 +299,7 @@ func _set_map(value:Dictionary)-> void:
 
 func _on_map_note_created(note_data:Dictionary)-> void:
 	add_map_note(note_data)
+
+func _set_game_state(value:String)-> void:
+	game_state = value
+	emit_signal("game_state_changed", value)

@@ -2,6 +2,8 @@ extends HBoxContainer
 
 var playbook: Playbook setget _set_playbook
 
+signal pressed
+
 func _ready() -> void:
 	if playbook: propagate_set_playbook_recursive(self)
 
@@ -17,4 +19,4 @@ func _set_playbook(value: Playbook)-> void:
 
 
 func _on_Button_pressed() -> void:
-	Events.emit_character_selected(playbook)
+	GameData.active_pc = playbook
