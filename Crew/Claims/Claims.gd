@@ -2,7 +2,7 @@ extends CenterContainer
 
 var crew_type
 #Code to load the database
-var playbook:CrewPlaybook setget _set_playbook
+var _playbook:CrewPlaybook setget _set_playbook
 var prison:= false setget _set_prison
 var setup_with_playbook:CrewPlaybook
 onready var standard_claim_tree: = $VBoxContainer/ClaimTree
@@ -33,6 +33,7 @@ func setup_claims(playbook: CrewPlaybook) ->void:
 		if child.has_method("setup"): child.setup(playbook)
 
 	setup_with_playbook = playbook
+	_playbook = playbook
 
 func _on_crew_loaded(playbook: CrewPlaybook) -> void:
 	setup_claims(playbook)

@@ -35,7 +35,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 18.0
 margin_right = 177.0
-margin_bottom = 189.0
+margin_bottom = 220.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 custom_styles/panel = ExtResource( 1 )
@@ -44,7 +44,7 @@ custom_styles/panel = ExtResource( 1 )
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 157.0
-margin_bottom = 161.0
+margin_bottom = 192.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -63,31 +63,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ClocksButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+[node name="CharacterButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 margin_top = 62.0
 margin_right = 147.0
 margin_bottom = 89.0
+text = "Character"
+
+[node name="ClocksButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+margin_top = 93.0
+margin_right = 147.0
+margin_bottom = 120.0
 text = "Clocks"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CharacterButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
-margin_top = 93.0
-margin_right = 147.0
-margin_bottom = 120.0
-text = "Character"
-
-[node name="Hide" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+[node name="DiceRollerButton" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 margin_top = 124.0
 margin_right = 147.0
 margin_bottom = 151.0
+
+[node name="Hide" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+margin_top = 155.0
+margin_right = 147.0
+margin_bottom = 182.0
 toggle_mode = true
 action_mode = 0
 text = "Hide"
 
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/CrewSheetButton" to="." method="_on_CrewSheetButton_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/RosterButton" to="." method="_on_RosterButton_pressed"]
-[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/ClocksButton" to="." method="_on_ClocksButton_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/CharacterButton" to="." method="_on_CharacterButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/ClocksButton" to="." method="_on_ClocksButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/DiceRollerButton" to="." method="_on_DiceRollerButton_pressed"]
 [connection signal="toggled" from="MarginContainer/Panel/VBoxContainer/Hide" to="." method="_on_Hide_toggled"]

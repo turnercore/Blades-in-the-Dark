@@ -61,3 +61,5 @@ func _on_Hide_toggled(hidden: bool) -> void:
 	modulate.a = 0.5 if hidden else 1
 
 
+func _on_DiceRollerButton_pressed() -> void:
+	Events.popup("dice")
