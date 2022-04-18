@@ -37,7 +37,8 @@ func _on_character_selected()-> void:
 func _on_NewPlayerCharacterButton_pressed() -> void:
 	#Create new character popup
 	var new_popup = create_character_popup.instance()
-	Events.emit_signal("popup", new_popup)
+	Events.popup(new_popup)
+
 
 
 func _on_Roster_modal_closed() -> void:

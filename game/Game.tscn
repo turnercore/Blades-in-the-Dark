@@ -70,7 +70,6 @@ size_flags_vertical = 3
 
 [node name="SelectedCharacter" parent="GUI/UI/TopHalfUI/FirstThird" instance=ExtResource( 18 )]
 margin_right = 338.0
-playbook = null
 
 [node name="MiddleThird" type="VBoxContainer" parent="GUI/UI/TopHalfUI"]
 margin_left = 342.0
