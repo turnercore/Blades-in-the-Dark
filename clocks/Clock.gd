@@ -140,12 +140,12 @@ func _set_locked(value: bool)->void:
 func _set_id(value:String)->void:
 	if value == "new_id":
 		randomize()
-		var unique_id_helper: = 0
+		var unique_id_helper:int = 0
 		var new_id = clock_name + "_" + str((randi() % RAND_LIMIT))
 		yield(get_tree().create_timer(SAVE_INTERVAL), "timeout")
 		while GameData.clocks.has(new_id):
 			print("same clock id found in clocks, what are the odds, trying again")
-			unique_id_helper+= randi() % (RAND_LIMIT/100)
+			unique_id_helper += randi() % (RAND_LIMIT/100)
 			new_id = clock_name + "_" + str((randi() % RAND_LIMIT)+unique_id_helper)
 		id = new_id
 	else:

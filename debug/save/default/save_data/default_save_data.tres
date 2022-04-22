@@ -1,0 +1,29 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/SaveGame.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_save_id = "default"
+_save_folder = "res://debug/save"
+version = "0.5"
+map = {
+"image": null,
+"map_index": 0,
+"map_name": "Duskvol",
+"notes": {
+},
+"srd_notes": {
+}
+}
+maps = [ {
+"image": null,
+"map_index": 0,
+"map_name": "Duskvol",
+"notes": {
+},
+"srd_notes": {
+}
+} ]
+clocks = {
+}

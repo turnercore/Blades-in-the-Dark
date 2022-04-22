@@ -1,0 +1,248 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://debug/demo/src/TestConsole.gd" type="Script" id=1]
+[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=2]
+
+[node name="TestConsole" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_right = 1076.0
+margin_bottom = 600.0
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_right = 1076.0
+margin_bottom = 31.0
+text = "Test console for multiplayer"
+align = 1
+
+[node name="login" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 1076.0
+margin_bottom = 94.0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/login"]
+margin_top = 8.0
+margin_right = 74.0
+margin_bottom = 39.0
+text = "Email:"
+
+[node name="Email" type="LineEdit" parent="PanelContainer/VBoxContainer/login"]
+margin_left = 90.0
+margin_right = 340.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 4
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/login"]
+margin_left = 356.0
+margin_top = 8.0
+margin_right = 479.0
+margin_bottom = 39.0
+text = "Password:"
+
+[node name="Password" type="LineEdit" parent="PanelContainer/VBoxContainer/login"]
+margin_left = 495.0
+margin_right = 745.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 4
+
+[node name="LoginButton" type="Button" parent="PanelContainer/VBoxContainer/login"]
+margin_left = 761.0
+margin_right = 830.0
+margin_bottom = 47.0
+size_flags_horizontal = 4
+text = "Login"
+
+[node name="LoginResult" type="Label" parent="PanelContainer/VBoxContainer/login"]
+margin_left = 846.0
+margin_top = 8.0
+margin_right = 1076.0
+margin_bottom = 39.0
+text = "Result of operation"
+
+[node name="ConnectToServer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_left = 261.0
+margin_top = 110.0
+margin_right = 815.0
+margin_bottom = 141.0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ConnectToServer"]
+margin_right = 74.0
+margin_bottom = 31.0
+text = "Email:"
+
+[node name="Email" type="LineEdit" parent="PanelContainer/VBoxContainer/ConnectToServer"]
+visible = false
+margin_left = 43.0
+margin_right = 193.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 4
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/ConnectToServer"]
+visible = false
+margin_left = 43.0
+margin_top = 5.0
+margin_right = 107.0
+margin_bottom = 19.0
+text = "Password:"
+
+[node name="Password" type="LineEdit" parent="PanelContainer/VBoxContainer/ConnectToServer"]
+visible = false
+margin_left = 43.0
+margin_right = 193.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 4
+
+[node name="ConnectButton" type="Button" parent="PanelContainer/VBoxContainer/ConnectToServer"]
+margin_left = 90.0
+margin_right = 308.0
+margin_bottom = 31.0
+size_flags_horizontal = 4
+text = "Connect to Server"
+
+[node name="ConnectResult" type="Label" parent="PanelContainer/VBoxContainer/ConnectToServer"]
+margin_left = 324.0
+margin_right = 554.0
+margin_bottom = 31.0
+text = "Result of operation"
+
+[node name="creatematch" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_left = 240.0
+margin_top = 157.0
+margin_right = 835.0
+margin_bottom = 188.0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/creatematch"]
+margin_right = 169.0
+margin_bottom = 31.0
+text = "Create Match:"
+
+[node name="CreateMatchName" type="LineEdit" parent="PanelContainer/VBoxContainer/creatematch"]
+visible = false
+margin_left = 185.0
+margin_right = 335.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 4
+
+[node name="CreateMatchButton" type="Button" parent="PanelContainer/VBoxContainer/creatematch"]
+margin_left = 185.0
+margin_right = 349.0
+margin_bottom = 31.0
+size_flags_horizontal = 4
+text = "Create Match"
+
+[node name="CreateMatchResult" type="Label" parent="PanelContainer/VBoxContainer/creatematch"]
+margin_left = 365.0
+margin_right = 595.0
+margin_bottom = 31.0
+mouse_filter = 0
+text = "Result of operation"
+
+[node name="joinmatch" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_left = 230.0
+margin_top = 204.0
+margin_right = 846.0
+margin_bottom = 251.0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/joinmatch"]
+margin_top = 8.0
+margin_right = 138.0
+margin_bottom = 39.0
+text = "Join Match:"
+
+[node name="JoinMatchName" type="LineEdit" parent="PanelContainer/VBoxContainer/joinmatch"]
+margin_left = 154.0
+margin_right = 304.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 4
+
+[node name="JoinMatchButton" type="Button" parent="PanelContainer/VBoxContainer/joinmatch"]
+margin_left = 320.0
+margin_right = 370.0
+margin_bottom = 47.0
+size_flags_horizontal = 4
+text = "Join"
+
+[node name="JoinMatchResult" type="Label" parent="PanelContainer/VBoxContainer/joinmatch"]
+margin_left = 386.0
+margin_top = 8.0
+margin_right = 616.0
+margin_bottom = 39.0
+text = "Result of operation"
+
+[node name="transmitdata" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_left = 204.0
+margin_top = 267.0
+margin_right = 871.0
+margin_bottom = 314.0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/transmitdata"]
+margin_top = 8.0
+margin_right = 177.0
+margin_bottom = 39.0
+text = "Transmit Data:"
+
+[node name="data" type="LineEdit" parent="PanelContainer/VBoxContainer/transmitdata"]
+margin_left = 193.0
+margin_right = 343.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 4
+
+[node name="SendDataButton" type="Button" parent="PanelContainer/VBoxContainer/transmitdata"]
+margin_left = 359.0
+margin_right = 421.0
+margin_bottom = 47.0
+size_flags_horizontal = 4
+text = "Send"
+
+[node name="SendDataResult" type="Label" parent="PanelContainer/VBoxContainer/transmitdata"]
+margin_left = 437.0
+margin_top = 8.0
+margin_right = 667.0
+margin_bottom = 39.0
+text = "Result of operation"
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_top = 330.0
+margin_right = 1076.0
+margin_bottom = 361.0
+text = "Recieved Data:"
+align = 1
+
+[node name="RecievedData" type="Label" parent="PanelContainer/VBoxContainer"]
+margin_top = 377.0
+margin_right = 1076.0
+margin_bottom = 408.0
+text = "Data"
+align = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/login/LoginButton" to="." method="_on_LoginButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ConnectToServer/ConnectButton" to="." method="_on_ConnectButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/creatematch/CreateMatchButton" to="." method="_on_CreateMatchButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/joinmatch/JoinMatchButton" to="." method="_on_JoinMatchButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/transmitdata/SendDataButton" to="." method="_on_SendDataButton_pressed"]

@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Crew/ability.gd"
 }, {
+"base": "Reference",
+"class": "Authenticator",
+"language": "GDScript",
+"path": "res://AutoLoad/Delegates/Authenticator.gd"
+}, {
+"base": "Reference",
+"class": "CharacterListing",
+"language": "GDScript",
+"path": "res://debug/demo/src/UI/Menus/Characters/CharacterListing.gd"
+}, {
 "base": "Resource",
 "class": "ChatLog",
 "language": "GDScript",
@@ -38,6 +48,16 @@ _global_script_classes=[ {
 "class": "Clock",
 "language": "GDScript",
 "path": "res://clocks/Clock.gd"
+}, {
+"base": "Button",
+"class": "ColorSwatch",
+"language": "GDScript",
+"path": "res://debug/demo/src/UI/Elements/ColorSwatch.gd"
+}, {
+"base": "Reference",
+"class": "ConfirmationPopup",
+"language": "GDScript",
+"path": "res://debug/demo/src/UI/Components/ConfirmationPopup.gd"
 }, {
 "base": "Field",
 "class": "Contact",
@@ -69,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://maps/EditNotePopup.gd"
 }, {
+"base": "Reference",
+"class": "ExceptionHandler",
+"language": "GDScript",
+"path": "res://AutoLoad/Delegates/ExceptionHandler.gd"
+}, {
 "base": "Control",
 "class": "Field",
 "language": "GDScript",
@@ -78,6 +103,11 @@ _global_script_classes=[ {
 "class": "FieldList",
 "language": "GDScript",
 "path": "res://Shared/FieldList.gd"
+}, {
+"base": "Reference",
+"class": "LineEditValidate",
+"language": "GDScript",
+"path": "res://debug/demo/src/UI/Elements/LineEditValidate.gd"
 }, {
 "base": "Node2D",
 "class": "Map",
@@ -98,6 +128,86 @@ _global_script_classes=[ {
 "class": "Markers",
 "language": "GDScript",
 "path": "res://Shared/classes/Markers.gd"
+}, {
+"base": "Reference",
+"class": "Menu",
+"language": "GDScript",
+"path": "res://debug/demo/src/UI/Elements/Menu.gd"
+}, {
+"base": "Reference",
+"class": "MenuList",
+"language": "GDScript",
+"path": "res://debug/demo/src/UI/Elements/MenuList.gd"
+}, {
+"base": "Reference",
+"class": "NakamaAPI",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/api/NakamaAPI.gd"
+}, {
+"base": "Reference",
+"class": "NakamaAsyncResult",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/utils/NakamaAsyncResult.gd"
+}, {
+"base": "Reference",
+"class": "NakamaClient",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/client/NakamaClient.gd"
+}, {
+"base": "Reference",
+"class": "NakamaException",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/utils/NakamaException.gd"
+}, {
+"base": "Node",
+"class": "NakamaHTTPAdapter",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/client/NakamaHTTPAdapter.gd"
+}, {
+"base": "Reference",
+"class": "NakamaLogger",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/utils/NakamaLogger.gd"
+}, {
+"base": "NakamaAsyncResult",
+"class": "NakamaRTAPI",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/api/NakamaRTAPI.gd"
+}, {
+"base": "Reference",
+"class": "NakamaRTMessage",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/api/NakamaRTMessage.gd"
+}, {
+"base": "Reference",
+"class": "NakamaSerializer",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/utils/NakamaSerializer.gd"
+}, {
+"base": "NakamaAsyncResult",
+"class": "NakamaSession",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/api/NakamaSession.gd"
+}, {
+"base": "Reference",
+"class": "NakamaSocket",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/socket/NakamaSocket.gd"
+}, {
+"base": "Node",
+"class": "NakamaSocketAdapter",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/socket/NakamaSocketAdapter.gd"
+}, {
+"base": "Reference",
+"class": "NakamaStorageObjectId",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/api/NakamaStorageObjectId.gd"
+}, {
+"base": "Reference",
+"class": "NakamaWriteStorageObject",
+"language": "GDScript",
+"path": "res://nakama/addons/com.heroiclabs.nakama/api/NakamaWriteStorageObject.gd"
 }, {
 "base": "Resource",
 "class": "Playbook",
@@ -123,31 +233,59 @@ _global_script_classes=[ {
 "class": "SaveableField",
 "language": "GDScript",
 "path": "res://Shared/classes/SaveableField.gd"
+}, {
+"base": "Reference",
+"class": "StorageWorker",
+"language": "GDScript",
+"path": "res://AutoLoad/Delegates/StorageWorker.gd"
 } ]
 _global_script_class_icons={
 "Ability": "",
+"Authenticator": "",
+"CharacterListing": "",
 "ChatLog": "",
 "ChatSaver": "",
 "Claim": "",
 "ClaimTreeConnector": "",
 "Clock": "",
+"ColorSwatch": "",
+"ConfirmationPopup": "",
 "Contact": "",
 "CrewPlaybook": "",
 "CrewUpgrade": "",
 "Cursor": "",
 "DragableWindow": "",
 "EditNotePopup": "",
+"ExceptionHandler": "",
 "Field": "",
 "FieldList": "",
+"LineEditValidate": "",
 "Map": "",
 "MapNote": "",
 "MarkerButton": "",
 "Markers": "",
+"Menu": "",
+"MenuList": "",
+"NakamaAPI": "",
+"NakamaAsyncResult": "",
+"NakamaClient": "",
+"NakamaException": "",
+"NakamaHTTPAdapter": "",
+"NakamaLogger": "",
+"NakamaRTAPI": "",
+"NakamaRTMessage": "",
+"NakamaSerializer": "",
+"NakamaSession": "",
+"NakamaSocket": "",
+"NakamaSocketAdapter": "",
+"NakamaStorageObjectId": "",
+"NakamaWriteStorageObject": "",
 "Playbook": "",
 "PlayerPlaybook": "",
 "PopupScreen": "",
 "SaveGame": "",
-"SaveableField": ""
+"SaveableField": "",
+"StorageWorker": ""
 }
 
 [application]
@@ -167,6 +305,8 @@ Events="*res://AutoLoad/Events.gd"
 GameData="*res://AutoLoad/GameData.gd"
 GameSaver="*res://AutoLoad/GameSaver.gd"
 Tooltip="*res://Tooltip.tscn"
+Nakama="*res://nakama/addons/com.heroiclabs.nakama/Nakama.gd"
+ServerConnection="*res://AutoLoad/ServerConnection.gd"
 
 [debug]
 
@@ -265,7 +405,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://Shared/theme/default_env.tres"
