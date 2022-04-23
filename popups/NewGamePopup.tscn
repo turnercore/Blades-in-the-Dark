@@ -52,27 +52,27 @@ align = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PopupPanel/VBoxContainer"]
 margin_top = 64.0
 margin_right = 704.0
-margin_bottom = 93.0
+margin_bottom = 95.0
 
 [node name="Label" type="Label" parent="MarginContainer/PopupPanel/VBoxContainer/HBoxContainer"]
-margin_top = 2.0
+margin_top = 3.0
 margin_right = 114.0
-margin_bottom = 26.0
+margin_bottom = 27.0
 text = "Save Game ID:"
 
 [node name="TextEdit" type="LineEdit" parent="MarginContainer/PopupPanel/VBoxContainer/HBoxContainer"]
 margin_left = 118.0
 margin_right = 704.0
-margin_bottom = 29.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 align = 1
 placeholder_text = "Save Game ID"
 
 [node name="CreateNewCrewButton" type="Button" parent="MarginContainer/PopupPanel/VBoxContainer"]
-margin_left = 293.0
-margin_top = 133.0
-margin_right = 410.0
-margin_bottom = 158.0
+margin_left = 285.0
+margin_top = 135.0
+margin_right = 419.0
+margin_bottom = 162.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Create New Crew"
@@ -84,10 +84,10 @@ crew_setup_sceen = ExtResource( 4 )
 on_start_screen = true
 
 [node name="CancelButton" type="Button" parent="MarginContainer/PopupPanel/VBoxContainer"]
-margin_left = 325.0
-margin_top = 198.0
-margin_right = 379.0
-margin_bottom = 223.0
+margin_left = 322.0
+margin_top = 202.0
+margin_right = 382.0
+margin_bottom = 229.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Cancel"

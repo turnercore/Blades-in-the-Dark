@@ -11,11 +11,11 @@ export (NodePath) onready var notes = get_node(notes) as Node2D
 export (NodePath) onready var camera = get_node(camera) as Camera2D
 export (NodePath) onready var map_texture = get_node(map_texture) as TextureRect
 export (NodePath) onready var grid = get_node(grid) as TileMap
-
+export (PackedScene) var player_cursor_scene
 var zoom_level: float
 var unfocused: = false
 var creating_note: = false
-
+onready var player_cursors: = [cursor]
 
 func _ready() -> void:
 	Globals.grid = grid
@@ -26,6 +26,12 @@ func _ready() -> void:
 	Events.connect("chat_deselected", self, "_on_chat_deselected")
 	Events.connect("popup", self, "_on_popup")
 	Events.connect("popup_finished", self, "_on_popup_finished")
+	ServerConnection.connect("match_joined", self, "_on_match_joined")
+	ServerConnection.connect("presences_changed", self, "_on_presences_changed")
+
+	if ServerConnection.is_connected_to_server:
+		add_new_player_cursors()
+
 	zoom_level = camera.zoom.x
 
 
@@ -152,3 +158,28 @@ func _on_popup(_data, _overlay)-> void:
 
 func _on_popup_finished()-> void:
 	set_process(true)
+
+
+func _on_match_joined(server_match:NakamaRTAPI.Match)-> void:
+	add_new_player_cursors()
+
+
+func _on_presences_changed()-> void:
+	add_new_player_cursors()
+
+
+func add_new_player_cursors()-> void:
+	for presence in ServerConnection.presences:
+#		print(ServerConnection.presences[presence])
+#		var player_already_added: = false
+#
+#		for player in player_cursors:
+#			if presence == player.user_id:
+#				player_already_added = true
+#		if player_already_added:
+#			continue
+#		else:
+		var new_player = player_cursor_scene.instance()
+		new_player.user_id = presence
+		new_player.is_remote = true
+		grid.add_child(new_player)

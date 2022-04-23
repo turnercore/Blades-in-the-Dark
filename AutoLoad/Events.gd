@@ -3,6 +3,12 @@ extends Node
 signal chat_hidden
 signal chat_unhidden
 
+
+signal connected_to_server
+
+
+
+
 signal chat_message_sent(message)
 
 signal player_connected(player)

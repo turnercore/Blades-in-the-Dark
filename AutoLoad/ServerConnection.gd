@@ -25,6 +25,9 @@
 # Messages sent in and out of the server are described in /docs/packets.md
 extends Node
 
+
+const MAX_REQUEST_ATTEMPTS := 3
+
 # Custom operational codes for state messages. Nakama built-in codes are values lower or equal to
 # `0`.
 enum OpCodes {
@@ -71,6 +74,8 @@ signal character_spawned(id, color, name)
 
 signal data_recieved(data)
 
+signal match_joined
+
 # String that contains the error message whenever any of the functions that yield return != OK
 var error_message := "" setget _no_set, _get_error_message
 
@@ -98,23 +103,60 @@ var _storage_worker: StorageWorker
 var _match: NakamaRTAPI.Match
 
 var is_connected_to_server: = false
+var is_host: = false
 
 func _enter_tree() -> void:
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	get_tree().root.get_node("/root/Nakama").pause_mode = Node.PAUSE_MODE_PROCESS
 
 
+func list_matches_async(authoritative: = false, filter:= "", query:= "")-> NakamaAPI.ApiMatchList:
+	if not filter is String:
+		error_message = "Error, filter for match list needs to be a string"
+		return ERR_INVALID_DATA
+	if not query is String:
+		error_message = "Error, query for match list needs to be a string"
+		return ERR_INVALID_DATA
+	if not _client:
+		error_message = "No Client"
+		return ERR_UNAVAILABLE
+	if not _authenticator.session:
+		error_message = "No valid session"
+		return ERR_UNCONFIGURED
+
+	var list_matches = yield(_client.list_matches_async(_authenticator.session, 0, 12, 100, false, filter, query), "completed")
+
+	return list_matches
+
+
+func update_display_name_async(display_name:String)-> int:
+	var result: = 0
+	display_name = display_name.c_escape().strip_escapes().strip_edges()
+	if not _socket:
+		error_message = "Server not connected."
+		return ERR_UNAVAILABLE
+	if not _client:
+		error_message = "No Client"
+		return ERR_UNAVAILABLE
+
+	var update_account = yield(_client.update_account_async(_authenticator.session, null, display_name), "completed")
+	result = _exception_handler.parse_exception(update_account)
+
+	return result
+
+
 #ASYNCHRONOUS coroutine that creates a match on the server and joins it
-func create_match_async()-> int:
+func create_match_async(match_name:= "")-> int:
 	if not _socket:
 		error_message = "Server not connected."
 		return ERR_UNAVAILABLE
 
-	var result:int = -1
+	var result:int = 0
 	var server_match = yield(_socket.create_match_async(), "completed")
 	result = _exception_handler.parse_exception(server_match)
 	if result == OK:
 		_match = server_match
+		emit_signal("match_joined")
 
 	return result
 
@@ -133,12 +175,16 @@ func join_match_async(match_id:String)-> int:
 
 	if result == OK:
 		_match = server_match
+		for presence in server_match.presences:
+			presences[presence.user_id] = presence
+		emit_signal("match_joined", _match)
 
 	return result
 
 
-func send_match_state_async(op_code:int, data:String)-> int:
+func send_match_state_async(op_code:int, data)-> int:
 	var result:int
+	var json_data = JSON.print(data)
 
 	if not _socket:
 		print("Server not connected")
@@ -147,7 +193,7 @@ func send_match_state_async(op_code:int, data:String)-> int:
 		print("Not connected to a match")
 		return ERR_UNAVAILABLE
 
-	var async_result:NakamaAsyncResult = yield(_socket.send_match_state_async(_match.match_id, op_code, data), "completed")
+	var async_result:NakamaAsyncResult = yield(_socket.send_match_state_async(_match.match_id, op_code, json_data), "completed")
 
 	result = _exception_handler.parse_exception(async_result)
 	return result
@@ -160,7 +206,7 @@ func get_match_id()-> String:
 # Asynchronous coroutine. Authenticates a new session via email and password, and
 # creates a new account when it did not previously exist, then initializes _session.
 # Returns OK or a nakama error code. Stores error messages in `ServerConnection.error_message`
-func register_async(email: String, password: String) -> int:
+func register_async(email: String, password: String, username = null) -> int:
 	var result: int = yield(_authenticator.register_async(email, password), "completed")
 	if result == OK:
 		_storage_worker = StorageWorker.new(_authenticator.session, _client, _exception_handler)
@@ -183,6 +229,9 @@ func login_async(email: String, password: String) -> int:
 # Returns OK or a nakama error number. Error messages are stored in `ServerConnection.error_message`
 func connect_to_server_async() -> int:
 	_socket = Nakama.create_socket_from(_client)
+	if not _socket:
+		error_message = "Issiue creating socket from client"
+		return ERR_CANT_CREATE
 
 	var result: NakamaAsyncResult = yield(
 		_socket.connect_async(_authenticator.session), "completed"
@@ -202,6 +251,7 @@ func connect_to_server_async() -> int:
 		_socket.connect("received_match_state", self, "_on_NakamaSocket_received_match_state")
 		#warning-ignore: return_value_discarded
 		_socket.connect("received_channel_message", self, "_on_NamakaSocket_received_channel_message")
+
 
 		is_connected_to_server = true
 		emit_signal("server_connected")
@@ -311,8 +361,10 @@ func _on_NakamaSocket_received_match_presence(new_presences: NakamaRTAPI.MatchPr
 
 # Called when the server received a custom message from the server.
 func _on_NakamaSocket_received_match_state(match_state: NakamaRTAPI.MatchData) -> void:
-	var raw := match_state.data
-	emit_signal("data_recieved", str(raw))
+	var data = parse_json(match_state.data)
+	data["op_code"] = match_state.op_code
+	data["presence"] = match_state.presence
+	emit_signal("data_recieved", data)
 	emit_signal("match_state_recieved", match_state)
 
 

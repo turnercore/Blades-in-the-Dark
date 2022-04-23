@@ -356,7 +356,7 @@ class MatchmakerMatched extends NakamaAsyncResult:
 
 	# The other users matched with this user and the parameters they sent.
 	var users : Array # MatchmakerUser
-	
+
 	# The current user who matched with opponents.
 	var self_user : MatchmakerUser
 

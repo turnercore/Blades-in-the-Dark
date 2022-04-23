@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://AutoLoad/Delegates/Authenticator.gd"
 }, {
-"base": "Reference",
+"base": "Button",
 "class": "CharacterListing",
 "language": "GDScript",
 "path": "res://debug/demo/src/UI/Menus/Characters/CharacterListing.gd"
@@ -54,7 +54,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://debug/demo/src/UI/Elements/ColorSwatch.gd"
 }, {
-"base": "Reference",
+"base": "Menu",
 "class": "ConfirmationPopup",
 "language": "GDScript",
 "path": "res://debug/demo/src/UI/Components/ConfirmationPopup.gd"
@@ -104,7 +104,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Shared/FieldList.gd"
 }, {
-"base": "Reference",
+"base": "LineEdit",
 "class": "LineEditValidate",
 "language": "GDScript",
 "path": "res://debug/demo/src/UI/Elements/LineEditValidate.gd"
@@ -129,12 +129,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Shared/classes/Markers.gd"
 }, {
-"base": "Reference",
+"base": "Control",
 "class": "Menu",
 "language": "GDScript",
 "path": "res://debug/demo/src/UI/Elements/Menu.gd"
 }, {
-"base": "Reference",
+"base": "Control",
 "class": "MenuList",
 "language": "GDScript",
 "path": "res://debug/demo/src/UI/Elements/MenuList.gd"
@@ -296,7 +296,7 @@ run/main_scene="res://start_screen/StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Shared/Art/Icons/icon.png"
-config/version="0.5"
+config/version="0.51"
 
 [autoload]
 
@@ -307,6 +307,7 @@ GameSaver="*res://AutoLoad/GameSaver.gd"
 Tooltip="*res://Tooltip.tscn"
 Nakama="*res://nakama/addons/com.heroiclabs.nakama/Nakama.gd"
 ServerConnection="*res://AutoLoad/ServerConnection.gd"
+PlayerData="*res://AutoLoad/PlayerData.gd"
 
 [debug]
 

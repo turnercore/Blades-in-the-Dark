@@ -39,7 +39,8 @@ func register_async(email: String, password: String) -> int:
 # recover it without needing the authentication server.
 # Returns OK or a nakama error code. Stores error messages in `ServerConnection.error_message`
 func login_async(email: String, password: String) -> int:
-	var token := SessionFileWorker.recover_session_token(email, password)
+	var token = ""
+#	:= SessionFileWorker.recover_session_token(email, password)
 	if token != "":
 		var new_session: NakamaSession = _client.restore_session(token)
 		if new_session.valid and not new_session.expired:

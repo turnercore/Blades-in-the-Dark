@@ -1,0 +1,506 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/CrewPlaybook.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "The Bold an"
+abilities = {
+"everyone_steals": {
+"claimed": false,
+"class": "shadows",
+"description": "Each PC may add +1 action rating to Prowl, Finesse, or Tinker (up to a max rating of 3).",
+"name": "Everyone Steals"
+},
+"ghost_echoes": {
+"claimed": false,
+"class": "shadows",
+"description": "From weird experience or occult ritual, all crew members gain the ability to see and interact with the ghostly structures, streets, and objects within the echo of Doskvol that exists in the ghost field.",
+"name": "Ghost Echoes"
+},
+"pack_rats": {
+"claimed": false,
+"class": "shadows",
+"description": "Your lair is a jumble of stolen items. When you roll to acquire an asset, take +1d.",
+"name": "Pack Rats"
+},
+"patron": {
+"claimed": false,
+"class": "shadows",
+"description": "When you advance your Tier, it costs half the coin it normally would. Who is your patron? Why do they help you? (Add the patron as a contact)",
+"name": "Patron"
+},
+"second_story": {
+"claimed": false,
+"class": "shadows",
+"description": "When you execute a clandestine infiltration, you get +1d to the engagement roll.",
+"name": "Second Story"
+},
+"slippery": {
+"claimed": false,
+"class": "shadows",
+"description": "When you roll entanglements, roll twice and keep the one you want. When you reduce heat on the crew, take +1d.",
+"name": "Slippery"
+},
+"synchronized": {
+"claimed": false,
+"class": "shadows",
+"description": "When you perform a group action, you may count multiple 6s from different rolls as a critical success.",
+"name": "Synchronized"
+},
+"veteran": {
+"claimed": false,
+"class": "all",
+"description": "(3 Skill Points) Choose a special ability from another crew.",
+"name": "Veteran"
+}
+}
+coin = {
+"available": 0,
+"max": 4,
+"stash": 0
+}
+contacts = {
+"adelaide_phroaig": {
+"class": "shadows",
+"description": "\"\"",
+"icon": "NONE",
+"image": "NONE",
+"location": "none",
+"name": "Adelaide Phroaig",
+"notes": "\"\"",
+"occupation": "A Noble",
+"relationship": 0.0
+},
+"amancio": {
+"class": "shadows",
+"description": "\"\"",
+"icon": "NONE",
+"image": "NONE",
+"location": "none",
+"name": "Amancio",
+"notes": "\"\"",
+"occupation": "A Deal Broker",
+"relationship": 0.0
+},
+"dowler": {
+"class": "shadows",
+"description": "\"\"",
+"icon": "NONE",
+"image": "NONE",
+"location": "none",
+"name": "Dowler",
+"notes": "\"\"",
+"occupation": "An Explorer",
+"relationship": 0.0
+},
+"fitz": {
+"class": "shadows",
+"description": "\"\"",
+"icon": "NONE",
+"image": "NONE",
+"location": "none",
+"name": "Fitz",
+"notes": "\"\"",
+"occupation": "A Collector",
+"relationship": 0.0
+},
+"laroze": {
+"class": "shadows",
+"description": "\"\"",
+"icon": "NONE",
+"image": "NONE",
+"location": "none",
+"name": "Laroze",
+"notes": "\"\"",
+"occupation": "A Bluecoat",
+"relationship": 0.0
+},
+"rigney": {
+"class": "shadows",
+"description": "\"\"",
+"icon": "NONE",
+"image": "NONE",
+"location": "none",
+"name": "Rigney",
+"notes": "\"\"",
+"occupation": "A Tavern Owner",
+"relationship": 0.0
+}
+}
+type = "shadows"
+notes = ""
+experience = {
+"playbook": 0
+}
+projects = {
+}
+stats = {
+"insight": {
+"hunt": 2,
+"study": 1,
+"survey": 0,
+"tinker": 0
+},
+"prowess": {
+"finesse": 1,
+"prowl": 0,
+"skirmish": 0,
+"wreck": 0
+},
+"resolve": {
+"attune": 0,
+"command": 0,
+"consort": 2,
+"sway": 0
+}
+}
+needs_setup = false
+heat = 0
+wanted_level = 0
+reputation = "Professional"
+hold_level = 0
+tier = 0
+upgrades = {
+}
+lair = {
+"description": "A small, abondoned house at the end of a dark lane.",
+"location": "Lair Location",
+"name": ""
+}
+hunting_grounds = {
+"description": "",
+"location": "Hunting Ground Location"
+}
+cohorts = {
+}
+claims = {
+"c1": {
+"cell": "shadows_c1",
+"claim": "Interrogation Chamber",
+"claimed": false,
+"class": "shadows",
+"connections": "e, s",
+"default": true,
+"effect": "You get +1d to gather information for a score.",
+"faction": "The Red Bunnies",
+"is_claimed": false,
+"notes": null
+},
+"c10": {
+"cell": "shadows_c10",
+"claim": "Lookouts",
+"claimed": false,
+"class": "shadows",
+"connections": "n, s, w",
+"default": true,
+"effect": "You get +1d to hunt or survey on your turf",
+"faction": null,
+"is_claimed": false,
+"notes": null
+},
+"c11": {
+"cell": "shadows_c11",
+"claim": "Hagfish Farm",
+"claimed": false,
+"class": "shadows",
+"connections": "n, e",
+"default": true,
+"effect": "When you use the reduce heat downtime activity after a score that involves killing, you get +1d to the roll and quiet, convenient disposal of any corpses you left on the job.",
+"faction": null,
+"is_claimed": false,
+"notes": null
+},
+"c12": {
+"cell": "shadows_c12",
+"claim": "Infirmary",
+"claimed": false,
+"class": "shadows",
+"connections": "n",
+"default": true,
+"effect": "You get +1d to healing treatment rolls.",
+"faction": null,
+"is_claimed": false,
+"notes": null
+},
+"c13": {
+"cell": "shadows_c13",
+"claim": "Covert Drop",
+"claimed": false,
+"class": "shadows",
+"connections": "n, e",
+"default": true,
+"effect": "You get +2 coin in payoff for scores that involve espionage or sabotage.",
+"faction": null,
+"is_claimed": false,
+"notes": null
+},
+"c14": {
+"cell": "shadows_c14",
+"claim": "Turf",
+"claimed": false,
+"class": "shadows",
+"connections": "e, w",
+"default": true,
+"effect": "Gain a turf",
+"faction": null,
+"is_claimed": false,
+"notes": null
+},
+"c15": {
+"cell": "shadows_c15",
+"claim": "Secret Pathways",
+"claimed": false,
+"class": "shadows",
+"connections": "n, w",
+"default": true,
+"effect": "You get +1d to engagement roll for stealth plans.",
+"faction": null,
+"is_claimed": false,
+"notes": null
+},
+"c2": {
+"cell": "shadows_c2",
+"claim": "Turf",
+"claimed": false,
+"class": "shadows",
+"connections": "w, e",
+"default": true,
+"effect": "Gain a turf",
+"faction": "The blue bunnies",
+"is_claimed": false,
+"notes": null
+},
+"c3": {
+"cell": "shadows_c3",
+"claim": "Loyal Fence",
+"claimed": false,
+"class": "shadows",
+"connections": "s, w",
+"default": true,
+"effect": "You get +2 coin in payoff for scores that involve burglary or robbery.",
+"faction": null,
+"is_claimed": false,
+"notes": null
+},
+"c4": {
+"cell": "shadows_c4",
+"claim": "Gambling Den",
+"claimed": false,
+"class": "shadows",
+"connections": "s, e",
+"default": true,
+"effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
+"faction": null,
+"is_claimed": false,
+"notes": null
+},
+"c5": {
+"cell": "shadows_c5",
+"claim": "Tavern",
+"claimed": false,
+"class": "shadows",
+"connections": "w, s",
+"default": true,
+"effect": "You get +1d to consort and sway rolls on-site.",
+"faction": null,
+"is_claimed": false,
+"notes": null
+},
+"c6": {
+"cell": "shadows_c6",
+"claim": "Drug Den",
+"claimed": false,
+"class": "shadows",
+"connections": "n, e, s",
+"default": true,
+"effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
+"faction": null,
+"is_claimed": true,
+"notes": null
+},
+"c7": {
+"cell": "shadows_c7",
+"claim": "Informants",
+"claimed": false,
+"class": "shadows",
+"connections": "e, s, w",
+"default": true,
+"effect": "You get +1d to gather information for a score.",
+"faction": null,
+"is_claimed": false,
+"notes": null
+},
+"c8": {
+"cell": "shadows_c8",
+"claim": "Lair",
+"claimed": true,
+"class": "shadows",
+"connections": "n, e, s, w",
+"default": true,
+"effect": "Home sweet home",
+"faction": "Claimed",
+"is_claimed": true,
+"notes": null
+},
+"c9": {
+"cell": "shadows_c9",
+"claim": "Turf",
+"claimed": false,
+"class": "shadows",
+"connections": "n, e, w",
+"default": true,
+"effect": "Gain a turf",
+"faction": null,
+"is_claimed": false,
+"notes": null
+}
+}
+prison_claims = {
+"c1": {
+"cell": "prison_c1",
+"claim": "Parole Influence",
+"claimed": false,
+"class": "prison",
+"connections": "e, s",
+"default": true,
+"effect": "Political pressures of various sorts can be applied to the magistrates and warden who oversee sentences for crimes. With this claim, you’re always able to arrange for a shorter prison stay—as if your wanted level was 1 lower. So, if your wanted level was 3 when you went in, you’d spend only several months behind bars (equivalent to level 2) instead of a full year.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c10": {
+"cell": "prision_c10",
+"claim": "Smuggling",
+"claimed": false,
+"class": "prison",
+"connections": "n, e, w",
+"default": true,
+"effect": "You arrange smuggling channels inside. You have +2 load while incarcerated, (starting from zero as a prisoner). If you take this claim twice, you’ll have 4 load while you’re serving time in Ironhook. Also, you may choose to have 1 coin in place of a load item for purposes of bribes or acquiring assets while in prison. You may reset your prison load whenever your crew has downtime.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c11": {
+"cell": "prision_c11",
+"claim": "Allied Claim",
+"claimed": false,
+"class": "prison",
+"connections": "n, e, w",
+"default": true,
+"effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c12": {
+"cell": "prision_c12",
+"claim": "Allied Claim",
+"claimed": false,
+"class": "prison",
+"connections": "n, w",
+"default": true,
+"effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c2": {
+"cell": "prison_c2",
+"claim": "Smuggling",
+"claimed": false,
+"class": "prison",
+"connections": "e, s, w",
+"default": true,
+"effect": "You arrange smuggling channels inside. You have +2 load while incarcerated, (starting from zero as a prisoner). If you take this claim twice, you’ll have 4 load while you’re serving time in Ironhook. Also, you may choose to have 1 coin in place of a load item for purposes of bribes or acquiring assets while in prison. You may reset your prison load whenever your crew has downtime.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c3": {
+"cell": "prison_c3",
+"claim": "Allied Claim",
+"claimed": false,
+"class": "prison",
+"connections": "s, w",
+"default": true,
+"effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c4": {
+"cell": "prision_c4",
+"claim": "Cell Block Control",
+"claimed": false,
+"class": "prison",
+"connections": "s",
+"default": true,
+"effect": "Your crew has a cell block under their total control—guards and all. You never take trauma from incarceration.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c5": {
+"cell": "prision_c5",
+"claim": "Guard Payoff",
+"claimed": false,
+"class": "prison",
+"connections": "n, e, s",
+"default": true,
+"effect": "You claim several Ironhook prison guards on your payroll. Take +1d to your Tier roll when a member of your crew is incarcerated.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c6": {
+"cell": "prison_c6",
+"claim": "Prison",
+"claimed": true,
+"class": "prison",
+"connections": "n, e, s, w",
+"default": true,
+"effect": "Home sweet home, for now.",
+"faction": "Claimed",
+"is_claimed": 1,
+"notes": null
+},
+"c7": {
+"cell": "prision_c7",
+"claim": "Guard Payoff",
+"claimed": false,
+"class": "prison",
+"connections": "n, e, s, w",
+"default": true,
+"effect": "You claim several Ironhook prison guards on your payroll. Take +1d to your Tier roll when a member of your crew is incarcerated.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c8": {
+"cell": "prision_c8",
+"claim": "Allied Claim",
+"claimed": false,
+"class": "prison",
+"connections": "n, s, w",
+"default": true,
+"effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+},
+"c9": {
+"cell": "prision_c9",
+"claim": "Hardcase",
+"claimed": false,
+"class": "prison",
+"connections": "n, e",
+"default": true,
+"effect": "Your reputation as a tough inmate bolsters your crew’s image in Duskwall. When your crew advances Tier, it costs 2 fewer coins than it normally would",
+"faction": null,
+"is_claimed": 0,
+"notes": null
+}
+}
+map = {
+}

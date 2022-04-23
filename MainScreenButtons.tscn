@@ -82,6 +82,7 @@ __meta__ = {
 margin_top = 124.0
 margin_right = 147.0
 margin_bottom = 151.0
+text = "Dice Roller"
 
 [node name="Hide" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
 margin_top = 155.0

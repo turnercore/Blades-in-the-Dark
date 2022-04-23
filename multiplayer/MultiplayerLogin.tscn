@@ -1,0 +1,150 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://multiplayer/MultiplayerLogin.gd" type="Script" id=1]
+[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=2]
+
+[node name="MultiplayerLogin" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+email_line_edit = NodePath("PanelContainer/MarginContainer/VBoxContainer/EmailContainer/email")
+password_line_edit = NodePath("PanelContainer/MarginContainer/VBoxContainer/PasswordContainer/password")
+login_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/LoginButton")
+register_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/RegisterButton")
+display_name_line_edit = NodePath("PanelContainer/MarginContainer/VBoxContainer/DisplayNameContainer/display_name")
+result_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/ResultLabel")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -298.0
+margin_top = -240.5
+margin_right = 298.0
+margin_bottom = 240.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 596.0
+margin_bottom = 481.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 572.0
+margin_bottom = 457.0
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 548.0
+margin_bottom = 31.0
+text = "Login to Server"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 51.0
+margin_right = 548.0
+margin_bottom = 55.0
+
+[node name="EmailContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 75.0
+margin_right = 548.0
+margin_bottom = 122.0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/EmailContainer"]
+margin_top = 8.0
+margin_right = 80.0
+margin_bottom = 39.0
+text = "Email: "
+
+[node name="email" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/EmailContainer"]
+margin_left = 96.0
+margin_right = 548.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+placeholder_text = "Login Email"
+
+[node name="PasswordContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 142.0
+margin_right = 548.0
+margin_bottom = 189.0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PasswordContainer"]
+margin_top = 8.0
+margin_right = 129.0
+margin_bottom = 39.0
+text = "Password: "
+
+[node name="password" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/PasswordContainer"]
+margin_left = 145.0
+margin_right = 548.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+secret = true
+placeholder_text = "Password"
+
+[node name="DisplayNameContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 209.0
+margin_right = 548.0
+margin_bottom = 256.0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/DisplayNameContainer"]
+margin_top = 8.0
+margin_right = 173.0
+margin_bottom = 39.0
+text = "Display Name:"
+
+[node name="display_name" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/DisplayNameContainer"]
+margin_left = 189.0
+margin_right = 548.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 3
+placeholder_text = "Display Name"
+
+[node name="LoginButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_left = 174.0
+margin_top = 276.0
+margin_right = 374.0
+margin_bottom = 307.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+disabled = true
+text = "Login"
+
+[node name="RegisterButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_left = 174.0
+margin_top = 327.0
+margin_right = 374.0
+margin_bottom = 358.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 4
+disabled = true
+text = "Register"
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 378.0
+margin_right = 548.0
+margin_bottom = 382.0
+
+[node name="ResultLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 402.0
+margin_right = 548.0
+margin_bottom = 433.0
+align = 1
+
+[connection signal="text_changed" from="PanelContainer/MarginContainer/VBoxContainer/EmailContainer/email" to="." method="_on_email_text_changed"]
+[connection signal="text_changed" from="PanelContainer/MarginContainer/VBoxContainer/PasswordContainer/password" to="." method="_on_password_text_changed"]
+[connection signal="text_changed" from="PanelContainer/MarginContainer/VBoxContainer/DisplayNameContainer/display_name" to="." method="_on_display_name_text_changed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/LoginButton" to="." method="_on_LoginButton_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/RegisterButton" to="." method="_on_RegisterButton_pressed"]

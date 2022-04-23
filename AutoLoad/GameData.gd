@@ -59,6 +59,7 @@ var clocks_being_saved: = false
 
 var game_state:String = "Free Play" setget _set_game_state
 
+var is_game_setup: = false setget _set_is_game_setup
 
 #Signals
 signal crew_changed
@@ -70,6 +71,7 @@ signal clocks_free
 signal map_shortcut_added
 signal map_shortcut_removed
 signal game_state_changed(game_state)
+signal game_setup
 
 func _ready() -> void:
 	connect_to_signals()
@@ -129,6 +131,7 @@ func _on_save_loaded(save:SaveGame)->void:
 	save.setup_srd_maps()
 	self.map = save.map if save.map else save.maps[0]
 	emit_signal("map_loaded", map)
+	self.is_game_setup = true
 
 
 #func load_map_from(save:SaveGame)-> Dictionary:
@@ -303,3 +306,9 @@ func _on_map_note_created(note_data:Dictionary)-> void:
 func _set_game_state(value:String)-> void:
 	game_state = value
 	emit_signal("game_state_changed", value)
+
+
+func _set_is_game_setup(value:bool)-> void:
+	is_game_setup = value
+	if is_game_setup:
+		emit_signal("game_setup")

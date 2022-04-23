@@ -340,7 +340,7 @@ claims = {
 "default": true,
 "effect": "Home sweet home",
 "faction": "Claimed",
-"is_claimed": false,
+"is_claimed": true,
 "notes": null
 },
 "c9": {
