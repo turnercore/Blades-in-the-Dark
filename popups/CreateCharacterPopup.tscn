@@ -65,7 +65,7 @@ text = "None"
 items = [ "None", null, false, 0, null ]
 selected = 0
 
-[node name="NextButton" type="Button" parent="MarginContainer/Page1/VBox"]
+[node name="CreateNewPlaybook" type="Button" parent="MarginContainer/Page1/VBox"]
 margin_left = 479.0
 margin_top = 304.0
 margin_right = 524.0
@@ -114,28 +114,28 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox"]
-margin_top = 143.0
+margin_top = 118.0
 margin_right = 984.0
-margin_bottom = 157.0
+margin_bottom = 139.0
 text = "Basic Info:"
 uppercase = true
 
 [node name="Field" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
-margin_top = 161.0
+margin_top = 143.0
 margin_right = 984.0
-margin_bottom = 185.0
+margin_bottom = 174.0
 
 [node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field"]
 margin_top = 5.0
-margin_right = 46.0
-margin_bottom = 19.0
+margin_right = 52.0
+margin_bottom = 26.0
 text = "name: "
 uppercase = true
 
 [node name="name" type="LineEdit" parent="MarginContainer/Page2/MarginContainer/VBox/Field"]
-margin_left = 50.0
-margin_right = 200.0
-margin_bottom = 24.0
+margin_left = 56.0
+margin_right = 206.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 150, 0 )
 expand_to_text_length = true
 placeholder_text = "Character Name"
@@ -143,21 +143,21 @@ script = ExtResource( 1 )
 playbook_field = "name"
 
 [node name="Field2" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
-margin_top = 189.0
+margin_top = 178.0
 margin_right = 984.0
-margin_bottom = 213.0
+margin_bottom = 209.0
 
 [node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field2"]
 margin_top = 5.0
-margin_right = 41.0
-margin_bottom = 19.0
+margin_right = 44.0
+margin_bottom = 26.0
 text = "alias:"
 uppercase = true
 
 [node name="aliases" type="LineEdit" parent="MarginContainer/Page2/MarginContainer/VBox/Field2"]
-margin_left = 45.0
-margin_right = 195.0
-margin_bottom = 24.0
+margin_left = 48.0
+margin_right = 198.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 150, 0 )
 expand_to_text_length = true
 placeholder_text = "Aliases"
@@ -165,41 +165,41 @@ script = ExtResource( 1 )
 playbook_field = "aliases-0"
 
 [node name="Field3" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
-margin_top = 217.0
+margin_top = 213.0
 margin_right = 984.0
-margin_bottom = 317.0
+margin_bottom = 313.0
 
 [node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field3"]
-margin_top = 43.0
-margin_right = 41.0
-margin_bottom = 57.0
+margin_top = 39.0
+margin_right = 43.0
+margin_bottom = 60.0
 text = "Look:"
 uppercase = true
 
 [node name="look" type="TextEdit" parent="MarginContainer/Page2/MarginContainer/VBox/Field3"]
-margin_left = 45.0
-margin_right = 445.0
+margin_left = 47.0
+margin_right = 447.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 400, 100 )
 script = ExtResource( 1 )
 playbook_field = "look"
 
 [node name="Field4" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
-margin_top = 321.0
+margin_top = 317.0
 margin_right = 984.0
-margin_bottom = 341.0
+margin_bottom = 344.0
 
 [node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field4"]
 margin_top = 3.0
-margin_right = 67.0
-margin_bottom = 17.0
+margin_right = 74.0
+margin_bottom = 24.0
 text = "Heritage:"
 uppercase = true
 
 [node name="heritage" type="OptionButton" parent="MarginContainer/Page2/MarginContainer/VBox/Field4"]
-margin_left = 71.0
-margin_right = 144.0
-margin_bottom = 20.0
+margin_left = 78.0
+margin_right = 155.0
+margin_bottom = 27.0
 text = "Akoros"
 items = [ "Akoros", null, false, 0, null, "The Dagger Isles", null, false, 1, null, "Iruvia", null, false, 2, null, "Severos", null, false, 3, null, "Skovlan", null, false, 4, null, "Tycheros", null, false, 5, null ]
 selected = 0
@@ -207,21 +207,21 @@ script = ExtResource( 1 )
 playbook_field = "heritage"
 
 [node name="Field5" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
-margin_top = 345.0
+margin_top = 348.0
 margin_right = 984.0
-margin_bottom = 365.0
+margin_bottom = 375.0
 
 [node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field5"]
 margin_top = 3.0
-margin_right = 97.0
-margin_bottom = 17.0
+margin_right = 106.0
+margin_bottom = 24.0
 text = "Background:"
 uppercase = true
 
 [node name="background2" type="OptionButton" parent="MarginContainer/Page2/MarginContainer/VBox/Field5"]
-margin_left = 101.0
-margin_right = 193.0
-margin_bottom = 20.0
+margin_left = 110.0
+margin_right = 208.0
+margin_bottom = 27.0
 text = "Academic"
 items = [ "Academic", null, false, 0, null, "Labor", null, false, 1, null, "Law", null, false, 2, null, "Trade", null, false, 3, null, "Military", null, false, 4, null, "Noble", null, false, 5, null, "Underworld", null, false, 6, null ]
 selected = 0
@@ -229,21 +229,21 @@ script = ExtResource( 1 )
 playbook_field = "background"
 
 [node name="Field6" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
-margin_top = 369.0
+margin_top = 379.0
 margin_right = 984.0
-margin_bottom = 393.0
+margin_bottom = 410.0
 
 [node name="Label" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field6"]
 margin_top = 5.0
-margin_right = 32.0
-margin_bottom = 19.0
+margin_right = 37.0
+margin_bottom = 26.0
 text = "Vice:"
 uppercase = true
 
 [node name="vice" type="LineEdit" parent="MarginContainer/Page2/MarginContainer/VBox/Field6"]
-margin_left = 36.0
-margin_right = 186.0
-margin_bottom = 24.0
+margin_left = 41.0
+margin_right = 191.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 150, 0 )
 expand_to_text_length = true
 placeholder_text = "Specific Vice"
@@ -251,17 +251,17 @@ script = ExtResource( 1 )
 playbook_field = "vice"
 
 [node name="Label2" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field6"]
-margin_left = 190.0
+margin_left = 195.0
 margin_top = 5.0
-margin_right = 255.0
-margin_bottom = 19.0
+margin_right = 271.0
+margin_bottom = 26.0
 text = "Vice Type:"
 uppercase = true
 
 [node name="vice_type" type="OptionButton" parent="MarginContainer/Page2/MarginContainer/VBox/Field6"]
-margin_left = 259.0
-margin_right = 319.0
-margin_bottom = 24.0
+margin_left = 275.0
+margin_right = 339.0
+margin_bottom = 31.0
 text = "Faith"
 items = [ "Faith", null, false, 0, null, "Gambling", null, false, 1, null, "Luxury", null, false, 2, null, "Obligation", null, false, 3, null, "Pleasure", null, false, 4, null, "Stupor", null, false, 5, null, "Weird", null, false, 6, null ]
 selected = 0
@@ -269,10 +269,10 @@ script = ExtResource( 1 )
 playbook_field = "vice_type"
 
 [node name="NextButton2" type="Button" parent="MarginContainer/Page2/MarginContainer/VBox"]
-margin_left = 471.0
-margin_top = 397.0
-margin_right = 513.0
-margin_bottom = 417.0
+margin_left = 469.0
+margin_top = 414.0
+margin_right = 514.0
+margin_bottom = 441.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Next"
@@ -359,6 +359,6 @@ size_flags_vertical = 4
 text = "Finished"
 
 [connection signal="item_selected" from="MarginContainer/Page1/VBox/type_options" to="." method="_on_type_options_item_selected"]
-[connection signal="pressed" from="MarginContainer/Page1/VBox/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="MarginContainer/Page1/VBox/CreateNewPlaybook" to="." method="_on_CreateNewPlaybook_pressed"]
 [connection signal="pressed" from="MarginContainer/Page2/MarginContainer/VBox/NextButton2" to="." method="_on_NextButton_pressed"]
 [connection signal="pressed" from="MarginContainer/Page3/MarginContainer/VBox/FinishButton" to="." method="_on_FinishButton_pressed"]

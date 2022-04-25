@@ -1,12 +1,7 @@
 class_name Cursor
 extends Area2D
 
-const POSITION_UPDATE_SMOOTHING: = 0.1
-const ALLOWED_RPCS: = [
-	"remote_update_position",
-	"remote_change_sprite_to"
-]
-var OP_CODE:int = Globals.OP_CODES.PLAYER_UPDATE
+const POSITION_UPDATE_INTERVAL: = 0.1
 
 onready var current_sprite: = $Player
 onready var tween:Tween = $Tween
@@ -19,29 +14,50 @@ var current_note_target = null
 var current_target = null
 var current_target_type:String = "none"
 
-var user_id:String = ServerConnection._match.self_user.user_id if ServerConnection._match else "local_player_cursor"
+var _user_id:String = ServerConnection._match.self_user.user_id if ServerConnection._match else "local_player_cursor"
 var is_remote: = false setget _set_is_remote
 
 var has_pos_changed: = false
+var new_pos: Vector2
 
 func _ready() -> void:
 	if not is_remote:
 		Events.connect("popup", self, "_on_popup")
 		Events.connect("popup_finished", self, "_on_popup_finished")
+		var PositionUpdateTimer:= Timer.new()
+		PositionUpdateTimer.connect("timeout", self, "_on_position_update_timeout")
+		PositionUpdateTimer.wait_time = POSITION_UPDATE_INTERVAL
+		PositionUpdateTimer.autostart = true
+		add_child(PositionUpdateTimer)
+
 	ServerConnection.connect("server_connected", self, "_on_server_connected")
 	ServerConnection.connect("match_joined", self, "_on_match_joined")
-	ServerConnection.connect("data_recieved", self, "_on_data_recieved")
 	ServerConnection.connect("presences_changed", self, "_on_presences_changed")
-	if is_remote:
-		set_process(false)
+	NetworkTraffic.connect("player_movement_recieved", self, "_on_player_movement_recieved")
+	NetworkTraffic.connect("player_sprite_changed", self, "_on_player_sprite_changed")
+
+
+func setup_puppet(user_id:String)-> void:
+	_user_id = user_id
+	self.is_remote = true
+	set_process(false)
+	monitorable = false
+	monitoring = false
+	set_physics_process(false)
+	set_process_input(false)
+	set_process_unhandled_input(false)
+	set_process_unhandled_key_input(false)
+	set_collision_layer_bit(0, false)
+	set_collision_mask_bit(0, false)
+	input_pickable = false
 
 
 func _process(_delta: float) -> void:
 	if global_position != get_global_mouse_position() and not is_remote:
 		update_position(get_global_mouse_position())
 		if online:
-			yield(ServerConnection.send_rpc_async("remote_update_position", OP_CODE, get_global_mouse_position()), "completed")
-
+			has_pos_changed = true
+			new_pos = get_global_mouse_position()
 
 
 func _input(event: InputEvent) -> void:
@@ -54,18 +70,22 @@ func _input(event: InputEvent) -> void:
 
 
 func change_sprite_to(sprite: String)-> void:
+	if is_remote: return
+
+	sprite = sprite.to_lower().strip_edges()
 	_change_sprite(sprite)
 	if online:
 		var payload: = {
 			"sprite": sprite,
-			"user_id": user_id
+			"user_id": _user_id
 		}
-		var result:int = yield(ServerConnection.send_rpc_async("remote_change_sprite_to", OP_CODE, sprite), "completed")
+		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.PLAYER_SPRITE, payload), "completed")
 		if result != OK:
 			print("ERROR SENDING UPDATE SPRITE RPC")
 
 
 func remote_change_sprite_to(sprite:String)-> void:
+	sprite = sprite.to_lower().strip_edges()
 	print("Changing sprite remotely")
 	if sprite == "":
 		print("error with sprite string")
@@ -73,7 +93,6 @@ func remote_change_sprite_to(sprite:String)-> void:
 
 
 func _change_sprite(sprite:String)-> void:
-	sprite = sprite.to_lower().strip_edges()
 	match sprite:
 		"info":
 			current_sprite.visible = false
@@ -89,16 +108,14 @@ func _change_sprite(sprite:String)-> void:
 			current_sprite.visible = true
 
 
-func remote_update_position(pos)-> void:
-	if pos is String:
-		var vector_pos:Vector2 = Globals.str_to_vec2(pos)
-
+func remote_update_position(pos:Vector2)-> void:
+#	global_position = pos
 	tween.interpolate_property(
 		self,
 		"global_position",
 		null,
 		pos,
-		POSITION_UPDATE_SMOOTHING,
+		POSITION_UPDATE_INTERVAL,
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN_OUT
 	)
@@ -106,6 +123,7 @@ func remote_update_position(pos)-> void:
 
 
 func update_position(pos:Vector2)-> void:
+	if is_remote: return
 	global_position = pos
 #	if online:
 #		has_pos_changed = true
@@ -159,27 +177,20 @@ func _on_server_connected()-> void:
 	online = ServerConnection.is_connected_to_server
 
 
-func _on_data_recieved(payload:Dictionary)-> void:
-	if payload.rpc != "remote_update_position":
-		print(payload)
-	if not "op_code" in payload or not payload.op_code == OP_CODE:
-		return
-	if not "user_id" in payload.data or payload.user_id != user_id:
-		return
-	if not "rpc" in payload or not payload.rpc in ALLOWED_RPCS:
-		if "rpc" in payload:
-			print("Trying to call RPC " + payload.rpc + " which is not allowed")
-		return
-	if not "data" in payload:
-		return
-
-	call(payload.rpc, payload.data)
+func _on_player_movement_recieved(user_id:String, pos:Vector2)-> void:
+	if user_id == _user_id:
+		remote_update_position(pos)
 
 
-func _on_presences_changed()-> void:
+func _on_player_sprite_changed(user_id:String, sprite:String)-> void:
+	if user_id == _user_id:
+		remote_change_sprite_to(sprite)
+
+
+func _on_presences_changed(presences)-> void:
 	var i_am_deleted: = false
-	for presence in ServerConnection.presences:
-		if user_id == presence:
+	for presence in presences:
+		if _user_id == presence:
 			i_am_deleted = true
 
 	if i_am_deleted:
@@ -192,12 +203,16 @@ func _set_is_remote(value:bool)-> void:
 
 
 func _on_match_joined()-> void:
-	user_id = ServerConnection._match.self_user.user_id if ServerConnection._match else "local_player_cursor"
+	_user_id = ServerConnection._match.self_user.user_id if ServerConnection._match else "local_player_cursor"
 
 
-#func _on_ServerUpdateTimer_timeout() -> void:
-#	if online and has_pos_changed:
-#		var result:int = yield(ServerConnection.send_rpc_async("remote_update_position", OP_CODE, global_position), "completed")
-#		if result != OK:
-#			print("ERROR SENDING MATCH DATA ON PLAYER POS")
-#	has_pos_changed = false
+func _on_position_update_timeout()-> void:
+	if has_pos_changed and not is_remote:
+		var payload: = {
+				"pos": new_pos,
+				"user_id": _user_id
+			}
+		var result = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.PLAYER_MOVEMENT, payload), "completed")
+		if result != OK:
+			print("ERROR UPDATING PLAYER POS REMOTELY")
+		has_pos_changed = false

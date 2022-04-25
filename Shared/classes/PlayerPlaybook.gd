@@ -1,6 +1,8 @@
 class_name PlayerPlaybook
 extends Playbook
 
+var PLAYBOOK_TYPE: = "player"
+
 export var aliases: String
 export var look: String
 export var heritage: String
@@ -27,7 +29,6 @@ export var heavy_armor: bool = false
 export var special_armor: bool = false
 export var crew_name: String = ""
 export var lifestyle: String setget ,_get_lifestyle
-
 
 func setup(json_or_file_path_to_json, pc_class: String, overwrite:bool = false)-> void:
 	if not needs_setup and not overwrite: return

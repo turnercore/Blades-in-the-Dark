@@ -101,5 +101,5 @@ class SessionFileWorker:
 
 			if auth_email == email:
 				return auth_token
-
+		file.close()
 		return ""

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://UI/MapShortcuts.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Crew/Crew.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://UI/SelectedCharacter.tscn" type="PackedScene" id=18]
 [ext_resource path="res://DiceRoller.tscn" type="PackedScene" id=19]
 [ext_resource path="res://multiplayer/ServerDebugPanel.tscn" type="PackedScene" id=20]
+[ext_resource path="res://UI/NotificationList.tscn" type="PackedScene" id=21]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -36,7 +37,7 @@ shadow_size = 3
 
 [node name="Game" type="Node"]
 script = ExtResource( 4 )
-roster = NodePath("PopupLayer/Popups/Roster")
+roster_list = NodePath("PopupLayer/Popups/Roster")
 clock_screen = NodePath("PopupLayer/Popups/Clocks")
 
 [node name="Map" parent="." instance=ExtResource( 9 )]
@@ -46,6 +47,7 @@ clock_screen = NodePath("PopupLayer/Popups/Clocks")
 [node name="UI" type="VBoxContainer" parent="GUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -72,6 +74,7 @@ size_flags_vertical = 3
 
 [node name="SelectedCharacter" parent="GUI/UI/TopHalfUI/FirstThird" instance=ExtResource( 18 )]
 margin_right = 338.0
+mouse_filter = 1
 
 [node name="MiddleThird" type="VBoxContainer" parent="GUI/UI/TopHalfUI"]
 margin_left = 342.0
@@ -118,19 +121,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer"]
+[node name="GameStateSelector" type="HBoxContainer" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer"]
 margin_top = 44.0
 margin_right = 184.0
 margin_bottom = 71.0
 
-[node name="FreePlayButton" type="Button" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer"]
+[node name="FreePlayButton" type="Button" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/GameStateSelector"]
 margin_right = 41.0
 margin_bottom = 27.0
 size_flags_horizontal = 0
 text = "Free"
 script = ExtResource( 16 )
 
-[node name="ScoreButton" type="Button" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer"]
+[node name="ScoreButton" type="Button" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/GameStateSelector"]
 margin_left = 45.0
 margin_right = 97.0
 margin_bottom = 27.0
@@ -138,7 +141,7 @@ size_flags_horizontal = 0
 text = "Score"
 script = ExtResource( 17 )
 
-[node name="DowntimeButton" type="Button" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer"]
+[node name="DowntimeButton" type="Button" parent="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/GameStateSelector"]
 margin_left = 101.0
 margin_right = 184.0
 margin_bottom = 27.0
@@ -151,7 +154,6 @@ margin_left = 685.0
 margin_right = 1024.0
 margin_bottom = 298.0
 rect_min_size = Vector2( 300, 0 )
-mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -160,8 +162,10 @@ anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
 margin_right = 339.0
-margin_bottom = 0.0
-mouse_filter = 0
+margin_bottom = 298.0
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="MapInfoMarginContainer" type="MarginContainer" parent="GUI/UI/TopHalfUI/LastThird"]
 visible = false
@@ -200,31 +204,45 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="FirstThird" type="VBoxContainer" parent="GUI/UI/BottomHalfUI"]
-margin_right = 338.0
+margin_right = 288.0
 margin_bottom = 298.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ServerDebug" parent="GUI/UI/BottomHalfUI/FirstThird" instance=ExtResource( 20 )]
+visible = false
+margin_right = 288.0
+mouse_filter = 2
 
 [node name="MiddleThird" type="VBoxContainer" parent="GUI/UI/BottomHalfUI"]
-margin_left = 342.0
-margin_right = 681.0
+margin_left = 292.0
+margin_right = 581.0
 margin_bottom = 298.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="LastThird" type="VBoxContainer" parent="GUI/UI/BottomHalfUI"]
-margin_left = 685.0
+[node name="LastThird" type="HBoxContainer" parent="GUI/UI/BottomHalfUI"]
+margin_left = 585.0
 margin_right = 1024.0
 margin_bottom = 298.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="NotificationList" parent="GUI/UI/BottomHalfUI/LastThird" instance=ExtResource( 21 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 400.0
+margin_bottom = 298.0
+
 [node name="MapShortcuts" parent="GUI/UI/BottomHalfUI/LastThird" instance=ExtResource( 1 )]
 anchor_bottom = 0.0
-margin_left = 304.0
-margin_right = 339.0
+margin_left = 404.0
+margin_right = 439.0
+margin_bottom = 298.0
 size_flags_horizontal = 8
 size_flags_vertical = 9
 
@@ -264,7 +282,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color( 0, 0.00333333, 0.1, 0.901961 )
+color = Color( 0, 0.00392157, 0.101961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -292,9 +310,8 @@ visible = false
 visible = false
 
 [node name="Settings" parent="PopupLayer/Popups" instance=ExtResource( 11 )]
+visible = false
 
-[connection signal="pressed" from="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/FreePlayButton" to="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/FreePlayButton" method="_on_FreePlayButton_pressed"]
-[connection signal="pressed" from="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/ScoreButton" to="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/ScoreButton" method="_on_ScoreButton_pressed"]
-[connection signal="pressed" from="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/DowntimeButton" to="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/HBoxContainer/DowntimeButton" method="_on_DowntimeButton_pressed"]
-[connection signal="focus_entered" from="GUI/UI/TopHalfUI/LastThird/MainScreenButtons" to="." method="_on_MainScreenButtons_focus_entered"]
-[connection signal="mouse_entered" from="GUI/UI/TopHalfUI/LastThird/MainScreenButtons" to="." method="_on_MainScreenButtons_mouse_entered"]
+[connection signal="pressed" from="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/GameStateSelector/FreePlayButton" to="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/GameStateSelector/FreePlayButton" method="_on_FreePlayButton_pressed"]
+[connection signal="pressed" from="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/GameStateSelector/ScoreButton" to="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/GameStateSelector/ScoreButton" method="_on_ScoreButton_pressed"]
+[connection signal="pressed" from="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/GameStateSelector/DowntimeButton" to="GUI/UI/TopHalfUI/MiddleThird/GameStateMargin/GameStateContainer/GameStateSelector/DowntimeButton" method="_on_DowntimeButton_pressed"]

@@ -5,6 +5,12 @@ export (NodePath) onready var result_label = get_node(result_label) as Label
 export (PackedScene) var match_button
 
 func _ready() -> void:
+	setup()
+
+
+func setup()-> void:
+	for child in match_list.get_children():
+		child.queue_free()
 	if not ServerConnection.is_connected_to_server:
 		print("NOT CONNECTED TO SERVER")
 		result_label.text = "NOT CONNECTED TO SERVER"
@@ -16,7 +22,6 @@ func _ready() -> void:
 		new_match.connect("pressed", self, "_on_match_pressed", [server_match.match_id])
 		match_list.add_child(new_match)
 
-
 func _on_match_pressed(match_id:String) -> void:
 	match_id = match_id.strip_edges()
 	var result:int = yield(ServerConnection.join_match_async(match_id), "completed")
@@ -24,3 +29,7 @@ func _on_match_pressed(match_id:String) -> void:
 		result_label.text = "CONNECTED TO MATCH"
 	else:
 		result_label.text = "Error code %s: %s" % [result, ServerConnection.error_message]
+
+#Refresh Button
+func _on_Button_pressed() -> void:
+	setup()

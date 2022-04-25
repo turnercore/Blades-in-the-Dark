@@ -49,9 +49,9 @@ const CLIENT_SCHEME : String = "https"
 const SOCKET_SCHEME : String = "ws"
 
 #
-signal match_state_recieved(match_state)
+
 # Emitted when the `presences` Dictionary has changed by joining or leaving clients
-signal presences_changed
+signal presences_changed(presences)
 
 #Emitted when the server connects
 signal server_connected
@@ -59,16 +59,23 @@ signal server_connected
 # Emitted when the server has sent an updated game state. 10 times per second.
 signal state_updated(positions, inputs)
 
+
+#Chat
 # Emitted when the server has received a new chat message into the world channel
 signal chat_message_received(sender_id, message)
+signal user_joined(username)
+signal user_left(username)
 
 # Emitted when the server has received the game state dump for all connected characters
 signal initial_state_received(data)
 
-signal data_recieved(data)
+#Emitted when the server has received the match state data
+signal match_state_recieved(match_state)
 
-signal match_joined
+signal match_joined(server_match)
 signal match_created
+
+signal server_disconnected
 
 # String that contains the error message whenever any of the functions that yield return != OK
 var error_message := "" setget _no_set, _get_error_message
@@ -107,15 +114,19 @@ func _enter_tree() -> void:
 func list_matches_async(authoritative: = false, filter:= "", query:= "")-> NakamaAPI.ApiMatchList:
 	if not filter is String:
 		error_message = "Error, filter for match list needs to be a string"
+		yield(get_tree(), "idle_frame")
 		return ERR_INVALID_DATA
 	if not query is String:
 		error_message = "Error, query for match list needs to be a string"
+		yield(get_tree(), "idle_frame")
 		return ERR_INVALID_DATA
 	if not _client:
 		error_message = "No Client"
+		yield(get_tree(), "idle_frame")
 		return ERR_UNAVAILABLE
 	if not _authenticator.session:
 		error_message = "No valid session"
+		yield(get_tree(), "idle_frame")
 		return ERR_UNCONFIGURED
 
 	var list_matches = yield(_client.list_matches_async(_authenticator.session, 0, 12, 100, false, filter, query), "completed")
@@ -128,9 +139,11 @@ func update_display_name_async(display_name:String)-> int:
 	display_name = display_name.c_escape().strip_escapes().strip_edges()
 	if not _socket:
 		error_message = "Server not connected."
+		yield(get_tree(), "idle_frame")
 		return ERR_UNAVAILABLE
 	if not _client:
 		error_message = "No Client"
+		yield(get_tree(), "idle_frame")
 		return ERR_UNAVAILABLE
 
 	var update_account = yield(_client.update_account_async(_authenticator.session, null, display_name), "completed")
@@ -139,30 +152,11 @@ func update_display_name_async(display_name:String)-> int:
 	return result
 
 
-func send_rpc_async(rpc:String, op_code:int, data)-> int:
-	if not _socket:
-		print("Server not connected")
-		return ERR_UNAVAILABLE
-	if not _match:
-		print("Not connected to a match")
-		return ERR_UNAVAILABLE
-
-	var payload: = {}
-	payload["rpc"] = rpc
-	payload["data"] = JSON.print(data)
-	var result:int
-	var json_data = JSON.print(payload)
-
-	var async_result:NakamaAsyncResult = yield(_socket.send_match_state_async(_match.match_id, op_code, json_data), "completed")
-
-	result = _exception_handler.parse_exception(async_result)
-
-	return result
-
 #ASYNCHRONOUS coroutine that creates a match on the server and joins it
 func create_match_async(match_name:= "")-> int:
 	if not _socket:
 		error_message = "Socket not connected."
+		yield(get_tree(), "idle_frame")
 		return ERR_UNAVAILABLE
 
 	var result:int = 0
@@ -182,6 +176,7 @@ func join_match_async(match_id:String)-> int:
 
 	if not _socket:
 		error_message = "Server not connected."
+		yield(get_tree(), "idle_frame")
 		return ERR_UNAVAILABLE
 
 
@@ -203,13 +198,14 @@ func send_match_state_async(op_code:int, data)-> int:
 
 	if not _socket:
 		print("Server not connected")
+		yield(get_tree(), "idle_frame")
 		return ERR_UNAVAILABLE
 	if not _match:
 		print("Not connected to a match")
+		yield(get_tree(), "idle_frame")
 		return ERR_UNAVAILABLE
 
 	var async_result:NakamaAsyncResult = yield(_socket.send_match_state_async(_match.match_id, op_code, json_data), "completed")
-
 	result = _exception_handler.parse_exception(async_result)
 	return result
 
@@ -266,6 +262,8 @@ func connect_to_server_async() -> int:
 		_socket.connect("received_match_state", self, "_on_NakamaSocket_received_match_state")
 		#warning-ignore: return_value_discarded
 		_socket.connect("received_channel_message", self, "_on_NamakaSocket_received_channel_message")
+		#warning-ignore: return_value_discarded
+		_socket.connect("received_channel_presence", self, "_on_NakamaSocket_recieved_channel_presence")
 
 
 		is_connected_to_server = true
@@ -286,7 +284,8 @@ func disconnect_from_server_async() -> int:
 			_reset_data()
 			_authenticator.cleanup()
 			return OK
-
+		is_connected_to_server = false
+		emit_signal("server_disconnected")
 	return parsed_result
 
 
@@ -315,6 +314,7 @@ func get_user_id() -> String:
 # Returns OK, a nakama error message, or ERR_UNAVAILABLE if the socket is not connected.
 func send_text_async(text: String) -> int:
 	if not _socket:
+		yield(get_tree(), "idle_frame")
 		return ERR_UNAVAILABLE
 
 	var data := {"msg": text}
@@ -366,31 +366,21 @@ func _on_NakamaSocket_received_match_presence(new_presences: NakamaRTAPI.MatchPr
 	for leave in new_presences.leaves:
 		#warning-ignore: return_value_discarded
 		presences.erase(leave.user_id)
+		emit_signal("user_left", leave.username)
 
 	for join in new_presences.joins:
 		if not join.user_id == get_user_id():
 			presences[join.user_id] = join
+		emit_signal("user_joined", join.username)
+	emit_signal("presences_changed", presences)
 
-	var current_game_state: = {
-		"GameData" : GameData
-	}
-	if is_host: send_match_state_async(Globals.OP_CODES.INTIAL_GAME_STATE, current_game_state)
-	emit_signal("presences_changed")
 
+func _on_NakamaSocket_recieved_channel_presence(channel_presences: NakamaRTAPI.ChannelPresenceEvent)-> void:
+	pass
 
 # Called when the server received a custom message from the server.
 func _on_NakamaSocket_received_match_state(match_state: NakamaRTAPI.MatchData) -> void:
-	if match_state.op_code == Globals.OP_CODES.INTIAL_GAME_STATE:
-		pass
-	var payload: = {}
-	var data = JSON.parse(match_state.data).result
-	payload["op_code"] = match_state.op_code
-	payload["presence"] = match_state.presence
-	if "rpc" in data:
-		payload["rpc"] = data.rpc
-	payload["data"] = JSON.parse(data.data).result if "data" in data else data
-	emit_signal("data_recieved", payload)
-#	emit_signal("match_state_recieved", match_state)
+	emit_signal("match_state_recieved", match_state)
 
 
 # Called when the server received a new chat message.

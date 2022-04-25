@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
-[ext_resource path="res://debug/demo/src/UI/Components/NotificationList.gd" type="Script" id=2]
+[ext_resource path="res://UI/NotificationList.gd" type="Script" id=2]
 
 [node name="NotificationList" type="VBoxContainer"]
 anchor_left = 1.0

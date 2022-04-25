@@ -15,9 +15,8 @@ func _on_HostGameButton_pressed() -> void:
 		yield(ServerConnection, "server_connected")
 		yield(get_tree(), "idle_frame")
 		if not GameData.is_game_setup:
-			Events.popup(choose_game_scene)
+			Events.popup(choose_game_scene, true)
 			yield(GameData, "game_setup")
-			print("GAME IS SETUP CONTINUING>!>!>!>!>!>!")
 			yield(get_tree(), "idle_frame")
 		Events.popup(create_match_scene, true)
 		yield(ServerConnection, "match_created")

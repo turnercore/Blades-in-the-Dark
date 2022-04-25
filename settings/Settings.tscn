@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://settings/LoadButton.gd" type="Script" id=1]
 [ext_resource path="res://popups/LoadScreen.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://settings/DeleteMap.gd" type="Script" id=11]
 [ext_resource path="res://settings/EditMap.gd" type="Script" id=12]
 [ext_resource path="res://settings/Settings.gd" type="Script" id=13]
+[ext_resource path="res://settings/OnlineSettingsButton.gd" type="Script" id=14]
+[ext_resource path="res://settings/OnlineSettings.tscn" type="PackedScene" id=15]
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0
@@ -55,9 +57,9 @@ align = 1
 
 [node name="MenuButtons" type="VBoxContainer" parent="Settings"]
 margin_left = 25.0
-margin_top = 59.0
+margin_top = 74.0
 margin_right = 225.0
-margin_bottom = 265.0
+margin_bottom = 249.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/separation = 10
@@ -253,24 +255,20 @@ margin_right = 200.0
 margin_bottom = 175.0
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="Settings/MenuButtons"]
+[node name="OnlineSettingsButton" type="Button" parent="Settings/MenuButtons"]
 margin_top = 111.0
 margin_right = 200.0
 margin_bottom = 138.0
-text = "Quit"
-script = ExtResource( 8 )
+text = "Online Settings"
+script = ExtResource( 14 )
+online_settings_scene = ExtResource( 15 )
 
-[node name="Label" type="Label" parent="Settings/MenuButtons"]
+[node name="QuitButton" type="Button" parent="Settings/MenuButtons"]
 margin_top = 148.0
 margin_right = 200.0
-margin_bottom = 172.0
-text = "Match ID:"
-
-[node name="match_id" type="Label" parent="Settings/MenuButtons"]
-margin_top = 182.0
-margin_right = 200.0
-margin_bottom = 206.0
-text = "match_id"
+margin_bottom = 175.0
+text = "Quit"
+script = ExtResource( 8 )
 
 [connection signal="pressed" from="Settings/MenuButtons/SaveButton" to="Settings/MenuButtons/SaveButton" method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="Settings/MenuButtons/LoadButton" to="Settings/MenuButtons/LoadButton" method="_on_LoadButton_pressed"]
@@ -284,4 +282,5 @@ text = "match_id"
 [connection signal="pressed" from="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/DeleteMap" to="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/DeleteMap" method="_on_LoadMap_pressed"]
 [connection signal="index_pressed" from="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/DeleteMap/MapChooser" to="Settings/MenuButtons/EditMap/EditMapDialog/VBoxContainer/DeleteMap" method="_on_MapChooser_index_pressed"]
 [connection signal="pressed" from="Settings/MenuButtons/CreateNewCrewButton" to="Settings/MenuButtons/CreateNewCrewButton" method="_on_CreateNewCrewButton_pressed"]
+[connection signal="pressed" from="Settings/MenuButtons/OnlineSettingsButton" to="Settings/MenuButtons/OnlineSettingsButton" method="_on_OnlineSettingsButton_pressed"]
 [connection signal="pressed" from="Settings/MenuButtons/QuitButton" to="Settings/MenuButtons/QuitButton" method="_on_QuitButton_pressed"]

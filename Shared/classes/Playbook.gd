@@ -2,6 +2,8 @@ class_name Playbook
 extends Resource
 
 #Path to the srd_json
+var id:String setget _set_id, _get_id
+var id_set:bool = true
 var srd_json: String = 'res://srd/default_srd.json'
 var version:= ""
 export var name:String
@@ -47,7 +49,21 @@ var resolve: int = 0
 
 export (bool) var needs_setup: = true
 
-signal property_changed(property)
+signal property_changed(property_field)
+
+
+func _set_id(value:String)-> void:
+	id = value
+	id_set = true
+
+
+func _get_id()-> String:
+	if id_set:
+		return id
+	else:
+		self.id = name.strip_edges().c_escape().strip_escapes() + "$" + str(randi()%1000)
+		return id
+
 
 func _init() -> void:
 	if not self.is_connected("property_changed", self, "_on_property_changed"):
@@ -74,22 +90,22 @@ func set_property(property: String, value)-> void:
 
 func set_ability(key, value)-> void:
 	abilities[key] = value
-	emit_signal("property_changed", "abilities")
+	emit_signal("property_changed", "abilities."+key)
 
 
 func set_contacts(key, value)-> void:
 	contacts[key] = value
-	emit_signal("property_changed", "contacts")
+	emit_signal("property_changed", "contacts."+key)
 
 
 func set_coin(key, value)-> void:
 	coin[key] = value
-	emit_signal("property_changed", "coin")
+	emit_signal("property_changed", "coin."+key)
 
 
 func set_projects(key, value)-> void:
 	projects[key] = value
-	emit_signal("property_changed", "projects")
+	emit_signal("property_changed", "projects."+key)
 
 
 func get_insight()->int:
@@ -122,13 +138,47 @@ func get_resolve()->int:
 	return total
 
 
-func get_defaults(json: String):
+func get_defaults(json_file_path: String):
 	var file = File.new()
-	if not file.file_exists(json):
-		print("unable to find json file: " + json)
-	file.open(json, File.READ)
+	if not file.file_exists(json_file_path):
+		print("unable to find json file: " + json_file_path)
+	file.open(json_file_path, File.READ)
 	var data = parse_json(file.get_as_text())
 	return data
+
+
+func package_as_json()-> String:
+	#This function is certainly going to need some work so that it matches the SRD rules exactly,
+	#basically this needs to package the playbook as an SRD so it can be loaded into
+	var json:String
+	var dict: = {}
+
+	var ignored_props:=[
+		"Reference",
+		"Resource",
+		"resource_local_to_scene",
+		"resource_path",
+		"resource_name",
+		"script",
+		"Script Variables"
+	]
+
+	for property in self.get_property_list():
+		if ignored_props.has(property.name):
+			continue
+		dict[property.name] = get(property.name)
+		print(property.name)
+		print(get(property.name))
+
+	json = JSON.print(dict)
+	return json
+
+
+func load_from_json(json:String)-> void:
+	var result = JSON.parse(json).result
+	for property in result:
+		if property in self:
+			set(property, result[property])
 
 
 func save(path_map: String, value)-> bool:
@@ -155,6 +205,7 @@ func save(path_map: String, value)-> bool:
 
 	if not path.back() in cursor: cursor[path.back()] = null
 	cursor[path.back()] = value
+	emit_signal("property_changed", path_map)
 	return true
 
 
@@ -189,6 +240,7 @@ func find(path_map: String):
 				jumps += 1
 			else:
 				return false
+
 	return updated_property
 
 

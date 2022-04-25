@@ -31,6 +31,7 @@ func setup_save(srd_json_path: String = "")->void:
 	else:
 		file.open(srd_json_path, File.READ)
 		srd_data = parse_json(file.get_as_text())
+		file.close()
 	setup_srd_maps()
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://debug/demo/src/UI/Components/NotificationList.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/NotificationList.tscn" type="PackedScene" id=1]
 [ext_resource path="res://debug/demo/src/UI/Elements/Button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://debug/demo/src/UI/ChatBox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://debug/demo/src/UI/Menus/Characters/CharacterColorEditor.tscn" type="PackedScene" id=4]

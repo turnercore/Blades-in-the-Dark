@@ -6,26 +6,32 @@
 [ext_resource path="res://Shared/Art/six sided die 2.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 0, 224, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 16, 224, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 32, 224, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=6]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 48, 224, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=7]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 64, 224, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=8]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 80, 224, 16, 16 )
 
@@ -52,7 +58,7 @@ texture = ExtResource( 1 )
 visible = false
 scale = Vector2( 3.11, 3.11 )
 frames = SubResource( 9 )
-frame = 4
+frame = 5
 playing = true
 
 [node name="Info" type="Sprite" parent="."]
@@ -69,10 +75,6 @@ position = Vector2( 0.5, 0.499997 )
 scale = Vector2( 2.55, 2.55 )
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="ServerUpdateTimer" type="Timer" parent="."]
-wait_time = 0.25
-autostart = true
 
 [connection signal="area_entered" from="." to="." method="_on_cursor_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_cursor_area_exited"]

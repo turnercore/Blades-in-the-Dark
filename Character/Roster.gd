@@ -5,10 +5,11 @@ export (NodePath) onready var character_container = get_node(character_container
 export (PackedScene) onready var create_character_popup
 
 func _ready() -> void:
-	GameSaver.connect("pc_playbooks_loaded", self, "_on_pc_playbooks_loaded")
+	GameSaver.connect("roster_loaded", self, "_on_roster_loaded")
 	Events.connect("roster_updated", self, "_on_roster_updated")
-	if GameData.pc_playbooks and "roster" in GameData.pc_playbooks:
-		setup(GameData.pc_playbooks.roster)
+	GameData.connect("roster_updated", self, "_on_roster_updated")
+	if not GameData.roster.empty():
+		setup(GameData.roster)
 
 
 func setup(playbooks:Array)-> void:
@@ -22,12 +23,12 @@ func setup(playbooks:Array)-> void:
 
 
 func _on_roster_updated()->void:
-	if GameData.pc_playbooks and "roster" in GameData.pc_playbooks:
-		setup(GameData.pc_playbooks.roster)
+	if not GameData.roster.empty():
+		setup(GameData.roster)
 
 
-func _on_pc_playbooks_loaded(pc_playbooks:Array)-> void:
-	setup(pc_playbooks)
+func _on_roster_loaded(roster:Array)-> void:
+	setup(roster)
 
 
 func _on_character_selected()-> void:

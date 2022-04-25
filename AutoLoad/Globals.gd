@@ -15,11 +15,6 @@ enum CLOCK_TYPE {
 	FACTION_PROJECT
 }
 
-enum OP_CODES {
-	PLAYER_UPDATE,
-	GAMEDATA_UPDATE,
-	INTIAL_GAME_STATE = 100
-}
 
 #Helper Functions
 func propagate_set_playbook_recursive(node: Node, playbook: Playbook, starting_node: Node)-> void:

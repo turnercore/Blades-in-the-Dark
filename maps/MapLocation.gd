@@ -105,7 +105,6 @@ func _on_MapNote_area_entered(area: Area2D) -> void:
 			description = "Info text missing"
 
 		Tooltip.display_tooltip(location_name, description)
-#		Events.emit_signal("info_broadcasted", description.c_unescape())
 		enlarge()
 
 
@@ -114,7 +113,6 @@ func _on_MapNote_area_exited(area: Area2D) -> void:
 	if area is Cursor:
 		if "is_remote" in area and not area.is_remote and not locked:
 			Tooltip.finish_tooltip()
-#			Events.emit_signal("info_broadcasted", "")
 			shrink()
 			Events.emit_signal("cursor_free")
 

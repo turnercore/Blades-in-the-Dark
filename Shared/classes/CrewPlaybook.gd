@@ -1,6 +1,7 @@
 class_name CrewPlaybook
 extends Playbook
 
+var PLAYBOOK_TYPE: = "crew"
 
 export (int) var heat: int = 0
 export (int) var wanted_level: int = 0
@@ -23,25 +24,15 @@ export (Dictionary) var prison_claims:Dictionary
 export (Dictionary) var map:Dictionary
 
 
-
-
 func setup(json_or_file_path_to_json, crew_type: String, overwrite:bool = false)-> void:
 	if not needs_setup and not overwrite: return
-
-	var json = json_or_file_path_to_json
 	var srd: Dictionary = {}
+	srd = get_defaults(json_or_file_path_to_json) if json_or_file_path_to_json is String else json_or_file_path_to_json
 
 	needs_setup = false
 	crew_type = crew_type.to_lower()
 	experience.clear()
 	experience["playbook"] = 0
-
-
-	if json is String:
-		srd = get_defaults(json)
-	else:
-		srd = json
-
 
 	type = crew_type
 	setup_property("abilities", srd, "crew_abilities")

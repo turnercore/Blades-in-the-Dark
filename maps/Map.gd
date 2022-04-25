@@ -27,9 +27,12 @@ func _ready() -> void:
 	Events.connect("popup_finished", self, "_on_popup_finished")
 	ServerConnection.connect("match_joined", self, "_on_match_joined")
 	ServerConnection.connect("presences_changed", self, "_on_presences_changed")
+	NetworkTraffic.connect("gamedata_location_created", self, "_on_map_note_added")
+	NetworkTraffic.connect("gamedata_location_updated", self, "_on_map_note_changed")
+	NetworkTraffic.connect("gamedata_location_removed", self, "_on_map_note_removed")
 
 	if ServerConnection.is_connected_to_server:
-		add_new_player_cursors()
+		add_new_player_cursors(ServerConnection.presences)
 
 	zoom_level = camera.zoom.x
 
@@ -56,7 +59,7 @@ func _process(delta: float) -> void:
 		zoom_out(delta)
 
 
-func add_note(pos:=Vector2.ZERO, note_data:={})->void:
+func add_note(pos:=Vector2.ZERO, note_data:={}, local:bool = true)->void:
 	if pos == Vector2.ZERO and note_data.empty():
 		note_data = GameData.DEFAULT_NOTE.duplicate()
 		pos = Globals.convert_to_grid(get_global_mouse_position())
@@ -72,7 +75,7 @@ func add_note(pos:=Vector2.ZERO, note_data:={})->void:
 			map_note.set(property, note_data[property])
 
 	map_note.global_position = grid.map_to_world(pos)
-	Events.emit_signal("map_note_created", note_data)
+	if local: Events.emit_signal("map_note_created", note_data)
 	creating_note = false
 
 
@@ -128,6 +131,27 @@ func load_map(map:Dictionary)->void:
 			add_note(vec_pos, map.srd_notes[pos])
 
 
+func _on_map_note_added(note_data:Dictionary)-> void:
+	var pos:Vector2
+	if not "pos" in note_data:
+		return
+
+	if note_data.pos is String:
+		pos = Globals.str_to_vec2(note_data.pos)
+	elif note_data.pos is Vector2:
+		pos = note_data.pos
+
+	add_note(pos, note_data, false)
+
+
+func _on_map_note_changed(note_data:Dictionary)-> void:
+	pass
+
+
+func _on_map_note_removed(note_pos:Vector2)-> void:
+	pass
+
+
 func _on_map_scroll_speed_changed(new_scroll_speed: float) -> void:
 	scroll_speed = new_scroll_speed
 
@@ -160,25 +184,15 @@ func _on_popup_finished()-> void:
 
 
 func _on_match_joined(server_match:NakamaRTAPI.Match)-> void:
-	add_new_player_cursors()
+	add_new_player_cursors(ServerConnection.presences)
 
 
-func _on_presences_changed()-> void:
-	add_new_player_cursors()
+func _on_presences_changed(presences)-> void:
+	add_new_player_cursors(presences)
 
 
-func add_new_player_cursors()-> void:
-	for presence in ServerConnection.presences:
-#		print(ServerConnection.presences[presence])
-#		var player_already_added: = false
-#
-#		for player in player_cursors:
-#			if presence == player.user_id:
-#				player_already_added = true
-#		if player_already_added:
-#			continue
-#		else:
+func add_new_player_cursors(presences)-> void:
+	for presence in presences:
 		var new_player = player_cursor_scene.instance()
-		new_player.user_id = presence
-		new_player.is_remote = true
+		new_player.setup_puppet(presence)
 		grid.add_child(new_player)

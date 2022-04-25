@@ -296,17 +296,18 @@ run/main_scene="res://start_screen/StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Shared/Art/Icons/icon.png"
-config/version="0.52"
+config/version="0.53"
 
 [autoload]
 
+Nakama="*res://nakama/addons/com.heroiclabs.nakama/Nakama.gd"
 Globals="*res://AutoLoad/Globals.gd"
+ServerConnection="*res://AutoLoad/ServerConnection.gd"
+NetworkTraffic="*res://AutoLoad/NetworkTraffic.gd"
 Events="*res://AutoLoad/Events.gd"
 GameData="*res://AutoLoad/GameData.gd"
 GameSaver="*res://AutoLoad/GameSaver.gd"
 Tooltip="*res://Tooltip.tscn"
-Nakama="*res://nakama/addons/com.heroiclabs.nakama/Nakama.gd"
-ServerConnection="*res://AutoLoad/ServerConnection.gd"
 PlayerData="*res://AutoLoad/PlayerData.gd"
 
 [debug]

@@ -55,17 +55,25 @@ margin_bottom = 51.0
 [node name="MatchList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 margin_top = 67.0
 margin_right = 531.0
-margin_bottom = 399.0
+margin_bottom = 352.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HSeparator2" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 415.0
+margin_top = 368.0
+margin_right = 531.0
+margin_bottom = 372.0
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 388.0
 margin_right = 531.0
 margin_bottom = 419.0
+text = "Refresh"
 
 [node name="ResultLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 margin_top = 435.0
 margin_right = 531.0
 margin_bottom = 466.0
 size_flags_vertical = 8
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

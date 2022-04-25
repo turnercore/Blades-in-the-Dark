@@ -52,7 +52,7 @@ func load_from_playbook()-> void:
 	if not playbook: return
 
 	var updated_property = playbook.find(playbook_field)
-	if updated_property:
+	if updated_property != null:
 		#Ensure the type is correct, so if updating a text field with a number it still works
 		if get(property) is String:
 			updated_property = str(updated_property)
@@ -77,6 +77,6 @@ func _on_updated_data(_ignored = null)-> void:
 		playbook.emit_changed()
 
 
-func _on_property_changed(updated_property)-> void:
-	if updated_property == playbook_field:
+func _on_property_changed(field:String)-> void:
+	if field == playbook_field:
 		load_from_playbook()

@@ -37,16 +37,25 @@ func setup_playbook(type: String)-> void:
 
 
 func _on_type_options_item_selected(index: int) -> void:
-	var pc_type:String = type_options.get_item_text(index)
-	setup_playbook(pc_type)
-	$MarginContainer/Page1/VBox/NextButton.disabled = false
+	$MarginContainer/Page1/VBox/CreateNewPlaybook.disabled = false
 
 
 func _on_FinishButton_pressed() -> void:
-	if not "roster" in GameData.pc_playbooks:
-		GameData.pc_playbooks["roster"] = []
-	GameData.pc_playbooks.roster.append(new_pc_playbook)
+	GameData.add_pc_to_roster(new_pc_playbook, true)
 	GameData.save_all()
 	Events.emit_signal("popup_finished")
 	Events.emit_signal("roster_updated")
 	queue_free()
+
+
+func _on_CreateNewPlaybook_pressed() -> void:
+	var pc_type:String = type_options.get_item_text(type_options.selected)
+	setup_playbook(pc_type)
+	var pages_hidden: = false
+	for page in pages:
+		if not pages_hidden and page.visible:
+			page.visible = false
+			pages_hidden = true
+		elif pages_hidden:
+			page.visible = true
+			break
