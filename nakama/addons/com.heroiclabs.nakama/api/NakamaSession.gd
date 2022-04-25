@@ -14,7 +14,7 @@ var refresh_token : String = "" setget _no_set
 var refresh_expire_time : int = 0 setget _no_set
 var valid : bool = false setget _no_set, is_valid
 
-func _no_set(v):
+func _no_set(_v):
 	return
 
 func is_expired() -> bool:

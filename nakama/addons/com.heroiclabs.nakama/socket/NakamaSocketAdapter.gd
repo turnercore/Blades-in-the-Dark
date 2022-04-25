@@ -48,10 +48,12 @@ func connect_to_host(p_uri : String, p_timeout : int):
 # Send data to the server with an asynchronous operation.
 # @param p_buffer - The buffer with the message to send.
 # @param p_reliable - If the message should be sent reliably (will be ignored by some protocols).
+# warning-ignore:unused_argument
 func send(p_buffer : PoolByteArray, p_reliable : bool = true) -> int:
 	return _ws.get_peer(1).put_packet(p_buffer)
 
-func _process(delta):
+# warning-ignore:unused_argument
+func _process(_delta):
 	if _ws.get_connection_status() == WebSocketClient.CONNECTION_CONNECTING:
 		if _start + _timeout < OS.get_unix_time():
 			logger.debug("Timeout when connecting to socket")
@@ -71,6 +73,7 @@ func _init():
 func _received():
 	emit_signal("received", _ws.get_peer(1).get_packet())
 
+# warning-ignore:unused_argument
 func _connected(p_protocol : String):
 	_ws.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	emit_signal("connected")
@@ -78,5 +81,6 @@ func _connected(p_protocol : String):
 func _error():
 	emit_signal("received_error", FAILED)
 
+# warning-ignore:unused_argument
 func _closed(p_clean : bool):
 	emit_signal("closed")

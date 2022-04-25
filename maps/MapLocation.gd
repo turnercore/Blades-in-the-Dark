@@ -112,7 +112,7 @@ func _on_MapNote_area_entered(area: Area2D) -> void:
 func _on_MapNote_area_exited(area: Area2D) -> void:
 	cursor_hovered = false
 	if area is Cursor:
-		if not locked:
+		if "is_remote" in area and not area.is_remote and not locked:
 			Tooltip.finish_tooltip()
 #			Events.emit_signal("info_broadcasted", "")
 			shrink()

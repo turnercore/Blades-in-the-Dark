@@ -108,7 +108,7 @@ func fade_out()-> void:
 	tween.start()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	tooltip_container.rect_position = get_viewport().get_mouse_position() + OFFSET
 
 
@@ -134,7 +134,7 @@ func display_tooltip(title:String="", tooltip:String="")-> void:
 		hover_timer.start(HOVER_TIMING)
 
 
-func finish_tooltip(title:String="", tooltip:String="")-> void:
+func finish_tooltip(_title:String="", _tooltip:String="")-> void:
 	hover_timer.stop()
 	if hover_mode:
 		fade_out()

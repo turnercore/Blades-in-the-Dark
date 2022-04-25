@@ -6,7 +6,6 @@ const map_note_scene: = preload("res://maps/MapNote.tscn")
 export (float) var scroll_speed:float = 500
 export (NodePath) onready var tween = get_node(tween) as Tween
 export (NodePath) onready var cursor = get_node(cursor) as Cursor
-export (NodePath) onready var cursor_sprite = get_node(cursor_sprite) as Sprite
 export (NodePath) onready var notes = get_node(notes) as Node2D
 export (NodePath) onready var camera = get_node(camera) as Camera2D
 export (NodePath) onready var map_texture = get_node(map_texture) as TextureRect

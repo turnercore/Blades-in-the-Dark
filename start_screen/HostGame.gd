@@ -3,8 +3,7 @@ extends Button
 export (PackedScene) var multiplayer_login_scene
 export (PackedScene) var create_match_scene
 export (PackedScene) var choose_game_scene
-#export (PackedScene) var new_game_scene
-#export (PackedScene) var load_game_scene
+
 
 export (bool) var on_start_screen: = false
 
@@ -21,7 +20,7 @@ func _on_HostGameButton_pressed() -> void:
 			print("GAME IS SETUP CONTINUING>!>!>!>!>!>!")
 			yield(get_tree(), "idle_frame")
 		Events.popup(create_match_scene, true)
-		yield(ServerConnection, "match_joined")
+		yield(ServerConnection, "match_created")
 		yield(get_tree(), "idle_frame")
 		if on_start_screen:
 			get_tree().change_scene_to(Globals.GAME_SCENE)

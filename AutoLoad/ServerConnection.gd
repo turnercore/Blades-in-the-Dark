@@ -28,17 +28,17 @@ extends Node
 
 const MAX_REQUEST_ATTEMPTS := 3
 
-# Custom operational codes for state messages. Nakama built-in codes are values lower or equal to
-# `0`.
-enum OpCodes {
-	UPDATE_POSITION = 1,
-	UPDATE_INPUT,
-	UPDATE_STATE,
-	UPDATE_JUMP,
-	DO_SPAWN,
-	UPDATE_COLOR,
-	INITIAL_STATE
-}
+## Custom operational codes for state messages. Nakama built-in codes are values lower or equal to
+## `0`.
+#enum OpCodes {
+#	UPDATE_POSITION = 1,
+#	UPDATE_INPUT,
+#	UPDATE_STATE,
+#	UPDATE_JUMP,
+#	DO_SPAWN,
+#	UPDATE_COLOR,
+#	INITIAL_STATE
+#}
 
 const KEY: = "uZmEv8khiQSA4og5SYtSeAtD6L9bbsSG"
 const HOST : String = "turnercore.games"
@@ -59,22 +59,16 @@ signal server_connected
 # Emitted when the server has sent an updated game state. 10 times per second.
 signal state_updated(positions, inputs)
 
-# Emitted when the server has been informed of a change in color by another client
-signal color_updated(id, color)
-
 # Emitted when the server has received a new chat message into the world channel
 signal chat_message_received(sender_id, message)
 
 # Emitted when the server has received the game state dump for all connected characters
-signal initial_state_received(positions, inputs, colors, names)
-
-# Emitted when the server has been informed of a new character having been selected and is ready to
-# spawn.
-signal character_spawned(id, color, name)
+signal initial_state_received(data)
 
 signal data_recieved(data)
 
 signal match_joined
+signal match_created
 
 # String that contains the error message whenever any of the functions that yield return != OK
 var error_message := "" setget _no_set, _get_error_message
@@ -145,10 +139,30 @@ func update_display_name_async(display_name:String)-> int:
 	return result
 
 
+func send_rpc_async(rpc:String, op_code:int, data)-> int:
+	if not _socket:
+		print("Server not connected")
+		return ERR_UNAVAILABLE
+	if not _match:
+		print("Not connected to a match")
+		return ERR_UNAVAILABLE
+
+	var payload: = {}
+	payload["rpc"] = rpc
+	payload["data"] = JSON.print(data)
+	var result:int
+	var json_data = JSON.print(payload)
+
+	var async_result:NakamaAsyncResult = yield(_socket.send_match_state_async(_match.match_id, op_code, json_data), "completed")
+
+	result = _exception_handler.parse_exception(async_result)
+
+	return result
+
 #ASYNCHRONOUS coroutine that creates a match on the server and joins it
 func create_match_async(match_name:= "")-> int:
 	if not _socket:
-		error_message = "Server not connected."
+		error_message = "Socket not connected."
 		return ERR_UNAVAILABLE
 
 	var result:int = 0
@@ -156,7 +170,8 @@ func create_match_async(match_name:= "")-> int:
 	result = _exception_handler.parse_exception(server_match)
 	if result == OK:
 		_match = server_match
-		emit_signal("match_joined")
+		emit_signal("match_created")
+		is_host = true
 
 	return result
 
@@ -356,16 +371,26 @@ func _on_NakamaSocket_received_match_presence(new_presences: NakamaRTAPI.MatchPr
 		if not join.user_id == get_user_id():
 			presences[join.user_id] = join
 
+	var current_game_state: = {
+		"GameData" : GameData
+	}
+	if is_host: send_match_state_async(Globals.OP_CODES.INTIAL_GAME_STATE, current_game_state)
 	emit_signal("presences_changed")
 
 
 # Called when the server received a custom message from the server.
 func _on_NakamaSocket_received_match_state(match_state: NakamaRTAPI.MatchData) -> void:
-	var data = parse_json(match_state.data)
-	data["op_code"] = match_state.op_code
-	data["presence"] = match_state.presence
-	emit_signal("data_recieved", data)
-	emit_signal("match_state_recieved", match_state)
+	if match_state.op_code == Globals.OP_CODES.INTIAL_GAME_STATE:
+		pass
+	var payload: = {}
+	var data = JSON.parse(match_state.data).result
+	payload["op_code"] = match_state.op_code
+	payload["presence"] = match_state.presence
+	if "rpc" in data:
+		payload["rpc"] = data.rpc
+	payload["data"] = JSON.parse(data.data).result if "data" in data else data
+	emit_signal("data_recieved", payload)
+#	emit_signal("match_state_recieved", match_state)
 
 
 # Called when the server received a new chat message.

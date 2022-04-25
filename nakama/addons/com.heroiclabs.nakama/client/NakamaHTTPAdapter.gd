@@ -79,6 +79,7 @@ class AsyncRequest:
 		response_body = args[3]
 
 	func backoff(p_time : int):
+		# warning-ignore:integer_division
 		timer = request.get_tree().create_timer(p_time / 1000)
 		yield(timer, "timeout")
 		timer = null

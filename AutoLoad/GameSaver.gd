@@ -93,7 +93,7 @@ func load_crew_playbook(save_id:= current_save_id, save_folder:= SAVE_FOLDER)-> 
 
 #works
 func load_pc_playbooks(id:=current_save_id, save_folder:=SAVE_FOLDER)-> void:
-	var pc_playbooks:Array
+	var pc_playbooks: = []
 
 	var dir: = Directory.new()
 	var file_dir:String = save_folder + "/" + id + "/pc_playbooks"

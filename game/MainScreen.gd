@@ -27,12 +27,10 @@ func change_screen_to(screen: String)-> void:
 	screen = screen.to_lower()
 	if screen in screens:
 		if screens[screen] is Node:
-			print("using popup")
 			screens[screen].popup()
 
 
 func _on_popup(popup, use_overlay: = false)-> void:
-	print(popup)
 	if use_overlay:
 		overlay.visible = true
 		overlay.mouse_filter = Control.MOUSE_FILTER_STOP

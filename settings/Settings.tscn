@@ -14,21 +14,13 @@
 [ext_resource path="res://settings/EditMap.gd" type="Script" id=12]
 [ext_resource path="res://settings/Settings.gd" type="Script" id=13]
 
-[node name="Settings" type="Popup"]
+[node name="Settings" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 13 )
-
-[node name="OverlayBackground" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color( 0, 0, 0, 0.839216 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,7 +31,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -125.0
-margin_top = -125.0
+margin_top = -199.0
 margin_right = 125.0
 margin_bottom = 125.0
 rect_min_size = Vector2( 250, 250 )
@@ -55,7 +47,7 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 240.0
-margin_bottom = 240.0
+margin_bottom = 314.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Blades in the Dark"
@@ -63,9 +55,9 @@ align = 1
 
 [node name="MenuButtons" type="VBoxContainer" parent="Settings"]
 margin_left = 25.0
-margin_top = 56.0
+margin_top = 59.0
 margin_right = 225.0
-margin_bottom = 194.0
+margin_bottom = 265.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/separation = 10
@@ -267,6 +259,18 @@ margin_right = 200.0
 margin_bottom = 138.0
 text = "Quit"
 script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Settings/MenuButtons"]
+margin_top = 148.0
+margin_right = 200.0
+margin_bottom = 172.0
+text = "Match ID:"
+
+[node name="match_id" type="Label" parent="Settings/MenuButtons"]
+margin_top = 182.0
+margin_right = 200.0
+margin_bottom = 206.0
+text = "match_id"
 
 [connection signal="pressed" from="Settings/MenuButtons/SaveButton" to="Settings/MenuButtons/SaveButton" method="_on_SaveButton_pressed"]
 [connection signal="pressed" from="Settings/MenuButtons/LoadButton" to="Settings/MenuButtons/LoadButton" method="_on_LoadButton_pressed"]

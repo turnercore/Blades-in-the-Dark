@@ -16,7 +16,9 @@ enum CLOCK_TYPE {
 }
 
 enum OP_CODES {
-	PLAYER_UPDATE
+	PLAYER_UPDATE,
+	GAMEDATA_UPDATE,
+	INTIAL_GAME_STATE = 100
 }
 
 #Helper Functions

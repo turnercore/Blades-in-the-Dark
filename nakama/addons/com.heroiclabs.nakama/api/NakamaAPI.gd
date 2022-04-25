@@ -3353,6 +3353,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -3378,6 +3379,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4231,6 +4233,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4292,6 +4295,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4326,6 +4330,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4360,6 +4365,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4393,6 +4399,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4496,6 +4503,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4552,6 +4560,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4612,6 +4621,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4643,6 +4653,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4674,6 +4685,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4701,6 +4713,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4732,6 +4745,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4759,6 +4773,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4790,6 +4805,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4826,6 +4842,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4938,6 +4955,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -4978,6 +4996,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5044,6 +5063,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5088,6 +5108,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5118,6 +5139,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5149,6 +5171,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5178,6 +5201,7 @@ class ApiClient extends Reference:
 			var header = "Bearer %s" % p_bearer_token
 			headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5353,6 +5377,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5389,6 +5414,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5432,7 +5458,8 @@ class ApiClient extends Reference:
 		var headers = {}
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
-
+		#Ignore-warning: UNASSIGNED_VARIABLE
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5474,6 +5501,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5562,6 +5590,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5597,6 +5626,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5635,6 +5665,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")
@@ -5672,6 +5703,7 @@ class ApiClient extends Reference:
 		var header = "Bearer %s" % p_session.token
 		headers["Authorization"] = header
 
+# warning-ignore:unassigned_variable
 		var content : PoolByteArray
 
 		var result = yield(_http_adapter.send_async(method, uri, headers, content), "completed")

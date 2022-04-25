@@ -4,7 +4,7 @@ class_name NakamaAsyncResult
 var exception : NakamaException setget _no_set, get_exception
 var _ex = null
 
-func _no_set(v):
+func _no_set(_v):
 	return
 
 func _init(p_ex = null):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://debug/demo/src/TestConsole.gd" type="Script" id=1]
+[ext_resource path="res://debug/TestConsole.gd" type="Script" id=1]
 [ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=2]
 
 [node name="TestConsole" type="Control"]
@@ -241,8 +241,45 @@ margin_bottom = 408.0
 text = "Data"
 align = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_top = 424.0
+margin_right = 1076.0
+margin_bottom = 471.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ipv6" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_right = 640.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+placeholder_text = "ipv6"
+
+[node name="HostServerButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 656.0
+margin_right = 796.0
+margin_bottom = 47.0
+text = "Host Server"
+
+[node name="PeerToPeerButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_left = 812.0
+margin_right = 1076.0
+margin_bottom = 47.0
+text = "Connect peer-to-peer"
+
+[node name="TestPeerToPeerButton" type="Button" parent="PanelContainer/VBoxContainer"]
+margin_top = 487.0
+margin_right = 1076.0
+margin_bottom = 518.0
+toggle_mode = true
+text = "Test Peer-to-Peer"
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/login/LoginButton" to="." method="_on_LoginButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ConnectToServer/ConnectButton" to="." method="_on_ConnectButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/creatematch/CreateMatchButton" to="." method="_on_CreateMatchButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/joinmatch/JoinMatchButton" to="." method="_on_JoinMatchButton_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/transmitdata/SendDataButton" to="." method="_on_SendDataButton_pressed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/HBoxContainer/ipv6" to="." method="_on_ipv6_text_changed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/HostServerButton" to="." method="_on_HostServerButton_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/PeerToPeerButton" to="." method="_on_PeerToPeerButton_pressed"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/TestPeerToPeerButton" to="." method="_on_TestPeerToPeerButton_toggled"]

@@ -383,8 +383,6 @@ extents = Vector2( 35, 10 )
 z_index = 100
 script = ExtResource( 2 )
 edit_note_popup = ExtResource( 4 )
-location_name_label = NodePath("MapNoteTexture/location_name")
-info_text_label = NodePath("MapNoteTexture/description")
 
 [node name="MapNoteTexture" type="NinePatchRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0.490196 )

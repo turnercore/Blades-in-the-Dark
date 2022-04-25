@@ -3,11 +3,7 @@ extends Node
 signal chat_hidden
 signal chat_unhidden
 
-
 signal connected_to_server
-
-
-
 
 signal chat_message_sent(message)
 
@@ -35,11 +31,11 @@ signal map_scroll_speed_changed(scroll_speed)
 
 signal tooltip_frozen(tooltip)
 signal tooltip_container_transfered(tooltip_container)
+
 signal popup_layer_ready
 signal info_broadcasted(info)
 func emit_tooltip(tooltip)-> void:
 	emit_signal("info_broadcasted", tooltip)
-
 
 signal roster_updated
 
@@ -49,7 +45,6 @@ signal chat_deselected
 signal clock_updated(id, clock_data)
 func emit_clock_updated(id:String, clock_data:Dictionary)->void:
 	emit_signal("clock_updated", id, clock_data)
-
 
 signal map_created(map_texture_path, map_name)
 func emit_map_created(map_texture_path:String, map_name:String)->void:
@@ -67,7 +62,6 @@ signal map_note_clicked(note)
 signal map_note_updated(data)
 signal map_note_removed(pos)
 signal map_note_created(note_data)
-
 
 signal cursor_hovered
 signal cursor_free
