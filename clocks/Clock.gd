@@ -35,18 +35,18 @@ export var max_value: = 4 setget _set_max_value
 export var is_secret: bool = false setget _set_is_secret
 var type:int setget _set_type
 onready var fill_color:Color = clock_texture.tint_progress setget _set_fill_color
-var clock_data: = {
-	"id": id,
-	"clock_name": clock_name,
-	"filled": filled,
-	"max_value": max_value,
-	"locked": locked,
-	"locked_by_clock": locked_by_clock,
-	"unlocks_clock": unlocks_clock,
-	"type": type,
-	"is_secret": is_secret,
-	"fill_color": fill_color
-}
+#var clock_data: = {
+#	"id": id,
+#	"clock_name": clock_name,
+#	"filled": filled,
+#	"max_value": max_value,
+#	"locked": locked,
+#	"locked_by_clock": locked_by_clock,
+#	"unlocks_clock": unlocks_clock,
+#	"type": type,
+#	"is_secret": is_secret,
+#	"fill_color": fill_color
+#}
 
 var is_setup:= false
 var is_saving:= false
@@ -60,8 +60,8 @@ func _ready()->void:
 	if not locked_by_clock:
 		locked_by_container.visible = false
 
-	for type in Globals.CLOCK_TYPE:
-		var type_str: String = str(type).to_lower().replace("_", " ").capitalize()
+	for clock_type in Globals.CLOCK_TYPE:
+		var type_str: String = str(clock_type).to_lower().replace("_", " ").capitalize()
 		clock_type_option.add_item(type_str)
 
 
@@ -82,18 +82,22 @@ func setup(new_clock_data:Dictionary)->void:
 func save_clock()->void:
 	if not is_setup or is_saving: return
 	is_saving = true
-
 	yield(get_tree().create_timer(SAVE_INTERVAL), "timeout")
-	package_clock_data()
-	Events.emit_clock_updated(id, clock_data)
-	print("saved clock " + id)
+	Events.emit_clock_updated(self)
 	is_saving = false
 
 
-func package_clock_data()->void:
-	clock_data = {
+func setup_from_data(clock_data:Dictionary)-> void:
+	for property in clock_data:
+		set(property, clock_data[property])
+	is_setup = true
+	visible = true
+
+
+func package_clock_data()->Dictionary:
+	var clock_data: = {
 		"id": id,
-		"clock_name": clock_name,
+		"name": clock_name,
 		"filled": filled,
 		"max_value": max_value,
 		"locked": locked,
@@ -102,6 +106,7 @@ func package_clock_data()->void:
 		"type": type,
 		"is_secret": is_secret
 	}
+	return clock_data
 
 
 func link_to_clock(clock: Clock)->void:
@@ -145,6 +150,7 @@ func _set_id(value:String)->void:
 		yield(get_tree().create_timer(SAVE_INTERVAL), "timeout")
 		while GameData.clocks.has(new_id):
 			print("same clock id found in clocks, what are the odds, trying again")
+			# warning-ignore:integer_division
 			unique_id_helper += randi() % (RAND_LIMIT/100)
 			new_id = clock_name + "_" + str((randi() % RAND_LIMIT)+unique_id_helper)
 		id = new_id
@@ -351,19 +357,19 @@ func _on_LockCheckBox_toggled(button_pressed: bool) -> void:
 		lock()
 	else:
 		unlock()
-	Events.emit_clock_updated(id, clock_data)
+	Events.emit_clock_updated(self)
 
 
 func _on_DisconnectButton_pressed() -> void:
 	self.locked_by_clock = false
 	unlock()
-	Events.emit_clock_updated(id, clock_data)
+	Events.emit_clock_updated(self)
 
 
 func _on_DeleteButton_pressed() -> void:
 	if locked_by_clock: locked_by_clock.clear_unlocks_clock()
 	if unlocks_clock: unlocks_clock.clear_locked_by_clock()
-	Events.emit_clock_updated(id, {})
+	Events.emit_clock_removed(self.id)
 	queue_free()
 
 

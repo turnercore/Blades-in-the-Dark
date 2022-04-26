@@ -42,9 +42,12 @@ signal roster_updated
 signal chat_selected
 signal chat_deselected
 
-signal clock_updated(id, clock_data)
-func emit_clock_updated(id:String, clock_data:Dictionary)->void:
-	emit_signal("clock_updated", id, clock_data)
+signal clock_updated(clock)
+func emit_clock_updated(clock:Clock)-> void:
+	emit_signal("clock_updated", clock)
+signal clock_removed(clock_id)
+func emit_clock_removed(clock_id:String)-> void:
+	emit_signal("clock_removed", clock_id)
 
 signal map_created(map_texture_path, map_name)
 func emit_map_created(map_texture_path:String, map_name:String)->void:

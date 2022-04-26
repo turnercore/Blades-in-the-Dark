@@ -129,7 +129,7 @@ func list_matches_async(authoritative: = false, filter:= "", query:= "")-> Nakam
 		yield(get_tree(), "idle_frame")
 		return ERR_UNCONFIGURED
 
-	var list_matches = yield(_client.list_matches_async(_authenticator.session, 0, 12, 100, false, filter, query), "completed")
+	var list_matches = yield(_client.list_matches_async(_authenticator.session, 0, 12, 100, authoritative, filter, query), "completed")
 
 	return list_matches
 
@@ -376,6 +376,7 @@ func _on_NakamaSocket_received_match_presence(new_presences: NakamaRTAPI.MatchPr
 
 
 func _on_NakamaSocket_recieved_channel_presence(channel_presences: NakamaRTAPI.ChannelPresenceEvent)-> void:
+	#Set up chat channel
 	pass
 
 # Called when the server received a custom message from the server.

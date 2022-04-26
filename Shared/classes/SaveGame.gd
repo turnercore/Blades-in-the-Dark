@@ -9,11 +9,7 @@ export (String) var _save_id: = "default"
 export (String) var _save_folder: = "res://debug/save" if debug else "user://save"
 export (String) var version: String = ''
 export (Dictionary) var _map: = {} setget _set_map
-
-
 export (Array) var maps:=[]
-
-
 export (Dictionary) var clocks  setget _set_clocks
 
 var needs_setup:bool = true

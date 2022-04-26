@@ -216,9 +216,9 @@ func _on_Chat_focus_exited() -> void:
 	Events.emit_signal("chat_deselected")
 
 
-func _on_HideButton_toggled(button_pressed: bool) -> void:
+func _on_HideButton_toggled(_button_pressed: bool) -> void:
 	pass # Replace with function body.
 
 
-func _on_FullscreenButton_toggled(button_pressed: bool) -> void:
+func _on_FullscreenButton_toggled(_button_pressed: bool) -> void:
 	pass # Replace with function body.

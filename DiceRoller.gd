@@ -78,7 +78,9 @@ func create_dice(amount: int)-> void:
 
 	for i in amount:
 		var new_dice = dice_scene.instance()
+# warning-ignore:unused_variable
 		var position_set: = false
+# warning-ignore:unassigned_variable
 		var unoccupied_pos: Array
 		for position in positions:
 			if position.occupied == null:
@@ -121,28 +123,28 @@ func display_roll()-> void:
 
 
 func display_result(result_roll:int)-> int:
-	var result:=""
+	var result_text:=""
 	var result_value:int = -1
 
 
 	if result_roll <= 3:
-		result = "Bad Outcome"
+		result_text = "Bad Outcome"
 		result_value = 1
 	elif result_roll > 3 and result_roll < 6:
-		result = "Partial Success"
+		result_text = "Partial Success"
 		result_value = 2
 	elif result_roll == 6:
-		result = "Full Success!"
+		result_text = "Full Success!"
 		result_value = 3
 	elif result_roll > 6:
-		result = "CRITICAL SUCCESS!!!"
+		result_text = "CRITICAL SUCCESS!!!"
 		result_value = 4
 	else:
-		result = "invalid result"
+		result_text = "invalid result"
 
-	result_label.text = result
+	result_label.text = result_text
 	result_label.visible = true
-	result_label2.text = result
+	result_label2.text = result_text
 	result_label2.visible = true
 	return result_value
 

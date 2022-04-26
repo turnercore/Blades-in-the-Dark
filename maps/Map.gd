@@ -15,6 +15,7 @@ var zoom_level: float
 var unfocused: = false
 var creating_note: = false
 onready var player_cursors: = [cursor]
+var notes_added: = []
 
 func _ready() -> void:
 	Globals.grid = grid
@@ -69,6 +70,7 @@ func add_note(pos:=Vector2.ZERO, note_data:={}, local:bool = true)->void:
 
 	var map_note = map_note_scene.instance()
 	notes.add_child(map_note)
+	notes_added.append(map_note)
 
 	for property in note_data:
 		if property in map_note:
@@ -78,7 +80,10 @@ func add_note(pos:=Vector2.ZERO, note_data:={}, local:bool = true)->void:
 	if local: Events.emit_signal("map_note_created", note_data)
 	creating_note = false
 
-
+func delete_note(pos:Vector2)-> void:
+	for note in notes_added:
+		if note.pos == pos:
+			note.queue_free()
 
 func scroll_up(delta: float)->void:
 	camera.position.y -= scroll_speed * delta * clamp(zoom_level * zoom_level, .30, 8)
@@ -149,7 +154,8 @@ func _on_map_note_changed(note_data:Dictionary)-> void:
 
 
 func _on_map_note_removed(note_pos:Vector2)-> void:
-	pass
+	delete_note(note_pos)
+
 
 
 func _on_map_scroll_speed_changed(new_scroll_speed: float) -> void:
