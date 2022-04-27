@@ -69,7 +69,8 @@ func load_from_playbook()-> void:
 
 func _on_updated_data(_ignored = null)-> void:
 	if not playbook: return
-	var updated_value = self.get(property)
+	var updated_value
+	updated_value = str(self.get(property)) if property == "text" else self.get(property)
 	if updated_value == playbook.find(playbook_field):
 		return
 	if playbook.save(playbook_field, updated_value):

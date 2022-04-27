@@ -18,24 +18,24 @@ onready var player_cursors: = [cursor]
 var notes_added: = []
 
 func _ready() -> void:
-	Globals.grid = grid
 	GameData.connect("map_loaded", self, "_on_map_loaded")
-	load_map(GameData.map)
 	Events.connect("map_scroll_speed_changed", self, "_on_map_scroll_speed_changed")
 	Events.connect("chat_selected", self, "_on_chat_selected")
 	Events.connect("chat_deselected", self, "_on_chat_deselected")
 	Events.connect("popup", self, "_on_popup")
-	Events.connect("popup_finished", self, "_on_popup_finished")
+	Events.connect("all_popups_finished", self, "_on_all_popups_finished")
 	ServerConnection.connect("match_joined", self, "_on_match_joined")
 	ServerConnection.connect("presences_changed", self, "_on_presences_changed")
 	NetworkTraffic.connect("gamedata_location_created", self, "_on_map_note_added")
 	NetworkTraffic.connect("gamedata_location_updated", self, "_on_map_note_changed")
 	NetworkTraffic.connect("gamedata_location_removed", self, "_on_map_note_removed")
+	load_map()
 
 	if ServerConnection.is_connected_to_server:
 		add_new_player_cursors(ServerConnection.presences)
 
 	zoom_level = camera.zoom.x
+
 
 
 func _process(delta: float) -> void:
@@ -60,29 +60,29 @@ func _process(delta: float) -> void:
 		zoom_out(delta)
 
 
-func add_note(pos:=Vector2.ZERO, note_data:={}, local:bool = true)->void:
-	if pos == Vector2.ZERO and note_data.empty():
-		note_data = GameData.DEFAULT_NOTE.duplicate()
+func add_note(pos:=Vector2.ZERO, note: = map_note_scene.instance(), local:bool = true)->void:
+	if not note is MapNote:
+		print("note is wrong type trying to add note error")
+	if pos == Vector2.ZERO and note.is_not_setup:
 		pos = Globals.convert_to_grid(get_global_mouse_position())
-		note_data.pos = pos
 		if pos in GameData.map.notes:
 			return
-
-	var map_note = map_note_scene.instance()
-	notes.add_child(map_note)
-	notes_added.append(map_note)
-
-	for property in note_data:
-		if property in map_note:
-			map_note.set(property, note_data[property])
-
-	map_note.global_position = grid.map_to_world(pos)
-	if local: Events.emit_signal("map_note_created", note_data)
+		note.setup_from_data(GameData.DEFAULT_NOTE.duplicate(true))
+		note.pos = pos
+	if not note.get_parent():
+		 notes.add_child(note)
+	if not notes_added.has(note):
+		notes_added.append(note)
+	note.global_position = grid.map_to_world(pos)
+	if local:
+		Events.emit_signal("map_note_created", note)
 	creating_note = false
 
 func delete_note(pos:Vector2)-> void:
 	for note in notes_added:
 		if note.pos == pos:
+			if GameData.map.notes.has(pos):
+				GameData.map.notes.erase(pos)
 			note.queue_free()
 
 func scroll_up(delta: float)->void:
@@ -111,7 +111,9 @@ func zoom_out(delta:float)->void:
 	zoom_level = camera.zoom.x
 
 
-func load_map(map:Dictionary)->void:
+func load_map()->void:
+	var map:Dictionary = GameData.map
+
 	for child in notes.get_children():
 		child.queue_free()
 
@@ -122,31 +124,30 @@ func load_map(map:Dictionary)->void:
 		var texture = Globals.DEFAULT_MAP_IMAGE
 		map_texture.texture = texture
 
+	for child in GameData.get_children():
+		if child is MapNote:
+			GameData.remove_child(child)
+			child.visible = true
 
-	if map and "notes" in map:
-		for pos in map.notes:
-			add_note(pos, map.notes[pos])
-	if map and "srd_notes" in map:
-		for pos in map.srd_notes:
-			var vec_pos:Vector2
-			if pos is String:
-				vec_pos = Globals.str_to_vec2(pos)
-			else:
-				vec_pos = pos
-			add_note(vec_pos, map.srd_notes[pos])
+	for pos in map.notes:
+		map.notes[pos].visible = true
+		notes.add_child(map.notes[pos])
+		map.notes[pos].global_position = grid.to_global(grid.map_to_world(pos))
 
 
 func _on_map_note_added(note_data:Dictionary)-> void:
-	var pos:Vector2
 	if not "pos" in note_data:
 		return
 
+	var pos:Vector2
+	var note: = map_note_scene.instance()
+
 	if note_data.pos is String:
 		pos = Globals.str_to_vec2(note_data.pos)
-	elif note_data.pos is Vector2:
-		pos = note_data.pos
-
-	add_note(pos, note_data, false)
+	elif note.pos is Vector2:
+		pos = note.pos
+	note.is_not_setup = false
+	add_note(pos, note, false)
 
 
 func _on_map_note_changed(note_data:Dictionary)-> void:
@@ -157,13 +158,12 @@ func _on_map_note_removed(note_pos:Vector2)-> void:
 	delete_note(note_pos)
 
 
-
 func _on_map_scroll_speed_changed(new_scroll_speed: float) -> void:
 	scroll_speed = new_scroll_speed
 
 
-func _on_map_loaded(map:Dictionary)->void:
-	load_map(map)
+func _on_map_loaded()->void:
+	load_map()
 
 
 func _on_chat_selected()->void:
@@ -185,7 +185,7 @@ func _on_popup(_data, _overlay)-> void:
 	set_process(false)
 
 
-func _on_popup_finished()-> void:
+func _on_all_popups_finished()-> void:
 	set_process(true)
 
 

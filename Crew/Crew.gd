@@ -24,21 +24,3 @@ func _on_crew_changed(crew_playbook: CrewPlaybook)-> void:
 func _set_playbook(value: CrewPlaybook)-> void:
 	_playbook = value
 	setup(_playbook)
-
-
-#func popup()-> void:
-#	visible = true
-#	set_process_input(true)
-#
-#
-#func hide()-> void:
-#	visible = false
-#	set_process_input(false)
-#	Events.emit_signal("popup_finished")
-#
-#
-#func _input(event: InputEvent) -> void:
-#	if event.is_action_pressed("ui_cancel"):
-#		get_tree().set_input_as_handled()
-#		hide()
-

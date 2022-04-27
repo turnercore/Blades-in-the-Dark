@@ -7,6 +7,7 @@
 [ext_resource path="res://Shared/theme/menu.tres" type="StyleBox" id=5]
 
 [node name="NewGamePopup" type="Popup"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )

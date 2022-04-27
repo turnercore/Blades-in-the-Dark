@@ -60,7 +60,7 @@ func load_save(id:= current_save_id, folder:= SAVE_FOLDER):
 			print("save is incorrect version! May not work")
 		save_game = new_save
 		print("Save game loaded, id: " + id)
-		if save_game.needs_setup:
+		if not save_game.is_setup:
 			print("Setting up Save Game")
 			save_game.setup_save(srd_json)
 	else:
@@ -139,6 +139,20 @@ func save_game(save_game:SaveGame, id:= current_save_id, overwrite:=true)-> bool
 	if not dir.dir_exists(save_path): dir.make_dir_recursive(save_path)
 	save_game.version = version
 	save_game._save_id = id
+
+	#Need to do some data manipulation because godot won't save custom resources
+	#Save Clocks
+	save_game.clocks.clear()
+	for clock in GameData.clocks:
+		save_game.clocks.append(clock.package())
+	#Save Map Shortcuts
+	save_game.map_shortcuts.clear()
+	for location in GameData.map_shortcuts:
+		save_game.map_shortcuts.append(location.package())
+	#Save Map Locations in Map Data
+	save_game._map.notes.clear()
+	for pos in GameData.map.notes:
+		save_game._map.notes[pos] = GameData.map.notes[pos].package()
 
 	#Check for duplicate files if overwrite is false
 	if not overwrite:
@@ -225,6 +239,7 @@ func save_roster(roster, id:= current_save_id, overwrite: = true)-> bool:
 #works
 func save_all(resources: Array, id:=current_save_id, overwrite:= true)->void:
 	for resource in resources:
+		print(resource)
 		save(resource, id, overwrite)
 
 

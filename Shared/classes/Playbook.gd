@@ -252,11 +252,11 @@ func setup_property(property:String, srd:Dictionary, srd_field:String = "", over
 	if not overwrite:
 		for key in current_property:
 			if "claimed" in current_property[key] and current_property[key].claimed:
-				claimed_properties[key] = current_property[key].duplicate()
+				claimed_properties[key] = current_property[key].duplicate(true)
 			elif "notes" in current_property[key] and current_property[key].notes:
-				claimed_properties[key] = current_property[key].duplicate()
+				claimed_properties[key] = current_property[key].duplicate(true)
 			elif "relationship" in current_property[key] and current_property[key].relationship:
-				claimed_properties[key] = current_property[key].duplicate()
+				claimed_properties[key] = current_property[key].duplicate(true)
 
 	set(property, claimed_properties)
 

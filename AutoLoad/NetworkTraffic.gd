@@ -4,13 +4,15 @@
 
 extends Node
 
+const CLOCK_SCENE: =preload("res://clocks/Clock.tscn")
+
 enum OP_CODES {
 	PLAYER_MOVEMENT,
 	PLAYER_SPRITE,
 	GAMEDATA_LOCATION_CREATED,
 	GAMEDATA_LOCATION_REMOVED,
 	GAMEDATA_LOCATION_UPDATED,
-	GAMEDATA_GAME_STATE_CHANGED,
+	GAMEDATA_GAME_STATE_UPDATED,
 	GAMEDATA_PC_PLAYBOOK_CREATED,
 	GAMEDATA_PLAYBOOK_REMOVED,
 	GAMEDATA_PLAYBOOK_UPDATED,
@@ -27,7 +29,7 @@ signal player_sprite_changed(user_id, sprite)
 signal gamedata_location_created(note_data)
 signal gamedata_location_updated(note_data)
 signal gamedata_location_removed(note_data)
-signal gamedata_game_state_changed(game_state)
+signal gamedata_game_state_updated(game_state)
 signal gamedata_pc_playbook_created(playbook)
 signal gamedata_crew_playbook_created(playbook)
 signal gamedata_playbook_removed(playbook)
@@ -113,11 +115,11 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 				print("Incorrectly formatted data sent for changing a map location")
 			else:
 				emit_signal("gamedata_location_updated", data)
-		OP_CODES.GAMEDATA_GAME_STATE_CHANGED:
+		OP_CODES.GAMEDATA_GAME_STATE_UPDATED:
 			if not data is String:
 				print("Incorrectly formatted game state data")
 			else:
-				emit_signal("gamedata_game_state_changed", data)
+				emit_signal("gamedata_game_state_updated", data)
 		OP_CODES.GAMEDATA_PC_PLAYBOOK_CREATED:
 			print("trying to create a new playbook based on data")
 			if not data is String:
@@ -138,22 +140,13 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 				var value = data.value
 				emit_signal("gamedata_playbook_updated", id, type, field, value)
 		OP_CODES.GAMEDATA_CLOCK_CREATED:
-			if not data is Dictionary:
-				print("Incorrectly formatted data sent as clock")
-			else:
-				var clock: = Clock.new()
-				clock.setup_from_data(data)
-				emit_signal("gamedata_clock_created", clock)
+			print("New clock created, adding")
+			emit_signal("gamedata_clock_created", create_new_clock(data))
 		OP_CODES.GAMEDATA_CLOCK_REMOVED:
 			if data is String or data is int or data is float:
 				emit_signal("gamedata_clock_removed", str(data))
 		OP_CODES.GAMEDATA_CLOCK_UPDATED:
-			if not data is Dictionary:
-				print("Incorrectly formatted data sent as clock")
-			else:
-				var clock: = Clock.new()
-				clock.setup_from_data(data)
-				emit_signal("gamedata_clock_updated", clock)
+			emit_signal("gamedata_clock_updated", create_new_clock(data))
 		OP_CODES.GAMEDATA_CREW_PLAYBOOK_CREATED:
 			if not data is String:
 				print("incorrectly formatted data for crew playbook creation")
@@ -172,6 +165,13 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 			else:
 				emit_signal("inital_game_state_recieved", data)
 
+
+func create_new_clock(data:Dictionary)-> Clock:
+	var clock:Clock = CLOCK_SCENE.instance()
+	add_child(clock)
+	clock.setup_from_data(data)
+	remove_child(clock)
+	return clock
 
 func update_player_movement(data: Dictionary)-> void:
 	if not "pos" in data or not "user_id" in data:

@@ -180,12 +180,12 @@ margin_right = 320.0
 margin_bottom = 21.0
 text = "Reputation Level"
 
-[node name="reputation" parent="CrewPlaybookContainer/Crew/ExpAndRepContainer" instance=ExtResource( 1 )]
+[node name="reputation_level" parent="CrewPlaybookContainer/Crew/ExpAndRepContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 margin_left = 324.0
 margin_right = 462.0
 margin_bottom = 21.0
-playbook_field = "reputation"
+playbook_field = "reputation_level"
 total_points = 11
 
 [node name="abilities" parent="CrewPlaybookContainer/Crew" instance=ExtResource( 4 )]

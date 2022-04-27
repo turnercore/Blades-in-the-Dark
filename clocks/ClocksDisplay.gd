@@ -8,7 +8,7 @@ var DEFAULT_CLOCK_DATA: = {
 		"locked": false,
 		"locked_by_clock": null,
 		"unlocks_clock": null,
-		"type": Globals.CLOCK_TYPE.OBSTACLE,
+		"type": Clock.CLOCK_TYPE.OBSTACLE,
 		"is_secret": false
 		}
 
@@ -23,8 +23,11 @@ var current_type_displayed: = 0
 
 func _ready() -> void:
 	$ScrollContainer/VBoxContainer/Settings/GridColumnOption.selected = grid.columns
-	GameData.connect("clocks_loaded", self, "_on_clocks_loaded")
-	for type in Globals.CLOCK_TYPE:
+	GameData.connect("clocks_updated", self, "_on_clocks_updated")
+	for clock in GameData.clocks:
+		if not clock.is_connected("type_changed", self, "_on_clock_type_changed"):
+			clock.connect("type_changed", self, "_on_clock_type_changed")
+	for type in Clock.CLOCK_TYPE:
 		var type_str: String = str(type).to_lower().replace("_", " ").capitalize()
 		clock_sort_button.add_item(type_str)
 
@@ -32,7 +35,7 @@ func _ready() -> void:
 func clear_clocks()-> void:
 	for child in grid.get_children():
 		if child != add_clock_button:
-			child.queue_free()
+			grid.remove_child(child)
 
 
 func add_clock(clock_data:={})-> void:
@@ -43,25 +46,29 @@ func add_clock(clock_data:={})-> void:
 	grid.add_child(new_clock)
 	new_clock.setup(clock_data)
 	new_clock.connect("type_changed", self, "_on_clock_type_changed")
+	GameData.add_clock(new_clock, true)
 
 
-func add_loaded_clocks(clocks:={}, type:int= 0)->void:#This :=[] looks like a screaming robot
+func refresh_clocks()->void:#This :=[] looks like a screaming robot
 	clear_clocks()
-	if clocks.empty(): clocks = GameData.clocks
-	for clock in clocks:
-		if type > 0:
-			if clocks[clock].type == type:
-				add_clock(clocks[clock])
-		else:
-			add_clock(clocks[clock])
+	for clock in GameData.clocks:
+		if current_type_displayed == Clock.CLOCK_TYPE.ALL:
+			grid.add_child(clock)
+		elif clock.type == current_type_displayed:
+			grid.add_child(clock)
 
 
 func remove_clock(clock)-> void:
+	grid.remove_child(clock)
+
+
+func delete_clock(clock)-> void:
 	clock.queue_free()
 
-
-func _on_clocks_loaded(clocks:Dictionary)->void:
-	add_loaded_clocks(clocks)
+#Update clocks could be better, could go through and see what's changed and just update the appropriate thing instead of reloading everything
+func _on_clocks_updated()-> void:
+	print("Got sig clocks updated, refreshing display")
+	refresh_clocks()
 
 
 func _on_AddClock_pressed() -> void:
@@ -69,13 +76,12 @@ func _on_AddClock_pressed() -> void:
 
 
 func _on_save_loaded(_save_game)->void:
-	add_loaded_clocks(GameData.clocks)
+	refresh_clocks()
 
 
 func _on_ClockSort_item_selected(type: int) -> void:
 	current_type_displayed = type
-	clear_clocks()
-	add_loaded_clocks(GameData.clocks, type)
+	refresh_clocks()
 
 
 func _on_clock_type_changed(type: int, clock) -> void:
@@ -83,11 +89,12 @@ func _on_clock_type_changed(type: int, clock) -> void:
 	elif current_type_displayed == type: return
 	else: remove_clock(clock)
 
-
+#NOT WORKING
 func _on_ScaleSlider_value_changed(value: float) -> void:
 	for clock in grid.get_children():
-		current_clock_scale = BASE_CLOCK_SIZE * (value / 50)
-		clock.rect_scale = current_clock_scale
+		clock.scale = value
+#		current_clock_scale = BASE_CLOCK_SIZE * (value / 50)
+#		clock.rect_scale = current_clock_scale
 
 
 func _on_GridColumnOption_item_selected(value: int) -> void:

@@ -1,7 +1,6 @@
 extends Popup
 
 var save_game_id: = "default" setget _set_id
-var new_save: = SaveGame.new()
 onready var crew_button: = $MarginContainer/PopupPanel/VBoxContainer/CreateNewCrewButton
 
 
@@ -10,6 +9,7 @@ func _ready() -> void:
 
 
 func _on_CreateNewCrewButton_pressed() -> void:
+	var new_save = SaveGame.new()
 	GameSaver.current_save_id = save_game_id
 	GameData.save_game = new_save
 	#This function was finishing before the other function started yielding

@@ -26,6 +26,7 @@ func popup(popup, use_overlay:=false)-> void:
 		new_popup = popup.instance()
 	emit_signal("popup", new_popup, use_overlay)
 signal popup_finished
+signal all_popups_finished
 
 signal map_scroll_speed_changed(scroll_speed)
 
@@ -62,9 +63,9 @@ func emit_map_removed(index: int)->void:
 	emit_signal("map_removed", index)
 
 signal map_note_clicked(note)
-signal map_note_updated(data)
+signal map_note_updated(note)
 signal map_note_removed(pos)
-signal map_note_created(note_data)
+signal map_note_created(note)
 
 signal cursor_hovered
 signal cursor_free

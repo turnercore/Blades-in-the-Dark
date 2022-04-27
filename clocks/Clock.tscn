@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://clocks/4clock.png" type="Texture" id=1]
 [ext_resource path="res://clocks/Clock.gd" type="Script" id=2]
@@ -12,14 +12,16 @@
 [ext_resource path="res://clocks/blue_8clock_0.png" type="Texture" id=10]
 [ext_resource path="res://clocks/12clock.png" type="Texture" id=11]
 [ext_resource path="res://clocks/EditWidgetContainer.gd" type="Script" id=12]
-[ext_resource path="res://clocks/UnlocksClockButton.gd" type="Script" id=13]
-[ext_resource path="res://clocks/LinkClockPicker.tscn" type="PackedScene" id=14]
 
-[node name="Clock" type="MarginContainer" groups=["clocks"]]
-margin_right = 571.0
-margin_bottom = 378.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="Clock" type="Control" groups=["clocks"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -416.0
+margin_bottom = -163.0
+rect_min_size = Vector2( 600, 400 )
+mouse_filter = 2
+size_flags_horizontal = 7
+size_flags_vertical = 7
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -32,19 +34,19 @@ EIGHT_CLOCK_TEXTURE_UNDER = ExtResource( 10 )
 EIGHT_CLOCK_TEXTURE_OVER = ExtResource( 8 )
 TWELVE_CLOCK_TEXTURE_UNDER = ExtResource( 9 )
 TWELVE_CLOCK_TEXTURE_OVER = ExtResource( 11 )
-tween = NodePath("Tween")
 segments = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2/HBoxContainer2/segments")
 filled_label = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer/HBoxContainer/FilledLabel")
 clock_texture = NodePath("CenterContainer/HBoxContainer/ClockContainer/HBoxContainer/ClockTexture")
 clock_line_edit = NodePath("CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer/ClockName")
 lock_texture = NodePath("CenterContainer/HBoxContainer/ClockContainer/HBoxContainer/ClockTexture/LockTexture")
-locked_by_container = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer")
-locked_by_clock_label = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer/UnlockedByClockLabel")
-unlocks_clock_label = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer2/UnlocksClockLabel")
+locked_by_container = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/LockedByClockContainer")
+locked_by_clock_label = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/LockedByClockContainer/UnlockedByClockLabel")
+locking_clock_label = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer2/LockingClockLabel")
 clock_type_option = NodePath("CenterContainer/HBoxContainer/EditWidgetContainer/ClockTypeOption")
+clock_name = "Default Clock Name"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-margin_right = 614.0
+margin_right = 594.0
 margin_bottom = 413.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -53,7 +55,7 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
-margin_right = 614.0
+margin_right = 594.0
 margin_bottom = 413.0
 custom_constants/separation = 25
 
@@ -140,18 +142,18 @@ text = "..."
 
 [node name="EditWidgetContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
 margin_left = 375.0
-margin_right = 614.0
+margin_right = 594.0
 margin_bottom = 413.0
 custom_constants/separation = 12
 alignment = 1
 script = ExtResource( 12 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 52.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer"]
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 21.0
 
 [node name="FilledLabel" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer/HBoxContainer"]
@@ -169,7 +171,7 @@ align = 1
 
 [node name="FilledButtons" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer"]
 margin_top = 25.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 52.0
 
 [node name="Minus" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer/FilledButtons"]
@@ -189,11 +191,11 @@ text = "+"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
 margin_top = 64.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 116.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2"]
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 21.0
 
 [node name="segments" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2/HBoxContainer2"]
@@ -211,7 +213,7 @@ align = 1
 
 [node name="SegementButtons" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2"]
 margin_top = 25.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 52.0
 size_flags_vertical = 9
 
@@ -235,7 +237,7 @@ __meta__ = {
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
 margin_top = 128.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 168.0
 
 [node name="CheckBox" type="CheckButton" parent="CenterContainer/HBoxContainer/EditWidgetContainer/HBoxContainer3"]
@@ -254,12 +256,12 @@ text = "Secret"
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
 margin_top = 180.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 296.0
 custom_constants/separation = 11
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5"]
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 40.0
 
 [node name="LockCheckBox" type="CheckButton" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer"]
@@ -275,50 +277,47 @@ text = "Locked"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5"]
 margin_top = 51.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 78.0
 
-[node name="UnlocksClockButton" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer2"]
+[node name="LockingClockButton" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer2"]
 margin_right = 116.0
 margin_bottom = 27.0
-text = "Unlocks Clock:"
-script = ExtResource( 13 )
-link_picker_scene = ExtResource( 14 )
-clock = NodePath("../../../../../..")
+text = "Locking Clock:"
 
-[node name="UnlocksClockLabel" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer2"]
+[node name="LockingClockLabel" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer2"]
 margin_left = 120.0
 margin_top = 3.0
 margin_right = 120.0
 margin_bottom = 24.0
 
-[node name="UnlockedByContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5"]
+[node name="LockedByClockContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5"]
 margin_top = 89.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 116.0
 
-[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer"]
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/LockedByClockContainer"]
 margin_top = 3.0
-margin_right = 91.0
+margin_right = 71.0
 margin_bottom = 24.0
-text = "Unlocked by:"
+text = "Locked by"
 
-[node name="UnlockedByClockLabel" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer"]
-margin_left = 95.0
+[node name="UnlockedByClockLabel" type="Label" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/LockedByClockContainer"]
+margin_left = 75.0
 margin_top = 3.0
-margin_right = 134.0
+margin_right = 114.0
 margin_bottom = 24.0
 text = "Clock"
 
-[node name="DisconnectButton" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer"]
-margin_left = 138.0
-margin_right = 239.0
+[node name="DisconnectButton" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/LockedByClockContainer"]
+margin_left = 118.0
+margin_right = 219.0
 margin_bottom = 27.0
 text = "(Disconnect)"
 
 [node name="ClockTypeOption" type="OptionButton" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
 margin_top = 308.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 335.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -326,13 +325,13 @@ __meta__ = {
 
 [node name="DeleteButton" type="Button" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
 margin_top = 347.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 374.0
 text = "Delete Clock"
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="CenterContainer/HBoxContainer/EditWidgetContainer"]
 margin_top = 386.0
-margin_right = 239.0
+margin_right = 219.0
 margin_bottom = 413.0
 text = "Fill Color"
 color = Color( 0, 0, 0, 0.803922 )
@@ -341,8 +340,10 @@ color = Color( 0, 0, 0, 0.803922 )
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-margin_right = 614.0
-margin_bottom = 500.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 622.0
+margin_bottom = 508.0
 
 [connection signal="gui_input" from="CenterContainer/HBoxContainer/ClockContainer/HBoxContainer/ClockTexture" to="." method="_on_ClockTexture_gui_input"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer/Spacer2" to="." method="_on_CheckBox_toggled"]
@@ -355,8 +356,8 @@ margin_bottom = 500.0
 [connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer2/SegementButtons/PlusSegment" to="." method="_on_PlusSegment_pressed"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/EditWidgetContainer/HBoxContainer3/CheckBox" to="." method="_on_CheckBox_toggled"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer/LockCheckBox" to="." method="_on_LockCheckBox_toggled"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer2/UnlocksClockButton" to="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer2/UnlocksClockButton" method="_on_UnlocksClockButton_pressed"]
-[connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/UnlockedByContainer/DisconnectButton" to="." method="_on_DisconnectButton_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer2/LockingClockButton" to="." method="_on_LockingClockButton_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/LockedByClockContainer/DisconnectButton" to="." method="_on_DisconnectButton_pressed"]
 [connection signal="item_selected" from="CenterContainer/HBoxContainer/EditWidgetContainer/ClockTypeOption" to="." method="_on_ClockTypeOption_item_selected"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/EditWidgetContainer/DeleteButton" to="." method="_on_DeleteButton_pressed"]
 [connection signal="color_changed" from="CenterContainer/HBoxContainer/EditWidgetContainer/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]

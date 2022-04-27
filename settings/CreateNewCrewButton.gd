@@ -6,11 +6,9 @@ var new_game_node:Node
 
 
 func show_crew_setup()->void:
-	print("showing crew setup!!!")
-	print("-----------------------")
 	var crew_setup_popup = crew_setup_sceen.instance()
 	crew_setup_popup.on_start_screen = true
-	Events.emit_signal("popup", crew_setup_popup)
+	Events.popup(crew_setup_popup)
 
 
 func _on_CreateNewCrewButton_pressed() -> void:

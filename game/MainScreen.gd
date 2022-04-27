@@ -1,6 +1,7 @@
 extends Control
 onready var overlay: = $OverlayBackground
 var screens: Dictionary = {}
+var popups_active:int = 0 setget _set_popups_active
 
 func _ready() -> void:
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -41,6 +42,8 @@ func _on_popup(popup, use_overlay: = false)-> void:
 	elif popup is String:
 		change_screen_to(popup)
 
+	self.popups_active += 1
+
 
 func _on_popup_hidden()-> void:
 	Events.emit_signal("popup_finished")
@@ -49,4 +52,19 @@ func _on_popup_hidden()-> void:
 func _on_popup_finished()-> void:
 	overlay.visible = false
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	self.popups_active -= 1
+
+func _set_popups_active(value: int)-> void:
+	popups_active = int(clamp(value, 0, 100000))
+	if popups_active == 0:
+		Events.emit_signal("all_popups_finished")
+
+
+
+
+
+
+
+
+
 

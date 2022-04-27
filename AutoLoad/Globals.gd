@@ -5,15 +5,6 @@ const GAME_SCENE_PATH: = "res://game/Game.tscn"
 const GAME_SCENE:PackedScene = preload(GAME_SCENE_PATH)
 var DEFAULT_MAP_IMAGE: = preload("res://maps/blades_detailedmap_highres.jpg")
 var grid: TileMap
-enum CLOCK_TYPE {
-	ALL,
-	OBSTACLE,
-	HEALING,
-	LONG_TERM_PROJECT,
-	LAIR_PROJECT,
-	PC_PROJECT,
-	FACTION_PROJECT
-}
 
 
 #Helper Functions
@@ -98,3 +89,12 @@ func propagate_set_playbook_fields_recursive(node:Node, field_template:String)->
 				child.playbook_field = field_template
 		if child.get_child_count() > 0:
 			propagate_set_playbook_fields_recursive(child, field_template)
+
+
+##Testing
+#func _process(_delta: float) -> void:
+#	for key in GameData.map.notes.keys():
+#		print(key)
+#		print(is_instance_valid(GameData.map.notes[key]))
+##		if not is_instance_valid(GameData.map.notes[key]):
+##			GameData.map.notes.erase(key)

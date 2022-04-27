@@ -347,17 +347,19 @@ func _reset_data() -> void:
 
 # Called when the socket was connected.
 func _on_NakamaSocket_connected() -> void:
-	return
+	print("NAKAMASOCKET HAS CONNECTED")
 
 
 # Called when the socket was closed.
 func _on_NakamaSocket_closed() -> void:
+	print("NAKAMASOCKET HAS CLOSED")
 	_socket = null
 
 
 # Called when the socket reported an error.
 func _on_NakamaSocket_received_error(error: String) -> void:
 	error_message = error
+	print("NakamaSocket has received an error: %s" % error_message)
 	_socket = null
 
 
@@ -377,6 +379,7 @@ func _on_NakamaSocket_received_match_presence(new_presences: NakamaRTAPI.MatchPr
 
 func _on_NakamaSocket_recieved_channel_presence(channel_presences: NakamaRTAPI.ChannelPresenceEvent)-> void:
 	#Set up chat channel
+	print("Recieved channel presence")
 	pass
 
 # Called when the server received a custom message from the server.
