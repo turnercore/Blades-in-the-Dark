@@ -54,6 +54,11 @@ func roll_dice()-> void:
 		yield(get_tree().create_timer(TIME_BETWEEN_FRAMES), "timeout")
 
 
+func send_notification(text:String, color:Color)-> void:
+	print(text)
+	Events.emit_notification(text, color)
+
+
 func calculate_best()-> int:
 	var rolls: = []
 	for position in positions:
@@ -92,10 +97,25 @@ func create_dice(amount: int)-> void:
 		new_dice.position = unoccupied_pos[rand_index].position.position
 
 
+func generate_roll_notification()-> String:
+	var text: =  ""
+	var rolls: = []
+	for position in positions:
+		if position.occupied != null:
+			text += "(%s) "
+			rolls.append(int(position.occupied.frame) + 1)
+
+	return text % rolls
+
+
 func display_roll()-> void:
 	var roll:int = calculate_best() if with_advantage else calculate_worst()
 	var crit_threat: = false
 	var crit: = false
+	var notification_text:String = "%s rolled a %s: %s"
+	var notification_color:Color = Color.white
+	var roll_values:String = generate_roll_notification()
+	var roll_result_text:String = ""
 
 	for position in positions:
 		if position.occupied != null:
@@ -104,14 +124,22 @@ func display_roll()-> void:
 					crit = true
 				result = display_result(roll if not crit else 12)
 				match result:
-					1:
+					1: #Failure
+						roll_result_text = "FAILURE"
 						position.occupied.modulate = Color.red
-					2:
+						notification_color = Color.red
+					2: #Partial Success
+						roll_result_text = "PARTIAL SUCCESS"
 						position.occupied.modulate = Color.yellow
-					3:
+						notification_color = Color.yellow
+					3: #Success
+						roll_result_text = "COMPLETE SUCCESS"
 						position.occupied.modulate = Color.green
-					4:
+						notification_color = Color.green
+					4: #Crit
+						roll_result_text = "CRITICAL SUCCESS"
 						position.occupied.modulate = Color.gold
+						notification_color = Color.gold
 #			breakpoint
 			#Check for crits
 				if roll == 6 and with_advantage:
@@ -120,6 +148,10 @@ func display_roll()-> void:
 					break
 				else:
 					continue
+	var username:String = GameData.username + ":" if GameData.online else "You"
+	notification_text = notification_text % [username, roll_result_text, roll_values]
+	send_notification(notification_text, notification_color)
+
 
 
 func display_result(result_roll:int)-> int:

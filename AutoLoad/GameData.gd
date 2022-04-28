@@ -21,6 +21,7 @@ export (Resource) var crew_playbook = null
 export (Array) var roster:Array = []
 export (Resource) var save_game = SaveGame.new()
 
+var username:String = "You"
 #The active character (for this player)
 var active_pc: PlayerPlaybook setget _set_active_pc
 #Store a reference to the current srd, used for looking up and displaying it in info

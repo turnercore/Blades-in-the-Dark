@@ -15,11 +15,8 @@ func _ready() -> void:
 	rect_scale = Vector2.ZERO
 
 
-func setup(username: String, color := Color.white, disconnected := false) -> void:
-	label.bbcode_text = (
-		"[color=#%s]%s[/color] %s"
-		% [color.to_html(false), username, "left" if disconnected else "joined"]
-	)
+func setup(message: String) -> void:
+	label.bbcode_text = (message)
 # warning-ignore:return_value_discarded
 	tween.interpolate_property(
 		self,

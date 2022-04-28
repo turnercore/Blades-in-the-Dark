@@ -32,6 +32,9 @@ signal map_scroll_speed_changed(scroll_speed)
 
 signal tooltip_frozen(tooltip)
 signal tooltip_container_transfered(tooltip_container)
+signal notification(text, color)
+func emit_notification(message:String, color: = Color.white)-> void:
+	emit_signal("notification", message, color)
 
 signal popup_layer_ready
 signal info_broadcasted(info)
