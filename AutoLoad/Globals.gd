@@ -79,6 +79,14 @@ func str_to_vec2(string:="")->Vector2:
 	var vec2:= Vector2(str_array[0], str_array[1])
 	return vec2
 
+func str_to_color(string:="")->Color:
+	var split:PoolStringArray = string.split(",")
+	var r:float = float(split[0])
+	var g:float = float(split[1])
+	var b:float = float(split[2])
+	var a:float = float(split[3])
+	var color: = Color(r, g, b, a)
+	return color
 
 func propagate_set_playbook_fields_recursive(node:Node, field_template:String)-> void:
 	for child in node.get_children():

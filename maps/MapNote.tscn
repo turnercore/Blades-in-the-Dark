@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Shared/Art/Icons/MapNoteIconTex.tres" type="Texture" id=1]
-[ext_resource path="res://maps/MapLocation.gd" type="Script" id=2]
+[ext_resource path="res://maps/MapNote.gd" type="Script" id=2]
 [ext_resource path="res://Shared/theme/fonts/Schoolbell-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://maps/EditNotePopup.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=7]
 resource_local_to_scene = true
@@ -378,7 +379,7 @@ tracks/13/keys = {
 resource_local_to_scene = true
 extents = Vector2( 35, 10 )
 
-[node name="MapLocation" type="Control" groups=["location"]]
+[node name="MapLocation" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
@@ -386,8 +387,9 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+edit_note_popup = ExtResource( 4 )
 
-[node name="MapNote" type="Area2D" parent="."]
+[node name="MapNote" type="Area2D" parent="." groups=["location_note"]]
 z_index = 100
 
 [node name="MapNoteTexture" type="NinePatchRect" parent="MapNote"]

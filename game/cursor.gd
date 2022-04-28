@@ -65,6 +65,7 @@ func _input(event: InputEvent) -> void:
 		match current_target_type:
 			"location":
 				Events.emit_signal("map_note_clicked", current_note_target)
+				print("clicked location")
 			_:
 				pass
 
@@ -131,8 +132,7 @@ func update_position(pos:Vector2)-> void:
 
 func _on_cursor_area_entered(area: Area2D) -> void:
 	if not visible: return
-
-	if area.is_in_group("location"):
+	if area.is_in_group("location_note"):
 		current_note_target = area
 		current_target_type = "location"
 		change_sprite_to("info")

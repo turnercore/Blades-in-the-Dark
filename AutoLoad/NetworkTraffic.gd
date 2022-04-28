@@ -7,6 +7,9 @@ extends Node
 enum OP_CODES {
 	PLAYER_MOVEMENT,
 	PLAYER_SPRITE,
+	NETWORKED_RESOURCE_CREATED,
+	NETWORKED_RESOURCE_REMOVED,
+	NETWORKED_RESOURCE_UPDATED,
 	GAMEDATA_LOCATION_CREATED,
 	GAMEDATA_LOCATION_REMOVED,
 	GAMEDATA_LOCATION_UPDATED,
@@ -22,6 +25,9 @@ enum OP_CODES {
 	CURRENT_GAME_STATE_BROADCAST = 101
 }
 
+signal networked_resource_created(data)
+signal networked_resource_removed(id)
+signal networked_resource_updated(data)
 signal player_movement_recieved(user_id, pos)
 signal player_sprite_changed(user_id, sprite)
 signal gamedata_location_created(note_data)

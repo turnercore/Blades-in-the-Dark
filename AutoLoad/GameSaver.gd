@@ -225,7 +225,6 @@ func save_roster(roster, id:= current_save_id, overwrite: = true)-> bool:
 #works
 func save_all(resources: Array, id:=current_save_id, overwrite:= true)->void:
 	for resource in resources:
-		print(resource)
 		save(resource, id, overwrite)
 
 

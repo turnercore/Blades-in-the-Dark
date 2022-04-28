@@ -1,5 +1,5 @@
 class_name MapNote
-extends SyncNode
+extends Control
 
 export(PackedScene) var edit_note_popup
 onready var location_name_label: = $MapNote/MapNoteTexture/location_name
@@ -8,45 +8,40 @@ onready var map_note_texture:= $MapNote/MapNoteTexture
 onready var anim:= $MapNote/AnimationPlayer
 onready var map_note_area: = $MapNote
 
+var location:NetworkedResource
 #Note Data
-var tags:= []
-var pos:Vector2
-var icon:String
-var location_name:String setget _set_location_name
-var description:String setget _set_description
-var id:String setget _no_set, _get_id
 
 var cursor_hovered: = false
 var locked: = false
-var is_ready: = false
 var enlarged: = false
 var shrunk:= true
+
+var is_ready: = false
 var is_not_setup: = true
 
+var pos:Vector2
 var global_position:Vector2 setget _set_global_position
 
 signal cursor_hovered
 
-onready var icon_texture: = preload("res://Shared/Art/Icons/MapNoteIconTex.tres")
-
-func _init()-> void:
-	export_properties = [
-		"tags",
-		"pos",
-		"icon",
-		"location_name",
-		"description"
-	]
+onready var default_icon_texture: = preload("res://Shared/Art/Icons/MapNoteIconTex.tres")
+var icon_texture:Texture
 
 func _ready() -> void:
-	if not icon: self.icon = GameData.DEFAULT_MAP_NOTE_ICON
-	else: map_note_texture.texture = icon_texture
+	if not icon_texture: icon_texture = default_icon_texture
+	map_note_texture.texture = icon_texture
 	connect_to_events()
 	map_note_area.global_position = global_position
 	is_ready = true
 	is_not_setup = false
+	name = location.get_property("location_name")
+	update_location_name(location.get_property("location_name"))
+	update_description(location.get_property("description"))
+
 
 func connect_to_events()-> void:
+	location.connect("property_changed", self, "_on_location_property_changed")
+	location.connect("deleted", self, "_on_location_deleted")
 	map_note_area.connect("area_entered", self, "_on_MapNote_area_entered")
 	map_note_area.connect("area_exited", self, "_on_MapNote_area_exited")
 	Events.connect("map_note_clicked", self, "_on_clicked")
@@ -56,20 +51,39 @@ func connect_to_events()-> void:
 	Events.connect("cursor_free", self, "_on_cursor_free")
 
 
-func _set_icon(value: String)-> void:
+func _on_location_property_changed(property, value)-> void:
+	match property:
+		"location_name":
+			update_location_name(value)
+		"name":
+			name = value
+			update_location_name(value)
+		"description":
+			update_description(value)
+		"icon":
+			update_icon(value)
+
+func _on_location_deleted()-> void:
+	queue_free()
+
+
+func update_location_name(value:String)-> void:
+	if location_name_label:
+		location_name_label.text = value.c_unescape().capitalize()
+
+
+func update_description(value: String)-> void:
+	if description_label:
+		description_label.text = value.c_unescape()
+
+
+func update_icon(value: String)-> void:
 	if not value:
 		value = GameData.DEFAULT_MAP_NOTE_ICON
-	icon = value
-	if is_not_setup: return
 	#add a file exists check
-	icon_texture = load(icon) if not icon == "NONE" else null
-	if not is_ready: yield(self, "ready")
+	icon_texture = load(value) if value and not value == "NONE" else null
 	map_note_texture.texture = icon_texture
 
-
-#Old function, just keeping around for a bit
-func setup_from_data(data:Dictionary)-> void:
-	import(data)
 
 func _on_cursor_free()->void:
 	cursor_hovered = false
@@ -77,8 +91,7 @@ func _on_cursor_free()->void:
 
 func _on_clicked(note)->void:
 	if locked: return
-
-	if note == self:
+	if note == map_note_area:
 		Events.popup(create_popup())
 
 
@@ -98,19 +111,15 @@ func shrink()-> void:
 
 func create_popup() -> WindowDialog:
 	var popup = edit_note_popup.instance()
-	popup.map_location = self
+	popup.location = location
 	return popup
 
 
 func _on_MapNote_area_entered(area: Area2D) -> void:
 	if locked: return
-
 	if area is Cursor and not cursor_hovered:
 		cursor_hovered = true
-		if not description:
-			description = "Info text missing"
-
-		Tooltip.display_tooltip(location_name, description)
+		Tooltip.display_tooltip(location.get_property("location_name"), location.get_property("description"))
 		enlarge()
 
 
@@ -129,34 +138,12 @@ func _on_all_popups_finished()-> void:
 
 func _set_locked(value: bool)-> void:
 	locked = value
-
 	if not cursor_hovered:
 		shrink()
 
 
 func _on_popup(_data, _overlay)->void:
 	locked = true
-
-
-func _set_location_name(value:String)-> void:
-	location_name = value.c_escape()
-	if location_name_label:
-		location_name_label.text = location_name.c_unescape().capitalize()
-
-
-func _set_description(value: String)-> void:
-	description = value
-	if description_label:
-		description_label.text = description.c_unescape()
-
-func _get_id()-> String:
-	if pos:
-		return str(pos)
-	else:
-		return generate_id(5)
-
-func _no_set(_v)->void:
-	return
 
 
 func _set_global_position(value)-> void:
@@ -168,6 +155,3 @@ func _set_global_position(value)-> void:
 		global_position = pos
 		if map_note_area:
 			map_note_area.global_position = pos
-
-#
-#func _get_global_position()-> Vector2:

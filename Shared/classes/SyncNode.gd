@@ -8,6 +8,7 @@ var is_checking_for_updates: = true
 #var has_been_updated: = false
 var export_properties: = []
 var old_data: = {}
+
 signal updated(data)
 signal group_deleted
 signal freed

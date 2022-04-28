@@ -13,12 +13,12 @@ export (Dictionary) var srd
 export (String) var _save_id
 var _save_folder: = "res://debug/save" if debug else "user://save"
 export (String) var version: String = ''
-export (Dictionary) var _map setget _set_map
+export (Dictionary) var map setget _set_map, _get_map
 export (Array) var maps
 export (Array) var clocks  setget _set_clocks
 export (Array) var map_shortcuts
 export (bool) var is_setup: = false
-
+var recently_deleted:Array = []
 
 func setup(provided_srd_file_path: String = "")->void:
 	if provided_srd_file_path:
@@ -42,7 +42,8 @@ func load_srd(file_path:String)-> Dictionary:
 	return data
 
 
-func setup_maps_from_srd(srd:Dictionary)-> void:
+func setup_maps_from_srd(new_srd:Dictionary)-> void:
+	srd = new_srd
 	var srd_maps
 	if "default_maps" in srd:
 		srd_maps = srd.default_maps
@@ -59,11 +60,11 @@ func setup_maps_from_srd(srd:Dictionary)-> void:
 		var new_map:= {}
 		var srd_map = srd_maps[key]
 
-		for property in srd_maps[key]:
-			new_map[property] = srd_maps[key][property]
+		for property in srd_map:
+			new_map[property] = srd_map[property]
 
 		new_map["map_index"] = maps.size()
-		new_map["notes"] = {}
+		new_map["locations"] = {}
 		var locations
 		if "locations" in srd:
 			locations = srd.locations
@@ -73,9 +74,9 @@ func setup_maps_from_srd(srd:Dictionary)-> void:
 			var location = locations[vec2]
 			if vec2 is String:
 				vec2 = Globals.str_to_vec2(vec2)
-			new_map.notes[vec2] = location
-			if new_map.notes[vec2].pos is String:
-				new_map.notes[vec2].pos = Globals.str_to_vec2(new_map.notes[vec2].pos)
+			new_map.locations[vec2] = location
+			if new_map.locations[vec2].pos is String:
+				new_map.locations[vec2].pos = Globals.str_to_vec2(new_map.locations[vec2].pos)
 		maps.append(new_map)
 
 
@@ -85,5 +86,11 @@ func _set_clocks(value:Array)-> void:
 
 
 func _set_map(value:Dictionary)-> void:
-	_map = value
+	map = value
 	if is_setup: emit_changed()
+
+func _get_map()-> Dictionary:
+	if map.empty() and not maps.empty():
+		self.map = maps[0]
+
+	return map

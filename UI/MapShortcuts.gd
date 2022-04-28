@@ -17,12 +17,12 @@ func setup()-> void:
 		child.queue_free()
 
 	for shortcut in GameData.map_shortcuts:
-		var new_shortcut = shortcut_scene.instance() as Button
-		new_shortcut.pos = shortcut.pos
+		var new_shortcut = shortcut_scene.instance()
+		new_shortcut.pos = shortcut if shortcut is Vector2 else Globals.str_to_vec2(shortcut)
 		new_shortcut.text = str(i)
-		new_shortcut.location = shortcut.location_name if "location_name" in shortcut else ""
-		new_shortcut.description = shortcut.description if "description" in shortcut else ""
-		new_shortcut.connect("pressed", self, "_on_shortcut_pressed", [shortcut.pos])
+		new_shortcut.location = GameData.location_library.search("pos", shortcut).front()
+		new_shortcut.description = new_shortcut.location.get_property("description")
+		new_shortcut.connect("pressed", self, "_on_shortcut_pressed", [shortcut])
 		add_child(new_shortcut)
 		i+=1
 
