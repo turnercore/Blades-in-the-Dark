@@ -10,7 +10,7 @@ export var background: String
 export var stress: int = 0
 export var trauma_level: int = 0
 export var traumas: Array
-var heal_clock:Clock
+export var heal_clock:Dictionary
 export var items: Dictionary
 export var vice: String
 export var vice_type: String
@@ -32,10 +32,10 @@ export var lifestyle: String setget ,_get_lifestyle
 
 func setup(json_or_file_path_to_json, pc_class: String, overwrite:bool = false)-> void:
 	if not needs_setup and not overwrite: return
+	else: .setup(json_or_file_path_to_json, pc_class, overwrite)
 	var json = json_or_file_path_to_json
 	var defaults: = {}
 
-	needs_setup = false
 	pc_class = pc_class.to_lower()
 	type = pc_class
 	experience = {

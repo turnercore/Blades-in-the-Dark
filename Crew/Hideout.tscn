@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Crew/Hideout.jpeg" type="Texture" id=1]
 [ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=2]
+[ext_resource path="res://Shared/FieldList.tscn" type="PackedScene" id=3]
+[ext_resource path="res://CrewUpgrade.tscn" type="PackedScene" id=4]
 
 [node name="Hideout" type="VBoxContainer"]
 anchor_right = 1.0
@@ -10,7 +12,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lair_name" type="LineEdit" parent="." groups=["linked_field"]]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 349.0
+
+[node name="lair_name" type="LineEdit" parent="VBoxContainer" groups=["linked_field"]]
 margin_left = 462.0
 margin_right = 562.0
 margin_bottom = 31.0
@@ -26,14 +32,33 @@ __meta__ = {
 }
 playbook_field = "lair.name"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 margin_top = 35.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 285.0
+rect_min_size = Vector2( 250, 250 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
 
-[connection signal="text_changed" from="lair_name" to="lair_name" method="_on_updated_data"]
+[node name="description" type="LineEdit" parent="VBoxContainer"]
+margin_top = 289.0
+margin_right = 1024.0
+margin_bottom = 320.0
+placeholder_text = "Description"
+script = ExtResource( 2 )
+playbook_field = "lair.description"
+
+[node name="FieldList" parent="VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 324.0
+margin_right = 1024.0
+margin_bottom = 349.0
+playbook_data = "upgrades"
+title = "Crew and Lair Upgrades"
+field_scene = ExtResource( 4 )
+
+[connection signal="text_changed" from="VBoxContainer/lair_name" to="VBoxContainer/lair_name" method="_on_updated_data"]

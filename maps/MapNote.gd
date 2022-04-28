@@ -49,6 +49,8 @@ func connect_to_events()-> void:
 	if not Events.is_connected("popup_finished" ,self, "_on_popup_finished"):
 		Events.connect("all_popups_finished" ,self, "_on_all_popups_finished")
 	Events.connect("cursor_free", self, "_on_cursor_free")
+	Events.connect("mouse_locked", self, "_on_mouse_locked")
+	Events.connect("mouse_unlocked", self, "_on_mouse_unlocked")
 
 
 func _on_location_property_changed(property, value)-> void:
@@ -87,6 +89,15 @@ func update_icon(value: String)-> void:
 
 func _on_cursor_free()->void:
 	cursor_hovered = false
+
+
+func _on_mouse_unlocked(node:Node)->void:
+	self.locked = false
+
+
+func _on_mouse_locked(node:Node)->void:
+	if node != self:
+		self.locked = true
 
 
 func _on_clicked(note)->void:

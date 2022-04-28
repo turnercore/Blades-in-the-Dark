@@ -76,7 +76,6 @@ disabled = true
 text = "Next"
 
 [node name="Page2" type="ScrollContainer" parent="MarginContainer"]
-visible = false
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1014.0

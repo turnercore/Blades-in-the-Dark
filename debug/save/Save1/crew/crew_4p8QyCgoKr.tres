@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "avasd"
+id = "4p8QyCgoKr"
+version = ""
+name = "Bravos"
 abilities = {
 "blood_brothers": {
 "claimed": false,
@@ -55,28 +57,6 @@ coin = {
 "stash": 0
 }
 contacts = {
-"adelaide_phroaig": {
-"class": "shadows",
-"description": "\"\"",
-"icon": "NONE",
-"image": "NONE",
-"location": "none",
-"name": "Adelaide Phroaig",
-"notes": "\"\"",
-"occupation": "A Noble",
-"relationship": 0.0
-},
-"amancio": {
-"class": "shadows",
-"description": "\"\"",
-"icon": "NONE",
-"image": "NONE",
-"location": "none",
-"name": "Amancio",
-"notes": "\"\"",
-"occupation": "A Deal Broker",
-"relationship": 0.0
-},
 "conway": {
 "class": "bravos",
 "description": "\"\"",
@@ -88,28 +68,6 @@ contacts = {
 "occupation": "A Bluecoat",
 "relationship": 0.0
 },
-"dowler": {
-"class": "shadows",
-"description": "\"\"",
-"icon": "NONE",
-"image": "NONE",
-"location": "none",
-"name": "Dowler",
-"notes": "\"\"",
-"occupation": "An Explorer",
-"relationship": 0.0
-},
-"fitz": {
-"class": "shadows",
-"description": "\"\"",
-"icon": "NONE",
-"image": "NONE",
-"location": "none",
-"name": "Fitz",
-"notes": "\"\"",
-"occupation": "A Collector",
-"relationship": 0.0
-},
 "keller": {
 "class": "bravos",
 "description": "\"\"",
@@ -119,17 +77,6 @@ contacts = {
 "name": "Keller",
 "notes": "\"\"",
 "occupation": "A Blacksmith",
-"relationship": 0.0
-},
-"laroze": {
-"class": "shadows",
-"description": "\"\"",
-"icon": "NONE",
-"image": "NONE",
-"location": "none",
-"name": "Laroze",
-"notes": "\"\"",
-"occupation": "A Bluecoat",
 "relationship": 0.0
 },
 "lutes": {
@@ -152,17 +99,6 @@ contacts = {
 "name": "Meg",
 "notes": "\"\"",
 "occupation": "A Pit-Fighter",
-"relationship": 0.0
-},
-"rigney": {
-"class": "shadows",
-"description": "\"\"",
-"icon": "NONE",
-"image": "NONE",
-"location": "none",
-"name": "Rigney",
-"notes": "\"\"",
-"occupation": "A Tavern Owner",
 "relationship": 0.0
 },
 "tomas": {
@@ -211,10 +147,13 @@ stats = {
 "resolve": {
 "attune": 0,
 "command": 0,
-"consort": 0,
-"sway": 0
+"consort": 1,
+"sway": 2
 }
 }
+insight = 0
+prowess = 0
+resolve = 0
 needs_setup = false
 heat = 0
 wanted_level = 0
@@ -575,7 +514,7 @@ claims = {
 "default": true,
 "effect": "Home sweet home",
 "faction": "Claimed",
-"is_claimed": false,
+"is_claimed": true,
 "notes": null
 },
 "c9": {

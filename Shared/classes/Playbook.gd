@@ -2,10 +2,9 @@ class_name Playbook
 extends Resource
 
 #Path to the srd_json
-var id:String setget _set_id, _get_id
-var id_set:bool = true
+export var id:String
 var srd_json: String = 'res://srd/default_srd.json'
-var version:= ""
+export var version:= ""
 export var name:String
 export var abilities:Dictionary
 export var coin:Dictionary = {
@@ -43,26 +42,13 @@ export (Dictionary) var stats: Dictionary = {
 		"sway": 0
 	}
 }
-var insight: int = 0
-var prowess: int = 0
-var resolve: int = 0
+export var insight: int = 0
+export var prowess: int = 0
+export var resolve: int = 0
 
 export (bool) var needs_setup: = true
 
 signal property_changed(property_field)
-
-
-func _set_id(value:String)-> void:
-	id = value
-	id_set = true
-
-
-func _get_id()-> String:
-	if id_set:
-		return id
-	else:
-		self.id = name.strip_edges().c_escape().strip_escapes() + "$" + str(randi()%1000)
-		return id
 
 
 func _init() -> void:
@@ -221,7 +207,6 @@ func find(path_map: String):
 			index = int(check_array[1])
 			path[jumps] = check_array[0]
 			is_array = true
-
 		if jumps == 0:
 			if path[jumps] in self:
 				updated_property = self.get(path[jumps])
@@ -238,7 +223,6 @@ func find(path_map: String):
 				jumps += 1
 			else:
 				return
-
 	return updated_property
 
 
@@ -277,3 +261,6 @@ func escape_key(key:String)->String:
 
 func unescape_key(key:String)->String:
 	return key.c_unescape().replace("_", " ").capitalize()
+
+func _no_set(_v)-> void:
+	return

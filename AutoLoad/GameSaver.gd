@@ -71,8 +71,8 @@ func load_save(id:= current_save_id, folder:= SAVE_FOLDER):
 
 #works
 func load_crew_playbook(save_id:= current_save_id, save_folder:= SAVE_FOLDER)-> void:
+	var crew_playbook
 	var dir: = Directory.new()
-	var crew_playbook: = CrewPlaybook.new()
 	var crew_file_path:String = save_folder + "/" + save_id + "/crew"
 	if not dir.dir_exists(crew_file_path): dir.make_dir_recursive(crew_file_path)
 	var crew_list: Array = Globals.list_files_in_directory(crew_file_path)
@@ -126,7 +126,7 @@ func save(resource = null, id: = current_save_id, overwrite: = true)->void:
 		save_game(resource, id, overwrite)
 	elif resource is CrewPlaybook:
 		save_crew(resource, id, overwrite)
-	elif resource is Dictionary or resource is Array or resource is PlayerPlaybook:
+	elif resource is Array or resource is PlayerPlaybook:
 		save_roster(resource, id, overwrite)
 
 #works
@@ -167,7 +167,8 @@ func save_crew(crew_playbook:CrewPlaybook, id:= current_save_id, overwrite:=true
 	var escaped_name:String = "crew_"+crew_playbook.id
 	var save_file: = save_path.plus_file(escaped_name+".tres")
 	if not dir.dir_exists(save_path): dir.make_dir_recursive(save_path)
-
+	if not crew_playbook.id or crew_playbook.id == "":
+		crew_playbook.id = Globals.generate_id(10)
 	#Check for duplicate files if overwrite is false
 	if not overwrite:
 		var file: = File.new()
@@ -194,12 +195,13 @@ func save_roster(roster, id:= current_save_id, overwrite: = true)-> bool:
 	var is_an_error: = false
 	var dir: = Directory.new()
 	for playbook in playbooks:
+		if not playbook.id or playbook.id == "":
+			playbook.id = Globals.generate_id(10)
 		#Save the playbook in folder
 		var save_path:String = SAVE_FOLDER+"/"+id+"/pc_playbooks"
 		if not dir.dir_exists(save_path): dir.make_dir_recursive(save_path)
-		var escaped_name:String = playbook.id.strip_edges().c_escape().strip_escapes()
+		var escaped_name:String = playbook.id if playbook.id else playbook.name
 		var save_file:String = save_path.plus_file(escaped_name+".tres")
-
 		#Check for duplicate files if overwrite is false
 		if not overwrite:
 			var file: = File.new()
@@ -209,14 +211,12 @@ func save_roster(roster, id:= current_save_id, overwrite: = true)-> bool:
 				i += 1
 				var new_name = escaped_name + str(i)
 				save_file = save_path.plus_file(new_name+".tres")
-
 		#Error handling
 		var error = ResourceSaver.save(save_file, playbook)
 		if error != OK:
 			print("There was an issue writing the crew save %s to %s" % [id, save_path])
 			print("error code: " + str(error))
 			is_an_error = true
-
 	if is_an_error:
 		return false
 	else:

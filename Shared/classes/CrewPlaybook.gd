@@ -28,6 +28,7 @@ var operation_type
 
 func setup(json_or_file_path_to_json, crew_type: String, overwrite:bool = false)-> void:
 	if not needs_setup and not overwrite: return
+	.setup(json_or_file_path_to_json, crew_type, overwrite)
 	var srd: Dictionary = {}
 	srd = get_defaults(json_or_file_path_to_json) if json_or_file_path_to_json is String else json_or_file_path_to_json
 

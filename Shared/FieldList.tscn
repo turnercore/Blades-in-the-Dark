@@ -29,11 +29,14 @@ __meta__ = {
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 25.0
 margin_right = 1024.0
-margin_bottom = 25.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="List" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
 margin_right = 1024.0
+margin_bottom = 575.0
 rect_pivot_offset = Vector2( -537, 36 )
 size_flags_horizontal = 3
 size_flags_vertical = 3

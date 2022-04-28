@@ -98,6 +98,15 @@ func propagate_set_playbook_fields_recursive(node:Node, field_template:String)->
 		if child.get_child_count() > 0:
 			propagate_set_playbook_fields_recursive(child, field_template)
 
+func generate_id(characters:int)-> String:
+	randomize()
+	var possible_characters: = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+	var id:=""
+	for character in characters:
+		var rand:int = randi() % possible_characters.length()
+		id += possible_characters[rand]
+	return id
+
 
 ##Testing values of things
 func _process(_delta: float) -> void:

@@ -55,9 +55,9 @@ margin_bottom = 490.0
 alignment = 1
 
 [node name="Label" type="Label" parent="SetupPages/CrewChoices"]
-margin_top = 172.0
+margin_top = 162.0
 margin_right = 516.0
-margin_bottom = 191.0
+margin_bottom = 183.0
 text = "Choose a crew type:"
 align = 1
 autowrap = true
@@ -66,15 +66,15 @@ __meta__ = {
 }
 
 [node name="type_options" type="OptionButton" parent="SetupPages/CrewChoices"]
-margin_top = 195.0
+margin_top = 187.0
 margin_right = 516.0
-margin_bottom = 220.0
+margin_bottom = 214.0
 text = "Crew Type"
 items = [ "Crew Type", null, false, 0, null ]
 selected = 0
 
 [node name="Label2" type="Label" parent="SetupPages/CrewChoices"]
-margin_top = 224.0
+margin_top = 218.0
 margin_right = 516.0
 margin_bottom = 287.0
 text = "This determines the scores you'll focus on, as well as your default special abilities, claims, and other game mechanics. Everything can be edited after creation as determined by the GM and the group."
@@ -84,10 +84,10 @@ __meta__ = {
 }
 
 [node name="NextButton" type="Button" parent="SetupPages/CrewChoices"]
-margin_left = 237.0
+margin_left = 235.0
 margin_top = 291.0
-margin_right = 278.0
-margin_bottom = 316.0
+margin_right = 280.0
+margin_bottom = 318.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 disabled = true
@@ -107,37 +107,37 @@ __meta__ = {
 
 [node name="name" type="LineEdit" parent="SetupPages/CrewChoices-1"]
 margin_right = 516.0
-margin_bottom = 29.0
+margin_bottom = 31.0
 align = 1
 placeholder_text = "What is your crew name?"
 script = ExtResource( 1 )
 playbook_field = "name"
 
 [node name="Label3" type="Label" parent="SetupPages/CrewChoices-1"]
-margin_top = 41.0
+margin_top = 43.0
 margin_right = 516.0
-margin_bottom = 60.0
+margin_bottom = 64.0
 text = "You start with 2 coins to form the crew, spend them wisely. "
 
 [node name="HSeparator3" type="HSeparator" parent="SetupPages/CrewChoices-1"]
-margin_top = 72.0
+margin_top = 76.0
 margin_right = 516.0
-margin_bottom = 76.0
+margin_bottom = 80.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label4" type="Label" parent="SetupPages/CrewChoices-1"]
-margin_top = 88.0
+margin_top = 92.0
 margin_right = 516.0
-margin_bottom = 107.0
+margin_bottom = 113.0
 text = "Choose an inital reputation:"
 align = 1
 
 [node name="reputation" type="OptionButton" parent="SetupPages/CrewChoices-1"]
-margin_top = 119.0
+margin_top = 125.0
 margin_right = 516.0
-margin_bottom = 144.0
+margin_bottom = 152.0
 text = "Ambitious"
 items = [ "Ambitious", null, false, 0, null, "Brutal", null, false, 1, null, "Daring", null, false, 2, null, "Honorable", null, false, 3, null, "Professional", null, false, 4, null, "Savvy", null, false, 5, null, "Subtle", null, false, 6, null, "Strange", null, false, 7, null ]
 selected = 0
@@ -145,24 +145,24 @@ script = ExtResource( 1 )
 playbook_field = "reputation"
 
 [node name="HSeparator" type="HSeparator" parent="SetupPages/CrewChoices-1"]
-margin_top = 156.0
+margin_top = 164.0
 margin_right = 516.0
-margin_bottom = 160.0
+margin_bottom = 168.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label5" type="Label" parent="SetupPages/CrewChoices-1"]
-margin_top = 172.0
+margin_top = 180.0
 margin_right = 516.0
-margin_bottom = 191.0
+margin_bottom = 201.0
 text = "Choose an inital lair:"
 align = 1
 
 [node name="lair" type="OptionButton" parent="SetupPages/CrewChoices-1"]
-margin_top = 203.0
+margin_top = 213.0
 margin_right = 516.0
-margin_bottom = 228.0
+margin_bottom = 240.0
 text = "A half-sunken grotto in the city's maze-like underground canals."
 items = [ "A half-sunken grotto in the city's maze-like underground canals.", null, false, 0, null, "A small, abondoned house at the end of a dark lane.", null, false, 1, null, "An abandoned watch tower atop an ancient, crumbling wall.", null, false, 2, null, "A rickety, tin-roofed shack perched on a rooftop.", null, false, 3, null, "The unassuming back rooms of a merchant's shop.", null, false, 4, null, "A junked rail-car, rusted in place on its old, overgrown tracks.", null, false, 5, null, "An crumbling, old church overlooking a wayward canal. ", null, false, 6, null ]
 selected = 0
@@ -173,17 +173,19 @@ __meta__ = {
 playbook_field = "lair.description"
 
 [node name="lair_location" type="OptionButton" parent="SetupPages/CrewChoices-1"]
-margin_top = 240.0
+margin_top = 252.0
 margin_right = 516.0
-margin_bottom = 265.0
+margin_bottom = 279.0
 text = "Lair Location"
+items = [ "Lair Location", null, false, 0, null ]
+selected = 0
 script = ExtResource( 1 )
 playbook_field = "lair.location"
 
 [node name="NextButton" type="Button" parent="SetupPages/CrewChoices-1"]
-margin_top = 463.0
+margin_top = 453.0
 margin_right = 516.0
-margin_bottom = 488.0
+margin_bottom = 480.0
 size_flags_vertical = 10
 text = "Next"
 
@@ -200,7 +202,7 @@ __meta__ = {
 
 [node name="Label6" type="Label" parent="SetupPages/CrewChoices-2"]
 margin_right = 516.0
-margin_bottom = 19.0
+margin_bottom = 21.0
 text = "Establish your hunting grounds."
 align = 1
 autowrap = true
@@ -209,9 +211,9 @@ __meta__ = {
 }
 
 [node name="hunting_grounds" type="OptionButton" parent="SetupPages/CrewChoices-2"]
-margin_top = 31.0
+margin_top = 33.0
 margin_right = 516.0
-margin_bottom = 56.0
+margin_bottom = 60.0
 text = "Hunting Ground Location"
 script = ExtResource( 1 )
 __meta__ = {
@@ -220,9 +222,9 @@ __meta__ = {
 playbook_field = "hunting_grounds.location"
 
 [node name="hunting_description" type="TextEdit" parent="SetupPages/CrewChoices-2"]
-margin_top = 68.0
+margin_top = 72.0
 margin_right = 516.0
-margin_bottom = 144.0
+margin_bottom = 137.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Describe your hunting grounds. What part of the above district is it located in? Why do you prefer it or what gives your crew an advantage here?"
@@ -231,9 +233,9 @@ script = ExtResource( 1 )
 playbook_field = "hunting_grounds.description"
 
 [node name="Label7" type="Label" parent="SetupPages/CrewChoices-2"]
-margin_top = 156.0
+margin_top = 149.0
 margin_right = 516.0
-margin_bottom = 307.0
+margin_bottom = 314.0
 text = "Your hunting grounds are a small part of a district, the area you normally target for your scores. This is an area your crew knows well. 
 When you prepare to execute an operation of your preferred type on your hunting grounds, you get +1d to any gather information rolls and a free addtional downtime activity to contribute to that operation.
 
@@ -245,22 +247,22 @@ __meta__ = {
 }
 
 [node name="HSeparator" type="HSeparator" parent="SetupPages/CrewChoices-2"]
-margin_top = 319.0
+margin_top = 326.0
 margin_right = 516.0
-margin_bottom = 323.0
+margin_bottom = 330.0
 
 [node name="Label" type="Label" parent="SetupPages/CrewChoices-2"]
-margin_top = 335.0
+margin_top = 342.0
 margin_right = 516.0
-margin_bottom = 354.0
+margin_bottom = 363.0
 text = "What is your preferred opration type?"
 align = 1
 autowrap = true
 
 [node name="operation_type" type="OptionButton" parent="SetupPages/CrewChoices-2"]
-margin_top = 366.0
+margin_top = 375.0
 margin_right = 516.0
-margin_bottom = 391.0
+margin_bottom = 402.0
 text = "Operation Type"
 script = ExtResource( 1 )
 __meta__ = {
@@ -269,7 +271,7 @@ __meta__ = {
 playbook_field = "operation_type"
 
 [node name="NextButton" type="Button" parent="SetupPages/CrewChoices-2"]
-margin_top = 455.0
+margin_top = 453.0
 margin_right = 516.0
 margin_bottom = 480.0
 size_flags_vertical = 10
@@ -280,7 +282,7 @@ visible = false
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 526.0
-margin_bottom = 498.0
+margin_bottom = 520.0
 custom_constants/separation = 12
 alignment = 1
 __meta__ = {

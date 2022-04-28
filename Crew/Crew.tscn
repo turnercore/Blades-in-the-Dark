@@ -68,16 +68,6 @@ margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="lair_name" parent="TabContainer/The Lair" index="0"]
-margin_left = 508.0
-margin_right = 608.0
-caret_blink = true
-caret_blink_speed = 0.5
-
-[node name="TextureRect" parent="TabContainer/The Lair" index="1"]
-margin_right = 1116.0
-margin_bottom = 592.0
-
 [node name="Crew Contacts" parent="TabContainer" instance=ExtResource( 1 )]
 visible = false
 margin_left = 4.0

@@ -55,6 +55,8 @@ signal unfilled
 signal name_changed(new_name)
 signal type_changed(type)
 
+var data_has_changed: = false
+
 func _init() -> void:
 	export_properties = [
 		"id",
@@ -109,6 +111,7 @@ func delete()-> void:
 
 func save_clock()->void:
 	Events.emit_clock_updated(self)
+	data_has_changed = false
 
 
 func setup_from_data(clock_data:Dictionary)-> void:
@@ -136,6 +139,8 @@ func lock()->void:
 
 func _set_locked(value: bool)->void:
 	var locked_check_box: = $CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer/LockCheckBox
+	if locked != value:
+		data_has_changed = true
 	locked = value
 	save_clock()
 	locked_check_box.pressed = value
@@ -156,6 +161,8 @@ func _get_id()->String:
 
 
 func _set_filled(value) -> void:
+	if filled != value:
+		data_has_changed = true
 	var new_value: = int(value)
 	if new_value >= max_value:
 		new_value = max_value
@@ -164,7 +171,6 @@ func _set_filled(value) -> void:
 		emit_signal("unfilled")
 	elif new_value < 0:
 		new_value = 0
-
 	filled = new_value
 	if filled_label:
 		filled_label.text = str(new_value)
@@ -175,6 +181,8 @@ func _set_filled(value) -> void:
 
 
 func _set_max_value(value: int) -> void:
+	if max_value == value: return
+	data_has_changed = true
 	max_value = value
 	segments.text = str(max_value)
 	if filled > max_value:
@@ -195,12 +203,14 @@ func _set_max_value(value: int) -> void:
 
 
 func _set_clock_name(value: String) -> void:
+	if clock_name == value: return
 	clock_name = value
 	emit_signal("name_changed", value)
 	save_clock()
 
 
 func _set_locking_clock(value:String) -> void:
+	if locking_clock == value: return
 	if value:
 		if value == self.id:
 			return
@@ -224,6 +234,7 @@ func _set_locking_clock(value:String) -> void:
 
 
 func _set_locked_by_clock(value:String) -> void:
+	if locked_by_clock == value: return
 	#Prevents cyclic locks
 	if value:
 		if value == self.id:
@@ -265,12 +276,14 @@ func _set_locked_by_clock(value:String) -> void:
 
 
 func _set_type(value)-> void:
+	if type == value: return
 	type = value
 	emit_signal("type_changed", value)
 	save_clock()
 
 
 func _set_is_secret(value: bool) -> void:
+	if is_secret == value: return
 	is_secret = value
 	clock_line_edit.secret = value
 	save_clock()

@@ -36,21 +36,21 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Info"]
-margin_right = 549.0
-margin_bottom = 525.0
+margin_right = 458.0
+margin_bottom = 519.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_right = 549.0
+margin_right = 458.0
 margin_bottom = 66.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer"]
-margin_right = 272.0
+margin_right = 215.0
 margin_bottom = 66.0
 size_flags_horizontal = 3
 
 [node name="Field" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 272.0
+margin_right = 215.0
 margin_bottom = 31.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer/Field"]
@@ -71,7 +71,7 @@ playbook_field = "name"
 
 [node name="Field2" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 35.0
-margin_right = 272.0
+margin_right = 215.0
 margin_bottom = 66.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer/Field2"]
@@ -91,13 +91,13 @@ script = ExtResource( 9 )
 playbook_field = "heritage"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer"]
-margin_left = 276.0
-margin_right = 549.0
+margin_left = 219.0
+margin_right = 458.0
 margin_bottom = 66.0
 size_flags_horizontal = 3
 
 [node name="Field" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 273.0
+margin_right = 239.0
 margin_bottom = 31.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer2/Field"]
@@ -118,7 +118,7 @@ playbook_field = "aliases"
 
 [node name="Field2" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 35.0
-margin_right = 273.0
+margin_right = 239.0
 margin_bottom = 66.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/HBoxContainer/VBoxContainer2/Field2"]
@@ -139,17 +139,17 @@ playbook_field = "background"
 
 [node name="Field2" type="VBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
 margin_top = 70.0
-margin_right = 549.0
+margin_right = 458.0
 margin_bottom = 245.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Field2"]
-margin_right = 549.0
+margin_right = 458.0
 margin_bottom = 21.0
 text = "Look"
 
 [node name="look" type="TextEdit" parent="PanelContainer/Info/VBoxContainer/Field2"]
 margin_top = 25.0
-margin_right = 549.0
+margin_right = 458.0
 margin_bottom = 175.0
 rect_min_size = Vector2( 150, 150 )
 script = ExtResource( 9 )
@@ -157,33 +157,31 @@ playbook_field = "look"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/Info/VBoxContainer"]
 margin_top = 249.0
-margin_right = 549.0
+margin_right = 458.0
 margin_bottom = 253.0
 
 [node name="StressContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
 margin_top = 257.0
-margin_right = 549.0
-margin_bottom = 284.0
+margin_right = 458.0
+margin_bottom = 278.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
-margin_top = 3.0
 margin_right = 42.0
-margin_bottom = 24.0
+margin_bottom = 21.0
 text = "Stress"
 
 [node name="stress" parent="PanelContainer/Info/VBoxContainer/StressContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 margin_left = 46.0
-margin_right = 125.0
-margin_bottom = 27.0
+margin_right = 221.0
+margin_bottom = 21.0
 playbook_field = "stress"
 total_points = 9
 
 [node name="Label2" type="Label" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
-margin_left = 129.0
-margin_top = 3.0
-margin_right = 182.0
-margin_bottom = 24.0
+margin_left = 225.0
+margin_right = 278.0
+margin_bottom = 21.0
 text = "Trauma"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -191,13 +189,14 @@ __meta__ = {
 
 [node name="trauma" parent="PanelContainer/Info/VBoxContainer/StressContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
-margin_left = 186.0
-margin_right = 265.0
-margin_bottom = 27.0
+margin_left = 282.0
+margin_right = 458.0
+margin_bottom = 21.0
 playbook_field = "trauma_level"
 total_points = 4
 
 [node name="trauma1" type="OptionButton" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
+visible = false
 margin_left = 269.0
 margin_right = 336.0
 margin_bottom = 27.0
@@ -208,6 +207,7 @@ script = ExtResource( 9 )
 playbook_field = "traumas-0"
 
 [node name="trauma2" type="OptionButton" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
+visible = false
 margin_left = 340.0
 margin_right = 407.0
 margin_bottom = 27.0
@@ -218,6 +218,7 @@ script = ExtResource( 9 )
 playbook_field = "traumas-1"
 
 [node name="trauma3" type="OptionButton" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
+visible = false
 margin_left = 411.0
 margin_right = 478.0
 margin_bottom = 27.0
@@ -228,6 +229,7 @@ script = ExtResource( 9 )
 playbook_field = "traumas-2"
 
 [node name="trauma4" type="OptionButton" parent="PanelContainer/Info/VBoxContainer/StressContainer"]
+visible = false
 margin_left = 482.0
 margin_right = 549.0
 margin_bottom = 27.0
@@ -238,9 +240,9 @@ script = ExtResource( 9 )
 playbook_field = "traumas-3"
 
 [node name="ArmorUsesContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_top = 288.0
-margin_right = 549.0
-margin_bottom = 317.0
+margin_top = 282.0
+margin_right = 458.0
+margin_bottom = 311.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/ArmorUsesContainer"]
 margin_top = 4.0
@@ -276,18 +278,18 @@ property = "pressed"
 playbook_field = "special_armor"
 
 [node name="Harms" type="PanelContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_top = 321.0
-margin_right = 549.0
-margin_bottom = 461.0
+margin_top = 315.0
+margin_right = 458.0
+margin_bottom = 455.0
 
 [node name="HarmTable" type="VBoxContainer" parent="PanelContainer/Info/VBoxContainer/Harms"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 542.0
+margin_right = 451.0
 margin_bottom = 133.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable"]
-margin_right = 535.0
+margin_right = 444.0
 margin_bottom = 21.0
 text = "Harm"
 align = 1
@@ -295,7 +297,7 @@ valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable"]
 margin_top = 25.0
-margin_right = 535.0
+margin_right = 444.0
 margin_bottom = 56.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer"]
@@ -306,7 +308,7 @@ text = "3"
 
 [node name="harm3" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer"]
 margin_left = 12.0
-margin_right = 457.0
+margin_right = 366.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 caret_blink = true
@@ -315,15 +317,15 @@ script = ExtResource( 9 )
 playbook_field = "harms.level_3"
 
 [node name="Label2" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer"]
-margin_left = 461.0
+margin_left = 370.0
 margin_top = 5.0
-margin_right = 535.0
+margin_right = 444.0
 margin_bottom = 26.0
 text = "Need Help"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable"]
 margin_top = 60.0
-margin_right = 535.0
+margin_right = 444.0
 margin_bottom = 91.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer2"]
@@ -334,7 +336,7 @@ text = "2"
 
 [node name="harm_lvl2-1" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer2"]
 margin_left = 12.0
-margin_right = 257.0
+margin_right = 211.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 caret_blink = true
@@ -343,8 +345,8 @@ script = ExtResource( 9 )
 playbook_field = "harms.level_2-0"
 
 [node name="harm_lvl2-2" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer2"]
-margin_left = 261.0
-margin_right = 506.0
+margin_left = 215.0
+margin_right = 415.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 caret_blink = true
@@ -353,15 +355,15 @@ script = ExtResource( 9 )
 playbook_field = "harms.level_2-1"
 
 [node name="Label2" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer2"]
-margin_left = 510.0
+margin_left = 419.0
 margin_top = 5.0
-margin_right = 535.0
+margin_right = 444.0
 margin_bottom = 26.0
 text = "-1D"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable"]
 margin_top = 95.0
-margin_right = 535.0
+margin_right = 444.0
 margin_bottom = 126.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer3"]
@@ -372,40 +374,40 @@ text = "1"
 
 [node name="LineEdit" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer3"]
 margin_left = 11.0
-margin_right = 230.0
+margin_right = 185.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="LineEdit2" type="LineEdit" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer3"]
-margin_left = 234.0
-margin_right = 454.0
+margin_left = 189.0
+margin_right = 363.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="Label2" type="Label" parent="PanelContainer/Info/VBoxContainer/Harms/HarmTable/HBoxContainer3"]
-margin_left = 458.0
+margin_left = 367.0
 margin_top = 5.0
-margin_right = 535.0
+margin_right = 444.0
 margin_bottom = 26.0
 text = "Less Effect"
 
 [node name="Stash" type="PanelContainer" parent="PanelContainer/Info/VBoxContainer"]
-margin_top = 465.0
-margin_right = 549.0
-margin_bottom = 525.0
+margin_top = 459.0
+margin_right = 458.0
+margin_bottom = 519.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Info/VBoxContainer/Stash"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 542.0
+margin_right = 451.0
 margin_bottom = 53.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer"]
-margin_right = 535.0
+margin_right = 444.0
 margin_bottom = 21.0
 
 [node name="Label" type="Label" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer"]
@@ -416,7 +418,7 @@ text = "Coin"
 [node name="coins" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 margin_left = 37.0
-margin_right = 535.0
+margin_right = 444.0
 margin_bottom = 21.0
 playbook_field = "coin.available"
 exp_point_scene = ExtResource( 2 )
@@ -424,7 +426,7 @@ total_points = 4
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer"]
 margin_top = 25.0
-margin_right = 535.0
+margin_right = 444.0
 margin_bottom = 46.0
 
 [node name="Label2" type="Label" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer2"]
@@ -435,21 +437,21 @@ text = "Stash"
 [node name="stash" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer2" instance=ExtResource( 1 )]
 anchor_right = 0.0
 margin_left = 43.0
-margin_right = 422.0
+margin_right = 331.0
 margin_bottom = 21.0
 playbook_field = "coin.stash"
 exp_point_scene = ExtResource( 2 )
 total_points = 40
 
 [node name="Label4" type="Label" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer2"]
-margin_left = 426.0
-margin_right = 488.0
+margin_left = 335.0
+margin_right = 397.0
 margin_bottom = 21.0
 text = "Lifestyle:"
 
 [node name="Label3" type="Label" parent="PanelContainer/Info/VBoxContainer/Stash/VBoxContainer/HBoxContainer2"]
-margin_left = 492.0
-margin_right = 535.0
+margin_left = 401.0
+margin_right = 444.0
 margin_bottom = 21.0
 text = "ballin'"
 script = ExtResource( 9 )
@@ -522,7 +524,6 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1016.0
 margin_bottom = 557.0
-scroll_horizontal_enabled = false
 playbook_data = "abilities"
 title = "Player Special Abilities:"
 field_scene = ExtResource( 7 )

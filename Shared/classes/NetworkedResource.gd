@@ -96,6 +96,5 @@ func _on_networked_resource_updated(network_data:Dictionary)-> void:
 
 func _get_id()->String:
 	if not id:
-		var lib: = Library.new()
-		id = lib.generate_id(5)
+		id = Globals.generate_id(5)
 	return id

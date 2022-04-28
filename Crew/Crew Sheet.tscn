@@ -49,6 +49,7 @@ margin_top = 5.0
 margin_right = 229.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
+align = 1
 script = ExtResource( 2 )
 playbook_field = "name"
 

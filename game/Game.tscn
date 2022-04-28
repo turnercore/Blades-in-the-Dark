@@ -72,10 +72,6 @@ mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="SelectedCharacter" parent="GUI/UI/TopHalfUI/FirstThird" instance=ExtResource( 18 )]
-margin_right = 338.0
-mouse_filter = 1
-
 [node name="MiddleThird" type="VBoxContainer" parent="GUI/UI/TopHalfUI"]
 margin_left = 342.0
 margin_right = 681.0
@@ -206,6 +202,7 @@ size_flags_vertical = 3
 [node name="FirstThird" type="VBoxContainer" parent="GUI/UI/BottomHalfUI"]
 margin_right = 288.0
 margin_bottom = 298.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -218,6 +215,7 @@ mouse_filter = 2
 margin_left = 292.0
 margin_right = 581.0
 margin_bottom = 298.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -225,6 +223,7 @@ size_flags_vertical = 3
 margin_left = 585.0
 margin_right = 1024.0
 margin_bottom = 298.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -245,6 +244,15 @@ margin_right = 439.0
 margin_bottom = 298.0
 size_flags_horizontal = 8
 size_flags_vertical = 9
+
+[node name="SelectedCharacter" parent="GUI" instance=ExtResource( 18 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 3.0
+margin_right = 424.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Chat" type="CanvasLayer" parent="."]
 layer = 2

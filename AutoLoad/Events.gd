@@ -17,6 +17,9 @@ signal character_selected(playbook)
 func emit_character_selected(playbook: Playbook)-> void:
 	emit_signal("character_selected", playbook)
 
+signal mouse_locked(node)
+signal mouse_unlocked(node)
+
 signal open_screen(screen)
 
 signal popup(popup, use_overlay)

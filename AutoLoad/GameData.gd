@@ -33,7 +33,6 @@ var clocks: = []
 var clock_nodes: = {}
 
 var map:Dictionary = {} setget , _get_map
-
 #ARRAY OF MAP NOTES a map note is a location
 var map_shortcuts:Array = []
 var clocks_being_saved: = false
@@ -45,10 +44,11 @@ var needs_current_game_state:bool = false
 var online: = false
 var requesting_game_state: = false
 var is_sending_data: = false
-
+#Libraries of resources for in-game objects
 var location_library: = Library.new()
 var clock_library: = Library.new()
-
+var clocks_being_updated:Array = []
+#This is for undo stacks (later)
 var recently_deleted: = []
 
 #Signals
@@ -292,12 +292,18 @@ func add_clock(clock:Clock, local: = true)-> void:
 			print("ERROR SENDING UPDATED CLOCK DATA ACROSS NETWORK")
 
 func _on_clock_updated(clock:Clock)->void:
-	update_clock(clock)
+	print("got sig clock updated "+ str(randi()%10))
+	if clocks_being_updated.has(clock): return
+	else:
+		clocks_being_updated.append(clock)
+		update_clock(clock)
+		clocks_being_updated.erase(clock)
 
 func _on_clock_created(clock:Clock)-> void:
 	add_clock(clock, true)
 
 func update_clock(clock, local: = true)-> void:
+	clocks_being_saved = true
 	print("updating clock from: " + ("local" if local else "network"))
 	var data: = {}
 
@@ -319,6 +325,8 @@ func update_clock(clock, local: = true)-> void:
 		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_CLOCK_UPDATED, data), "completed")
 		if result != OK:
 			print("ERROR SENDING UPDATED CLOCK DATA ACROSS NETWORK")
+
+	clocks_being_saved = false
 
 func _on_clock_removed(clock_id:String)-> void:
 	remove_clock(clock_id, true)
@@ -546,15 +554,16 @@ func remove_map_note(pos: Vector2)-> void:
 
 func add_map_note(data:Dictionary, send_over_network: = true)-> void:
 	var pos = data.pos if data.pos is Vector2 else Globals.str_to_vec2(data.pos)
-	var id: = str(pos)
+
 	if not "id" in data or not data.id:
-		data.id = id
+		data.id = Globals.generate_id(6)
 
 	if pos in map.locations:
 		print("Already have a note there" + str(pos))
 		return
 	else:
 		map.locations[pos] = data
+		location_library.add(data)
 
 	var _resource: =location_library.add(data)
 	if online and send_over_network:

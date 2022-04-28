@@ -320,7 +320,7 @@ run/main_scene="res://start_screen/StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Shared/Art/Icons/icon.png"
-config/version="v0.58"
+config/version="v0.6"
 
 [autoload]
 
@@ -339,7 +339,7 @@ PlayerData="*res://AutoLoad/PlayerData.gd"
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 settings=false
-settings/debug=true
+settings/debug=false
 
 [gui]
 

@@ -35,3 +35,11 @@ func _on_HideButton_toggled(hidden: bool) -> void:
 	$PanelContainer/VBoxContainer.visible = not hidden
 	$PanelContainer.self_modulate.a = 0 if hidden else 0.9
 	$PanelContainer/HideButton.text = "Show Active Chartacter" if hidden else "Hide"
+
+
+func _on_PanelContainer_mouse_entered() -> void:
+	Events.emit_signal("mouse_locked", self)
+
+
+func _on_PanelContainer_mouse_exited() -> void:
+	Events.emit_signal("mouse_unlocked", self) # Replace with function body.

@@ -7,8 +7,13 @@ var resources: = {}
 func setup(books, reset: = false)-> void:
 	if reset:
 		resources.clear()
-	for key in books:
-		add(books[key])
+	if books is Dictionary:
+		for key in books:
+			add(books[key])
+	elif books is Array:
+		for book in books:
+			add(book)
+
 
 func add(book:Dictionary)-> NetworkedResource:
 	var result:NetworkedResource
@@ -16,18 +21,38 @@ func add(book:Dictionary)-> NetworkedResource:
 
 	if "id" in book:
 		id = str(book.id)
+		if resources.has(id):
+			return resources[id]
+		else:
+			result = NetworkedResource.new()
+			result.setup(book)
+			resources[id] = result
+			result.id = id
+			return result
 	else:
+		#Check to see if the data in the book is the same as something the library already has
+		for key in resources:
+			if areDictsEqual(resources[key].data, book):
+				return resources[key]
 		id = generate_id(ID_LENGTH)
-
-	if resources.has(id):
-		result = resources[id]
-	else:
 		result = NetworkedResource.new()
 		result.setup(book)
 		resources[id] = result
+		result.id = id
+		return result
 
-	result.id = id
-	return result
+
+func areDictsEqual(a: Dictionary, b: Dictionary) -> bool:
+	if not a or not b:
+		return false
+	if a.size() != b.size():
+		return false
+	for key in a.keys():
+		if not b.has(key):
+			return false
+		if a[key] != b[key]:
+			return false
+	return true
 
 #Find all the resources that have a property that is a certain value
 func search(search_property:String, value)-> Array:
@@ -41,6 +66,7 @@ func search(search_property:String, value)-> Array:
 					if typeof(resources[id].data[property]) == typeof(value) and resources[id].data[property] == value:
 						result.append(resources[id])
 	return result
+
 
 func get(id:String)-> NetworkedResource:
 	var result:NetworkedResource

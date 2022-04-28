@@ -4,55 +4,57 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "asdfasdf"
+id = "4p8QyCgoKr"
+version = ""
+name = "Rooster"
 abilities = {
-"ambush": {
+"a_little_something_on_the_side": {
 "claimed": false,
-"class": "lurk",
-"description": "When you attack from hiding or spring a trap, you get +1d.",
-"name": "Ambush"
+"class": "slide",
+"description": "At the end of each downtime phase, you earn +2 stash.",
+"name": "A Little Something on the Side"
 },
-"daredevil": {
+"cloak_&_dagger": {
 "claimed": false,
-"class": "lurk",
-"description": "When you roll a desperate action, you get +1d to your roll if you also take -1d to any resistance rolls against consequences from your action.",
-"name": "Daredevil"
+"class": "slide",
+"description": "When you use a disguise or other form of covert misdirection, you get +1d to rolls to confuse or deflect suspicion. When you throw off your disguise, the resulting surprise gives you the initiative in the situation.",
+"name": "Cloak & Dagger"
 },
-"expertise": {
+"ghost_voice": {
 "claimed": false,
-"class": "lurk",
-"description": "Choose one of your action ratings. When you lead a group action using that action, you can suffer only 1 stress at most regardless of the number of failed rolls.",
-"name": "Expertise"
+"class": "slide",
+"description": "You know the secret method to interact with a ghost or demon as if it was a normal human, regardless of how wild or feral it appears. You gain potency when communicating with the supernatural.",
+"name": "Ghost Voice"
 },
-"ghost_veil": {
+"like_looking_into_a_mirror": {
 "claimed": false,
-"class": "lurk",
-"description": "You may shift partially into the ghost field, becoming shadowy and insubstantial for a few moments. Take 2 stress when you shift, plus 1 stress for each extra feature: It lasts for a few minutes rather than moments—you are invisible rather than shadowy—you may float through the air like a ghost",
-"name": "Ghost Veil"
+"class": "slide",
+"description": "You can always tell when someone is lying to you.",
+"name": "Like Looking into a Mirror"
 },
-"infiltrator": {
+"mesmerism": {
 "claimed": false,
-"class": "lurk",
-"description": "You are not affected by quality or Tier when you bypass security measures.",
-"name": "Infiltrator"
+"class": "slide",
+"description": "When you Sway someone, you may cause them to forget that it's happened until they next interact with you.",
+"name": "Mesmerism"
 },
-"reflexes": {
+"rook\\'s_gambit": {
 "claimed": false,
-"class": "lurk",
-"description": "When there's a question about who acts first, the answer is you (two characters with Reflexes act simultaneously)",
-"name": "Reflexes"
+"class": "slide",
+"description": "Take 2 stress to roll your best action rating while performing a different action. Say how you adapt your skill to this use.",
+"name": "Rook's Gambit"
 },
-"shadow": {
+"subterfuge": {
 "claimed": false,
-"class": "lurk",
-"description": "You may expend your special armor to resist a consequence from detection or security measures, or to push yourself for a feat of athletics or stealth.",
-"name": "Shadow"
+"class": "slide",
+"description": "You may expend your special armor to resist a consequence from suspicion or persuasion, or to push yourself for subterfuge.",
+"name": "Subterfuge"
 },
-"the_devil\\'s_footsteps": {
+"trust_in_me": {
 "claimed": false,
-"class": "lurk",
-"description": "When you push yourself, choose one of the following additional benefits: perform a feat of athletics that verges on the superhuman—maneuver to confuse your enemies so they mistakenly attack each other.",
-"name": "The Devil's Footsteps"
+"class": "slide",
+"description": "You get +1d vs. a target with whom you have an intimate relationship.",
+"name": "Trust in Me"
 },
 "veteran": {
 "claimed": false,
@@ -62,56 +64,68 @@ abilities = {
 }
 }
 coin = {
-"available": 0.0,
-"max": 4.0,
-"stash": 0.0
+"available": 0,
+"max": 4,
+"stash": 0
 }
 contacts = {
 }
-type = "lurk"
+type = "slide"
 notes = ""
 experience = {
-"insight": 0.0,
-"playbook": 0.0,
-"prowess": 0.0,
-"resolve": 0.0
+"insight": 0,
+"playbook": 0,
+"prowess": 0,
+"resolve": 0
 }
 projects = {
 }
 stats = {
 "insight": {
-"hunt": 0.0,
-"study": 0.0,
-"survey": 0.0,
-"tinker": 0.0
+"hunt": 0,
+"study": 0,
+"survey": 0,
+"tinker": 0
 },
 "prowess": {
-"finesse": 1.0,
-"prowl": 2.0,
-"skirmish": 0.0,
-"wreck": 0.0
+"finesse": 0,
+"prowl": 0,
+"skirmish": 0,
+"wreck": 0
 },
 "resolve": {
-"attune": 0.0,
-"command": 0.0,
-"consort": 0.0,
-"sway": 0.0
+"attune": 0,
+"command": 0,
+"consort": 1,
+"sway": 2
 }
 }
+insight = 0
+prowess = 0
+resolve = 2
 needs_setup = false
 aliases = ""
-look = ""
+look = "asdf"
 heritage = ""
 background = ""
-stress = 4
-trauma_level = 0
+stress = 1
+trauma_level = 2
 traumas = [  ]
+heal_clock = {
+}
 items = {
 "a_blade_or_two": {
 "carry_load": 1.0,
 "class": "all",
 "description": "Perhaps you carry a simple fighting knife. Or two curved swords. Or a rapier and stiletto.",
 "name": "A Blade or Two",
+"using": false
+},
+"a_cane-sword": {
+"carry_load": 1.0,
+"class": "slide",
+"description": "A slim sword and its sheath, disguised as a noble's cane. (The disguise will fool a cursory inspection)",
+"name": "A Cane-Sword",
 "using": false
 },
 "a_large_weapon": {
@@ -170,13 +184,6 @@ items = {
 "name": "Climbing Gear",
 "using": false
 },
-"dark-sight_goggles": {
-"carry_load": 1.0,
-"class": "lurk",
-"description": "An arcane device that allows the wearer to see in pitch darkness as if it were well-lit.",
-"name": "Dark-sight Goggles",
-"using": false
-},
 "demolition_tools": {
 "carry_load": 2.0,
 "class": "all",
@@ -191,18 +198,25 @@ items = {
 "name": "Documents",
 "using": false
 },
-"fine_lockpicks": {
+"fine_clothes_and_jewelry": {
 "carry_load": 0.0,
-"class": "lurk",
-"description": "A finely crafted set of tools to disable and circumvent locks.",
-"name": "Fine Lockpicks",
+"class": "slide",
+"description": "An outfit that appears to be of such fine make as to pass you off as a wealthy noble. (If you're carrying this item as a second outfit to change into it counts as 2 load)",
+"name": "Fine Clothes and Jewelry",
 "using": false
 },
-"fine_shadow_cloak": {
+"fine_disguise_kit": {
 "carry_load": 1.0,
-"class": "lurk",
-"description": "A hooded cloak made of rare Iruvian shadow-silk that blends into the darkness around it. This item improves your effect level when you sneak around.",
-"name": "Fine Shadow Cloak",
+"class": "slide",
+"description": "A theatrical make-up kit equipped with an impressive array of expert appliances to fool the eye. (The fine quality of this kit may increase the effect of your deceptive actions when you use it.)",
+"name": "Fine Disguise Kit",
+"using": false
+},
+"fine_loaded_dice,_trick_cards": {
+"carry_load": 0.0,
+"class": "slide",
+"description": "Gambling accouterments subtly altered to favor particular outcomes. (The fine quality of this kit may increase the effect of your deceptive actions when you use it.)",
+"name": "Fine Loaded Dice, Trick Cards",
 "using": false
 },
 "lantern": {
@@ -210,20 +224,6 @@ items = {
 "class": "all",
 "description": "A simple oil lantern, a fancy electroplasmic lamp, or other similar light source",
 "name": "Lantern",
-"using": false
-},
-"light_climbing_gear": {
-"carry_load": 1.0,
-"class": "lurk",
-"description": "A well-crafted set of climbing gear that is less bulky and heavy than a standard set.",
-"name": "Light Climbing Gear",
-"using": false
-},
-"silence_potion_vial": {
-"carry_load": 0.0,
-"class": "lurk",
-"description": "A vial of golden liquid that negates all sound within 10 paces of the drinker for a span of several moments.",
-"name": "Silence Potion Vial",
 "using": false
 },
 "spiritbane_charm": {
@@ -253,39 +253,46 @@ items = {
 "description": "An assortment for detailed mechanist work: jeweler's loupe, tweezers, a small hammer, pliers, screwdriver, etc.",
 "name": "Tinkering Tools",
 "using": false
+},
+"trance_powder": {
+"carry_load": 0.0,
+"class": "slide",
+"description": "A dose of the popular drug, which induces an altered mental state. (The victim of this powder is not fully unconscious, but rather retreats into a clam, suggestible mental state, similar to hypnotism.)",
+"name": "Trance Powder",
+"using": false
 }
 }
 vice = ""
 vice_type = ""
 xp_gain = ""
 friends_and_foes = {
-"darmot,_a_bluecoat": {
-"class": "lurk",
-"name": "Darmot, a bluecoat",
+"bazso_baz,_a_gang_leader": {
+"class": "slide",
+"name": "Bazso Baz, a gang leader",
 "notes": null,
 "relationship": 0.0
 },
-"frake,_a_locksmith": {
-"class": "lurk",
-"name": "Frake, a locksmith",
+"bryl,_a_drug_dealer": {
+"class": "slide",
+"name": "Bryl, a drug dealer",
 "notes": null,
 "relationship": 0.0
 },
-"petra,_a_city_clerk": {
-"class": "lurk",
-"name": "Petra, a city clerk",
+"harker,_a_jail-bird": {
+"class": "slide",
+"name": "Harker, a jail-bird",
 "notes": null,
 "relationship": 0.0
 },
-"roslyn_kellis,_a_noble": {
-"class": "lurk",
-"name": "Roslyn Kellis, a noble",
+"klyra,_a_tavern_owner": {
+"class": "slide",
+"name": "Klyra, a tavern owner",
 "notes": null,
 "relationship": 0.0
 },
-"telda,_a_beggar": {
-"class": "lurk",
-"name": "Telda, a beggar",
+"nyryx,_a_prostitute": {
+"class": "slide",
+"name": "Nyryx, a prostitute",
 "notes": null,
 "relationship": 0.0
 }
