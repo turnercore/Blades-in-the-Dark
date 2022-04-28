@@ -4,12 +4,15 @@
 [ext_resource path="res://multiplayer/MultiplayerLogin.tscn" type="PackedScene" id=2]
 [ext_resource path="res://multiplayer/MatchList.tscn" type="PackedScene" id=3]
 
-[node name="ConnectToMultiplayerButton" type="Button"]
+[node name="JoinGameButton" type="Button"]
 margin_top = 188.0
 margin_right = 350.0
 margin_bottom = 215.0
 text = "Join a Game"
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 multiplayer_login_scene = ExtResource( 2 )
 match_list_scene = ExtResource( 3 )
 

@@ -9,6 +9,7 @@ func _ready() -> void:
 
 	Events.connect("popup", self, "_on_popup")
 	Events.connect("popup_finished", self, "_on_popup_finished")
+	Events.connect("all_popups_finished", self, "_on_all_popups_finished")
 
 	for child in get_children():
 		if child == overlay: continue
@@ -59,6 +60,9 @@ func _set_popups_active(value: int)-> void:
 	if popups_active == 0:
 		Events.emit_signal("all_popups_finished")
 
+func _on_all_popups_finished()-> void:
+	if popups_active != 0:
+		self.popups_active = 0
 
 
 

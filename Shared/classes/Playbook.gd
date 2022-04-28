@@ -141,6 +141,7 @@ func get_resolve()->int:
 func get_defaults(json_file_path: String):
 	var file = File.new()
 	if not file.file_exists(json_file_path):
+		print("ERROR IN GET DEFAULTS PLAYBOOK")
 		print("unable to find json file: " + json_file_path)
 	file.open(json_file_path, File.READ)
 	var data = parse_json(file.get_as_text())
@@ -167,8 +168,6 @@ func package_as_json()-> String:
 		if ignored_props.has(property.name):
 			continue
 		dict[property.name] = get(property.name)
-		print(property.name)
-		print(get(property.name))
 
 	json = JSON.print(dict)
 	return json
@@ -188,7 +187,6 @@ func save(path_map: String, value)-> bool:
 
 	#Check to see if the property exists in the Resource
 	if not (path[0] in self):
-		print(path_map + " is not in the property list for playbook " + name)
 		return false
 
 	while jumps < path.size() - 1:
@@ -231,7 +229,7 @@ func find(path_map: String):
 					updated_property = updated_property[index]
 				jumps += 1
 			else:
-				return false
+				return
 		else:
 			if path[jumps] in updated_property:
 				updated_property = updated_property[path[jumps]]
@@ -239,7 +237,7 @@ func find(path_map: String):
 					updated_property = updated_property[index]
 				jumps += 1
 			else:
-				return false
+				return
 
 	return updated_property
 
@@ -262,7 +260,7 @@ func setup_property(property:String, srd:Dictionary, srd_field:String = "", over
 
 	var field = srd[srd_field] if srd_field in srd else false
 	if not field:
-		print("ERROR setting up Playbook: could not find "+ srd_field +" in srd provided")
+		print("ERROR couldn't set property: %s while looking for srd_field: %s" % [property, srd_field])
 		return
 
 	for key in field:

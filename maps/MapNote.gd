@@ -34,7 +34,7 @@ func _ready() -> void:
 	map_note_area.global_position = global_position
 	is_ready = true
 	is_not_setup = false
-	name = location.get_property("location_name")
+	name = location.get_property("location_name") if location.get_property("location_name") else "New Location"
 	update_location_name(location.get_property("location_name"))
 	update_description(location.get_property("description"))
 

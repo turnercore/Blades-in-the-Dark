@@ -23,6 +23,7 @@ export (Dictionary) var cohorts:Dictionary
 export (Dictionary) var claims:Dictionary
 export (Dictionary) var prison_claims:Dictionary
 export (Dictionary) var map:Dictionary
+var operation_type
 
 
 func setup(json_or_file_path_to_json, crew_type: String, overwrite:bool = false)-> void:
@@ -37,7 +38,7 @@ func setup(json_or_file_path_to_json, crew_type: String, overwrite:bool = false)
 
 	type = crew_type
 	setup_property("abilities", srd, "crew_abilities")
-	setup_property("upgrades", srd)
+	setup_property("upgrades", srd, "crew_upgrades")
 	setup_property("contacts", srd)
 	setup_claims(srd, crew_type)
 

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Shared/FieldList.gd" type="Script" id=1]
 
-[node name="FieldList" type="ScrollContainer"]
+[node name="FieldList" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -11,20 +11,29 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-list = NodePath("List")
-title_label = NodePath("List/Title")
+list = NodePath("VBoxContainer/ScrollContainer/List")
+title_label = NodePath("VBoxContainer/Title")
 
-[node name="List" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
-rect_pivot_offset = Vector2( -537, 36 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Title" type="Label" parent="List"]
+[node name="Title" type="Label" parent="VBoxContainer"]
 margin_right = 1024.0
 margin_bottom = 21.0
 text = "Title:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+margin_top = 25.0
+margin_right = 1024.0
+margin_bottom = 25.0
+scroll_horizontal_enabled = false
+
+[node name="List" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+margin_right = 1024.0
+rect_pivot_offset = Vector2( -537, 36 )
+size_flags_horizontal = 3
+size_flags_vertical = 3

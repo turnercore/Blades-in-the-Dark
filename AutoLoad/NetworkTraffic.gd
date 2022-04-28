@@ -23,7 +23,12 @@ enum OP_CODES {
 	GAMEDATA_CLOCK_UPDATED,
 	ROLL_RESULT,
 	CURRENT_GAME_STATE_REQUESTED = 100,
-	CURRENT_GAME_STATE_BROADCAST = 101
+	JOIN_MATCH_PLAYER_PLAYBOOK_RECIEVED,
+	JOIN_MATCH_CREW_PLAYBOOK_RECEIVED,
+	JOIN_MATCH_MAP_RECEIVED,
+	JOIN_MATCH_SRD_RECIEVED,
+	JOIN_MATCH_CLOCKS_RECIEVED,
+	MATCH_DATA_ALL_SENT
 }
 
 signal networked_resource_created(data)
@@ -43,23 +48,13 @@ signal gamedata_clock_created(clock)
 signal gamedata_clock_removed(clock_id)
 signal gamedata_clock_updated(clock)
 signal current_game_state_requested(user_id)
-signal inital_game_state_recieved(data)
+signal current_game_state_broadcast(data, op_code)
 signal gamedata_recieved(data)
 
 
 func _ready() -> void:
 	ServerConnection.connect("match_state_recieved", self, "_on_match_state_recieved")
 	ServerConnection.connect("chat_message_received", self, "_on_chat_message_recieved")
-
-
-#func send_rpc_async(rpc:String, op_code:int, data)-> int:
-#	var payload: = {}
-#	payload["rpc"] = rpc
-#	payload["data"] = JSON.print(data)
-#	var result:int
-#	var json_data = JSON.print(payload)
-#	result = yield(ServerConnection.send_match_state_async(op_code, payload), "completed")
-#	return result
 
 
 func send_data_async(op_code:int, data)-> int:
@@ -164,11 +159,12 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 				emit_signal("current_game_state_requested", data)
 			else:
 				print("heard request for game state, ignoring because not host")
-		OP_CODES.CURRENT_GAME_STATE_BROADCAST:
-			if not data is Dictionary:
-				print("data for intial game state is incorreclty formatted")
-			else:
-				emit_signal("inital_game_state_recieved", data)
+		OP_CODES.JOIN_MATCH_SRD_RECIEVED, OP_CODES.JOIN_MATCH_MAP_RECEIVED, OP_CODES.JOIN_MATCH_CLOCKS_RECIEVED, OP_CODES.JOIN_MATCH_CREW_PLAYBOOK_RECEIVED, OP_CODES.JOIN_MATCH_PLAYER_PLAYBOOK_RECIEVED, OP_CODES.MATCH_DATA_ALL_SENT:
+			emit_signal("current_game_state_broadcast", data, op_code)
+		OP_CODES.NETWORKED_RESOURCE_UPDATED:
+			emit_signal("networked_resource_updated", data)
+		_:
+			print('INVALID OP CODE: ' + str(op_code))
 
 
 func update_player_movement(data: Dictionary)-> void:

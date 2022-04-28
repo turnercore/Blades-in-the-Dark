@@ -1,7 +1,7 @@
 class_name NetworkedResource
 extends Resource
 
-var id:String
+var id:String setget ,_get_id
 var data:Dictionary
 
 
@@ -69,7 +69,8 @@ func update(property:String, value, update_network: = true)-> void:
 		emit_signal("property_changed", property, value)
 		emit_changed()
 		if update_network and not updated_data.empty() and ServerConnection.is_connected_to_server:
-			updated_data["id"] = id
+			print("Sending networked resource update over network")
+			updated_data["id"] = self.id
 			var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_UPDATED, updated_data), "completed")
 			if result != OK:
 				print("error sending networked data over the network")
@@ -81,8 +82,20 @@ func delete()-> Dictionary:
 
 
 func _on_networked_resource_updated(network_data:Dictionary)-> void:
-	for property in network_data:
-		if data.has(property):
-			data[property] = network_data[property]
-		else:
-			print("Property: %s not found in resource ID %s" % [property, id])
+	if "id" in network_data and network_data.id == self.id:
+		print("got networked resource update from network")
+		for property in network_data:
+			if property == "id": continue
+			if data.has(property):
+				data[property] = network_data[property]
+				emit_signal("property_changed", property, network_data[property])
+				emit_changed()
+			else:
+				print("Property: %s not found in resource ID %s" % [property, id])
+
+
+func _get_id()->String:
+	if not id:
+		var lib: = Library.new()
+		id = lib.generate_id(5)
+	return id

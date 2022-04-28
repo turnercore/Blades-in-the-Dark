@@ -43,6 +43,8 @@ var game_state:String = "Free Play" setget _set_game_state
 var is_game_setup: = false setget _set_is_game_setup
 var needs_current_game_state:bool = false
 var online: = false
+var requesting_game_state: = false
+var is_sending_data: = false
 
 var location_library: = Library.new()
 var clock_library: = Library.new()
@@ -61,6 +63,8 @@ signal map_shortcuts_updated
 signal game_state_changed(game_state)
 signal game_setup
 signal map_location_created
+signal game_state_loaded
+
 
 #SETUP FUNCTIONS
 func _ready() -> void:
@@ -112,7 +116,7 @@ func connect_to_signals()-> void:
 	NetworkTraffic.connect("gamedata_clock_removed", self, "_on_gamedata_clock_removed")
 	NetworkTraffic.connect("gamedata_clock_updated", self, "_on_gamedata_clock_updated")
 	#Intial Game State Setup on Joining Match
-	NetworkTraffic.connect("inital_game_state_recieved", self, "_on_intial_game_state_recieved")
+	NetworkTraffic.connect("current_game_state_broadcast", self, "_on_current_game_state_broadcast")
 	NetworkTraffic.connect("current_game_state_requested", self, "_on_current_game_state_requested")
 
 	if not GameSaver.is_connected("save_loaded", self, "_on_save_loaded"):
@@ -125,6 +129,7 @@ func connect_to_signals()-> void:
 func load_srd_from_file(srd_file_path:String)->Dictionary:
 	var file = File.new()
 	if not file.file_exists(srd_file_path):
+		print("ERROR IN LOAD SRD FROM FILE GAMEDATA")
 		print("unable to find file: " + srd_file_path)
 	var result:int = file.open(srd_file_path, File.READ)
 	var data:Dictionary = {}
@@ -135,54 +140,117 @@ func load_srd_from_file(srd_file_path:String)->Dictionary:
 	file.close()
 	return data
 
-func _on_intial_game_state_recieved(data:Dictionary)->void:
-	if needs_current_game_state:
-		#Setup Clocks
-		clocks = data.clocks
-		#Setup CrewPlaybook
-		crew_playbook = CrewPlaybook.new()
-		if data.crew_playbook is String:
-			crew_playbook.load_from_json(data.crew_playbook)
-		else:
-			print("error, crew playbook was incorrectly formatted to load from json")
 
-		#Setup Roster
-		for playbook in data.roster:
-			var player: = PlayerPlaybook.new()
-			player.load_from_json(playbook)
-		#Setup Map
-		load_new_map(data.map)
-		#Srd
-		srd = data.srd
-		is_game_setup = true
-		needs_current_game_state = false
+func _on_current_game_state_broadcast(data, op_code:int)-> void:
+	if not needs_current_game_state:
+		print("Didn't request game state.")
+		return
+	match op_code:
+		NetworkTraffic.OP_CODES.JOIN_MATCH_SRD_RECIEVED:
+			if data is String:
+				srd = load_srd_from_file(data)
+			else:
+				print("error with srd file path")
+		NetworkTraffic.OP_CODES.JOIN_MATCH_MAP_RECEIVED:
+			load_new_map(data)
+		NetworkTraffic.OP_CODES.JOIN_MATCH_PLAYER_PLAYBOOK_RECIEVED:
+			if not data is String:
+				print("Incorrect player playbook data")
+			else:
+				var player: = PlayerPlaybook.new()
+				player.load_from_json(data)
+				roster.append(player)
+		NetworkTraffic.OP_CODES.JOIN_MATCH_CREW_PLAYBOOK_RECEIVED:
+			crew_playbook = CrewPlaybook.new()
+			if data is String:
+				crew_playbook.load_from_json(data)
+			else:
+				print("error, crew playbook was incorrectly formatted to load from json")
+		NetworkTraffic.OP_CODES.JOIN_MATCH_CLOCKS_RECIEVED:
+			clocks = data
+		NetworkTraffic.OP_CODES.MATCH_DATA_ALL_SENT:
+			is_game_setup = true
+			needs_current_game_state = false
+			requesting_game_state = false
+			emit_signal("game_state_loaded")
+		_:
+			print("incorrect OP Code recieved in current match state broadcast")
 
 func package_game_state()-> Dictionary:
-	var data: = {}
-	data["clocks"] = clocks
-	data["roster"] = []
+	#Need to add clocks
+	var data: = {
+		"clocks" : clocks,
+		"roster" : [],
+		"crew_playbook": crew_playbook.package_as_json(),
+		"map" : map,
+		"srd" : DEFAULT_SRD
+	}
 	for playbook in roster:
 		var playbook_json:String = playbook.package_as_json()
 		data.roster.append(playbook_json)
-	data["crew_playbook"] = crew_playbook.package_as_json()
-	data["map"] = map
-	data["srd"] = srd
 	return data
 
 func request_game_state()-> void:
-	if needs_current_game_state:
-		var result: int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.CURRENT_GAME_STATE_REQUESTED, ServerConnection.get_user_id()), "completed")
-		if result != OK:
+	requesting_game_state = true
+	ServerConnection.is_host = false
+	var result: int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.CURRENT_GAME_STATE_REQUESTED, ServerConnection.get_user_id()), "completed")
+	if result != OK:
 			print("error requesting game state")
 
 func _on_current_game_state_requested(_user_id:String)-> void:
-	print("game state requested from someone")
-	if online and ServerConnection.is_connected_to_server and ServerConnection.is_host:
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.CURRENT_GAME_STATE_BROADCAST, package_game_state()), "completed")
+	print("game state requested from %s" % _user_id)
+	if online and ServerConnection.is_host and not is_sending_data:
+		is_sending_data = true
+		var result:int
+		var payload:Dictionary = package_game_state()
+		print("Am host, sending game data")
+		#send srd
+		print("Sending srd")
+		result = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.JOIN_MATCH_SRD_RECIEVED, payload.srd), "completed")
+		if result != OK:
+			print("ERROR unable to send srd")
+			print(result)
+			print(ServerConnection.error_message)
+			return
+
+		#Send each player playbook
+		for playbook in payload.roster:
+			print("sending pc playbook")
+			result = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.JOIN_MATCH_PLAYER_PLAYBOOK_RECIEVED, playbook), "completed")
+			if result != OK:
+				print("ERROR unable to send player playbook")
+				return
+
+		#Send crew_playbook
+		print("sending crew playbook")
+		result = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.JOIN_MATCH_CREW_PLAYBOOK_RECEIVED, payload.crew_playbook), "completed")
+		if result != OK:
+			print("ERROR unable to send crew playbook")
+			return
+
+		#Send map (with locations?)
+		print("sending map")
+		result = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.JOIN_MATCH_MAP_RECEIVED, payload.map), "completed")
+		if result != OK:
+			print("ERROR unable to send map")
+			return
+
+		#Send clocks
+		print("sending clocks")
+		result = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.JOIN_MATCH_CLOCKS_RECIEVED, payload.clocks), "completed")
 		if result != OK:
 			print("ERROR unable to send gamestate")
-	else:
-		print("not host, ignoring request")
+			return
+
+		#Send all done
+		print("sending all done")
+		result = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.MATCH_DATA_ALL_SENT, "<3"), "completed")
+		if result != OK:
+			print("ERROR unable to send ALL DONE .... weird.")
+			return
+
+		is_sending_data = false
+
 
 #CLOCKS
 func _on_clock_nodes_data_updated(id:String, data:Dictionary)-> void:

@@ -219,6 +219,7 @@ margin_right = 462.0
 margin_bottom = 518.0
 playbook_data = "upgrades"
 title = "Upgrades:"
+include_only = "claimed"
 field_scene = ExtResource( 11 )
 keep_updated = false
 compact = true

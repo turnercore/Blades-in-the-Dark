@@ -373,8 +373,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "e, s",
+"default": true,
 "effect": "Your Skulks cohorts get +1 scale.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c10": {
@@ -383,8 +385,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "n, s, w",
+"default": true,
 "effect": "You get -2 heat per score.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c11": {
@@ -393,8 +397,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "n, e",
+"default": true,
 "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c12": {
@@ -403,8 +409,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "n, w",
+"default": true,
 "effect": "You get +1d to healing treatment rolls.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c13": {
@@ -413,8 +421,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "n",
+"default": true,
 "effect": "You get +2 coin in payoff for scores that involves high-class clients.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c14": {
@@ -423,8 +433,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "e, s",
+"default": true,
 "effect": "You get +1d to the engagement roll for deception and social plans.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c15": {
@@ -433,8 +445,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "n, w",
+"default": true,
 "effect": "You get +1d to the engagement roll for stealth plans.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c2": {
@@ -443,8 +457,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "s, w",
+"default": true,
 "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c3": {
@@ -453,8 +469,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "s",
+"default": true,
 "effect": "You get +2 coin in payoff for scores that involve lower-class clients.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c4": {
@@ -463,8 +481,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "e, s",
+"default": true,
 "effect": "You get +1d to gather information for a score.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c5": {
@@ -473,8 +493,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "s, w",
+"default": true,
 "effect": "When you use the reduce heat downtime activity after a score that involves killing, you get +1d to the roll and quiet, convenient disposal of any corpses you left on the job.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c6": {
@@ -483,8 +505,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "n, s",
+"default": true,
 "effect": "You get +1 rep per score.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c7": {
@@ -493,8 +517,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "n, e, s",
+"default": true,
 "effect": "Gain a turf",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "assassins_c8": {
@@ -503,8 +529,10 @@ srd = {
 "claimed": true,
 "class": "assassins",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Home sweet home",
 "faction": "Claimed",
+"is_claimed": 1,
 "notes": null
 },
 "assassins_c9": {
@@ -513,8 +541,10 @@ srd = {
 "claimed": false,
 "class": "assassins",
 "connections": "n, e, w",
+"default": true,
 "effect": "Gain a turf",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "bravos_c1": {
@@ -523,8 +553,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "e, s",
+"default": true,
 "effect": "Your Thug cohorts get +1 scale.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c10": {
@@ -533,8 +565,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "n, s, w",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c11": {
@@ -543,8 +577,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "n, e",
+"default": true,
 "effect": "You get +1d to healing treatment rolls.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c12": {
@@ -553,8 +589,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "n, w",
+"default": true,
 "effect": "You get -2 heat per score.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c13": {
@@ -563,8 +601,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "n, e",
+"default": true,
 "effect": "You get +2 coin in your payoff for scores that involve lower-class targets.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c14": {
@@ -573,8 +613,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "n, e, w",
+"default": true,
 "effect": "You get +1d to acquire asset rolls.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c15": {
@@ -583,8 +625,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "n, w",
+"default": true,
 "effect": "You get +1d to the engagement roll for assault plans.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c2": {
@@ -593,8 +637,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "e, w",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c3": {
@@ -603,8 +649,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "s, w",
+"default": true,
 "effect": "You get +2 coin in your payoff for scores that involve battle or extortion.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c4": {
@@ -613,8 +661,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "e, s",
+"default": true,
 "effect": "You get +1d to gather information for a score.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c5": {
@@ -623,8 +673,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "s, w",
+"default": true,
 "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c6": {
@@ -633,8 +685,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "n, e, s",
+"default": true,
 "effect": "During downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
 "faction": null,
+"is_claimed": true,
 "notes": null
 },
 "bravos_c7": {
@@ -643,8 +697,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "e, s, w",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "bravos_c8": {
@@ -653,8 +709,10 @@ srd = {
 "claimed": true,
 "class": "bravos",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Home sweet home",
 "faction": "Claimed",
+"is_claimed": false,
 "notes": null
 },
 "bravos_c9": {
@@ -663,8 +721,10 @@ srd = {
 "claimed": false,
 "class": "bravos",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": false,
 "notes": null
 },
 "cult_c1": {
@@ -673,8 +733,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "e, s",
+"default": true,
 "effect": "Your Adept cohorts get +1 scale.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "cult_c10": {
@@ -683,8 +745,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "n, s, w",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "cult_c11": {
@@ -693,8 +757,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "e",
+"default": true,
 "effect": "You get +1d to attune rolls on-site.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(A spirit well draws ghosts and other things to its power, which you harness to aid your arts.)"
 },
 "cult_c12": {
@@ -703,8 +769,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "n, w",
+"default": true,
 "effect": "Safe passage in the deathlands.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(When you leave the city through this gate, the spirits of the deathlands will not molest you unless directly provoked.)"
 },
 "cult_c13": {
@@ -713,8 +781,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "n",
+"default": true,
 "effect": "You get +1d to command and sway rolls on-site.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(Your sanctuary maintains its effect as long as your deity is well-pleased with your service.)"
 },
 "cult_c14": {
@@ -723,8 +793,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "n, e",
+"default": true,
 "effect": "You get +1d to healing treatment rolls.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(Ancient arcane energy seeps into the wounded here, speeding their recovery, and marking them consecrated by its power.)"
 },
 "cult_c15": {
@@ -733,8 +805,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "n, w",
+"default": true,
 "effect": "You get +1d to the engagement roll for occult plans.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(Its blessing is with you.)"
 },
 "cult_c2": {
@@ -743,8 +817,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "e, s, w",
+"default": true,
 "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "cult_c3": {
@@ -753,8 +829,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "s, w",
+"default": true,
 "effect": "You get +2 coin in your payoff for scores that involve occult operations. (The fightened locals offer you tribute when you perform your dark practices. They don't want to be next)",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "cult_c4": {
@@ -763,8 +841,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "e",
+"default": true,
 "effect": "-1 stress cost for all arcane powers and rituals.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(This effect applies to all cultists, everywhere - so long as the deity is well-pleased. You don't have to be on-site at the obelisk to benefit from its power.)"
 },
 "cult_c5": {
@@ -773,8 +853,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "s, w",
+"default": true,
 "effect": "You get +1d to consort with arcane entities on-site.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(This tower was prepared by sorcery from the pre-cataclysm and acts as an arcane lens to focus eldritch energy across the black mirror into the void.)"
 },
 "cult_c6": {
@@ -783,8 +865,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "n, e",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "cult_c7": {
@@ -793,8 +877,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "cult_c8": {
@@ -803,8 +889,10 @@ srd = {
 "claimed": true,
 "class": "cult",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Home sweet home",
 "faction": "Claimed",
+"is_claimed": 1,
 "notes": null
 },
 "cult_c9": {
@@ -813,8 +901,10 @@ srd = {
 "claimed": false,
 "class": "cult",
 "connections": "e, s, w",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "hawkers_c1": {
@@ -823,8 +913,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "e, s",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "hawkers_c10": {
@@ -833,8 +925,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "n, w",
+"default": true,
 "effect": "You get +1d to consort and sway rolls on-site.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(Skills, paintings, and crystal impress the clientele.)"
 },
 "hawkers_c11": {
@@ -843,8 +937,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "n, e",
+"default": true,
 "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(Some of your product makes its way out of the city.)"
 },
 "hawkers_c12": {
@@ -853,8 +949,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "n, w",
+"default": true,
 "effect": "Any time during your downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(Is this claim a den you've overtaken from another purveyor, or a new establishment replacing something else?)"
 },
 "hawkers_c13": {
@@ -863,8 +961,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "n",
+"default": true,
 "effect": "You get +2 coin in payoff for scores that involve product sale or supply.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(You have an abundance of product, which pads your pockets every now and then.)"
 },
 "hawkers_c14": {
@@ -873,8 +973,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "n, e",
+"default": true,
 "effect": "You get -2 heat per score.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "hawkers_c15": {
@@ -883,8 +985,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "w",
+"default": true,
 "effect": "You get +1d to the engagement roll for deception and social plans.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "hawkers_c2": {
@@ -893,8 +997,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "s, w",
+"default": true,
 "effect": "You get +1d to the engagement roll for social plans.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(You always arrive on the scene in the most current and alluring fashion.)"
 },
 "hawkers_c3": {
@@ -903,8 +1009,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "s, w",
+"default": true,
 "effect": "You get +2 coin in payoff for scores that involve a show of force or socializing.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(A few city officials share bribe money with those who show that they're players on the scene.)"
 },
 "hawkers_c4": {
@@ -913,8 +1021,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "e, s",
+"default": true,
 "effect": "You get +1d to hunt or survey on your turf.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "hawkers_c5": {
@@ -923,8 +1033,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "s, w",
+"default": true,
 "effect": "You get +1d to gather information for a score.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "hawkers_c6": {
@@ -933,8 +1045,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "s, w",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "hawkers_c7": {
@@ -943,8 +1057,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "e, s",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "hawkers_c8": {
@@ -953,8 +1069,10 @@ srd = {
 "claimed": true,
 "class": "hawkers",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Home sweet home",
 "faction": "Claimed",
+"is_claimed": 1,
 "notes": null
 },
 "hawkers_c9": {
@@ -963,8 +1081,10 @@ srd = {
 "claimed": false,
 "class": "hawkers",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Gain a turf.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prision_c10": {
@@ -973,8 +1093,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "n, e, w",
+"default": true,
 "effect": "You arrange smuggling channels inside. You have +2 load while incarcerated, (starting from zero as a prisoner). If you take this claim twice, you’ll have 4 load while you’re serving time in Ironhook. Also, you may choose to have 1 coin in place of a load item for purposes of bribes or acquiring assets while in prison. You may reset your prison load whenever your crew has downtime.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prision_c11": {
@@ -983,8 +1105,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "n, e, w",
+"default": true,
 "effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prision_c12": {
@@ -993,8 +1117,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "n, w",
+"default": true,
 "effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prision_c4": {
@@ -1003,8 +1129,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "s",
+"default": true,
 "effect": "Your crew has a cell block under their total control—guards and all. You never take trauma from incarceration.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prision_c5": {
@@ -1013,8 +1141,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "n, e, s",
+"default": true,
 "effect": "You claim several Ironhook prison guards on your payroll. Take +1d to your Tier roll when a member of your crew is incarcerated.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prision_c7": {
@@ -1023,8 +1153,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "You claim several Ironhook prison guards on your payroll. Take +1d to your Tier roll when a member of your crew is incarcerated.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prision_c8": {
@@ -1033,8 +1165,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "n, s, w",
+"default": true,
 "effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prision_c9": {
@@ -1043,8 +1177,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "n, e",
+"default": true,
 "effect": "Your reputation as a tough inmate bolsters your crew’s image in Duskwall. When your crew advances Tier, it costs 2 fewer coins than it normally would",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prison_c1": {
@@ -1053,8 +1189,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "e, s",
+"default": true,
 "effect": "Political pressures of various sorts can be applied to the magistrates and warden who oversee sentences for crimes. With this claim, you’re always able to arrange for a shorter prison stay—as if your wanted level was 1 lower. So, if your wanted level was 3 when you went in, you’d spend only several months behind bars (equivalent to level 2) instead of a full year.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prison_c2": {
@@ -1063,8 +1201,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "e, s, w",
+"default": true,
 "effect": "You arrange smuggling channels inside. You have +2 load while incarcerated, (starting from zero as a prisoner). If you take this claim twice, you’ll have 4 load while you’re serving time in Ironhook. Also, you may choose to have 1 coin in place of a load item for purposes of bribes or acquiring assets while in prison. You may reset your prison load whenever your crew has downtime.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prison_c3": {
@@ -1073,8 +1213,10 @@ srd = {
 "claimed": false,
 "class": "prison",
 "connections": "s, w",
+"default": true,
 "effect": "One of your allies on the inside arranges for their faction to grant you a boon. Take a claim for your crew from a different crew type. You can’t take turf with this claim.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "prison_c6": {
@@ -1083,8 +1225,10 @@ srd = {
 "claimed": true,
 "class": "prison",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Home sweet home, for now.",
 "faction": "Claimed",
+"is_claimed": 1,
 "notes": null
 },
 "shadows_c1": {
@@ -1093,8 +1237,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "e, s",
+"default": true,
 "effect": "You get +1d to gather information for a score.",
 "faction": "The Red Bunnies",
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c10": {
@@ -1103,8 +1249,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "n, s, w",
+"default": true,
 "effect": "You get +1d to hunt or survey on your turf",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c11": {
@@ -1113,8 +1261,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "n, e",
+"default": true,
 "effect": "When you use the reduce heat downtime activity after a score that involves killing, you get +1d to the roll and quiet, convenient disposal of any corpses you left on the job.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c12": {
@@ -1123,8 +1273,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "n",
+"default": true,
 "effect": "You get +1d to healing treatment rolls.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c13": {
@@ -1133,8 +1285,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "n, e",
+"default": true,
 "effect": "You get +2 coin in payoff for scores that involve espionage or sabotage.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c14": {
@@ -1143,8 +1297,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "e, w",
+"default": true,
 "effect": "Gain a turf",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c15": {
@@ -1153,8 +1309,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "n, w",
+"default": true,
 "effect": "You get +1d to engagement roll for stealth plans.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c2": {
@@ -1163,8 +1321,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "w, e",
+"default": true,
 "effect": "Gain a turf",
 "faction": "The blue bunnies",
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c3": {
@@ -1173,8 +1333,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "s, w",
+"default": true,
 "effect": "You get +2 coin in payoff for scores that involve burglary or robbery.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c4": {
@@ -1183,8 +1345,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "s, e",
+"default": true,
 "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c5": {
@@ -1193,8 +1357,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "w, s",
+"default": true,
 "effect": "You get +1d to consort and sway rolls on-site.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c6": {
@@ -1203,8 +1369,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "n, e, s",
+"default": true,
 "effect": "Any time during downtime, roll dice equal to your Tier. You earn coin equal to the highest result, minus your heat.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c7": {
@@ -1213,8 +1381,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "e, s, w",
+"default": true,
 "effect": "You get +1d to gather information for a score.",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "shadows_c8": {
@@ -1223,8 +1393,10 @@ srd = {
 "claimed": true,
 "class": "shadows",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Home sweet home",
 "faction": "Claimed",
+"is_claimed": 1,
 "notes": null
 },
 "shadows_c9": {
@@ -1233,8 +1405,10 @@ srd = {
 "claimed": false,
 "class": "shadows",
 "connections": "n, e, w",
+"default": true,
 "effect": "Gain a turf",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "smugglers_c1": {
@@ -1243,8 +1417,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "e, s",
+"default": true,
 "effect": "Gain a turf",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "smugglers_c10": {
@@ -1253,8 +1429,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "n, s, e",
+"default": true,
 "effect": "Gain a turf",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "smugglers_c11": {
@@ -1263,8 +1441,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "n, e",
+"default": true,
 "effect": "You get +1d to the engagement roll for transport plans.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(You might have access to long-forgotten underground canals, dark streets normally hidden behind debris, or some other route of your choosing.)"
 },
 "smugglers_c12": {
@@ -1273,8 +1453,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "n, w",
+"default": true,
 "effect": "You get +1d to gather information for a score.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(Your eyes and ears on the streets are always on the lookout for new clients.)"
 },
 "smugglers_c13": {
@@ -1283,8 +1465,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "n",
+"default": true,
 "effect": "Your cohorts have their own vehicles.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(Each cohort has a common vehicle, with quality equal to your Tier.)"
 },
 "smugglers_c14": {
@@ -1293,8 +1477,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "n, e",
+"default": true,
 "effect": "You get -2 Heat per score.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(What's your cover? Who did you seize it from?)"
 },
 "smugglers_c15": {
@@ -1303,8 +1489,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "n, w",
+"default": true,
 "effect": "You get +1d to acquire asset rolls.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(You have space to hold all the various items and supplies you end up with from the smuggling runs. They can be useful on their own or for barter when you need it.)"
 },
 "smugglers_c2": {
@@ -1313,8 +1501,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "e, s, w",
+"default": true,
 "effect": null,
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "smugglers_c3": {
@@ -1323,8 +1513,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "s, w",
+"default": true,
 "effect": null,
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "smugglers_c4": {
@@ -1333,8 +1525,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "e, s",
+"default": true,
 "effect": null,
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "smugglers_c5": {
@@ -1343,8 +1537,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "s, w",
+"default": true,
 "effect": null,
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "smugglers_c6": {
@@ -1353,8 +1549,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "n, s",
+"default": true,
 "effect": "Safe passage in the deathlands.",
 "faction": null,
+"is_claimed": 0,
 "notes": "(When you leave the city through this gate, spirits in the deathlands will not molest you unless directly provoked.)"
 },
 "smugglers_c7": {
@@ -1363,8 +1561,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "n, e, s",
+"default": true,
 "effect": "Gain a turf",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 },
 "smugglers_c8": {
@@ -1373,8 +1573,10 @@ srd = {
 "claimed": true,
 "class": "smugglers",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Home sweet home",
 "faction": "Claimed",
+"is_claimed": 1,
 "notes": null
 },
 "smugglers_c9": {
@@ -1383,8 +1585,10 @@ srd = {
 "claimed": false,
 "class": "smugglers",
 "connections": "n, e, s, w",
+"default": true,
 "effect": "Gain a turf",
 "faction": null,
+"is_claimed": 0,
 "notes": null
 }
 },
@@ -4120,7 +4324,7 @@ an attribute) or 2 xp if that item occurred multiple times.",
 }
 }
 }
-_save_id = "New Save"
+_save_id = "New Save 2"
 version = "v0.58"
 map = {
 "description": "The full city of Duskvol",
@@ -4156,13 +4360,6 @@ Vector2( -24, 92 ): {
 "shortcut": false,
 "tags": null
 },
-Vector2( -5, -3 ): {
-"description": "asdfasdfadsfds",
-"icon": "",
-"id": "(-5, -3)",
-"location_name": "asdfadsfadsfdasfdsf",
-"pos": Vector2( -5, -3 )
-},
 Vector2( -4, 47 ): {
 "description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
 "icon": null,
@@ -4173,6 +4370,13 @@ Vector2( -4, 47 ): {
 "shortcut": false,
 "tags": null
 },
+Vector2( -3, -2 ): {
+"description": "",
+"icon": "",
+"id": "(-3, -2)",
+"location_name": "",
+"pos": Vector2( -3, -2 )
+},
 Vector2( -3, 92 ): {
 "description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
 "icon": null,
@@ -4182,20 +4386,6 @@ Vector2( -3, 92 ): {
 "pos": Vector2( -3, 92 ),
 "shortcut": false,
 "tags": null
-},
-Vector2( -2, 1 ): {
-"description": "UPDATE",
-"icon": "",
-"id": "(-2, 1)",
-"location_name": "see if this gets upaLets",
-"pos": Vector2( -2, 1 )
-},
-Vector2( 3, -2 ): {
-"description": "",
-"icon": "",
-"id": "(3, -2)",
-"location_name": "one worke kljlasdfjlksadjflThis",
-"pos": Vector2( 3, -2 )
 },
 Vector2( 37, 46 ): {
 "description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
@@ -4264,6 +4454,13 @@ Vector2( -4, 47 ): {
 "pos": Vector2( -4, 47 ),
 "shortcut": false,
 "tags": null
+},
+Vector2( -3, -2 ): {
+"description": "",
+"icon": "",
+"id": "(-3, -2)",
+"location_name": "",
+"pos": Vector2( -3, -2 )
 },
 Vector2( -3, 92 ): {
 "description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
@@ -4376,17 +4573,6 @@ Vector2( 47, -70 ): {
 "map_index": 1,
 "name": "Brightstone"
 } ]
-clocks = [ {
-"clock_name": "",
-"fill_color": Color( 0, 0, 0, 0.807843 ),
-"filled": 2.0,
-"id": "Ya7o7",
-"is_secret": false,
-"locked": false,
-"locked_by_clock": "",
-"locking_clock": "",
-"max_value": 4.0,
-"type": 0.0
-} ]
+clocks = [  ]
 map_shortcuts = [  ]
 is_setup = true

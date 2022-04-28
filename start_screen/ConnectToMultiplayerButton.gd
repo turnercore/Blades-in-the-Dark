@@ -12,10 +12,6 @@ func _on_ConnectToMultiplayerButton_pressed() -> void:
 		yield(ServerConnection, "server_connected")
 		yield(get_tree(), "idle_frame")
 		Events.popup(match_list_scene, true)
-		yield(ServerConnection, "match_joined")
-		yield(get_tree(), "idle_frame")
-		if on_start_screen:
-			get_tree().change_scene_to(Globals.GAME_SCENE)
 	else:
 		Events.popup(match_list_scene, true)
 	disabled = false

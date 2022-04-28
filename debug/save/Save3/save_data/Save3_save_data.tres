@@ -4120,7 +4120,7 @@ an attribute) or 2 xp if that item occurred multiple times.",
 }
 }
 }
-_save_id = "New Save"
+_save_id = "Save3"
 version = "v0.58"
 map = {
 "description": "The full city of Duskvol",
@@ -4156,13 +4156,6 @@ Vector2( -24, 92 ): {
 "shortcut": false,
 "tags": null
 },
-Vector2( -5, -3 ): {
-"description": "asdfasdfadsfds",
-"icon": "",
-"id": "(-5, -3)",
-"location_name": "asdfadsfadsfdasfdsf",
-"pos": Vector2( -5, -3 )
-},
 Vector2( -4, 47 ): {
 "description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
 "icon": null,
@@ -4182,20 +4175,6 @@ Vector2( -3, 92 ): {
 "pos": Vector2( -3, 92 ),
 "shortcut": false,
 "tags": null
-},
-Vector2( -2, 1 ): {
-"description": "UPDATE",
-"icon": "",
-"id": "(-2, 1)",
-"location_name": "see if this gets upaLets",
-"pos": Vector2( -2, 1 )
-},
-Vector2( 3, -2 ): {
-"description": "",
-"icon": "",
-"id": "(3, -2)",
-"location_name": "one worke kljlasdfjlksadjflThis",
-"pos": Vector2( 3, -2 )
 },
 Vector2( 37, 46 ): {
 "description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
@@ -4376,17 +4355,6 @@ Vector2( 47, -70 ): {
 "map_index": 1,
 "name": "Brightstone"
 } ]
-clocks = [ {
-"clock_name": "",
-"fill_color": Color( 0, 0, 0, 0.807843 ),
-"filled": 2.0,
-"id": "Ya7o7",
-"is_secret": false,
-"locked": false,
-"locked_by_clock": "",
-"locking_clock": "",
-"max_value": 4.0,
-"type": 0.0
-} ]
+clocks = [  ]
 map_shortcuts = [  ]
 is_setup = true

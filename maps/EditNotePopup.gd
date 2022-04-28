@@ -2,7 +2,7 @@ class_name EditNotePopup
 extends WindowDialog
 
 var location:NetworkedResource
-var pos: = Vector2.ZERO setget _set_pos
+var pos = Vector2.ZERO setget _set_pos
 onready var location_name:String = location.get_property("location_name") setget _set_loc_name
 onready var description:String = location.get_property("description") setget _set_description
 onready var icon = location.get_property("icon") setget _set_icon
@@ -62,8 +62,11 @@ func _set_icon(value:String)-> void:
 	location.update("icon", value)
 
 
-func _set_pos(value:Vector2)-> void:
-	pos = value
+func _set_pos(value)-> void:
+	if value is String:
+		pos = Globals.str_to_vec2(value)
+	elif value is Vector2:
+		pos = value
 	location.update("pos", value)
 
 
@@ -84,7 +87,8 @@ func _on_DeleteButton_pressed() -> void:
 
 
 func _on_location_name_text_changed(new_text: String) -> void:
-	self.location_name = new_text
+	if location_name != new_text:
+		self.location_name = new_text
 
 
 func _on_SaveButton_pressed() -> void:

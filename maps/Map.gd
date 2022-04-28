@@ -80,7 +80,10 @@ func add_location(data:={}, local:bool = true)->void:
 		data.pos = Globals.convert_to_grid(get_global_mouse_position())
 
 	if "pos" in data:
-		pos = data.pos
+		if data.pos is String:
+			pos = Globals.str_to_vec2(data.pos)
+		elif data.pos is Vector2:
+			pos = data.pos
 
 	location_node.location = GameData.location_library.add(data)
 	grid.add_child(location_node)

@@ -1,0 +1,603 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Shared/classes/PlayerPlaybook.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = "asdfasdf"
+abilities = {
+"ambush": {
+"claimed": false,
+"class": "lurk",
+"description": "When you attack from hiding or spring a trap, you get +1d.",
+"name": "Ambush"
+},
+"daredevil": {
+"claimed": false,
+"class": "lurk",
+"description": "When you roll a desperate action, you get +1d to your roll if you also take -1d to any resistance rolls against consequences from your action.",
+"name": "Daredevil"
+},
+"expertise": {
+"claimed": false,
+"class": "lurk",
+"description": "Choose one of your action ratings. When you lead a group action using that action, you can suffer only 1 stress at most regardless of the number of failed rolls.",
+"name": "Expertise"
+},
+"ghost_veil": {
+"claimed": false,
+"class": "lurk",
+"description": "You may shift partially into the ghost field, becoming shadowy and insubstantial for a few moments. Take 2 stress when you shift, plus 1 stress for each extra feature: It lasts for a few minutes rather than moments—you are invisible rather than shadowy—you may float through the air like a ghost",
+"name": "Ghost Veil"
+},
+"infiltrator": {
+"claimed": false,
+"class": "lurk",
+"description": "You are not affected by quality or Tier when you bypass security measures.",
+"name": "Infiltrator"
+},
+"reflexes": {
+"claimed": false,
+"class": "lurk",
+"description": "When there's a question about who acts first, the answer is you (two characters with Reflexes act simultaneously)",
+"name": "Reflexes"
+},
+"shadow": {
+"claimed": false,
+"class": "lurk",
+"description": "You may expend your special armor to resist a consequence from detection or security measures, or to push yourself for a feat of athletics or stealth.",
+"name": "Shadow"
+},
+"the_devil\\'s_footsteps": {
+"claimed": false,
+"class": "lurk",
+"description": "When you push yourself, choose one of the following additional benefits: perform a feat of athletics that verges on the superhuman—maneuver to confuse your enemies so they mistakenly attack each other.",
+"name": "The Devil's Footsteps"
+},
+"veteran": {
+"claimed": false,
+"class": "all",
+"description": "(3 Skill Points) Choose a special ability from another source.",
+"name": "Veteran"
+}
+}
+coin = {
+"available": 0.0,
+"max": 4.0,
+"stash": 0.0
+}
+contacts = {
+}
+type = "lurk"
+notes = ""
+experience = {
+"insight": 0.0,
+"playbook": 0.0,
+"prowess": 0.0,
+"resolve": 0.0
+}
+projects = {
+}
+stats = {
+"insight": {
+"hunt": 0.0,
+"study": 0.0,
+"survey": 0.0,
+"tinker": 0.0
+},
+"prowess": {
+"finesse": 1.0,
+"prowl": 2.0,
+"skirmish": 0.0,
+"wreck": 0.0
+},
+"resolve": {
+"attune": 0.0,
+"command": 0.0,
+"consort": 0.0,
+"sway": 0.0
+}
+}
+needs_setup = false
+aliases = ""
+look = ""
+heritage = ""
+background = ""
+stress = 4
+trauma_level = 0
+traumas = [  ]
+items = {
+"a_blade_or_two": {
+"carry_load": 1.0,
+"class": "all",
+"description": "Perhaps you carry a simple fighting knife. Or two curved swords. Or a rapier and stiletto.",
+"name": "A Blade or Two",
+"using": false
+},
+"a_large_weapon": {
+"carry_load": 2.0,
+"class": "all",
+"description": "A weapon meant for two hands. A battle-axe, greatsword, warhammer, or pole-arm. A hunting rifle. A blunderbuss. A bow or crossbow.",
+"name": "A Large Weapon",
+"using": false
+},
+"a_pistol": {
+"carry_load": 1.0,
+"class": "all",
+"description": "A heavy, single-shot, breech-loading firearm. Devastating at 20 paces, slow to reload.",
+"name": "A Pistol",
+"using": false
+},
+"an_unusual_weapon": {
+"carry_load": 1.0,
+"class": "all",
+"description": "A curiosity or tool turned into a weapon. A whip, a flial, a hatchet, a shovel, a length of chain, a razor-edged fan, steel-toed boots.",
+"name": "An Unusual Weapon",
+"using": false
+},
+"arcane_implements": {
+"carry_load": 1.0,
+"class": "all",
+"description": "A vial of quicksilver A pouch of black salt. A spirit anchor in the form of a small stone. A spirit bottle. A vial of electroplasm, designed to break and splatter on impact.",
+"name": "Arcane Implements",
+"using": false
+},
+"armor": {
+"carry_load": 2.0,
+"class": "all",
+"description": "A thick leather tunic plus reinforced gloves and boots.",
+"name": "Armor",
+"using": false
+},
+"armor_(heavy)": {
+"carry_load": 3.0,
+"class": "all",
+"description": "Armor with the addtion of chain mail, metal plates, and a metal helm.",
+"name": "Armor (Heavy)",
+"using": false
+},
+"burglary_gear": {
+"carry_load": 1.0,
+"class": "all",
+"description": "A set of lockpicks. A small pry-bar. Vials of oil to silence squeaky hinges. A coil of wire and fishing hooks. A small pouch of fine sand.",
+"name": "Burglary Gear",
+"using": false
+},
+"climbing_gear": {
+"carry_load": 1.0,
+"class": "all",
+"description": "A large coil of rope. A small coil of rope. Grappling hooks. A small pouch of chalk dust. A climbing harness with loops and metal rings. A set of iron pitons and a small mallet.",
+"name": "Climbing Gear",
+"using": false
+},
+"dark-sight_goggles": {
+"carry_load": 1.0,
+"class": "lurk",
+"description": "An arcane device that allows the wearer to see in pitch darkness as if it were well-lit.",
+"name": "Dark-sight Goggles",
+"using": false
+},
+"demolition_tools": {
+"carry_load": 2.0,
+"class": "all",
+"description": "A sledgehammer and iron spikes. Heavy drill. Crowbar.",
+"name": "Demolition Tools",
+"using": false
+},
+"documents": {
+"carry_load": 1.0,
+"class": "all",
+"description": "A collection of slim volumes on a variety of topics, including a registry of th enobility, City Watch commanders, and other notable citizens. Blank pages, a vial of ink, a pen. A number of interesting maps.",
+"name": "Documents",
+"using": false
+},
+"fine_lockpicks": {
+"carry_load": 0.0,
+"class": "lurk",
+"description": "A finely crafted set of tools to disable and circumvent locks.",
+"name": "Fine Lockpicks",
+"using": false
+},
+"fine_shadow_cloak": {
+"carry_load": 1.0,
+"class": "lurk",
+"description": "A hooded cloak made of rare Iruvian shadow-silk that blends into the darkness around it. This item improves your effect level when you sneak around.",
+"name": "Fine Shadow Cloak",
+"using": false
+},
+"lantern": {
+"carry_load": 1.0,
+"class": "all",
+"description": "A simple oil lantern, a fancy electroplasmic lamp, or other similar light source",
+"name": "Lantern",
+"using": false
+},
+"light_climbing_gear": {
+"carry_load": 1.0,
+"class": "lurk",
+"description": "A well-crafted set of climbing gear that is less bulky and heavy than a standard set.",
+"name": "Light Climbing Gear",
+"using": false
+},
+"silence_potion_vial": {
+"carry_load": 0.0,
+"class": "lurk",
+"description": "A vial of golden liquid that negates all sound within 10 paces of the drinker for a span of several moments.",
+"name": "Silence Potion Vial",
+"using": false
+},
+"spiritbane_charm": {
+"carry_load": 0.0,
+"class": "all",
+"description": "A small arcane trinket that ghosts prefer to avoid.",
+"name": "Spiritbane Charm",
+"using": false
+},
+"subterfuge_supplies": {
+"carry_load": 1.0,
+"class": "all",
+"description": "A theatrical make-up kit. A selection of blank documents, ready for the forger's hand. Costume jewelry. A reversible cloak and distinctive hat. A forged bage of office.",
+"name": "Subterfuge Supplies",
+"using": false
+},
+"throwing_knives": {
+"carry_load": 1.0,
+"class": "all",
+"description": "Six small, light blades.",
+"name": "Throwing Knives",
+"using": false
+},
+"tinkering_tools": {
+"carry_load": 1.0,
+"class": "all",
+"description": "An assortment for detailed mechanist work: jeweler's loupe, tweezers, a small hammer, pliers, screwdriver, etc.",
+"name": "Tinkering Tools",
+"using": false
+}
+}
+vice = ""
+vice_type = ""
+xp_gain = ""
+friends_and_foes = {
+"darmot,_a_bluecoat": {
+"class": "lurk",
+"name": "Darmot, a bluecoat",
+"notes": null,
+"relationship": 0.0
+},
+"frake,_a_locksmith": {
+"class": "lurk",
+"name": "Frake, a locksmith",
+"notes": null,
+"relationship": 0.0
+},
+"petra,_a_city_clerk": {
+"class": "lurk",
+"name": "Petra, a city clerk",
+"notes": null,
+"relationship": 0.0
+},
+"roslyn_kellis,_a_noble": {
+"class": "lurk",
+"name": "Roslyn Kellis, a noble",
+"notes": null,
+"relationship": 0.0
+},
+"telda,_a_beggar": {
+"class": "lurk",
+"name": "Telda, a beggar",
+"notes": null,
+"relationship": 0.0
+}
+}
+vice_purveyors = {
+"\\\"salia\\\"": {
+"area": "all",
+"description": null,
+"location": "none",
+"name": "\"Salia\"",
+"notes": null,
+"relationship": 0.0,
+"type": "Weird"
+},
+"aranna_the_blessed,_cultist_of_a_forgotten_god": {
+"area": "Nightmarket",
+"description": null,
+"location": "none",
+"name": "Aranna the Blessed, Cultist of a Forgotten God",
+"notes": null,
+"relationship": 0.0,
+"type": "Weird"
+},
+"avrick": {
+"area": "Barrowcleft",
+"description": null,
+"location": "none",
+"name": "Avrick",
+"notes": null,
+"relationship": 0.0,
+"type": "Pleasure, Stupor"
+},
+"chef_roselle": {
+"area": "Six Towers",
+"description": null,
+"location": "none",
+"name": "Chef Roselle",
+"notes": null,
+"relationship": 0.0,
+"type": "Luxury, Pleasure"
+},
+"dunrige_&_son": {
+"area": "Nightmarket",
+"description": null,
+"location": "none",
+"name": "Dunrige & Son",
+"notes": null,
+"relationship": 0.0,
+"type": "Luxury, Pleasure"
+},
+"eldrin_prichard": {
+"area": "Brightstone Canals",
+"description": null,
+"location": "none",
+"name": "Eldrin Prichard",
+"notes": null,
+"relationship": 0.0,
+"type": "Pleasure, Stupor"
+},
+"family_members_(heritage)_or_former_co-workers_(background)": {
+"area": "all",
+"description": null,
+"location": "none",
+"name": "Family Members (heritage) or Former Co-Workers (background)",
+"notes": null,
+"relationship": 0.0,
+"type": "Obligation"
+},
+"father_yoren": {
+"area": "Six Towers",
+"description": null,
+"location": "none",
+"name": "Father Yoren",
+"notes": null,
+"relationship": 0.0,
+"type": "Weird"
+},
+"grist": {
+"area": "the Docks",
+"description": null,
+"location": "none",
+"name": "Grist",
+"notes": null,
+"relationship": 0.0,
+"type": "Gambling"
+},
+"harvale_brogan": {
+"area": "Brightstone",
+"description": null,
+"location": "none",
+"name": "Harvale Brogan",
+"notes": null,
+"relationship": 0.0,
+"type": "Luxury, Pleasure"
+},
+"helene": {
+"area": "Silkshore",
+"description": null,
+"location": "none",
+"name": "Helene",
+"notes": null,
+"relationship": 0.0,
+"type": "Pleasure, Stupor"
+},
+"hutton,_skovlander_refugees/revolutionaries": {
+"area": "Charhollow",
+"description": null,
+"location": "none",
+"name": "Hutton, Skovlander Refugees/Revolutionaries",
+"notes": null,
+"relationship": 0.0,
+"type": "Obligation"
+},
+"ilacille": {
+"area": "Coalridge",
+"description": null,
+"location": "none",
+"name": "Ilacille",
+"notes": null,
+"relationship": 0.0,
+"type": "Faith"
+},
+"jewel,_bird,_and_shine": {
+"area": "the Docks",
+"description": null,
+"location": "none",
+"name": "Jewel, Bird, and Shine",
+"notes": null,
+"relationship": 0.0,
+"type": "Pleasure, Stupor"
+},
+"lady_dusk": {
+"area": "Whitecrown",
+"description": null,
+"location": "none",
+"name": "Lady Dusk",
+"notes": null,
+"relationship": 0.0,
+"type": "Gambling"
+},
+"lady_freyla": {
+"area": "Whitecrown",
+"description": null,
+"location": "none",
+"name": "Lady Freyla",
+"notes": null,
+"relationship": 0.0,
+"type": "Pleasure, Stupor"
+},
+"lord_penderyn": {
+"area": "Charterhall",
+"description": null,
+"location": "none",
+"name": "Lord Penderyn",
+"notes": null,
+"relationship": 0.0,
+"type": "Faith"
+},
+"madame_tesslyn": {
+"area": "Silkshore",
+"description": null,
+"location": "none",
+"name": "Madame Tesslyn",
+"notes": null,
+"relationship": 0.0,
+"type": "Pleasure, Stupor"
+},
+"maestro_helleren": {
+"area": "Whitecrown",
+"description": null,
+"location": "none",
+"name": "Maestro Helleren",
+"notes": null,
+"relationship": 0.0,
+"type": "Luxury, Pleasure"
+},
+"mardin_gull": {
+"area": "Crow's Foot",
+"description": null,
+"location": "none",
+"name": "Mardin Gull",
+"notes": null,
+"relationship": 0.0,
+"type": "Pleasure, Stupor"
+},
+"master_vreen": {
+"area": "Nightmarket",
+"description": null,
+"location": "none",
+"name": "Master Vreen",
+"notes": null,
+"relationship": 0.0,
+"type": "Gambling"
+},
+"mother_narya": {
+"area": "Six Towers",
+"description": null,
+"location": "none",
+"name": "Mother Narya",
+"notes": null,
+"relationship": 0.0,
+"type": "Faith"
+},
+"nelisanne": {
+"area": "Brightstone",
+"description": null,
+"location": "none",
+"name": "Nelisanne",
+"notes": null,
+"relationship": 0.0,
+"type": "Faith"
+},
+"ojak": {
+"area": "Silkshore",
+"description": null,
+"location": "none",
+"name": "Ojak",
+"notes": null,
+"relationship": 0.0,
+"type": "Weird"
+},
+"pux_bolin": {
+"area": "Nightmarket",
+"description": null,
+"location": "none",
+"name": "Pux Bolin",
+"notes": null,
+"relationship": 0.0,
+"type": "Pleasure, Stupor"
+},
+"rolan_volaris": {
+"area": "Nightmarket",
+"description": null,
+"location": "none",
+"name": "Rolan Volaris",
+"notes": null,
+"relationship": 0.0,
+"type": "Pleasure, Stupor"
+},
+"sergeant_velk": {
+"area": "Dunslough",
+"description": null,
+"location": "none",
+"name": "Sergeant Velk",
+"notes": null,
+"relationship": 0.0,
+"type": "Gambling"
+},
+"singer": {
+"area": "Crow's Foot",
+"description": null,
+"location": "none",
+"name": "Singer",
+"notes": null,
+"relationship": 0.0,
+"type": "Luxury, Pleasure"
+},
+"sister_thorn": {
+"area": "Gaddoc Station",
+"description": null,
+"location": "none",
+"name": "Sister Thorn",
+"notes": null,
+"relationship": 0.0,
+"type": "Weird"
+},
+"spogg": {
+"area": "Crow's Foot",
+"description": null,
+"location": "none",
+"name": "Spogg",
+"notes": null,
+"relationship": 0.0,
+"type": "Gambling"
+},
+"the_circle_of_flame": {
+"area": "all",
+"description": null,
+"location": "none",
+"name": "The Circle of Flame",
+"notes": null,
+"relationship": 0.0,
+"type": "Obligation"
+},
+"the_hooded_proprietor": {
+"area": "The Docks",
+"description": null,
+"location": "none",
+"name": "The Hooded Proprietor",
+"notes": null,
+"relationship": 0.0,
+"type": "Weird"
+},
+"traven": {
+"area": "Coalridge",
+"description": null,
+"location": "none",
+"name": "Traven",
+"notes": null,
+"relationship": 0.0,
+"type": "Pleasure, Stupor"
+}
+}
+current_load = 3
+harms = {
+"level_1": [ null, null ],
+"level_2": [ null, null ],
+"level_3": null
+}
+equipped_items = [  ]
+normal_armor = false
+heavy_armor = false
+special_armor = false
+crew_name = ""
+lifestyle = "poor"

@@ -34,6 +34,7 @@ func load_srd(file_path:String)-> Dictionary:
 	var data:={}
 	var file = File.new()
 	if not file.file_exists(file_path):
+		print("ERROR IN LOAD SRD SAVEGAME")
 		print("unable to find file: " + file_path)
 	else:
 		file.open(file_path, File.READ)
