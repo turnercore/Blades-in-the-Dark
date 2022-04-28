@@ -10,6 +10,7 @@ onready var result_label: = $PanelContainer/VBoxContainer/HBoxContainer/result
 onready var result_label2: = $PanelContainer/VBoxContainer/HBoxContainer2/result
 var with_advantage:= true
 var result:int
+var raw_roll: = []
 
 onready var positions:=[
 	{
@@ -55,8 +56,18 @@ func roll_dice()-> void:
 
 
 func send_notification(text:String, color:Color)-> void:
-	print(text)
-	Events.emit_notification(text, color)
+	Events.emit_notification(text % "YOU", color)
+	if GameData.online and ServerConnection.is_connected_to_server:
+		var data: = {
+			"username": GameData.username,
+			"roll_result" : result,
+			"roll_result_raw": raw_roll,
+			"message" : text % GameData.username,
+			"color" : color
+		}
+		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.ROLL_RESULT, data), "completed")
+		if result != OK:
+			print("Error sending roll notification over network.")
 
 
 func calculate_best()-> int:
@@ -64,6 +75,7 @@ func calculate_best()-> int:
 	for position in positions:
 		if position.occupied != null:
 			rolls.append(int(position.occupied.frame) + 1)
+			raw_roll.append(int(position.occupied.frame) + 1)
 	return rolls.max()
 
 
@@ -72,6 +84,7 @@ func calculate_worst()-> int:
 	for position in positions:
 		if position.occupied != null:
 			rolls.append(int(position.occupied.frame) + 1)
+			raw_roll.append(int(position.occupied.frame) + 1)
 	return rolls.min()
 
 
@@ -148,8 +161,7 @@ func display_roll()-> void:
 					break
 				else:
 					continue
-	var username:String = GameData.username + ":" if GameData.online else "You"
-	notification_text = notification_text % [username, roll_result_text, roll_values]
+	notification_text = notification_text % ["%s", roll_result_text, roll_values]
 	send_notification(notification_text, notification_color)
 
 
@@ -182,6 +194,7 @@ func display_result(result_roll:int)-> int:
 
 
 func reset_dice()-> void:
+	raw_roll.clear()
 	for position in positions:
 		if position.occupied != null:
 			position.occupied.modulate = Color.white
@@ -228,7 +241,6 @@ func _on_AdvantageOption_item_selected(index: int) -> void:
 
 
 func _on_result_mouse_entered() -> void:
-	print("Mouse entered")
 	var title: = ""
 	var info: = ""
 	match result:

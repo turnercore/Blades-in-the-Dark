@@ -211,8 +211,11 @@ func send_match_state_async(op_code:int, data)-> int:
 
 
 func get_match_id()-> String:
-	return _match.match_id
+	return _match.match_id if _match else ""
 
+
+func get_self_username()-> String:
+	return str(_match.self_user.username) if _match else ""
 
 # Asynchronous coroutine. Authenticates a new session via email and password, and
 # creates a new account when it did not previously exist, then initializes _session.

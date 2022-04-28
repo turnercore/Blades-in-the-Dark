@@ -21,7 +21,7 @@ export (Resource) var crew_playbook = null
 export (Array) var roster:Array = []
 export (Resource) var save_game = SaveGame.new()
 
-var username:String = "You"
+var username:String = "You" setget ,_get_username
 #The active character (for this player)
 var active_pc: PlayerPlaybook setget _set_active_pc
 #Store a reference to the current srd, used for looking up and displaying it in info
@@ -387,6 +387,14 @@ func load_crew(crew:CrewPlaybook)-> void:
 	crew_playbook = crew
 
 #MAPS
+func get_default_map()-> Dictionary:
+	if map.empty():
+		load_srd_from_file(DEFAULT_SRD)
+		var default_srd_map:Dictionary = srd.default_maps["Duskvol"]
+		create_map(default_srd_map)
+
+	return map
+
 func load_new_map(map_data)-> void:
 	if map_data is int:
 		change_map_to(map_data)
@@ -402,6 +410,7 @@ func create_map(data:Dictionary, local: = true)-> void:
 	var map_name:String = data.map_name
 
 	if "map_index" in map:
+		map = {}
 		map.map_index = data.map_index if "map_index" in data else save_game.maps.size()
 		map.locations = {}
 		map.map_name = map_name
@@ -445,8 +454,7 @@ func _on_map_removed(index:int)->void:
 		print("Error map index out of range")
 
 func _get_map()-> Dictionary:
-	var result: = {}
-	if map.empty():
+	if map.empty() and not save_game.maps.empty():
 		map = save_game.maps.front()
 		save_game._map = map
 	return map
@@ -531,3 +539,7 @@ func _set_active_pc(playbook: PlayerPlaybook)->void:
 func _set_clocks_being_saved(value: bool)-> void:
 	if not value: emit_signal("clocks_free")
 	clocks_being_saved = value
+
+func _get_username()-> String:
+	var online_username = ServerConnection.get_self_username() if online else ""
+	return online_username if online else username

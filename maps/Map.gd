@@ -120,7 +120,7 @@ func zoom_out(delta:float)->void:
 
 
 func load_map()->void:
-	var map:Dictionary = GameData.map if not GameData.map.empty() else GameData.save_game.maps.front()
+	var map:Dictionary = GameData.map if not GameData.map.empty() else GameData.get_default_map()
 
 	for child in notes.get_children():
 		child.queue_free()
@@ -131,9 +131,9 @@ func load_map()->void:
 	else:
 		var texture = Globals.DEFAULT_MAP_IMAGE
 		map_texture.texture = texture
-
-	for pos in map.locations:
-		add_location(map.locations[pos])
+	if "locations" in map:
+		for pos in map.locations:
+			add_location(map.locations[pos])
 
 
 func _on_location_created_network(data:Dictionary)-> void:
