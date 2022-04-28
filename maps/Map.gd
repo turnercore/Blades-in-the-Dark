@@ -3,6 +3,13 @@ extends Node2D
 
 const map_note_scene: = preload("res://maps/MapNote.tscn")
 
+const DEFAULT_LOCATION_DATA: = {
+	"pos": Vector2.ZERO,
+	"icon": "",
+	"location_name": "",
+	"description": ""
+}
+
 export (float) var scroll_speed:float = 500
 export (NodePath) onready var tween = get_node(tween) as Tween
 export (NodePath) onready var cursor = get_node(cursor) as Cursor
@@ -18,6 +25,8 @@ onready var player_cursors: = [cursor]
 var notes_added: = []
 
 func _ready() -> void:
+	Globals.grid = grid
+
 	GameData.connect("map_loaded", self, "_on_map_loaded")
 	Events.connect("map_scroll_speed_changed", self, "_on_map_scroll_speed_changed")
 	Events.connect("chat_selected", self, "_on_chat_selected")
@@ -26,9 +35,9 @@ func _ready() -> void:
 	Events.connect("all_popups_finished", self, "_on_all_popups_finished")
 	ServerConnection.connect("match_joined", self, "_on_match_joined")
 	ServerConnection.connect("presences_changed", self, "_on_presences_changed")
-	NetworkTraffic.connect("gamedata_location_created", self, "_on_map_note_added")
-	NetworkTraffic.connect("gamedata_location_updated", self, "_on_map_note_changed")
-	NetworkTraffic.connect("gamedata_location_removed", self, "_on_map_note_removed")
+	NetworkTraffic.connect("gamedata_location_created", self, "_on_location_created_network")
+	NetworkTraffic.connect("gamedata_location_updated", self, "_on_network_map_note_updated")
+	NetworkTraffic.connect("gamedata_location_removed", self, "_on_network_map_note_removed")
 	load_map()
 
 	if ServerConnection.is_connected_to_server:
@@ -45,7 +54,9 @@ func _process(delta: float) -> void:
 		Events.emit_signal("info_broadcasted", info_string)
 	if Input.is_action_just_pressed("right_click") and not creating_note:
 		creating_note = true
-		add_note()
+		var initial_note_data: = DEFAULT_LOCATION_DATA.duplicate()
+		initial_note_data.pos = Globals.convert_to_grid(get_global_mouse_position())
+		add_location(initial_note_data.pos, initial_note_data)
 	if Input.is_action_pressed("ui_down"):
 		scroll_down(delta)
 	if Input.is_action_pressed("ui_up"):
@@ -60,30 +71,20 @@ func _process(delta: float) -> void:
 		zoom_out(delta)
 
 
-func add_note(pos:=Vector2.ZERO, note: = map_note_scene.instance(), local:bool = true)->void:
-	if not note is MapNote:
-		print("note is wrong type trying to add note error")
-	if pos == Vector2.ZERO and note.is_not_setup:
-		pos = Globals.convert_to_grid(get_global_mouse_position())
-		if pos in GameData.map.notes:
-			return
-		note.setup_from_data(GameData.DEFAULT_NOTE.duplicate(true))
-		note.pos = pos
-	if not note.get_parent():
-		 notes.add_child(note)
-	if not notes_added.has(note):
-		notes_added.append(note)
-	note.global_position = grid.map_to_world(pos)
+func add_location(pos:=Vector2.ZERO, data:Dictionary = DEFAULT_LOCATION_DATA.duplicate(), local:bool = true)->void:
+	var location: = map_note_scene.instance()
+	grid.add_child(location)
+	location.import(data)
+	location.global_position = grid.map_to_world(pos)
 	if local:
-		Events.emit_signal("map_note_created", note)
+		Events.emit_signal("map_note_created", location)
+
 	creating_note = false
 
+
 func delete_note(pos:Vector2)-> void:
-	for note in notes_added:
-		if note.pos == pos:
-			if GameData.map.notes.has(pos):
-				GameData.map.notes.erase(pos)
-			note.queue_free()
+	Events.emit_signal("map_note_removed", pos)
+
 
 func scroll_up(delta: float)->void:
 	camera.position.y -= scroll_speed * delta * clamp(zoom_level * zoom_level, .30, 8)
@@ -112,7 +113,7 @@ func zoom_out(delta:float)->void:
 
 
 func load_map()->void:
-	var map:Dictionary = GameData.map
+	var map:Dictionary = GameData.map if not GameData.map.empty() else GameData.save_game.maps.front()
 
 	for child in notes.get_children():
 		child.queue_free()
@@ -124,38 +125,24 @@ func load_map()->void:
 		var texture = Globals.DEFAULT_MAP_IMAGE
 		map_texture.texture = texture
 
-	for child in GameData.get_children():
-		if child is MapNote:
-			GameData.remove_child(child)
-			child.visible = true
-
 	for pos in map.notes:
-		map.notes[pos].visible = true
-		notes.add_child(map.notes[pos])
-		map.notes[pos].global_position = grid.to_global(grid.map_to_world(pos))
+		add_location(pos, map.notes[pos])
 
 
-func _on_map_note_added(note_data:Dictionary)-> void:
-	if not "pos" in note_data:
+func _on_location_created_network(data:Dictionary)-> void:
+	if not "pos" in data:
+		print("error in network data, cant create a map note without a position")
 		return
-
-	var pos:Vector2
-	var note: = map_note_scene.instance()
-
-	if note_data.pos is String:
-		pos = Globals.str_to_vec2(note_data.pos)
-	elif note.pos is Vector2:
-		pos = note.pos
-	note.is_not_setup = false
-	add_note(pos, note, false)
+	add_location(data.pos, data, false)
 
 
-func _on_map_note_changed(note_data:Dictionary)-> void:
+
+func _on_network_map_note_updated(note_data:Dictionary)-> void:
 	pass
 
 
-func _on_map_note_removed(note_pos:Vector2)-> void:
-	delete_note(note_pos)
+func _on_network_map_note_deleted(note_pos:Vector2)-> void:
+	pass
 
 
 func _on_map_scroll_speed_changed(new_scroll_speed: float) -> void:

@@ -91,10 +91,6 @@ func propagate_set_playbook_fields_recursive(node:Node, field_template:String)->
 			propagate_set_playbook_fields_recursive(child, field_template)
 
 
-##Testing
-#func _process(_delta: float) -> void:
-#	for key in GameData.map.notes.keys():
-#		print(key)
-#		print(is_instance_valid(GameData.map.notes[key]))
-##		if not is_instance_valid(GameData.map.notes[key]):
-##			GameData.map.notes.erase(key)
+##Testing values of things
+func _process(_delta: float) -> void:
+	pass

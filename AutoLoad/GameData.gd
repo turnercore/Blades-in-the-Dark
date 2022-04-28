@@ -1,6 +1,6 @@
 extends Node
 
-const DEFAULT_MAP_NOTE_ICON:String= "res://Shared/Art/Icons/MapNoteIconTex.tres"
+const DEFAULT_MAP_NOTE_ICON: = "res://Shared/Art/Icons/MapNoteIconTex.tres"
 
 const DEFAULT_NOTE: = {
 	"description": "DEFAULT INFO TEXT",
@@ -19,22 +19,22 @@ export (Resource) var crew_playbook = null
 
 #This should be updated to remove the "roster" checks and just be an Array itself
 export (Array) var roster:Array = []
-export (Resource) var save_game = SaveGame.new() setget _set_save_game
+export (Resource) var save_game = SaveGame.new()
 
 #The active character (for this player)
 var active_pc: PlayerPlaybook setget _set_active_pc
 #Store a reference to the current srd, used for looking up and displaying it in info
 var srd:= {}
-#This could probably be reworked into an array
-var clocks: = []
 
-var map:Dictionary = {
-	"map_index": 0,
-	"map_name": "Duskvol",
-	"image": null,
-	"notes": {}, #Dict with POS : MapNote
-	"srd_notes": {}
-	} setget _set_map
+#Array of dicts with the clock data
+var clocks: = []
+#ID: NodeReferenceGroup
+var clock_nodes: = {}
+
+var map:Dictionary = {} setget , _get_map
+
+#Pos: NodeReferenceGroup
+var map_location_nodes: = {}
 
 #ARRAY OF MAP NOTES a map note is a location
 var map_shortcuts:Array = []
@@ -59,6 +59,7 @@ signal map_shortcut_removed
 signal map_shortcuts_updated
 signal game_state_changed(game_state)
 signal game_setup
+signal map_location_created
 
 #SETUP FUNCTIONS
 func _ready() -> void:
@@ -73,22 +74,22 @@ func _ready() -> void:
 		if not playbook.is_connected("property_changed", self, "_on_playbook_property_changed"):
 			playbook.connect("property_changed", self, "_on_playbook_property_changed", [playbook])
 
-#Make sure anything being stored under this Node is not visible
-func _process(_delta: float) -> void:
-	for child in get_children():
-		if child.visible:
-			child.visible = false
-
-
 func connect_to_signals()-> void:
+	for group in clock_nodes:
+		group.connect("data_updated", self, "_on_clock_nodes_data_updated")
+	for group in map_location_nodes:
+		group.connect("data_updated", self, "_on_map_location_nodes_data_updated")
+
+	#Connect to local Event bus
+	Events.connect("clock_created", self, "_on_clock_created")
 	Events.connect("clock_updated", self,"_on_clock_updated")
 	Events.connect("clock_removed", self, "_on_clock_removed")
 	Events.connect("map_created", self, "_on_map_created")
 	Events.connect("map_changed", self, "_on_map_changed")
 	Events.connect("map_removed", self, "_on_map_removed")
-	Events.connect("map_note_updated", self, "_on_map_note_updated", [true])
-	Events.connect("map_note_created", self, "_on_map_note_created", [true])
-	Events.connect("map_note_removed", self, "_on_map_note_removed", [true])
+	Events.connect("map_note_updated", self, "_on_map_note_updated")
+	Events.connect("map_note_created", self, "_on_location_created")
+	Events.connect("map_note_removed", self, "_on_map_note_removed")
 
 	#Nakama Server Connection
 	ServerConnection.connect("match_joined", self, "_on_match_joined")
@@ -96,9 +97,9 @@ func connect_to_signals()-> void:
 
 	#Data that comes from the network
 	#Location Data
-	NetworkTraffic.connect("gamedata_location_created", self, "_on_map_note_created", [false])
-	NetworkTraffic.connect("gamedata_location_removed", self, "_on_map_note_removed", [false])
-	NetworkTraffic.connect("gamedata_location_updated", self, "_on_map_note_updated", [false])
+	NetworkTraffic.connect("gamedata_location_created", self, "_on_map_note_created_network")
+	NetworkTraffic.connect("gamedata_location_removed", self, "_on_map_note_removed_network")
+	NetworkTraffic.connect("gamedata_location_updated", self, "_on_map_note_updated_network")
 	#Game State data
 	NetworkTraffic.connect("gamedata_game_state_updated", self, "_on_game_state_updated")
 	#Playbooks
@@ -139,26 +140,20 @@ func load_srd_from_file(srd_file_path:String)->Dictionary:
 func _on_intial_game_state_recieved(data:Dictionary)->void:
 	if needs_current_game_state:
 		#Setup Clocks
-		clocks.clear()
-		for clock_data in data.clocks:
-			var new_clock:Clock = CLOCK_SCENE.instance()
-			add_child(new_clock)
-			new_clock.setup_from_data(clock_data)
+		clocks = data.clocks
 		#Setup CrewPlaybook
 		crew_playbook = CrewPlaybook.new()
 		if data.crew_playbook is String:
 			crew_playbook.load_from_json(data.crew_playbook)
 		else:
 			print("error, crew playbook was incorrectly formatted to load from json")
+
 		#Setup Roster
 		for playbook in data.roster:
 			var player: = PlayerPlaybook.new()
 			player.load_from_json(playbook)
 		#Setup Map
-		map = data.map
-		#Locations
-		for location in data.locations:
-			add_map_note(location)
+		load_new_map(data.map)
 		#Srd
 		srd = data.srd
 		is_game_setup = true
@@ -166,10 +161,7 @@ func _on_intial_game_state_recieved(data:Dictionary)->void:
 
 func package_game_state()-> Dictionary:
 	var data: = {}
-	data["clocks"] = []
-	for clock in clocks:
-		var clock_data:Dictionary = clock.package()
-		data.clocks.append(clock_data)
+	data["clocks"] = clocks
 	data["roster"] = []
 	for playbook in roster:
 		var playbook_json:String = playbook.package_as_json()
@@ -195,142 +187,117 @@ func _on_current_game_state_requested(_user_id:String)-> void:
 		print("not host, ignoring request")
 
 #CLOCKS
-func _on_gamedata_clock_created(clock:Clock)-> void:
-	add_clock(clock, false)
-	emit_signal("clocks_updated")
+func _on_clock_nodes_data_updated(id:String, data:Dictionary)-> void:
+	#When one of the nodes updates the data that corasponds to the data in the dictionary, it updates the approprite dict
+	for clock in clocks:
+		if clock.id == id:
+			clock = data
+
+func _on_gamedata_clock_created(data:Dictionary)-> void:
+	clocks.append(data)
 
 func _on_gamedata_clock_removed(clock_id:String)-> void:
 	remove_clock(clock_id, false)
-	emit_signal("clocks_updated")
 
-func _on_gamedata_clock_updated(clock:Clock)-> void:
-	update_clock(clock, false)
-	emit_signal("clocks_updated")
-
-func get_clocks()-> Array:
-	if clocks_being_saved:
-		yield(self, "clocks_free")
-	clocks = save_game.clocks
-	return clocks
+func _on_gamedata_clock_updated(data:Dictionary)-> void:
+	update_clock(data, false)
 
 func add_clock(clock:Clock, local: = true)-> void:
-	clocks.append(clock)
+	var clock_data:Dictionary = clock.package()
+	var already_added: = false
+	for current in clocks:
+		if current.id == clock.id:
+			already_added = true
+	if not already_added:
+		clocks.append(clock_data)
+
+	if clock_nodes.has(clock.id):
+		clock_nodes[clock.id].add(clock)
+	else:
+		clock_nodes[clock.id] = NodeReference.new()
+		clock_nodes[clock.id].id = clock.id
+		clock_nodes[clock.id].add(clock)
+		clock_nodes[clock.id].connect("data_updated", self, "_on_clock_nodes_data_updated")
+
 	if online and local:
 		print("Sending shiny new clock over the network to our lovely friends")
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_CLOCK_CREATED, clock.package()), "completed")
+		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_CLOCK_CREATED, clock_data), "completed")
 		if result != OK:
 			print("ERROR SENDING UPDATED CLOCK DATA ACROSS NETWORK")
-	save_clocks()
 
 func _on_clock_updated(clock:Clock)->void:
 	update_clock(clock)
 
-func update_clock(clock:Clock, local: = true)-> void:
+func _on_clock_created(clock:Clock)-> void:
+	add_clock(clock, true)
+
+func update_clock(clock, local: = true)-> void:
+	print("updating clock from: " + ("local" if local else "network"))
+	var data: = {}
+
+	if clock is Clock:
+		data = clock.package()
+	elif clock is Dictionary:
+		data = clock
+
+	if clock_nodes.has(data.id):
+		clock_nodes[data.id].modify(data)
+
+	for member in clocks:
+		if member.id == data.id:
+			for property in data:
+				if property in member: member[property] = data[property]
+			break
+
 	if online and local:
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_CLOCK_UPDATED, clock.package()), "completed")
+		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_CLOCK_UPDATED, data), "completed")
 		if result != OK:
 			print("ERROR SENDING UPDATED CLOCK DATA ACROSS NETWORK")
-	save_clocks()
 
 func _on_clock_removed(clock_id:String)-> void:
-	remove_clock(clock_id)
+	remove_clock(clock_id, true)
 
 func remove_clock(clock_id:String, local: = true)-> void:
 	for clock in clocks:
 		if clock.id == clock_id:
 			clocks.erase(clock_id)
 			break
+	if clock_nodes.has(clock_id):
+		clock_nodes[clock_id].delete()
+		clock_nodes.erase(clock_id)
+
 	if online and local:
 		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_CLOCK_REMOVED, clock_id), "completed")
 		if result != OK:
 			print("ERROR SENDING REMOVED CLOCK DATA ACROSS NETWORK")
-	save_clocks()
+
 
 #SAVE GAME
 func _on_save_loaded(save:SaveGame)->void:
-	self.save_game = save
-	self.srd = save.srd_data
-
+	save_game = save
+	srd = save.srd if not save.srd.empty() else srd
 	#Load clocks
-	clocks.clear()
-	for clock_data in save.clocks:
-		var new_clock:Clock = CLOCK_SCENE.instance()
-		new_clock.setup_from_data(clock_data)
-		clocks.append(new_clock)
+	clocks = save.clocks
 	emit_signal("clocks_updated")
 
-	if not save.is_setup: save.setup_srd_maps()
-
-	self.map = save._map.duplicate(true) if save._map else save.maps[0].duplicate(true)
-	map.notes.clear()
-	for pos in save._map.notes:
-		print("Setting up a pos from _map.notes " + str(pos))
-		var new_location:MapNote = MAP_NOTE_SCENE.instance()
-		add_child(new_location)
-		new_location.setup_from_data(save._map.notes[pos])
-		map.notes[pos] = new_location
-	for pos in save._map.srd_notes:
-		print("Setting up a pos from _map.srdnotes " + str(pos))
-		var new_location:MapNote = MAP_NOTE_SCENE.instance()
-		add_child(new_location)
-		new_location.setup_from_data(save._map.srd_notes[pos])
-		map.notes[pos] = new_location
-
-	self.map_shortcuts = save.map_shortcuts
+	if not save.is_setup: save.setup()
+	map = save._map
+	map_shortcuts = save.map_shortcuts
 	emit_signal("map_shortcuts_updated")
 	emit_signal("map_loaded")
 	self.is_game_setup = true
 
-func _set_save_game(new_save: SaveGame)-> void:
-	if not new_save.is_setup: new_save.setup_save()
-	clocks = new_save.clocks
-	map = new_save._map
-	save_game = new_save
 
 #SAVING FUNCTIONS
 func save_map()-> void:
-	var map_previously_existed:= false
-	#Package map to save
-	var formatted_map_notes: = {}
-	var save_map: = map.duplicate(true)
-
-	for pos in map.notes:
-		var ref = weakref(map.notes[pos])
-		if not ref:
-			continue
-		else:
-			formatted_map_notes[pos] = map.notes[pos].package()
-
-	save_map.notes = formatted_map_notes
-
-	for saved_map in save_game.maps:
-		if save_map.map_name and saved_map.map_name:
-			if save_map.map_name == saved_map.map_name:
-				#update the map if found
-				var index:int = save_game.maps.find(saved_map)
-				save_game.maps[index] = save_map
-				map_previously_existed = true
-
-	if not map_previously_existed:
-		save_game.maps.append(save_map)
-
-	save_game._map = save_map
+	GameSaver.save(save_game)
 
 func save_all()-> void:
-	var data: = []
-	save_clocks()
-	save_map()
-	data = [save_game, crew_playbook, roster]
-	GameSaver.save_all(data)
+	GameSaver.save_all([save_game, crew_playbook, roster])
 
 func save_clocks()->void:
-	self.clocks_being_saved = true
-	var clock_data_array: = []
+	GameSaver.save(save_game)
 
-	for clock in clocks:
-		clock_data_array.append(clock.package())
-	save_game.clocks = clock_data_array
-	self.clocks_being_saved = false
 
 #PLAYBOOKS
 func _on_pc_playbook_created(playbook:PlayerPlaybook)-> void:
@@ -413,6 +380,12 @@ func load_crew(crew:CrewPlaybook)-> void:
 	crew_playbook = crew
 
 #MAPS
+func load_new_map(map_data)-> void:
+	if map_data is int:
+		change_map_to(map_data)
+	elif map_data is Dictionary:
+		map = map_data
+
 func create_map(data:Dictionary, local: = true)-> void:
 	if not "image_path" in data or not "map_name" in data:
 		return
@@ -440,25 +413,9 @@ func _on_map_created(image_path: String, map_name: String)-> void:
 	}
 	create_map(data)
 
-
 func change_map_to(index:int)-> void:
 	#Save the current map
 	save_map()
-	#clear the old locations
-	for location in map.notes:
-		map.notes[location].queue_free()
-
-	#Get the new map setup
-	map = save_game.maps[index].duplicate(true)
-	save_game._map = save_game.maps[index]
-	map.notes = {}
-	#Get new nodes
-	for pos in save_game.maps[index].notes:
-		var new_location:MapNote = MAP_NOTE_SCENE.instance()
-		new_location.setup_from_data(save_game.maps[index].notes[pos])
-		add_child(new_location)
-		map.notes[pos] = new_location
-
 	emit_signal("map_loaded")
 
 func _on_map_changed(index:int)-> void:
@@ -473,15 +430,18 @@ func _on_map_removed(index:int)->void:
 	else:
 		print("Error map index out of range")
 
-func _set_map(value:Dictionary)-> void:
-	map = value
+func _get_map()-> Dictionary:
+	var result: = {}
+	if map.empty():
+		map = save_game.maps.front()
+		save_game._map = map
+	return map
 
 #MAP SHORTCUTS
 func add_map_shortcut(note:MapNote)-> void:
 	if not map_shortcuts.has(note.pos):
 		map_shortcuts.append(note.pos)
 	emit_signal("map_shortcut_added")
-
 
 func remove_map_shortcut(note:MapNote)-> void:
 	if map_shortcuts.has(note.pos):
@@ -490,72 +450,88 @@ func remove_map_shortcut(note:MapNote)-> void:
 
 
 #LOCATIONS
-#I think this doesn't work
-func remove_map_note(note: Vector2)-> void:
-	var grid_pos: = Globals.convert_to_grid(note)
-	if map.notes.has(grid_pos):
-		remove_map_shortcut(map.notes.get(grid_pos))
-		map.notes.erase(grid_pos)
-	save_map()
+func _on_map_location_nodes_data_updated(pos:String, data:Dictionary)-> void:
+	if not map.notes.has(pos):
+		map.notes[pos] = data
+	else:
+		for property in data:
+			if property in map.notes[pos]:
+				map.notes[pos][property] = data[property]
 
+func remove_map_note(pos: Vector2)-> void:
+	var location = map.notes[pos]
+	if map_location_nodes.has(str(pos)):
+		map_location_nodes[pos].delete()
+		map_location_nodes[pos].erase()
 
-func add_map_note(data)-> void:
-	if data is Dictionary:
-		var pos:Vector2 = data.pos if data.pos is Vector2 else Globals.str_to_vec2(data.pos)
-		if not "notes" in map:
-			map["notes"] = {}
-		if pos in map.notes: return
-		var new_map_note: = MAP_NOTE_SCENE.instance()
-		add_child(new_map_note)
-		new_map_note.setup_from_data(data)
-		map.notes[pos] = new_map_note
-	elif data is MapNote:
-		if map.notes.has(data.pos):
-			return
-		else:
-			map.notes[data.pos] = data
-	save_map()
+func add_map_note(input, local: = true)-> void:
+	#Can either add the map location with the data or sending the already created node
+	var location:MapNote
+	var data:Dictionary
 
+	if input is MapNote:
+		location = input
+		data = location.package()
+		if not map_location_nodes.has(location.id):
+			map_location_nodes[location.id] = NodeReference.new()
+			map_location_nodes[location.id].id = location.id
+		map_location_nodes[location.id].add(location)
+	else:
+		 data = input
 
-func update_map_note(location:MapNote):
-	if not location.pos in map.notes:
-		print("error somehow couldn't find note in map \n location pos: %s || map.notes: %s" % [str(location.pos), str(map.notes)])
+	if not "pos" in data:
+		print("No map position data, error creating map note")
 		return
-	#Check to see if the position has been updated
-	for pos in map.notes.keys():
-		if map.notes[pos] == location:
-			if pos != location.pos:
-				map.notes[location.pos] = location
-				map.notes.erase(pos)
+
+	var pos = data.pos if data.pos is Vector2 else Globals.str_to_vec2(data.pos)
+	var id: = str(pos)
+
+	if pos in map.notes:
+		print("Already have a note there" + str(pos))
+		return
+	else:
+		map.notes[pos] = data
+
+	if online and local:
+		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_LOCATION_CREATED, data), "completed")
+		if result != OK:
+			print("Error creating map note over network")
+
+func update_map_note(data:Dictionary):
+	var id:String = str(data.pos)
+	if map.notes.has(data.pos):
+		map.notes[data.pos] = data
+
+	if not map_location_nodes.has(id):
+		print("Error cant find the node in map_location_nodes")
+	else:
+		map_location_nodes.id.modify(data)
 	save_map()
 
+func _on_location_created(location:MapNote)-> void:
+	add_map_note(location)
 
-func _on_map_note_created(note:MapNote, local:bool)-> void:
-	add_map_note(note)
-	#If it's a local request, make sure to update the rest of the people
-	if online and local:
-		print("SENDING MAP NOTE")
-		yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_LOCATION_CREATED, note.package()), "completed")
+func _on_map_note_created_network(data:Dictionary)-> void:
+	add_map_note(data, false)
 
-
-func _on_map_note_updated(note: MapNote, local:bool)-> void:
+func _on_map_note_updated(note: Dictionary, local:bool)-> void:
 	update_map_note(note)
 	if online and local:
-		yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_LOCATION_UPDATED, note.package()), "completed")
+		yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_LOCATION_UPDATED, note), "completed")
 
 func _on_map_note_removed(note: Vector2, local:bool)-> void:
 	remove_map_note(note)
 	if online and local:
 		yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_LOCATION_REMOVED, note), "completed")
 
+
+#GAME STATE
 func _on_game_state_updated(value:String)-> void:
 	self.game_state = value
-
 
 func _set_game_state(value:String)-> void:
 	game_state = value
 	emit_signal("game_state_changed", value)
-
 
 func _set_is_game_setup(value:bool)-> void:
 	is_game_setup = value
@@ -584,7 +560,6 @@ func remote_update_variable(data:Dictionary)-> void:
 
 	if variable in self:
 		set(variable, value)
-
 
 func _set_active_pc(playbook: PlayerPlaybook)->void:
 	active_pc = playbook

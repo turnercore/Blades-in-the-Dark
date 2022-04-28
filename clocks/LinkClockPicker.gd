@@ -1,25 +1,23 @@
 extends PopupMenu
 
-const CLOCK_GROUP:String = "clocks"
 #base_clock is passed when this is created
 var base_clock
-var linked_clock
-var clock_items: Array = []
-
+var clock_ids:= []
 #Get all the clocks in the game, when the user clicks one return it to the clock that called it.
 func _ready() -> void:
 	clear()
-	for clock in GameData.clocks:
-		if clock == base_clock: continue
-		if clock == base_clock.locking_clock: continue
-		if clock == base_clock.locked_by_clock: continue
-		self.add_item(clock.clock_name)
-		clock_items.append(clock)
+	for clock_id in GameData.clock_nodes:
+		if clock_id == base_clock.id: continue
+		elif clock_id == base_clock.locking_clock: continue
+		elif clock_id == base_clock.locked_by_clock: continue
+		else:
+			var clock_name:String = GameData.clock_nodes[clock_id].get_property("clock_name")
+			add_item(clock_name)
+			clock_ids.append(clock_id)
 
 
 func _on_LinkClockPicker_index_pressed(index: int) -> void:
-	var clock_picked = clock_items[index]
+	var clock_picked = clock_ids[index]
 	base_clock.locking_clock = clock_picked
-	clock_picked.locked_by_clock = base_clock
 	hide()
 	self.queue_free()

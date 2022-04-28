@@ -43,6 +43,9 @@ signal roster_updated
 signal chat_selected
 signal chat_deselected
 
+signal clock_created(clock)
+func emit_clock_created(clock:Clock)-> void:
+	emit_signal("clock_created", clock)
 signal clock_updated(clock)
 func emit_clock_updated(clock:Clock)-> void:
 	emit_signal("clock_updated", clock)

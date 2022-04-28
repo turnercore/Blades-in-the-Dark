@@ -4,8 +4,6 @@
 
 extends Node
 
-const CLOCK_SCENE: =preload("res://clocks/Clock.tscn")
-
 enum OP_CODES {
 	PLAYER_MOVEMENT,
 	PLAYER_SPRITE,
@@ -141,12 +139,12 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 				emit_signal("gamedata_playbook_updated", id, type, field, value)
 		OP_CODES.GAMEDATA_CLOCK_CREATED:
 			print("New clock created, adding")
-			emit_signal("gamedata_clock_created", create_new_clock(data))
+			emit_signal("gamedata_clock_created", data)
 		OP_CODES.GAMEDATA_CLOCK_REMOVED:
 			if data is String or data is int or data is float:
 				emit_signal("gamedata_clock_removed", str(data))
 		OP_CODES.GAMEDATA_CLOCK_UPDATED:
-			emit_signal("gamedata_clock_updated", create_new_clock(data))
+			emit_signal("gamedata_clock_updated", data)
 		OP_CODES.GAMEDATA_CREW_PLAYBOOK_CREATED:
 			if not data is String:
 				print("incorrectly formatted data for crew playbook creation")
@@ -165,13 +163,6 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 			else:
 				emit_signal("inital_game_state_recieved", data)
 
-
-func create_new_clock(data:Dictionary)-> Clock:
-	var clock:Clock = CLOCK_SCENE.instance()
-	add_child(clock)
-	clock.setup_from_data(data)
-	remove_child(clock)
-	return clock
 
 func update_player_movement(data: Dictionary)-> void:
 	if not "pos" in data or not "user_id" in data:

@@ -7,7 +7,7 @@ func _ready() -> void:
 	if not GameData.roster.empty():
 		roster_list.setup(GameData.roster)
 	if GameData.clocks:
-		 clock_screen.add_loaded_clocks(GameData.clocks)
+		 clock_screen.refresh_clocks()
 	if GameData.map:
 		yield(get_tree(), "idle_frame")
-		GameData.emit_signal("map_loaded", GameData.map)
+		GameData.emit_signal("map_loaded")
