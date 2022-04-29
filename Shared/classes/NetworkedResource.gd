@@ -50,7 +50,7 @@ func import(import_data:Dictionary, update_network: = true)-> void:
 				data[property] = value
 				updated_data[property] = value
 				emit_signal("property_changed", property, value)
-				emit_changed()
+
 	if update_network and not updated_data.empty():
 		updated_data["id"] = id
 		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_UPDATED, updated_data), "completed")
@@ -66,14 +66,13 @@ func update(property:String, value, update_network: = true)-> void:
 		if data[property] != value:
 			data[property] = value
 			updated_data[property] = value
-		emit_signal("property_changed", property, value)
-		emit_changed()
-		if update_network and not updated_data.empty() and ServerConnection.is_connected_to_server:
-			print("Sending networked resource update over network")
-			updated_data["id"] = self.id
-			var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_UPDATED, updated_data), "completed")
-			if result != OK:
-				print("error sending networked data over the network")
+			emit_signal("property_changed", property, value)
+			if update_network and not updated_data.empty() and ServerConnection.is_connected_to_server:
+				print("Sending networked resource update over network")
+				updated_data["id"] = self.id
+				var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_UPDATED, updated_data), "completed")
+				if result != OK:
+					print("error sending networked data over the network")
 
 
 func delete()-> Dictionary:

@@ -35,7 +35,6 @@ var clock_nodes: = {}
 var map:Dictionary = {} setget , _get_map
 #ARRAY OF MAP NOTES a map note is a location
 var map_shortcuts:Array = []
-var clocks_being_saved: = false
 
 var game_state:String = "Free Play" setget _set_game_state
 
@@ -47,16 +46,13 @@ var is_sending_data: = false
 #Libraries of resources for in-game objects
 var location_library: = Library.new()
 var clock_library: = Library.new()
-var clocks_being_updated:Array = []
 #This is for undo stacks (later)
 var recently_deleted: = []
 
 #Signals
 signal crew_changed
-signal clocks_updated
 signal map_loaded(map)
 signal roster_updated
-signal clocks_free
 signal map_shortcut_added
 signal map_shortcut_removed
 signal map_shortcuts_updated
@@ -68,6 +64,8 @@ signal game_state_loaded
 
 #SETUP FUNCTIONS
 func _ready() -> void:
+	clock_library.library_name = "clocks"
+	location_library.library_name = "locations"
 	connect_to_signals()
 
 	srd = load_srd_from_file(DEFAULT_SRD)
@@ -80,13 +78,9 @@ func _ready() -> void:
 			playbook.connect("property_changed", self, "_on_playbook_property_changed", [playbook])
 
 func connect_to_signals()-> void:
-	for group in clock_nodes:
-		group.connect("data_updated", self, "_on_clock_nodes_data_updated")
-
+	clock_library.connect("resource_added", self, "_on_clock_resource_added")
+	location_library.connect("resource_added", self, "_on_location_resource_added")
 	#Connect to local Event bus
-	Events.connect("clock_created", self, "_on_clock_created")
-	Events.connect("clock_updated", self,"_on_clock_updated")
-	Events.connect("clock_removed", self, "_on_clock_removed")
 	Events.connect("map_created", self, "_on_map_created")
 	Events.connect("map_changed", self, "_on_map_changed")
 	Events.connect("map_removed", self, "_on_map_removed")
@@ -111,10 +105,6 @@ func connect_to_signals()-> void:
 	NetworkTraffic.connect("gamedata_pc_playbook_created", self, "_on_pc_playbook_created")
 	#CrewPlaybook
 	NetworkTraffic.connect("gamedata_crew_playbook_created", self, "_on_crew_playbook_created")
-	#Clock Data
-	NetworkTraffic.connect("gamedata_clock_created", self, "_on_gamedata_clock_created")
-	NetworkTraffic.connect("gamedata_clock_removed", self, "_on_gamedata_clock_removed")
-	NetworkTraffic.connect("gamedata_clock_updated", self, "_on_gamedata_clock_updated")
 	#Intial Game State Setup on Joining Match
 	NetworkTraffic.connect("current_game_state_broadcast", self, "_on_current_game_state_broadcast")
 	NetworkTraffic.connect("current_game_state_requested", self, "_on_current_game_state_requested")
@@ -139,7 +129,6 @@ func load_srd_from_file(srd_file_path:String)->Dictionary:
 		print("Error opening srd file %s" % str(result))
 	file.close()
 	return data
-
 
 func _on_current_game_state_broadcast(data, op_code:int)-> void:
 	if not needs_current_game_state:
@@ -253,100 +242,15 @@ func _on_current_game_state_requested(_user_id:String)-> void:
 
 
 #CLOCKS
-func _on_clock_nodes_data_updated(id:String, data:Dictionary)-> void:
-	#When one of the nodes updates the data that corasponds to the data in the dictionary, it updates the approprite dict
-	for clock in clocks:
-		if clock.id == id:
-			clock = data
+func _on_clock_resource_added(clock:NetworkedResource)-> void:
+	if not "id" in clock.data or clock.data.id == "":
+		clock.data["id"] = clock.id
+	clocks.append(clock.data)
 
-func _on_gamedata_clock_created(data:Dictionary)-> void:
-	clocks.append(data)
-
-func _on_gamedata_clock_removed(clock_id:String)-> void:
-	remove_clock(clock_id, false)
-
-func _on_gamedata_clock_updated(data:Dictionary)-> void:
-	update_clock(data, false)
-
-func add_clock(clock:Clock, local: = true)-> void:
-	var clock_data:Dictionary = clock.package()
-	var already_added: = false
-	for current in clocks:
-		if current.id == clock.id:
-			already_added = true
-	if not already_added:
-		clocks.append(clock_data)
-
-	if clock_nodes.has(clock.id):
-		clock_nodes[clock.id].add(clock)
-	else:
-		clock_nodes[clock.id] = NodeReference.new()
-		clock_nodes[clock.id].id = clock.id
-		clock_nodes[clock.id].add(clock)
-		clock_nodes[clock.id].connect("data_updated", self, "_on_clock_nodes_data_updated")
-
-	if online and local:
-		print("Sending shiny new clock over the network to our lovely friends")
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_CLOCK_CREATED, clock_data), "completed")
-		if result != OK:
-			print("ERROR SENDING UPDATED CLOCK DATA ACROSS NETWORK")
-
-func _on_clock_updated(clock:Clock)->void:
-	print("got sig clock updated "+ str(randi()%10))
-	if clocks_being_updated.has(clock): return
-	else:
-		clocks_being_updated.append(clock)
-		update_clock(clock)
-		clocks_being_updated.erase(clock)
-
-func _on_clock_created(clock:Clock)-> void:
-	add_clock(clock, true)
-
-func update_clock(clock, local: = true)-> void:
-	clocks_being_saved = true
-	print("updating clock from: " + ("local" if local else "network"))
-	var data: = {}
-
-	if clock is Clock:
-		data = clock.package()
-	elif clock is Dictionary:
-		data = clock
-
-	if clock_nodes.has(data.id):
-		clock_nodes[data.id].modify(data)
-
-	for member in clocks:
-		if member.id == data.id:
-			for property in data:
-				if property in member: member[property] = data[property]
-			break
-
-	if online and local:
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_CLOCK_UPDATED, data), "completed")
-		if result != OK:
-			print("ERROR SENDING UPDATED CLOCK DATA ACROSS NETWORK")
-
-	clocks_being_saved = false
-
-func _on_clock_removed(clock_id:String)-> void:
-	remove_clock(clock_id, true)
-
-func remove_clock(clock_id:String, local: = true)-> void:
-	for clock in clocks:
-		if clock.id == clock_id:
-			clocks.erase(clock_id)
-			break
-	if clock_nodes.has(clock_id):
-		clock_nodes[clock_id].delete()
-		clock_nodes.erase(clock_id)
-
-	if online and local:
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_CLOCK_REMOVED, clock_id), "completed")
-		if result != OK:
-			print("ERROR SENDING REMOVED CLOCK DATA ACROSS NETWORK")
 
 #SAVE GAME
 func _on_save_loaded(save:SaveGame)->void:
+	Library
 	if not save.is_setup: save.setup(DEFAULT_SRD)
 	save_game = save
 	srd = save.srd if not save.srd.empty() else srd
@@ -511,11 +415,11 @@ func change_map_to(index:int)-> void:
 	if index >= save_game.maps.size():
 		print("index out of range")
 		return
-
 	save_game()
 	map = save_game.maps[index]
 	recently_deleted.append(location_library.clear())
 	emit_signal("map_loaded")
+	#Send over network
 
 func _on_map_changed(index:int)-> void:
 	if index < save_game.maps.size() and index > -1:
@@ -548,40 +452,24 @@ func remove_map_shortcut(pos:Vector2)-> void:
 
 
 #LOCATIONS
+func _on_location_resource_added(resource:NetworkedResource)-> void:
+	#Right now the locations are calling this with add_map_note and event signals, this can be reworked now
+	var pos:Vector2 = resource.get_vec2("pos")
+
+	if pos in map.locations:
+		print("ERROR Already have a note there" + str(pos))
+		return
+	else:
+		map.locations[pos] = resource.data
+
+
+func _on_location_resource_removed(resource:NetworkedResource)-> void:
+	var pos:Vector2 = resource.get_vec2("pos")
+	remove_map_note(pos)
+
 func remove_map_note(pos: Vector2)-> void:
 	map.locations.erase(pos)
 	recently_deleted.append(location_library.delete(location_library.find_id("pos", pos)))
-
-func add_map_note(data:Dictionary, send_over_network: = true)-> void:
-	var pos = data.pos if data.pos is Vector2 else Globals.str_to_vec2(data.pos)
-
-	if not "id" in data or not data.id:
-		data.id = Globals.generate_id(6)
-
-	if pos in map.locations:
-		print("Already have a note there" + str(pos))
-		return
-	else:
-		map.locations[pos] = data
-		location_library.add(data)
-
-	var _resource: =location_library.add(data)
-	if online and send_over_network:
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_LOCATION_CREATED, data), "completed")
-		if result != OK:
-			print("Error creating map note over network")
-	save_game()
-
-func _on_location_created(location:Dictionary)-> void:
-	add_map_note(location)
-
-func _on_location_created_network(data:Dictionary)-> void:
-	add_map_note(data, false)
-
-func _on_location_removed(pos: Vector2, local:bool)-> void:
-	remove_map_note(pos)
-	if online and local:
-		yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_LOCATION_REMOVED, pos), "completed")
 
 
 #GAME STATE
@@ -613,9 +501,6 @@ func _set_active_pc(playbook: PlayerPlaybook)->void:
 	active_pc = playbook
 	Events.emit_character_selected(playbook)
 
-func _set_clocks_being_saved(value: bool)-> void:
-	if not value: emit_signal("clocks_free")
-	clocks_being_saved = value
 
 func _get_username()-> String:
 	var online_username = ServerConnection.get_self_username() if online else ""

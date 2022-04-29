@@ -1,8 +1,7 @@
 class_name Clock
-extends SyncNode
+extends Control
 
 const RAND_LIMIT: = 1000
-
 enum CLOCK_TYPE {
 	ALL,
 	OBSTACLE,
@@ -34,7 +33,7 @@ export (NodePath) onready var locking_clock_label = get_node(locking_clock_label
 export(NodePath) onready var clock_type_option = get_node(clock_type_option) as OptionButton
 
 var locking_clock_picker_scene: = preload("res://clocks/LinkClockPicker.tscn")
-var id:String setget ,_get_id
+var id:String
 export var clock_name:String = name setget _set_clock_name
 export var locked: = false setget _set_locked
 var locked_by_clock:String setget _set_locked_by_clock
@@ -55,45 +54,45 @@ signal unfilled
 signal name_changed(new_name)
 signal type_changed(type)
 
-var data_has_changed: = false
-
-func _init() -> void:
-	export_properties = [
-		"id",
-		"clock_name",
-		"filled",
-		"max_value",
-		"locked",
-		"locking_clock",
-		"locked_by_clock",
-		"type",
-		"is_secret",
-		"fill_color"
-	]
+var clock:NetworkedResource
 
 func _ready()->void:
-	if not id:
-		id = generate_id(5)
 	if not locked_by_clock:
 		locked_by_container.visible = false
 
 	for clock_type in CLOCK_TYPE:
 		var type_str: String = str(clock_type).to_lower().replace("_", " ").capitalize()
 		clock_type_option.add_item(type_str)
-
-	self.filled = filled
-	self.max_value = max_value
-	self.clock_name = clock_name
-	self.is_secret = is_secret
-	self.locked = locked
 	filled_label.text = str(filled)
 
+	clock.connect("property_changed", self, "_on_clock_property_changed")
 
-
-func setup(new_clock_data:Dictionary)->void:
-	import(new_clock_data)
-	visible = true
-	is_setup = true
+func _on_clock_property_changed(property:String, value)-> void:
+	match property:
+		"locking_clock":
+			self.locking_clock = str(value)
+		"locked_by_clock":
+			self.locked_by_clock = str(value)
+		"max_value":
+			self.max_value = int(value)
+		"filled":
+			self.filled = int(value)
+		"type":
+			self.type = int(value)
+		"clock_name":
+			self.clock_name = str(value)
+		"is_secret":
+			self.is_secret = bool(value)
+		"fill_color":
+			var updated_value:Color
+			if value is String:
+				updated_value = Globals.str_to_color(value)
+			self.fill_color = value
+		"id":
+			self.id = str(value)
+		_:
+			if property in self:
+				set(property, value)
 
 
 func delete()-> void:
@@ -106,25 +105,18 @@ func delete()-> void:
 		if locked_by_clock in GameData.clock_nodes:
 			GameData.clock_nodes.locking_clock.update_property("locking_clock", "")
 	Events.emit_clock_removed(self.id)
-	delete_connected()
 
 
-func save_clock()->void:
-	Events.emit_clock_updated(self)
-	data_has_changed = false
+func setup(data:NetworkedResource)-> void:
+	clock = data
+	var properties_to_update:Array = ["id", "clock_name", "locking_clock", "locked_by_clock", "max_value", "filled", "type", "clock_name", "is_secret" ]
 
+	for property in properties_to_update:
+		set(property, clock.get_property(property))
 
-func setup_from_data(clock_data:Dictionary)-> void:
-	import(clock_data)
+	self.fill_color = clock.get_color("fill_color")
 	is_setup = true
 	visible = true
-
-
-func lock_clock(clock: Clock)->void:
-	self.locking_clock = clock.id
-	clock.lock()
-	clock.locked_by_clock = self.id
-	connect("filled", clock, "unlock")
 
 
 func unlock()->void:
@@ -139,10 +131,7 @@ func lock()->void:
 
 func _set_locked(value: bool)->void:
 	var locked_check_box: = $CenterContainer/HBoxContainer/EditWidgetContainer/VBoxContainer5/HBoxContainer/LockCheckBox
-	if locked != value:
-		data_has_changed = true
 	locked = value
-	save_clock()
 	locked_check_box.pressed = value
 
 	if locked:
@@ -154,15 +143,7 @@ func _set_locked(value: bool)->void:
 		lock_texture.visible = false
 
 
-func _get_id()->String:
-	if not id:
-		id = generate_id(5)
-	return id
-
-
 func _set_filled(value) -> void:
-	if filled != value:
-		data_has_changed = true
 	var new_value: = int(value)
 	if new_value >= max_value:
 		new_value = max_value
@@ -177,12 +158,10 @@ func _set_filled(value) -> void:
 	tween.interpolate_property(clock_texture, "value", null, new_value, 0.25, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 	tween.start()
 	yield(tween, "tween_all_completed")
-	save_clock()
 
 
 func _set_max_value(value: int) -> void:
 	if max_value == value: return
-	data_has_changed = true
 	max_value = value
 	segments.text = str(max_value)
 	if filled > max_value:
@@ -199,20 +178,18 @@ func _set_max_value(value: int) -> void:
 	tween.interpolate_property(clock_texture, "max_value", null, value, 0.25, Tween.TRANS_BOUNCE, Tween.EASE_IN_OUT)
 	tween.start()
 	yield(tween, "tween_all_completed")
-	save_clock()
 
 
 func _set_clock_name(value: String) -> void:
 	if clock_name == value: return
 	clock_name = value
-	emit_signal("name_changed", value)
-	save_clock()
+	name = value if value else "New"
 
 
 func _set_locking_clock(value:String) -> void:
 	if locking_clock == value: return
 	if value:
-		if value == self.id:
+		if value == id:
 			return
 		if locked_by_clock:
 			if value == locked_by_clock:
@@ -221,15 +198,18 @@ func _set_locking_clock(value:String) -> void:
 			if value == locking_clock:
 				return
 
-	var old_locking_clock:NodeReference
-	var new_locking_clock:NodeReference
-
-	if locking_clock and GameData.clock_nodes.has(locking_clock):
-		old_locking_clock = GameData.clock_nodes[locking_clock]
-		old_locking_clock.send_method("unlock")
-	if value and GameData.clock_nodes.has(value):
-		new_locking_clock = GameData.clock_nodes[value]
-		new_locking_clock.update_property("locked_by_clock", id)
+	var current_locking_clock:NetworkedResource
+	var new_locking_clock:NetworkedResource
+	if locking_clock != "":
+		current_locking_clock = GameData.clock_library.get(locking_clock)
+		current_locking_clock.update("locked_by_clock", id)
+		if not current_locking_clock.is_connected("property_updated", self, "_on_locked_by_clock_updated"):
+			current_locking_clock.disconnect("property_updated", self, "_on_locked_by_clock_updated")
+	if value and value != "":
+		new_locking_clock = GameData.clock_library.get(value)
+		new_locking_clock.update("locking_clock", id)
+		if not new_locking_clock.is_connected("property_updated", self, "_on_locked_by_clock_updated"):
+			new_locking_clock.connect("property_updated", self, "_on_locked_by_clock_updated")
 	locking_clock = value
 
 
@@ -237,7 +217,7 @@ func _set_locked_by_clock(value:String) -> void:
 	if locked_by_clock == value: return
 	#Prevents cyclic locks
 	if value:
-		if value == self.id:
+		if value == id:
 			return
 		if locked_by_clock:
 			if value == locked_by_clock:
@@ -246,28 +226,30 @@ func _set_locked_by_clock(value:String) -> void:
 			if value == locking_clock:
 				return
 
-	var old_locked_by_clock:NodeReference
 	var old_value:String = locked_by_clock
-	var new_locked_by_clock:NodeReference
 
-	locked_by_clock = value
-	if old_value and GameData.clock_nodes.has(old_value):
-		old_locked_by_clock = GameData.clock_nodes[old_value]
-		old_locked_by_clock.update_property("locking_clock", "")
-		new_locked_by_clock.disconnect_from_members("name_changed", self, "_on_locked_by_clock_name_change")
-		new_locked_by_clock.disconnect_from_members("filled", self, "_on_locked_by_clock_filled")
-		new_locked_by_clock.disconnect_from_members("unfilled", self, "_on_locked_by_clock_unfilled")
+	var current_locked_by_clock:NetworkedResource
+	var new_locked_by_clock:NetworkedResource
 
-	if value and GameData.clock_nodes.has(value):
+	#Clean up old clock
+	if locking_clock != "":
+		current_locked_by_clock = GameData.clock_library.get(locked_by_clock)
+		current_locked_by_clock.update("locking_clock", id)
+		if current_locked_by_clock.is_connected("property_updated", self, "_on_locked_by_clock_updated"):
+			current_locked_by_clock.disconnect("property_updated", self, "_on_locked_by_clock_updated")
+
+	if value and value != "":
 		lock()
-		new_locked_by_clock = GameData.clock_nodes[value]
-		new_locked_by_clock.update_property("locking_clock", id)
 		locked_by_container.visible = true
-		new_locked_by_clock.connect_to_members("name_changed", self, "_on_locked_by_clock_name_change")
-		new_locked_by_clock.connect_to_members("filled", self, "_on_locked_by_clock_filled")
-		new_locked_by_clock.connect_to_members("unfilled", self, "_on_locked_by_clock_unfilled")
 		locked_by_clock_label.text = new_locked_by_clock.get_property("clock_name")
 		locked_by_clock_label.visible = true
+		new_locked_by_clock = GameData.clock_library.get(value)
+		new_locked_by_clock.update("locking_clock", id)
+		if not new_locked_by_clock.is_connected("property_updated", self, "_on_locked_by_clock_updated"):
+			new_locked_by_clock.connect("property_updated", self, "_on_locked_by_clock_updated")
+
+	locked_by_clock = value
+
 
 	if not locked_by_clock:
 		locked_by_container.visible = false
@@ -275,18 +257,26 @@ func _set_locked_by_clock(value:String) -> void:
 		unlock()
 
 
+func _on_locked_by_clock_updated(property:String, value)-> void:
+	match property:
+		"clock_name":
+			locked_by_clock_label.text = value
+
+func _on_locking_clock_updated(property:String, value)-> void:
+	match property:
+		"clock_name":
+			locking_clock_label.text = value
+
+
 func _set_type(value)-> void:
 	if type == value: return
 	type = value
-	emit_signal("type_changed", value)
-	save_clock()
 
 
 func _set_is_secret(value: bool) -> void:
 	if is_secret == value: return
 	is_secret = value
 	clock_line_edit.secret = value
-	save_clock()
 
 
 func _on_locked_by_clock_filled()-> void:
@@ -302,13 +292,11 @@ func clear_locked_by_clock()-> void:
 	locked_by_clock_label.text = ""
 	locked_by_container.visible = false
 	unlock()
-	save_clock()
 
 
 func clear_locking_clock()-> void:
 	locking_clock = ""
 	locking_clock_label.text = ""
-	save_clock()
 
 
 func _on_locking_clock_name_change(new_name: String)->void:
@@ -329,24 +317,20 @@ func _on_PlusSegment_pressed() -> void:
 	if max_value <=4: self.max_value = 6
 	elif max_value == 6: self.max_value = 8
 	elif max_value == 8: self.max_value = 12
-	save_clock()
 
 
 func _on_MinusSegment_pressed() -> void:
 	if max_value <=6: self.max_value = 4
 	elif max_value == 8: self.max_value = 6
 	elif max_value == 12: self.max_value = 8
-	save_clock()
 
 
 func _on_Plus_pressed() -> void:
 	self.filled += 1
-	save_clock()
 
 
 func _on_Minus_pressed() -> void:
 	self.filled -= 1
-	save_clock()
 
 
 func _on_ClockTexture_gui_input(event: InputEvent) -> void:
@@ -388,7 +372,6 @@ func _on_ClockTypeOption_item_selected(index: int) -> void:
 
 func _set_fill_color(color: Color)-> void:
 	fill_color = color
-	save_clock()
 
 
 func _on_ColorPickerButton_color_changed(color: Color) -> void:

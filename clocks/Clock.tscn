@@ -340,10 +340,10 @@ color = Color( 0, 0, 0, 0.803922 )
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-margin_left = 12.0
-margin_top = 12.0
-margin_right = 626.0
-margin_bottom = 512.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 630.0
+margin_bottom = 516.0
 
 [connection signal="gui_input" from="CenterContainer/HBoxContainer/ClockContainer/HBoxContainer/ClockTexture" to="." method="_on_ClockTexture_gui_input"]
 [connection signal="toggled" from="CenterContainer/HBoxContainer/ClockContainer/ClockNameContainer/Spacer2" to="." method="_on_CheckBox_toggled"]

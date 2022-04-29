@@ -27,6 +27,8 @@ script = ExtResource( 1 )
 [node name="Cursor" parent="." instance=ExtResource( 2 )]
 
 [node name="MapGrid" type="TileMap" parent="."]
+cell_size = Vector2( 5, 5 )
+cell_quadrant_size = 128
 format = 1
 
 [node name="MapTexture" type="TextureRect" parent="MapGrid"]

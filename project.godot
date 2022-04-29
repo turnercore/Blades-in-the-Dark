@@ -44,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Crew/Claims/Connector.gd"
 }, {
-"base": "SyncNode",
+"base": "Control",
 "class": "Clock",
 "language": "GDScript",
 "path": "res://clocks/Clock.gd"
@@ -320,7 +320,7 @@ run/main_scene="res://start_screen/StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Shared/Art/Icons/icon.png"
-config/version="v0.6"
+config/version="v0.61"
 
 [autoload]
 

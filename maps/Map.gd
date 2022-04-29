@@ -69,7 +69,12 @@ func _process(delta: float) -> void:
 
 
 func add_location(data:={}, local:bool = true)->void:
-	creating_note = true
+	#First check to see if this position is already in the map locations
+	var grid_mouse_pos: = Globals.convert_to_grid(get_global_mouse_position())
+	for location in GameData.map.locations:
+		if grid_mouse_pos == location:
+			return
+
 	var pos: = Vector2.ZERO
 	var is_new: = false
 	var location_node: = map_note_scene.instance()
@@ -89,7 +94,7 @@ func add_location(data:={}, local:bool = true)->void:
 	grid.add_child(location_node)
 	location_node.global_position = grid.map_to_world(pos)
 	if is_new: Events.emit_signal("location_created", data)
-	creating_note = false
+
 
 
 func delete_note(pos:Vector2)-> void:

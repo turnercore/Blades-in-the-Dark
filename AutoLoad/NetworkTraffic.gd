@@ -18,11 +18,8 @@ enum OP_CODES {
 	GAMEDATA_PLAYBOOK_REMOVED,
 	GAMEDATA_PLAYBOOK_UPDATED,
 	GAMEDATA_CREW_PLAYBOOK_CREATED,
-	GAMEDATA_CLOCK_CREATED,
-	GAMEDATA_CLOCK_REMOVED,
-	GAMEDATA_CLOCK_UPDATED,
 	ROLL_RESULT,
-	CURRENT_GAME_STATE_REQUESTED = 100,
+	CURRENT_GAME_STATE_REQUESTED,
 	JOIN_MATCH_PLAYER_PLAYBOOK_RECIEVED,
 	JOIN_MATCH_CREW_PLAYBOOK_RECEIVED,
 	JOIN_MATCH_MAP_RECEIVED,
@@ -32,7 +29,7 @@ enum OP_CODES {
 }
 
 signal networked_resource_created(data)
-signal networked_resource_removed(id)
+signal networked_resource_removed(data)
 signal networked_resource_updated(data)
 signal player_movement_recieved(user_id, pos)
 signal player_sprite_changed(user_id, sprite)
@@ -44,9 +41,6 @@ signal gamedata_pc_playbook_created(playbook)
 signal gamedata_crew_playbook_created(playbook)
 signal gamedata_playbook_removed(playbook)
 signal gamedata_playbook_updated(id, type, field, value)
-signal gamedata_clock_created(clock)
-signal gamedata_clock_removed(clock_id)
-signal gamedata_clock_updated(clock)
 signal current_game_state_requested(user_id)
 signal current_game_state_broadcast(data, op_code)
 signal gamedata_recieved(data)
@@ -139,14 +133,6 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 				var field:String = data.field
 				var value = data.value
 				emit_signal("gamedata_playbook_updated", id, type, field, value)
-		OP_CODES.GAMEDATA_CLOCK_CREATED:
-			print("New clock created, adding")
-			emit_signal("gamedata_clock_created", data)
-		OP_CODES.GAMEDATA_CLOCK_REMOVED:
-			if data is String or data is int or data is float:
-				emit_signal("gamedata_clock_removed", str(data))
-		OP_CODES.GAMEDATA_CLOCK_UPDATED:
-			emit_signal("gamedata_clock_updated", data)
 		OP_CODES.GAMEDATA_CREW_PLAYBOOK_CREATED:
 			if not data is String:
 				print("incorrectly formatted data for crew playbook creation")
@@ -163,6 +149,14 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 			emit_signal("current_game_state_broadcast", data, op_code)
 		OP_CODES.NETWORKED_RESOURCE_UPDATED:
 			emit_signal("networked_resource_updated", data)
+		OP_CODES.NETWORKED_RESOURCE_CREATED:
+			if data is Dictionary:
+				if "id" in data and "library" in data:
+					emit_signal("networked_resource_created", data)
+		OP_CODES.NETWORKED_RESOURCE_REMOVED:
+			if data is Dictionary:
+				if "id" in data and "library" in data:
+					emit_signal("networked_resource_removed", data)
 		_:
 			print('INVALID OP CODE: ' + str(op_code))
 
