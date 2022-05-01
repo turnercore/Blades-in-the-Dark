@@ -106,7 +106,7 @@ func _change_sprite(sprite:String)-> void:
 		"player":
 			current_sprite.visible = false
 			current_sprite = $Player
-			current_sprite.visible = true
+			current_sprite.visible = false
 
 
 func remote_update_position(pos:Vector2)-> void:

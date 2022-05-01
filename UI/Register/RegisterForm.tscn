@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
-[ext_resource path="res://debug/demo/src/UI/Menus/Register/RegisterForm.gd" type="Script" id=2]
-[ext_resource path="res://debug/demo/src/UI/Elements/LineEditValidate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://debug/demo/src/UI/Menus/Login/PasswordField.gd" type="Script" id=4]
-[ext_resource path="res://assets/theme/stylebox/button_focused_margin.tres" type="StyleBox" id=5]
-[ext_resource path="res://debug/demo/src/UI/Menus/Login/EmailField.gd" type="Script" id=6]
-[ext_resource path="res://debug/demo/src/UI/Elements/StatusPanel.tscn" type="PackedScene" id=7]
-[ext_resource path="res://debug/demo/src/UI/Menus/Login/PasswordRepeatField.gd" type="Script" id=8]
+[ext_resource path="res://UI/Register/RegisterForm.gd" type="Script" id=1]
+[ext_resource path="res://debug/demo/src/UI/Elements/LineEditValidate.tscn" type="PackedScene" id=2]
+[ext_resource path="res://debug/demo/src/UI/Elements/StatusPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://debug/demo/src/UI/Menus/Login/PasswordRepeatField.gd" type="Script" id=4]
+[ext_resource path="res://debug/demo/src/UI/Menus/Login/PasswordField.gd" type="Script" id=5]
+[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=6]
+[ext_resource path="res://debug/demo/src/UI/Menus/Login/EmailField.gd" type="Script" id=7]
+[ext_resource path="res://assets/theme/stylebox/button_focused_margin.tres" type="StyleBox" id=8]
 
 [node name="RegisterForm" type="Panel"]
 anchor_left = 0.5
@@ -19,8 +19,8 @@ margin_top = -150.0
 margin_right = 292.0
 margin_bottom = 196.0
 rect_min_size = Vector2( 0, 272 )
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+theme = ExtResource( 6 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -43,10 +43,10 @@ margin_bottom = 43.0
 rect_min_size = Vector2( 120, 0 )
 text = "Email"
 
-[node name="LineEditValidate" parent="Email" instance=ExtResource( 3 )]
+[node name="LineEditValidate" parent="Email" instance=ExtResource( 2 )]
 margin_left = 136.0
 margin_right = 551.0
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="Password" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -66,12 +66,12 @@ margin_bottom = 39.0
 rect_min_size = Vector2( 120, 0 )
 text = "Password"
 
-[node name="LineEditValidate" parent="Password" instance=ExtResource( 3 )]
+[node name="LineEditValidate" parent="Password" instance=ExtResource( 2 )]
 margin_left = 136.0
 margin_right = 551.0
 margin_bottom = 48.0
 secret = true
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="PasswordRepeat" type="HBoxContainer" parent="."]
 anchor_right = 1.0
@@ -91,12 +91,12 @@ margin_bottom = 39.0
 rect_min_size = Vector2( 120, 0 )
 text = "Repeat"
 
-[node name="LineEditValidate" parent="PasswordRepeat" instance=ExtResource( 3 )]
+[node name="LineEditValidate" parent="PasswordRepeat" instance=ExtResource( 2 )]
 margin_left = 136.0
 margin_right = 551.0
 margin_bottom = 48.0
 secret = true
-script = ExtResource( 8 )
+script = ExtResource( 4 )
 password_field_path = NodePath("../../Password/LineEditValidate")
 
 [node name="RememberEmail" type="CheckBox" parent="."]
@@ -105,7 +105,7 @@ margin_left = 152.0
 margin_top = 218.0
 margin_right = -228.0
 margin_bottom = 250.0
-custom_styles/focus = ExtResource( 5 )
+custom_styles/focus = ExtResource( 8 )
 shortcut_in_tooltip = false
 text = "Remember me"
 flat = true
@@ -143,7 +143,8 @@ rect_min_size = Vector2( 120, 60 )
 size_flags_horizontal = 3
 text = "Cancel"
 
-[node name="StatusPanel" parent="." instance=ExtResource( 7 )]
+[node name="StatusPanel" parent="." instance=ExtResource( 3 )]
+
 [connection signal="text_entered" from="Email/LineEditValidate" to="." method="_on_LineEditValidate_text_entered"]
 [connection signal="text_entered" from="Password/LineEditValidate" to="." method="_on_LineEditValidate_text_entered"]
 [connection signal="text_entered" from="PasswordRepeat/LineEditValidate" to="." method="_on_LineEditValidate_text_entered"]

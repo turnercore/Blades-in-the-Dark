@@ -11,7 +11,6 @@ signal on_closed
 func _ready():
 	_reset_position = rect_position
 
-
 func _process(delta):
 	if _is_dragging:
 		var mouse_delta = _previous_mouse_position - get_local_mouse_position()

@@ -1,6 +1,5 @@
 class_name ChatSaver
 extends Node
-const ChatLog = preload('res://Chat/ChatLog.gd')
 var debug:bool
 var SAVE_FOLDER:String
 var SAVE_NAME_TEMPLATE:String

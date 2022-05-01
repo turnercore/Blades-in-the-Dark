@@ -1,8 +1,43 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://maps/MainCamera.gd" type="Script" id=1]
 [ext_resource path="res://Shared/PlayerCursor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/Map.gd" type="Script" id=3]
+[ext_resource path="res://maps/District Images/Duskvol.jpg" type="Texture" id=4]
+[ext_resource path="res://maps/MapAreas.gd" type="Script" id=5]
+[ext_resource path="res://assets/world/character.svg" type="Texture" id=6]
+[ext_resource path="res://maps/MapPins.tscn" type="PackedScene" id=7]
+
+[sub_resource type="VisualShader" id=1]
+code = "shader_type spatial;
+render_mode specular_schlick_ggx;
+
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Output:0
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -189.202, 9.4375 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+closed = false
+polygon = PoolVector2Array( -73, -1669, 56, -1693, 64, -1631, 1012, -1634, 1667, -1638, 1859, -1853, 2065, -1708, 2143, -1491, 2237, -1209, 2180, -929, 2111, -573, 2072, -573, 2065, -477, 2012, -442, 1930, -436, 1925, -400, 128, -401, 127, -245, -64, -249, -73, -1669 )
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 3 )
@@ -41,9 +76,41 @@ margin_top = -6025.0
 margin_right = 4523.0
 margin_bottom = 6025.0
 mouse_filter = 0
+texture = ExtResource( 4 )
 stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Notes" type="Node2D" parent="MapGrid"]
+
+[node name="Areas" type="Node2D" parent="MapGrid"]
+script = ExtResource( 5 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="MapGrid/Areas"]
+material = SubResource( 2 )
+
+[node name="Charterhall" type="Area2D" parent="MapGrid/Areas"]
+visible = false
+position = Vector2( 1139, -1075 )
+
+[node name="Light2D" type="Light2D" parent="MapGrid/Areas/Charterhall"]
+position = Vector2( 11, 55.9999 )
+scale = Vector2( 125.046, 184.117 )
+texture = ExtResource( 6 )
+mode = 2
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0.811765 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="MapGrid/Areas/Charterhall"]
+position = Vector2( -1139, 1075 )
+occluder = SubResource( 3 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MapGrid/Areas/Charterhall"]
+visible = false
+position = Vector2( 0, -2 )
+polygon = PoolVector2Array( -1067, -556, 528, -561, 717, -763, 918, -631, 1006, -423, 1096, -130, 975, 503, 937, 505, 921, 608, 864, 637, 789, 639, 786, 671, -719, 673, -1000, 675, -1006, 818, -1199, 823, -1221, -617, -1073, -623 )
+
+[node name="MapPins" parent="." instance=ExtResource( 7 )]
+
+[connection signal="area_exited" from="MapGrid/Areas/Charterhall" to="MapGrid/Areas" method="_on_Charterhall_area_exited"]

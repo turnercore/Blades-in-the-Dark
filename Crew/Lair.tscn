@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Crew/Hideout.jpeg" type="Texture" id=1]
-[ext_resource path="res://Crew/SaveableOptionButton.gd" type="Script" id=2]
 [ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=3]
-[ext_resource path="res://Crew/SaveableTextEdit.gd" type="Script" id=4]
 
 [node name="Lair" type="VBoxContainer"]
 margin_left = 553.0
@@ -52,8 +50,6 @@ margin_bottom = 27.0
 text = "0"
 items = [ "0", null, false, 0, null, "1", null, false, 1, null, "2", null, false, 2, null, "3", null, false, 3, null, "4", null, false, 4, null ]
 selected = 0
-script = ExtResource( 2 )
-property_saved = "selected"
 
 [node name="HoldLabel" type="Label" parent="HBoxContainer"]
 margin_left = 73.0
@@ -70,7 +66,6 @@ margin_bottom = 27.0
 text = "Weak"
 items = [ "Weak", null, false, 0, null, "Strong", null, false, 1, null ]
 selected = 0
-script = ExtResource( 2 )
 
 [node name="LairPicture" type="TextureRect" parent="."]
 margin_top = 66.0
@@ -99,7 +94,6 @@ margin_bottom = 398.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_vertical = 3
 wrap_enabled = true
-script = ExtResource( 4 )
 
 [node name="Padding" type="CenterContainer" parent="."]
 margin_top = 402.0

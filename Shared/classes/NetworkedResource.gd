@@ -23,7 +23,7 @@ func get_property(property:String):
 
 	if result is String:
 		result = result
-	return  result
+	return str2var(result)
 
 
 func get_vec2(property:String)->Vector2:
@@ -58,21 +58,82 @@ func import(import_data:Dictionary, update_network: = true)-> void:
 				print("error sending networked data over the network")
 
 
-func update(property:String, value, update_network: = true)-> void:
-	var updated_data: = {}
-	if value is Vector2 or value is Color:
-		value = str(value)
-	if data.has(property):
-		if data[property] != value:
-			data[property] = value
-			updated_data[property] = value
-			emit_signal("property_changed", property, value)
-			if update_network and not updated_data.empty() and ServerConnection.is_connected_to_server:
-				print("Sending networked resource update over network")
-				updated_data["id"] = self.id
-				var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_UPDATED, updated_data), "completed")
-				if result != OK:
-					print("error sending networked data over the network")
+func find(path:String):
+	#prop1.prop2.array.0
+	var split:PoolStringArray = path.split(".")
+	if split.empty():
+		return
+
+	var current_property:String = split[0]
+	var result = data
+
+	for property in split:
+		if property.is_valid_integer():
+			var index:int = int(property)
+			if index >= result.size():
+				return "Invalid path for find() Index out of range | Path: " + path
+			result = result[index]
+		else:
+			if property in result:
+				result = result[property]
+			else:
+				return "Invalid path for find() property not in data| Path: " + path
+	return str2var(result)
+
+
+func update(path:String, value, update_network: = true):
+	value = str2var(value)
+	var split:PoolStringArray = path.split(".")
+	if split.empty():
+		return
+	var result = data
+	var i: = 0
+
+	for property in split:
+		#is this the last property in the array? If so do the setter function
+		if i == split.size()-1:
+			if property.is_valid_integer():
+				var index:int = int(property)
+				if index < result.size() and index >= 0:
+					if result[index] != value:
+						result[index] = value
+						if update_network: send_update_over_network({path : value})
+
+				else:
+					print("Invalid path for find() Index out of range | Path: " + path)
+					return
+			else:
+				if result.has(property):
+					if result[property] != value:
+						result[property] = value
+						if update_network: send_update_over_network({path : value})
+				else:
+					print("Invalid path for find() property not in data| Path: " + path)
+					return
+		#ELse Keep searching for the property
+		else:
+			if property.is_valid_integer():
+				var index:int = int(property)
+				if index >= result.size():
+					print("Invalid path for find() Index out of range | Path: " + path)
+				else: result = result[index]
+			else:
+				if result.has(property):
+					result = result[property]
+				else:
+					print("Invalid path for find() property not in data| Path: " + path)
+			i += 1
+
+
+func send_update_over_network(updated_data:Dictionary)-> void:
+	if not ServerConnection.is_connected_to_server:
+		return
+
+	print("Sending networked resource update over network")
+	updated_data["id"] = self.id
+	var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_UPDATED, updated_data), "completed")
+	if result != OK:
+		print("error sending networked data over the network")
 
 
 func delete()-> Dictionary:

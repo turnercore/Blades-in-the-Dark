@@ -27,12 +27,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "ChatLog",
 "language": "GDScript",
-"path": "res://Chat/ChatLog.gd"
+"path": "res://debug/trash/Chat/ChatLog.gd"
 }, {
 "base": "Node",
 "class": "ChatSaver",
 "language": "GDScript",
-"path": "res://Chat/ChatSaver.gd"
+"path": "res://debug/trash/Chat/ChatSaver.gd"
 }, {
 "base": "TextureButton",
 "class": "Claim",
@@ -67,7 +67,7 @@ _global_script_classes=[ {
 "base": "Playbook",
 "class": "CrewPlaybook",
 "language": "GDScript",
-"path": "res://Shared/classes/CrewPlaybook.gd"
+"path": "res://debug/trash/CrewPlaybook.gd"
 }, {
 "base": "Field",
 "class": "CrewUpgrade",
@@ -82,7 +82,7 @@ _global_script_classes=[ {
 "base": "PanelContainer",
 "class": "DragableWindow",
 "language": "GDScript",
-"path": "res://Shared/DragableWindow.gd"
+"path": "res://UI/DragableWindow.gd"
 }, {
 "base": "WindowDialog",
 "class": "EditNotePopup",
@@ -222,17 +222,17 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "NodeReference",
 "language": "GDScript",
-"path": "res://Shared/classes/NodeReference.gd"
+"path": "res://debug/trash/NodeReference.gd"
 }, {
 "base": "Resource",
 "class": "Playbook",
 "language": "GDScript",
-"path": "res://Shared/classes/Playbook.gd"
+"path": "res://debug/trash/Playbook.gd"
 }, {
 "base": "Playbook",
 "class": "PlayerPlaybook",
 "language": "GDScript",
-"path": "res://Shared/classes/PlayerPlaybook.gd"
+"path": "res://debug/trash/PlayerPlaybook.gd"
 }, {
 "base": "Control",
 "class": "PopupScreen",
@@ -257,7 +257,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "SyncNode",
 "language": "GDScript",
-"path": "res://Shared/classes/SyncNode.gd"
+"path": "res://debug/trash/SyncNode.gd"
 } ]
 _global_script_class_icons={
 "Ability": "",
@@ -320,7 +320,7 @@ run/main_scene="res://start_screen/StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Shared/Art/Icons/icon.png"
-config/version="v0.61"
+config/version="v0.62"
 
 [autoload]
 

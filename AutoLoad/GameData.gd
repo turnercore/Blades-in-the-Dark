@@ -15,22 +15,21 @@ const DEFAULT_SRD: = "res://srd/default_srd.json"
 const CLOCK_SCENE: = preload("res://clocks/Clock.tscn")
 const MAP_NOTE_SCENE: = preload("res://maps/MapNote.tscn")
 
-export (Resource) var crew_playbook = null
-
 #This should be updated to remove the "roster" checks and just be an Array itself
-export (Array) var roster:Array = []
-export (Resource) var save_game = SaveGame.new()
+var roster:Array = []
+var save_game = SaveGame.new()
 
 var username:String = "You" setget ,_get_username
 #The active character (for this player)
 var active_pc: PlayerPlaybook setget _set_active_pc
 #Store a reference to the current srd, used for looking up and displaying it in info
 var srd:= {}
-
 #Array of dicts with the clock data
 var clocks: = []
 #ID: NodeReferenceGroup
 var clock_nodes: = {}
+var crew_playbook: = {}
+var pc_playbooks: = []
 
 var map:Dictionary = {} setget , _get_map
 #ARRAY OF MAP NOTES a map note is a location
@@ -43,9 +42,14 @@ var needs_current_game_state:bool = false
 var online: = false
 var requesting_game_state: = false
 var is_sending_data: = false
+
 #Libraries of resources for in-game objects
 var location_library: = Library.new()
 var clock_library: = Library.new()
+var pc_library: = Library.new()
+var crew_playbook_resource:NetworkedResource
+
+
 #This is for undo stacks (later)
 var recently_deleted: = []
 
@@ -55,10 +59,8 @@ signal map_loaded(map)
 signal roster_updated
 signal map_shortcut_added
 signal map_shortcut_removed
-signal map_shortcuts_updated
 signal game_state_changed(game_state)
 signal game_setup
-signal map_location_created
 signal game_state_loaded
 
 
@@ -66,55 +68,37 @@ signal game_state_loaded
 func _ready() -> void:
 	clock_library.library_name = "clocks"
 	location_library.library_name = "locations"
+	pc_library.library_name = "pcs"
 	connect_to_signals()
-
 	srd = load_srd_from_file(DEFAULT_SRD)
-
-	for playbook in roster:
-		if not playbook is PlayerPlaybook: continue
-		if not playbook.is_connected("changed", self, "_on_playbook_updated"):
-			playbook.connect("changed", self, "_on_playbook_updated", [playbook])
-		if not playbook.is_connected("property_changed", self, "_on_playbook_property_changed"):
-			playbook.connect("property_changed", self, "_on_playbook_property_changed", [playbook])
 
 func connect_to_signals()-> void:
 	clock_library.connect("resource_added", self, "_on_clock_resource_added")
 	location_library.connect("resource_added", self, "_on_location_resource_added")
-	#Connect to local Event bus
+	pc_library.connect("resource_added", self, "_on_pc_resource_added")
+
+	#LOCAL EVENTS
 	Events.connect("map_created", self, "_on_map_created")
 	Events.connect("map_changed", self, "_on_map_changed")
 	Events.connect("map_removed", self, "_on_map_removed")
-	Events.connect("location_created", self, "_on_location_created")
-	Events.connect("location_removed", self, "_on_map_note_removed")
+#	Events.connect("location_removed", self, "_on_map_note_removed")
+	GameSaver.connect("save_loaded", self, "_on_save_loaded")
 
 	#Nakama Server Connection
 	ServerConnection.connect("match_joined", self, "_on_match_joined")
 	ServerConnection.connect("match_created", self, "_on_match_created")
 
-#	#Data that comes from the network
+#	#NETWORK EVENTS
 #	#Location Data
-	NetworkTraffic.connect("gamedata_location_created", self, "_on_location_created_network")
-	NetworkTraffic.connect("gamedata_location_removed", self, "_on_map_note_removed_network")
-#	NetworkTraffic.connect("gamedata_location_updated", self, "_on_map_note_updated_network")
+#	NetworkTraffic.connect("gamedata_location_created", self, "_on_location_created_network")
+#	NetworkTraffic.connect("gamedata_location_removed", self, "_on_map_note_removed_network")
 	#Game State data
 	NetworkTraffic.connect("gamedata_game_state_updated", self, "_on_game_state_updated")
-	#Playbooks
-	NetworkTraffic.connect("gamedata_playbook_removed", self, "_on_playbook_removed")
-	NetworkTraffic.connect("gamedata_playbook_updated", self, "_on_network_playbook_updated")
 	#PlayerPlaybooks
-	NetworkTraffic.connect("gamedata_pc_playbook_created", self, "_on_pc_playbook_created")
-	#CrewPlaybook
-	NetworkTraffic.connect("gamedata_crew_playbook_created", self, "_on_crew_playbook_created")
+	NetworkTraffic.connect("gamedata_pc_playbook_created", self, "_on_pc_playbook_created_network")
 	#Intial Game State Setup on Joining Match
 	NetworkTraffic.connect("current_game_state_broadcast", self, "_on_current_game_state_broadcast")
 	NetworkTraffic.connect("current_game_state_requested", self, "_on_current_game_state_requested")
-
-	if not GameSaver.is_connected("save_loaded", self, "_on_save_loaded"):
-		GameSaver.connect("save_loaded", self, "_on_save_loaded")
-	if not GameSaver.is_connected("crew_loaded", self, "_on_crew_loaded"):
-		GameSaver.connect("crew_loaded", self, "_on_crew_loaded")
-	if not GameSaver.is_connected("roster_loaded", self, "_on_roster_loaded"):
-		GameSaver.connect("roster_loaded", self, "_on_roster_loaded")
 
 func load_srd_from_file(srd_file_path:String)->Dictionary:
 	var file = File.new()
@@ -150,11 +134,7 @@ func _on_current_game_state_broadcast(data, op_code:int)-> void:
 				player.load_from_json(data)
 				roster.append(player)
 		NetworkTraffic.OP_CODES.JOIN_MATCH_CREW_PLAYBOOK_RECEIVED:
-			crew_playbook = CrewPlaybook.new()
-			if data is String:
-				crew_playbook.load_from_json(data)
-			else:
-				print("error, crew playbook was incorrectly formatted to load from json")
+			print("error, crew playbook was incorrectly formatted to load from json")
 		NetworkTraffic.OP_CODES.JOIN_MATCH_CLOCKS_RECIEVED:
 			clocks = data
 		NetworkTraffic.OP_CODES.MATCH_DATA_ALL_SENT:
@@ -169,14 +149,11 @@ func package_game_state()-> Dictionary:
 	#Need to add clocks
 	var data: = {
 		"clocks" : clocks,
-		"roster" : [],
-		"crew_playbook": crew_playbook.package_as_json(),
+		"roster" : roster,
+		"crew_playbook": crew_playbook,
 		"map" : map,
 		"srd" : DEFAULT_SRD
 	}
-	for playbook in roster:
-		var playbook_json:String = playbook.package_as_json()
-		data.roster.append(playbook_json)
 	return data
 
 func request_game_state()-> void:
@@ -241,130 +218,62 @@ func _on_current_game_state_requested(_user_id:String)-> void:
 		is_sending_data = false
 
 
-#CLOCKS
-func _on_clock_resource_added(clock:NetworkedResource)-> void:
-	if not "id" in clock.data or clock.data.id == "":
-		clock.data["id"] = clock.id
-	clocks.append(clock.data)
-
-
-#SAVE GAME
+#LOAD
 func _on_save_loaded(save:SaveGame)->void:
-	Library
 	if not save.is_setup: save.setup(DEFAULT_SRD)
+
 	save_game = save
+
 	srd = save.srd if not save.srd.empty() else srd
+
+	crew_playbook = save.crew_playbook
+	var temp_lib: = Library.new()
+	temp_lib.library_name = "crew"
+	crew_playbook_resource = temp_lib.add(crew_playbook, false)
+
+	roster = save.pc_playbooks
+	for pc in roster:
+		pc_library.add(pc, false)
+
 	#Load clocks
 	clocks = save.clocks
 	clock_library.setup(clocks, true)
 	emit_signal("clocks_updated")
-	map = save.map
+
 	recently_deleted = save.recently_deleted
+
+	map = save.map
 	var locations:Dictionary = map.locations
 	location_library.setup(locations, true)
 	map_shortcuts = save.map_shortcuts
-	emit_signal("map_shortcuts_updated")
-	emit_signal("map_loaded")
+	emit_signal("map_loaded", map)
+
 	self.is_game_setup = true
 
-#SAVING FUNCTIONS
+#SAVING
 func save_game()-> void:
 	for key in map.locations.keys():
 		if map.locations[key].empty():
 			map.locations.erase(key)
 	GameSaver.save(save_game)
 
-func save_all()-> void:
-	save_game()
-	save_crew()
-	save_roster()
+#PC PLAYBOOKS
+func _on_pc_resource_added(resource:NetworkedResource)-> void:
+	#Right now the locations are calling this with add_map_note and event signals, this can be reworked now
+	pc_playbooks.append(resource.data)
 
-func save_crew()-> void:
-	GameSaver.save(crew_playbook)
+func _on_pc_resource_removed(resource:NetworkedResource)-> void:
+	pc_playbooks.erase(resource.data)
 
-func save_roster()-> void:
-	GameSaver.save(roster)
+func _on_pc_playbook_created_network(data:Dictionary)-> void:
+	roster.append(data)
 
+#CLOCKS
+func _on_clock_resource_added(clock:NetworkedResource)-> void:
+	if not "id" in clock.data or clock.data.id == "":
+		clock.data["id"] = clock.id
+	clocks.append(clock.data)
 
-#PLAYBOOKS
-func _on_pc_playbook_created(playbook:PlayerPlaybook)-> void:
-	if not playbook in roster:
-		add_pc_to_roster(playbook, false)
-
-func _on_playbook_removed(playbook:Playbook)-> void:
-	if playbook is PlayerPlaybook:
-		remove_pc_from_roster(playbook)
-	elif playbook is CrewPlaybook:
-		print("I can't unload a crew in the middle of the game yet...error")
-	else:
-		print("Playbook was base Playbook type...")
-
-func _on_crew_playbook_created(playbook:CrewPlaybook)-> void:
-	crew_playbook = playbook
-
-func _on_network_playbook_updated(playbook_id:String, playbook_type:String, playbook_field:String, updated_value)-> void:
-	if playbook_type.to_lower() == "player":
-		for playbook in roster:
-			if playbook.id == playbook_id:
-				update_pc_playbook(playbook, playbook_field, updated_value)
-
-func load_roster(playbooks:Array)-> void:
-	for playbook in playbooks:
-		if not roster.has(playbook):
-			roster.append(playbook)
-
-	for playbook in playbooks:
-		if not playbook is PlayerPlaybook: continue
-		if not playbook.is_connected("changed", self, "_on_playbook_updated"):
-			playbook.connect("changed", self, "_on_playbook_updated", [playbook])
-
-func add_pc_to_roster(playbook:PlayerPlaybook, local: = true)-> void:
-	roster.append(playbook)
-	if not playbook.is_connected("property_changed", self, "_on_playbook_property_changed"):
-		playbook.connect("property_changed", self, "_on_playbook_property_changed", [playbook])
-	if online and local:
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_PC_PLAYBOOK_CREATED, playbook.package_as_json()), "completed")
-		if result != OK:
-			print(ServerConnection.error_message)
-			print(result)
-	elif online and not local:
-		emit_signal("roster_updated")
-	GameSaver.save(playbook)
-
-func update_pc_playbook(playbook:PlayerPlaybook, field:String, value)-> void:
-	if playbook.find(field) != value:
-		playbook.save(field, value)
-
-func remove_pc_from_roster(playbook:PlayerPlaybook)-> void:
-	roster.erase(playbook)
-	GameSaver.erase(playbook)
-
-func _on_roster_loaded(playbooks:Array)-> void:
-	load_roster(playbooks)
-
-func _on_playbook_property_changed(field:String, playbook:Playbook)-> void:
-	if online:
-		var payload: = {
-		"id": playbook.id,
-		"field": field,
-		"value": playbook.find(field),
-		"type": playbook.PLAYBOOK_TYPE
-		}
-		yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_PLAYBOOK_UPDATED, payload), "completed")
-
-func _on_playbook_updated(playbook:Playbook)->void:
-	GameSaver.save(playbook)
-
-func _on_crew_loaded(crew: CrewPlaybook)-> void:
-	load_crew(crew)
-
-func load_crew(crew:CrewPlaybook)-> void:
-	if crew_playbook:
-		if crew_playbook.is_connected("changed", self, "_on_playbook_updated"):
-			crew_playbook.disconnect("changed", self, "_on_playbook_updated")
-	if not crew.is_connected("changed", self, "_on_playbook_updated"):
-		crew.connect("changed", self, "_on_playbook_updated",[crew])
-	crew_playbook = crew
 
 #MAPS
 func get_default_map()-> Dictionary:
@@ -380,7 +289,7 @@ func load_new_map(map_data)-> void:
 		change_map_to(map_data)
 	elif map_data is Dictionary:
 		map = map_data
-	emit_signal("map_loaded")
+	emit_signal("map_loaded", map)
 	save_game()
 
 func create_map(data:Dictionary, local: = true)-> void:
@@ -397,7 +306,7 @@ func create_map(data:Dictionary, local: = true)-> void:
 		map.image = image_path
 		if not save_game.maps.has(map):
 			save_game.maps.append(map)
-		emit_signal("map_loaded")
+		emit_signal("map_loaded", map)
 
 	if online and local:
 		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_MAP_CREATED, map), "completed")
@@ -418,7 +327,7 @@ func change_map_to(index:int)-> void:
 	save_game()
 	map = save_game.maps[index]
 	recently_deleted.append(location_library.clear())
-	emit_signal("map_loaded")
+	emit_signal("map_loaded", map)
 	#Send over network
 
 func _on_map_changed(index:int)-> void:
@@ -461,7 +370,6 @@ func _on_location_resource_added(resource:NetworkedResource)-> void:
 		return
 	else:
 		map.locations[pos] = resource.data
-
 
 func _on_location_resource_removed(resource:NetworkedResource)-> void:
 	var pos:Vector2 = resource.get_vec2("pos")

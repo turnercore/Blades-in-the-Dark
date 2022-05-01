@@ -5,7 +5,7 @@ const GAME_SCENE_PATH: = "res://game/Game.tscn"
 const GAME_SCENE:PackedScene = preload(GAME_SCENE_PATH)
 var DEFAULT_MAP_IMAGE: = preload("res://maps/blades_detailedmap_highres.jpg")
 var grid: TileMap
-
+var ids: = []
 
 #Helper Functions
 func propagate_set_playbook_recursive(node: Node, playbook: Playbook, starting_node: Node)-> void:
@@ -73,13 +73,13 @@ func convert_to_grid(position:Vector2)-> Vector2:
 	return converted_pos
 
 
-func str_to_vec2(string:="")->Vector2:
+func str_to_vec2(string:="(0,0)")->Vector2:
 	var formatted_str: = string.replace("(", "").replace(")", "").strip_edges()
 	var str_array: Array = formatted_str.split_floats(",")
 	var vec2:= Vector2(str_array[0], str_array[1])
 	return vec2
 
-func str_to_color(string:="")->Color:
+func str_to_color(string:="1, 1, 1, 1")->Color:
 	var split:PoolStringArray = string.split(",")
 	var r:float = float(split[0])
 	var g:float = float(split[1])
@@ -87,6 +87,7 @@ func str_to_color(string:="")->Color:
 	var a:float = float(split[3])
 	var color: = Color(r, g, b, a)
 	return color
+
 
 func propagate_set_playbook_fields_recursive(node:Node, field_template:String)-> void:
 	for child in node.get_children():
@@ -98,6 +99,15 @@ func propagate_set_playbook_fields_recursive(node:Node, field_template:String)->
 		if child.get_child_count() > 0:
 			propagate_set_playbook_fields_recursive(child, field_template)
 
+
+func propagate_set_property_recursive(node:Node, property:String, value)-> void:
+	for child in node.get_children():
+		if property in child:
+			child.set(property, value)
+		if child.get_child_count() > 0:
+			propagate_set_property_recursive(child, property, value)
+
+
 func generate_id(characters:int)-> String:
 	randomize()
 	var possible_characters: = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
@@ -105,6 +115,9 @@ func generate_id(characters:int)-> String:
 	for character in characters:
 		var rand:int = randi() % possible_characters.length()
 		id += possible_characters[rand]
+	#Prevent duplicate ids being generated (as unlikely as that is)
+	if ids.has(id):
+		id = generate_id(characters)
 	return id
 
 

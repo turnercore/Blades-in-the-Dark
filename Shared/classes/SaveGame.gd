@@ -18,6 +18,9 @@ export (Array) var maps
 export (Array) var clocks  setget _set_clocks
 export (Array) var map_shortcuts
 export (bool) var is_setup: = false
+export (Array) var pc_playbooks: = []
+export (Dictionary) var crew_playbook
+
 var recently_deleted:Array = []
 
 func setup(provided_srd_file_path: String = "")->void:

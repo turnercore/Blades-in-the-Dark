@@ -15,6 +15,7 @@ func setup(playbook:Playbook)-> void:
 	Globals.propagate_set_playbook_recursive(self, playbook, self)
 
 
+
 func _on_character_selected(character_playbook: PlayerPlaybook)-> void:
 	setup(character_playbook)
 

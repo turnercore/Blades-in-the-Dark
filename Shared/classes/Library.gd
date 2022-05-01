@@ -87,7 +87,7 @@ func remove_from_network(id:String)-> void:
 			"id": id,
 			"library": library_name
 		}
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_CREATED, data), "completed")
+		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_REMOVED, data), "completed")
 		if result != OK:
 			print("ERROR sending update over network")
 			print(ServerConnection.error_message)

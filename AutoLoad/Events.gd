@@ -82,3 +82,5 @@ signal cursor_free
 signal move_camera(pos)
 func move_camera(pos: Vector2)->void:
 	emit_signal("move_camera", pos)
+
+signal pin_dropped(pin)

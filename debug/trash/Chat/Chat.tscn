@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Chat/Chat.gd" type="Script" id=1]
-[ext_resource path="res://Chat/MessageText.gd" type="Script" id=2]
+[ext_resource path="res://debug/trash/Chat/Chat.gd" type="Script" id=1]
+[ext_resource path="res://debug/trash/Chat/MessageText.gd" type="Script" id=2]
 
 [node name="Chat" type="WindowDialog"]
 margin_left = 206.0
