@@ -2,7 +2,7 @@ extends HBoxContainer
 
 const PLAYBOOK_FIELD_TEMPLATE: = "items.%s"
 
-var playbook:Playbook setget _set_playbook
+var resource:NetworkedResource setget _set_resource
 
 onready var load_node: = $load
 onready var item_name_node: = $item_name
@@ -19,10 +19,10 @@ signal load_updated(amount)
 
 
 func _ready()-> void:
-	if playbook: setup(playbook)
+	if resource: setup(resource)
 
 
-func setup(new_playbook:Playbook)-> void:
+func setup(new_playbook:NetworkedResource)-> void:
 	for child in load_node.get_children(): child.queue_free()
 
 	var field_template: = PLAYBOOK_FIELD_TEMPLATE % item.to_lower().replace(" ", "_")
@@ -36,17 +36,17 @@ func setup(new_playbook:Playbook)-> void:
 		check_box.connect("toggled", self, "_on_load_toggled")
 		load_node.add_child(check_box)
 
-	Globals.propagate_set_playbook_recursive(self, new_playbook, self)
+	Globals.propagate_set_property_recursive(self, "resource", new_playbook)
 
 
-func _set_playbook(new_playbook:Playbook)-> void:
-	playbook = new_playbook
+func _set_resource(new_playbook:NetworkedResource)-> void:
+	resource = new_playbook
 	setup(new_playbook)
 
 
 func _set_item(value:String)-> void:
 	item = value.to_lower().replace(" ", "_")
-	setup(playbook)
+	setup(resource)
 
 
 func _set_using(value:bool)->void:

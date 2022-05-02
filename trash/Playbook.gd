@@ -1,4 +1,4 @@
-class_name Playbook
+#class_name Playbook
 extends Resource
 
 #Path to the srd_json

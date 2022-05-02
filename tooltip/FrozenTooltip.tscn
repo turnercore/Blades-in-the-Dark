@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://DetachedTooltipWindow.gd" type="Script" id=1]
+[ext_resource path="res://UI/DetachedTooltipWindow.gd" type="Script" id=1]
 
 [node name="FrozenTooltip" type="PanelContainer"]
 margin_left = 27.0

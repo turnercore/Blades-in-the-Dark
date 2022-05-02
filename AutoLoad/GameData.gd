@@ -1,7 +1,6 @@
 extends Node
 
 const DEFAULT_MAP_NOTE_ICON: = "res://Shared/Art/Icons/MapNoteIconTex.tres"
-
 const DEFAULT_NOTE: = {
 	"description": "DEFAULT INFO TEXT",
 	"location_name": "LOCATION",
@@ -10,35 +9,21 @@ const DEFAULT_NOTE: = {
 	"icon": DEFAULT_MAP_NOTE_ICON,
 	"shortcut": false
 }
-
 const DEFAULT_SRD: = "res://srd/default_srd.json"
 const CLOCK_SCENE: = preload("res://clocks/Clock.tscn")
 const MAP_NOTE_SCENE: = preload("res://maps/MapNote.tscn")
 
-#This should be updated to remove the "roster" checks and just be an Array itself
-var roster:Array = []
 var save_game = SaveGame.new()
 
 var username:String = "You" setget ,_get_username
-#The active character (for this player)
-var active_pc: PlayerPlaybook setget _set_active_pc
+
 #Store a reference to the current srd, used for looking up and displaying it in info
 var srd:= {}
-#Array of dicts with the clock data
-var clocks: = []
-#ID: NodeReferenceGroup
-var clock_nodes: = {}
-var crew_playbook: = {}
-var pc_playbooks: = []
-
-var map:Dictionary = {} setget , _get_map
-#ARRAY OF MAP NOTES a map note is a location
-var map_shortcuts:Array = []
 
 var game_state:String = "Free Play" setget _set_game_state
 
 var is_game_setup: = false setget _set_is_game_setup
-var needs_current_game_state:bool = false
+var needs_current_game_state: = false
 var online: = false
 var requesting_game_state: = false
 var is_sending_data: = false
@@ -47,9 +32,15 @@ var is_sending_data: = false
 var location_library: = Library.new()
 var clock_library: = Library.new()
 var pc_library: = Library.new()
-var crew_playbook_resource:NetworkedResource
-
-
+var crew_playbook_resource:NetworkedResource setget _set_crew_playbook_resource
+var active_pc: NetworkedResource setget _set_active_pc
+#Data that stores the underlying data in the libraries. Is shared by the save_game
+var crew_playbook: = {} setget _set_crew_playbook
+var pc_playbooks: = []
+var map:Dictionary = {} setget , _get_map
+var clocks: = [] #Array of data
+var roster:Array = []
+var map_shortcuts:Array = []
 #This is for undo stacks (later)
 var recently_deleted: = []
 
@@ -81,7 +72,6 @@ func connect_to_signals()-> void:
 	Events.connect("map_created", self, "_on_map_created")
 	Events.connect("map_changed", self, "_on_map_changed")
 	Events.connect("map_removed", self, "_on_map_removed")
-#	Events.connect("location_removed", self, "_on_map_note_removed")
 	GameSaver.connect("save_loaded", self, "_on_save_loaded")
 
 	#Nakama Server Connection
@@ -89,9 +79,6 @@ func connect_to_signals()-> void:
 	ServerConnection.connect("match_created", self, "_on_match_created")
 
 #	#NETWORK EVENTS
-#	#Location Data
-#	NetworkTraffic.connect("gamedata_location_created", self, "_on_location_created_network")
-#	NetworkTraffic.connect("gamedata_location_removed", self, "_on_map_note_removed_network")
 	#Game State data
 	NetworkTraffic.connect("gamedata_game_state_updated", self, "_on_game_state_updated")
 	#PlayerPlaybooks
@@ -130,11 +117,12 @@ func _on_current_game_state_broadcast(data, op_code:int)-> void:
 			if not data is String:
 				print("Incorrect player playbook data")
 			else:
-				var player: = PlayerPlaybook.new()
-				player.load_from_json(data)
-				roster.append(player)
+				pc_playbooks.append(pc_library.add(data))
 		NetworkTraffic.OP_CODES.JOIN_MATCH_CREW_PLAYBOOK_RECEIVED:
-			print("error, crew playbook was incorrectly formatted to load from json")
+			if not data is String:
+				print("INCORRECTLY FORMATTED CREW DATA")
+			else:
+				self.crew_playbook = data
 		NetworkTraffic.OP_CODES.JOIN_MATCH_CLOCKS_RECIEVED:
 			clocks = data
 		NetworkTraffic.OP_CODES.MATCH_DATA_ALL_SENT:
@@ -267,6 +255,19 @@ func _on_pc_resource_removed(resource:NetworkedResource)-> void:
 
 func _on_pc_playbook_created_network(data:Dictionary)-> void:
 	roster.append(data)
+
+#CREW PLAYBOOK
+func _set_crew_playbook_resource(playbook:NetworkedResource)-> void:
+	crew_playbook_resource = playbook
+	crew_playbook= playbook.data
+	save_game.crew_playbook = crew_playbook
+
+func _set_crew_playbook(data:Dictionary)-> void:
+	var playbook:NetworkedResource = NetworkedResource.new()
+	playbook.setup(data)
+	crew_playbook = data
+	save_game.crew_playbook = crew_playbook
+	crew_playbook_resource = playbook
 
 #CLOCKS
 func _on_clock_resource_added(clock:NetworkedResource)-> void:
@@ -405,10 +406,9 @@ func _on_match_created()-> void:
 	self.online = true
 	needs_current_game_state = false
 
-func _set_active_pc(playbook: PlayerPlaybook)->void:
-	active_pc = playbook
-	Events.emit_character_selected(playbook)
-
+func _set_active_pc(pc_playbook: NetworkedResource)->void:
+	active_pc = pc_playbook
+	Events.emit_character_selected(pc_playbook)
 
 func _get_username()-> String:
 	var online_username = ServerConnection.get_self_username() if online else ""

@@ -1,29 +1,29 @@
 extends Control
 
 
-export (Resource) var playbook setget _set_playbook
+var resource setget _set_resource
 
 
 func _ready() -> void:
 	Events.connect("character_selected", self, "_on_character_selected")
-	if playbook:
-		self.playbook = playbook
-	elif not playbook:
+	if resource:
+		self.resource = resource
+	elif not resource:
 		if GameData.active_pc:
-			self.playbook = GameData.active_pc
+			self.resource = GameData.active_pc
 		else:
 			visible = false
 
 
-func _on_character_selected(pc_playbook:PlayerPlaybook)->void:
+func _on_character_selected(pc_playbook:NetworkedResource)->void:
 	print("character selected !! Updating UI")
-	self.playbook = pc_playbook
+	self.resource = pc_playbook
 	visible = true
 
 
-func _set_playbook(pc_playbook:PlayerPlaybook)-> void:
-	playbook = pc_playbook
-	Globals.propagate_set_playbook_recursive(self, playbook, self)
+func _set_resource(pc_playbook:NetworkedResource)-> void:
+	resource = pc_playbook
+	Globals.propagate_set_property_recursive(self, "resource", pc_playbook)
 
 
 func _on_CharacterImage_gui_input(event: InputEvent) -> void:
@@ -42,4 +42,4 @@ func _on_PanelContainer_mouse_entered() -> void:
 
 
 func _on_PanelContainer_mouse_exited() -> void:
-	Events.emit_signal("mouse_unlocked", self) # Replace with function body.
+	Events.emit_signal("mouse_unlocked", self)

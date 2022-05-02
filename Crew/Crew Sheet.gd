@@ -1,6 +1,6 @@
 extends Container
 
-var _playbook: CrewPlaybook setget _set_crew_playbook
+var resource: NetworkedResource setget _set_crew_resource
 var crew_loaded: bool = false
 export (PackedScene) var crew_setup_sceen
 
@@ -32,9 +32,9 @@ func show_crew_setup()->void:
 	Events.emit_signal("popup", crew_setup_popup)
 
 
-func _set_crew_playbook(playbook:CrewPlaybook)-> void:
-	_playbook = playbook
-	Globals.propagate_set_playbook_recursive(self, playbook, self)
+func _set_crew_resource(playbook:NetworkedResource)-> void:
+	resource = playbook
+	Globals.propagate_set_property_recursive(self, "resource", playbook)
 
 
 func propagate_set_editable(parent: Node, editable: bool = false)->void:

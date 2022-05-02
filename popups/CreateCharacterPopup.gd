@@ -2,7 +2,7 @@ extends PopupPanel
 
 export (NodePath) onready var type_options = get_node(type_options) as OptionButton
 var pages: Array
-var new_pc_playbook: = PlayerPlaybook.new()
+var new_pc_playbook: NetworkedResource
 
 func _ready() -> void:
 	for child in $MarginContainer.get_children():
@@ -16,8 +16,6 @@ func _ready() -> void:
 		var item:String = str(type)
 		item = item.capitalize()
 		type_options.add_item(item)
-
-	Globals.propagate_set_playbook_recursive(self, new_pc_playbook, self)
 
 
 func _on_NextButton_pressed() -> void:
@@ -33,7 +31,11 @@ func _on_NextButton_pressed() -> void:
 
 func setup_playbook(type: String)-> void:
 	type = type.to_lower()
-	new_pc_playbook.setup(GameData.srd, type, true)
+	var pc_constructor: = PCConstructor.new()
+	var new_pc_data: = pc_constructor.build(type, GameData.srd)
+	new_pc_playbook = GameData.pc_library.add(new_pc_data)
+	GameData.pc_playbooks.append(new_pc_playbook.data)
+	Globals.propagate_set_property_recursive(self, "resource", new_pc_playbook)
 
 
 func _on_type_options_item_selected(index: int) -> void:
@@ -41,7 +43,6 @@ func _on_type_options_item_selected(index: int) -> void:
 
 
 func _on_FinishButton_pressed() -> void:
-	GameData.add_pc_to_roster(new_pc_playbook, true)
 	GameData.save_all()
 	Events.emit_signal("popup_finished")
 	Events.emit_signal("roster_updated")

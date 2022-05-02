@@ -2,17 +2,17 @@ class_name Field
 extends Control
 
 export (String) var FIELD_TEMPLATE:= "%s"
-var playbook:Playbook setget _set_playbook
 var id setget _set_id
+var resource:NetworkedResource
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _set_playbook(new_playbook:Playbook)-> void:
-	playbook = new_playbook
-	Globals.propagate_set_playbook_recursive(self, new_playbook, self)
+func _set_resource(value:NetworkedResource)-> void:
+	resource = value
+	Globals.propagate_set_property_recursive(self, "resource", resource)
 
 
 func _set_id(value:String)-> void:

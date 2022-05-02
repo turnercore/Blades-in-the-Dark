@@ -3,20 +3,23 @@ extends Node
 #This is being used for the new game popup
 const GAME_SCENE_PATH: = "res://game/Game.tscn"
 const GAME_SCENE:PackedScene = preload(GAME_SCENE_PATH)
+const DEFUALT_CREW_PLAYBOOK_DATA: = {
+	"id": null
+}
 var DEFAULT_MAP_IMAGE: = preload("res://maps/blades_detailedmap_highres.jpg")
 var grid: TileMap
 var ids: = []
 
 #Helper Functions
-func propagate_set_playbook_recursive(node: Node, playbook: Playbook, starting_node: Node)-> void:
-	var is_playbook_set:= false
-	if "playbook" in node and node != starting_node:
-		node.set("playbook", playbook)
-	elif "_playbook" in node and node != starting_node:
-		node.set("_playbook", playbook)
-
-	for child in node.get_children():
-		propagate_set_playbook_recursive(child, playbook, starting_node)
+#func propagate_set_playbook_recursive(node: Node, playbook: Playbook, starting_node: Node)-> void:
+#	var is_playbook_set:= false
+#	if "playbook" in node and node != starting_node:
+#		node.set("playbook", playbook)
+#	elif "_playbook" in node and node != starting_node:
+#		node.set("_playbook", playbook)
+#
+#	for child in node.get_children():
+#		propagate_set_playbook_recursive(child, playbook, starting_node)
 
 
 func list_files_in_directory(path:String)->Array:

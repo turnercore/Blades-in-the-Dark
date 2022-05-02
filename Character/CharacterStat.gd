@@ -1,6 +1,5 @@
 extends Control
 
-
 export (PackedScene) var marker_scene
 onready var stat_name_label: = $VBoxContainer/HBoxContainer/stat_name
 onready var stat_level_label: = $VBoxContainer/HBoxContainer/stat_level
@@ -9,7 +8,7 @@ onready var stat_hbox: = $VBoxContainer/HBoxContainer
 var stats: = []
 var stat_containers: = []
 onready var xp: = $VBoxContainer/HBoxContainer/xp
-var playbook: Playbook setget _set_playbook
+var resource: NetworkedResource setget _set_resource
 var level: = 0 setget _set_level
 export (String) var stat_name: = ""
 export (Array, String) var substats
@@ -20,8 +19,8 @@ func _ready() -> void:
 	name = stat_name
 	stat_name_label.text = stat_name
 	stat_name = stat_name.to_lower()
-	xp.playbook_field = "experience."+stat_name
-	stat_level_label.playbook_field = stat_name
+	xp.field = "experience."+stat_name
+	stat_level_label.field = stat_name
 	if not verticle_sort:
 		var new_hbox: = HBoxContainer.new()
 		for child in stat_container.get_children():
@@ -48,8 +47,8 @@ func setup()-> void:
 	calculate_level()
 
 
-func _set_playbook(value: Playbook)-> void:
-	playbook = value
+func _set_resource(value: NetworkedResource)-> void:
+	resource = value
 	setup()
 
 func clear_substats()-> void:
@@ -61,14 +60,14 @@ func clear_substats()-> void:
 
 
 func create_substats()-> void:
-	if not playbook: return
+	if not resource: return
 	for stat in substats:
 		var hbox: = HBoxContainer.new()
 		var stat_marker: = marker_scene.instance() as Markers
 		stat_marker.total_points = stat_max_level
 		stat_marker.label = stat
-		stat_marker.playbook = playbook
-		stat_marker.playbook_field = "stats."+ stat_name.to_lower() +"."+stat.to_lower()
+		stat_marker.resource = resource
+		stat_marker.field = "stats."+ stat_name.to_lower() +"."+stat.to_lower()
 		stats.append(stat_marker)
 		hbox.add_child(stat_marker)
 		if stat_container:
@@ -85,6 +84,7 @@ func calculate_level()-> void:
 	for stat in stats:
 		if stat.filled_points >= 1:
 			self.level += 1
+
 
 func _connect_to_signals()-> void:
 	for stat in stats:

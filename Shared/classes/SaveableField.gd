@@ -21,13 +21,13 @@ func _set_resource(value: NetworkedResource)-> void:
 	resource = value
 	if not value: return
 	resource.connect("property_changed", self, "_on_property_changed")
-	load_from_resource()
+	load_from_resource(resource)
 
 
 func _set_field(value:String)->void:
 	field = value
 	if resource:
-		load_from_resource()
+		load_from_resource(resource)
 
 
 func connect_to_self_signal()->void:
@@ -43,10 +43,11 @@ func connect_to_self_signal()->void:
 
 
 func _on_load(resource: NetworkedResource)->void:
-	load_from_resource()
+	load_from_resource(resource)
 
 
-func load_from_resource()-> void:
+func load_from_resource(load_resource:NetworkedResource)-> void:
+	resource = load_resource
 	if not resource: return
 
 	var updated_property = resource.find(field)

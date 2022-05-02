@@ -1,22 +1,17 @@
 extends HBoxContainer
 
-var playbook: Playbook setget _set_playbook
+var resource: NetworkedResource setget _set_resource
 
 signal pressed
 
 func _ready() -> void:
-	if playbook: propagate_set_playbook_recursive(self)
+	if resource: Globals.propagate_set_property_recursive(self, "resource", resource)
 
-func propagate_set_playbook_recursive(node: Node)-> void:
-	if "playbook" in node and node != self:
-		node.set("playbook", playbook)
-	for child in node.get_children():
-		propagate_set_playbook_recursive(child)
 
-func _set_playbook(value: Playbook)-> void:
-	playbook = value
-	propagate_set_playbook_recursive(self)
+func _set_resource(value: NetworkedResource)-> void:
+	resource = value
+	Globals.propagate_set_property_recursive(self, "resource", resource)
 
 
 func _on_Button_pressed() -> void:
-	GameData.active_pc = playbook
+	GameData.active_pc = resource

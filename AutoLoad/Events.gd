@@ -9,12 +9,12 @@ signal chat_message_sent(message)
 
 signal player_connected(player)
 
-signal crew_loaded(playbook)
-func emit_crew_loaded(playbook: CrewPlaybook)-> void:
+signal crew_loaded(resource)
+func emit_crew_loaded(playbook: NetworkedResource)-> void:
 	emit_signal("crew_loaded", playbook)
 
-signal character_selected(playbook)
-func emit_character_selected(playbook: Playbook)-> void:
+signal character_selected(resource)
+func emit_character_selected(playbook: NetworkedResource)-> void:
 	emit_signal("character_selected", playbook)
 
 signal mouse_locked(node)

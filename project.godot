@@ -27,12 +27,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "ChatLog",
 "language": "GDScript",
-"path": "res://debug/trash/Chat/ChatLog.gd"
+"path": "res://trash/Chat/ChatLog.gd"
 }, {
 "base": "Node",
 "class": "ChatSaver",
 "language": "GDScript",
-"path": "res://debug/trash/Chat/ChatSaver.gd"
+"path": "res://trash/Chat/ChatSaver.gd"
 }, {
 "base": "TextureButton",
 "class": "Claim",
@@ -64,10 +64,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Contact.gd"
 }, {
-"base": "Playbook",
-"class": "CrewPlaybook",
+"base": "Reference",
+"class": "CrewConstructor",
 "language": "GDScript",
-"path": "res://debug/trash/CrewPlaybook.gd"
+"path": "res://Shared/classes/CrewConstructor.gd"
 }, {
 "base": "Field",
 "class": "CrewUpgrade",
@@ -222,17 +222,12 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "NodeReference",
 "language": "GDScript",
-"path": "res://debug/trash/NodeReference.gd"
+"path": "res://trash/NodeReference.gd"
 }, {
-"base": "Resource",
-"class": "Playbook",
+"base": "Reference",
+"class": "PCConstructor",
 "language": "GDScript",
-"path": "res://debug/trash/Playbook.gd"
-}, {
-"base": "Playbook",
-"class": "PlayerPlaybook",
-"language": "GDScript",
-"path": "res://debug/trash/PlayerPlaybook.gd"
+"path": "res://Shared/classes/PCConstructor.gd"
 }, {
 "base": "Control",
 "class": "PopupScreen",
@@ -257,7 +252,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "SyncNode",
 "language": "GDScript",
-"path": "res://debug/trash/SyncNode.gd"
+"path": "res://trash/SyncNode.gd"
 } ]
 _global_script_class_icons={
 "Ability": "",
@@ -271,7 +266,7 @@ _global_script_class_icons={
 "ColorSwatch": "",
 "ConfirmationPopup": "",
 "Contact": "",
-"CrewPlaybook": "",
+"CrewConstructor": "",
 "CrewUpgrade": "",
 "Cursor": "",
 "DragableWindow": "",
@@ -303,8 +298,7 @@ _global_script_class_icons={
 "NakamaWriteStorageObject": "",
 "NetworkedResource": "",
 "NodeReference": "",
-"Playbook": "",
-"PlayerPlaybook": "",
+"PCConstructor": "",
 "PopupScreen": "",
 "SaveGame": "",
 "SaveableField": "",
@@ -331,7 +325,7 @@ NetworkTraffic="*res://AutoLoad/NetworkTraffic.gd"
 Events="*res://AutoLoad/Events.gd"
 GameData="*res://AutoLoad/GameData.gd"
 GameSaver="*res://AutoLoad/GameSaver.gd"
-Tooltip="*res://Tooltip.tscn"
+Tooltip="*res://UI/Tooltip.tscn"
 PlayerData="*res://AutoLoad/PlayerData.gd"
 
 [debug]

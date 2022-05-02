@@ -1,5 +1,5 @@
-class_name PlayerPlaybook
-extends Playbook
+#class_name PlayerPlaybook
+extends Resource
 
 var PLAYBOOK_TYPE: = "player"
 

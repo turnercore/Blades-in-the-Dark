@@ -7,10 +7,9 @@ export (NodePath) onready var faction_label = get_node(faction_label) as Label
 export(bool) var starting_claim:bool = false
 var tooltip:String
 
-var _playbook:CrewPlaybook
+var resource:NetworkedResource
 
 var restricted_paths:bool = false
-
 var is_claimed:bool = false setget _set_is_claimed
 var is_available:bool = true
 export (bool) var is_prison:bool = false
@@ -27,14 +26,16 @@ func _ready() -> void:
 	claim_label.text = claim_name
 
 
-func setup(playbook: CrewPlaybook) -> void:
-	_playbook = playbook
+func setup(playbook: NetworkedResource) -> void:
+	resource = playbook
+	var claims: Dictionary = playbook.find("claims")
+	var prison_claims:Dictionary = playbook.find("prison_claims")
 
 	if not name in playbook.claims:
 		print("can't find cell " + name + " in playbook.claims")
 		return
 
-	var cell = playbook.claims[name] if not is_prison else playbook.prison_claims[name]
+	var cell = claims[name] if not is_prison else prison_claims[name]
 	self.claim_name = cell.claim
 	self._set_connections(cell.connections)
 	self.faction = cell.faction if cell.faction else ""
@@ -153,11 +154,11 @@ func _set_is_claimed(value:bool)->void:
 	is_claimed = value
 	if pressed != is_claimed:
 		pressed = is_claimed
-	if not _playbook:
+	if not resource:
 		return
-	if name in _playbook.claims:
-		_playbook.claims[name].is_claimed = is_claimed
-		GameSaver.save_crew(_playbook)
+	var claims:Dictionary = resource.find("claims")
+	if name in resource.find("claims"):
+		claims[name].is_claimed = is_claimed
 
 
 func _on_Claim_mouse_entered() -> void:

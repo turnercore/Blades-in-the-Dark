@@ -15,9 +15,7 @@ enum OP_CODES {
 	GAMEDATA_LOCATION_UPDATED,
 	GAMEDATA_GAME_STATE_UPDATED,
 	GAMEDATA_PC_PLAYBOOK_CREATED,
-	GAMEDATA_PLAYBOOK_REMOVED,
-	GAMEDATA_PLAYBOOK_UPDATED,
-	GAMEDATA_CREW_PLAYBOOK_CREATED,
+	GAMEDATA_PC_PLAYBOOK_REMOVED,
 	ROLL_RESULT,
 	CURRENT_GAME_STATE_REQUESTED,
 	JOIN_MATCH_PLAYER_PLAYBOOK_RECIEVED,
@@ -39,8 +37,7 @@ signal gamedata_location_removed(note_data)
 signal gamedata_game_state_updated(game_state)
 signal gamedata_pc_playbook_created(playbook)
 signal gamedata_crew_playbook_created(playbook)
-signal gamedata_playbook_removed(playbook)
-signal gamedata_playbook_updated(id, type, field, value)
+signal gamedata_pc_playbook_removed(playbook)
 signal current_game_state_requested(user_id)
 signal current_game_state_broadcast(data, op_code)
 signal gamedata_recieved(data)
@@ -115,31 +112,14 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 			else:
 				emit_signal("gamedata_game_state_updated", data)
 		OP_CODES.GAMEDATA_PC_PLAYBOOK_CREATED:
-			print("trying to create a new playbook based on data")
-			if not data is String:
+			if not data is Dictionary:
 				print("incorrectly formatted data for playbook creation")
 			else:
-				var playbook:PlayerPlaybook= PlayerPlaybook.new()
-				playbook.load_from_json(data)
+				GameData.pc_playbooks.append(data)
+				var playbook = GameData.pc_library.add(data)
 				emit_signal("gamedata_pc_playbook_created", playbook)
-		OP_CODES.GAMEDATA_PLAYBOOK_REMOVED:
-			pass
-		OP_CODES.GAMEDATA_PLAYBOOK_UPDATED:
-			if not data is Dictionary or not "id" in data or not "type" in data or not "field" in data or not "value" in data:
-				print("Incorrectly formatted data sent for updating playbook")
-			else:
-				var id:String = data.id
-				var type:String = data.type
-				var field:String = data.field
-				var value = data.value
-				emit_signal("gamedata_playbook_updated", id, type, field, value)
-		OP_CODES.GAMEDATA_CREW_PLAYBOOK_CREATED:
-			if not data is String:
-				print("incorrectly formatted data for crew playbook creation")
-			else:
-				var playbook:= CrewPlaybook.new()
-				playbook.load_from_json(data)
-				emit_signal("gamedata_crew_playbook_created", playbook)
+		OP_CODES.GAMEDATA_PC_PLAYBOOK_REMOVED:
+			emit_signal("gamedata_pc_playbook_removed", data)
 		OP_CODES.CURRENT_GAME_STATE_REQUESTED:
 			if ServerConnection.is_host:
 				emit_signal("current_game_state_requested", data)

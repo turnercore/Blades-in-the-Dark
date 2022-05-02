@@ -7,22 +7,21 @@ onready var ability_description: = $VBoxContainer/AbilityDescription
 
 
 func update_playbook_field(ability_key: String)-> void:
-
 	#Set the current claim to false
-	claimed = false
-	if user_has_selected:
-		if playbook.save(playbook_field, claimed):
-			playbook.emit_signal("property_changed", playbook_field)
-			playbook.emit_changed()
+#	claimed = false
+#	if user_has_selected:
+#		if playbook.save(playbook_field, claimed):
+#			playbook.emit_signal("property_changed", playbook_field)
+#			playbook.emit_changed()
+#
+#	#Update the new claimed ability
+#	claimed = true
+#	field = "abilities."+ability_key+".claimed"
+#	if resource.find(field, "claimed"):
+#			resource.emit_signal("property_changed", playbook_field)
+#			playbook.emit_changed()
 
-	#Update the new claimed ability
-	claimed = true
-	playbook_field = "abilities."+ability_key+".claimed"
-	if playbook.save(playbook_field, claimed):
-			playbook.emit_signal("property_changed", playbook_field)
-			playbook.emit_changed()
-
-	ability_description.text = playbook.find("abilities."+ability_key+".description")
+	ability_description.text = resource.find("abilities."+ability_key+".description")
 
 
 func _on_StartingAbilityOption_item_selected(index: int) -> void:
@@ -31,17 +30,16 @@ func _on_StartingAbilityOption_item_selected(index: int) -> void:
 	user_has_selected = true
 
 
-func _set_playbook(value: Playbook)-> void:
-	if playbook:
-		playbook.disconnect("property_changed", self, "_on_property_changed")
-	playbook = value
+func _set_resource(value: NetworkedResource)-> void:
+	if resource:
+		resource.disconnect("property_changed", self, "_on_property_changed")
+	resource = value
 	if not value: return
-	playbook.connect("property_changed", self, "_on_property_changed")
+	resource.connect("property_changed", self, "_on_property_changed")
 
-	while playbook.needs_setup:
-		yield(get_tree().create_timer(0.1), "timeout")
+	var abilities:Dictionary = resource.get_property("abilities")
 
-	for ability in playbook.abilities:
+	for ability in abilities:
 		if ability == "veteran": continue
-		else: option_button.add_item(playbook.abilities[ability].name)
+		else: option_button.add_item(abilities[ability].name)
 

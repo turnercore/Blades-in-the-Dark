@@ -22,8 +22,8 @@ func get_property(property:String):
 		result = "PROPERTY NOT FOUND"
 
 	if result is String:
-		result = result
-	return str2var(result)
+		result = str2var(result)
+	return result
 
 
 func get_vec2(property:String)->Vector2:
@@ -78,11 +78,14 @@ func find(path:String):
 				result = result[property]
 			else:
 				return "Invalid path for find() property not in data| Path: " + path
-	return str2var(result)
+	if result is String:
+		result = str2var(result)
+	return result
 
 
 func update(path:String, value, update_network: = true):
-	value = str2var(value)
+	if value is String:
+		value = str2var(value)
 	var split:PoolStringArray = path.split(".")
 	if split.empty():
 		return

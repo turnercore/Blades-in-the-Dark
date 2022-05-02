@@ -20,7 +20,7 @@ func _ready() -> void:
 		return
 
 	$Label.text = label
-	load_from_playbook()
+	load_from_resource(resource)
 	var start_filled_points: = filled_points
 	for _point in range(total_points):
 		var new_point: Control = exp_point_scene.instance()
@@ -49,7 +49,7 @@ func _set_filled_points(value: int)-> void:
 	emit_signal("filled_points_changed", filled_points)
 
 
-func _on_load(playbook: Playbook)->void:
+func _on_load(new_resource: NetworkedResource)->void:
 	changes_locked = true
 	for point in points:
 		point.reset()
@@ -57,7 +57,7 @@ func _on_load(playbook: Playbook)->void:
 		points[i].load_set()
 
 	changes_locked = false
-	var updated_property = playbook.find(playbook_field)
+	var updated_property = resource.find(field)
 	if updated_property:
 		set(property, updated_property)
 	else: filled_points = 0

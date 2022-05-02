@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Shared/theme/menu.tres" type="StyleBox" id=1]
-[ext_resource path="res://MainScreenButtons.gd" type="Script" id=2]
+[ext_resource path="res://UI/MainScreenButtons.gd" type="Script" id=2]
 
 [node name="MainScreenButtons" type="Control"]
 anchor_left = 1.0

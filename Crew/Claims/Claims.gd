@@ -2,19 +2,19 @@ extends CenterContainer
 
 var crew_type
 #Code to load the database
-var _playbook:CrewPlaybook setget _set_playbook
+var resource:NetworkedResource setget _set_resource
 var prison:= false setget _set_prison
-var setup_with_playbook:CrewPlaybook
+var setup_with_playbook:NetworkedResource
 onready var standard_claim_tree: = $VBoxContainer/ClaimTree
 onready var prison_claim_tree: = $VBoxContainer/ClaimTreePrison
 
 
 func _ready() -> void:
 	Events.connect("crew_loaded", self, "_on_crew_loaded")
-	if GameData.crew_playbook: setup_claims(GameData.crew_playbook)
+	if GameData.crew_playbook_resource: setup_claims(GameData.crew_playbook_resource)
 
 
-func setup_claims(playbook: CrewPlaybook) ->void:
+func setup_claims(playbook: NetworkedResource) ->void:
 	if playbook == setup_with_playbook:
 		return
 
@@ -33,18 +33,18 @@ func setup_claims(playbook: CrewPlaybook) ->void:
 		if child.has_method("setup"): child.setup(playbook)
 
 	setup_with_playbook = playbook
-	_playbook = playbook
+	resource = playbook
 
-func _on_crew_loaded(playbook: CrewPlaybook) -> void:
+func _on_crew_loaded(playbook: NetworkedResource) -> void:
 	setup_claims(playbook)
 
 
-func _set_playbook(playbook: CrewPlaybook)-> void:
+func _set_resource(playbook: NetworkedResource)-> void:
 	setup_claims(playbook)
 
 
 func _on_RecalculateButton_pressed() -> void:
-	setup_claims(GameData.crew_playbook)
+	setup_claims(GameData.crew_playbook_resource)
 
 
 func _on_PrisonToggle_toggled(button_pressed: bool) -> void:

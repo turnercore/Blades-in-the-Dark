@@ -2,25 +2,24 @@ extends PopupScreen
 
 const defaults_json: = 'res://srd/default_srd.json'
 
-export (Resource) var _playbook setget _set_playbook
+var resource:NetworkedResource setget _set_resource
 
 
 func _ready() -> void:
-	if GameData.crew_playbook: self._playbook = GameData.crew_playbook
+	if GameData.crew_playbook_resource: self.resource = GameData.crew_playbook_resource
 	GameData.connect("crew_changed", self, "_on_crew_changed")
-#	set_process_input(false)
 
 
-func setup(crew_playbook:CrewPlaybook)-> void:
+func setup(crew_playbook:NetworkedResource)-> void:
 	if not crew_playbook: return
-	if _playbook != crew_playbook: _playbook = crew_playbook
-	Globals.propagate_set_playbook_recursive(self, crew_playbook, self)
+	if resource != crew_playbook: resource = crew_playbook
+	Globals.propagate_set_property_recursive(self, "resource", crew_playbook)
 
 
-func _on_crew_changed(crew_playbook: CrewPlaybook)-> void:
+func _on_crew_changed(crew_playbook: NetworkedResource)-> void:
 	setup(crew_playbook)
 
 
-func _set_playbook(value: CrewPlaybook)-> void:
-	_playbook = value
-	setup(_playbook)
+func _set_resource(value: NetworkedResource)-> void:
+	resource = value
+	setup(value)
