@@ -9,7 +9,7 @@ const DEFAULT_NOTE: = {
 	"icon": DEFAULT_MAP_NOTE_ICON,
 	"shortcut": false
 }
-const DEFAULT_SRD: = "res://srd/default_srd.json"
+const DEFAULT_SRD: = "res://srd/bitd_srd.json"
 const CLOCK_SCENE: = preload("res://clocks/Clock.tscn")
 const MAP_NOTE_SCENE: = preload("res://maps/MapNote.tscn")
 

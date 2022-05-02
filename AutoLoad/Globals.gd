@@ -92,6 +92,15 @@ func str_to_color(string:="1, 1, 1, 1")->Color:
 	return color
 
 
+func str2poolvec2array(points:String)-> PoolVector2Array:
+	var result: = []
+	var split:PoolStringArray = points.replace("[", "").replace("]", "").split("),")
+	for strvec2 in split:
+		strvec2 += ")"
+		result.append(str_to_vec2(strvec2))
+	return PoolVector2Array(result)
+
+
 func propagate_set_playbook_fields_recursive(node:Node, field_template:String)-> void:
 	for child in node.get_children():
 		if "playbook_field" in child:

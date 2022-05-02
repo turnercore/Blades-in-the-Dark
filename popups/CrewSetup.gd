@@ -36,8 +36,8 @@ func _on_NextButton_pressed() -> void:
 func setup_resource(type: String)-> void:
 	type = type.to_lower()
 	var crew: = CrewConstructor.new()
-	var crew_data = crew.setup(type)
-	new_playbook.setup(crew.DEFAULT_CREW_PLAYBOOK_DATA.duplicate(true))
+	var crew_data: = crew.build(type, GameData.srd)
+	new_playbook.setup(crew_data)
 
 
 func _on_type_options_item_selected(index: int) -> void:
@@ -60,4 +60,3 @@ func _on_FinishedButton_pressed() -> void:
 		get_tree().change_scene_to(Globals.GAME_SCENE)
 #		get_tree().change_scene(Globals.GAME_SCENE_PATH)
 	else: queue_free()
-

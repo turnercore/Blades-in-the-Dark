@@ -84,3 +84,4 @@ func move_camera(pos: Vector2)->void:
 	emit_signal("move_camera", pos)
 
 signal pin_dropped(pin)
+signal area_highlighted(area2D)

@@ -33,12 +33,12 @@ func get_vec2(property:String)->Vector2:
 	elif data[property] is Vector2:
 		result = data[property]
 	elif data[property] is String:
-		result = Globals.str_to_vec2(data[property])
+		result = str2var(data[property])
 	return result
 
 
 func get_color(property:String)->Color:
-	return Globals.str_to_color(data[property]) if data.has(property) else Color.black
+	return str2var(data[property]) if data.has(property) else Color.black
 
 
 func import(import_data:Dictionary, update_network: = true)-> void:

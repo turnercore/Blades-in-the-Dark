@@ -104,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Shared/FieldList.gd"
 }, {
+"base": "Area2D",
+"class": "HighlightArea",
+"language": "GDScript",
+"path": "res://maps/HighlightArea.gd"
+}, {
 "base": "Reference",
 "class": "Library",
 "language": "GDScript",
@@ -274,6 +279,7 @@ _global_script_class_icons={
 "ExceptionHandler": "",
 "Field": "",
 "FieldList": "",
+"HighlightArea": "",
 "Library": "",
 "LineEditValidate": "",
 "Map": "",

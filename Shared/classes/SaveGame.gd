@@ -1,7 +1,7 @@
 class_name SaveGame
 extends Resource
 
-const DEFAULT_SRD: = "res://srd/default_srd.json"
+const DEFAULT_SRD: = "res://srd/bitd_srd.json"
 
 var username:String
 var user_color:String

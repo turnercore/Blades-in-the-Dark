@@ -1,6 +1,6 @@
 extends Node
 
-const DEFAULT_SRD: = 'res://srd/default_srd.json'
+const DEFAULT_SRD: = 'res://srd/bitd_srd.json'
 const DEFAULT_SAVE_ID: = "default"
 
 var save_interval:float
