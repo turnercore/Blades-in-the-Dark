@@ -30,6 +30,7 @@ var is_sending_data: = false
 
 #Libraries of resources for in-game objects
 var location_library: = Library.new()
+var region_library: = Library.new()
 var clock_library: = Library.new()
 var pc_library: = Library.new()
 var crew_playbook_resource:NetworkedResource setget _set_crew_playbook_resource
@@ -112,7 +113,7 @@ func _on_current_game_state_broadcast(data, op_code:int)-> void:
 			else:
 				print("error with srd file path")
 		NetworkTraffic.OP_CODES.JOIN_MATCH_MAP_RECEIVED:
-			load_new_map(data)
+			load_map(data)
 		NetworkTraffic.OP_CODES.JOIN_MATCH_PLAYER_PLAYBOOK_RECIEVED:
 			if not data is String:
 				print("Incorrect player playbook data")
@@ -150,6 +151,7 @@ func request_game_state()-> void:
 	var result: int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.CURRENT_GAME_STATE_REQUESTED, ServerConnection.get_user_id()), "completed")
 	if result != OK:
 			print("error requesting game state")
+
 
 func _on_current_game_state_requested(_user_id:String)-> void:
 	print("game state requested from %s" % _user_id)
@@ -277,49 +279,17 @@ func _on_clock_resource_added(clock:NetworkedResource)-> void:
 
 
 #MAPS
-func get_default_map()-> Dictionary:
-	if map.empty():
-		load_srd_from_file(DEFAULT_SRD)
-		var default_srd_map:Dictionary = srd.default_maps["Duskvol"]
-		create_map(default_srd_map)
+func load_map(data:Dictionary)-> void:
+	if not "locations" in data or not "map_regions" in data: return
+	if map != data:
+		self.map = data
+		for location in data.locations:
+			location_library.add(location)
+		for region in data.map_regions:
+			region_library.add(region)
 
-	return map
-
-func load_new_map(map_data)-> void:
-	if map_data is int:
-		change_map_to(map_data)
-	elif map_data is Dictionary:
-		map = map_data
-	emit_signal("map_loaded", map)
-	save_game()
-
-func create_map(data:Dictionary, local: = true)-> void:
-	if not "image_path" in data or not "map_name" in data:
-		return
-	var image_path:String = data.image_path
-	var map_name:String = data.map_name
-
-	if "map_index" in map:
-		map = {}
-		map.map_index = data.map_index if "map_index" in data else save_game.maps.size()
-		map.locations = {}
-		map.map_name = map_name
-		map.image = image_path
-		if not save_game.maps.has(map):
-			save_game.maps.append(map)
-		emit_signal("map_loaded", map)
-
-	if online and local:
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.GAMEDATA_MAP_CREATED, map), "completed")
-		if result != OK:
-			print("ERROR sending newly created map")
-
-func _on_map_created(image_path: String, map_name: String)-> void:
-	var data: = {
-		"image_path": image_path,
-		"map_name": map_name
-	}
-	create_map(data)
+func create_map(data:Dictionary)-> void:
+	pass
 
 func change_map_to(index:int)-> void:
 	if index >= save_game.maps.size():
@@ -329,7 +299,10 @@ func change_map_to(index:int)-> void:
 	map = save_game.maps[index]
 	recently_deleted.append(location_library.clear())
 	emit_signal("map_loaded", map)
-	#Send over network
+
+
+func _on_map_created(image_path: String, map_name: String)-> void:
+	pass
 
 func _on_map_changed(index:int)-> void:
 	if index < save_game.maps.size() and index > -1:

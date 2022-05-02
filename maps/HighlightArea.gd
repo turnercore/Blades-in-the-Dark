@@ -10,6 +10,7 @@ onready var grid:TileMap = get_parent().get_parent()
 onready var collison: = $CollisionPolygon2D
 onready var light: = $Light2D
 onready var light_occluder: = $LightOccluder2D
+onready var tween: = $Tween
 var testing: = true
 
 
@@ -46,6 +47,7 @@ func _set_center(pos:Vector2)-> void:
 	center = pos
 	light.global_position = grid.map_to_world(center)
 
+
 func _on_proeprty_changed(property:String, value)-> void:
 	match property:
 		"pos":
@@ -74,3 +76,42 @@ func calculate_center()-> Vector2: #Then you're sure to win
 	var y_center = (top + bottom) / 2
 	return Vector2(x_center, y_center)
 
+func highlight_area(region:Area2D)-> void:
+	Events.emit_signal("area_highlighted", region)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	var region = self
+	if area is Cursor and not area.is_remote:
+		region.visible = true
+		var light: = region.get_node("Light2D") as Light2D
+
+		tween.interpolate_property(
+			light,
+			"shadow_color",
+			null,
+			Color(0,0,0,0.75),
+			0.25,
+			Tween.TRANS_QUAD,
+			Tween.EASE_IN_OUT
+		)
+		tween.start()
+		highlight_area(region)
+
+
+func _on_area_exited(area: Area2D) -> void:
+	var region = self
+	if area is Cursor and not area.is_remote:
+		var light: = region.get_node("Light2D") as Light2D
+		tween.interpolate_property(
+			light,
+			"shadow_color",
+			null,
+			Color(0,0,0,0),
+			0.15,
+			Tween.TRANS_QUAD,
+			Tween.EASE_IN_OUT
+		)
+		tween.start()
+		yield(tween, "tween_completed")
+		region.visible = false
