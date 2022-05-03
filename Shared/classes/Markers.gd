@@ -20,7 +20,7 @@ func _ready() -> void:
 		return
 
 	$Label.text = label
-	load_from_resource(resource)
+	if resource: load_from_resource(resource)
 	var start_filled_points: = filled_points
 	for _point in range(total_points):
 		var new_point: Control = exp_point_scene.instance()

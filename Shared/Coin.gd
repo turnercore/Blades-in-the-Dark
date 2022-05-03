@@ -1,3 +1,4 @@
+class_name Coin
 extends Control
 
 export (bool) var pressed: bool setget _set_pressed
@@ -44,5 +45,5 @@ func reset()->void:
 	pressed = false
 
 func load_set()->void:
-	anim.play("coin_added")
+	if anim: anim.play("coin_added")
 	pressed = true

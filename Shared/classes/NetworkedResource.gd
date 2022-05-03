@@ -11,7 +11,8 @@ signal deleted
 func setup(setup_data:Dictionary)-> void:
 	data = setup_data
 	self.id = setup_data.id if "id" in setup_data else ""
-	NetworkTraffic.connect("networked_resource_updated", self, "_on_networked_resource_updated")
+	if not NetworkTraffic.is_connected("networked_resource_updated", self, "_on_networked_resource_updated"):
+		NetworkTraffic.connect("networked_resource_updated", self, "_on_networked_resource_updated")
 
 
 func get_property(property:String):

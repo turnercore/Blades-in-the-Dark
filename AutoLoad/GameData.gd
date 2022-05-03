@@ -36,9 +36,14 @@ var location_library: = Library.new()
 var region_library: = Library.new()
 var clock_library: = Library.new()
 var pc_library: = Library.new()
+var contact_library: = Library.new()
+var faction_library: = Library.new()
+
 var crew_playbook_resource:NetworkedResource setget _set_crew_playbook_resource
 var active_pc: NetworkedResource setget _set_active_pc
 #Data that stores the underlying data in the libraries. Is shared by the save_game
+var contacts: = {}
+var factions: = {}
 var crew_playbook: = {} setget _set_crew_playbook
 var pc_playbooks: = []
 var map:Dictionary = {} setget _set_map , _get_map

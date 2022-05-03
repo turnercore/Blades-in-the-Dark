@@ -35,10 +35,11 @@ func build(crew_type:String, srd:Dictionary)-> Dictionary:
 		experience = 0,
 		coin = {
 			max_coin = 40,
-			available = 0
+			available = 2
 		},
 		notes = "",
-		clocks = {}
+		clocks = {},
+		interested_factions = {}
 	}
 
 	return data
