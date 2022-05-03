@@ -87,13 +87,13 @@ func add_pin(pos:Vector2, data: = {})-> void:
 		data.pos = Globals.convert_to_grid(get_global_mouse_position())
 
 	var icon: = "DEFAULT"
-	if "icon" in data:
+	if "icon" in data and data.icon:
 		icon = data.icon
 
 
 	if "pos" in data:
 		if data.pos is String:
-			pos = Globals.str_to_vec2(data.pos)
+			pos = str2var(data.pos)
 		elif data.pos is Vector2:
 			pos = data.pos
 

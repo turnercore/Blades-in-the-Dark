@@ -18,7 +18,7 @@ func setup()-> void:
 
 	for shortcut in GameData.map_shortcuts:
 		var new_shortcut = shortcut_scene.instance()
-		new_shortcut.pos = shortcut if shortcut is Vector2 else Globals.str_to_vec2(shortcut)
+		new_shortcut.pos = shortcut if shortcut is Vector2 else str2var(shortcut)
 		new_shortcut.text = str(i)
 		new_shortcut.location = GameData.location_library.search("pos", shortcut).front()
 		new_shortcut.description = new_shortcut.location.get_property("description")

@@ -77,7 +77,7 @@ func convert_to_grid(position:Vector2)-> Vector2:
 
 
 func str_to_vec2(string:="(0,0)")->Vector2:
-	var formatted_str: = string.replace("(", "").replace(")", "").strip_edges()
+	var formatted_str: = string.replace("Vector2", "").replace("(", "").replace(")", "").strip_edges()
 	var str_array: Array = formatted_str.split_floats(",")
 	var vec2:= Vector2(str_array[0], str_array[1])
 	return vec2
@@ -99,17 +99,6 @@ func str2poolvec2array(points:String)-> PoolVector2Array:
 		strvec2 += ")"
 		result.append(str_to_vec2(strvec2))
 	return PoolVector2Array(result)
-
-
-func propagate_set_playbook_fields_recursive(node:Node, field_template:String)-> void:
-	for child in node.get_children():
-		if "playbook_field" in child:
-			if "modular_playbook_field_ending" in child and child.modular_playbook_field_ending:
-				child.playbook_field = (field_template + child.modular_playbook_field_ending).trim_prefix(".")
-			else:
-				child.playbook_field = field_template
-		if child.get_child_count() > 0:
-			propagate_set_playbook_fields_recursive(child, field_template)
 
 
 func propagate_set_property_recursive(node:Node, property:String, value)-> void:

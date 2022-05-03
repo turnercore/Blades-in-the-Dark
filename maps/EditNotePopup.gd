@@ -64,7 +64,7 @@ func _set_icon(value:String)-> void:
 
 func _set_pos(value)-> void:
 	if value is String:
-		pos = Globals.str_to_vec2(value)
+		pos = str2var(value)
 	elif value is Vector2:
 		pos = value
 	location.update("pos", value)

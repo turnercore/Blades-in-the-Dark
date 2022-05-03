@@ -162,7 +162,7 @@ func _no_set(_v)->void:
 func _set_global_position(value)-> void:
 	var pos:Vector2
 	if value is String:
-		pos = Globals.str_to_vec2(value)
+		pos = str2var(value)
 	if value is Vector2:
 		pos = value
 		global_position = pos

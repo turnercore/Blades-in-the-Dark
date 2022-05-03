@@ -111,7 +111,7 @@ margin_bottom = 31.0
 align = 1
 placeholder_text = "What is your crew name?"
 script = ExtResource( 1 )
-playbook_field = "name"
+field = "name"
 
 [node name="Label3" type="Label" parent="SetupPages/CrewChoices-1"]
 margin_top = 43.0
@@ -142,7 +142,6 @@ text = "Ambitious"
 items = [ "Ambitious", null, false, 0, null, "Brutal", null, false, 1, null, "Daring", null, false, 2, null, "Honorable", null, false, 3, null, "Professional", null, false, 4, null, "Savvy", null, false, 5, null, "Subtle", null, false, 6, null, "Strange", null, false, 7, null ]
 selected = 0
 script = ExtResource( 1 )
-playbook_field = "reputation"
 
 [node name="HSeparator" type="HSeparator" parent="SetupPages/CrewChoices-1"]
 margin_top = 164.0
@@ -170,7 +169,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-playbook_field = "lair.description"
 
 [node name="lair_location" type="OptionButton" parent="SetupPages/CrewChoices-1"]
 margin_top = 252.0
@@ -180,7 +178,6 @@ text = "Lair Location"
 items = [ "Lair Location", null, false, 0, null ]
 selected = 0
 script = ExtResource( 1 )
-playbook_field = "lair.location"
 
 [node name="NextButton" type="Button" parent="SetupPages/CrewChoices-1"]
 margin_top = 453.0
@@ -219,7 +216,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-playbook_field = "hunting_grounds.location"
 
 [node name="hunting_description" type="TextEdit" parent="SetupPages/CrewChoices-2"]
 margin_top = 72.0
@@ -230,7 +226,6 @@ size_flags_vertical = 3
 text = "Describe your hunting grounds. What part of the above district is it located in? Why do you prefer it or what gives your crew an advantage here?"
 wrap_enabled = true
 script = ExtResource( 1 )
-playbook_field = "hunting_grounds.description"
 
 [node name="Label7" type="Label" parent="SetupPages/CrewChoices-2"]
 margin_top = 149.0
@@ -268,7 +263,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-playbook_field = "operation_type"
 
 [node name="NextButton" type="Button" parent="SetupPages/CrewChoices-2"]
 margin_top = 453.0
@@ -306,7 +300,6 @@ margin_bottom = 106.0
 rect_min_size = Vector2( 50, 75 )
 script = ExtResource( 3 )
 property = "claimed"
-playbook_field = "abilities"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SetupPages/CrewChoices-3/StartingAbility"]
 anchor_right = 1.0

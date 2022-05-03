@@ -77,10 +77,10 @@ func setup_maps_from_srd(new_srd:Dictionary)-> void:
 		for vec2 in locations:
 			var location = locations[vec2]
 			if vec2 is String:
-				vec2 = Globals.str_to_vec2(vec2)
+				vec2 = str2var(vec2)
 			new_map.locations[vec2] = location
 			if new_map.locations[vec2].pos is String:
-				new_map.locations[vec2].pos = Globals.str_to_vec2(new_map.locations[vec2].pos)
+				new_map.locations[vec2].pos = str2var(new_map.locations[vec2].pos)
 		maps.append(new_map)
 
 

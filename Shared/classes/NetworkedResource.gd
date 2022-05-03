@@ -33,7 +33,7 @@ func get_vec2(property:String)->Vector2:
 	elif data[property] is Vector2:
 		result = data[property]
 	elif data[property] is String:
-		result = str2var(data[property])
+		result = str2var("Vector2"+data[property])
 	return result
 
 
@@ -52,10 +52,7 @@ func import(import_data:Dictionary, update_network: = true)-> void:
 				emit_signal("property_changed", property, value)
 
 	if update_network and not updated_data.empty():
-		updated_data["id"] = id
-		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_UPDATED, updated_data), "completed")
-		if result != OK:
-				print("error sending networked data over the network")
+		send_update_over_network(updated_data)
 
 
 func find(path:String):
@@ -131,10 +128,9 @@ func update(path:String, value, update_network: = true):
 func send_update_over_network(updated_data:Dictionary)-> void:
 	if not ServerConnection.is_connected_to_server:
 		return
-
-	print("Sending networked resource update over network")
 	updated_data["id"] = self.id
-	var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_UPDATED, updated_data), "completed")
+	var str_data:String = var2str(updated_data)
+	var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_UPDATED, str_data), "completed")
 	if result != OK:
 		print("error sending networked data over the network")
 

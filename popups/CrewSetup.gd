@@ -3,7 +3,7 @@ extends Popup
 onready var pages: Array = $SetupPages.get_children()
 var active_page = 0
 var current_page: Node
-var new_playbook: = NetworkedResource.new()
+var crew_playbook: = NetworkedResource.new()
 var on_start_screen: = false
 export(NodePath) onready var type_options = get_node(type_options)
 
@@ -14,7 +14,6 @@ func _ready() -> void:
 
 	current_page = pages.front()
 	current_page.visible = true
-	Globals.propagate_set_property_recursive(self, "resource", new_playbook)
 
 	for type in GameData.srd.crew_types:
 		var item:String = str(type)
@@ -37,7 +36,8 @@ func setup_resource(type: String)-> void:
 	type = type.to_lower()
 	var crew: = CrewConstructor.new()
 	var crew_data: = crew.build(type, GameData.srd)
-	new_playbook.setup(crew_data)
+	crew_playbook.setup(crew_data)
+	Globals.propagate_set_property_recursive(self, "resource", crew_playbook)
 
 
 func _on_type_options_item_selected(index: int) -> void:
@@ -54,7 +54,7 @@ func _on_next() -> void:
 
 
 func _on_FinishedButton_pressed() -> void:
-	GameData.crew_playbook_resource = new_playbook
+	GameData.crew_playbook_resource = crew_playbook
 	Events.emit_signal("popup_finished")
 	if on_start_screen:
 		get_tree().change_scene_to(Globals.GAME_SCENE)

@@ -12,6 +12,9 @@ const DEFAULT_NOTE: = {
 const DEFAULT_SRD: = "res://srd/bitd_srd.json"
 const CLOCK_SCENE: = preload("res://clocks/Clock.tscn")
 const MAP_NOTE_SCENE: = preload("res://maps/MapNote.tscn")
+const DEFAULT_MAP_DATA: = {
+
+}
 
 var save_game = SaveGame.new()
 
@@ -38,7 +41,7 @@ var active_pc: NetworkedResource setget _set_active_pc
 #Data that stores the underlying data in the libraries. Is shared by the save_game
 var crew_playbook: = {} setget _set_crew_playbook
 var pc_playbooks: = []
-var map:Dictionary = {} setget , _get_map
+var map:Dictionary = {} setget _set_map , _get_map
 var clocks: = [] #Array of data
 var roster:Array = []
 var map_shortcuts:Array = []
@@ -67,6 +70,7 @@ func _ready() -> void:
 func connect_to_signals()-> void:
 	clock_library.connect("resource_added", self, "_on_clock_resource_added")
 	location_library.connect("resource_added", self, "_on_location_resource_added")
+	region_library.connect("resource_added", self, "_on_region_resource_added")
 	pc_library.connect("resource_added", self, "_on_pc_resource_added")
 
 	#LOCAL EVENTS
@@ -228,7 +232,6 @@ func _on_save_loaded(save:SaveGame)->void:
 	#Load clocks
 	clocks = save.clocks
 	clock_library.setup(clocks, true)
-	emit_signal("clocks_updated")
 
 	recently_deleted = save.recently_deleted
 
@@ -281,28 +284,44 @@ func _on_clock_resource_added(clock:NetworkedResource)-> void:
 #MAPS
 func load_map(data:Dictionary)-> void:
 	if not "locations" in data or not "map_regions" in data: return
+
 	if map != data:
 		self.map = data
-		for location in data.locations:
-			location_library.add(location)
-		for region in data.map_regions:
-			region_library.add(region)
+		return
+	for location in data.locations:
+		var resource:NetworkedResource = location_library.add(location)
+		if not resource.is_connected("deleted", self, "_on_location_resource_removed"):
+			resource.connect("deleted", self, "_on_location_resource_removed")
+	for region in data.map_regions:
+		var resource:NetworkedResource = region_library.add(region)
+		if not resource.is_connected("deleted", self, "_on_region_resource_removed"):
+			resource.connect("deleted", self, "_on_region_resource_removed")
+	emit_signal("map_loaded", map)
 
 func create_map(data:Dictionary)-> void:
 	pass
 
 func change_map_to(index:int)-> void:
-	if index >= save_game.maps.size():
+	if index >= save_game.maps.size() or index < 0:
 		print("index out of range")
 		return
 	save_game()
-	map = save_game.maps[index]
-	recently_deleted.append(location_library.clear())
-	emit_signal("map_loaded", map)
+	save_game.map = save_game.maps[index]
+	self.map = save_game.map
+
+
+func _set_map(new_map:Dictionary)-> void:
+	map = new_map
+	location_library.unload()
+	region_library.unload()
+	load_map(new_map)
 
 
 func _on_map_created(image_path: String, map_name: String)-> void:
-	pass
+	var data: = DEFAULT_MAP_DATA.duplicate(true)
+	data.image = image_path
+	data.name = map_name
+	create_map(data)
 
 func _on_map_changed(index:int)-> void:
 	if index < save_game.maps.size() and index > -1:
@@ -318,7 +337,7 @@ func _on_map_removed(index:int)->void:
 
 func _get_map()-> Dictionary:
 	if map.empty() and not save_game.maps.empty():
-		map = save_game.maps.front()
+		self.map = save_game.maps.front()
 		save_game._map = map
 	return map
 
@@ -353,6 +372,11 @@ func remove_map_note(pos: Vector2)-> void:
 	map.locations.erase(pos)
 	recently_deleted.append(location_library.delete(location_library.find_id("pos", pos)))
 
+func _on_region_resource_added(resource:NetworkedResource)-> void:
+	map.map_regions.append(resource.data)
+
+func _on_region_resource_removed(resource:NetworkedResource)-> void:
+	map.map_regions.erase(resource.data)
 
 #GAME STATE
 func _on_game_state_updated(value:String)-> void:

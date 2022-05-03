@@ -50,7 +50,7 @@ func _ready() -> void:
 
 func send_data_async(op_code:int, data)-> int:
 	var result:int
-	result = yield(ServerConnection.send_match_state_async(op_code, data), "completed")
+	result = yield(ServerConnection.send_match_state_async(op_code, var2str(data)), "completed")
 	return result
 
 
@@ -73,7 +73,10 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 	var data
 
 	if json_parsed_data.error == OK:
-		data = json_parsed_data.result
+		if json_parsed_data.result is String:
+			data = str2var(json_parsed_data.result)
+		else:
+			data = json_parsed_data.result
 	else:
 		print("ERROR PARSING JSON IN INCOMING MATCH STATE REQUEST")
 		print(match_state)
@@ -96,7 +99,7 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 			else:
 				emit_signal("gamedata_location_created", data)
 		OP_CODES.GAMEDATA_LOCATION_REMOVED:
-			var pos:Vector2 = Globals.str_to_vec2(data)
+			var pos:Vector2 = str2var(data)
 			if not pos or not pos is Vector2:
 				print("incorrect data for removing map location")
 			else:
@@ -146,7 +149,7 @@ func update_player_movement(data: Dictionary)-> void:
 		print("Incorrect data sent for player Movement")
 		return
 
-	var pos:Vector2 = Globals.str_to_vec2(data.pos)
+	var pos:Vector2 = str2var(data.pos)
 	var user_id:String = data.user_id
 
 	emit_signal("player_movement_recieved", user_id, pos)

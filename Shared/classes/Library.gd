@@ -8,6 +8,7 @@ var library_name:String
 
 signal resource_added(resource)
 signal resource_removed(resource)
+signal unloaded
 
 func setup(books, reset: = false)-> void:
 	if reset:
@@ -125,8 +126,12 @@ func get(id:String)-> NetworkedResource:
 		result = resources[id]
 	return result
 
+func unload()-> void:
+	resources = {}
+	emit_signal("unloaded")
 
-func clear()-> Array:
+
+func burn_down()-> Array:
 	var cleared_data:Array
 	for id in resources:
 		cleared_data.append(resources[id].delete())

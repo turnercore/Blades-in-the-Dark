@@ -79,164 +79,176 @@
     "cutter": {
       "name": "cutter",
       "description": "Cutters are good at winning fights, with violence and with intimidation. Play a Cutter if you want to get your way.",
-      "attune": null,
+      "attune": 0,
       "command": 1,
-      "consort": null,
-      "finesse": null,
-      "hunt": null,
-      "prowl": null,
+      "consort": 0,
+      "finesse": 0,
+      "hunt": 0,
+      "prowl": 0,
       "skirmish": 2,
-      "study": null,
-      "survey": null,
-      "sway": null,
-      "tinker": null,
-      "wreck": null
+      "study": 0,
+      "survey": 0,
+      "sway": 0,
+      "tinker": 0,
+      "wreck": 0
     },
     "hound": {
       "name": "hound",
       "description": "Hounds are good at tracking things down and also long-distance combat. Play a Hound if you want to choose your battles.",
-      "attune": null,
-      "command": null,
-      "consort": null,
-      "finesse": null,
+      "attune": 0,
+      "command": 0,
+      "consort": 0,
+      "finesse": 0,
       "hunt": 2,
-      "prowl": null,
-      "skirmish": null,
-      "study": null,
+      "prowl": 0,
+      "skirmish": 0,
+      "study": 0,
       "survey": 1,
-      "sway": null,
-      "tinker": null,
-      "wreck": null
+      "sway": 0,
+      "tinker": 0,
+      "wreck": 0
     },
     "leech": {
       "name": "leech",
       "description": "Leeches are good at using alchemy and wrecking stuff with sabotage. Play a Leech if you want to be creative with weird tools.",
-      "attune": null,
-      "command": null,
-      "consort": null,
-      "finesse": null,
-      "hunt": null,
-      "prowl": null,
-      "skirmish": null,
-      "study": null,
-      "survey": null,
-      "sway": null,
+      "attune": 0,
+      "command": 0,
+      "consort": 0,
+      "finesse": 0,
+      "hunt": 0,
+      "prowl": 0,
+      "skirmish": 0,
+      "study": 0,
+      "survey": 0,
+      "sway": 0,
       "tinker": 2,
       "wreck": 1
     },
     "lurk": {
       "name": "lurk",
       "description": "Lurks are good at sneaking around and breaking into places. Play a Lurk if you want to slink around in the shadows.",
-      "attune": null,
-      "command": null,
-      "consort": null,
+      "attune": 0,
+      "command": 0,
+      "consort": 0,
       "finesse": 2,
-      "hunt": null,
+      "hunt": 0,
       "prowl": 1,
-      "skirmish": null,
-      "study": null,
-      "survey": null,
-      "sway": null,
-      "tinker": null,
-      "wreck": null
+      "skirmish": 0,
+      "study": 0,
+      "survey": 0,
+      "sway": 0,
+      "tinker": 0,
+      "wreck": 0
     },
     "slide": {
       "name": "slide",
       "description": "Slides are good at social situations and subterfuge. Play a Slide if you want to manipulate and decieve people.",
-      "attune": null,
-      "command": null,
+      "attune": 0,
+      "command": 0,
       "consort": 2,
-      "finesse": null,
-      "hunt": null,
-      "prowl": null,
-      "skirmish": null,
-      "study": null,
-      "survey": null,
+      "finesse": 0,
+      "hunt": 0,
+      "prowl": 0,
+      "skirmish": 0,
+      "study": 0,
+      "survey": 0,
       "sway": 1,
-      "tinker": null,
-      "wreck": null
+      "tinker": 0,
+      "wreck": 0
     },
     "spider": {
       "name": "spider",
       "description": "Spiders are good at masterminding maneuvers. Play a Spider if you want to asist teammates and deal with other factions.",
-      "attune": null,
-      "command": null,
+      "attune": 0,
+      "command": 0,
       "consort": 2,
-      "finesse": null,
-      "hunt": null,
-      "prowl": null,
-      "skirmish": null,
+      "finesse": 0,
+      "hunt": 0,
+      "prowl": 0,
+      "skirmish": 0,
       "study": 1,
-      "survey": null,
-      "sway": null,
-      "tinker": null,
-      "wreck": null
+      "survey": 0,
+      "sway": 0,
+      "tinker": 0,
+      "wreck": 0
     },
     "whisper": {
       "name": "whisper",
       "description": "Whispers are good at magical stuff and dealing with ghosts. Play a Whisper if you want to meddle with arcane powers.",
       "attune": 2,
-      "command": null,
-      "consort": null,
-      "finesse": null,
-      "hunt": null,
-      "prowl": null,
-      "skirmish": null,
+      "command": 0,
+      "consort": 0,
+      "finesse": 0,
+      "hunt": 0,
+      "prowl": 0,
+      "skirmish": 0,
       "study": 1,
-      "survey": null,
-      "sway": null,
-      "tinker": null,
-      "wreck": null
+      "survey": 0,
+      "sway": 0,
+      "tinker": 0,
+      "wreck": 0
     }
   },
   "actions": {
     "attune": {
       "name": "attune",
-      "description": "You open your mind to the ghost field or other arcane power."
+      "description": "You open your mind to the ghost field or other arcane power.",
+      "stat": "resolve"
     },
     "command": {
       "name": "command",
-      "description": "You compel swift obedience. (Intimidate or threaten to get what you want. Lead a gang in a group action)"
+      "description": "You compel swift obedience. (Intimidate or threaten to get what you want. Lead a gang in a group action)",
+      "stat": "resolve"
     },
     "consort": {
       "name": "consort",
-      "description": "You socialize with friends and contacts. (Make a good impression, make new friends, manipulate people, gain access to resources and information)"
+      "description": "You socialize with friends and contacts. (Make a good impression, make new friends, manipulate people, gain access to resources and information)",
+      "stat": "resolve"
     },
     "finesse": {
       "name": "finesse",
-      "description": "You employ dextrous manipulation or subtle misdirection. (Pick someone's pocket, control a vehicle or mount, formally duel an opponent)"
+      "description": "You employ dextrous manipulation or subtle misdirection. (Pick someone's pocket, control a vehicle or mount, formally duel an opponent)",
+      "stat": "prowess"
     },
     "hunt": {
       "name": "hunt",
-      "description": "You carefully track a target. (Follow a target, arrange an ambush, attack with precision shooting)"
+      "description": "You carefully track a target. (Follow a target, arrange an ambush, attack with precision shooting)",
+      "stat": "insight"
     },
     "prowl": {
       "name": "prowl",
-      "description": "You traverse skillfully and quietly. (Sneak past a guard or hide in the shadows, run and leap across rooftops, attack someone from hiding)"
+      "description": "You traverse skillfully and quietly. (Sneak past a guard or hide in the shadows, run and leap across rooftops, attack someone from hiding)",
+      "stat": "prowess"
     },
     "skirmish": {
       "name": "skirmish",
-      "description": "You entangle a target in close combat so they can't easily escape. (Brawl or wrestle, hack and slash, hold a position in battle, overwhelm an enemy with force)"
+      "description": "You entangle a target in close combat so they can't easily escape. (Brawl or wrestle, hack and slash, hold a position in battle, overwhelm an enemy with force)",
+      "stat": "prowess"
     },
     "study": {
       "name": "study",
-      "description": "You Sscrutinize details and interpret evidence. (gather information from documents, newspapers, and books, do research, analyze a person to detect lies)"
+      "description": "You Sscrutinize details and interpret evidence. (gather information from documents, newspapers, and books, do research, analyze a person to detect lies)",
+      "stat": "insight"
     },
     "survey": {
       "name": "survey",
-      "description": "You observe the situation and anticipate outcomes. (Spot telltale signs of trouble before it happens, uncover opportunities, detect motifivations or intentions)"
+      "description": "You observe the situation and anticipate outcomes. (Spot telltale signs of trouble before it happens, uncover opportunities, detect motifivations or intentions)",
+      "stat": "insight"
     },
     "sway": {
       "name": "sway",
-      "description": "You influence with guile, charm, or argument. (Lie convincingly, persuade someone to do what you want, argue a compelling case, trick people)"
+      "description": "You influence with guile, charm, or argument. (Lie convincingly, persuade someone to do what you want, argue a compelling case, trick people)",
+      "stat": "resolve"
     },
     "tinker": {
       "name": "tinker",
-      "description": "You fiddle with devices and mechanisms. (Create a new gaget, alter an item, pick a lock, crack a safe, disable an alarm, turn devices around you to your advantage)"
+      "description": "You fiddle with devices and mechanisms. (Create a new gaget, alter an item, pick a lock, crack a safe, disable an alarm, turn devices around you to your advantage)",
+      "stat": "insight"
     },
     "wreck": {
       "name": "wreck",
-      "description": "You unleash savage force. (Smash down a door or wall, use an explosive, employ chaos or sabatage to create a distraction, overwhelm an enemy)"
+      "description": "You unleash savage force. (Smash down a door or wall, use an explosive, employ chaos or sabatage to create a distraction, overwhelm an enemy)",
+      "stat": "prowess"
     }
   },
   "traumas": {
@@ -5045,108 +5057,84 @@
       "notes": null
     }
   },
-  "xp_gain": {
-    "0": {
-      "id": 0,
+  "xp_gain": [
+    {
       "description": "Every time you roll a desperate action, mark xp in that action's attribute.\nAt the end of each session, for each item below, mark 1 xp (in your playbook or\nan attribute) or 2 xp if that item occurred multiple times.",
       "class": "all"
     },
-    "1": {
-      "id": 1,
+    {
       "description": "You expressed your beliefs, drives, heritage, or background.",
       "class": "all"
     },
-    "2": {
-      "id": 2,
+    {
       "description": "You struggled with issues from your vice or traumas during the session.",
       "class": "all"
     },
-    "3": {
-      "id": 3,
+    {
       "description": "You addressed a challenge with violence or coercion.",
       "class": "cutter"
     },
-    "4": {
-      "id": 4,
+    {
       "description": "You addressed a challenge with tracking or violence.",
       "class": "hound"
     },
-    "5": {
-      "id": 5,
+    {
       "description": "You addressed a challenge with knowledge or arcane power.",
       "class": "whisper"
     },
-    "6": {
-      "id": 6,
+    {
       "description": "You addressed a challenge with calculation or conspiracy.",
       "class": "spider"
     },
-    "7": {
-      "id": 7,
+    {
       "description": "You addressed a challenge with deception or influence.",
       "class": "slide"
     },
-    "8": {
-      "id": 8,
+    {
       "description": "You addressed a challenge with stealth or evasion.",
       "class": "lurk"
     },
-    "9": {
-      "id": 9,
+    {
       "description": "You addressed a challenge with technical skill or mayhem.",
       "class": "leech"
     },
-    "10": {
-      "id": 10,
+    {
       "description": "Execute a successful accident, disappearance, murder, or ransom operation.",
       "class": "assassins"
     },
-    "11": {
-      "id": 11,
+    {
       "description": "Contend with challenges above your current station.",
       "class": "all_crew"
     },
-    "12": {
-      "id": 12,
+    {
       "description": "Bolster your crew's reputation or develop a new one.",
       "class": "all_crew"
     },
-    "13": {
-      "id": 13,
+    {
       "description": "Express the goals, drives, inner conflict, or essential nature of the crew.",
       "class": "all_crew"
     },
-    "14": {
-      "id": 14,
+    {
       "description": "Execute a successful battle, extortion, sabotage, or smash & grab operation.",
       "class": "bravos"
     },
-    "15": {
-      "id": 15,
+    {
       "description": "Advance the agenda of your deity or embody its precepts in actioncu.",
       "class": "cult"
     },
-    "16": {
-      "id": 16,
+    {
       "description": "Acquire product supply, execute clandestine/covert sales, or secure new territory.",
       "class": "hawkers"
     },
-    "17": {
-      "id": 17,
+    {
       "description": "Execute a successful espionage, sabotage, or theft operation.",
       "class": "shadows"
     },
-    "18": {
-      "id": 18,
+    {
       "description": "Execute a successful smuggling or acquire new clients or contraband sources.",
       "class": "smugglers"
-    },
-    "s": {
-      "id": "s",
-      "description": null,
-      "class": null
     }
-  },
+  ],
   "factions": {
     "The Unseen": {
       "name": "The Unseen",
@@ -6179,8 +6167,8 @@
       "image": "res://maps/District Images/doskvol_brightstone.jpg"
     }
   },
-  "locations": {
-    "Vector2(-24, 92 )": {
+  "locations": [
+    {
       "pos": "Vector2(-24, 92 )",
       "location_name": "The Void Sea",
       "description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
@@ -6188,11 +6176,10 @@
       "icon": null,
       "image": null,
       "map": "Doskvol",
-      "region": null,
       "linked_map": null,
       "scene": null
     },
-    "Vector2(47, -70 )": {
+    {
       "pos": "Vector2(47, -70 )",
       "location_name": "The Lost District",
       "description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
@@ -6200,11 +6187,10 @@
       "icon": null,
       "image": null,
       "map": "Doskvol",
-      "region": null,
       "linked_map": null,
       "scene": null
     },
-    "Vector2(-4, 47 )": {
+    {
       "pos": "Vector2(-4, 47 )",
       "location_name": "Ironhook Prison",
       "description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
@@ -6212,11 +6198,10 @@
       "icon": null,
       "image": null,
       "map": "Doskvol",
-      "region": null,
       "linked_map": null,
       "scene": null
     },
-    "Vector2(37, 46 )": {
+    {
       "pos": "Vector2(37, 46 )",
       "location_name": "Gaddoc Rail Station",
       "description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
@@ -6224,11 +6209,10 @@
       "icon": "NONE",
       "image": null,
       "map": "Doskvol",
-      "region": null,
       "linked_map": null,
       "scene": null
     },
-    "Vector2(-24, 67 )": {
+    {
       "pos": "Vector2(-24, 67 )",
       "location_name": "Eeleries & Farms",
       "description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
@@ -6236,11 +6220,10 @@
       "icon": null,
       "image": null,
       "map": "Doskvol",
-      "region": null,
       "linked_map": null,
       "scene": null
     },
-    "Vector2(-51, 83 )": {
+    {
       "pos": "Vector2(-51, 83 )",
       "location_name": "Old North Port",
       "description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
@@ -6248,11 +6231,10 @@
       "icon": "NONE",
       "image": null,
       "map": "Doskvol",
-      "region": null,
       "linked_map": null,
       "scene": null
     },
-    "Vector2(-3, 92 )": {
+    {
       "pos": "Vector2(-3, 92 )",
       "location_name": "The Deathlands",
       "description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
@@ -6260,25 +6242,67 @@
       "icon": null,
       "image": null,
       "map": "Doskvol",
-      "region": null,
       "linked_map": null,
       "scene": null
     },
-    "": {
-      "pos": null,
-      "location_name": null,
-      "description": null,
+    {
+      "pos": "Vector2(95, 305)",
+      "location_name": "Coalridge Mine",
+      "description": "The site of the first permanent settlement at the river delta, the mine was originally built by the ancient Skov kingdom, who called it Doskovol - literally, \"The Skov's Coal.\" The mine still operates over 1000 years later, though demand for coal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
       "tags": null,
       "icon": null,
       "image": null,
-      "map": null,
-      "region": null,
+      "map": "Doskvol",
       "linked_map": null,
-      "scene": "6. Gaddoc Rail Station: Electro-rail trains from across the Imperium arrive here daily with goods and passengers."
+      "scene": null
+    },
+    {
+      "pos": "Vector2(294, 388)",
+      "location_name": "The Six Arms",
+      "description": "A public house named for the six lines which used to converge at The Old Rail Yard out front.",
+      "tags": null,
+      "icon": null,
+      "image": null,
+      "map": "Doskvol",
+      "linked_map": null,
+      "scene": null
+    },
+    {
+      "pos": "Vector2(318, 467)",
+      "location_name": "Brickston",
+      "description": "The most densly packed residental area in Duskwall. Brickston is a cramped jumble of multi-story brick row houses, stacked one atop the other. Many of the toughest scoundrels of the underworld hail from here, learning the harsh lessons of survival and gang life within its dark maze.",
+      "tags": null,
+      "icon": null,
+      "image": null,
+      "map": "Doskvol",
+      "linked_map": null,
+      "scene": null
+    },
+    {
+      "pos": "Vector2(216, 480)",
+      "location_name": "The Ironworks",
+      "description": "The Ironworks is a prawling collection of massive industrial workhouses. Cruel foremen drive indentured laborers around the clock to keep up with the massive production demands to replace and refit leviathan hunter ships as well as the need for goods transported out to the Imperium at large.",
+      "tags": null,
+      "icon": null,
+      "image": null,
+      "map": "Doskvol",
+      "linked_map": null,
+      "scene": null
+    },
+    {
+      "pos": "Vector2(227, 415)",
+      "location_name": "The Old Rail Yard",
+      "description": "Before Gaddoc Station was built, this industrial rail yard was a center for commerce in the city. The Old Yard now serves onlly a couple heavy cargo trains daily, with many of its old rail cars rusted in place where they were abandoned.",
+      "tags": null,
+      "icon": null,
+      "image": null,
+      "map": "Doskvol",
+      "linked_map": null,
+      "scene": null
     }
-  },
-  "map_regions": {
-    "Vector2( 232, -208 )": {
+  ],
+  "map_regions": [
+    {
       "pos": "Vector2( 232, -208 )",
       "name": "Charterhall",
       "description": "Charterhall is the site of the first major construction in the city, in the days before the cataclysm. The old wall upon which was built the first lightning barrier in the Empire still stands in partial ruin around the district. The area is now home to the civic offices of the government including the courts, licensing and taxation offices, banks, and records archives. City officals and students at Charterhall University live here, along with the captians of Imperial industry who prefer to reside within sight of their fortunes.",
@@ -6296,7 +6320,7 @@
       "occult_influence": 0,
       "notes": "The records in Charderhall can be of particular interest to criminal sorts. Take a Devil's Bargin for +1d to gather info here in exchange for 1 heat. (The Bluecoats are always watching)"
     },
-    "Vector2( 229, -463 )": {
+    {
       "pos": "Vector2( 229, -463 )",
       "name": "Brightstone",
       "description": "Brightstone is home to many of the wealthiest and most influential citizens of Doskvol. Its streets are broad and paved, under bright electric lights; its canals are sparkling and clean, with perfumed water; its houses are all of fine, pale marble blocks, rich timbers, and intricate ironworks. There are cultivated parks fed by radiant energy; lavish restaurants and cafes; jewelers, tailors, and other luxury shops. Street-side vendors are forbidden here, resulting in a serene, spacious atmosphere, punctuated by the occasional carriage or marching Bluecoat patrol.",
@@ -6314,7 +6338,7 @@
       "occult_influence": 2,
       "notes": "Most engagement rolls suffer -1d due to heavy Bluecoat patrols. Operations against the nobility in Brightstone are considered on \"hostile turf\" for the purpose fo generating heat."
     },
-    "Vector2( 238, 414 )": {
+    {
       "pos": "Vector2( 238, 414 )",
       "name": "Coalridge",
       "description": "Coalridge is home to most of the machinists, industrial laborers and factories of the city. It's cramped, soot-choked, and loud-spewing dense clouds of\rblack smoke, showers of sparks and burning cinders. The old elevated train lines that once hauled coal now carry heavy equipment and raw materials to\rand from Gaddoc Station, though many of the ancient tracks and cars have been abandoned to squatters who've converted them into makeshift homes.",
@@ -6332,5 +6356,5 @@
       "occult_influence": 0,
       "notes": "Because the factories of Coalridge operate around the clock, there's no ideal time for clandestine crim ehere, but foremen are happy to be bribed to \"take a break\" or look the other way."
     }
-  }
+  ]
 }
