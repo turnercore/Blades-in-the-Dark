@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Shared/classes/SaveableField.gd" type="Script" id=1]
 [ext_resource path="res://popups/CrewSetup.gd" type="Script" id=2]
-[ext_resource path="res://popups/StartingAbilityOption.gd" type="Script" id=3]
 [ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=4]
 [ext_resource path="res://Shared/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://popups/CrewChoices-CoinAppear.gd" type="Script" id=6]
@@ -24,6 +23,30 @@ region_wealth = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices-
 region_security = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/region_security")
 region_criminal = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer3/region_criminal_influence")
 region_occult = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer4/region_occult_influence")
+operation_type_options = NodePath("MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer/operation_type")
+hunting_ground_location_options = NodePath("MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/hunting_grounds")
+hunting_grounds_description = NodePath("MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/hunting_ground_description")
+faction_name_label = NodePath("MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer/faction_name")
+faction_description_label = NodePath("MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer/faction_description")
+starting_ability_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer/StartingAbilityOption")
+ability_description_label = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer/ability_description")
+upgrade1_label = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/starting_upgrade1")
+upgrade2_label = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/starting_upgrade2")
+upgrade3_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/starting_upgrade3_options")
+upgrade4_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/starting_upgrade4_options")
+friendly_faction_options = NodePath("MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/friendly_faction_options")
+friendly_faction_description_label = NodePath("MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/friendly_faction_description")
+angry_faction_description_label = NodePath("MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/angry_faction_description")
+angry_faction_options = NodePath("MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/angry_faction_options")
+friendly_faction_interaction_options = NodePath("MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/friendly_interaction")
+angry_faction_interaction_options = NodePath("MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/angry_interaction")
+upgrade_description_label = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/upgrade_description")
+favorite_contact_options = NodePath("MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer/starting_contact_options")
+favorite_contact_label = NodePath("MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer/contact_description")
+friendly_contact_faction_options = NodePath("MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer/friendly_contact_faction_options")
+friendly_contact_faction_description = NodePath("MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer/friendly_contact_faction_description")
+angry_contact_faction_options = NodePath("MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/angry_contact_faction_options")
+angry_contact_faction_description = NodePath("MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/angry_contact_faction_description")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -161,9 +184,9 @@ __meta__ = {
 
 [node name="type_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices"]
 margin_left = 238.0
-margin_top = 151.0
+margin_top = 47.0
 margin_right = 638.0
-margin_bottom = 182.0
+margin_bottom = 78.0
 rect_min_size = Vector2( 400, 0 )
 size_flags_horizontal = 4
 text = "Crew Type"
@@ -172,9 +195,9 @@ items = [ "Crew Type", null, true, 0, null ]
 selected = 0
 
 [node name="crew_type_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices"]
-margin_top = 198.0
+margin_top = 94.0
 margin_right = 876.0
-margin_bottom = 331.0
+margin_bottom = 227.0
 text = "This determines the scores you'll focus on, as well as your default special abilities, claims, and other game mechanics. It is not meant to be restrictive, only to guide gameplay. The core activity is the main way the crew earns coin and how they gain xp for advancement."
 autowrap = true
 __meta__ = {
@@ -273,6 +296,7 @@ size_flags_vertical = 10
 text = "Next"
 
 [node name="CrewChoices-4" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
 margin_left = 50.0
 margin_top = 40.0
 margin_right = 926.0
@@ -285,14 +309,14 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4"]
 margin_right = 876.0
-margin_bottom = 439.0
+margin_bottom = 553.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer"]
 margin_right = 876.0
-margin_bottom = 439.0
+margin_bottom = 553.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -443,28 +467,32 @@ size_flags_horizontal = 3
 autowrap = true
 
 [node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4"]
-margin_top = 451.0
+margin_top = 565.0
 margin_right = 876.0
-margin_bottom = 482.0
+margin_bottom = 596.0
 size_flags_horizontal = 5
 size_flags_vertical = 8
 text = "Next"
 
-[node name="CrewChoices-2" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+[node name="EstablishHuntingGrounds" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
 visible = false
 margin_left = 50.0
 margin_top = 40.0
 margin_right = 926.0
-margin_bottom = 720.0
-custom_constants/separation = 12
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
 
-[node name="Label6" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-2"]
-margin_right = 516.0
-margin_bottom = 21.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds"]
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 31.0
 text = "Establish your hunting grounds."
 align = 1
 autowrap = true
@@ -472,85 +500,186 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hunting_grounds" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-2"]
-margin_top = 33.0
-margin_right = 516.0
-margin_bottom = 60.0
-text = "Hunting Ground Location"
-script = ExtResource( 1 )
+[node name="hunting_ground_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 112.0
+text = "Your hunting grounds are a small part of a district, the area you normally target for your scores. "
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hunting_description" type="TextEdit" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-2"]
-margin_top = 72.0
-margin_right = 516.0
-margin_bottom = 137.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Describe your hunting grounds. What part of the above district is it located in? Why do you prefer it or what gives your crew an advantage here?"
-wrap_enabled = true
+[node name="hunting_grounds" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer"]
+margin_top = 128.0
+margin_right = 876.0
+margin_bottom = 159.0
+text = "Hunting Grounds Location"
+align = 1
+items = [ "Hunting Grounds Location", null, true, 0, null ]
+selected = 0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+field = "hunting_grounds.location"
 
-[node name="Label7" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-2"]
-margin_top = 149.0
-margin_right = 516.0
-margin_bottom = 314.0
-text = "Your hunting grounds are a small part of a district, the area you normally target for your scores. This is an area your crew knows well. 
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer"]
+margin_top = 175.0
+margin_right = 876.0
+margin_bottom = 179.0
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer"]
+margin_top = 195.0
+margin_right = 876.0
+margin_bottom = 396.0
+text = "This is an area your crew knows well. Mostly likely in the same region as your lair,but it doesn't have to be.
 When you prepare to execute an operation of your preferred type on your hunting grounds, you get +1d to any gather information rolls and a free addtional downtime activity to contribute to that operation.
 
 This will expand as you get turf."
-align = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-2"]
-margin_top = 326.0
-margin_right = 516.0
-margin_bottom = 330.0
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-2"]
-margin_top = 342.0
-margin_right = 516.0
-margin_bottom = 363.0
-text = "What is your preferred opration type?"
-align = 1
 autowrap = true
 
-[node name="operation_type" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-2"]
-margin_top = 375.0
-margin_right = 516.0
-margin_bottom = 402.0
-text = "Operation Type"
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-2"]
-margin_top = 453.0
-margin_right = 516.0
-margin_bottom = 480.0
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer"]
+margin_top = 565.0
+margin_right = 876.0
+margin_bottom = 596.0
 size_flags_vertical = 10
 text = "Next"
 
-[node name="CrewChoices-3" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+[node name="EstablishHuntingGrounds2" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
 visible = false
 margin_left = 50.0
 margin_top = 40.0
 margin_right = 926.0
-margin_bottom = 636.0
-custom_constants/separation = 12
-alignment = 1
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2"]
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 31.0
+text = "Establish your hunting grounds."
+align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label6" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_right = 516.0
-margin_bottom = 19.0
+[node name="operation_type" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 78.0
+text = "Preferred Operation Type"
+align = 1
+items = [ "Preferred Operation Type", null, true, 0, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer"]
+margin_top = 94.0
+margin_right = 876.0
+margin_bottom = 397.0
+text = "Your crew will gain xp for doing any of the above operation types. 
+When you prepare to execute an operation of your preferred type on your hunting grounds, you get +1d to any gather information rolls and a free addtional downtime activity to contribute to that operation. 
+This can help you discover an opportunity, acquire an asset you might need for the job, find an appropriate client, etc.
+
+When you acquire turf, you also expand the size and/or type of your hunting grounds."
+autowrap = true
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer"]
+margin_top = 451.0
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_vertical = 10
+text = "Next"
+
+[node name="DealWithFaction" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 50.0
+margin_top = 40.0
+margin_right = 926.0
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction"]
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 31.0
+text = "A faction already controls that area! How do you deal with them?"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 51.0
+
+[node name="faction_name" type="Label" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer"]
+margin_top = 67.0
+margin_right = 876.0
+margin_bottom = 98.0
+text = "Faction Name"
+align = 1
+
+[node name="faction_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer"]
+margin_top = 114.0
+margin_right = 876.0
+margin_bottom = 145.0
+text = "Faction Description"
+
+[node name="DealWithFactionOptions" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer"]
+margin_top = 161.0
+margin_right = 876.0
+margin_bottom = 192.0
+text = "Deal with inital faction"
+items = [ "Deal with inital faction", null, true, 0, null, "Pay them off. (Give them 1 coin in exchange for giving you room to work.", null, false, 1, null, "Pay them 2 coin as a show of respect. Gain +1 status with the faction.", null, false, 2, null, "Take it by force. Keep your money and take -1 status with the faction.", null, false, 3, null ]
+selected = 0
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer"]
+margin_top = 451.0
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_vertical = 10
+text = "Next"
+
+[node name="ChooseStartingAbility" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 50.0
+margin_top = 40.0
+margin_right = 926.0
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility"]
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label6" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 31.0
 text = "What's your crew's special ability?"
 align = 1
 autowrap = true
@@ -558,51 +687,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StartingAbility" type="Panel" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 31.0
-margin_right = 516.0
-margin_bottom = 106.0
-rect_min_size = Vector2( 50, 75 )
-script = ExtResource( 3 )
-property = "claimed"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3/StartingAbility"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StartingAbilityOption" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3/StartingAbility/VBoxContainer"]
-margin_left = 201.0
-margin_right = 314.0
-margin_bottom = 25.0
+[node name="StartingAbilityOption" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer"]
+margin_left = 303.0
+margin_top = 47.0
+margin_right = 572.0
+margin_bottom = 78.0
 hint_tooltip = "Every crew is a snowflake. What makes yours special?"
 size_flags_horizontal = 4
-text = "Crew Abilities"
+text = "Crew Starting Ability"
 align = 1
+items = [ "Crew Starting Ability", null, true, 0, null ]
+selected = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AbilityDescription" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3/StartingAbility/VBoxContainer"]
-margin_top = 29.0
-margin_right = 516.0
-margin_bottom = 75.0
+[node name="ability_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer"]
+margin_top = 94.0
+margin_right = 876.0
+margin_bottom = 270.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Description"
 autowrap = true
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 118.0
-margin_right = 516.0
-margin_bottom = 122.0
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer"]
+margin_top = 286.0
+margin_right = 876.0
+margin_bottom = 290.0
 
-[node name="Label7" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 134.0
-margin_right = 516.0
-margin_bottom = 153.0
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer"]
+margin_top = 451.0
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_vertical = 10
+text = "Next"
+
+[node name="ChooseUpgrades" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 50.0
+margin_top = 40.0
+margin_right = 926.0
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades"]
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label7" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 31.0
 text = "Choose intial crew upgrades:"
 align = 1
 autowrap = true
@@ -610,88 +748,361 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label8" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 165.0
-margin_right = 516.0
-margin_bottom = 184.0
+[node name="Label8" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 78.0
 text = "Starting upgrades:"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="initial_upgrade1" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 196.0
-margin_right = 516.0
-margin_bottom = 215.0
+[node name="starting_upgrade1" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+margin_top = 94.0
+margin_right = 876.0
+margin_bottom = 125.0
 text = "upgrade 1"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="initial_upgrade2" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 227.0
-margin_right = 516.0
-margin_bottom = 246.0
+[node name="starting_upgrade2" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+margin_top = 141.0
+margin_right = 876.0
+margin_bottom = 172.0
 text = "upgrade 2"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionButton3" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 258.0
-margin_right = 516.0
-margin_bottom = 283.0
+[node name="starting_upgrade3_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+margin_top = 188.0
+margin_right = 876.0
+margin_bottom = 219.0
 hint_tooltip = "Every crew is a snowflake. What makes yours special?"
-text = "Upgrade 3"
+text = "Starting Upgrade 1"
+items = [ "Starting Upgrade 1", null, true, 0, null ]
+selected = 0
 
-[node name="OptionButton2" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 295.0
-margin_right = 516.0
-margin_bottom = 320.0
+[node name="starting_upgrade4_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+margin_top = 235.0
+margin_right = 876.0
+margin_bottom = 266.0
 hint_tooltip = "Every crew is a snowflake. What makes yours special?"
-text = "Upgrade 4"
+text = "Starting Upgrade 2"
+items = [ "Starting Upgrade 2", null, true, 0, null ]
+selected = 0
 
-[node name="HSeparator3" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 332.0
-margin_right = 516.0
-margin_bottom = 336.0
+[node name="upgrade_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+margin_top = 282.0
+margin_right = 876.0
+margin_bottom = 313.0
+autowrap = true
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 348.0
-margin_right = 516.0
-margin_bottom = 367.0
-text = "No crew is an island. Who helped you get to where you are?"
-align = 1
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+margin_top = 329.0
+margin_right = 876.0
+margin_bottom = 333.0
 
-[node name="OptionButton4" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 379.0
-margin_right = 516.0
-margin_bottom = 404.0
-hint_tooltip = "Every crew is a snowflake. What makes yours special?"
-text = "Favorite Contact"
-
-[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 416.0
-margin_right = 516.0
-margin_bottom = 420.0
-
-[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 432.0
-margin_right = 516.0
-margin_bottom = 451.0
+[node name="UpgradesChosenButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+margin_top = 451.0
+margin_right = 876.0
+margin_bottom = 482.0
 size_flags_vertical = 10
-text = "Your crew begins at Tier 0, with a STRONG hold and 0 REP points."
+text = "Next"
+
+[node name="FriendlyUpgradeFaction" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 50.0
+margin_top = 40.0
+margin_right = 926.0
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction"]
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label9" type="Label" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 65.0
+text = "One faction helped you get an upgrade, who were they, and how did it go down? (Select a faction for more information on them)"
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FinishedButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-3"]
-margin_top = 463.0
-margin_right = 516.0
-margin_bottom = 488.0
+[node name="friendly_faction_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer"]
+margin_top = 81.0
+margin_right = 876.0
+margin_bottom = 112.0
+text = "Friendly Faction"
+items = [ "Friendly Faction", null, true, 0, null ]
+selected = 0
+
+[node name="friendly_interaction" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer"]
+margin_top = 128.0
+margin_right = 876.0
+margin_bottom = 159.0
+text = "How did you handle the situation?"
+items = [ "How did you handle the situation?", null, true, 0, null, "This faction likes you. +1 status", null, false, 1, null, "Repay their kindness with a 1 coin gift. +2 status", null, false, 2, null ]
+selected = 0
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer"]
+margin_top = 175.0
+margin_right = 876.0
+margin_bottom = 179.0
+
+[node name="friendly_faction_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer"]
+margin_top = 195.0
+margin_right = 876.0
+margin_bottom = 226.0
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer"]
+margin_top = 451.0
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_vertical = 10
+text = "Next"
+
+[node name="AngryUpgradeFaction" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+margin_left = 50.0
+margin_top = 40.0
+margin_right = 926.0
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction"]
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label10" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 65.0
+text = "One faction was screwed over when you got your upgrade. Who? (Select a faction for more information on them)"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="angry_faction_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer"]
+margin_top = 81.0
+margin_right = 876.0
+margin_bottom = 112.0
+text = "Angry Faction"
+items = [ "Angry Faction", null, true, 0, null ]
+selected = 0
+
+[node name="angry_interaction" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer"]
+margin_top = 128.0
+margin_right = 876.0
+margin_bottom = 159.0
+text = "How did you handle the situation?"
+items = [ "How did you handle the situation?", null, true, 0, null, "You screwed them over. -2 status", null, false, 1, null, "Mollify them by gifting 1 coin. -1 status instead", null, false, 2, null ]
+selected = 0
+
+[node name="angry_faction_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer"]
+margin_top = 175.0
+margin_right = 876.0
+margin_bottom = 206.0
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer"]
+margin_top = 222.0
+margin_right = 876.0
+margin_bottom = 253.0
+size_flags_vertical = 8
+text = "Next"
+
+[node name="FavoriteContact" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 50.0
+margin_top = 40.0
+margin_right = 926.0
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact"]
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 31.0
+text = "No crew is an island. Who helped you get to where you are?"
+align = 1
+
+[node name="starting_contact_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 78.0
+hint_tooltip = "Every crew is a snowflake. What makes yours special?"
+text = "Starting Contact"
+items = [ "Starting Contact", null, false, 0, null ]
+selected = 0
+
+[node name="contact_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer"]
+margin_top = 94.0
+margin_right = 876.0
+margin_bottom = 125.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer"]
+margin_top = 141.0
+margin_right = 876.0
+margin_bottom = 145.0
+
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer"]
+margin_top = 282.0
+margin_right = 876.0
+margin_bottom = 313.0
+size_flags_vertical = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer"]
+margin_top = 451.0
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_vertical = 8
+text = "Next"
+
+[node name="FriendlyContactFaction" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 50.0
+margin_top = 40.0
+margin_right = 926.0
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction"]
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 65.0
+text = "Your contact has put in some good words with you with a local faction. 
+Which one was it?"
+align = 1
+autowrap = true
+
+[node name="friendly_contact_faction_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer"]
+margin_top = 81.0
+margin_right = 876.0
+margin_bottom = 112.0
+hint_tooltip = "Every crew is a snowflake. What makes yours special?"
+text = "Choose a faction friendly to your contact"
+items = [ "Choose a faction friendly to your contact", null, true, 0, null ]
+selected = 0
+
+[node name="friendly_contact_faction_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer"]
+margin_top = 128.0
+margin_right = 876.0
+margin_bottom = 415.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer"]
+margin_top = 431.0
+margin_right = 876.0
+margin_bottom = 435.0
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer"]
+margin_top = 451.0
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_vertical = 8
+text = "Next"
+
+[node name="AngryContactFaction" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 50.0
+margin_top = 40.0
+margin_right = 926.0
+margin_bottom = 522.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction"]
+margin_right = 876.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 65.0
+text = "Your contact caused some trouble. 
+Which one was it?"
+align = 1
+autowrap = true
+
+[node name="angry_contact_faction_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
+margin_top = 81.0
+margin_right = 876.0
+margin_bottom = 112.0
+hint_tooltip = "Every crew is a snowflake. What makes yours special?"
+text = "Choose a faction friendly to your contact"
+items = [ "Choose a faction friendly to your contact", null, true, 0, null ]
+selected = 0
+
+[node name="angry_contact_faction_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
+margin_top = 128.0
+margin_right = 876.0
+margin_bottom = 159.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
+margin_top = 175.0
+margin_right = 876.0
+margin_bottom = 179.0
+
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
+margin_top = 276.0
+margin_right = 876.0
+margin_bottom = 307.0
+size_flags_vertical = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfluentialContactToggle" type="CheckButton" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
+margin_top = 383.0
+margin_right = 876.0
+margin_bottom = 415.0
+size_flags_vertical = 10
+text = "Influential Contact (+1/-1 extra status with both factions)"
+
+[node name="FinishedButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
+margin_top = 451.0
+margin_right = 876.0
+margin_bottom = 482.0
 text = "Finished"
 
 [node name="Coins" type="HBoxContainer" parent="MarginContainer"]
@@ -734,6 +1145,27 @@ size_flags_vertical = 4
 [connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/CrewChoices-1/NextButton" to="." method="_on_next"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/lair_location" to="." method="_on_lair_location_item_selected"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/NextButton" to="." method="_on_next"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/CrewChoices-2/NextButton" to="." method="_on_next"]
-[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/CrewChoices-3/StartingAbility/VBoxContainer/StartingAbilityOption" to="MarginContainer/PanelContainer/SetupPages/CrewChoices-3/StartingAbility" method="_on_StartingAbilityOption_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/CrewChoices-3/FinishedButton" to="." method="_on_FinishedButton_pressed"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/hunting_grounds" to="." method="_on_hunting_grounds_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer/operation_type" to="." method="_on_operation_type_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer/DealWithFactionOptions" to="." method="_on_DealWithFactionOptions_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer/StartingAbilityOption" to="." method="_on_StartingAbilityOption_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/starting_upgrade3_options" to="." method="_on_starting_upgrade3_options_item_selected"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/starting_upgrade4_options" to="." method="_on_starting_upgrade4_options_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/UpgradesChosenButton" to="." method="_on_UpgradesChosenButton_pressed"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/friendly_faction_options" to="." method="_on_friendly_faction_options_item_selected"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/friendly_interaction" to="." method="_on_friendly_interaction_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/angry_faction_options" to="." method="_on_angry_faction_options_item_selected"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/angry_interaction" to="." method="_on_angry_interaction_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer/starting_contact_options" to="." method="_on_starting_contact_options_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer/friendly_contact_faction_options" to="." method="_on_friendly_contact_faction_options_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/angry_contact_faction_options" to="." method="_on_angry_contact_faction_options_item_selected"]
+[connection signal="toggled" from="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/InfluentialContactToggle" to="." method="_on_InfluentialContactToggle_toggled"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/FinishedButton" to="." method="_on_FinishedButton_pressed"]

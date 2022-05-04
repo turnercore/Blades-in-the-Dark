@@ -3,7 +3,7 @@ extends SaveableField
 var user_has_selected: = false
 var claimed:bool = false
 onready var option_button: = $VBoxContainer/StartingAbilityOption
-onready var ability_description: = $VBoxContainer/AbilityDescription
+onready var ability_description: = $VBoxContainer/ability_description
 
 
 func update_playbook_field(ability_key: String)-> void:

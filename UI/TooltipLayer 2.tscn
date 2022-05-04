@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://tooltip/Tooltip.tscn" type="PackedScene" id=2]
+
+[node name="TooltipLayer" type="CanvasLayer"]
+layer = 20
+
+[node name="Tooltip" parent="." instance=ExtResource( 2 )]

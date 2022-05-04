@@ -4,49 +4,87 @@
       "name": "assassins",
       "description": "Killers for hire. They execute \"accidents,\" disappearances, murders, and ransoms.",
       "starting_upgrades": [
-        "Training: Insight",
-        "Training: Prowess"
-      ]
+        "Insight",
+        "Prowess"
+      ],
+      "operation_types": [
+        "Accident",
+        "Disappearance",
+        "Murder",
+        "Ransom"
+      ],
+      "hunting_grounds_name": null
     },
     "bravos": {
       "name": "bravos",
       "description": "Mercenaries and thugs. They execute battles, extortion, sabotage, and smash & grabs.",
       "starting_upgrades": [
-        "Training: Prowess",
-        "Cohort: Thugs"
-      ]
+        "Prowess",
+        "Thugs"
+      ],
+      "operation_types": [
+        "Battle",
+        "Extortion",
+        "Sabotage",
+        "Smash & Grab"
+      ],
+      "hunting_grounds_name": null
     },
     "cult": {
       "name": "cult",
       "description": "Acolytes of a forgotten god. They execute artifact acquisitions, auguries, consecration, and sacrifices.",
       "starting_upgrades": [
-        "Training: Resolve",
-        "Cohort: Adepts"
-      ]
+        "Resolve",
+        "Adepts"
+      ],
+      "operation_types": [
+        "Advance the Agenda of Your Deity",
+        "Embody Your Deity's Precepts in Action"
+      ],
+      "hunting_grounds_name": "sacred sites"
     },
     "hawkers": {
       "name": "hawkers",
       "description": "Vice dealers. They execute product procurement, covert sales, shows of force, and social events.",
       "starting_upgrades": [
-        "Training: Resolve",
-        "Lair: Secure"
-      ]
+        "Resolve",
+        "Secure"
+      ],
+      "operation_types": [
+        "Acquire New Product Supplies",
+        "Execute Clandestine or Covert Sales",
+        "Secure a New Sales Territory"
+      ],
+      "hunting_grounds_name": "sales territory"
     },
     "shadows": {
       "name": "shadows",
       "description": "Thieves and spies. They execute burglaries, espionage, robberies, and sabotage.",
       "starting_upgrades": [
-        "Training: Prowess",
-        "Lair: Hidden"
-      ]
+        "Prowess",
+        "Hidden"
+      ],
+      "operation_types": [
+        "Burglary",
+        "Espionage",
+        "Robbery",
+        "Sabotage"
+      ],
+      "hunting_grounds_name": null
     },
     "smugglers": {
       "name": "smugglers",
       "description": "Contraband transporters. They execute clandestine deliveries, territory control, and expeditions outside the city.",
       "starting_upgrades": [
-        "Training: Prowess",
-        "Vehicle: Boat"
-      ]
+        "Prowess",
+        "Boat"
+      ],
+      "operation_types": [
+        "Smuggling Operation",
+        "Acquire New Clients",
+        "Acquire New Contraband Sources"
+      ],
+      "hunting_grounds_name": "cargo types"
     }
   },
   "heritages": {
@@ -345,6 +383,84 @@
       "description": "A street urchin, gang memeber, young thug, or other outcast who grew up on the streets."
     }
   },
+  "xp_gain": [
+    {
+      "description": "Every time you roll a desperate action, mark xp in that action's attribute.\nAt the end of each session, for each item below, mark 1 xp (in your playbook or\nan attribute) or 2 xp if that item occurred multiple times.",
+      "class": "all"
+    },
+    {
+      "description": "You expressed your beliefs, drives, heritage, or background.",
+      "class": "all"
+    },
+    {
+      "description": "You struggled with issues from your vice or traumas during the session.",
+      "class": "all"
+    },
+    {
+      "description": "You addressed a challenge with violence or coercion.",
+      "class": "cutter"
+    },
+    {
+      "description": "You addressed a challenge with tracking or violence.",
+      "class": "hound"
+    },
+    {
+      "description": "You addressed a challenge with knowledge or arcane power.",
+      "class": "whisper"
+    },
+    {
+      "description": "You addressed a challenge with calculation or conspiracy.",
+      "class": "spider"
+    },
+    {
+      "description": "You addressed a challenge with deception or influence.",
+      "class": "slide"
+    },
+    {
+      "description": "You addressed a challenge with stealth or evasion.",
+      "class": "lurk"
+    },
+    {
+      "description": "You addressed a challenge with technical skill or mayhem.",
+      "class": "leech"
+    },
+    {
+      "description": "Execute a successful accident, disappearance, murder, or ransom operation.",
+      "class": "assassins"
+    },
+    {
+      "description": "Contend with challenges above your current station.",
+      "class": "all_crew"
+    },
+    {
+      "description": "Bolster your crew's reputation or develop a new one.",
+      "class": "all_crew"
+    },
+    {
+      "description": "Express the goals, drives, inner conflict, or essential nature of the crew.",
+      "class": "all_crew"
+    },
+    {
+      "description": "Execute a successful battle, extortion, sabotage, or smash & grab operation.",
+      "class": "bravos"
+    },
+    {
+      "description": "Advance the agenda of your deity or embody its precepts in actioncu.",
+      "class": "cult"
+    },
+    {
+      "description": "Acquire product supply, execute clandestine/covert sales, or secure new territory.",
+      "class": "hawkers"
+    },
+    {
+      "description": "Execute a successful espionage, sabotage, or theft operation.",
+      "class": "shadows"
+    },
+    {
+      "description": "Execute a successful smuggling or acquire new clients or contraband sources.",
+      "class": "smugglers"
+    }
+  ],
   "opportunities": {
     "": {
       "name": null,
@@ -1380,7 +1496,9 @@
       "description": "You have a carriage, two goats to pull it, and a stable. A second upgrade improves the carriage with armor and larger, swifter goats. Horses are very rare in Doskvol—most carriages in the city use the large Akorosian goat as their draft animal.",
       "cost": 2,
       "catagory": "vehicle",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Boat": {
@@ -1388,7 +1506,9 @@
       "description": "You have a boat, a dock on a waterway, and a small shack to store boating supplies. A second upgrade improves the boat with armor and more cargo capacity.",
       "cost": 2,
       "catagory": "vehicle",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Hidden": {
@@ -1396,7 +1516,9 @@
       "description": "Your lair has a secret location and is disguised to hide it from view. If your lair is discovered, use two downtime activities and pay coin equal to your Tier to relocate it and hide it once again.",
       "cost": 1,
       "catagory": "lair",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Quarters": {
@@ -1404,7 +1526,9 @@
       "description": "Your lair includes living quarters for the crew. Without this upgrade, each PC sleeps elsewhere, and is vulnerable when they do so.",
       "cost": 1,
       "catagory": "lair",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Secure": {
@@ -1412,7 +1536,9 @@
       "description": "Your lair has locks, alarms, and traps to thwart intruders. A second upgrade improves the defenses to include arcane measures that work against spirits. You might roll your crew’s Tier if these measures are ever put to the test, to see how well they thwart an intruder.",
       "cost": 2,
       "catagory": "lair",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Vault": {
@@ -1420,7 +1546,9 @@
       "description": "Your lair has a secure vault, increasing your storage capacity for coin to 8. A second upgrade increases your capacity to 16. A separate part of your vault can be used as a holding cell.",
       "cost": 2,
       "catagory": "lair",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Workshop": {
@@ -1428,7 +1556,9 @@
       "description": "Your lair has a workshop appointed with tools for tinkering and alchemy, as well as a small library of books, documents, and maps. You may accomplish long-term projects with these assets without leaving your lair.",
       "cost": 1,
       "catagory": "lair",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Insight": {
@@ -1436,7 +1566,9 @@
       "description": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
       "cost": 1,
       "catagory": "training",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Prowess": {
@@ -1444,7 +1576,9 @@
       "description": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
       "cost": 1,
       "catagory": "training",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Resolve": {
@@ -1452,7 +1586,9 @@
       "description": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Playbook xp). This upgrade essentially helps you advance more quickly.",
       "cost": 1,
       "catagory": "training",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Special": {
@@ -1460,7 +1596,9 @@
       "description": "If you have a Training upgrade, you earn 2 xp (instead of 1) when you train a given xp track during downtime (Insight, Prowess, Resolve, or Speical xp). This upgrade essentially helps you advance more quickly.",
       "cost": 1,
       "catagory": "training",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Mastery": {
@@ -1468,7 +1606,9 @@
       "description": "Your crew has access to master level training. You may advance your PCs’ action ratings to 4 (until you unlock this upgrade, PC action ratings are capped at 3). This costs four upgrade boxes to unlock.",
       "cost": 4,
       "catagory": "training",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Documents": {
@@ -1476,7 +1616,9 @@
       "description": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Gear": {
@@ -1484,7 +1626,9 @@
       "description": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Implements": {
@@ -1492,7 +1636,9 @@
       "description": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Supplies": {
@@ -1500,7 +1646,9 @@
       "description": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Tools": {
@@ -1508,7 +1656,9 @@
       "description": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Weapons": {
@@ -1516,7 +1666,9 @@
       "description": "Each upgrade improves the quality rating of all the PCs’ items of that type, beyond the quality established by the crew’s Tier and fine items. You can improve the quality of Documents, Gear (covers Burglary Gear and Climbing Gear), Arcane Implements, Subterfuge Supplies, Tools (covers Demolitions Tools and Tinkering Tools), and Weapons.\nSo, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear (+1), you could contend equally with a Tier II quality lock.",
       "cost": 1,
       "catagory": "quality",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     },
     "Assassin Rigging": {
@@ -1524,7 +1676,9 @@
       "description": "(2 free load of weapons or gear)",
       "cost": 1,
       "catagory": "special",
-      "class": "assassins",
+      "classes": [
+        "assassins"
+      ],
       "claimed": false
     },
     "Ironhook Contacts": {
@@ -1532,7 +1686,11 @@
       "description": "(+1 Tier in prison)",
       "cost": 1,
       "catagory": "special",
-      "class": "hawkers",
+      "classes": [
+        "assassins",
+        "hawkers",
+        "bravos"
+      ],
       "claimed": false
     },
     "Elite Skulks": {
@@ -1540,7 +1698,10 @@
       "description": null,
       "cost": 1,
       "catagory": "quality",
-      "class": "shadows",
+      "classes": [
+        "assassins",
+        "shadows"
+      ],
       "claimed": false
     },
     "Elite Thugs": {
@@ -1548,7 +1709,12 @@
       "description": null,
       "cost": 1,
       "catagory": "quality",
-      "class": "hawkers",
+      "classes": [
+        "assassins",
+        "bravos",
+        "hawkers",
+        "cult"
+      ],
       "claimed": false
     },
     "Hardened": {
@@ -1556,7 +1722,10 @@
       "description": "(+1 trauma box)",
       "cost": 3,
       "catagory": "special",
-      "class": "bravos",
+      "classes": [
+        "assassins",
+        "bravos"
+      ],
       "claimed": false
     },
     "Bravos Rigging": {
@@ -1564,15 +1733,28 @@
       "description": "(2 free load of weapons or armor)",
       "cost": 1,
       "catagory": "special",
-      "class": "bravos",
+      "classes": [
+        "bravos"
+      ],
       "claimed": false
+    },
+    "": {
+      "name": null,
+      "description": null,
+      "cost": null,
+      "catagory": null,
+      "classes": [],
+      "claimed": null
     },
     "Elite Rovers": {
       "name": "Elite Rovers",
       "description": null,
       "cost": 1,
       "catagory": "quality",
-      "class": "smugglers",
+      "classes": [
+        "bravos",
+        "smugglers"
+      ],
       "claimed": false
     },
     "Cult Rigging": {
@@ -1580,7 +1762,9 @@
       "description": "(2 free load of documents or implements)",
       "cost": 1,
       "catagory": "special",
-      "class": "cult",
+      "classes": [
+        "cult"
+      ],
       "claimed": false
     },
     "Ritual Sanctum in Lair": {
@@ -1588,7 +1772,9 @@
       "description": null,
       "cost": 1,
       "catagory": "lair",
-      "class": "cult",
+      "classes": [
+        "cult"
+      ],
       "claimed": false
     },
     "Elite Adepts": {
@@ -1596,7 +1782,9 @@
       "description": null,
       "cost": 1,
       "catagory": "quality",
-      "class": "cult",
+      "classes": [
+        "cult"
+      ],
       "claimed": false
     },
     "Ordained": {
@@ -1604,7 +1792,9 @@
       "description": "(+1 trauma box)",
       "cost": 3,
       "catagory": "special",
-      "class": "cult",
+      "classes": [
+        "cult"
+      ],
       "claimed": false
     },
     "Hawker's Rigging": {
@@ -1612,7 +1802,9 @@
       "description": "(1 carried item is concealed and has no load)",
       "cost": 1,
       "catagory": "special",
-      "class": "hawkers",
+      "classes": [
+        "hawkers"
+      ],
       "claimed": false
     },
     "Elite Rooks": {
@@ -1620,7 +1812,10 @@
       "description": null,
       "cost": 1,
       "catagory": "quality",
-      "class": "shadows",
+      "classes": [
+        "hawkers",
+        "shadows"
+      ],
       "claimed": false
     },
     "Composed": {
@@ -1628,7 +1823,9 @@
       "description": "(+1 stress box)",
       "cost": 3,
       "catagory": "special",
-      "class": "hawkers",
+      "classes": [
+        "hawkers"
+      ],
       "claimed": false
     },
     "Thief Rigging": {
@@ -1636,7 +1833,9 @@
       "description": "(2 free load of tools or gear)",
       "cost": 1,
       "catagory": "special",
-      "class": "shadows",
+      "classes": [
+        "shadows"
+      ],
       "claimed": false
     },
     "Underground Maps & Passkeys": {
@@ -1644,7 +1843,9 @@
       "description": null,
       "cost": 1,
       "catagory": "special",
-      "class": "shadows",
+      "classes": [
+        "shadows"
+      ],
       "claimed": false
     },
     "Steady": {
@@ -1652,7 +1853,9 @@
       "description": "(+1 stress box)",
       "cost": 3,
       "catagory": "special",
-      "class": "smugglers",
+      "classes": [
+        "smugglers"
+      ],
       "claimed": false
     },
     "Smuggler's Rigging": {
@@ -1660,7 +1863,9 @@
       "description": "(2 items carried are perfectly concealed)",
       "cost": 1,
       "catagory": "special",
-      "class": "smugglers",
+      "classes": [
+        "smugglers"
+      ],
       "claimed": false
     },
     "Camouflage": {
@@ -1668,15 +1873,19 @@
       "description": "(vehicles are perfectly concealed at rest)",
       "cost": 1,
       "catagory": "special",
-      "class": "smugglers",
+      "classes": [
+        "smugglers"
+      ],
       "claimed": false
     },
     "Barge": {
       "name": "Barge",
-      "description": "(+mobility for lair)",
+      "description": "Your Lair is on a barge and is mobile. +1 mobility for lair",
       "cost": 1,
       "catagory": "lair",
-      "class": "smugglers",
+      "classes": [
+        "smugglers"
+      ],
       "claimed": false
     },
     "Cohort": {
@@ -1684,7 +1893,9 @@
       "description": null,
       "cost": 2,
       "catagory": "special",
-      "class": "all",
+      "classes": [
+        "all"
+      ],
       "claimed": false
     }
   },
@@ -1692,7 +1903,7 @@
     "Trev": {
       "name": "Trev",
       "occupation": "A Gang Boss",
-      "type": [
+      "types": [
         "assassins"
       ],
       "relationship": 0,
@@ -1709,7 +1920,7 @@
     "Lydra": {
       "name": "Lydra",
       "occupation": "A Deal Broker",
-      "type": [
+      "types": [
         "hawkers"
       ],
       "relationship": 0,
@@ -1726,7 +1937,7 @@
     "Irimina": {
       "name": "Irimina",
       "occupation": "A Vicious Noble",
-      "type": [
+      "types": [
         "assassins"
       ],
       "relationship": 0,
@@ -1743,7 +1954,7 @@
     "Karlos": {
       "name": "Karlos",
       "occupation": "A Bounty Hunter",
-      "type": [
+      "types": [
         "assassins"
       ],
       "relationship": 0,
@@ -1760,7 +1971,7 @@
     "Exeter": {
       "name": "Exeter",
       "occupation": "A Spirit Warden",
-      "type": [
+      "types": [
         "assassins"
       ],
       "relationship": 0,
@@ -1777,7 +1988,7 @@
     "Sevoy": {
       "name": "Sevoy",
       "occupation": "A Merchant Lord",
-      "type": [
+      "types": [
         "assassins"
       ],
       "relationship": 0,
@@ -1794,7 +2005,7 @@
     "Meg": {
       "name": "Meg",
       "occupation": "A Pit-Fighter",
-      "type": [
+      "types": [
         "bravos"
       ],
       "relationship": 0,
@@ -1811,7 +2022,7 @@
     "Conway": {
       "name": "Conway",
       "occupation": "A Bluecoat",
-      "type": [
+      "types": [
         "bravos"
       ],
       "relationship": 0,
@@ -1828,7 +2039,7 @@
     "Keller": {
       "name": "Keller",
       "occupation": "A Blacksmith",
-      "type": [
+      "types": [
         "bravos"
       ],
       "relationship": 0,
@@ -1845,7 +2056,7 @@
     "Tomas": {
       "name": "Tomas",
       "occupation": "A Physicker",
-      "type": [
+      "types": [
         "bravos"
       ],
       "relationship": 0,
@@ -1862,7 +2073,7 @@
     "Walker": {
       "name": "Walker",
       "occupation": "A Ward Boss",
-      "type": [
+      "types": [
         "bravos"
       ],
       "relationship": 0,
@@ -1879,7 +2090,7 @@
     "Lutes": {
       "name": "Lutes",
       "occupation": "A Tavern Owner",
-      "type": [
+      "types": [
         "bravos"
       ],
       "relationship": 0,
@@ -1896,7 +2107,7 @@
     "Gagan": {
       "name": "Gagan",
       "occupation": "An Academic",
-      "type": [
+      "types": [
         "cult"
       ],
       "relationship": 0,
@@ -1913,7 +2124,7 @@
     "Adikin": {
       "name": "Adikin",
       "occupation": "An Occultist",
-      "type": [
+      "types": [
         "cult"
       ],
       "relationship": 0,
@@ -1930,7 +2141,7 @@
     "Hutchins": {
       "name": "Hutchins",
       "occupation": "An Antiquarian",
-      "type": [
+      "types": [
         "cult"
       ],
       "relationship": 0,
@@ -1947,7 +2158,7 @@
     "Moriya": {
       "name": "Moriya",
       "occupation": "A Spirit Trafficker",
-      "type": [
+      "types": [
         "cult"
       ],
       "relationship": 0,
@@ -1964,7 +2175,7 @@
     "Mateas Kline": {
       "name": "Mateas Kline",
       "occupation": "A Noble",
-      "type": [
+      "types": [
         "cult"
       ],
       "relationship": 0,
@@ -1981,7 +2192,7 @@
     "Bennett": {
       "name": "Bennett",
       "occupation": "An Astronomer",
-      "type": [
+      "types": [
         "cult"
       ],
       "relationship": 0,
@@ -1998,7 +2209,7 @@
     "Rolan Wott": {
       "name": "Rolan Wott",
       "occupation": "An influential magistrate",
-      "type": [
+      "types": [
         "notable"
       ],
       "relationship": 0,
@@ -2023,7 +2234,7 @@
     "Laroze": {
       "name": "Laroze",
       "occupation": "A Bluecoat",
-      "type": [
+      "types": [
         "shadows"
       ],
       "relationship": 0,
@@ -2040,7 +2251,7 @@
     "Hoxley": {
       "name": "Hoxley",
       "occupation": "A Smuggler",
-      "type": [
+      "types": [
         "hawkers"
       ],
       "relationship": 0,
@@ -2057,7 +2268,7 @@
     "Anya": {
       "name": "Anya",
       "occupation": "A Dillettante",
-      "type": [
+      "types": [
         "hawkers"
       ],
       "relationship": 0,
@@ -2074,7 +2285,7 @@
     "Marlo": {
       "name": "Marlo",
       "occupation": "A Gang Boss",
-      "type": [
+      "types": [
         "hawkers"
       ],
       "relationship": 0,
@@ -2091,7 +2302,7 @@
     "Dowler": {
       "name": "Dowler",
       "occupation": "An Explorer",
-      "type": [
+      "types": [
         "shadows"
       ],
       "relationship": 0,
@@ -2108,7 +2319,7 @@
     "Amancio": {
       "name": "Amancio",
       "occupation": "A Deal Broker",
-      "type": [
+      "types": [
         "shadows"
       ],
       "relationship": 0,
@@ -2125,7 +2336,7 @@
     "Fitz": {
       "name": "Fitz",
       "occupation": "A Collector",
-      "type": [
+      "types": [
         "shadows"
       ],
       "relationship": 0,
@@ -2142,7 +2353,7 @@
     "Adelaide Phroaig": {
       "name": "Adelaide Phroaig",
       "occupation": "A Noble",
-      "type": [
+      "types": [
         "shadows"
       ],
       "relationship": 0,
@@ -2159,7 +2370,7 @@
     "Rigney": {
       "name": "Rigney",
       "occupation": "A Tavern Owner",
-      "type": [
+      "types": [
         "shadows"
       ],
       "relationship": 0,
@@ -2176,7 +2387,7 @@
     "Elynn": {
       "name": "Elynn",
       "occupation": "A Dock Worker",
-      "type": [
+      "types": [
         "smugglers"
       ],
       "relationship": 0,
@@ -2193,7 +2404,7 @@
     "Rolan": {
       "name": "Rolan",
       "occupation": "A Drug Dealer",
-      "type": [
+      "types": [
         "smugglers"
       ],
       "relationship": 0,
@@ -2210,7 +2421,7 @@
     "Sera": {
       "name": "Sera",
       "occupation": "An Arms Dealer",
-      "type": [
+      "types": [
         "smugglers"
       ],
       "relationship": 0,
@@ -2227,7 +2438,7 @@
     "Nyelle": {
       "name": "Nyelle",
       "occupation": "A Spirit Trafficker",
-      "type": [
+      "types": [
         "smugglers"
       ],
       "relationship": 0,
@@ -2244,7 +2455,7 @@
     "Decker": {
       "name": "Decker",
       "occupation": "An Anarchist",
-      "type": [
+      "types": [
         "smugglers"
       ],
       "relationship": 0,
@@ -2261,7 +2472,7 @@
     "Esme": {
       "name": "Esme",
       "occupation": "A Tavern Owner",
-      "type": [
+      "types": [
         "smugglers"
       ],
       "relationship": 0,
@@ -2278,7 +2489,7 @@
     "Lord Strangford": {
       "name": "Lord Strangford",
       "occupation": "A Noble and Leviathan Hunter Captian",
-      "type": [
+      "types": [
         "notable"
       ],
       "relationship": 0,
@@ -2303,7 +2514,7 @@
     "Commander Bowmore": {
       "name": "Commander Bowmore",
       "occupation": "The Chief Officer of the Watch in Brightstone",
-      "type": [
+      "types": [
         "notable"
       ],
       "relationship": 0,
@@ -2328,7 +2539,7 @@
     "Marlane": {
       "name": "Marlane",
       "occupation": "A Puglist",
-      "type": [
+      "types": [
         "cutter"
       ],
       "relationship": 0,
@@ -2345,7 +2556,7 @@
     "Chael": {
       "name": "Chael",
       "occupation": "A Vicious Thug",
-      "type": [
+      "types": [
         "cutter"
       ],
       "relationship": 0,
@@ -2362,7 +2573,7 @@
     "Mercy": {
       "name": "Mercy",
       "occupation": "A Cold Killer",
-      "type": [
+      "types": [
         "cutter"
       ],
       "relationship": 0,
@@ -2379,7 +2590,7 @@
     "Grace": {
       "name": "Grace",
       "occupation": "An Extortionist",
-      "type": [
+      "types": [
         "cutter"
       ],
       "relationship": 0,
@@ -2396,7 +2607,7 @@
     "Sawtooth": {
       "name": "Sawtooth",
       "occupation": "A Physicker",
-      "type": [
+      "types": [
         "cutter"
       ],
       "relationship": 0,
@@ -2413,7 +2624,7 @@
     "Steiner": {
       "name": "Steiner",
       "occupation": "An Assassin",
-      "type": [
+      "types": [
         "hound"
       ],
       "relationship": 0,
@@ -2430,7 +2641,7 @@
     "Celene": {
       "name": "Celene",
       "occupation": "A Sentinel",
-      "type": [
+      "types": [
         "hound"
       ],
       "relationship": 0,
@@ -2447,7 +2658,7 @@
     "Melvir": {
       "name": "Melvir",
       "occupation": "A Physicker",
-      "type": [
+      "types": [
         "hound"
       ],
       "relationship": 0,
@@ -2464,7 +2675,7 @@
     "Veleris": {
       "name": "Veleris",
       "occupation": "A spy",
-      "type": [
+      "types": [
         "hound"
       ],
       "relationship": 0,
@@ -2481,7 +2692,7 @@
     "Casta": {
       "name": "Casta",
       "occupation": "A Bounty Hunter",
-      "type": [
+      "types": [
         "hound"
       ],
       "relationship": 0,
@@ -2498,7 +2709,7 @@
     "Stazia": {
       "name": "Stazia",
       "occupation": "An Apothecary",
-      "type": [
+      "types": [
         "leech"
       ],
       "relationship": 0,
@@ -2515,7 +2726,7 @@
     "Veldren": {
       "name": "Veldren",
       "occupation": "A Psychonaut",
-      "type": [
+      "types": [
         "leech"
       ],
       "relationship": 0,
@@ -2532,7 +2743,7 @@
     "Eckerd": {
       "name": "Eckerd",
       "occupation": "A Corpse Thief",
-      "type": [
+      "types": [
         "leech"
       ],
       "relationship": 0,
@@ -2549,7 +2760,7 @@
     "Jul": {
       "name": "Jul",
       "occupation": "A Blood Dealer",
-      "type": [
+      "types": [
         "leech"
       ],
       "relationship": 0,
@@ -2566,7 +2777,7 @@
     "Malista": {
       "name": "Malista",
       "occupation": "A Priestess",
-      "type": [
+      "types": [
         "leech"
       ],
       "relationship": 0,
@@ -2583,7 +2794,7 @@
     "Telda": {
       "name": "Telda",
       "occupation": "A Beggar",
-      "type": [
+      "types": [
         "lurk"
       ],
       "relationship": 0,
@@ -2600,7 +2811,7 @@
     "Darmot": {
       "name": "Darmot",
       "occupation": "A Bluecoat",
-      "type": [
+      "types": [
         "lurk"
       ],
       "relationship": 0,
@@ -2617,7 +2828,7 @@
     "Frake": {
       "name": "Frake",
       "occupation": "A Locksmith",
-      "type": [
+      "types": [
         "lurk"
       ],
       "relationship": 0,
@@ -2634,7 +2845,7 @@
     "Roslyn Kellis": {
       "name": "Roslyn Kellis",
       "occupation": "A Noble",
-      "type": [
+      "types": [
         "lurk"
       ],
       "relationship": 0,
@@ -2651,7 +2862,7 @@
     "Petra": {
       "name": "Petra",
       "occupation": "A City Clerk",
-      "type": [
+      "types": [
         "lurk"
       ],
       "relationship": 0,
@@ -2668,7 +2879,7 @@
     "Bryl": {
       "name": "Bryl",
       "occupation": "A Drug Dealer",
-      "type": [
+      "types": [
         "slide"
       ],
       "relationship": 0,
@@ -2685,7 +2896,7 @@
     "Bazso Baz": {
       "name": "Bazso Baz",
       "occupation": "A Gang Leader",
-      "type": [
+      "types": [
         "slide"
       ],
       "relationship": 0,
@@ -2702,7 +2913,7 @@
     "Klyra": {
       "name": "Klyra",
       "occupation": "A Tavern Owner",
-      "type": [
+      "types": [
         "slide"
       ],
       "relationship": 0,
@@ -2719,7 +2930,7 @@
     "Nyryx": {
       "name": "Nyryx",
       "occupation": "A Possessor Ghost",
-      "type": [
+      "types": [
         "whisper"
       ],
       "relationship": 0,
@@ -2736,7 +2947,7 @@
     "Harker": {
       "name": "Harker",
       "occupation": "A Jail-Bird",
-      "type": [
+      "types": [
         "slide"
       ],
       "relationship": 0,
@@ -2753,7 +2964,7 @@
     "Salia": {
       "name": "Salia",
       "occupation": "An Information Broker",
-      "type": [
+      "types": [
         "spider"
       ],
       "relationship": 0,
@@ -2770,7 +2981,7 @@
     "Augus": {
       "name": "Augus",
       "occupation": "A Master Architect",
-      "type": [
+      "types": [
         "spider"
       ],
       "relationship": 0,
@@ -2787,7 +2998,7 @@
     "Jennah": {
       "name": "Jennah",
       "occupation": "A Servant",
-      "type": [
+      "types": [
         "spider"
       ],
       "relationship": 0,
@@ -2804,7 +3015,7 @@
     "Riven": {
       "name": "Riven",
       "occupation": "A Chemist",
-      "type": [
+      "types": [
         "spider"
       ],
       "relationship": 0,
@@ -2821,7 +3032,7 @@
     "Jeren": {
       "name": "Jeren",
       "occupation": "A Bluecoat Archivist",
-      "type": [
+      "types": [
         "spider"
       ],
       "relationship": 0,
@@ -2838,7 +3049,7 @@
     "Scurlock": {
       "name": "Scurlock",
       "occupation": "A Vampire",
-      "type": [
+      "types": [
         "whisper"
       ],
       "relationship": 0,
@@ -2855,7 +3066,7 @@
     "Setarra": {
       "name": "Setarra",
       "occupation": "A Demon",
-      "type": [
+      "types": [
         "whisper"
       ],
       "relationship": 0,
@@ -2872,7 +3083,7 @@
     "Quellyn": {
       "name": "Quellyn",
       "occupation": "A Witch",
-      "type": [
+      "types": [
         "whisper"
       ],
       "relationship": 0,
@@ -2889,7 +3100,7 @@
     "Flint": {
       "name": "Flint",
       "occupation": "A Spirit Trafficker",
-      "type": [
+      "types": [
         "whisper"
       ],
       "relationship": 0,
@@ -2906,7 +3117,7 @@
     "Mother Narya": {
       "name": "Mother Narya",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Faith"
       ],
       "relationship": 0,
@@ -2925,7 +3136,7 @@
     "Ilacille": {
       "name": "Ilacille",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Faith"
       ],
       "relationship": 0,
@@ -2944,7 +3155,7 @@
     "Nelisanne": {
       "name": "Nelisanne",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Faith"
       ],
       "relationship": 0,
@@ -2963,7 +3174,7 @@
     "Lord Penderyn": {
       "name": "Lord Penderyn",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Faith"
       ],
       "relationship": 0,
@@ -2982,7 +3193,7 @@
     "Spogg": {
       "name": "Spogg",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Gambling"
       ],
       "relationship": 0,
@@ -3001,7 +3212,7 @@
     "Grist": {
       "name": "Grist",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Gambling"
       ],
       "relationship": 0,
@@ -3020,7 +3231,7 @@
     "Helene": {
       "name": "Helene",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Pleasure",
         "Stupor"
       ],
@@ -3040,7 +3251,7 @@
     "Master Vreen": {
       "name": "Master Vreen",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Gambling"
       ],
       "relationship": 0,
@@ -3059,7 +3270,7 @@
     "Lady Dusk": {
       "name": "Lady Dusk",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Gambling"
       ],
       "relationship": 0,
@@ -3078,7 +3289,7 @@
     "Sergeant Velk": {
       "name": "Sergeant Velk",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Gambling"
       ],
       "relationship": 0,
@@ -3097,7 +3308,7 @@
     "Singer": {
       "name": "Singer",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Luxury",
         "Pleasure"
       ],
@@ -3117,7 +3328,7 @@
     "Harvale Brogan": {
       "name": "Harvale Brogan",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Luxury",
         "Pleasure"
       ],
@@ -3137,7 +3348,7 @@
     "Traven": {
       "name": "Traven",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Pleasure",
         "Stupor"
       ],
@@ -3157,7 +3368,7 @@
     "Dunrige & Son": {
       "name": "Dunrige & Son",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Luxury",
         "Pleasure"
       ],
@@ -3177,7 +3388,7 @@
     "Chef Roselle": {
       "name": "Chef Roselle",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Luxury",
         "Pleasure"
       ],
@@ -3197,7 +3408,7 @@
     "Maestro Helleren": {
       "name": "Maestro Helleren",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Luxury",
         "Pleasure"
       ],
@@ -3217,7 +3428,7 @@
     "Family Members (heritage) or Former Co-Workers (background)": {
       "name": "Family Members (heritage) or Former Co-Workers (background)",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Obligation"
       ],
       "relationship": 0,
@@ -3236,7 +3447,7 @@
     "Hutton, Skovlander Refugees/Revolutionaries": {
       "name": "Hutton, Skovlander Refugees/Revolutionaries",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Obligation"
       ],
       "relationship": 0,
@@ -3255,7 +3466,7 @@
     "The Circle of Flame": {
       "name": "The Circle of Flame",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Obligation"
       ],
       "relationship": 0,
@@ -3274,7 +3485,7 @@
     "Mardin Gull": {
       "name": "Mardin Gull",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Pleasure",
         "Stupor"
       ],
@@ -3294,7 +3505,7 @@
     "Pux Bolin": {
       "name": "Pux Bolin",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Pleasure",
         "Stupor"
       ],
@@ -3314,7 +3525,7 @@
     "Lady Freyla": {
       "name": "Lady Freyla",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Pleasure",
         "Stupor"
       ],
@@ -3334,7 +3545,7 @@
     "Avrick": {
       "name": "Avrick",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Pleasure",
         "Stupor"
       ],
@@ -3354,7 +3565,7 @@
     "Rolan Volaris": {
       "name": "Rolan Volaris",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Pleasure",
         "Stupor"
       ],
@@ -3374,7 +3585,7 @@
     "Madame Tesslyn": {
       "name": "Madame Tesslyn",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Pleasure",
         "Stupor"
       ],
@@ -3394,7 +3605,7 @@
     "Eldrin Prichard": {
       "name": "Eldrin Prichard",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Pleasure",
         "Stupor"
       ],
@@ -3414,7 +3625,7 @@
     "Jewel, Bird, and Shine": {
       "name": "Jewel, Bird, and Shine",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Pleasure",
         "Stupor"
       ],
@@ -3434,7 +3645,7 @@
     "The Hooded Proprietor": {
       "name": "The Hooded Proprietor",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Weird"
       ],
       "relationship": 0,
@@ -3453,7 +3664,7 @@
     "Father Yoren": {
       "name": "Father Yoren",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Weird"
       ],
       "relationship": 0,
@@ -3472,7 +3683,7 @@
     "\"Salia\"": {
       "name": "\"Salia\"",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Weird"
       ],
       "relationship": 0,
@@ -3491,7 +3702,7 @@
     "Sister Thorn": {
       "name": "Sister Thorn",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Weird"
       ],
       "relationship": 0,
@@ -3510,7 +3721,7 @@
     "Ojak": {
       "name": "Ojak",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Weird"
       ],
       "relationship": 0,
@@ -3529,7 +3740,7 @@
     "Aranna the Blessed, Cultist of a Forgotten God": {
       "name": "Aranna the Blessed, Cultist of a Forgotten God",
       "occupation": "Vice Purveyor",
-      "type": [
+      "types": [
         "Weird"
       ],
       "relationship": 0,
@@ -3548,7 +3759,7 @@
     "Tarvul": {
       "name": "Tarvul",
       "occupation": "Leader of The Billhooks",
-      "type": [
+      "types": [
         "faction"
       ],
       "relationship": 0,
@@ -3577,7 +3788,7 @@
     "Erin": {
       "name": "Erin",
       "occupation": "Captain of The Billhooks",
-      "type": [
+      "types": [
         "faction"
       ],
       "relationship": 0,
@@ -3605,7 +3816,7 @@
     "Coran": {
       "name": "Coran",
       "occupation": "Thug of The Billhooks",
-      "type": [
+      "types": [
         "faction"
       ],
       "relationship": 0,
@@ -3633,7 +3844,7 @@
     "Hopper": {
       "name": "Hopper",
       "occupation": "A Drug Addict",
-      "type": [
+      "types": [
         "notable"
       ],
       "relationship": 0,
@@ -3653,7 +3864,7 @@
     "Belle Brogan": {
       "name": "Belle Brogan",
       "occupation": "A Skovlander Factory Worker",
-      "type": [
+      "types": [
         "notable"
       ],
       "relationship": 0,
@@ -3674,7 +3885,7 @@
     "Master Slane": {
       "name": "Master Slane",
       "occupation": "A Notorious Factory Foreman",
-      "type": [
+      "types": [
         "notable"
       ],
       "relationship": 0,
@@ -5057,84 +5268,6 @@
       "notes": null
     }
   },
-  "xp_gain": [
-    {
-      "description": "Every time you roll a desperate action, mark xp in that action's attribute.\nAt the end of each session, for each item below, mark 1 xp (in your playbook or\nan attribute) or 2 xp if that item occurred multiple times.",
-      "class": "all"
-    },
-    {
-      "description": "You expressed your beliefs, drives, heritage, or background.",
-      "class": "all"
-    },
-    {
-      "description": "You struggled with issues from your vice or traumas during the session.",
-      "class": "all"
-    },
-    {
-      "description": "You addressed a challenge with violence or coercion.",
-      "class": "cutter"
-    },
-    {
-      "description": "You addressed a challenge with tracking or violence.",
-      "class": "hound"
-    },
-    {
-      "description": "You addressed a challenge with knowledge or arcane power.",
-      "class": "whisper"
-    },
-    {
-      "description": "You addressed a challenge with calculation or conspiracy.",
-      "class": "spider"
-    },
-    {
-      "description": "You addressed a challenge with deception or influence.",
-      "class": "slide"
-    },
-    {
-      "description": "You addressed a challenge with stealth or evasion.",
-      "class": "lurk"
-    },
-    {
-      "description": "You addressed a challenge with technical skill or mayhem.",
-      "class": "leech"
-    },
-    {
-      "description": "Execute a successful accident, disappearance, murder, or ransom operation.",
-      "class": "assassins"
-    },
-    {
-      "description": "Contend with challenges above your current station.",
-      "class": "all_crew"
-    },
-    {
-      "description": "Bolster your crew's reputation or develop a new one.",
-      "class": "all_crew"
-    },
-    {
-      "description": "Express the goals, drives, inner conflict, or essential nature of the crew.",
-      "class": "all_crew"
-    },
-    {
-      "description": "Execute a successful battle, extortion, sabotage, or smash & grab operation.",
-      "class": "bravos"
-    },
-    {
-      "description": "Advance the agenda of your deity or embody its precepts in actioncu.",
-      "class": "cult"
-    },
-    {
-      "description": "Acquire product supply, execute clandestine/covert sales, or secure new territory.",
-      "class": "hawkers"
-    },
-    {
-      "description": "Execute a successful espionage, sabotage, or theft operation.",
-      "class": "shadows"
-    },
-    {
-      "description": "Execute a successful smuggling or acquire new clients or contraband sources.",
-      "class": "smugglers"
-    }
-  ],
   "factions": {
     "The Unseen": {
       "name": "The Unseen",
@@ -5150,7 +5283,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Hive": {
       "name": "The Hive",
@@ -5166,7 +5301,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Circle of Flame ": {
       "name": "The Circle of Flame",
@@ -5182,7 +5319,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Silver Nails": {
       "name": "The Silver Nails",
@@ -5198,7 +5337,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Lord Scurlock": {
       "name": "Lord Scurlock",
@@ -5214,7 +5355,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Crows": {
       "name": "The Crows",
@@ -5230,7 +5373,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Lampblacks": {
       "name": "The Lampblacks",
@@ -5246,7 +5391,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Red Sashes": {
       "name": "The Red Sashes",
@@ -5262,7 +5409,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Dimmer Sisters": {
       "name": "The Dimmer Sisters",
@@ -5278,7 +5427,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Grinders": {
       "name": "The Grinders",
@@ -5294,7 +5445,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Billhooks": {
       "name": "The Billhooks",
@@ -5331,7 +5484,9 @@
       ],
       "situation": "Erin and Coran both want to take control of the Billhooks gang, either when Tarvul gets too old (which will be soon) or by taking the position by force. There is no love lost between Erin and Corran and they'll have no qualms about fighting a family member for leadership. Meanwhile, the rest of the gang wants to continue their reign of terror to pressure a magistrate to pardon Tarvul and otehr gang members and release them from Ironhook.",
       "quirks": "The Billhooks have a bloody reputation, often leaving the butchered corpses of their victims strewn about in a grisly display. Many wonder why the Bluecoats turn a blind eye to their savagery.",
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Wraiths": {
       "name": "The Wraiths",
@@ -5347,7 +5502,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Gray Cloaks": {
       "name": "The Gray Cloaks",
@@ -5363,7 +5520,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Ulf Ironborn": {
       "name": "Ulf Ironborn",
@@ -5379,7 +5538,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Fog Hounds ": {
       "name": "The Fog Hounds",
@@ -5395,7 +5556,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Lost": {
       "name": "The Lost",
@@ -5411,7 +5574,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Imperial Military": {
       "name": "Imperial Military",
@@ -5427,7 +5592,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "City Council": {
       "name": "City Council",
@@ -5443,10 +5610,12 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
-    "Ministry of Preservation": {
-      "name": "Ministry of Preservation",
+    "The Ministry of Preservation": {
+      "name": "The Ministry of Preservation",
       "tier": 5,
       "hold": "strong",
       "type": "Institutions",
@@ -5459,7 +5628,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Leviathan Hunters": {
       "name": "Leviathan Hunters",
@@ -5475,7 +5646,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Ironhook Prison": {
       "name": "Ironhook Prison",
@@ -5491,7 +5664,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Sparkwrights": {
       "name": "Sparkwrights",
@@ -5507,7 +5682,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Spirit Wardens": {
       "name": "Spirit Wardens",
@@ -5523,7 +5700,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Bluecoats": {
       "name": "Bluecoats",
@@ -5539,7 +5718,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Inspectors": {
       "name": "Inspectors",
@@ -5555,7 +5736,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Iruvian Consulate": {
       "name": "Iruvian Consulate",
@@ -5571,7 +5754,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Skovlan Consulate": {
       "name": "Skovlan Consulate",
@@ -5587,7 +5772,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Brigade": {
       "name": "The Brigade",
@@ -5603,7 +5790,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Severosi Consulate": {
       "name": "Severosi Consulate",
@@ -5619,7 +5808,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Dagger Isles Consulate": {
       "name": "Dagger Isles Consulate",
@@ -5635,7 +5826,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Foundation": {
       "name": "The Foundation",
@@ -5651,7 +5844,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Dockers": {
       "name": "Dockers",
@@ -5667,7 +5862,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Gondoliers": {
       "name": "Gondoliers",
@@ -5683,7 +5880,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Sailors": {
       "name": "Sailors",
@@ -5699,7 +5898,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Laborers": {
       "name": "Laborers",
@@ -5715,7 +5916,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Cabbies": {
       "name": "Cabbies",
@@ -5731,7 +5934,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Cyphers": {
       "name": "Cyphers",
@@ -5747,7 +5952,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Ink Rakes": {
       "name": "Ink Rakes",
@@ -5763,7 +5970,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Rail Jacks": {
       "name": "Rail Jacks",
@@ -5779,7 +5988,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Servants": {
       "name": "Servants",
@@ -5795,7 +6006,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Church of Ecstasy": {
       "name": "The Church of Ecstasy",
@@ -5811,7 +6024,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Horde": {
       "name": "The Horde",
@@ -5827,7 +6042,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Path of Echoes": {
       "name": "The Path of Echoes",
@@ -5843,7 +6060,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Forgotten Gods": {
       "name": "The Forgotten Gods",
@@ -5859,7 +6078,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Reconciled": {
       "name": "The Reconciled",
@@ -5875,7 +6096,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Skovlander Refugees": {
       "name": "Skovlander Refugees",
@@ -5891,7 +6114,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "The Weeping Lady": {
       "name": "The Weeping Lady",
@@ -5907,7 +6132,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Deathlands Scavengers": {
       "name": "Deathlands Scavengers",
@@ -5923,7 +6150,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Whitecrown": {
       "name": "Citizenry of Whitecrown",
@@ -5939,7 +6168,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Brightstone": {
       "name": "Citizenry of Brightstone",
@@ -5955,7 +6186,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Charterhall": {
       "name": "Citizenry of Charterhall",
@@ -5971,7 +6204,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Six Towers": {
       "name": "Citizenry of Six Towers",
@@ -5987,7 +6222,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Silkshore": {
       "name": "Citizenry of Silkshore",
@@ -6003,7 +6240,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Nightmarket": {
       "name": "Citizenry of Nightmarket",
@@ -6019,7 +6258,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Crow's Foot": {
       "name": "Citizenry of Crow's Foot",
@@ -6035,7 +6276,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of The Docks": {
       "name": "Citizenry of The Docks",
@@ -6051,7 +6294,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Barrowcleft": {
       "name": "Citizenry of Barrowcleft",
@@ -6067,7 +6312,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Coalridge": {
       "name": "Citizenry of Coalridge",
@@ -6083,7 +6330,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Charhollow": {
       "name": "Citizenry of Charhollow",
@@ -6099,7 +6348,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     },
     "Citizenry of Dunslough": {
       "name": "Citizenry of Dunslough",
@@ -6115,7 +6366,9 @@
       "enemies": [],
       "situation": null,
       "quirks": null,
-      "notes": null
+      "notes": null,
+      "relationship": 0,
+      "importance": 0
     }
   },
   "faction_status_levels": {
@@ -6165,6 +6418,11 @@
       "name": "Brightstone",
       "description": "The district of Brightstone",
       "image": "res://maps/District Images/doskvol_brightstone.jpg"
+    },
+    "Coalridge": {
+      "name": "Coalridge",
+      "description": "The district of Coalridge",
+      "image": "res://maps/District Images/doskvol_coalridge.jpg"
     }
   },
   "locations": [
@@ -6177,7 +6435,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(47, -70 )",
@@ -6188,7 +6448,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(-4, 47 )",
@@ -6199,7 +6461,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(37, 46 )",
@@ -6210,7 +6474,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(-24, 67 )",
@@ -6221,7 +6487,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(-51, 83 )",
@@ -6232,7 +6500,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(-3, 92 )",
@@ -6243,7 +6513,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(95, 305)",
@@ -6254,7 +6526,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(294, 388)",
@@ -6265,7 +6539,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(318, 467)",
@@ -6276,7 +6552,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(216, 480)",
@@ -6287,7 +6565,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     },
     {
       "pos": "Vector2(227, 415)",
@@ -6298,7 +6578,9 @@
       "image": null,
       "map": "Doskvol",
       "linked_map": null,
-      "scene": null
+      "scene": null,
+      "faction": null,
+      "assets": []
     }
   ],
   "map_regions": [
@@ -6356,5 +6638,70 @@
       "occult_influence": 0,
       "notes": "Because the factories of Coalridge operate around the clock, there's no ideal time for clandestine crim ehere, but foremen are happy to be bribed to \"take a break\" or look the other way."
     }
-  ]
+  ],
+  "hunting_grounds": {
+    "starting_1_coalridge": {
+      "id": "starting_1_coalridge",
+      "name": "The Ironworks",
+      "pos": "Vector2(0, 0)",
+      "radius": 5,
+      "description": "A sprawling collection of massive industrial workhouses. Although the workers here are poor, the industrial products they make can be quite lucrative.",
+      "faction": "The Billhooks",
+      "region": "Coalridge"
+    },
+    "starting_2_coalridge": {
+      "id": "starting_2_coalridge",
+      "name": "Brickston",
+      "pos": "Vector2(0, 0)",
+      "radius": 5,
+      "description": "The most densely packed residential area in Doskvol. The merchants and citizens here are no stranger to crime.",
+      "faction": "Skovlander Refugees",
+      "region": "Coalridge"
+    },
+    "starting_3_coalridge": {
+      "id": "starting_3_coalridge",
+      "name": "Coalridge Mine",
+      "pos": "Vector2(0, 0)",
+      "radius": 5,
+      "description": "The site of the first permanent settlement at the river delta. The mine still operates over 1000 years later, though demand for\ncoal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
+      "faction": "The Billhooks",
+      "region": "Coalridge"
+    },
+    "starting_1_charterhall": {
+      "id": "starting_1_charterhall",
+      "name": "The Old Rasp",
+      "pos": "Vector2(0, 0)",
+      "radius": 5,
+      "description": "A tavern frequented by the small army of civil servants employed by the City Council, as well as students of the University.",
+      "faction": "The Ministry of Preservation",
+      "region": "Charterhall"
+    },
+    "starting_2_charterhall": {
+      "id": "starting_2_charterhall",
+      "name": "Clerk Street",
+      "pos": "Vector2(0, 0)",
+      "radius": 5,
+      "description": "The main avenue of the district is lined with imposing governmental structures of all sorts, all tucked behind high iron fences,\rpatrolled by a mix of Bluecoats on the sidewalks and mounted Imperial cavalry on the grounds.",
+      "faction": "The Ministry of Preservation",
+      "region": "Charterhall"
+    },
+    "starting_3_charterhall": {
+      "id": "starting_3_charterhall",
+      "name": "Charter Wall",
+      "pos": "Vector2(0, 0)",
+      "radius": 5,
+      "description": "Along the ruins of the old walls is a sprawling artist's colony.",
+      "faction": "The Foundation",
+      "region": "Charterhall"
+    },
+    "starting_4_charterhall": {
+      "id": "starting_4_charterhall",
+      "name": "Charterhall University",
+      "pos": "Vector2(0, 0)",
+      "radius": 5,
+      "description": "A dozen buildings have been converted into classrooms and dormitories for the students of this modest-seeming but\nnevertheless prestigious institution. The school's massive Sparkwright Tower, where experts of spark-craft are trained, looms huge over the district.",
+      "faction": "The Foundation",
+      "region": "Charterhall"
+    }
+  }
 }

@@ -135,6 +135,16 @@ func send_update_over_network(updated_data:Dictionary)-> void:
 	if result != OK:
 		print("error sending networked data over the network")
 
+#Forces the resource to send all data over the network
+#Useful when you do something that doesn't trigger an update, like appending to an array
+func trigger_update(property:String)-> void:
+	var updated_value = find(property)
+	var data: = {
+		property : updated_value
+	}
+	emit_signal("property_changed", property, updated_value)
+	send_update_over_network(data)
+
 
 func delete()-> Dictionary:
 	emit_signal("deleted")
@@ -155,6 +165,6 @@ func _on_networked_resource_updated(network_data:Dictionary)-> void:
 
 
 func _get_id()->String:
-	if not id:
+	if not id or id == "":
 		id = Globals.generate_id(5)
 	return id

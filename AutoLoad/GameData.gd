@@ -38,6 +38,7 @@ var clock_library: = Library.new()
 var pc_library: = Library.new()
 var contact_library: = Library.new()
 var faction_library: = Library.new()
+var cohort_library: = Library.new()
 
 var crew_playbook_resource:NetworkedResource setget _set_crew_playbook_resource
 var active_pc: NetworkedResource setget _set_active_pc

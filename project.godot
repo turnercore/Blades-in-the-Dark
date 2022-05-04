@@ -326,7 +326,7 @@ run/main_scene="res://start_screen/StartScreen.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="BITD"
 config/icon="res://Shared/Art/Icons/icon.png"
-config/version="v0.63"
+config/version="v0.64"
 
 [autoload]
 

@@ -60,3 +60,6 @@ highlight_area_scene = ExtResource( 9 )
 [node name="Tween" type="Tween" parent="MapGrid/Areas"]
 
 [node name="MapPins" parent="." instance=ExtResource( 7 )]
+visible = false
+anchor_top = 1.0
+anchor_right = 0.0

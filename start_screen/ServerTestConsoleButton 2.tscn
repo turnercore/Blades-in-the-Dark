@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://start_screen/ServerTestConsoleButton.gd" type="Script" id=1]
+[ext_resource path="res://trash/TestConsole.tscn" type="PackedScene" id=2]
+
+[node name="ServerTestConsoleButton" type="Button"]
+margin_top = 94.0
+margin_right = 350.0
+margin_bottom = 121.0
+text = "Server Test Console"
+script = ExtResource( 1 )
+server_test_console = ExtResource( 2 )
+
+[connection signal="pressed" from="." to="." method="_on_ServerTestConsoleButton_pressed"]

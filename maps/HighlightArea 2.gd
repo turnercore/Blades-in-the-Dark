@@ -81,8 +81,11 @@ func highlight_area(region:Area2D)-> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	var region = self
 	if area is Cursor and not area.is_remote:
-		visible = true
+		region.visible = true
+		var light: = region.get_node("Light2D") as Light2D
+
 		tween.interpolate_property(
 			light,
 			"shadow_color",
@@ -93,11 +96,13 @@ func _on_area_entered(area: Area2D) -> void:
 			Tween.EASE_IN_OUT
 		)
 		tween.start()
-		highlight_area(self)
+		highlight_area(region)
 
 
 func _on_area_exited(area: Area2D) -> void:
+	var region = self
 	if area is Cursor and not area.is_remote:
+		var light: = region.get_node("Light2D") as Light2D
 		tween.interpolate_property(
 			light,
 			"shadow_color",
@@ -109,4 +114,4 @@ func _on_area_exited(area: Area2D) -> void:
 		)
 		tween.start()
 		yield(tween, "tween_completed")
-		visible = false
+		region.visible = false

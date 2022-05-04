@@ -29,17 +29,17 @@ func build(crew_type:String, srd:Dictionary)-> Dictionary:
 		cohorts = {},
 		claims = get_claims(srd, crew_type),
 		prison_claims = get_prison_claims(srd, crew_type),
-		operation_type = "",
+		operation_types = get_operation_types(srd, crew_type),
 		abilities = get_abilities(srd, crew_type),
 		contacts = get_contacts(srd, crew_type),
 		experience = 0,
-		coin = {
-			max_coin = 40,
-			available = 2
+		coins = {
+			max_coin = 4,
+			available = 0
 		},
 		notes = "",
 		clocks = {},
-		interested_factions = {}
+		important_factions = {}
 	}
 
 	return data
@@ -50,9 +50,19 @@ func get_upgrades(srd:Dictionary, crew_type:String)-> Dictionary:
 #		name, description, cost, catagory, class,claimed
 	for name in srd_upgrades:
 		var upgrade = srd_upgrades[name]
-		if upgrade.class.to_lower() == "all" or upgrade.class.to_lower() == crew_type.to_lower():
+		if upgrade.classes.has("all") or upgrade.classes.has(crew_type.to_lower()):
 			upgrades[name] = upgrade
 	return upgrades
+
+func get_operation_types(srd:Dictionary, crew_type:String)-> Dictionary:
+	var operations: = {}
+	var srd_operation_types = srd.crew_types[crew_type.to_lower()].operation_types
+	for operation in srd_operation_types:
+		operations[operation] = {
+			"name": operation,
+			"preferred": false
+		}
+	return operations
 
 func get_abilities(srd:Dictionary, crew_type:String)-> Dictionary:
 	var abilities: = {}
@@ -70,10 +80,9 @@ func get_contacts(srd:Dictionary, crew_type:String)-> Dictionary:
 	#name occupation JA_type relationship notes location description image icon JA_associations	JA_traits JA_tags, region
 	for name in srd_contacts:
 		var contact:Dictionary = srd_contacts[name]
-		if contact.type.has(crew_type):
+		if contact.types.has(crew_type):
 			contacts[name] = contact
 	return contacts
-
 
 func get_claims(srd:Dictionary, crew_type: String)->Dictionary:
 	var claims: = {}
@@ -102,4 +111,3 @@ func get_prison_claims(srd:Dictionary, crew_type: String)->Dictionary:
 				prison_claims[stripped_key] = claim
 
 	return prison_claims
-
