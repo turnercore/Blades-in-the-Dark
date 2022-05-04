@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://AutoLoad/Delegates/Authenticator.gd"
 }, {
-"base": "Button",
-"class": "CharacterListing",
-"language": "GDScript",
-"path": "res://debug/demo/src/UI/Menus/Characters/CharacterListing.gd"
-}, {
 "base": "Resource",
 "class": "ChatLog",
 "language": "GDScript",
@@ -53,16 +48,6 @@ _global_script_classes=[ {
 "class": "Coin",
 "language": "GDScript",
 "path": "res://Shared/Coin.gd"
-}, {
-"base": "Button",
-"class": "ColorSwatch",
-"language": "GDScript",
-"path": "res://debug/demo/src/UI/Elements/ColorSwatch.gd"
-}, {
-"base": "Menu",
-"class": "ConfirmationPopup",
-"language": "GDScript",
-"path": "res://debug/demo/src/UI/Components/ConfirmationPopup.gd"
 }, {
 "base": "Field",
 "class": "Contact",
@@ -119,11 +104,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Shared/classes/Library.gd"
 }, {
-"base": "LineEdit",
-"class": "LineEditValidate",
-"language": "GDScript",
-"path": "res://debug/demo/src/UI/Elements/LineEditValidate.gd"
-}, {
 "base": "Node2D",
 "class": "Map",
 "language": "GDScript",
@@ -143,16 +123,6 @@ _global_script_classes=[ {
 "class": "Markers",
 "language": "GDScript",
 "path": "res://Shared/classes/Markers.gd"
-}, {
-"base": "Control",
-"class": "Menu",
-"language": "GDScript",
-"path": "res://debug/demo/src/UI/Elements/Menu.gd"
-}, {
-"base": "Control",
-"class": "MenuList",
-"language": "GDScript",
-"path": "res://debug/demo/src/UI/Elements/MenuList.gd"
 }, {
 "base": "Reference",
 "class": "NakamaAPI",
@@ -267,15 +237,12 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Ability": "",
 "Authenticator": "",
-"CharacterListing": "",
 "ChatLog": "",
 "ChatSaver": "",
 "Claim": "",
 "ClaimTreeConnector": "",
 "Clock": "",
 "Coin": "",
-"ColorSwatch": "",
-"ConfirmationPopup": "",
 "Contact": "",
 "CrewConstructor": "",
 "CrewUpgrade": "",
@@ -287,13 +254,10 @@ _global_script_class_icons={
 "FieldList": "",
 "HighlightArea": "",
 "Library": "",
-"LineEditValidate": "",
 "Map": "",
 "MapNote": "",
 "MarkerButton": "",
 "Markers": "",
-"Menu": "",
-"MenuList": "",
 "NakamaAPI": "",
 "NakamaAsyncResult": "",
 "NakamaClient": "",
@@ -338,7 +302,7 @@ Events="*res://AutoLoad/Events.gd"
 GameData="*res://AutoLoad/GameData.gd"
 GameSaver="*res://AutoLoad/GameSaver.gd"
 Tooltip="*res://UI/Tooltip.tscn"
-PlayerData="*res://AutoLoad/PlayerData.gd"
+PlayerData="res://AutoLoad/PlayerData.gd"
 
 [debug]
 

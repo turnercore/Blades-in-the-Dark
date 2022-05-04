@@ -21,7 +21,7 @@ var save_game = SaveGame.new()
 var username:String = "You" setget ,_get_username
 
 #Store a reference to the current srd, used for looking up and displaying it in info
-var srd:= {}
+var srd:= {} setget _set_srd, _get_srd
 
 var game_state:String = "Free Play" setget _set_game_state
 
@@ -30,15 +30,6 @@ var needs_current_game_state: = false
 var online: = false
 var requesting_game_state: = false
 var is_sending_data: = false
-
-#Libraries of resources for in-game objects
-var location_library: = Library.new()
-var region_library: = Library.new()
-var clock_library: = Library.new()
-var pc_library: = Library.new()
-var contact_library: = Library.new()
-var faction_library: = Library.new()
-var cohort_library: = Library.new()
 
 var crew_playbook_resource:NetworkedResource setget _set_crew_playbook_resource
 var active_pc: NetworkedResource setget _set_active_pc
@@ -51,8 +42,18 @@ var map:Dictionary = {} setget _set_map , _get_map
 var clocks: = [] #Array of data
 var roster:Array = []
 var map_shortcuts:Array = []
-#This is for undo stacks (later)
+
+#This is for undo delete (not yet implemented)
 var recently_deleted: = []
+
+#Libraries of resources for in-game objects
+var location_library: = Library.new()
+var region_library: = Library.new()
+var clock_library: = Library.new()
+var pc_library: = Library.new()
+var contact_library: = Library.new()
+var faction_library: = Library.new()
+var cohort_library: = Library.new()
 
 #Signals
 signal crew_changed
@@ -64,14 +65,33 @@ signal game_state_changed(game_state)
 signal game_setup
 signal game_state_loaded
 
+func _set_srd(new_srd:Dictionary)-> void:
+	srd = new_srd
+	#Setup libraries that are based on srd
+	#Setup Faction Library
+	factions = srd.factions
+	faction_library.setup(srd.factions)
+	#Setup Contact Library
+	contacts = srd.contacts
+	contact_library.setup(srd.contacts)
+
+
+func _get_srd()-> Dictionary:
+	if srd.empty():
+		self.srd = load_srd_from_file(DEFAULT_SRD)
+	return srd
+
 
 #SETUP FUNCTIONS
 func _ready() -> void:
 	clock_library.library_name = "clocks"
 	location_library.library_name = "locations"
 	pc_library.library_name = "pcs"
+	region_library.library_name = "regions"
+	contact_library.library_name = "contacts"
+	faction_library.library_name = "factions"
+	cohort_library.library_name = "cohorts"
 	connect_to_signals()
-	srd = load_srd_from_file(DEFAULT_SRD)
 
 func connect_to_signals()-> void:
 	clock_library.connect("resource_added", self, "_on_clock_resource_added")
@@ -92,8 +112,6 @@ func connect_to_signals()-> void:
 #	#NETWORK EVENTS
 	#Game State data
 	NetworkTraffic.connect("gamedata_game_state_updated", self, "_on_game_state_updated")
-	#PlayerPlaybooks
-	NetworkTraffic.connect("gamedata_pc_playbook_created", self, "_on_pc_playbook_created_network")
 	#Intial Game State Setup on Joining Match
 	NetworkTraffic.connect("current_game_state_broadcast", self, "_on_current_game_state_broadcast")
 	NetworkTraffic.connect("current_game_state_requested", self, "_on_current_game_state_requested")

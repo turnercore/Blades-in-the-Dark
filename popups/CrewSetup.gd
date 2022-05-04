@@ -6,20 +6,21 @@ const DEFAULT_MAP: = {
 
 onready var pages: Array = $MarginContainer/PanelContainer/SetupPages.get_children()
 var active_page = 0
-var current_page: Node
 var crew_playbook: = NetworkedResource.new()
 var on_start_screen: = false
 export(NodePath) onready var type_options = get_node(type_options)
 var coins: = 2 setget _set_coins
 onready var coin_container: = $MarginContainer/Coins
 
+export (NodePath) onready var current_page_number_label = get_node(current_page_number_label) as Label
+export (NodePath) onready var total_page_number_label = get_node(total_page_number_label) as Label
 export (NodePath) onready var lair_location_options = get_node(lair_location_options) as OptionButton
 export (NodePath) onready var lair_location_description = get_node(lair_location_description) as Label
 export (NodePath) onready var region_wealth = get_node(region_wealth) as Label
 export (NodePath) onready var region_security = get_node(region_security) as Label
 export (NodePath) onready var region_criminal = get_node(region_criminal) as Label
 export (NodePath) onready var region_occult = get_node(region_occult) as Label
-onready var region_intro: = get_node("MarginContainer/PanelContainer/SetupPages/CrewChoices-1/Intro")
+export (NodePath) onready var region_intro = get_node(region_intro) as Label
 export (NodePath) onready var operation_type_options = get_node(operation_type_options) as OptionButton
 export (NodePath) onready var hunting_ground_location_options = get_node(hunting_ground_location_options) as OptionButton
 export (NodePath) onready var hunting_grounds_description = get_node(hunting_grounds_description) as Label
@@ -45,6 +46,7 @@ export (NodePath) onready var friendly_contact_faction_description = get_node(fr
 export (NodePath) onready var angry_contact_faction_options = get_node(angry_contact_faction_options) as OptionButton
 export (NodePath) onready var angry_contact_faction_description = get_node(angry_contact_faction_description) as Label
 
+var page_number:int =0
 
 var region_choices: = []
 var selected_region
@@ -72,11 +74,11 @@ var has_influential_contact: = false
 
 func _ready() -> void:
 	self.coins = 2
+	coin_container.visible = false
 	for page in pages:
 		page.visible = false
-
-	current_page = pages.front()
-	current_page.visible = true
+	pages[0].visible = true
+	total_page_number_label.text = str(pages.size())
 
 	for type in GameData.srd.crew_types:
 		var item:String = str(type)
@@ -117,6 +119,7 @@ func setup_choices(srd:Dictionary)-> void:
 	i = 100
 	var abilities: = []
 	for ability_name in srd.crew_abilities:
+		if ability_name == "Veteran": continue
 		var ability = srd.crew_abilities[ability_name]
 		if ability.class == "all" or ability.class == type.to_lower():
 			starting_ability_options.add_item(ability.name.capitalize(), i)
@@ -152,43 +155,45 @@ func setup_choices(srd:Dictionary)-> void:
 	var factions = srd.factions
 	i = 100
 	for faction_name in factions:
-		friendly_faction_options.add_item(faction_name, i)
+		var faction:Dictionary = factions[faction_name]
+		var region:String = " - " + faction.region if faction.region else ""
+		friendly_faction_options.add_item(faction_name + region, i)
 		faction_choices[i] = factions[faction_name]
 		i += 1
 
 	#Setup Angry Faction
 	i = 100
 	for faction_name in factions:
-		angry_faction_options.add_item(faction_name, i)
+		var faction:Dictionary = factions[faction_name]
+		var region:String = " - " + faction.region if faction.region else ""
+		angry_faction_options.add_item(faction_name + region, i)
 		i += 1
 
+	i = 100
 	#Setup Favorite Contact
 	for key in srd.contacts:
 		var contact = srd.contacts[key]
 		if contact.types.has(type):
-			favorite_contact_options.add_item(key)
+			var occupation:String = ", " + contact.occupation if contact.occupation else ""
+			contact_choices[i] = contact
+			favorite_contact_options.add_item(key + occupation, i)
+			i += 1
 
 	#Setup Favorite Contact Friendly Contact
 	i = 100
 	for faction_name in factions:
-		friendly_contact_faction_options.add_item(faction_name, i)
+		var faction:Dictionary = factions[faction_name]
+		var region:String = " - " + faction.region if faction.region else ""
+		friendly_contact_faction_options.add_item(faction_name + region, i)
 		i += 1
 
 	#Setup Angry Contact Friendly Contact
 	i = 100
 	for faction_name in factions:
-		angry_contact_faction_options.add_item(faction_name, i)
+		var faction:Dictionary = factions[faction_name]
+		var region:String = " - " + faction.region if faction.region else ""
+		angry_contact_faction_options.add_item(faction_name + region, i)
 		i += 1
-
-func _on_NextButton_pressed() -> void:
-	var pages_hidden: = false
-	for page in pages:
-		if not pages_hidden and page.visible:
-			page.visible = false
-			pages_hidden = true
-		elif pages_hidden:
-			page.visible = true
-			break
 
 
 func setup_resource(type: String)-> void:
@@ -203,28 +208,23 @@ func _on_type_options_item_selected(index: int) -> void:
 	var crew_type:String = type_options.get_item_text(index)
 	setup_resource(crew_type)
 	setup_choices(GameData.srd)
-	$MarginContainer/PanelContainer/SetupPages/CrewChoices/crew_type_description.text = GameData.srd.crew_types[crew_playbook.find("type")].description
-	$MarginContainer/PanelContainer/SetupPages/CrewChoices/NextButton.disabled = false
-
-
-func _on_next() -> void:
-	current_page.visible = false
-	active_page += 1
-	current_page = pages[active_page]
-	current_page.visible = true
+	$MarginContainer/PanelContainer/SetupPages/CrewType/crew_type_description.text = GameData.srd.crew_types[crew_playbook.find("type")].description
+	$MarginContainer/PanelContainer/SetupPages/CrewType/Navigation/NextButton.disabled = false
 
 
 func _on_FinishedButton_pressed() -> void:
 	crew_playbook.update("coins.available", coins)
 	crew_playbook.update("abilities.%s.claimed"%selected_ability.name, true)
-	crew_playbook.update("contacts.%s.relationship"%selected_contact.name, selected_contact.relationship)
+	crew_playbook.update("contacts.%s.status"%selected_contact.name, selected_contact.status)
 	crew_playbook.update("contacts.%s.notes"%selected_contact.name, "They have been with you since the beginning and helped you establish your crew.")
-	selected_angry_faction.relationship -= 2 if has_influential_contact else 1
-	selected_friendly_faction.relationship += 2 if has_influential_contact else 1
-	crew_playbook.update("important_factions.%s"%selected_contact_angry_faction.name, selected_contact_angry_faction.relationship)
-	crew_playbook.update("important_factions.%s"%selected_contact_friendly_faction.name, selected_contact_friendly_faction.relationship)
-	crew_playbook.update("important_factions.%s"%selected_friendly_faction.name, selected_friendly_faction.relationship)
-	crew_playbook.update("important_factions.%s"%selected_angry_faction.name, selected_angry_faction.relationship)
+	crew_playbook.update("hunting_grounds", chosen_hunting_ground)
+	selected_angry_faction.status -= 2 if has_influential_contact else 1
+	selected_friendly_faction.status += 2 if has_influential_contact else 1
+
+	crew_playbook.add("important_factions.%s.status"%selected_contact_angry_faction.name, selected_contact_angry_faction.status)
+	crew_playbook.add("important_factions.%s.status"%selected_contact_friendly_faction.name, selected_contact_friendly_faction.status)
+	crew_playbook.add("important_factions.%s.status"%selected_friendly_faction.name, selected_friendly_faction.status)
+	crew_playbook.add("important_factions.%s.status"%selected_angry_faction.name, selected_angry_faction.status)
 	GameData.crew_playbook_resource = crew_playbook
 	Events.emit_signal("popup_finished")
 	if on_start_screen:
@@ -285,18 +285,19 @@ func _on_DealWithFactionOptions_item_selected(index: int) -> void:
 			self.coins = 1
 		2:
 			self.coins = 0
-			crew_playbook.update("important_factions.%s.relationship"%starting_faction.name, 1)
+			crew_playbook.update("important_factions.%s.status"%starting_faction.name, 1)
 		3:
 			self.coins = 2
-			crew_playbook.update("important_factions.%s.relationship"%starting_faction.name, -1)
+			crew_playbook.update("important_factions.%s.status"%starting_faction.name, -1)
 
 
 func _on_UpgradesChosenButton_pressed() -> void:
 	#Add upgrades to playbook
 	var selected_upgrades: = [upgrade1, upgrade2, upgrade3, upgrade4]
 	for upgrade in selected_upgrades:
+		if not upgrade: continue
 		crew_playbook.update("upgrades.%s.claimed"%upgrade.name, true)
-	_on_next()
+	_on_NextButton_pressed()
 
 
 func _on_starting_upgrade3_options_item_selected(index: int) -> void:
@@ -322,9 +323,9 @@ func _on_StartingAbilityOption_item_selected(index: int) -> void:
 
 
 func _on_starting_contact_options_item_selected(index: int) -> void:
-	var key:String = favorite_contact_options.get_item_text(index)
-	selected_contact = GameData.srd.contacts[key]
-	selected_contact.relationship = 3
+	var id:int = favorite_contact_options.get_item_id(index)
+	selected_contact = contact_choices[id]
+	selected_contact.status = 3
 	favorite_contact_label.text = selected_contact.description if selected_contact.description else ""
 
 
@@ -359,16 +360,34 @@ func _on_angry_faction_options_item_selected(index: int) -> void:
 func _on_friendly_interaction_item_selected(index: int) -> void:
 	match index:
 		1:
-			selected_friendly_faction.relationship += 1
+			selected_friendly_faction.status += 1
 		2:
 			self.coins -= 1
-			selected_friendly_faction.relationship += 2
+			selected_friendly_faction.status += 2
 
 
 func _on_angry_interaction_item_selected(index: int) -> void:
 	match index:
 		1:
-			selected_friendly_faction.relationship -= 2
+			selected_friendly_faction.status -= 2
 		2:
 			self.coins -=1
-			selected_friendly_faction.relationship -= 1
+			selected_friendly_faction.status -= 1
+
+
+func _on_BackButton_pressed() -> void:
+	var i:int = 0
+	for page in pages:
+		page.visible = true if i == page_number - 1 else false
+		i += 1
+	page_number -= 1
+	current_page_number_label.text = str(page_number)
+
+
+func _on_NextButton_pressed() -> void:
+	var i:int = 0
+	for page in pages:
+		page.visible = true if i == page_number + 1 else false
+		i += 1
+	page_number += 1
+	current_page_number_label.text = str(page_number)

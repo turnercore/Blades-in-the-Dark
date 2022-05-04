@@ -1,6 +1,12 @@
 class_name NetworkedResource
 extends Resource
 
+enum RESOURCE_OP_CODES {
+	UPDATE,
+	ADD,
+	DELETE
+}
+
 var id:String setget ,_get_id
 var data:Dictionary
 
@@ -98,7 +104,8 @@ func update(path:String, value, update_network: = true):
 				if index < result.size() and index >= 0:
 					if result[index] != value:
 						result[index] = value
-						if update_network: send_update_over_network({path : value})
+						if update_network: send_update_over_network({path : value, "op_code":RESOURCE_OP_CODES.UPDATE})
+						emit_signal("property_changed", path, value)
 
 				else:
 					print("Invalid path for find() Index out of range | Path: " + path)
@@ -107,11 +114,12 @@ func update(path:String, value, update_network: = true):
 				if result.has(property):
 					if result[property] != value:
 						result[property] = value
-						if update_network: send_update_over_network({path : value})
+						if update_network: send_update_over_network({path : value, "op_code":RESOURCE_OP_CODES.UPDATE})
+						emit_signal("property_changed", path, value)
 				else:
 					print("Invalid path for find() property not in data| Path: " + path)
 					return
-		#ELse Keep searching for the property
+		#Else Keep searching for the property
 		else:
 			if property.is_valid_integer():
 				var index:int = int(property)
@@ -126,9 +134,42 @@ func update(path:String, value, update_network: = true):
 			i += 1
 
 
+func add(path:String, value = "", update_network: = true)-> void:
+	#Will Create path as it goes
+	var split:PoolStringArray = path.split(".")
+	if split.empty():
+		return
+
+	var current_property:String = split[0]
+	var result = data
+	var i: = -1
+
+	for property in split:
+		i += 1
+		if i == split.size()-1:
+			 #At the end of the path
+			result[property] = value
+			if update_network: send_update_over_network({path : value, "op_code" : RESOURCE_OP_CODES.ADD})
+		else:
+			if property.is_valid_integer():
+				var index:int = int(property)
+				if index > result.size():
+					print("index out of range for this add() call " + path)
+				elif index == result.size():
+					result.append({})
+					result = result.back()
+				else:
+					result = result[index]
+			else:
+				if not property in result:
+					result[property] = {}
+				result = result[property]
+
+
 func send_update_over_network(updated_data:Dictionary)-> void:
 	if not ServerConnection.is_connected_to_server:
 		return
+	if not "op_code" in data: return
 	updated_data["id"] = self.id
 	var str_data:String = var2str(updated_data)
 	var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.NETWORKED_RESOURCE_UPDATED, str_data), "completed")
@@ -146,22 +187,32 @@ func trigger_update(property:String)-> void:
 	send_update_over_network(data)
 
 
-func delete()-> Dictionary:
+func delete(update_network: = true)-> Dictionary:
 	emit_signal("deleted")
+	if update_network: send_update_over_network({"op_code" : RESOURCE_OP_CODES.DELETE})
 	return data
 
 
 func _on_networked_resource_updated(network_data:Dictionary)-> void:
 	if "id" in network_data and network_data.id == self.id:
 		print("got networked resource update from network")
-		for property in network_data:
-			if property == "id": continue
-			if data.has(property):
-				data[property] = network_data[property]
-				emit_signal("property_changed", property, network_data[property])
-				emit_changed()
-			else:
-				print("Property: %s not found in resource ID %s" % [property, id])
+		if not "op_code" in network_data: return
+
+		match network_data.resource_op_code:
+			RESOURCE_OP_CODES.ADD:
+				for property in network_data:
+					if property == "id": continue
+					if property == "op_code":continue
+					add(property, network_data[property], false)
+			RESOURCE_OP_CODES.UPDATE:
+				for property in network_data:
+					if property == "id": continue
+					if property == "op_code":continue
+					update(property, network_data[property], false)
+			RESOURCE_OP_CODES.DELETE:
+				delete(false)
+			_:
+				print("invalid network resource op code")
 
 
 func _get_id()->String:

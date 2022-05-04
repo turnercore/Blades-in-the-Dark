@@ -40,6 +40,9 @@ func connect_to_self_signal()->void:
 	#Markers
 	if has_signal("filled_points_changed") and not is_connected("filled_points_changed", self, "_on_updated_data"):
 		self.connect("filled_points_changed", self, "_on_updated_data")
+	#OptionDropdowns
+	if has_signal("item_selected") and not is_connected("item_selected", self, "_on_updated_data"):
+		self.connect("item_selected", self, "_on_updated_data")
 
 
 func _on_load(resource: NetworkedResource)->void:
@@ -50,7 +53,12 @@ func load_from_resource(load_resource:NetworkedResource)-> void:
 	resource = load_resource
 	if not resource: return
 
+	#Don't want option buttons to update from resource
+	if self.has_signal("item_selected"):
+		return
+
 	var updated_property = resource.find(field)
+
 	if updated_property != null:
 		#Ensure the type is correct, so if updating a text field with a number it still works
 		if get(property) is String:
@@ -61,17 +69,17 @@ func load_from_resource(load_resource:NetworkedResource)-> void:
 			updated_property = float(updated_property)
 		if get(property) is bool:
 			updated_property = bool(updated_property)
+		breakpoint
 		if get(property) == updated_property: return
 		else: set(property, updated_property)
 
 
-func _on_updated_data(_ignored = null)-> void:
+func _on_updated_data(data = null)-> void:
 	if not resource: return
 	var updated_value
 	updated_value = str(self.get(property)) if property == "text" else self.get(property)
 	if updated_value == resource.find(field):
 		return
-
 	resource.update(field, updated_value)
 
 
@@ -79,5 +87,6 @@ func _on_property_changed(path:String, value)-> void:
 	if path == field:
 		if typeof(value) != typeof(get(property)) and value is String:
 			value = str2var(value)
-		set(property, value)
+		if get(property) != value:
+			set(property, value)
 

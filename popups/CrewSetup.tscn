@@ -16,13 +16,16 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-type_options = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices/type_options")
-lair_location_options = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/lair_location")
-lair_location_description = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/LairLocationDescription")
-region_wealth = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer/region_wealth")
-region_security = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2/region_security")
-region_criminal = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer3/region_criminal_influence")
-region_occult = NodePath("MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer4/region_occult_influence")
+type_options = NodePath("MarginContainer/PanelContainer/SetupPages/CrewType/type_options")
+current_page_number_label = NodePath("MarginContainer/Coins/HBoxContainer/current_page_number")
+total_page_number_label = NodePath("MarginContainer/Coins/HBoxContainer/total_page_number")
+lair_location_options = NodePath("MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/lair_location")
+lair_location_description = NodePath("MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/LairLocationDescription")
+region_wealth = NodePath("MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer/region_wealth")
+region_security = NodePath("MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer2/region_security")
+region_criminal = NodePath("MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer3/region_criminal_influence")
+region_occult = NodePath("MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer4/region_occult_influence")
+region_intro = NodePath("MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/Intro")
 operation_type_options = NodePath("MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer/operation_type")
 hunting_ground_location_options = NodePath("MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/hunting_grounds")
 hunting_grounds_description = NodePath("MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/hunting_ground_description")
@@ -96,9 +99,9 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="MarginContainer/PanelContainer/SetupPages/Intro"]
-margin_top = 82.0
+margin_top = 72.0
 margin_right = 876.0
-margin_bottom = 419.0
+margin_bottom = 409.0
 size_flags_vertical = 2
 text = "This is very much a work in progress, so thanks for being part of the journey.
 
@@ -116,9 +119,9 @@ __meta__ = {
 }
 
 [node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/Intro"]
-margin_top = 471.0
+margin_top = 451.0
 margin_right = 876.0
-margin_bottom = 502.0
+margin_bottom = 482.0
 size_flags_horizontal = 5
 size_flags_vertical = 10
 text = "Next"
@@ -163,7 +166,7 @@ size_flags_horizontal = 5
 size_flags_vertical = 10
 text = "Next"
 
-[node name="CrewChoices" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+[node name="CrewType" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages"]
 visible = false
 margin_left = 50.0
 margin_top = 40.0
@@ -171,7 +174,7 @@ margin_right = 926.0
 margin_bottom = 522.0
 alignment = 1
 
-[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices"]
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewType"]
 margin_right = 876.0
 margin_bottom = 31.0
 size_flags_vertical = 0
@@ -182,7 +185,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="type_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices"]
+[node name="type_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewType"]
 margin_left = 238.0
 margin_top = 47.0
 margin_right = 638.0
@@ -194,7 +197,7 @@ align = 1
 items = [ "Crew Type", null, true, 0, null ]
 selected = 0
 
-[node name="crew_type_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices"]
+[node name="crew_type_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewType"]
 margin_top = 94.0
 margin_right = 876.0
 margin_bottom = 227.0
@@ -204,16 +207,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewType"]
 margin_top = 451.0
 margin_right = 876.0
 margin_bottom = 482.0
-size_flags_horizontal = 5
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/CrewType/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/CrewType/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
 size_flags_vertical = 10
 disabled = true
 text = "Next"
 
-[node name="CrewChoices-1" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+[node name="ChooseReputation" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages"]
 visible = false
 margin_left = 50.0
 margin_top = 40.0
@@ -227,13 +244,13 @@ __meta__ = {
 }
 coin_container = NodePath("../../../Coins")
 
-[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-1"]
+[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation"]
 margin_right = 876.0
 margin_bottom = 31.0
 text = "Your crew has just formed and founded a lair. Congratulations!"
 autowrap = true
 
-[node name="name" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-1"]
+[node name="name" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation"]
 margin_top = 43.0
 margin_right = 876.0
 margin_bottom = 90.0
@@ -243,14 +260,14 @@ caret_blink_speed = 0.5
 script = ExtResource( 1 )
 field = "name"
 
-[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-1"]
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation"]
 margin_top = 102.0
 margin_right = 876.0
 margin_bottom = 201.0
 text = "You start with 2 coins to establish your crew, this represents the outcome of your first score or the wealth that the founding members are pooling. You may spend these during crew creation."
 autowrap = true
 
-[node name="HSeparator3" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-1"]
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation"]
 margin_top = 213.0
 margin_right = 876.0
 margin_bottom = 217.0
@@ -258,18 +275,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="reputation" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-1"]
+[node name="reputation" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation"]
 margin_top = 229.0
 margin_right = 876.0
 margin_bottom = 260.0
-text = "Inital Reputation"
+text = "Reputation"
 align = 1
-items = [ "Ambitious", null, false, 0, null, "Brutal", null, false, 1, null, "Daring", null, false, 2, null, "Honorable", null, false, 3, null, "Professional", null, false, 4, null, "Savvy", null, false, 5, null, "Subtle", null, false, 6, null, "Strange", null, false, 7, null, "Inital Reputation", null, true, 8, null ]
-selected = 8
+items = [ "Reputation", null, true, 0, null, "Brutal", null, false, 1, null, "Daring", null, false, 2, null, "Honorable", null, false, 3, null, "Professional", null, false, 4, null, "Savvy", null, false, 5, null, "Subtle", null, false, 6, null, "Strange", null, false, 7, null, "Ambitious", null, false, 8, null ]
+selected = 0
 script = ExtResource( 1 )
 field = "reputation"
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-1"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation"]
 margin_top = 272.0
 margin_right = 876.0
 margin_bottom = 303.0
@@ -279,7 +296,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-1"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation"]
 margin_top = 315.0
 margin_right = 876.0
 margin_bottom = 319.0
@@ -287,47 +304,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-1"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation"]
 margin_top = 451.0
 margin_right = 876.0
 margin_bottom = 482.0
-size_flags_horizontal = 5
+size_flags_horizontal = 3
 size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 0
 text = "Next"
 
-[node name="CrewChoices-4" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages"]
-visible = false
+[node name="LairLocation" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
 margin_left = 50.0
 margin_top = 40.0
 margin_right = 926.0
 margin_bottom = 522.0
-custom_constants/separation = 12
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4"]
-margin_right = 876.0
-margin_bottom = 553.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/LairLocation"]
 margin_right = 876.0
-margin_bottom = 553.0
+margin_bottom = 482.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer"]
+[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer"]
 margin_right = 876.0
 margin_bottom = 31.0
 size_flags_vertical = 1
 text = "Lair"
 align = 1
 
-[node name="Label5" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer"]
+[node name="Label5" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer"]
 margin_top = 47.0
 margin_right = 876.0
 margin_bottom = 112.0
@@ -335,21 +354,21 @@ text = "Your crew starts at tier 0, so your lair is probably somewhere modest or
 align = 1
 autowrap = true
 
-[node name="lair" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer"]
+[node name="lair" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer"]
 margin_top = 128.0
 margin_right = 876.0
 margin_bottom = 159.0
-text = "Initial Lair"
+text = "Lair"
 align = 1
-items = [ "A half-sunken grotto in the city's maze-like underground canals.", null, false, 0, null, "A small, abondoned house at the end of a dark lane.", null, false, 1, null, "An abandoned watch tower atop an ancient, crumbling wall.", null, false, 2, null, "A rickety, tin-roofed shack perched on a rooftop.", null, false, 3, null, "The unassuming back rooms of a merchant's shop.", null, false, 4, null, "A junked rail-car, rusted in place on its old, overgrown tracks.", null, false, 5, null, "An crumbling, old church overlooking a wayward canal. ", null, false, 6, null, "Initial Lair", null, true, 7, null ]
-selected = 7
+items = [ "Initial Lair", null, true, 0, null, "A small, abondoned house at the end of a dark lane.", null, false, 1, null, "An abandoned watch tower atop an ancient, crumbling wall.", null, false, 2, null, "A rickety, tin-roofed shack perched on a rooftop.", null, false, 3, null, "The unassuming back rooms of a merchant's shop.", null, false, 4, null, "A junked rail-car, rusted in place on its old, overgrown tracks.", null, false, 5, null, "An crumbling, old church overlooking a wayward canal. ", null, false, 6, null, "A half-sunken grotto in the city's maze-like underground canals.", null, false, 7, null ]
+selected = 0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 field = "lair.description"
 
-[node name="lair_location" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer"]
+[node name="lair_location" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer"]
 margin_top = 175.0
 margin_right = 876.0
 margin_bottom = 206.0
@@ -360,7 +379,7 @@ selected = 0
 script = ExtResource( 1 )
 field = "lair.location"
 
-[node name="LairLocationDescription" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer"]
+[node name="LairLocationDescription" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer"]
 margin_top = 222.0
 margin_right = 876.0
 margin_bottom = 253.0
@@ -368,7 +387,7 @@ text = "(Crow's Foot is a good starting district)"
 align = 1
 autowrap = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer"]
 margin_top = 269.0
 margin_right = 876.0
 margin_bottom = 340.0
@@ -379,7 +398,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer"]
 margin_right = 207.0
 margin_bottom = 71.0
 size_flags_horizontal = 3
@@ -387,20 +406,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_right = 207.0
 margin_bottom = 24.0
 custom_fonts/font = ExtResource( 7 )
 text = "Wealth"
 
-[node name="region_wealth" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="region_wealth" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 40.0
 margin_right = 207.0
 margin_bottom = 71.0
 size_flags_horizontal = 3
 autowrap = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer"]
 margin_left = 223.0
 margin_right = 430.0
 margin_bottom = 71.0
@@ -409,20 +428,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_right = 207.0
 margin_bottom = 24.0
 custom_fonts/font = ExtResource( 7 )
 text = "Security & Safety"
 
-[node name="region_security" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="region_security" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 40.0
 margin_right = 207.0
 margin_bottom = 71.0
 size_flags_horizontal = 3
 autowrap = true
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer"]
 margin_left = 446.0
 margin_right = 653.0
 margin_bottom = 71.0
@@ -431,20 +450,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="Label3" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer3"]
 margin_right = 207.0
 margin_bottom = 24.0
 custom_fonts/font = ExtResource( 7 )
 text = "Criminal Influence"
 
-[node name="region_criminal_influence" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="region_criminal_influence" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer3"]
 margin_top = 40.0
 margin_right = 207.0
 margin_bottom = 71.0
 size_flags_horizontal = 3
 autowrap = true
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer"]
 margin_left = 669.0
 margin_right = 876.0
 margin_bottom = 71.0
@@ -453,24 +472,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label4" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
+[node name="Label4" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer4"]
 margin_right = 207.0
 margin_bottom = 24.0
 custom_fonts/font = ExtResource( 7 )
 text = "Occult Influence"
 
-[node name="region_occult_influence" type="Label" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
+[node name="region_occult_influence" type="Label" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/HBoxContainer/VBoxContainer4"]
 margin_top = 40.0
 margin_right = 207.0
 margin_bottom = 71.0
 size_flags_horizontal = 3
 autowrap = true
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/CrewChoices-4"]
-margin_top = 565.0
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer"]
+margin_top = 451.0
 margin_right = 876.0
-margin_bottom = 596.0
-size_flags_horizontal = 5
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
 size_flags_vertical = 8
 text = "Next"
 
@@ -514,9 +547,9 @@ __meta__ = {
 margin_top = 128.0
 margin_right = 876.0
 margin_bottom = 159.0
-text = "Hunting Grounds Location"
+text = "Hunting Grounds"
 align = 1
-items = [ "Hunting Grounds Location", null, true, 0, null ]
+items = [ "Hunting Grounds", null, true, 0, null ]
 selected = 0
 script = ExtResource( 1 )
 __meta__ = {
@@ -532,17 +565,32 @@ margin_bottom = 179.0
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer"]
 margin_top = 195.0
 margin_right = 876.0
-margin_bottom = 396.0
+margin_bottom = 430.0
 text = "This is an area your crew knows well. Mostly likely in the same region as your lair,but it doesn't have to be.
 When you prepare to execute an operation of your preferred type on your hunting grounds, you get +1d to any gather information rolls and a free addtional downtime activity to contribute to that operation.
 
 This will expand as you get turf."
 autowrap = true
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer"]
-margin_top = 565.0
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer"]
+margin_top = 451.0
 margin_right = 876.0
-margin_bottom = 596.0
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
 size_flags_vertical = 10
 text = "Next"
 
@@ -595,10 +643,25 @@ This can help you discover an opportunity, acquire an asset you might need for t
 When you acquire turf, you also expand the size and/or type of your hunting grounds."
 autowrap = true
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer"]
 margin_top = 451.0
 margin_right = 876.0
 margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
 size_flags_vertical = 10
 text = "Next"
 
@@ -654,10 +717,25 @@ text = "Deal with inital faction"
 items = [ "Deal with inital faction", null, true, 0, null, "Pay them off. (Give them 1 coin in exchange for giving you room to work.", null, false, 1, null, "Pay them 2 coin as a show of respect. Gain +1 status with the faction.", null, false, 2, null, "Take it by force. Keep your money and take -1 status with the faction.", null, false, 3, null ]
 selected = 0
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer"]
 margin_top = 451.0
 margin_right = 876.0
 margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
 size_flags_vertical = 10
 text = "Next"
 
@@ -692,6 +770,7 @@ margin_left = 303.0
 margin_top = 47.0
 margin_right = 572.0
 margin_bottom = 78.0
+rect_min_size = Vector2( 250, 0 )
 hint_tooltip = "Every crew is a snowflake. What makes yours special?"
 size_flags_horizontal = 4
 text = "Crew Starting Ability"
@@ -715,10 +794,25 @@ margin_top = 286.0
 margin_right = 876.0
 margin_bottom = 290.0
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer"]
 margin_top = 451.0
 margin_right = 876.0
 margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
 size_flags_vertical = 10
 text = "Next"
 
@@ -741,27 +835,17 @@ size_flags_vertical = 3
 [node name="Label7" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
 margin_right = 876.0
 margin_bottom = 31.0
-text = "Choose intial crew upgrades:"
+text = "Choose crew upgrades:"
 align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label8" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+[node name="starting_upgrade1" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
 margin_top = 47.0
 margin_right = 876.0
 margin_bottom = 78.0
-text = "Starting upgrades:"
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="starting_upgrade1" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
-margin_top = 94.0
-margin_right = 876.0
-margin_bottom = 125.0
 text = "upgrade 1"
 autowrap = true
 __meta__ = {
@@ -769,9 +853,9 @@ __meta__ = {
 }
 
 [node name="starting_upgrade2" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
-margin_top = 141.0
+margin_top = 94.0
 margin_right = 876.0
-margin_bottom = 172.0
+margin_bottom = 125.0
 text = "upgrade 2"
 autowrap = true
 __meta__ = {
@@ -779,39 +863,53 @@ __meta__ = {
 }
 
 [node name="starting_upgrade3_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
-margin_top = 188.0
+margin_top = 141.0
 margin_right = 876.0
-margin_bottom = 219.0
+margin_bottom = 172.0
 hint_tooltip = "Every crew is a snowflake. What makes yours special?"
 text = "Starting Upgrade 1"
 items = [ "Starting Upgrade 1", null, true, 0, null ]
 selected = 0
 
 [node name="starting_upgrade4_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
-margin_top = 235.0
+margin_top = 188.0
 margin_right = 876.0
-margin_bottom = 266.0
+margin_bottom = 219.0
 hint_tooltip = "Every crew is a snowflake. What makes yours special?"
 text = "Starting Upgrade 2"
 items = [ "Starting Upgrade 2", null, true, 0, null ]
 selected = 0
 
 [node name="upgrade_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
-margin_top = 282.0
+margin_top = 235.0
 margin_right = 876.0
-margin_bottom = 313.0
+margin_bottom = 266.0
 autowrap = true
 
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
-margin_top = 329.0
+margin_top = 282.0
 margin_right = 876.0
-margin_bottom = 333.0
+margin_bottom = 286.0
 
-[node name="UpgradesChosenButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer"]
 margin_top = 451.0
 margin_right = 876.0
 margin_bottom = 482.0
+size_flags_horizontal = 3
 size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="UpgradesChosenButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
 text = "Next"
 
 [node name="FriendlyUpgradeFaction" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
@@ -865,14 +963,30 @@ margin_top = 195.0
 margin_right = 876.0
 margin_bottom = 226.0
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer"]
 margin_top = 451.0
 margin_right = 876.0
 margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
 size_flags_vertical = 10
 text = "Next"
 
 [node name="AngryUpgradeFaction" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
 margin_left = 50.0
 margin_top = 40.0
 margin_right = 926.0
@@ -917,11 +1031,26 @@ margin_top = 175.0
 margin_right = 876.0
 margin_bottom = 206.0
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer"]
-margin_top = 222.0
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer"]
+margin_top = 451.0
 margin_right = 876.0
-margin_bottom = 253.0
-size_flags_vertical = 8
+margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 10
 text = "Next"
 
 [node name="FavoriteContact" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
@@ -977,11 +1106,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer"]
 margin_top = 451.0
 margin_right = 876.0
 margin_bottom = 482.0
-size_flags_vertical = 8
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 10
 text = "Next"
 
 [node name="FriendlyContactFaction" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
@@ -1030,11 +1174,26 @@ margin_top = 431.0
 margin_right = 876.0
 margin_bottom = 435.0
 
-[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer"]
 margin_top = 451.0
 margin_right = 876.0
 margin_bottom = 482.0
-size_flags_vertical = 8
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="NextButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 10
 text = "Next"
 
 [node name="AngryContactFaction" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
@@ -1066,8 +1225,8 @@ margin_top = 81.0
 margin_right = 876.0
 margin_bottom = 112.0
 hint_tooltip = "Every crew is a snowflake. What makes yours special?"
-text = "Choose a faction friendly to your contact"
-items = [ "Choose a faction friendly to your contact", null, true, 0, null ]
+text = "Choose a faction angry by your choice of associates"
+items = [ "Choose a faction angry by your choice of associates", null, true, 0, null ]
 selected = 0
 
 [node name="angry_contact_faction_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
@@ -1079,9 +1238,9 @@ size_flags_vertical = 2
 autowrap = true
 
 [node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
-margin_top = 175.0
+margin_top = 215.0
 margin_right = 876.0
-margin_bottom = 179.0
+margin_bottom = 219.0
 
 [node name="Label3" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
 margin_top = 276.0
@@ -1093,79 +1252,129 @@ __meta__ = {
 }
 
 [node name="InfluentialContactToggle" type="CheckButton" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
-margin_top = 383.0
+margin_top = 362.0
 margin_right = 876.0
-margin_bottom = 415.0
+margin_bottom = 394.0
 size_flags_vertical = 10
 text = "Influential Contact (+1/-1 extra status with both factions)"
 
-[node name="FinishedButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
+[node name="Navigation" type="HBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer"]
 margin_top = 451.0
 margin_right = 876.0
 margin_bottom = 482.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+
+[node name="BackButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/Navigation"]
+margin_right = 250.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+text = "Back"
+
+[node name="FinishedButton" type="Button" parent="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/Navigation"]
+margin_left = 626.0
+margin_right = 876.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
 text = "Finished"
 
 [node name="Coins" type="HBoxContainer" parent="MarginContainer"]
-visible = false
-margin_left = 882.0
+margin_left = 24.0
 margin_top = 24.0
 margin_right = 1000.0
 margin_bottom = 55.0
-size_flags_horizontal = 8
+size_flags_horizontal = 11
 size_flags_vertical = 0
 custom_constants/separation = 5
 
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Coins"]
+margin_right = 853.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+
+[node name="current_page_number" type="Label" parent="MarginContainer/Coins/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 31.0
+text = "0"
+
+[node name="Label2" type="Label" parent="MarginContainer/Coins/HBoxContainer"]
+margin_left = 32.0
+margin_right = 40.0
+margin_bottom = 31.0
+text = "/"
+
+[node name="total_page_number" type="Label" parent="MarginContainer/Coins/HBoxContainer"]
+margin_left = 56.0
+margin_right = 65.0
+margin_bottom = 31.0
+text = "1"
+
 [node name="Label" type="Label" parent="MarginContainer/Coins"]
-margin_right = 72.0
+margin_left = 858.0
+margin_right = 930.0
 margin_bottom = 31.0
 text = "Coins:"
 
 [node name="Coin" parent="MarginContainer/Coins" instance=ExtResource( 5 )]
-margin_left = 77.0
+margin_left = 935.0
 margin_top = 6.0
-margin_right = 95.0
+margin_right = 953.0
 margin_bottom = 24.0
 mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
 [node name="Coin2" parent="MarginContainer/Coins" instance=ExtResource( 5 )]
-margin_left = 100.0
+margin_left = 958.0
 margin_top = 6.0
-margin_right = 118.0
+margin_right = 976.0
 margin_bottom = 24.0
 mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/Intro/NextButton" to="." method="_on_next"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/Intro2/NextButton" to="." method="_on_next"]
-[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/CrewChoices/type_options" to="." method="_on_type_options_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/CrewChoices/NextButton" to="." method="_on_next"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/CrewChoices-1/NextButton" to="." method="_on_next"]
-[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/ScrollContainer/VBoxContainer/lair_location" to="." method="_on_lair_location_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/CrewChoices-4/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/Intro/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/Intro2/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/CrewType/type_options" to="." method="_on_type_options_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/CrewType/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/CrewType/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/ChooseReputation/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/ChooseReputation/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/lair_location" to="." method="_on_lair_location_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/LairLocation/VBoxContainer/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/hunting_grounds" to="." method="_on_hunting_grounds_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds/VBoxContainer/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer/operation_type" to="." method="_on_operation_type_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/EstablishHuntingGrounds2/VBoxContainer/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer/DealWithFactionOptions" to="." method="_on_DealWithFactionOptions_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/DealWithFaction/VBoxContainer/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer/StartingAbilityOption" to="." method="_on_StartingAbilityOption_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/ChooseStartingAbility/VBoxContainer/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/starting_upgrade3_options" to="." method="_on_starting_upgrade3_options_item_selected"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/starting_upgrade4_options" to="." method="_on_starting_upgrade4_options_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/UpgradesChosenButton" to="." method="_on_UpgradesChosenButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/ChooseUpgrades/VBoxContainer/Navigation/UpgradesChosenButton" to="." method="_on_UpgradesChosenButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/friendly_faction_options" to="." method="_on_friendly_faction_options_item_selected"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/friendly_interaction" to="." method="_on_friendly_interaction_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FriendlyUpgradeFaction/VBoxContainer/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/angry_faction_options" to="." method="_on_angry_faction_options_item_selected"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/angry_interaction" to="." method="_on_angry_interaction_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/AngryUpgradeFaction/VBoxContainer/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer/starting_contact_options" to="." method="_on_starting_contact_options_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FavoriteContact/VBoxContainer/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer/friendly_contact_faction_options" to="." method="_on_friendly_contact_faction_options_item_selected"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer/NextButton" to="." method="_on_next"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/FriendlyContactFaction/VBoxContainer/Navigation/NextButton" to="." method="_on_NextButton_pressed"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/angry_contact_faction_options" to="." method="_on_angry_contact_faction_options_item_selected"]
 [connection signal="toggled" from="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/InfluentialContactToggle" to="." method="_on_InfluentialContactToggle_toggled"]
-[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/FinishedButton" to="." method="_on_FinishedButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/Navigation/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/SetupPages/AngryContactFaction/VBoxContainer/Navigation/FinishedButton" to="." method="_on_FinishedButton_pressed"]
