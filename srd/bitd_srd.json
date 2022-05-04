@@ -20,7 +20,7 @@
       "description": "Mercenaries and thugs. They execute battles, extortion, sabotage, and smash & grabs.",
       "starting_upgrades": [
         "Prowess",
-        "Thugs"
+        "Elite Thugs"
       ],
       "operation_types": [
         "Battle",
@@ -35,7 +35,7 @@
       "description": "Acolytes of a forgotten god. They execute artifact acquisitions, auguries, consecration, and sacrifices.",
       "starting_upgrades": [
         "Resolve",
-        "Adepts"
+        "Elite Adepts"
       ],
       "operation_types": [
         "Advance the Agenda of Your Deity",
