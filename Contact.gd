@@ -31,7 +31,6 @@ func _ready() -> void:
 		rect_min_size = MIN_SIZE_NO_EDIT
 
 	var formatted_field_template:String = FIELD_TEMPLATE%id if "%s" in FIELD_TEMPLATE else ""
-	Globals.propagate_set_playbook_fields_recursive(self, formatted_field_template)
 
 	$contact_full_sized_editable/MarginContainer/HBoxContainer/reputation.visible = not is_pc
 

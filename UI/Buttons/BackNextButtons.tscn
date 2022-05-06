@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/Buttons/BackNextButtons.gd" type="Script" id=1]
+
+[node name="BackNextButtons" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_top = 573.0
+margin_right = 250.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_vertical = 8
+text = "Back"
+
+[node name="NextButton" type="Button" parent="."]
+margin_left = 774.0
+margin_top = 573.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 250, 0 )
+size_flags_horizontal = 10
+size_flags_vertical = 8
+disabled = true
+text = "Next"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_NextButton_pressed"]

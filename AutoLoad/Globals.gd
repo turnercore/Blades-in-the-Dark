@@ -1,8 +1,7 @@
 extends Node
 
 #This is being used for the new game popup
-const GAME_SCENE_PATH: = "res://game/Game.tscn"
-const GAME_SCENE:PackedScene = preload(GAME_SCENE_PATH)
+const GAME_SCENE:PackedScene = preload("res://game/Game.tscn")
 const DEFUALT_CREW_PLAYBOOK_DATA: = {
 	"id": null
 }

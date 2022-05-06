@@ -11,7 +11,7 @@ func build(pc_type:String, srd:Dictionary)-> Dictionary:
 		name = "",
 		type = pc_type,
 		stats = get_stats(srd, pc_type),
-		abilities = get_abilities(srd, pc_type),
+		abilities = {},
 		coin = {
 			"max": 4,
 			"available" : 0,
@@ -40,14 +40,22 @@ func build(pc_type:String, srd:Dictionary)-> Dictionary:
 			purveyor = "",
 			description = ""
 		},
-		friends_and_foes = get_friends_foes(srd, pc_type),
+		contacts = {},
 		xp_gains = get_xp_gain(srd, pc_type),
 		traumas = [],
 		heal_clock = {},
 		items = get_items(srd, pc_type),
 		stress = 0,
-		background = "",
-		heritage = "",
+		background = {
+			"name": "",
+			"description": "",
+			"notes" : ""
+		},
+		heritage = {
+			"name":"",
+			"description":"",
+			"notes": ""
+		},
 		look = "",
 		alias = "",
 		notes = ""
@@ -69,7 +77,7 @@ func get_friends_foes(srd:Dictionary, type:String)-> Dictionary:
 #		name, description,class,claimed
 	for name in srd_contacts:
 		var contact = srd_contacts[name]
-		if contact["class"].to_lower() == "all" or contact["class"].to_lower() == type.to_lower():
+		if contact["types"].has("all") or contact["types"].has(type.to_lower()):
 			friends_and_foes[name] = contact
 	return friends_and_foes
 
@@ -79,7 +87,7 @@ func get_items(srd:Dictionary, type:String)-> Dictionary:
 #		name, description,class,claimed
 	for name in srd_items:
 		var item = srd_items[name]
-		if item["class"].to_lower() == "all" or item["class"].to_lower() == type.to_lower():
+		if item["class"] == "all" or item["class"] == type:
 			items[name] = item
 	return items
 
@@ -94,15 +102,11 @@ func get_abilities(srd:Dictionary, type:String)-> Dictionary:
 	return abilities
 
 func get_stats(srd:Dictionary, type:String) -> Dictionary:
-	var stats = {}
 	var actions = srd.actions
+	var stats:Dictionary = actions.duplicate(true)
 	var pc_type = srd.pc_types[type]
 
 	for name in actions:
 		var action = actions[name]
-		stats[action.stat][name] = {
-			name = action.name,
-			description = action.description,
-			level = srd.pc_types[type][name]
-		}
+		stats[name]["level"] = srd.pc_types[type][name]
 	return stats

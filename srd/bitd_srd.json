@@ -87,36 +87,37 @@
       "hunting_grounds_name": "cargo types"
     }
   },
-  "heritages": {
-    "Akoros": {
+  "heritages": [
+    {
       "name": "Akoros",
       "description": "Akoros is the largest and most industrialized alnd in the Imperium, and is home to the capitol city as well as Duskwall itself. They're known as a diverse conglomeration of cultures that have grown together in close proximity for centuries, somewhat like Europe."
     },
-    "The Dagger Isles": {
+    {
       "name": "The Dagger Isles",
       "description": "If you want to be a rootless wanderer you could be from the Dagger Isles. People there often grow up on ships and travel a lot before settling down. They're known as corsairs and merchants who live without lightning barriers - dealing with spirits in other ways."
     },
-    "Iruvia": {
+    {
       "name": "Iruvia",
       "description": "If you want to be from a culture considered \"foreign\" by the locals, you could be form Iruvia, a rich and powerful desert kingdom far to the south. It's another diverse land of varying cultures similar to old Persia, Egypt, and India."
     },
-    "Severos": {
+    {
       "name": "Severos",
       "description": "If you want to be from a place considered \"wild\" by the rest of the empire, you could be from Severos. Outside the few Imperial settlements, most Sevverosi live in nomatic horse-tribes scattered across the blasted deathlands, surviving within the ruins of ancient arcane fortreses which still repel spirits."
     },
-    "Skovlan": {
+    {
       "name": "Skovlan",
       "description": "If you want to be from a marginalized people, you could be from Skovlan, the island kingdom just across the sea from Doskvol. Skovlan was last to be brought under Imperial rule, over the course of the 36-year Unity War (which ended only a few years ago). Many Skovlander refugees who lost their homes and jobs in the destruction of the war have come to Doskvol seeking new opportunities."
     },
-    "Tycheros": {
+    {
       "name": "Tycheros",
       "description": "If you want to be weird, you can be from Tycheros. It's a semi-mythical place, far away beyond the northern Void Sea. Everyone says the people there are part-demon. If you choose Tycherosi heritage, also create a demonic telltale (like black shark eyes, feathers instead of hair, etc.) that marks your character."
     }
-  },
+  ],
   "pc_types": {
     "cutter": {
       "name": "cutter",
-      "description": "Cutters are good at winning fights, with violence and with intimidation. Play a Cutter if you want to get your way.",
+      "short_description": "Cutters are good at winning fights, with violence and with intimidation. Play a Cutter if you want to get your way.",
+      "long_description": "In the underworld of the Dusk, there are scoundrels who take what they want at the bloody edge of a blade or with a threatening presence that can stop a man cold. They are the enforcers, the debt collectors, the killers, the leg-breakers, and the thugs, commonly known as Cutters.  When you play a Cutter, you earn xp when you address a challenge with violence or coercion.",
       "attune": 0,
       "command": 1,
       "consort": 0,
@@ -132,7 +133,8 @@
     },
     "hound": {
       "name": "hound",
-      "description": "Hounds are good at tracking things down and also long-distance combat. Play a Hound if you want to choose your battles.",
+      "short_description": "Hounds are good at tracking things down and also long-distance combat. Play a Hound if you want to choose your battles.",
+      "long_description": "There's always a need for scoundrels who can find what others want to keep. hidden. Whether that's a deadbeat gambler trying to skip out on their debts, a trecherous informant or a witness who's going to squeal to the Bluecoats, or the trail to a treasure squirreled away in a secret vault - it's the Hounds that ferret them out. When you play a Hound you earn xp when you address a challenge with tracking or violence.",
       "attune": 0,
       "command": 0,
       "consort": 0,
@@ -148,7 +150,8 @@
     },
     "leech": {
       "name": "leech",
-      "description": "Leeches are good at using alchemy and wrecking stuff with sabotage. Play a Leech if you want to be creative with weird tools.",
+      "short_description": "Leeches are good at using alchemy and wrecking stuff with sabotage. Play a Leech if you want to be creative with weird tools.",
+      "long_description": "The world is built on industry, and the underworld is no different. Leeches are the scoundrels who distill the drugs, refine the arcane essences, build the bombs, bandages the wounds, and forge the tools of the criminal trades - and knowing how to make things also means knowing how to break them. When you play a Leech,  you earn xp when you address a challenge with technical skill or mayhem.",
       "attune": 0,
       "command": 0,
       "consort": 0,
@@ -164,7 +167,8 @@
     },
     "lurk": {
       "name": "lurk",
-      "description": "Lurks are good at sneaking around and breaking into places. Play a Lurk if you want to slink around in the shadows.",
+      "short_description": "Lurks are good at sneaking around and breaking into places. Play a Lurk if you want to slink around in the shadows.",
+      "long_description": "There is no longer any sunlight - the world is plunged into enteral night. There are scoundrels who live in the darkness, who prowl the underworld unseen, trespassing where they will. They are the buglars, the spies, the inflitrators, the cut-throats - commonly called Lurks. When you play a Lurk, you earn xp when you address a challenge with stealth or evasion.",
       "attune": 0,
       "command": 0,
       "consort": 0,
@@ -180,7 +184,8 @@
     },
     "slide": {
       "name": "slide",
-      "description": "Slides are good at social situations and subterfuge. Play a Slide if you want to manipulate and decieve people.",
+      "short_description": "Slides are good at social situations and subterfuge. Play a Slide if you want to manipulate and decieve people.",
+      "long_description": "It's said that the primal substance of the world is not mere metter or strange plasms, it's lies. Everything we do, everything we care about, everything we value - all lies we tell each other and ourselves. The world is a fabrication, a convenient fiction, a story - and the storytellers are Slides. When you play a Slide, you earn xp when you address a challege with deception or influence.",
       "attune": 0,
       "command": 0,
       "consort": 2,
@@ -196,7 +201,8 @@
     },
     "spider": {
       "name": "spider",
-      "description": "Spiders are good at masterminding maneuvers. Play a Spider if you want to asist teammates and deal with other factions.",
+      "short_description": "Spiders are good at masterminding maneuvers. Play a Spider if you want to asist teammates and deal with other factions.",
+      "long_description": "The underworld may appear on the surface to be a chaotic array of warring factions and bloody deeds, but it has a beautiful order to those who are able to see it. This pattern is the web of connections, favors, vendettas, and secrets that bind the criminal world togeather. The scoundrels who pluck the strands of this web are known as Spiders. When you play a Spider, you earn xp when you address a challenge with calculation or conspiracy.",
       "attune": 0,
       "command": 0,
       "consort": 2,
@@ -212,7 +218,8 @@
     },
     "whisper": {
       "name": "whisper",
-      "description": "Whispers are good at magical stuff and dealing with ghosts. Play a Whisper if you want to meddle with arcane powers.",
+      "short_description": "Whispers are good at magical stuff and dealing with ghosts. Play a Whisper if you want to meddle with arcane powers.",
+      "long_description": "Doskvol is a haunted place - plagued by rogue spirits consumed by vengeance, by cunning demons manipulating humans for their own inscrutable purposes, and by even stranger horrors lurking in the space just beyond sight and reason. To go into this shadowy world without knowledge of the arcane and the occult is to walk unarmed into the lair of the enemy. The Whispers are the sentinels who watch the greater darkness - staring into the void so others dont' have to. When you play a Whisper, you earn xp when you address a challenge with knowledge or arcane power.",
       "attune": 2,
       "command": 0,
       "consort": 0,
@@ -289,100 +296,100 @@
       "stat": "prowess"
     }
   },
-  "traumas": {
-    "cold": {
+  "traumas": [
+    {
       "name": "cold",
       "description": "You're not moved by emotional appeals or social bonds."
     },
-    "haunted": {
+    {
       "name": "haunted",
       "description": "You're often lost in reverie, reliving past horrors, seeing things."
     },
-    "obsessed": {
+    {
       "name": "obsessed",
       "description": "You're enthralled by one thing: an activity, a person, an ideology."
     },
-    "paranoid": {
+    {
       "name": "paranoid",
       "description": "You imagine danger everywhere; you can't trust others."
     },
-    "reckless": {
+    {
       "name": "reckless",
       "description": "You have little regard for your own saftey or best interests."
     },
-    "soft": {
+    {
       "name": "soft",
       "description": "You lose your edge; you become sentimental, passive, gentle."
     },
-    "unstable": {
+    {
       "name": "unstable",
       "description": "Your emotional state is volatile. You can instantly rage, or fall into despair, act impulsively, or freeze up."
     },
-    "vicious": {
+    {
       "name": "vicious",
       "description": "You seek out opportunities to hurt people, even for no good reason."
     }
-  },
-  "vices": {
-    "Faith": {
+  ],
+  "vices": [
+    {
       "name": "Faith",
       "description": "You're dedicated to an unseen power, forgotten god, ancestor, etc."
     },
-    "Gambling": {
+    {
       "name": "Gambling",
       "description": "You crave games of chance, betting on sporting events, etc."
     },
-    "Luxury": {
+    {
       "name": "Luxury",
       "description": "Expensive or ostentatious displays of opulence."
     },
-    "Obligation": {
+    {
       "name": "Obligation",
       "description": "You're devoted to a family, a cause, an organization, a charity, etc"
     },
-    "Pleasure": {
+    {
       "name": "Pleasure",
       "description": "Gratificatino from lovers, food, drink, drugs, art, theater, etc."
     },
-    "Stupor": {
+    {
       "name": "Stupor",
       "description": "You seek oblivion in the abuse of drugs, drinking to excess, getting beaten to a pulp in the fighting pits, etc."
     },
-    "Weird": {
+    {
       "name": "Weird",
       "description": "You experiment with strange essences, consort with rogue spirits, observe bizarre rituals or taboos, etc."
     }
-  },
-  "backgrounds": {
-    "Academic": {
+  ],
+  "backgrounds": [
+    {
       "name": "Academic",
       "description": "A scholar, a professor or student from Doskvol Academy, a philosopher or journalist, etc."
     },
-    "Labor": {
+    {
       "name": "Labor",
       "description": "A servant, a factory worker, a coach driver, a docker, a sailor, a Rail Jack, etc."
     },
-    "Law": {
+    {
       "name": "Law",
       "description": "An advocate or barriester, a Bluecoat or inspector or Spirit Warden, a prison guard from Ironhook, etc."
     },
-    "Trade": {
+    {
       "name": "Trade",
       "description": "A shopkeeper, a merchant, a skilled crafts-person, a shipping agent, etc."
     },
-    "Military ": {
+    {
       "name": "Military",
       "description": "An Imperial or Skovlander soldier, a mercenary, an intelligence operative, a strategist, a training instructor, etc."
     },
-    "Noble": {
+    {
       "name": "Noble",
       "description": "A dilettante, a courier, the scion of a fallen house, etc."
     },
-    "Underworld": {
+    {
       "name": "Underworld",
       "description": "A street urchin, gang memeber, young thug, or other outcast who grew up on the streets."
     }
-  },
+  ],
   "xp_gain": [
     {
       "description": "Every time you roll a desperate action, mark xp in that action's attribute.\nAt the end of each session, for each item below, mark 1 xp (in your playbook or\nan attribute) or 2 xp if that item occurred multiple times.",
@@ -472,337 +479,337 @@
       "name": "Veteran",
       "description": "(3 Skill Points) Choose a special ability from another source.",
       "class": "all",
-      "claimed": false
+      "notes": null
     },
     "Battleborn": {
       "name": "Battleborn",
       "description": "You may expend your special armor to reduce harm from an attack in combat or to push yourself during a fight.",
       "class": "cutter",
-      "claimed": false
+      "notes": null
     },
     "Bodyguard": {
       "name": "Bodyguard",
       "description": "When you protect a teammate, take +1d to your resistance roll. When you gather info to anticipate possible threats in the current situation, you get +1 effect.",
       "class": "cutter",
-      "claimed": false
+      "notes": null
     },
     "Ghost Fighter": {
       "name": "Ghost Fighter",
       "description": "You may imbue your hands, melee weapons, or tools with spirit energy. You gain potency in combat vs. the supernatural. You may grapple with spirits to restrain and capture them.",
       "class": "cutter",
-      "claimed": false
+      "notes": null
     },
     "Leader": {
       "name": "Leader",
       "description": "When you Command a cohort in combat, they continue to fight when they would otherwise break (they're not taken out when they suffer level 3 harm). They gain +1 effect and 1 armor.",
       "class": "cutter",
-      "claimed": false
+      "notes": null
     },
     "Mule": {
       "name": "Mule",
       "description": "Your load limits are higher. Light: 5, Normal: 7, Heavy: 8",
       "class": "cutter",
-      "claimed": false
+      "notes": null
     },
     "Not to be Trifled With": {
       "name": "Not to be Trifled With",
       "description": "You can push yourself to do one of the following: perform a feat of physical force that verges on the superhuman—engage a small gang on equal footing in close combat.",
       "class": "cutter",
-      "claimed": false
+      "notes": null
     },
     "Savage": {
       "name": "Savage",
       "description": "When you unleash physical violence, it's especially frightening. When you Command a frightened target, take +1d.",
       "class": "cutter",
-      "claimed": false
+      "notes": null
     },
     "Vigorous": {
       "name": "Vigorous",
       "description": "You recover from harm faster. Permanently fill in one of your healing clock segments. Take +1d to healing treatment rolls.",
       "class": "cutter",
-      "claimed": false
+      "notes": null
     },
     "Sharpshooter": {
       "name": "Sharpshooter",
       "description": "You can push yourself to do one of the following: make a ranged attack at extreme distance beyond what’s normal for the weapon—unleash a barrage of rapid fire to suppress the enemy.",
       "class": "hound",
-      "claimed": false
+      "notes": null
     },
     "Focused": {
       "name": "Focused",
       "description": "You may expend your special armor to resist a consequence of surprise or mental harm (fear, confusion, losing track of someone) or to push yourself for ranged combat or tracking.",
       "class": "hound",
-      "claimed": false
+      "notes": null
     },
     "Ghost Hunter": {
       "name": "Ghost Hunter",
       "description": "(2 Skill Points) Your hunting pet is imbued with spirit energy. It gains potency when tracking or fighting the supernatural, and gains an arcane ability: ghost-form, mind-link, or arrow-swift. Take this ability again to choose an additional arcane ability for your pet.",
       "class": "hound",
-      "claimed": false
+      "notes": null
     },
     "Scout": {
       "name": "Scout",
       "description": "When you gather info to locate a target, you get +1 effect. When you hide in a prepared position or use camouflage, you get +1d to rolls to avoid detection.",
       "class": "hound",
-      "claimed": false
+      "notes": null
     },
     "Survivor": {
       "name": "Survivor",
       "description": "From hard won experience or occult ritual, you are immune to the poisonous miasma of the deathlands and are able to subsist on the strange flora and fauna there. You get +1 stress box.",
       "class": "hound",
-      "claimed": false
+      "notes": null
     },
     "Tough as Nails": {
       "name": "Tough as Nails",
       "description": "Penalties from harm are one level less severe (though level 4 harm is still fatal).",
       "class": "hound",
-      "claimed": false
+      "notes": null
     },
     "Vengeful": {
       "name": "Vengeful",
       "description": "You gain an additional xp trigger: You got payback against someone who harmed you or someone you care about. If your crew helped you get payback, also mark crew xp.",
       "class": "hound",
-      "claimed": false
+      "notes": null
     },
     "Alchemist": {
       "name": "Alchemist",
       "description": "When you invent or craft a creation with alchemical features, take +1 result level to your roll. You begin with one special formula already known.",
       "class": "leech",
-      "claimed": false
+      "notes": null
     },
     "Analyst": {
       "name": "Analyst",
       "description": "During downtime, you get two ticks to distribute among any long term project clocks that involve investigation or learning a new formula or design plan.",
       "class": "leech",
-      "claimed": false
+      "notes": null
     },
     "Artificer": {
       "name": "Artificer",
       "description": "When you invent or craft a creation with spark-craft features, take +1 result level to your roll. You begin with one special design already known.",
       "class": "leech",
-      "claimed": false
+      "notes": null
     },
     "Fortitude": {
       "name": "Fortitude",
       "description": "You may expend your special armor to resist a consequence of fatigue, weakness, or chemical effects, or to push yourself when working with technical skill or handling alchemicals.",
       "class": "leech",
-      "claimed": false
+      "notes": null
     },
     "Ghost Ward": {
       "name": "Ghost Ward",
       "description": "You know how to Wreck an area with arcane substances and methods so it is either anathema or enticing to spirits (your choice).",
       "class": "leech",
-      "claimed": false
+      "notes": null
     },
     "Physicker": {
       "name": "Physicker",
       "description": "You can Tinker with bones, blood, and bodily humours to treat wounds or stabilize the dying. You may study a malady or corpse. Everyone in your crew gets +1d to their healing treatment rolls.",
       "class": "leech",
-      "claimed": false
+      "notes": null
     },
     "Saboteur": {
       "name": "Saboteur",
       "description": "When you Wreck, the work is much quieter than it should be and the damage is hidden from casual inspection.",
       "class": "leech",
-      "claimed": false
+      "notes": null
     },
     "Venomous": {
       "name": "Venomous",
       "description": "Choose a drug or poison (from your bandolier stock) to which you have become immune. You can push yourself to secrete it through your skin or saliva or exhale it as a vapor.",
       "class": "leech",
-      "claimed": false
+      "notes": null
     },
     "Infiltrator": {
       "name": "Infiltrator",
       "description": "You are not affected by quality or Tier when you bypass security measures.",
       "class": "lurk",
-      "claimed": false
+      "notes": null
     },
     "Ambush": {
       "name": "Ambush",
       "description": "When you attack from hiding or spring a trap, you get +1d.",
       "class": "lurk",
-      "claimed": false
+      "notes": null
     },
     "Daredevil": {
       "name": "Daredevil",
       "description": "When you roll a desperate action, you get +1d to your roll if you also take -1d to any resistance rolls against consequences from your action.",
       "class": "lurk",
-      "claimed": false
+      "notes": null
     },
     " The Devil's Footsteps": {
       "name": "The Devil's Footsteps",
       "description": "When you push yourself, choose one of the following additional benefits: perform a feat of athletics that verges on the superhuman—maneuver to confuse your enemies so they mistakenly attack each other.",
       "class": "lurk",
-      "claimed": false
+      "notes": null
     },
     "Expertise": {
       "name": "Expertise",
       "description": "Choose one of your action ratings. When you lead a group action using that action, you can suffer only 1 stress at most regardless of the number of failed rolls.",
       "class": "lurk",
-      "claimed": false
+      "notes": null
     },
     "Ghost Veil": {
       "name": "Ghost Veil",
       "description": "You may shift partially into the ghost field, becoming shadowy and insubstantial for a few moments. Take 2 stress when you shift, plus 1 stress for each extra feature: It lasts for a few minutes rather than moments—you are invisible rather than shadowy—you may float through the air like a ghost",
       "class": "lurk",
-      "claimed": false
+      "notes": null
     },
     "Reflexes": {
       "name": "Reflexes",
       "description": "When there's a question about who acts first, the answer is you (two characters with Reflexes act simultaneously)",
       "class": "lurk",
-      "claimed": false
+      "notes": null
     },
     "Shadow": {
       "name": "Shadow",
       "description": "You may expend your special armor to resist a consequence from detection or security measures, or to push yourself for a feat of athletics or stealth.",
       "class": "lurk",
-      "claimed": false
+      "notes": null
     },
     "Rook's Gambit": {
       "name": "Rook's Gambit",
       "description": "Take 2 stress to roll your best action rating while performing a different action. Say how you adapt your skill to this use.",
       "class": "slide",
-      "claimed": false
+      "notes": null
     },
     "Cloak & Dagger": {
       "name": "Cloak & Dagger",
       "description": "When you use a disguise or other form of covert misdirection, you get +1d to rolls to confuse or deflect suspicion. When you throw off your disguise, the resulting surprise gives you the initiative in the situation.",
       "class": "slide",
-      "claimed": false
+      "notes": null
     },
     "Ghost Voice": {
       "name": "Ghost Voice",
       "description": "You know the secret method to interact with a ghost or demon as if it was a normal human, regardless of how wild or feral it appears. You gain potency when communicating with the supernatural.",
       "class": "slide",
-      "claimed": false
+      "notes": null
     },
     "Like Looking into a Mirror": {
       "name": "Like Looking into a Mirror",
       "description": "You can always tell when someone is lying to you.",
       "class": "slide",
-      "claimed": false
+      "notes": null
     },
     "A Little Something on the Side": {
       "name": "A Little Something on the Side",
       "description": "At the end of each downtime phase, you earn +2 stash.",
       "class": "slide",
-      "claimed": false
+      "notes": null
     },
     "Mesmerism": {
       "name": "Mesmerism",
       "description": "When you Sway someone, you may cause them to forget that it's happened until they next interact with you.",
       "class": "slide",
-      "claimed": false
+      "notes": null
     },
     "Subterfuge": {
       "name": "Subterfuge",
       "description": "You may expend your special armor to resist a consequence from suspicion or persuasion, or to push yourself for subterfuge.",
       "class": "slide",
-      "claimed": false
+      "notes": null
     },
     "Trust in Me": {
       "name": "Trust in Me",
       "description": "You get +1d vs. a target with whom you have an intimate relationship.",
       "class": "slide",
-      "claimed": false
+      "notes": null
     },
     "Foresight": {
       "name": "Foresight",
       "description": "Two times per score you can assist a teammate without paying stress. Tell us how you prepared for this.",
       "class": "spider",
-      "claimed": false
+      "notes": null
     },
     "Calculating": {
       "name": "Calculating",
       "description": "Due to your careful planning, during downtime, you may give yourself or another crew member +1 downtime action.",
       "class": "spider",
-      "claimed": false
+      "notes": null
     },
     "Connected": {
       "name": "Connected",
       "description": "During downtime, you get +1 result level when you acquire an asset or reduce heat.",
       "class": "spider",
-      "claimed": false
+      "notes": null
     },
     "Functioning Vice": {
       "name": "Functioning Vice",
       "description": "When you indulge your vice, you may adjust the dice outcome by 1 or 2 (up or down). An ally who joins in your vice may do the same.",
       "class": "spider",
-      "claimed": false
+      "notes": null
     },
     "Ghost Contract": {
       "name": "Ghost Contract",
       "description": "When you shake on a deal, you and your partner—human or otherwise—both bear a mark of your oath. If either breaks the contract, they take level 3 harm, \"Cursed\".",
       "class": "spider",
-      "claimed": false
+      "notes": null
     },
     "Jail Bird": {
       "name": "Jail Bird",
       "description": "When incarcerated, your wanted level counts as 1 less, your Tier as 1 more, and you gain +1 faction status with a faction you help on the inside (in addition to your incarceration roll).",
       "class": "spider",
-      "claimed": false
+      "notes": null
     },
     "Mastermind": {
       "name": "Mastermind",
       "description": "You may expend your special armor to protect a teammate, or to push yourself when you gather information or work on a long-term project.",
       "class": "spider",
-      "claimed": false
+      "notes": null
     },
     "Weaving the Web": {
       "name": "Weaving the Web",
       "description": "You gain +1d to Consort when you gather information on a target for a score. You get +1d to the engagement roll for that operation.",
       "class": "spider",
-      "claimed": false
+      "notes": null
     },
     "Compel": {
       "name": "Compel",
       "description": "You can Attune to the ghost field to force a nearby ghost to appear and obey a command you give it. You are not supernaturally terrified by a ghost you summon or compel (though your allies may be).",
       "class": "whisper",
-      "claimed": false
+      "notes": null
     },
     "Ghost Mind": {
       "name": "Ghost Mind",
       "description": "You’re always aware of supernatural entities in your presence. Take +1d when you gather info about the supernatural.",
       "class": "whisper",
-      "claimed": false
+      "notes": null
     },
     "Iron Will": {
       "name": "Iron Will",
       "description": "You're immune to the terror that some supernatural entities inflict on sight. Take +1d to resistance rolls with Resolve.",
       "class": "whisper",
-      "claimed": false
+      "notes": null
     },
     "Occultist": {
       "name": "Occultist",
       "description": "You know the secret ways to Consort with ancient powers, forgotten gods or demons. Once you've consorted with one, you get +1d to command cultists who worship it.",
       "class": "whisper",
-      "claimed": false
+      "notes": null
     },
     "Ritual": {
       "name": "Ritual",
       "description": "You can Study an occult ritual (or create a new one) to summon a supernatural effect or being. You know the arcane methods to perform ritual sorcery. You begin with one ritual already learned.",
       "class": "whisper",
-      "claimed": false
+      "notes": null
     },
     "Strange Methods": {
       "name": "Strange Methods",
       "description": "When you invent or craft a creation with arcane features, take +1 result level to your roll. You begin with one arcane design already known.",
       "class": "whisper",
-      "claimed": false
+      "notes": null
     },
     "Tempest": {
       "name": "Tempest",
       "description": "You can push yourself to do one of the following: unleash a stroke of lightning as a weapon—summon a storm in your immediate vicinity (torrential rain, roaring winds, heavy fog, chilling frost/snow, etc.).",
       "class": "whisper",
-      "claimed": false
+      "notes": null
     },
     "Warded": {
       "name": "Warded",
       "description": "You may expend your special armor to resist a supernatural consequence, or to push yourself when you deal with arcane forces.",
       "class": "whisper",
-      "claimed": false
+      "notes": null
     }
   },
   "items": {
@@ -3118,7 +3125,7 @@
       "name": "Mother Narya",
       "occupation": "Vice Purveyor",
       "types": [
-        "Faith"
+        "faith"
       ],
       "status": 0,
       "notes": null,
@@ -3137,7 +3144,7 @@
       "name": "Ilacille",
       "occupation": "Vice Purveyor",
       "types": [
-        "Faith"
+        "faith"
       ],
       "status": 0,
       "notes": null,
@@ -3156,7 +3163,7 @@
       "name": "Nelisanne",
       "occupation": "Vice Purveyor",
       "types": [
-        "Faith"
+        "faith"
       ],
       "status": 0,
       "notes": null,
@@ -3175,7 +3182,7 @@
       "name": "Lord Penderyn",
       "occupation": "Vice Purveyor",
       "types": [
-        "Faith"
+        "faith"
       ],
       "status": 0,
       "notes": null,
@@ -3194,7 +3201,7 @@
       "name": "Spogg",
       "occupation": "Vice Purveyor",
       "types": [
-        "Gambling"
+        "gambling"
       ],
       "status": 0,
       "notes": null,
@@ -3213,7 +3220,7 @@
       "name": "Grist",
       "occupation": "Vice Purveyor",
       "types": [
-        "Gambling"
+        "gambling"
       ],
       "status": 0,
       "notes": null,
@@ -3232,8 +3239,8 @@
       "name": "Helene",
       "occupation": "Vice Purveyor",
       "types": [
-        "Pleasure",
-        "Stupor"
+        "pleasure",
+        "stupor"
       ],
       "status": 0,
       "notes": null,
@@ -3252,7 +3259,7 @@
       "name": "Master Vreen",
       "occupation": "Vice Purveyor",
       "types": [
-        "Gambling"
+        "gambling"
       ],
       "status": 0,
       "notes": null,
@@ -3271,7 +3278,7 @@
       "name": "Lady Dusk",
       "occupation": "Vice Purveyor",
       "types": [
-        "Gambling"
+        "gambling"
       ],
       "status": 0,
       "notes": null,
@@ -3290,7 +3297,7 @@
       "name": "Sergeant Velk",
       "occupation": "Vice Purveyor",
       "types": [
-        "Gambling"
+        "gambling"
       ],
       "status": 0,
       "notes": null,
@@ -3309,8 +3316,8 @@
       "name": "Singer",
       "occupation": "Vice Purveyor",
       "types": [
-        "Luxury",
-        "Pleasure"
+        "luxury",
+        "pleasure"
       ],
       "status": 0,
       "notes": null,
@@ -3329,8 +3336,8 @@
       "name": "Harvale Brogan",
       "occupation": "Vice Purveyor",
       "types": [
-        "Luxury",
-        "Pleasure"
+        "luxury",
+        "pleasure"
       ],
       "status": 0,
       "notes": null,
@@ -3349,8 +3356,8 @@
       "name": "Traven",
       "occupation": "Vice Purveyor",
       "types": [
-        "Pleasure",
-        "Stupor"
+        "pleasure",
+        "stupor"
       ],
       "status": 0,
       "notes": null,
@@ -3369,8 +3376,8 @@
       "name": "Dunrige & Son",
       "occupation": "Vice Purveyor",
       "types": [
-        "Luxury",
-        "Pleasure"
+        "luxury",
+        "pleasure"
       ],
       "status": 0,
       "notes": null,
@@ -3389,8 +3396,8 @@
       "name": "Chef Roselle",
       "occupation": "Vice Purveyor",
       "types": [
-        "Luxury",
-        "Pleasure"
+        "luxury",
+        "pleasure"
       ],
       "status": 0,
       "notes": null,
@@ -3409,8 +3416,8 @@
       "name": "Maestro Helleren",
       "occupation": "Vice Purveyor",
       "types": [
-        "Luxury",
-        "Pleasure"
+        "luxury",
+        "pleasure"
       ],
       "status": 0,
       "notes": null,
@@ -3429,7 +3436,7 @@
       "name": "Family Members (heritage) or Former Co-Workers (background)",
       "occupation": "Vice Purveyor",
       "types": [
-        "Obligation"
+        "obligation"
       ],
       "status": 0,
       "notes": null,
@@ -3448,7 +3455,7 @@
       "name": "Hutton, Skovlander Refugees/Revolutionaries",
       "occupation": "Vice Purveyor",
       "types": [
-        "Obligation"
+        "obligation"
       ],
       "status": 0,
       "notes": null,
@@ -3467,7 +3474,7 @@
       "name": "The Circle of Flame",
       "occupation": "Vice Purveyor",
       "types": [
-        "Obligation"
+        "obligation"
       ],
       "status": 0,
       "notes": null,
@@ -3486,8 +3493,8 @@
       "name": "Mardin Gull",
       "occupation": "Vice Purveyor",
       "types": [
-        "Pleasure",
-        "Stupor"
+        "pleasure",
+        "stupor"
       ],
       "status": 0,
       "notes": null,
@@ -3506,8 +3513,8 @@
       "name": "Pux Bolin",
       "occupation": "Vice Purveyor",
       "types": [
-        "Pleasure",
-        "Stupor"
+        "pleasure",
+        "stupor"
       ],
       "status": 0,
       "notes": null,
@@ -3526,8 +3533,8 @@
       "name": "Lady Freyla",
       "occupation": "Vice Purveyor",
       "types": [
-        "Pleasure",
-        "Stupor"
+        "pleasure",
+        "stupor"
       ],
       "status": 0,
       "notes": null,
@@ -3546,8 +3553,8 @@
       "name": "Avrick",
       "occupation": "Vice Purveyor",
       "types": [
-        "Pleasure",
-        "Stupor"
+        "pleasure",
+        "stupor"
       ],
       "status": 0,
       "notes": null,
@@ -3566,8 +3573,8 @@
       "name": "Rolan Volaris",
       "occupation": "Vice Purveyor",
       "types": [
-        "Pleasure",
-        "Stupor"
+        "pleasure",
+        "stupor"
       ],
       "status": 0,
       "notes": null,
@@ -3586,8 +3593,8 @@
       "name": "Madame Tesslyn",
       "occupation": "Vice Purveyor",
       "types": [
-        "Pleasure",
-        "Stupor"
+        "pleasure",
+        "stupor"
       ],
       "status": 0,
       "notes": null,
@@ -3606,8 +3613,8 @@
       "name": "Eldrin Prichard",
       "occupation": "Vice Purveyor",
       "types": [
-        "Pleasure",
-        "Stupor"
+        "pleasure",
+        "stupor"
       ],
       "status": 0,
       "notes": null,
@@ -3626,8 +3633,8 @@
       "name": "Jewel, Bird, and Shine",
       "occupation": "Vice Purveyor",
       "types": [
-        "Pleasure",
-        "Stupor"
+        "pleasure",
+        "stupor"
       ],
       "status": 0,
       "notes": null,

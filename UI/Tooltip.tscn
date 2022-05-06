@@ -39,6 +39,8 @@ alignment = 1
 [node name="name" type="RichTextLabel" parent="TooltipContainer/VBoxContainer"]
 margin_right = 393.0
 margin_bottom = 22.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
 text = "Title"
 fit_content_height = true
 scroll_active = false
@@ -48,6 +50,8 @@ margin_top = 26.0
 margin_right = 393.0
 margin_bottom = 48.0
 focus_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 5
 text = "Descripton"
 fit_content_height = true
 scroll_active = false

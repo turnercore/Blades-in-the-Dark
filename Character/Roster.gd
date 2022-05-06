@@ -2,7 +2,7 @@ extends PopupScreen
 
 export (PackedScene) var character_scene
 export (NodePath) onready var character_container = get_node(character_container) as VBoxContainer
-export (PackedScene) onready var create_character_popup
+export (PackedScene) onready var character_setup_scene
 
 func _ready() -> void:
 	GameSaver.connect("roster_loaded", self, "_on_roster_loaded")
@@ -37,8 +37,8 @@ func _on_character_selected()-> void:
 
 func _on_NewPlayerCharacterButton_pressed() -> void:
 	#Create new character popup
-	var new_popup = create_character_popup.instance()
-	Events.popup(new_popup)
+	var character_setup = character_setup_scene.instance()
+	Events.popup(character_setup)
 
 
 

@@ -69,7 +69,6 @@ func load_from_resource(load_resource:NetworkedResource)-> void:
 			updated_property = float(updated_property)
 		if get(property) is bool:
 			updated_property = bool(updated_property)
-		breakpoint
 		if get(property) == updated_property: return
 		else: set(property, updated_property)
 

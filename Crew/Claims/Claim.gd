@@ -31,7 +31,7 @@ func setup(playbook: NetworkedResource) -> void:
 	var claims: Dictionary = playbook.find("claims")
 	var prison_claims:Dictionary = playbook.find("prison_claims")
 
-	if not name in playbook.claims:
+	if not name in claims:
 		print("can't find cell " + name + " in playbook.claims")
 		return
 
@@ -44,13 +44,10 @@ func setup(playbook: NetworkedResource) -> void:
 	self.notes = cell.notes if cell.notes else ""
 
 
-func _set_connections(connection_str: String)-> void:
+func _set_connections(connection_array: Array)-> void:
 	#Input should be a string of n, s, e, w (or some combonation of such)
-	var connection_array: = connection_str.split(",", false, 4)
 	connection_node_names.clear()
 	connectors.clear()
-
-
 	#This only works for regular claim grid, prison claim gride is smaller, refactor or add prison
 	for c in connection_array:
 		c = c.strip_edges()

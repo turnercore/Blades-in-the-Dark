@@ -139,7 +139,6 @@ rect_min_size = Vector2( 150, 0 )
 expand_to_text_length = true
 placeholder_text = "Character Name"
 script = ExtResource( 1 )
-playbook_field = "name"
 
 [node name="Field2" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
 margin_top = 178.0
@@ -161,7 +160,6 @@ rect_min_size = Vector2( 150, 0 )
 expand_to_text_length = true
 placeholder_text = "Aliases"
 script = ExtResource( 1 )
-playbook_field = "aliases-0"
 
 [node name="Field3" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
 margin_top = 213.0
@@ -181,7 +179,6 @@ margin_right = 447.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 400, 100 )
 script = ExtResource( 1 )
-playbook_field = "look"
 
 [node name="Field4" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
 margin_top = 317.0
@@ -203,7 +200,6 @@ text = "Akoros"
 items = [ "Akoros", null, false, 0, null, "The Dagger Isles", null, false, 1, null, "Iruvia", null, false, 2, null, "Severos", null, false, 3, null, "Skovlan", null, false, 4, null, "Tycheros", null, false, 5, null ]
 selected = 0
 script = ExtResource( 1 )
-playbook_field = "heritage"
 
 [node name="Field5" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
 margin_top = 348.0
@@ -225,7 +221,6 @@ text = "Academic"
 items = [ "Academic", null, false, 0, null, "Labor", null, false, 1, null, "Law", null, false, 2, null, "Trade", null, false, 3, null, "Military", null, false, 4, null, "Noble", null, false, 5, null, "Underworld", null, false, 6, null ]
 selected = 0
 script = ExtResource( 1 )
-playbook_field = "background"
 
 [node name="Field6" type="HBoxContainer" parent="MarginContainer/Page2/MarginContainer/VBox"]
 margin_top = 379.0
@@ -247,7 +242,6 @@ rect_min_size = Vector2( 150, 0 )
 expand_to_text_length = true
 placeholder_text = "Specific Vice"
 script = ExtResource( 1 )
-playbook_field = "vice"
 
 [node name="Label2" type="Label" parent="MarginContainer/Page2/MarginContainer/VBox/Field6"]
 margin_left = 195.0
@@ -265,7 +259,6 @@ text = "Faith"
 items = [ "Faith", null, false, 0, null, "Gambling", null, false, 1, null, "Luxury", null, false, 2, null, "Obligation", null, false, 3, null, "Pleasure", null, false, 4, null, "Stupor", null, false, 5, null, "Weird", null, false, 6, null ]
 selected = 0
 script = ExtResource( 1 )
-playbook_field = "vice_type"
 
 [node name="NextButton2" type="Button" parent="MarginContainer/Page2/MarginContainer/VBox"]
 margin_left = 469.0

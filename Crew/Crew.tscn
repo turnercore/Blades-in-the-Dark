@@ -99,6 +99,5 @@ size_flags_vertical = 3
 smooth_scrolling = true
 wrap_enabled = true
 script = ExtResource( 5 )
-playbook_field = "notes"
 
 [editable path="TabContainer/The Lair"]

@@ -31,9 +31,12 @@ func _on_NextButton_pressed() -> void:
 
 func setup_playbook(type: String)-> void:
 	type = type.to_lower()
+	#This constructs the new player data based on constructor rules
 	var pc_constructor: = PCConstructor.new()
 	var new_pc_data: = pc_constructor.build(type, GameData.srd)
+	#This adds the resource
 	new_pc_playbook = GameData.pc_library.add(new_pc_data)
+	#This adds the data to the save_game Data
 	GameData.pc_playbooks.append(new_pc_playbook.data)
 	Globals.propagate_set_property_recursive(self, "resource", new_pc_playbook)
 
@@ -43,7 +46,6 @@ func _on_type_options_item_selected(index: int) -> void:
 
 
 func _on_FinishButton_pressed() -> void:
-	GameData.save_all()
 	Events.emit_signal("popup_finished")
 	Events.emit_signal("roster_updated")
 	queue_free()

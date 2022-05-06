@@ -82,6 +82,7 @@ func fade_in()-> void:
 		Tween.EASE_OUT
 	)
 	tween.start()
+	tooltip_container.queue_sort()
 
 
 func fade_out()-> void:
@@ -104,8 +105,8 @@ func fade_out()-> void:
 		Tween.TRANS_QUART,
 		Tween.EASE_OUT
 	)
-
 	tween.start()
+	tooltip_container.queue_sort()
 
 
 func _process(_delta: float) -> void:

@@ -427,9 +427,9 @@ func _on_match_created()-> void:
 	self.online = true
 	needs_current_game_state = false
 
-func _set_active_pc(pc_playbook: NetworkedResource)->void:
-	active_pc = pc_playbook
-	Events.emit_character_selected(pc_playbook)
+func _set_active_pc(value: NetworkedResource)->void:
+	active_pc = value
+	Events.emit_character_selected(active_pc)
 
 func _get_username()-> String:
 	var online_username = ServerConnection.get_self_username() if online else ""

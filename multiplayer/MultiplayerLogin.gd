@@ -52,7 +52,6 @@ func connect_to_server()-> void:
 		result = yield(ServerConnection.update_display_name_async(display_name), "completed")
 
 	if result == OK:
-		PlayerData.display_name = display_name
 		result_label.text = "CONNECTED"
 		hide()
 	else:

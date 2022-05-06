@@ -51,7 +51,6 @@ margin_bottom = 26.0
 size_flags_horizontal = 3
 align = 1
 script = ExtResource( 2 )
-playbook_field = "name"
 
 [node name="crew_name_edit" type="LineEdit" parent="CrewPlaybookContainer/Crew/name"]
 margin_left = 233.0
@@ -60,7 +59,6 @@ margin_bottom = 31.0
 size_flags_horizontal = 3
 placeholder_text = "Crew Name"
 script = ExtResource( 2 )
-playbook_field = "name"
 
 [node name="CrewTypeContainer" type="HBoxContainer" parent="CrewPlaybookContainer/Crew"]
 margin_top = 41.0
@@ -88,7 +86,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-playbook_field = "type"
 
 [node name="ReputationLabel" type="Label" parent="CrewPlaybookContainer/Crew/CrewTypeContainer"]
 margin_left = 279.0
@@ -109,7 +106,6 @@ flat = true
 items = [ "Ambitious", null, false, 0, false, "Brutal", null, false, 1, false, "Daring", null, false, 2, false, "Honorable", null, false, 3, false, "Professional", null, false, 4, false, "Savvy", null, false, 5, false, "Subtle", null, false, 6, false, "Strange", null, false, 7, false ]
 selected = 0
 script = ExtResource( 2 )
-playbook_field = "reputation"
 
 [node name="HeatContainer" type="HBoxContainer" parent="CrewPlaybookContainer/Crew"]
 margin_left = 82.0
@@ -131,7 +127,6 @@ anchor_right = 0.0
 margin_left = 37.0
 margin_right = 116.0
 margin_bottom = 21.0
-playbook_field = "heat"
 total_points = 9
 
 [node name="WantedLevelLabel" type="Label" parent="CrewPlaybookContainer/Crew/HeatContainer"]
@@ -145,7 +140,6 @@ anchor_right = 0.0
 margin_left = 218.0
 margin_right = 297.0
 margin_bottom = 21.0
-playbook_field = "wanted_level"
 total_points = 4
 
 [node name="ExpAndRepContainer" type="HBoxContainer" parent="CrewPlaybookContainer/Crew"]
@@ -172,7 +166,6 @@ anchor_right = 0.0
 margin_left = 62.0
 margin_right = 200.0
 margin_bottom = 21.0
-playbook_field = "experience.playbook"
 total_points = 10
 
 [node name="ReputationLevelLabel" type="Label" parent="CrewPlaybookContainer/Crew/ExpAndRepContainer"]
@@ -186,7 +179,6 @@ anchor_right = 0.0
 margin_left = 324.0
 margin_right = 462.0
 margin_bottom = 21.0
-playbook_field = "reputation_level"
 total_points = 11
 
 [node name="abilities" parent="CrewPlaybookContainer/Crew" instance=ExtResource( 4 )]
@@ -241,7 +233,6 @@ margin_left = 77.0
 margin_right = 462.0
 margin_bottom = 21.0
 rect_min_size = Vector2( 0, 20 )
-playbook_field = "coin.available"
 exp_point_scene = ExtResource( 8 )
 total_points = 15
 
@@ -285,7 +276,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-playbook_field = "lair.name"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CrewPlaybookContainer/Lair"]
 margin_top = 35.0
@@ -312,7 +302,6 @@ items = [ "0", null, false, 0, null, "1", null, false, 1, null, "2", null, false
 selected = 0
 script = ExtResource( 2 )
 property = "selected"
-playbook_field = "tier"
 
 [node name="HoldLabel" type="Label" parent="CrewPlaybookContainer/Lair/HBoxContainer"]
 margin_left = 215.0
@@ -331,7 +320,6 @@ items = [ "Weak", null, false, 0, null, "Strong", null, false, 1, null ]
 selected = 0
 script = ExtResource( 2 )
 property = "selected"
-playbook_field = "hold_level"
 
 [node name="LairPicture" type="TextureRect" parent="CrewPlaybookContainer/Lair"]
 margin_top = 66.0
@@ -374,7 +362,6 @@ size_flags_vertical = 3
 caret_blink = true
 caret_blink_speed = 0.5
 script = ExtResource( 2 )
-playbook_field = "hunting_grounds.description"
 
 [node name="LairUpgradesContainer" type="ScrollContainer" parent="CrewPlaybookContainer/Lair"]
 margin_top = 268.0

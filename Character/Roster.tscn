@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Character/Roster.gd" type="Script" id=1]
 [ext_resource path="res://Character/character_scene.tscn" type="PackedScene" id=2]
-[ext_resource path="res://popups/CreateCharacterPopup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Crew/PCSetup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Shared/theme/menu.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=5]
 
 [node name="Roster" type="Control"]
 anchor_left = 0.5
@@ -14,13 +15,14 @@ margin_left = -203.0
 margin_top = -147.5
 margin_right = 203.0
 margin_bottom = 147.5
+theme = ExtResource( 5 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 character_scene = ExtResource( 2 )
 character_container = NodePath("PanelContainer/ScrollContainer/VBoxContainer/CharacterContainer")
-create_character_popup = ExtResource( 3 )
+character_setup_scene = ExtResource( 3 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchor_right = 1.0
@@ -48,19 +50,19 @@ alignment = 1
 
 [node name="Label" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 margin_right = 386.0
-margin_bottom = 21.0
+margin_bottom = 31.0
 text = "Roster"
 align = 1
 
 [node name="CharacterContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 25.0
+margin_top = 47.0
 margin_right = 386.0
-margin_bottom = 244.0
+margin_bottom = 228.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="NewPlayerCharacterButton" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 248.0
+margin_top = 244.0
 margin_right = 386.0
 margin_bottom = 275.0
 text = "+ New Player Character +"

@@ -1,0 +1,799 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://PCSetup.gd" type="Script" id=1]
+[ext_resource path="res://UI/Buttons/BackNextButtons.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=3]
+
+[node name="PCSetup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+current_page_number_label = NodePath("MarginContainer/Progress/HBoxContainer/current_page_number")
+total_page_number_label = NodePath("MarginContainer/Progress/HBoxContainer/total_page_number")
+type_short_description = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer/type_short_description")
+type_long_description = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer/type_long_description")
+type_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer/pc_type")
+heritage_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer/heritage_options")
+heritage_description = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer/heritage_description")
+background_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer/background_options")
+background_description = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer/background_description")
+vice_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2/vice_options")
+vice_description = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2/vice_description")
+vice_purveyor_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2/vice_purveyor_options")
+vice_purveyor_description = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2/vice_purveyor_description")
+ability_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2/ability_options")
+ability_description = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2/ability_description")
+friend_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2/friend_options")
+friend_description = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2/friend_description")
+rival_options = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2/rival_options")
+rival_description = NodePath("MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2/rival_description")
+look_text_edit = NodePath("MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer/Look")
+action_options1 = NodePath("MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/heritage_action_dot")
+action_options2 = NodePath("MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/background_action_dot")
+action_options3 = NodePath("MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/free_place_action_dot")
+action_options4 = NodePath("MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/free_place_action_dot2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 1000.0
+margin_bottom = 576.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SetupPages" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+margin_right = 976.0
+margin_bottom = 552.0
+rect_min_size = Vector2( 500, 500 )
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChooseAType" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 966.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseAType"]
+margin_right = 946.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer"]
+margin_right = 864.0
+margin_bottom = 31.0
+text = "Scoundrel Creation"
+align = 1
+
+[node name="HSeparator5" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer"]
+margin_top = 47.0
+margin_right = 864.0
+margin_bottom = 51.0
+
+[node name="TypeIntro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer"]
+margin_top = 130.0
+margin_right = 864.0
+margin_bottom = 161.0
+text = "Those who rely on your skills know you as a competent..."
+
+[node name="pc_type" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer"]
+margin_top = 177.0
+margin_right = 864.0
+margin_bottom = 208.0
+text = "Choose a scoundrel  type"
+align = 1
+items = [ "Choose a scoundrel  type", null, true, 0, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="type_short_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer"]
+margin_top = 224.0
+margin_right = 864.0
+margin_bottom = 323.0
+text = "You are a daring criminal of the underworld of Doskvol, known as a scoundrel. All scoundrels are familiar with all the various feats of skulduggery, but they also have their own specializations and skills."
+autowrap = true
+
+[node name="HSeparator6" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer"]
+margin_top = 339.0
+margin_right = 864.0
+margin_bottom = 343.0
+
+[node name="type_long_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer"]
+margin_top = 359.0
+margin_right = 864.0
+margin_bottom = 492.0
+text = "If someone solves their problems with weird occult stuff, people say they're a \"Whisper.\" If they're a smooth talker and shrewed manipulator, people might call them a \"Slide.\" What are you known for?"
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer"]
+margin_top = 508.0
+margin_right = 864.0
+margin_bottom = 512.0
+
+[node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 528.0
+margin_right = 864.0
+margin_bottom = 559.0
+page_name = "player_type"
+back_button_enabled = false
+input_nodes = [ NodePath("../pc_type") ]
+
+[node name="ChooseAHeritage" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 966.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage"]
+margin_right = 946.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 31.0
+text = "Choose a Heritage"
+align = 1
+
+[node name="heritage_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 78.0
+text = "Where is your family line from?"
+items = [ "Where is your family line from?", null, true, 0, null ]
+selected = 0
+
+[node name="heritage_notes" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer"]
+margin_top = 94.0
+margin_right = 876.0
+margin_bottom = 141.0
+placeholder_text = "Give some addtional details about your heritage."
+
+[node name="heritage_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer"]
+margin_top = 157.0
+margin_right = 876.0
+margin_bottom = 256.0
+text = "For example, you might choose Skovlan heritage, and then write Factory workers from Lockport, now reugees.
+"
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer"]
+margin_top = 272.0
+margin_right = 876.0
+margin_bottom = 276.0
+
+[node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 292.0
+margin_right = 876.0
+margin_bottom = 482.0
+input_nodes = [ NodePath("../heritage_options") ]
+
+[node name="ChooseBackground" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 966.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseBackground"]
+margin_right = 946.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer"]
+margin_right = 876.0
+margin_bottom = 31.0
+text = "Choose a Background"
+align = 1
+
+[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 112.0
+text = "Choose a general option of what you did before you joined the crew, and then give a little more detail below."
+autowrap = true
+
+[node name="background_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer"]
+margin_top = 128.0
+margin_right = 876.0
+margin_bottom = 159.0
+text = "What did you do before the crew?"
+align = 1
+items = [ "What did you do before the crew?", null, true, 0, null ]
+selected = 0
+
+[node name="background_notes" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer"]
+margin_top = 175.0
+margin_right = 876.0
+margin_bottom = 222.0
+placeholder_text = "Give a specific detail"
+
+[node name="background_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer"]
+margin_top = 238.0
+margin_right = 876.0
+margin_bottom = 303.0
+text = "For example, you could choose Labor, and then write Leviathan hunter sailor, mutineer. Or you might choose Law and write Former Bluecoat."
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer"]
+margin_top = 319.0
+margin_right = 876.0
+margin_bottom = 323.0
+
+[node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 339.0
+margin_right = 876.0
+margin_bottom = 482.0
+input_nodes = [ NodePath("../background_options") ]
+
+[node name="AssignActionDots" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 966.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots"]
+margin_right = 946.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2"]
+margin_right = 946.0
+margin_bottom = 31.0
+text = "Assign Four Action Dots"
+align = 1
+
+[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2"]
+margin_top = 47.0
+margin_right = 946.0
+margin_bottom = 180.0
+text = "You begin with 3 action dots already placed depending on your class. You get to add four more dots to further define your unique traits. At the start of the game, no action rating may have more than two dots (don't worry you won't be able to place them). "
+autowrap = true
+
+[node name="heritage_action_dot" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2"]
+margin_top = 196.0
+margin_right = 946.0
+margin_bottom = 227.0
+text = "Improve one action you feel reflects your character's heritage."
+align = 1
+items = [ "Improve one action you feel reflects your character's heritage.", null, true, 0, null ]
+selected = 0
+
+[node name="background_action_dot" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2"]
+margin_top = 243.0
+margin_right = 946.0
+margin_bottom = 274.0
+text = "Improve one action that you feel refelcts your character's background."
+align = 1
+items = [ "Improve one action that you feel refelcts your character's background.", null, true, 0, null ]
+selected = 0
+
+[node name="free_place_action_dot" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2"]
+margin_top = 290.0
+margin_right = 946.0
+margin_bottom = 321.0
+text = "Pick any action to improve."
+align = 1
+items = [ "Pick any action to improve.", null, true, 0, null ]
+selected = 0
+
+[node name="free_place_action_dot2" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2"]
+margin_top = 337.0
+margin_right = 946.0
+margin_bottom = 368.0
+text = "Pick any action to improve."
+align = 1
+items = [ "Pick any action to improve.", null, true, 0, null ]
+selected = 0
+
+[node name="HSeparator5" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2"]
+margin_top = 384.0
+margin_right = 946.0
+margin_bottom = 388.0
+
+[node name="action_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2"]
+margin_top = 404.0
+margin_right = 946.0
+margin_bottom = 435.0
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2"]
+margin_top = 451.0
+margin_right = 946.0
+margin_bottom = 455.0
+
+[node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 471.0
+margin_right = 946.0
+margin_bottom = 532.0
+input_nodes = [ NodePath("../heritage_action_dot"), NodePath("../background_action_dot"), NodePath("../free_place_action_dot"), NodePath("../free_place_action_dot2") ]
+
+[node name="ChooseSpecialAbility" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 966.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility"]
+margin_right = 946.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2"]
+margin_right = 946.0
+margin_bottom = 31.0
+text = "Choose a Special Ability"
+align = 1
+
+[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2"]
+margin_top = 47.0
+margin_right = 946.0
+margin_bottom = 78.0
+text = "Choose a speical ability for your scoundrel. Unsure? Pick the first one!"
+autowrap = true
+
+[node name="ability_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2"]
+margin_top = 94.0
+margin_right = 876.0
+margin_bottom = 125.0
+text = "What's your speical ability?"
+align = 1
+items = [ "What's your speical ability?", null, true, 0, null ]
+selected = 0
+
+[node name="ability_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2"]
+margin_top = 94.0
+margin_right = 946.0
+margin_bottom = 125.0
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2"]
+margin_top = 141.0
+margin_right = 946.0
+margin_bottom = 145.0
+
+[node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 161.0
+margin_right = 946.0
+margin_bottom = 517.0
+input_nodes = [ NodePath("../ability_options") ]
+
+[node name="ChooseCloseFriend" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 966.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend"]
+margin_right = 946.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2"]
+margin_right = 876.0
+margin_bottom = 31.0
+text = "Choose a Close Friend"
+align = 1
+
+[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 112.0
+text = "Choose an NPC that you have a close friendship or professional relationship with."
+autowrap = true
+
+[node name="friend_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2"]
+margin_top = 128.0
+margin_right = 876.0
+margin_bottom = 159.0
+text = "Who's your friend?"
+align = 1
+items = [ "Who's your friend?", null, true, 0, null ]
+selected = 0
+
+[node name="friend_notes" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2"]
+margin_top = 175.0
+margin_right = 876.0
+margin_bottom = 222.0
+placeholder_text = "How do you know this person?"
+
+[node name="friend_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2"]
+margin_top = 238.0
+margin_right = 876.0
+margin_bottom = 269.0
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2"]
+margin_top = 285.0
+margin_right = 876.0
+margin_bottom = 289.0
+
+[node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 305.0
+margin_right = 876.0
+margin_bottom = 482.0
+input_nodes = [ NodePath("../friend_options") ]
+
+[node name="ChooseRival" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 966.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseRival"]
+margin_right = 946.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2"]
+margin_right = 876.0
+margin_bottom = 31.0
+text = "Choose a Rival"
+align = 1
+
+[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 112.0
+text = "Choose an NPC that you have a close friendship or professional relationship with."
+autowrap = true
+
+[node name="rival_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2"]
+margin_top = 128.0
+margin_right = 876.0
+margin_bottom = 159.0
+text = "Who is your rival?"
+align = 1
+items = [ "Who is your rival?", null, true, 0, null ]
+selected = 0
+
+[node name="rival_notes" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2"]
+margin_top = 175.0
+margin_right = 876.0
+margin_bottom = 222.0
+placeholder_text = "How do you know them? What happened?"
+
+[node name="rival_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2"]
+margin_top = 238.0
+margin_right = 876.0
+margin_bottom = 269.0
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2"]
+margin_top = 285.0
+margin_right = 876.0
+margin_bottom = 289.0
+
+[node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 305.0
+margin_right = 876.0
+margin_bottom = 482.0
+input_nodes = [ NodePath("../rival_options") ]
+
+[node name="ChooseVice" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 966.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseVice"]
+margin_right = 946.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2"]
+margin_right = 876.0
+margin_bottom = 31.0
+text = "Choose a Vice"
+align = 1
+
+[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 146.0
+text = "Every scoundrel is in thrall to some vice or another, which they indulge to deal with stress. Choose a vice from the list, and describe your speicific details below it."
+autowrap = true
+
+[node name="vice_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2"]
+margin_top = 162.0
+margin_right = 876.0
+margin_bottom = 193.0
+text = "What's your vice?"
+align = 1
+items = [ "What's your vice?", null, true, 0, null ]
+selected = 0
+
+[node name="vice_notes" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2"]
+margin_top = 209.0
+margin_right = 876.0
+margin_bottom = 256.0
+placeholder_text = "Give the juicy details."
+
+[node name="vice_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2"]
+margin_top = 272.0
+margin_right = 876.0
+margin_bottom = 303.0
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2"]
+margin_top = 319.0
+margin_right = 876.0
+margin_bottom = 323.0
+
+[node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 339.0
+margin_right = 876.0
+margin_bottom = 482.0
+input_nodes = [ NodePath("../vice_options") ]
+
+[node name="ChooseVicePurveyor" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 966.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor"]
+margin_right = 946.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
+margin_right = 876.0
+margin_bottom = 31.0
+text = "Choose a Vice Purveyor"
+align = 1
+
+[node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
+margin_top = 47.0
+margin_right = 876.0
+margin_bottom = 78.0
+text = "The purveyor of your vice, the person you go see to indulge."
+autowrap = true
+
+[node name="vice_purveyor_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
+margin_top = 94.0
+margin_right = 876.0
+margin_bottom = 125.0
+text = "Who's the purveyor of your vice?"
+align = 1
+items = [ "Who's the purveyor of your vice?", null, true, 0, null ]
+selected = 0
+
+[node name="vice_purveyor_notes" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
+margin_top = 141.0
+margin_right = 876.0
+margin_bottom = 188.0
+placeholder_text = "How do you know them?"
+
+[node name="vice_purveyor_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
+margin_top = 204.0
+margin_right = 876.0
+margin_bottom = 235.0
+autowrap = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
+margin_top = 251.0
+margin_right = 876.0
+margin_bottom = 255.0
+
+[node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 271.0
+margin_right = 876.0
+margin_bottom = 482.0
+input_nodes = [ NodePath("../vice_purveyor_options") ]
+
+[node name="AddtionalDetails" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
+visible = false
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 966.0
+margin_bottom = 542.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/SetupPages/AddtionalDetails"]
+margin_right = 946.0
+margin_bottom = 532.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Name2" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer"]
+margin_right = 946.0
+margin_bottom = 47.0
+placeholder_text = "Your Real Name"
+
+[node name="Alias" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer"]
+margin_top = 63.0
+margin_right = 946.0
+margin_bottom = 110.0
+placeholder_text = "Do you have any aliases?"
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer"]
+margin_top = 126.0
+margin_right = 946.0
+margin_bottom = 157.0
+text = "Describe your look:"
+
+[node name="Look" type="TextEdit" parent="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer"]
+margin_top = 173.0
+margin_right = 946.0
+margin_bottom = 334.0
+size_flags_vertical = 3
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer"]
+margin_top = 350.0
+margin_right = 946.0
+margin_bottom = 354.0
+
+[node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 370.0
+margin_right = 946.0
+margin_bottom = 532.0
+finished = true
+require_data_for_next = false
+
+[node name="Progress" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 1000.0
+margin_bottom = 55.0
+size_flags_horizontal = 11
+size_flags_vertical = 0
+custom_constants/separation = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Progress"]
+margin_right = 976.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+
+[node name="current_page_number" type="Label" parent="MarginContainer/Progress/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 31.0
+text = "0"
+
+[node name="Label2" type="Label" parent="MarginContainer/Progress/HBoxContainer"]
+margin_left = 32.0
+margin_right = 40.0
+margin_bottom = 31.0
+text = "/"
+
+[node name="total_page_number" type="Label" parent="MarginContainer/Progress/HBoxContainer"]
+margin_left = 56.0
+margin_right = 65.0
+margin_bottom = 31.0
+text = "1"
+
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer/pc_type" to="." method="_on_pc_type_item_selected"]
+[connection signal="back" from="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_back"]
+[connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
+[connection signal="finished_page" from="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_finished_page"]
+[connection signal="next" from="MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer/heritage_options" to="." method="_on_heritage_options_item_selected"]
+[connection signal="text_changed" from="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer/heritage_notes" to="." method="_on_heritage_notes_text_changed"]
+[connection signal="back" from="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_back"]
+[connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
+[connection signal="next" from="MarginContainer/PanelContainer/SetupPages/ChooseAHeritage/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer/background_options" to="." method="_on_background_options_item_selected"]
+[connection signal="text_changed" from="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer/background_notes" to="." method="_on_background_notes_text_changed"]
+[connection signal="back" from="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_back"]
+[connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
+[connection signal="next" from="MarginContainer/PanelContainer/SetupPages/ChooseBackground/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/heritage_action_dot" to="." method="_on_action_dot_item_selected" binds= [ "option1" ]]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/background_action_dot" to="." method="_on_action_dot_item_selected" binds= [ "option2" ]]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/free_place_action_dot" to="." method="_on_action_dot_item_selected" binds= [ "option3" ]]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/free_place_action_dot2" to="." method="_on_action_dot_item_selected" binds= [ "option4" ]]
+[connection signal="back" from="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_back"]
+[connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
+[connection signal="next" from="MarginContainer/PanelContainer/SetupPages/AssignActionDots/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2/ability_options" to="." method="_on_ability_options_item_selected"]
+[connection signal="back" from="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_back"]
+[connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
+[connection signal="next" from="MarginContainer/PanelContainer/SetupPages/ChooseSpecialAbility/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2/friend_options" to="." method="_on_friend_options_item_selected"]
+[connection signal="text_changed" from="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2/friend_notes" to="." method="_on_friend_notes_text_changed"]
+[connection signal="back" from="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_back"]
+[connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
+[connection signal="next" from="MarginContainer/PanelContainer/SetupPages/ChooseCloseFriend/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2/rival_options" to="." method="_on_rival_options_item_selected"]
+[connection signal="text_changed" from="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2/rival_notes" to="." method="_on_rival_notes_text_changed"]
+[connection signal="back" from="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_back"]
+[connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
+[connection signal="next" from="MarginContainer/PanelContainer/SetupPages/ChooseRival/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2/vice_options" to="." method="_on_vice_options_item_selected"]
+[connection signal="text_changed" from="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2/vice_notes" to="." method="_on_vice_notes_text_changed"]
+[connection signal="back" from="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_back"]
+[connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
+[connection signal="next" from="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_next"]
+[connection signal="text_changed" from="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2/vice_purveyor_notes" to="." method="_on_vice_purveyor_notes_text_changed"]
+[connection signal="back" from="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_back"]
+[connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
+[connection signal="next" from="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_next"]
+[connection signal="text_changed" from="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer/Name2" to="." method="_on_Name_text_changed"]
+[connection signal="text_changed" from="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer/Alias" to="." method="_on_Alias_text_changed"]
+[connection signal="text_changed" from="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer/Look" to="." method="_on_Look_text_changed"]
+[connection signal="back" from="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_back"]
+[connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
+[connection signal="next" from="MarginContainer/PanelContainer/SetupPages/AddtionalDetails/VBoxContainer/BackNextButtons" to="." method="_on_BackNextButtons_next"]

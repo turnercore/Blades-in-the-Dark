@@ -74,8 +74,8 @@ func setup_maps_from_srd(new_srd:Dictionary)-> void:
 			locations = srd.locations
 		elif "default_locations" in srd:
 			locations = srd.default_locations
-		for vec2 in locations:
-			var location = locations[vec2]
+		for location in locations:
+			var vec2 = location.pos
 			if vec2 is String:
 				vec2 = str2var(vec2)
 			new_map.locations[vec2] = location
