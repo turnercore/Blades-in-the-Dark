@@ -7,6 +7,7 @@ extends Node
 enum OP_CODES {
 	PLAYER_MOVEMENT,
 	PLAYER_SPRITE,
+	PLAYER_PING,
 	NETWORKED_RESOURCE_CREATED,
 	NETWORKED_RESOURCE_REMOVED,
 	NETWORKED_RESOURCE_UPDATED,
@@ -26,6 +27,8 @@ enum OP_CODES {
 	PLAYER_DATA_SENT
 }
 
+var online: = false
+
 signal networked_resource_created(data)
 signal networked_resource_removed(data)
 signal networked_resource_updated(data)
@@ -35,6 +38,7 @@ signal gamedata_game_state_updated(game_state)
 signal current_game_state_requested(user_id)
 signal current_game_state_broadcast(data, op_code)
 signal gamedata_recieved(data)
+signal player_pinged(data)
 
 
 func _ready() -> void:
@@ -110,6 +114,9 @@ func _on_match_state_recieved(match_state: NakamaRTAPI.MatchData)-> void:
 			if data is Dictionary:
 				if "id" in data and "library" in data:
 					emit_signal("networked_resource_removed", data)
+		OP_CODES.PLAYER_PING:
+			if data is Dictionary:
+				emit_signal("player_pinged", data)
 		_:
 			print('INVALID OP CODE: ' + str(op_code))
 

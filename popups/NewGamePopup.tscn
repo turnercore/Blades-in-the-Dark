@@ -7,7 +7,6 @@
 [ext_resource path="res://Shared/theme/menu.tres" type="StyleBox" id=5]
 
 [node name="NewGamePopup" type="Popup"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
@@ -96,6 +95,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="popup_hide" from="." to="." method="_on_NewGamePopup_popup_hide"]
 [connection signal="popup_hide" from="." to="." method="_on_NewGamePopup_popup_hide"]
 [connection signal="text_changed" from="MarginContainer/PopupPanel/VBoxContainer/HBoxContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
 [connection signal="pressed" from="MarginContainer/PopupPanel/VBoxContainer/CreateNewCrewButton" to="." method="_on_CreateNewCrewButton_pressed"]

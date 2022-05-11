@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://maps/MainCamera.gd" type="Script" id=1]
 [ext_resource path="res://Shared/PlayerCursor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/Map.gd" type="Script" id=3]
 [ext_resource path="res://maps/District Images/Duskvol.jpg" type="Texture" id=4]
 [ext_resource path="res://maps/MapAreas.gd" type="Script" id=5]
-[ext_resource path="res://maps/MapPins.tscn" type="PackedScene" id=7]
+[ext_resource path="res://maps/Ping.tscn" type="PackedScene" id=6]
+[ext_resource path="res://maps/Drawings.gd" type="Script" id=7]
 [ext_resource path="res://maps/HighlightArea.tscn" type="PackedScene" id=9]
 
 [node name="Map" type="Node2D"]
@@ -17,7 +18,9 @@ notes = NodePath("MapGrid/Notes")
 camera = NodePath("Camera2D")
 map_texture = NodePath("MapGrid/MapTexture")
 grid = NodePath("MapGrid")
+drawing_canvas = NodePath("MapGrid/Drawings")
 player_cursor_scene = ExtResource( 2 )
+ping_scene = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -59,7 +62,5 @@ highlight_area_scene = ExtResource( 9 )
 
 [node name="Tween" type="Tween" parent="MapGrid/Areas"]
 
-[node name="MapPins" parent="." instance=ExtResource( 7 )]
-visible = false
-anchor_top = 1.0
-anchor_right = 0.0
+[node name="Drawings" type="Node2D" parent="MapGrid"]
+script = ExtResource( 7 )

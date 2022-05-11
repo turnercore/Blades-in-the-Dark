@@ -213,6 +213,12 @@ func _on_type_options_item_selected(index: int) -> void:
 
 
 func _on_FinishedButton_pressed() -> void:
+	var required_data:Array = [selected_ability, selected_contact, chosen_hunting_ground, selected_angry_faction, selected_friendly_faction, selected_contact_angry_faction, selected_contact_friendly_faction]
+	for element in required_data:
+		if element == null:
+			print("Not all required data is selected")
+			return
+
 	crew_playbook.update("coins.available", coins)
 	crew_playbook.update("abilities.%s.claimed"%selected_ability.name, true)
 	crew_playbook.update("contacts.%s.status"%selected_contact.name, selected_contact.status)
@@ -229,7 +235,6 @@ func _on_FinishedButton_pressed() -> void:
 	Events.emit_signal("popup_finished")
 	if on_start_screen:
 		get_tree().change_scene_to(Globals.GAME_SCENE)
-#		get_tree().change_scene(Globals.GAME_SCENE_PATH)
 	else: queue_free()
 
 func _set_coins(value:int)-> void:
@@ -369,10 +374,10 @@ func _on_friendly_interaction_item_selected(index: int) -> void:
 func _on_angry_interaction_item_selected(index: int) -> void:
 	match index:
 		1:
-			selected_friendly_faction.status -= 2
+			selected_angry_faction.status -= 2
 		2:
 			self.coins -=1
-			selected_friendly_faction.status -= 1
+			selected_angry_faction.status -= 1
 
 
 func _on_BackButton_pressed() -> void:

@@ -10,18 +10,19 @@ var settings:Dictionary
 var debug:bool = ProjectSettings.get_setting("debug/settings/debug")
 var srd_file_path: = DEFAULT_SRD
 export (Dictionary) var srd
-export (String) var _save_id
+export (String) var id
 var _save_folder: = "res://debug/save" if debug else "user://save"
 export (String) var version: String = ''
-export (Dictionary) var map setget _set_map, _get_map
-export (Array) var maps
-export (Array) var clocks  setget _set_clocks
-export (Array) var map_shortcuts
+export (Dictionary) var map: = {} setget _set_map, _get_map
+export (Array) var maps: = [].duplicate()
+export (Array) var clocks: = [].duplicate()  setget _set_clocks
+export (Array) var map_shortcuts: = [].duplicate()
+export (Dictionary) var contacts: = {}
+export (Dictionary) var factions: = {}
 export (bool) var is_setup: = false
-export (Array) var pc_playbooks: = []
-export (Dictionary) var crew_playbook
-
-var recently_deleted:Array = []
+export (Array) var pc_playbooks: = [].duplicate()
+export (Dictionary) var crew_playbook: = {}
+var recently_deleted:Array = [].duplicate()
 
 func setup(provided_srd_file_path: String = "")->void:
 	if provided_srd_file_path:
@@ -50,9 +51,9 @@ func setup_maps_from_srd(new_srd:Dictionary)-> void:
 	srd = new_srd
 	var srd_maps
 	if "default_maps" in srd:
-		srd_maps = srd.default_maps
+		srd_maps = srd.default_maps.duplicate(true)
 	if "maps" in srd:
-		srd_maps = srd.maps
+		srd_maps = srd.maps.duplicate(true)
 
 	#Set the srd maps into the maps array
 	for key in srd_maps:
@@ -61,19 +62,16 @@ func setup_maps_from_srd(new_srd:Dictionary)-> void:
 			if "name" in loaded_map and loaded_map.name == key:
 				map_exists_already = true
 		if map_exists_already: continue
-		var new_map:= {}
 		var srd_map = srd_maps[key]
+		var new_map = srd_map.duplicate(true)
 
-		for property in srd_map:
-			new_map[property] = srd_map[property]
-
-		new_map["map_index"] = maps.size()
+		new_map["index"] = maps.size()
 		new_map["locations"] = {}
 		var locations
 		if "locations" in srd:
-			locations = srd.locations
+			locations = srd.locations.duplicate(true)
 		elif "default_locations" in srd:
-			locations = srd.default_locations
+			locations = srd.default_locations.duplicate(true)
 		for location in locations:
 			var vec2 = location.pos
 			if vec2 is String:
@@ -91,6 +89,7 @@ func _set_clocks(value:Array)-> void:
 
 func _set_map(value:Dictionary)-> void:
 	map = value
+
 	if is_setup: emit_changed()
 
 func _get_map()-> Dictionary:

@@ -67,372 +67,364 @@ srd = {
 "stat": "prowess"
 }
 },
-"backgrounds": {
-"Academic": {
+"backgrounds": [ {
 "description": "A scholar, a professor or student from Doskvol Academy, a philosopher or journalist, etc.",
 "name": "Academic"
-},
-"Labor": {
+}, {
 "description": "A servant, a factory worker, a coach driver, a docker, a sailor, a Rail Jack, etc.",
 "name": "Labor"
-},
-"Law": {
+}, {
 "description": "An advocate or barriester, a Bluecoat or inspector or Spirit Warden, a prison guard from Ironhook, etc.",
 "name": "Law"
-},
-"Military ": {
-"description": "An Imperial or Skovlander soldier, a mercenary, an intelligence operative, a strategist, a training instructor, etc.",
-"name": "Military"
-},
-"Noble": {
-"description": "A dilettante, a courier, the scion of a fallen house, etc.",
-"name": "Noble"
-},
-"Trade": {
+}, {
 "description": "A shopkeeper, a merchant, a skilled crafts-person, a shipping agent, etc.",
 "name": "Trade"
-},
-"Underworld": {
+}, {
+"description": "An Imperial or Skovlander soldier, a mercenary, an intelligence operative, a strategist, a training instructor, etc.",
+"name": "Military"
+}, {
+"description": "A dilettante, a courier, the scion of a fallen house, etc.",
+"name": "Noble"
+}, {
 "description": "A street urchin, gang memeber, young thug, or other outcast who grew up on the streets.",
 "name": "Underworld"
-}
-},
+} ],
 "character_abilities": {
 " The Devil's Footsteps": {
-"claimed": false,
 "class": "lurk",
 "description": "When you push yourself, choose one of the following additional benefits: perform a feat of athletics that verges on the superhuman—maneuver to confuse your enemies so they mistakenly attack each other.",
-"name": "The Devil's Footsteps"
+"name": "The Devil's Footsteps",
+"notes": null
 },
 "A Little Something on the Side": {
-"claimed": false,
 "class": "slide",
 "description": "At the end of each downtime phase, you earn +2 stash.",
-"name": "A Little Something on the Side"
+"name": "A Little Something on the Side",
+"notes": null
 },
 "Alchemist": {
-"claimed": false,
 "class": "leech",
 "description": "When you invent or craft a creation with alchemical features, take +1 result level to your roll. You begin with one special formula already known.",
-"name": "Alchemist"
+"name": "Alchemist",
+"notes": null
 },
 "Ambush": {
-"claimed": false,
 "class": "lurk",
 "description": "When you attack from hiding or spring a trap, you get +1d.",
-"name": "Ambush"
+"name": "Ambush",
+"notes": null
 },
 "Analyst": {
-"claimed": false,
 "class": "leech",
 "description": "During downtime, you get two ticks to distribute among any long term project clocks that involve investigation or learning a new formula or design plan.",
-"name": "Analyst"
+"name": "Analyst",
+"notes": null
 },
 "Artificer": {
-"claimed": false,
 "class": "leech",
 "description": "When you invent or craft a creation with spark-craft features, take +1 result level to your roll. You begin with one special design already known.",
-"name": "Artificer"
+"name": "Artificer",
+"notes": null
 },
 "Battleborn": {
-"claimed": false,
 "class": "cutter",
 "description": "You may expend your special armor to reduce harm from an attack in combat or to push yourself during a fight.",
-"name": "Battleborn"
+"name": "Battleborn",
+"notes": null
 },
 "Bodyguard": {
-"claimed": false,
 "class": "cutter",
 "description": "When you protect a teammate, take +1d to your resistance roll. When you gather info to anticipate possible threats in the current situation, you get +1 effect.",
-"name": "Bodyguard"
+"name": "Bodyguard",
+"notes": null
 },
 "Calculating": {
-"claimed": false,
 "class": "spider",
 "description": "Due to your careful planning, during downtime, you may give yourself or another crew member +1 downtime action.",
-"name": "Calculating"
+"name": "Calculating",
+"notes": null
 },
 "Cloak & Dagger": {
-"claimed": false,
 "class": "slide",
 "description": "When you use a disguise or other form of covert misdirection, you get +1d to rolls to confuse or deflect suspicion. When you throw off your disguise, the resulting surprise gives you the initiative in the situation.",
-"name": "Cloak & Dagger"
+"name": "Cloak & Dagger",
+"notes": null
 },
 "Compel": {
-"claimed": false,
 "class": "whisper",
 "description": "You can Attune to the ghost field to force a nearby ghost to appear and obey a command you give it. You are not supernaturally terrified by a ghost you summon or compel (though your allies may be).",
-"name": "Compel"
+"name": "Compel",
+"notes": null
 },
 "Connected": {
-"claimed": false,
 "class": "spider",
 "description": "During downtime, you get +1 result level when you acquire an asset or reduce heat.",
-"name": "Connected"
+"name": "Connected",
+"notes": null
 },
 "Daredevil": {
-"claimed": false,
 "class": "lurk",
 "description": "When you roll a desperate action, you get +1d to your roll if you also take -1d to any resistance rolls against consequences from your action.",
-"name": "Daredevil"
+"name": "Daredevil",
+"notes": null
 },
 "Expertise": {
-"claimed": false,
 "class": "lurk",
 "description": "Choose one of your action ratings. When you lead a group action using that action, you can suffer only 1 stress at most regardless of the number of failed rolls.",
-"name": "Expertise"
+"name": "Expertise",
+"notes": null
 },
 "Focused": {
-"claimed": false,
 "class": "hound",
 "description": "You may expend your special armor to resist a consequence of surprise or mental harm (fear, confusion, losing track of someone) or to push yourself for ranged combat or tracking.",
-"name": "Focused"
+"name": "Focused",
+"notes": null
 },
 "Foresight": {
-"claimed": false,
 "class": "spider",
 "description": "Two times per score you can assist a teammate without paying stress. Tell us how you prepared for this.",
-"name": "Foresight"
+"name": "Foresight",
+"notes": null
 },
 "Fortitude": {
-"claimed": false,
 "class": "leech",
 "description": "You may expend your special armor to resist a consequence of fatigue, weakness, or chemical effects, or to push yourself when working with technical skill or handling alchemicals.",
-"name": "Fortitude"
+"name": "Fortitude",
+"notes": null
 },
 "Functioning Vice": {
-"claimed": false,
 "class": "spider",
 "description": "When you indulge your vice, you may adjust the dice outcome by 1 or 2 (up or down). An ally who joins in your vice may do the same.",
-"name": "Functioning Vice"
+"name": "Functioning Vice",
+"notes": null
 },
 "Ghost Contract": {
-"claimed": false,
 "class": "spider",
 "description": "When you shake on a deal, you and your partner—human or otherwise—both bear a mark of your oath. If either breaks the contract, they take level 3 harm, \"Cursed\".",
-"name": "Ghost Contract"
+"name": "Ghost Contract",
+"notes": null
 },
 "Ghost Fighter": {
-"claimed": false,
 "class": "cutter",
 "description": "You may imbue your hands, melee weapons, or tools with spirit energy. You gain potency in combat vs. the supernatural. You may grapple with spirits to restrain and capture them.",
-"name": "Ghost Fighter"
+"name": "Ghost Fighter",
+"notes": null
 },
 "Ghost Hunter": {
-"claimed": false,
 "class": "hound",
 "description": "(2 Skill Points) Your hunting pet is imbued with spirit energy. It gains potency when tracking or fighting the supernatural, and gains an arcane ability: ghost-form, mind-link, or arrow-swift. Take this ability again to choose an additional arcane ability for your pet.",
-"name": "Ghost Hunter"
+"name": "Ghost Hunter",
+"notes": null
 },
 "Ghost Mind": {
-"claimed": false,
 "class": "whisper",
 "description": "You’re always aware of supernatural entities in your presence. Take +1d when you gather info about the supernatural.",
-"name": "Ghost Mind"
+"name": "Ghost Mind",
+"notes": null
 },
 "Ghost Veil": {
-"claimed": false,
 "class": "lurk",
 "description": "You may shift partially into the ghost field, becoming shadowy and insubstantial for a few moments. Take 2 stress when you shift, plus 1 stress for each extra feature: It lasts for a few minutes rather than moments—you are invisible rather than shadowy—you may float through the air like a ghost",
-"name": "Ghost Veil"
+"name": "Ghost Veil",
+"notes": null
 },
 "Ghost Voice": {
-"claimed": false,
 "class": "slide",
 "description": "You know the secret method to interact with a ghost or demon as if it was a normal human, regardless of how wild or feral it appears. You gain potency when communicating with the supernatural.",
-"name": "Ghost Voice"
+"name": "Ghost Voice",
+"notes": null
 },
 "Ghost Ward": {
-"claimed": false,
 "class": "leech",
 "description": "You know how to Wreck an area with arcane substances and methods so it is either anathema or enticing to spirits (your choice).",
-"name": "Ghost Ward"
+"name": "Ghost Ward",
+"notes": null
 },
 "Infiltrator": {
-"claimed": false,
 "class": "lurk",
 "description": "You are not affected by quality or Tier when you bypass security measures.",
-"name": "Infiltrator"
+"name": "Infiltrator",
+"notes": null
 },
 "Iron Will": {
-"claimed": false,
 "class": "whisper",
 "description": "You're immune to the terror that some supernatural entities inflict on sight. Take +1d to resistance rolls with Resolve.",
-"name": "Iron Will"
+"name": "Iron Will",
+"notes": null
 },
 "Jail Bird": {
-"claimed": false,
 "class": "spider",
 "description": "When incarcerated, your wanted level counts as 1 less, your Tier as 1 more, and you gain +1 faction status with a faction you help on the inside (in addition to your incarceration roll).",
-"name": "Jail Bird"
+"name": "Jail Bird",
+"notes": null
 },
 "Leader": {
-"claimed": false,
 "class": "cutter",
 "description": "When you Command a cohort in combat, they continue to fight when they would otherwise break (they're not taken out when they suffer level 3 harm). They gain +1 effect and 1 armor.",
-"name": "Leader"
+"name": "Leader",
+"notes": null
 },
 "Like Looking into a Mirror": {
-"claimed": false,
 "class": "slide",
 "description": "You can always tell when someone is lying to you.",
-"name": "Like Looking into a Mirror"
+"name": "Like Looking into a Mirror",
+"notes": null
 },
 "Mastermind": {
-"claimed": false,
 "class": "spider",
 "description": "You may expend your special armor to protect a teammate, or to push yourself when you gather information or work on a long-term project.",
-"name": "Mastermind"
+"name": "Mastermind",
+"notes": null
 },
 "Mesmerism": {
-"claimed": false,
 "class": "slide",
 "description": "When you Sway someone, you may cause them to forget that it's happened until they next interact with you.",
-"name": "Mesmerism"
+"name": "Mesmerism",
+"notes": null
 },
 "Mule": {
-"claimed": false,
 "class": "cutter",
 "description": "Your load limits are higher. Light: 5, Normal: 7, Heavy: 8",
-"name": "Mule"
+"name": "Mule",
+"notes": null
 },
 "Not to be Trifled With": {
-"claimed": false,
 "class": "cutter",
 "description": "You can push yourself to do one of the following: perform a feat of physical force that verges on the superhuman—engage a small gang on equal footing in close combat.",
-"name": "Not to be Trifled With"
+"name": "Not to be Trifled With",
+"notes": null
 },
 "Occultist": {
-"claimed": false,
 "class": "whisper",
 "description": "You know the secret ways to Consort with ancient powers, forgotten gods or demons. Once you've consorted with one, you get +1d to command cultists who worship it.",
-"name": "Occultist"
+"name": "Occultist",
+"notes": null
 },
 "Physicker": {
-"claimed": false,
 "class": "leech",
 "description": "You can Tinker with bones, blood, and bodily humours to treat wounds or stabilize the dying. You may study a malady or corpse. Everyone in your crew gets +1d to their healing treatment rolls.",
-"name": "Physicker"
+"name": "Physicker",
+"notes": null
 },
 "Reflexes": {
-"claimed": false,
 "class": "lurk",
 "description": "When there's a question about who acts first, the answer is you (two characters with Reflexes act simultaneously)",
-"name": "Reflexes"
+"name": "Reflexes",
+"notes": null
 },
 "Ritual": {
-"claimed": false,
 "class": "whisper",
 "description": "You can Study an occult ritual (or create a new one) to summon a supernatural effect or being. You know the arcane methods to perform ritual sorcery. You begin with one ritual already learned.",
-"name": "Ritual"
+"name": "Ritual",
+"notes": null
 },
 "Rook's Gambit": {
-"claimed": false,
 "class": "slide",
 "description": "Take 2 stress to roll your best action rating while performing a different action. Say how you adapt your skill to this use.",
-"name": "Rook's Gambit"
+"name": "Rook's Gambit",
+"notes": null
 },
 "Saboteur": {
-"claimed": false,
 "class": "leech",
 "description": "When you Wreck, the work is much quieter than it should be and the damage is hidden from casual inspection.",
-"name": "Saboteur"
+"name": "Saboteur",
+"notes": null
 },
 "Savage": {
-"claimed": false,
 "class": "cutter",
 "description": "When you unleash physical violence, it's especially frightening. When you Command a frightened target, take +1d.",
-"name": "Savage"
+"name": "Savage",
+"notes": null
 },
 "Scout": {
-"claimed": false,
 "class": "hound",
 "description": "When you gather info to locate a target, you get +1 effect. When you hide in a prepared position or use camouflage, you get +1d to rolls to avoid detection.",
-"name": "Scout"
+"name": "Scout",
+"notes": null
 },
 "Shadow": {
-"claimed": false,
 "class": "lurk",
 "description": "You may expend your special armor to resist a consequence from detection or security measures, or to push yourself for a feat of athletics or stealth.",
-"name": "Shadow"
+"name": "Shadow",
+"notes": null
 },
 "Sharpshooter": {
-"claimed": false,
 "class": "hound",
 "description": "You can push yourself to do one of the following: make a ranged attack at extreme distance beyond what’s normal for the weapon—unleash a barrage of rapid fire to suppress the enemy.",
-"name": "Sharpshooter"
+"name": "Sharpshooter",
+"notes": null
 },
 "Strange Methods": {
-"claimed": false,
 "class": "whisper",
 "description": "When you invent or craft a creation with arcane features, take +1 result level to your roll. You begin with one arcane design already known.",
-"name": "Strange Methods"
+"name": "Strange Methods",
+"notes": null
 },
 "Subterfuge": {
-"claimed": false,
 "class": "slide",
 "description": "You may expend your special armor to resist a consequence from suspicion or persuasion, or to push yourself for subterfuge.",
-"name": "Subterfuge"
+"name": "Subterfuge",
+"notes": null
 },
 "Survivor": {
-"claimed": false,
 "class": "hound",
 "description": "From hard won experience or occult ritual, you are immune to the poisonous miasma of the deathlands and are able to subsist on the strange flora and fauna there. You get +1 stress box.",
-"name": "Survivor"
+"name": "Survivor",
+"notes": null
 },
 "Tempest": {
-"claimed": false,
 "class": "whisper",
 "description": "You can push yourself to do one of the following: unleash a stroke of lightning as a weapon—summon a storm in your immediate vicinity (torrential rain, roaring winds, heavy fog, chilling frost/snow, etc.).",
-"name": "Tempest"
+"name": "Tempest",
+"notes": null
 },
 "Tough as Nails": {
-"claimed": false,
 "class": "hound",
 "description": "Penalties from harm are one level less severe (though level 4 harm is still fatal).",
-"name": "Tough as Nails"
+"name": "Tough as Nails",
+"notes": null
 },
 "Trust in Me": {
-"claimed": false,
 "class": "slide",
 "description": "You get +1d vs. a target with whom you have an intimate relationship.",
-"name": "Trust in Me"
+"name": "Trust in Me",
+"notes": null
 },
 "Vengeful": {
-"claimed": false,
 "class": "hound",
 "description": "You gain an additional xp trigger: You got payback against someone who harmed you or someone you care about. If your crew helped you get payback, also mark crew xp.",
-"name": "Vengeful"
+"name": "Vengeful",
+"notes": null
 },
 "Venomous": {
-"claimed": false,
 "class": "leech",
 "description": "Choose a drug or poison (from your bandolier stock) to which you have become immune. You can push yourself to secrete it through your skin or saliva or exhale it as a vapor.",
-"name": "Venomous"
+"name": "Venomous",
+"notes": null
 },
 "Veteran": {
-"claimed": false,
 "class": "all",
 "description": "(3 Skill Points) Choose a special ability from another source.",
-"name": "Veteran"
+"name": "Veteran",
+"notes": null
 },
 "Vigorous": {
-"claimed": false,
 "class": "cutter",
 "description": "You recover from harm faster. Permanently fill in one of your healing clock segments. Take +1d to healing treatment rolls.",
-"name": "Vigorous"
+"name": "Vigorous",
+"notes": null
 },
 "Warded": {
-"claimed": false,
 "class": "whisper",
 "description": "You may expend your special armor to resist a supernatural consequence, or to push yourself when you deal with arcane forces.",
-"name": "Warded"
+"name": "Warded",
+"notes": null
 },
 "Weaving the Web": {
-"claimed": false,
 "class": "spider",
 "description": "You gain +1d to Consort when you gather information on a target for a score. You get +1d to the engagement roll for that operation.",
-"name": "Weaving the Web"
+"name": "Weaving the Web",
+"notes": null
 }
 },
 "claims": {
@@ -1576,7 +1568,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Pleasure", "Stupor" ]
+"types": [ "pleasure", "stupor" ]
 },
 "Bazso Baz": {
 "associations": [  ],
@@ -1696,7 +1688,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Luxury", "Pleasure" ]
+"types": [ "luxury", "pleasure" ]
 },
 "Commander Bowmore": {
 "associations": [ "Brightstone Watch", "Bluecoats", "Bowmore Bridge" ],
@@ -1801,7 +1793,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Luxury", "Pleasure" ]
+"types": [ "luxury", "pleasure" ]
 },
 "Eckerd": {
 "associations": [  ],
@@ -1831,7 +1823,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Pleasure", "Stupor" ]
+"types": [ "pleasure", "stupor" ]
 },
 "Elynn": {
 "associations": [  ],
@@ -1906,7 +1898,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Obligation" ]
+"types": [ "obligation" ]
 },
 "Father Yoren": {
 "associations": [  ],
@@ -2011,7 +2003,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Gambling" ]
+"types": [ "gambling" ]
 },
 "Harker": {
 "associations": [  ],
@@ -2041,7 +2033,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Luxury", "Pleasure" ]
+"types": [ "luxury", "pleasure" ]
 },
 "Helene": {
 "associations": [  ],
@@ -2056,7 +2048,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Pleasure", "Stupor" ]
+"types": [ "pleasure", "stupor" ]
 },
 "Hopper": {
 "associations": [  ],
@@ -2116,7 +2108,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Obligation" ]
+"types": [ "obligation" ]
 },
 "Ilacille": {
 "associations": [  ],
@@ -2131,7 +2123,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Faith" ]
+"types": [ "faith" ]
 },
 "Irimina": {
 "associations": [  ],
@@ -2191,7 +2183,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Pleasure", "Stupor" ]
+"types": [ "pleasure", "stupor" ]
 },
 "Jul": {
 "associations": [  ],
@@ -2266,7 +2258,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Gambling" ]
+"types": [ "gambling" ]
 },
 "Lady Freyla": {
 "associations": [  ],
@@ -2281,7 +2273,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Pleasure", "Stupor" ]
+"types": [ "pleasure", "stupor" ]
 },
 "Laroze": {
 "associations": [  ],
@@ -2311,7 +2303,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Faith" ]
+"types": [ "faith" ]
 },
 "Lord Strangford": {
 "associations": [ "City Council", "Leviathan Hunters", "Church of Ecstasy" ],
@@ -2371,7 +2363,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Pleasure", "Stupor" ]
+"types": [ "pleasure", "stupor" ]
 },
 "Maestro Helleren": {
 "associations": [  ],
@@ -2386,7 +2378,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Luxury", "Pleasure" ]
+"types": [ "luxury", "pleasure" ]
 },
 "Malista": {
 "associations": [  ],
@@ -2416,7 +2408,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Pleasure", "Stupor" ]
+"types": [ "pleasure", "stupor" ]
 },
 "Marlane": {
 "associations": [  ],
@@ -2476,7 +2468,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Gambling" ]
+"types": [ "gambling" ]
 },
 "Mateas Kline": {
 "associations": [  ],
@@ -2566,7 +2558,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Faith" ]
+"types": [ "faith" ]
 },
 "Nelisanne": {
 "associations": [  ],
@@ -2581,7 +2573,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Faith" ]
+"types": [ "faith" ]
 },
 "Nyelle": {
 "associations": [  ],
@@ -2656,7 +2648,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Pleasure", "Stupor" ]
+"types": [ "pleasure", "stupor" ]
 },
 "Quellyn": {
 "associations": [  ],
@@ -2731,7 +2723,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Pleasure", "Stupor" ]
+"types": [ "pleasure", "stupor" ]
 },
 "Rolan Wott": {
 "associations": [ "Magistrate", "Parties", "Brightstone" ],
@@ -2836,7 +2828,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Gambling" ]
+"types": [ "gambling" ]
 },
 "Setarra": {
 "associations": [  ],
@@ -2881,7 +2873,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Luxury", "Pleasure" ]
+"types": [ "luxury", "pleasure" ]
 },
 "Sister Thorn": {
 "associations": [  ],
@@ -2911,7 +2903,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Gambling" ]
+"types": [ "gambling" ]
 },
 "Stazia": {
 "associations": [  ],
@@ -2986,7 +2978,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Obligation" ]
+"types": [ "obligation" ]
 },
 "The Hooded Proprietor": {
 "associations": [  ],
@@ -3031,7 +3023,7 @@ srd = {
 "status": 0.0,
 "tags": [ "vice_purveyor" ],
 "traits": [  ],
-"types": [ "Pleasure", "Stupor" ]
+"types": [ "pleasure", "stupor" ]
 },
 "Trev": {
 "associations": [  ],
@@ -4844,32 +4836,25 @@ So, if you are Tier 0, with fine lockpicks (+1) and the Quality upgrade for gear
 "type": "Underworld"
 }
 },
-"heritages": {
-"Akoros": {
+"heritages": [ {
 "description": "Akoros is the largest and most industrialized alnd in the Imperium, and is home to the capitol city as well as Duskwall itself. They're known as a diverse conglomeration of cultures that have grown together in close proximity for centuries, somewhat like Europe.",
 "name": "Akoros"
-},
-"Iruvia": {
-"description": "If you want to be from a culture considered \"foreign\" by the locals, you could be form Iruvia, a rich and powerful desert kingdom far to the south. It's another diverse land of varying cultures similar to old Persia, Egypt, and India.",
-"name": "Iruvia"
-},
-"Severos": {
-"description": "If you want to be from a place considered \"wild\" by the rest of the empire, you could be from Severos. Outside the few Imperial settlements, most Sevverosi live in nomatic horse-tribes scattered across the blasted deathlands, surviving within the ruins of ancient arcane fortreses which still repel spirits.",
-"name": "Severos"
-},
-"Skovlan": {
-"description": "If you want to be from a marginalized people, you could be from Skovlan, the island kingdom just across the sea from Doskvol. Skovlan was last to be brought under Imperial rule, over the course of the 36-year Unity War (which ended only a few years ago). Many Skovlander refugees who lost their homes and jobs in the destruction of the war have come to Doskvol seeking new opportunities.",
-"name": "Skovlan"
-},
-"The Dagger Isles": {
+}, {
 "description": "If you want to be a rootless wanderer you could be from the Dagger Isles. People there often grow up on ships and travel a lot before settling down. They're known as corsairs and merchants who live without lightning barriers - dealing with spirits in other ways.",
 "name": "The Dagger Isles"
-},
-"Tycheros": {
+}, {
+"description": "If you want to be from a culture considered \"foreign\" by the locals, you could be form Iruvia, a rich and powerful desert kingdom far to the south. It's another diverse land of varying cultures similar to old Persia, Egypt, and India.",
+"name": "Iruvia"
+}, {
+"description": "If you want to be from a place considered \"wild\" by the rest of the empire, you could be from Severos. Outside the few Imperial settlements, most Sevverosi live in nomatic horse-tribes scattered across the blasted deathlands, surviving within the ruins of ancient arcane fortreses which still repel spirits.",
+"name": "Severos"
+}, {
+"description": "If you want to be from a marginalized people, you could be from Skovlan, the island kingdom just across the sea from Doskvol. Skovlan was last to be brought under Imperial rule, over the course of the 36-year Unity War (which ended only a few years ago). Many Skovlander refugees who lost their homes and jobs in the destruction of the war have come to Doskvol seeking new opportunities.",
+"name": "Skovlan"
+}, {
 "description": "If you want to be weird, you can be from Tycheros. It's a semi-mythical place, far away beyond the northern Void Sea. Everyone says the people there are part-demon. If you choose Tycherosi heritage, also create a demonic telltale (like black shark eyes, feathers instead of hair, etc.) that marks your character.",
 "name": "Tycheros"
-}
-},
+} ],
 "hunting_grounds": {
 "starting_1_charterhall": {
 "description": "A tavern frequented by the small army of civil servants employed by the City Council, as well as students of the University.",
@@ -5591,11 +5576,12 @@ but many of them have become desperate enough to turn to a life of crime to fina
 "attune": 0.0,
 "command": 1.0,
 "consort": 0.0,
-"description": "Cutters are good at winning fights, with violence and with intimidation. Play a Cutter if you want to get your way.",
 "finesse": 0.0,
 "hunt": 0.0,
+"long_description": "In the underworld of the Dusk, there are scoundrels who take what they want at the bloody edge of a blade or with a threatening presence that can stop a man cold. They are the enforcers, the debt collectors, the killers, the leg-breakers, and the thugs, commonly known as Cutters.  When you play a Cutter, you earn xp when you address a challenge with violence or coercion.",
 "name": "cutter",
 "prowl": 0.0,
+"short_description": "Cutters are good at winning fights, with violence and with intimidation. Play a Cutter if you want to get your way.",
 "skirmish": 2.0,
 "study": 0.0,
 "survey": 0.0,
@@ -5607,11 +5593,12 @@ but many of them have become desperate enough to turn to a life of crime to fina
 "attune": 0.0,
 "command": 0.0,
 "consort": 0.0,
-"description": "Hounds are good at tracking things down and also long-distance combat. Play a Hound if you want to choose your battles.",
 "finesse": 0.0,
 "hunt": 2.0,
+"long_description": "There's always a need for scoundrels who can find what others want to keep. hidden. Whether that's a deadbeat gambler trying to skip out on their debts, a trecherous informant or a witness who's going to squeal to the Bluecoats, or the trail to a treasure squirreled away in a secret vault - it's the Hounds that ferret them out. When you play a Hound you earn xp when you address a challenge with tracking or violence.",
 "name": "hound",
 "prowl": 0.0,
+"short_description": "Hounds are good at tracking things down and also long-distance combat. Play a Hound if you want to choose your battles.",
 "skirmish": 0.0,
 "study": 0.0,
 "survey": 1.0,
@@ -5623,11 +5610,12 @@ but many of them have become desperate enough to turn to a life of crime to fina
 "attune": 0.0,
 "command": 0.0,
 "consort": 0.0,
-"description": "Leeches are good at using alchemy and wrecking stuff with sabotage. Play a Leech if you want to be creative with weird tools.",
 "finesse": 0.0,
 "hunt": 0.0,
+"long_description": "The world is built on industry, and the underworld is no different. Leeches are the scoundrels who distill the drugs, refine the arcane essences, build the bombs, bandages the wounds, and forge the tools of the criminal trades - and knowing how to make things also means knowing how to break them. When you play a Leech,  you earn xp when you address a challenge with technical skill or mayhem.",
 "name": "leech",
 "prowl": 0.0,
+"short_description": "Leeches are good at using alchemy and wrecking stuff with sabotage. Play a Leech if you want to be creative with weird tools.",
 "skirmish": 0.0,
 "study": 0.0,
 "survey": 0.0,
@@ -5639,11 +5627,12 @@ but many of them have become desperate enough to turn to a life of crime to fina
 "attune": 0.0,
 "command": 0.0,
 "consort": 0.0,
-"description": "Lurks are good at sneaking around and breaking into places. Play a Lurk if you want to slink around in the shadows.",
 "finesse": 2.0,
 "hunt": 0.0,
+"long_description": "There is no longer any sunlight - the world is plunged into enteral night. There are scoundrels who live in the darkness, who prowl the underworld unseen, trespassing where they will. They are the buglars, the spies, the inflitrators, the cut-throats - commonly called Lurks. When you play a Lurk, you earn xp when you address a challenge with stealth or evasion.",
 "name": "lurk",
 "prowl": 1.0,
+"short_description": "Lurks are good at sneaking around and breaking into places. Play a Lurk if you want to slink around in the shadows.",
 "skirmish": 0.0,
 "study": 0.0,
 "survey": 0.0,
@@ -5655,11 +5644,12 @@ but many of them have become desperate enough to turn to a life of crime to fina
 "attune": 0.0,
 "command": 0.0,
 "consort": 2.0,
-"description": "Slides are good at social situations and subterfuge. Play a Slide if you want to manipulate and decieve people.",
 "finesse": 0.0,
 "hunt": 0.0,
+"long_description": "It's said that the primal substance of the world is not mere metter or strange plasms, it's lies. Everything we do, everything we care about, everything we value - all lies we tell each other and ourselves. The world is a fabrication, a convenient fiction, a story - and the storytellers are Slides. When you play a Slide, you earn xp when you address a challege with deception or influence.",
 "name": "slide",
 "prowl": 0.0,
+"short_description": "Slides are good at social situations and subterfuge. Play a Slide if you want to manipulate and decieve people.",
 "skirmish": 0.0,
 "study": 0.0,
 "survey": 0.0,
@@ -5671,11 +5661,12 @@ but many of them have become desperate enough to turn to a life of crime to fina
 "attune": 0.0,
 "command": 0.0,
 "consort": 2.0,
-"description": "Spiders are good at masterminding maneuvers. Play a Spider if you want to asist teammates and deal with other factions.",
 "finesse": 0.0,
 "hunt": 0.0,
+"long_description": "The underworld may appear on the surface to be a chaotic array of warring factions and bloody deeds, but it has a beautiful order to those who are able to see it. This pattern is the web of connections, favors, vendettas, and secrets that bind the criminal world togeather. The scoundrels who pluck the strands of this web are known as Spiders. When you play a Spider, you earn xp when you address a challenge with calculation or conspiracy.",
 "name": "spider",
 "prowl": 0.0,
+"short_description": "Spiders are good at masterminding maneuvers. Play a Spider if you want to asist teammates and deal with other factions.",
 "skirmish": 0.0,
 "study": 1.0,
 "survey": 0.0,
@@ -5687,11 +5678,12 @@ but many of them have become desperate enough to turn to a life of crime to fina
 "attune": 2.0,
 "command": 0.0,
 "consort": 0.0,
-"description": "Whispers are good at magical stuff and dealing with ghosts. Play a Whisper if you want to meddle with arcane powers.",
 "finesse": 0.0,
 "hunt": 0.0,
+"long_description": "Doskvol is a haunted place - plagued by rogue spirits consumed by vengeance, by cunning demons manipulating humans for their own inscrutable purposes, and by even stranger horrors lurking in the space just beyond sight and reason. To go into this shadowy world without knowledge of the arcane and the occult is to walk unarmed into the lair of the enemy. The Whispers are the sentinels who watch the greater darkness - staring into the void so others dont' have to. When you play a Whisper, you earn xp when you address a challenge with knowledge or arcane power.",
 "name": "whisper",
 "prowl": 0.0,
+"short_description": "Whispers are good at magical stuff and dealing with ghosts. Play a Whisper if you want to meddle with arcane powers.",
 "skirmish": 0.0,
 "study": 1.0,
 "survey": 0.0,
@@ -5700,70 +5692,53 @@ but many of them have become desperate enough to turn to a life of crime to fina
 "wreck": 0.0
 }
 },
-"traumas": {
-"cold": {
+"traumas": [ {
 "description": "You're not moved by emotional appeals or social bonds.",
 "name": "cold"
-},
-"haunted": {
+}, {
 "description": "You're often lost in reverie, reliving past horrors, seeing things.",
 "name": "haunted"
-},
-"obsessed": {
+}, {
 "description": "You're enthralled by one thing: an activity, a person, an ideology.",
 "name": "obsessed"
-},
-"paranoid": {
+}, {
 "description": "You imagine danger everywhere; you can't trust others.",
 "name": "paranoid"
-},
-"reckless": {
+}, {
 "description": "You have little regard for your own saftey or best interests.",
 "name": "reckless"
-},
-"soft": {
+}, {
 "description": "You lose your edge; you become sentimental, passive, gentle.",
 "name": "soft"
-},
-"unstable": {
+}, {
 "description": "Your emotional state is volatile. You can instantly rage, or fall into despair, act impulsively, or freeze up.",
 "name": "unstable"
-},
-"vicious": {
+}, {
 "description": "You seek out opportunities to hurt people, even for no good reason.",
 "name": "vicious"
-}
-},
-"vices": {
-"Faith": {
+} ],
+"vices": [ {
 "description": "You're dedicated to an unseen power, forgotten god, ancestor, etc.",
 "name": "Faith"
-},
-"Gambling": {
+}, {
 "description": "You crave games of chance, betting on sporting events, etc.",
 "name": "Gambling"
-},
-"Luxury": {
+}, {
 "description": "Expensive or ostentatious displays of opulence.",
 "name": "Luxury"
-},
-"Obligation": {
+}, {
 "description": "You're devoted to a family, a cause, an organization, a charity, etc",
 "name": "Obligation"
-},
-"Pleasure": {
+}, {
 "description": "Gratificatino from lovers, food, drink, drugs, art, theater, etc.",
 "name": "Pleasure"
-},
-"Stupor": {
+}, {
 "description": "You seek oblivion in the abuse of drugs, drinking to excess, getting beaten to a pulp in the fighting pits, etc.",
 "name": "Stupor"
-},
-"Weird": {
+}, {
 "description": "You experiment with strange essences, consort with rogue spirits, observe bizarre rituals or taboos, etc.",
 "name": "Weird"
-}
-},
+} ],
 "xp_gain": [ {
 "class": "all",
 "description": "Every time you roll a desperate action, mark xp in that action's attribute.
@@ -5825,11 +5800,12 @@ an attribute) or 2 xp if that item occurred multiple times."
 "description": "Execute a successful smuggling or acquire new clients or contraband sources."
 } ]
 }
-_save_id = "Save"
-version = "v0.64"
+id = "asdf"
+version = "v0.65"
 map = {
 "description": "The full city of Doskvol",
 "image": "res://maps/District Images/Duskvol.jpg",
+"index": 0,
 "locations": {
 Vector2( -51, 83 ): {
 "assets": [  ],
@@ -5988,12 +5964,12 @@ Vector2( 318, 467 ): {
 "tags": null
 }
 },
-"map_index": 0,
 "name": "Duskvol"
 }
 maps = [ {
 "description": "The full city of Doskvol",
 "image": "res://maps/District Images/Duskvol.jpg",
+"index": 0,
 "locations": {
 Vector2( -51, 83 ): {
 "assets": [  ],
@@ -6152,11 +6128,11 @@ Vector2( 318, 467 ): {
 "tags": null
 }
 },
-"map_index": 0,
 "name": "Duskvol"
 }, {
 "description": "The district of Brightstone",
 "image": "res://maps/District Images/doskvol_brightstone.jpg",
+"index": 1,
 "locations": {
 Vector2( -51, 83 ): {
 "assets": [  ],
@@ -6315,11 +6291,11 @@ Vector2( 318, 467 ): {
 "tags": null
 }
 },
-"map_index": 1,
 "name": "Brightstone"
 }, {
 "description": "The district of Coalridge",
 "image": "res://maps/District Images/doskvol_coalridge.jpg",
+"index": 2,
 "locations": {
 Vector2( -51, 83 ): {
 "assets": [  ],
@@ -6478,12 +6454,1482 @@ Vector2( 318, 467 ): {
 "tags": null
 }
 },
-"map_index": 2,
 "name": "Coalridge"
 } ]
-clocks = [  ]
-map_shortcuts = [  ]
+clocks = [ {
+"description": "The full city of Doskvol",
+"image": "res://maps/District Images/Duskvol.jpg",
+"index": 0,
+"locations": {
+Vector2( -51, 83 ): {
+"assets": [  ],
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Old North Port",
+"map": "Doskvol",
+"pos": Vector2( -51, 83 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"assets": [  ],
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Eeleries & Farms",
+"map": "Doskvol",
+"pos": Vector2( -24, 67 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"assets": [  ],
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Void Sea",
+"map": "Doskvol",
+"pos": Vector2( -24, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"assets": [  ],
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Ironhook Prison",
+"map": "Doskvol",
+"pos": Vector2( -4, 47 ),
+"scene": null,
+"tags": null
+},
+Vector2( -3, 92 ): {
+"assets": [  ],
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Deathlands",
+"map": "Doskvol",
+"pos": Vector2( -3, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"assets": [  ],
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Doskvol",
+"pos": Vector2( 37, 46 ),
+"scene": null,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"assets": [  ],
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Lost District",
+"map": "Doskvol",
+"pos": Vector2( 47, -70 ),
+"scene": null,
+"tags": null
+},
+Vector2( 95, 305 ): {
+"assets": [  ],
+"description": "The site of the first permanent settlement at the river delta, the mine was originally built by the ancient Skov kingdom, who called it Doskovol - literally, \"The Skov's Coal.\" The mine still operates over 1000 years later, though demand for coal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Coalridge Mine",
+"map": "Doskvol",
+"pos": Vector2( 95, 305 ),
+"scene": null,
+"tags": null
+},
+Vector2( 216, 480 ): {
+"assets": [  ],
+"description": "The Ironworks is a prawling collection of massive industrial workhouses. Cruel foremen drive indentured laborers around the clock to keep up with the massive production demands to replace and refit leviathan hunter ships as well as the need for goods transported out to the Imperium at large.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Ironworks",
+"map": "Doskvol",
+"pos": Vector2( 216, 480 ),
+"scene": null,
+"tags": null
+},
+Vector2( 227, 415 ): {
+"assets": [  ],
+"description": "Before Gaddoc Station was built, this industrial rail yard was a center for commerce in the city. The Old Yard now serves onlly a couple heavy cargo trains daily, with many of its old rail cars rusted in place where they were abandoned.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Old Rail Yard",
+"map": "Doskvol",
+"pos": Vector2( 227, 415 ),
+"scene": null,
+"tags": null
+},
+Vector2( 294, 388 ): {
+"assets": [  ],
+"description": "A public house named for the six lines which used to converge at The Old Rail Yard out front.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Six Arms",
+"map": "Doskvol",
+"pos": Vector2( 294, 388 ),
+"scene": null,
+"tags": null
+},
+Vector2( 318, 467 ): {
+"assets": [  ],
+"description": "The most densly packed residental area in Duskwall. Brickston is a cramped jumble of multi-story brick row houses, stacked one atop the other. Many of the toughest scoundrels of the underworld hail from here, learning the harsh lessons of survival and gang life within its dark maze.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Brickston",
+"map": "Doskvol",
+"pos": Vector2( 318, 467 ),
+"scene": null,
+"tags": null
+}
+},
+"name": "Duskvol"
+}, {
+"description": "The district of Brightstone",
+"image": "res://maps/District Images/doskvol_brightstone.jpg",
+"index": 1,
+"locations": {
+Vector2( -51, 83 ): {
+"assets": [  ],
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Old North Port",
+"map": "Doskvol",
+"pos": Vector2( -51, 83 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"assets": [  ],
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Eeleries & Farms",
+"map": "Doskvol",
+"pos": Vector2( -24, 67 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"assets": [  ],
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Void Sea",
+"map": "Doskvol",
+"pos": Vector2( -24, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"assets": [  ],
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Ironhook Prison",
+"map": "Doskvol",
+"pos": Vector2( -4, 47 ),
+"scene": null,
+"tags": null
+},
+Vector2( -3, 92 ): {
+"assets": [  ],
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Deathlands",
+"map": "Doskvol",
+"pos": Vector2( -3, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"assets": [  ],
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Doskvol",
+"pos": Vector2( 37, 46 ),
+"scene": null,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"assets": [  ],
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Lost District",
+"map": "Doskvol",
+"pos": Vector2( 47, -70 ),
+"scene": null,
+"tags": null
+},
+Vector2( 95, 305 ): {
+"assets": [  ],
+"description": "The site of the first permanent settlement at the river delta, the mine was originally built by the ancient Skov kingdom, who called it Doskovol - literally, \"The Skov's Coal.\" The mine still operates over 1000 years later, though demand for coal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Coalridge Mine",
+"map": "Doskvol",
+"pos": Vector2( 95, 305 ),
+"scene": null,
+"tags": null
+},
+Vector2( 216, 480 ): {
+"assets": [  ],
+"description": "The Ironworks is a prawling collection of massive industrial workhouses. Cruel foremen drive indentured laborers around the clock to keep up with the massive production demands to replace and refit leviathan hunter ships as well as the need for goods transported out to the Imperium at large.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Ironworks",
+"map": "Doskvol",
+"pos": Vector2( 216, 480 ),
+"scene": null,
+"tags": null
+},
+Vector2( 227, 415 ): {
+"assets": [  ],
+"description": "Before Gaddoc Station was built, this industrial rail yard was a center for commerce in the city. The Old Yard now serves onlly a couple heavy cargo trains daily, with many of its old rail cars rusted in place where they were abandoned.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Old Rail Yard",
+"map": "Doskvol",
+"pos": Vector2( 227, 415 ),
+"scene": null,
+"tags": null
+},
+Vector2( 294, 388 ): {
+"assets": [  ],
+"description": "A public house named for the six lines which used to converge at The Old Rail Yard out front.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Six Arms",
+"map": "Doskvol",
+"pos": Vector2( 294, 388 ),
+"scene": null,
+"tags": null
+},
+Vector2( 318, 467 ): {
+"assets": [  ],
+"description": "The most densly packed residental area in Duskwall. Brickston is a cramped jumble of multi-story brick row houses, stacked one atop the other. Many of the toughest scoundrels of the underworld hail from here, learning the harsh lessons of survival and gang life within its dark maze.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Brickston",
+"map": "Doskvol",
+"pos": Vector2( 318, 467 ),
+"scene": null,
+"tags": null
+}
+},
+"name": "Brightstone"
+}, {
+"description": "The district of Coalridge",
+"image": "res://maps/District Images/doskvol_coalridge.jpg",
+"index": 2,
+"locations": {
+Vector2( -51, 83 ): {
+"assets": [  ],
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Old North Port",
+"map": "Doskvol",
+"pos": Vector2( -51, 83 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"assets": [  ],
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Eeleries & Farms",
+"map": "Doskvol",
+"pos": Vector2( -24, 67 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"assets": [  ],
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Void Sea",
+"map": "Doskvol",
+"pos": Vector2( -24, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"assets": [  ],
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Ironhook Prison",
+"map": "Doskvol",
+"pos": Vector2( -4, 47 ),
+"scene": null,
+"tags": null
+},
+Vector2( -3, 92 ): {
+"assets": [  ],
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Deathlands",
+"map": "Doskvol",
+"pos": Vector2( -3, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"assets": [  ],
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Doskvol",
+"pos": Vector2( 37, 46 ),
+"scene": null,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"assets": [  ],
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Lost District",
+"map": "Doskvol",
+"pos": Vector2( 47, -70 ),
+"scene": null,
+"tags": null
+},
+Vector2( 95, 305 ): {
+"assets": [  ],
+"description": "The site of the first permanent settlement at the river delta, the mine was originally built by the ancient Skov kingdom, who called it Doskovol - literally, \"The Skov's Coal.\" The mine still operates over 1000 years later, though demand for coal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Coalridge Mine",
+"map": "Doskvol",
+"pos": Vector2( 95, 305 ),
+"scene": null,
+"tags": null
+},
+Vector2( 216, 480 ): {
+"assets": [  ],
+"description": "The Ironworks is a prawling collection of massive industrial workhouses. Cruel foremen drive indentured laborers around the clock to keep up with the massive production demands to replace and refit leviathan hunter ships as well as the need for goods transported out to the Imperium at large.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Ironworks",
+"map": "Doskvol",
+"pos": Vector2( 216, 480 ),
+"scene": null,
+"tags": null
+},
+Vector2( 227, 415 ): {
+"assets": [  ],
+"description": "Before Gaddoc Station was built, this industrial rail yard was a center for commerce in the city. The Old Yard now serves onlly a couple heavy cargo trains daily, with many of its old rail cars rusted in place where they were abandoned.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Old Rail Yard",
+"map": "Doskvol",
+"pos": Vector2( 227, 415 ),
+"scene": null,
+"tags": null
+},
+Vector2( 294, 388 ): {
+"assets": [  ],
+"description": "A public house named for the six lines which used to converge at The Old Rail Yard out front.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Six Arms",
+"map": "Doskvol",
+"pos": Vector2( 294, 388 ),
+"scene": null,
+"tags": null
+},
+Vector2( 318, 467 ): {
+"assets": [  ],
+"description": "The most densly packed residental area in Duskwall. Brickston is a cramped jumble of multi-story brick row houses, stacked one atop the other. Many of the toughest scoundrels of the underworld hail from here, learning the harsh lessons of survival and gang life within its dark maze.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Brickston",
+"map": "Doskvol",
+"pos": Vector2( 318, 467 ),
+"scene": null,
+"tags": null
+}
+},
+"name": "Coalridge"
+} ]
+map_shortcuts = [ {
+"description": "The full city of Doskvol",
+"image": "res://maps/District Images/Duskvol.jpg",
+"index": 0,
+"locations": {
+Vector2( -51, 83 ): {
+"assets": [  ],
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Old North Port",
+"map": "Doskvol",
+"pos": Vector2( -51, 83 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"assets": [  ],
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Eeleries & Farms",
+"map": "Doskvol",
+"pos": Vector2( -24, 67 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"assets": [  ],
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Void Sea",
+"map": "Doskvol",
+"pos": Vector2( -24, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"assets": [  ],
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Ironhook Prison",
+"map": "Doskvol",
+"pos": Vector2( -4, 47 ),
+"scene": null,
+"tags": null
+},
+Vector2( -3, 92 ): {
+"assets": [  ],
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Deathlands",
+"map": "Doskvol",
+"pos": Vector2( -3, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"assets": [  ],
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Doskvol",
+"pos": Vector2( 37, 46 ),
+"scene": null,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"assets": [  ],
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Lost District",
+"map": "Doskvol",
+"pos": Vector2( 47, -70 ),
+"scene": null,
+"tags": null
+},
+Vector2( 95, 305 ): {
+"assets": [  ],
+"description": "The site of the first permanent settlement at the river delta, the mine was originally built by the ancient Skov kingdom, who called it Doskovol - literally, \"The Skov's Coal.\" The mine still operates over 1000 years later, though demand for coal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Coalridge Mine",
+"map": "Doskvol",
+"pos": Vector2( 95, 305 ),
+"scene": null,
+"tags": null
+},
+Vector2( 216, 480 ): {
+"assets": [  ],
+"description": "The Ironworks is a prawling collection of massive industrial workhouses. Cruel foremen drive indentured laborers around the clock to keep up with the massive production demands to replace and refit leviathan hunter ships as well as the need for goods transported out to the Imperium at large.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Ironworks",
+"map": "Doskvol",
+"pos": Vector2( 216, 480 ),
+"scene": null,
+"tags": null
+},
+Vector2( 227, 415 ): {
+"assets": [  ],
+"description": "Before Gaddoc Station was built, this industrial rail yard was a center for commerce in the city. The Old Yard now serves onlly a couple heavy cargo trains daily, with many of its old rail cars rusted in place where they were abandoned.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Old Rail Yard",
+"map": "Doskvol",
+"pos": Vector2( 227, 415 ),
+"scene": null,
+"tags": null
+},
+Vector2( 294, 388 ): {
+"assets": [  ],
+"description": "A public house named for the six lines which used to converge at The Old Rail Yard out front.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Six Arms",
+"map": "Doskvol",
+"pos": Vector2( 294, 388 ),
+"scene": null,
+"tags": null
+},
+Vector2( 318, 467 ): {
+"assets": [  ],
+"description": "The most densly packed residental area in Duskwall. Brickston is a cramped jumble of multi-story brick row houses, stacked one atop the other. Many of the toughest scoundrels of the underworld hail from here, learning the harsh lessons of survival and gang life within its dark maze.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Brickston",
+"map": "Doskvol",
+"pos": Vector2( 318, 467 ),
+"scene": null,
+"tags": null
+}
+},
+"name": "Duskvol"
+}, {
+"description": "The district of Brightstone",
+"image": "res://maps/District Images/doskvol_brightstone.jpg",
+"index": 1,
+"locations": {
+Vector2( -51, 83 ): {
+"assets": [  ],
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Old North Port",
+"map": "Doskvol",
+"pos": Vector2( -51, 83 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"assets": [  ],
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Eeleries & Farms",
+"map": "Doskvol",
+"pos": Vector2( -24, 67 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"assets": [  ],
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Void Sea",
+"map": "Doskvol",
+"pos": Vector2( -24, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"assets": [  ],
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Ironhook Prison",
+"map": "Doskvol",
+"pos": Vector2( -4, 47 ),
+"scene": null,
+"tags": null
+},
+Vector2( -3, 92 ): {
+"assets": [  ],
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Deathlands",
+"map": "Doskvol",
+"pos": Vector2( -3, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"assets": [  ],
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Doskvol",
+"pos": Vector2( 37, 46 ),
+"scene": null,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"assets": [  ],
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Lost District",
+"map": "Doskvol",
+"pos": Vector2( 47, -70 ),
+"scene": null,
+"tags": null
+},
+Vector2( 95, 305 ): {
+"assets": [  ],
+"description": "The site of the first permanent settlement at the river delta, the mine was originally built by the ancient Skov kingdom, who called it Doskovol - literally, \"The Skov's Coal.\" The mine still operates over 1000 years later, though demand for coal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Coalridge Mine",
+"map": "Doskvol",
+"pos": Vector2( 95, 305 ),
+"scene": null,
+"tags": null
+},
+Vector2( 216, 480 ): {
+"assets": [  ],
+"description": "The Ironworks is a prawling collection of massive industrial workhouses. Cruel foremen drive indentured laborers around the clock to keep up with the massive production demands to replace and refit leviathan hunter ships as well as the need for goods transported out to the Imperium at large.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Ironworks",
+"map": "Doskvol",
+"pos": Vector2( 216, 480 ),
+"scene": null,
+"tags": null
+},
+Vector2( 227, 415 ): {
+"assets": [  ],
+"description": "Before Gaddoc Station was built, this industrial rail yard was a center for commerce in the city. The Old Yard now serves onlly a couple heavy cargo trains daily, with many of its old rail cars rusted in place where they were abandoned.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Old Rail Yard",
+"map": "Doskvol",
+"pos": Vector2( 227, 415 ),
+"scene": null,
+"tags": null
+},
+Vector2( 294, 388 ): {
+"assets": [  ],
+"description": "A public house named for the six lines which used to converge at The Old Rail Yard out front.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Six Arms",
+"map": "Doskvol",
+"pos": Vector2( 294, 388 ),
+"scene": null,
+"tags": null
+},
+Vector2( 318, 467 ): {
+"assets": [  ],
+"description": "The most densly packed residental area in Duskwall. Brickston is a cramped jumble of multi-story brick row houses, stacked one atop the other. Many of the toughest scoundrels of the underworld hail from here, learning the harsh lessons of survival and gang life within its dark maze.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Brickston",
+"map": "Doskvol",
+"pos": Vector2( 318, 467 ),
+"scene": null,
+"tags": null
+}
+},
+"name": "Brightstone"
+}, {
+"description": "The district of Coalridge",
+"image": "res://maps/District Images/doskvol_coalridge.jpg",
+"index": 2,
+"locations": {
+Vector2( -51, 83 ): {
+"assets": [  ],
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Old North Port",
+"map": "Doskvol",
+"pos": Vector2( -51, 83 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"assets": [  ],
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Eeleries & Farms",
+"map": "Doskvol",
+"pos": Vector2( -24, 67 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"assets": [  ],
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Void Sea",
+"map": "Doskvol",
+"pos": Vector2( -24, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"assets": [  ],
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Ironhook Prison",
+"map": "Doskvol",
+"pos": Vector2( -4, 47 ),
+"scene": null,
+"tags": null
+},
+Vector2( -3, 92 ): {
+"assets": [  ],
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Deathlands",
+"map": "Doskvol",
+"pos": Vector2( -3, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"assets": [  ],
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Doskvol",
+"pos": Vector2( 37, 46 ),
+"scene": null,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"assets": [  ],
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Lost District",
+"map": "Doskvol",
+"pos": Vector2( 47, -70 ),
+"scene": null,
+"tags": null
+},
+Vector2( 95, 305 ): {
+"assets": [  ],
+"description": "The site of the first permanent settlement at the river delta, the mine was originally built by the ancient Skov kingdom, who called it Doskovol - literally, \"The Skov's Coal.\" The mine still operates over 1000 years later, though demand for coal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Coalridge Mine",
+"map": "Doskvol",
+"pos": Vector2( 95, 305 ),
+"scene": null,
+"tags": null
+},
+Vector2( 216, 480 ): {
+"assets": [  ],
+"description": "The Ironworks is a prawling collection of massive industrial workhouses. Cruel foremen drive indentured laborers around the clock to keep up with the massive production demands to replace and refit leviathan hunter ships as well as the need for goods transported out to the Imperium at large.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Ironworks",
+"map": "Doskvol",
+"pos": Vector2( 216, 480 ),
+"scene": null,
+"tags": null
+},
+Vector2( 227, 415 ): {
+"assets": [  ],
+"description": "Before Gaddoc Station was built, this industrial rail yard was a center for commerce in the city. The Old Yard now serves onlly a couple heavy cargo trains daily, with many of its old rail cars rusted in place where they were abandoned.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Old Rail Yard",
+"map": "Doskvol",
+"pos": Vector2( 227, 415 ),
+"scene": null,
+"tags": null
+},
+Vector2( 294, 388 ): {
+"assets": [  ],
+"description": "A public house named for the six lines which used to converge at The Old Rail Yard out front.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Six Arms",
+"map": "Doskvol",
+"pos": Vector2( 294, 388 ),
+"scene": null,
+"tags": null
+},
+Vector2( 318, 467 ): {
+"assets": [  ],
+"description": "The most densly packed residental area in Duskwall. Brickston is a cramped jumble of multi-story brick row houses, stacked one atop the other. Many of the toughest scoundrels of the underworld hail from here, learning the harsh lessons of survival and gang life within its dark maze.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Brickston",
+"map": "Doskvol",
+"pos": Vector2( 318, 467 ),
+"scene": null,
+"tags": null
+}
+},
+"name": "Coalridge"
+} ]
+contacts = {
+}
+factions = {
+}
 is_setup = true
-pc_playbooks = [  ]
+pc_playbooks = [ {
+"description": "The full city of Doskvol",
+"image": "res://maps/District Images/Duskvol.jpg",
+"index": 0,
+"locations": {
+Vector2( -51, 83 ): {
+"assets": [  ],
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Old North Port",
+"map": "Doskvol",
+"pos": Vector2( -51, 83 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"assets": [  ],
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Eeleries & Farms",
+"map": "Doskvol",
+"pos": Vector2( -24, 67 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"assets": [  ],
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Void Sea",
+"map": "Doskvol",
+"pos": Vector2( -24, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"assets": [  ],
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Ironhook Prison",
+"map": "Doskvol",
+"pos": Vector2( -4, 47 ),
+"scene": null,
+"tags": null
+},
+Vector2( -3, 92 ): {
+"assets": [  ],
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Deathlands",
+"map": "Doskvol",
+"pos": Vector2( -3, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"assets": [  ],
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Doskvol",
+"pos": Vector2( 37, 46 ),
+"scene": null,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"assets": [  ],
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Lost District",
+"map": "Doskvol",
+"pos": Vector2( 47, -70 ),
+"scene": null,
+"tags": null
+},
+Vector2( 95, 305 ): {
+"assets": [  ],
+"description": "The site of the first permanent settlement at the river delta, the mine was originally built by the ancient Skov kingdom, who called it Doskovol - literally, \"The Skov's Coal.\" The mine still operates over 1000 years later, though demand for coal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Coalridge Mine",
+"map": "Doskvol",
+"pos": Vector2( 95, 305 ),
+"scene": null,
+"tags": null
+},
+Vector2( 216, 480 ): {
+"assets": [  ],
+"description": "The Ironworks is a prawling collection of massive industrial workhouses. Cruel foremen drive indentured laborers around the clock to keep up with the massive production demands to replace and refit leviathan hunter ships as well as the need for goods transported out to the Imperium at large.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Ironworks",
+"map": "Doskvol",
+"pos": Vector2( 216, 480 ),
+"scene": null,
+"tags": null
+},
+Vector2( 227, 415 ): {
+"assets": [  ],
+"description": "Before Gaddoc Station was built, this industrial rail yard was a center for commerce in the city. The Old Yard now serves onlly a couple heavy cargo trains daily, with many of its old rail cars rusted in place where they were abandoned.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Old Rail Yard",
+"map": "Doskvol",
+"pos": Vector2( 227, 415 ),
+"scene": null,
+"tags": null
+},
+Vector2( 294, 388 ): {
+"assets": [  ],
+"description": "A public house named for the six lines which used to converge at The Old Rail Yard out front.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Six Arms",
+"map": "Doskvol",
+"pos": Vector2( 294, 388 ),
+"scene": null,
+"tags": null
+},
+Vector2( 318, 467 ): {
+"assets": [  ],
+"description": "The most densly packed residental area in Duskwall. Brickston is a cramped jumble of multi-story brick row houses, stacked one atop the other. Many of the toughest scoundrels of the underworld hail from here, learning the harsh lessons of survival and gang life within its dark maze.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Brickston",
+"map": "Doskvol",
+"pos": Vector2( 318, 467 ),
+"scene": null,
+"tags": null
+}
+},
+"name": "Duskvol"
+}, {
+"description": "The district of Brightstone",
+"image": "res://maps/District Images/doskvol_brightstone.jpg",
+"index": 1,
+"locations": {
+Vector2( -51, 83 ): {
+"assets": [  ],
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Old North Port",
+"map": "Doskvol",
+"pos": Vector2( -51, 83 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"assets": [  ],
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Eeleries & Farms",
+"map": "Doskvol",
+"pos": Vector2( -24, 67 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"assets": [  ],
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Void Sea",
+"map": "Doskvol",
+"pos": Vector2( -24, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"assets": [  ],
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Ironhook Prison",
+"map": "Doskvol",
+"pos": Vector2( -4, 47 ),
+"scene": null,
+"tags": null
+},
+Vector2( -3, 92 ): {
+"assets": [  ],
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Deathlands",
+"map": "Doskvol",
+"pos": Vector2( -3, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"assets": [  ],
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Doskvol",
+"pos": Vector2( 37, 46 ),
+"scene": null,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"assets": [  ],
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Lost District",
+"map": "Doskvol",
+"pos": Vector2( 47, -70 ),
+"scene": null,
+"tags": null
+},
+Vector2( 95, 305 ): {
+"assets": [  ],
+"description": "The site of the first permanent settlement at the river delta, the mine was originally built by the ancient Skov kingdom, who called it Doskovol - literally, \"The Skov's Coal.\" The mine still operates over 1000 years later, though demand for coal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Coalridge Mine",
+"map": "Doskvol",
+"pos": Vector2( 95, 305 ),
+"scene": null,
+"tags": null
+},
+Vector2( 216, 480 ): {
+"assets": [  ],
+"description": "The Ironworks is a prawling collection of massive industrial workhouses. Cruel foremen drive indentured laborers around the clock to keep up with the massive production demands to replace and refit leviathan hunter ships as well as the need for goods transported out to the Imperium at large.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Ironworks",
+"map": "Doskvol",
+"pos": Vector2( 216, 480 ),
+"scene": null,
+"tags": null
+},
+Vector2( 227, 415 ): {
+"assets": [  ],
+"description": "Before Gaddoc Station was built, this industrial rail yard was a center for commerce in the city. The Old Yard now serves onlly a couple heavy cargo trains daily, with many of its old rail cars rusted in place where they were abandoned.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Old Rail Yard",
+"map": "Doskvol",
+"pos": Vector2( 227, 415 ),
+"scene": null,
+"tags": null
+},
+Vector2( 294, 388 ): {
+"assets": [  ],
+"description": "A public house named for the six lines which used to converge at The Old Rail Yard out front.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Six Arms",
+"map": "Doskvol",
+"pos": Vector2( 294, 388 ),
+"scene": null,
+"tags": null
+},
+Vector2( 318, 467 ): {
+"assets": [  ],
+"description": "The most densly packed residental area in Duskwall. Brickston is a cramped jumble of multi-story brick row houses, stacked one atop the other. Many of the toughest scoundrels of the underworld hail from here, learning the harsh lessons of survival and gang life within its dark maze.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Brickston",
+"map": "Doskvol",
+"pos": Vector2( 318, 467 ),
+"scene": null,
+"tags": null
+}
+},
+"name": "Brightstone"
+}, {
+"description": "The district of Coalridge",
+"image": "res://maps/District Images/doskvol_coalridge.jpg",
+"index": 2,
+"locations": {
+Vector2( -51, 83 ): {
+"assets": [  ],
+"description": "Before the deluge of the second century, the Dosk River delta was only a shallow bog surrounding a coal mining settlement. Ships used the Old North Port to dock and re-supply before crossing the open sea to Skovlan. The obsolete port was abandoned to the deathlands when the second lightning barrier was built.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Old North Port",
+"map": "Doskvol",
+"pos": Vector2( -51, 83 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 67 ): {
+"assets": [  ],
+"description": "About half of Doskvol’s food needs are met by imports; the other half is gathered locally from eel farms, mushroom caverns, and crops nurtured by wondrous radiant energy lamps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Eeleries & Farms",
+"map": "Doskvol",
+"pos": Vector2( -24, 67 ),
+"scene": null,
+"tags": null
+},
+Vector2( -24, 92 ): {
+"assets": [  ],
+"description": "During the cataclysm, the oceans turned to black ink. Tiny points of light, arrayed like constellations of stars, can be seen far below the surface. Only the bravest or most desperate of captains dare to sail beyond sight of land, into a sea as black and dark as the sky above. The vengeful ghosts that plague the land tend to shun the open ocean, but there are more terrible things prowling the deeps.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Void Sea",
+"map": "Doskvol",
+"pos": Vector2( -24, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( -4, 47 ): {
+"assets": [  ],
+"description": "A towering metal fortress, where the worst (or most unlucky) criminals are incarcerated. Many are forced into labor in the Southern fields and pit-mines of Dunslough. The condemned are sent to scavenge in the deathlands.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Ironhook Prison",
+"map": "Doskvol",
+"pos": Vector2( -4, 47 ),
+"scene": null,
+"tags": null
+},
+Vector2( -3, 92 ): {
+"assets": [  ],
+"description": "Beyond the lightning barriers, the world is a wasteland of petrified trees, ash, and choking clouds of miasma. Restless ghosts ceaselessly search for the faintest spark of life essence upon which to prey.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Deathlands",
+"map": "Doskvol",
+"pos": Vector2( -3, 92 ),
+"scene": null,
+"tags": null
+},
+Vector2( 37, 46 ): {
+"assets": [  ],
+"description": "Electro-rail trains from across the Imperium arrive here daily with goods and passengers.",
+"faction": null,
+"icon": "NONE",
+"image": null,
+"linked_map": null,
+"location_name": "Gaddoc Rail Station",
+"map": "Doskvol",
+"pos": Vector2( 37, 46 ),
+"scene": null,
+"tags": null
+},
+Vector2( 47, -70 ): {
+"assets": [  ],
+"description": "A once wealthy area, ravaged by plague then abandoned to the deathlands when the second lightning barrier was built. Contains many lost treasures for the foolhardy to seek out.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Lost District",
+"map": "Doskvol",
+"pos": Vector2( 47, -70 ),
+"scene": null,
+"tags": null
+},
+Vector2( 95, 305 ): {
+"assets": [  ],
+"description": "The site of the first permanent settlement at the river delta, the mine was originally built by the ancient Skov kingdom, who called it Doskovol - literally, \"The Skov's Coal.\" The mine still operates over 1000 years later, though demand for coal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Coalridge Mine",
+"map": "Doskvol",
+"pos": Vector2( 95, 305 ),
+"scene": null,
+"tags": null
+},
+Vector2( 216, 480 ): {
+"assets": [  ],
+"description": "The Ironworks is a prawling collection of massive industrial workhouses. Cruel foremen drive indentured laborers around the clock to keep up with the massive production demands to replace and refit leviathan hunter ships as well as the need for goods transported out to the Imperium at large.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Ironworks",
+"map": "Doskvol",
+"pos": Vector2( 216, 480 ),
+"scene": null,
+"tags": null
+},
+Vector2( 227, 415 ): {
+"assets": [  ],
+"description": "Before Gaddoc Station was built, this industrial rail yard was a center for commerce in the city. The Old Yard now serves onlly a couple heavy cargo trains daily, with many of its old rail cars rusted in place where they were abandoned.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Old Rail Yard",
+"map": "Doskvol",
+"pos": Vector2( 227, 415 ),
+"scene": null,
+"tags": null
+},
+Vector2( 294, 388 ): {
+"assets": [  ],
+"description": "A public house named for the six lines which used to converge at The Old Rail Yard out front.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "The Six Arms",
+"map": "Doskvol",
+"pos": Vector2( 294, 388 ),
+"scene": null,
+"tags": null
+},
+Vector2( 318, 467 ): {
+"assets": [  ],
+"description": "The most densly packed residental area in Duskwall. Brickston is a cramped jumble of multi-story brick row houses, stacked one atop the other. Many of the toughest scoundrels of the underworld hail from here, learning the harsh lessons of survival and gang life within its dark maze.",
+"faction": null,
+"icon": null,
+"image": null,
+"linked_map": null,
+"location_name": "Brickston",
+"map": "Doskvol",
+"pos": Vector2( 318, 467 ),
+"scene": null,
+"tags": null
+}
+},
+"name": "Coalridge"
+} ]
 crew_playbook = {
 }

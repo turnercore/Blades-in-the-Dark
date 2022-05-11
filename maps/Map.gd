@@ -17,12 +17,18 @@ export (NodePath) onready var notes = get_node(notes) as Node2D
 export (NodePath) onready var camera = get_node(camera) as Camera2D
 export (NodePath) onready var map_texture = get_node(map_texture) as TextureRect
 export (NodePath) onready var grid = get_node(grid) as TileMap
+export (NodePath) onready var drawing_canvas = get_node(drawing_canvas) as Node2D
 export (PackedScene) var player_cursor_scene
+export (PackedScene) var ping_scene
+
 var zoom_level: float
 var unfocused: = false
 onready var player_cursors: = [cursor]
 var notes_added: = []
 var pins:= {}
+
+var has_clicked: = false
+var alt_held_down: = false
 
 func _ready() -> void:
 	Globals.grid = grid
@@ -42,14 +48,29 @@ func connect_to_events()-> void:
 	Events.connect("popup", self, "_on_popup")
 	Events.connect("all_popups_finished", self, "_on_all_popups_finished")
 	Events.connect("pin_dropped", self, "_on_map_pin_dropped")
+	Events.connect("map_changed", self, "_on_map_changed")
 	ServerConnection.connect("match_joined", self, "_on_match_joined")
 	ServerConnection.connect("presences_changed", self, "_on_presences_changed")
 	GameData.location_library.connect("resource_added", self, "_on_location_added")
 	GameData.location_library.connect("resource_removed", self, "_on_location_removed")
+	NetworkTraffic.connect("player_pinged", self, "ping")
 
 
 func _process(delta: float) -> void:
 	if unfocused: return
+	if Input.is_action_just_pressed("alt"):
+		alt_held_down = true
+	if Input.is_action_just_released("alt"):
+		alt_held_down = false
+	if Input.is_action_just_pressed("left_click") and alt_held_down:
+		drawing_canvas.point = get_global_mouse_position()
+	if Input.is_action_just_pressed("left_click") and not has_clicked:
+		has_clicked = true
+		yield(get_tree().create_timer(0.25), "timeout")
+		if has_clicked: has_clicked = false
+	if Input.is_action_just_pressed("left_click") and has_clicked:
+		ping()
+		has_clicked = false
 	if Input.is_action_pressed("display_map_coords"):
 		var info_string:= "Map Grid Coords: \n" + str(Globals.convert_to_grid(get_global_mouse_position()))
 		Events.emit_signal("info_broadcasted", info_string)
@@ -71,6 +92,7 @@ func remove_pin(pos:Vector2)-> void:
 	if pins.has(pos):
 		pins[pos].queue_free()
 		pins.erase(pos)
+
 
 func add_pin(pos:Vector2, data: = {})-> void:
 	var grid_mouse_pos:Vector2 = Globals.convert_to_grid(get_global_mouse_position())
@@ -100,6 +122,17 @@ func add_pin(pos:Vector2, data: = {})-> void:
 	location_node.location = GameData.location_library.add(data)
 	grid.add_child(location_node)
 	location_node.global_position = grid.map_to_world(pos)
+
+
+func ping(ping_data:Dictionary = {})-> void:
+	var ping:Node2D = ping_scene.instance()
+	if not ping_data.empty():
+		ping.pos = ping_data.pos
+		ping.color = ping_data.color
+	else:
+		ping.pos = get_global_mouse_position()
+		ping.color = GameData.player_color
+	add_child(ping)
 
 
 func scroll_up(delta: float)->void:
@@ -164,13 +197,6 @@ func _on_map_loaded(map:Dictionary)->void:
 	load_map(map)
 
 
-func _on_screen_changed(screen:String)-> void:
-	if screen == "main":
-		set_process(true)
-	else:
-		set_process(false)
-
-
 func _on_popup(_data, _overlay)-> void:
 	set_process(false)
 
@@ -207,3 +233,6 @@ func _on_location_added(location_resource:NetworkedResource)-> void:
 	else:
 		notes_added.append(location_resource)
 		add_pin(pos, location_resource.data)
+
+func _on_map_changed()-> void:
+	pass

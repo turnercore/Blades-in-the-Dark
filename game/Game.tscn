@@ -283,6 +283,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+overlay = NodePath("OverlayBackground")
 
 [node name="OverlayBackground" type="ColorRect" parent="PopupLayer/Popups"]
 visible = false

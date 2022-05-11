@@ -18,7 +18,6 @@ func _on_FileDialog_file_selected(path: String) -> void:
 
 
 func _on_MapNameConfirm_pressed() -> void:
-	Events.emit_map_created(image, map_name)
 	map_name_chooser.hide()
 	map_name_line_edit.text = ""
 	confirm_button.disabled = true

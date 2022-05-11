@@ -16,7 +16,7 @@ const DEFAULT_MAP_DATA: = {
 
 }
 
-var save_game = SaveGame.new()
+var save_game:SaveGame
 
 var username:String = "You" setget ,_get_username
 
@@ -24,7 +24,7 @@ var username:String = "You" setget ,_get_username
 var srd:= {} setget _set_srd, _get_srd
 
 var game_state:String = "Free Play" setget _set_game_state
-
+var player_color:Color = Color.coral
 var is_game_setup: = false setget _set_is_game_setup
 var needs_current_game_state: = false
 var online: = false
@@ -37,7 +37,6 @@ var active_pc: NetworkedResource setget _set_active_pc
 var contacts: = {}
 var factions: = {}
 var crew_playbook: = {} setget _set_crew_playbook
-var pc_playbooks: = []
 var map:Dictionary = {} setget _set_map , _get_map
 var clocks: = [] #Array of data
 var roster:Array = []
@@ -100,9 +99,7 @@ func connect_to_signals()-> void:
 	pc_library.connect("resource_added", self, "_on_pc_resource_added")
 
 	#LOCAL EVENTS
-	Events.connect("map_created", self, "_on_map_created")
 	Events.connect("map_changed", self, "_on_map_changed")
-	Events.connect("map_removed", self, "_on_map_removed")
 	GameSaver.connect("save_loaded", self, "_on_save_loaded")
 
 	#Nakama Server Connection
@@ -146,7 +143,7 @@ func _on_current_game_state_broadcast(data, op_code:int)-> void:
 			if not data is String:
 				print("Incorrect player playbook data")
 			else:
-				pc_playbooks.append(pc_library.add(data))
+				roster.append(pc_library.add(data))
 		NetworkTraffic.OP_CODES.JOIN_MATCH_CREW_PLAYBOOK_RECEIVED:
 			if not data is String:
 				print("INCORRECTLY FORMATTED CREW DATA")
@@ -235,6 +232,22 @@ func _on_current_game_state_requested(_user_id:String)-> void:
 
 		is_sending_data = false
 
+#SAVEGAME
+func create_save(save:SaveGame)-> void:
+	self.save_game = save
+	contacts = save_game.contacts
+	contact_library.burn_down()
+	factions = save_game.factions
+	faction_library.burn_down()
+	crew_playbook = save_game.crew_playbook
+	roster = save_game.pc_playbooks
+	pc_library.burn_down()
+	map = save_game.map
+	clocks = save_game.clocks
+	clock_library.burn_down()
+	map_shortcuts = save_game.map_shortcuts
+
+
 
 #LOAD
 func _on_save_loaded(save:SaveGame)->void:
@@ -277,10 +290,10 @@ func save_game()-> void:
 #PC PLAYBOOKS
 func _on_pc_resource_added(resource:NetworkedResource)-> void:
 	#Right now the locations are calling this with add_map_note and event signals, this can be reworked now
-	pc_playbooks.append(resource.data)
+	roster.append(resource.data)
 
 func _on_pc_resource_removed(resource:NetworkedResource)-> void:
-	pc_playbooks.erase(resource.data)
+	roster.erase(resource.data)
 
 func _on_pc_playbook_created_network(data:Dictionary)-> void:
 	roster.append(data)
@@ -348,7 +361,7 @@ func _on_map_created(image_path: String, map_name: String)-> void:
 	create_map(data)
 
 func _on_map_changed(index:int)-> void:
-	if index < save_game.maps.size() and index > -1:
+	if index < save_game.maps.size() and index > -1 and map.index != index:
 		change_map_to(index)
 	else:
 		print("Error map index out of range")

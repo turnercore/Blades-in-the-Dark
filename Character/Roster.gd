@@ -1,46 +1,58 @@
 extends PopupScreen
 
-export (PackedScene) var character_scene
 export (NodePath) onready var character_container = get_node(character_container) as VBoxContainer
 export (PackedScene) onready var character_setup_scene
 
+var pcs_buttons:Dictionary = {}
+
 func _ready() -> void:
-	GameSaver.connect("roster_loaded", self, "_on_roster_loaded")
-	Events.connect("roster_updated", self, "_on_roster_updated")
-	GameData.connect("roster_updated", self, "_on_roster_updated")
-	if not GameData.roster.empty():
-		setup(GameData.roster)
+	setup()
+	GameData.pc_library.connect("resource_added", self, "_on_roster_added")
+	GameData.pc_library.connect("resource_removed", self, "_on_roster_removed")
 
 
-func setup(playbooks:Array)-> void:
+func setup()-> void:
 	for child in character_container.get_children():
 		child.queue_free()
-	for playbook in playbooks:
-		var new_character_scene = character_scene.instance()
-		new_character_scene.playbook = playbook
-		character_container.add_child(new_character_scene)
-		new_character_scene.connect("pressed", self, "_on_character_selected")
+
+	var pcs:Array = GameData.pc_library.get_catalogue()
+
+	for pc in pcs:
+		add_character(pc)
 
 
-func _on_roster_updated()->void:
-	if not GameData.roster.empty():
-		setup(GameData.roster)
+func add_character(pc:NetworkedResource)-> void:
+	var button: = Button.new()
+	button.text = pc.find("name")
+	button.connect("pressed", self, "on_character_selected", [pc])
+	character_container.add_child(button)
+	pcs_buttons[pc] = button
 
 
-func _on_roster_loaded(roster:Array)-> void:
-	setup(roster)
+func remove_character(pc:NetworkedResource)-> void:
+	var button:Button = pcs_buttons[pc]
+	pcs_buttons.erase(pc)
+	button.queue_free()
 
 
-func _on_character_selected()-> void:
+func _on_character_selected(pc:NetworkedResource)-> void:
+	GameData.active_pc = pc
 	self.hide()
 
 
 func _on_NewPlayerCharacterButton_pressed() -> void:
-	#Create new character popup
+	#Create new character popupx
 	var character_setup = character_setup_scene.instance()
 	Events.popup(character_setup)
 
 
-
 func _on_Roster_modal_closed() -> void:
 	Events.emit_signal("popup_finished")
+
+
+func _on_roster_removed(pc:NetworkedResource) -> void:
+	remove_character(pc)
+
+
+func _on_roster_added(pc:NetworkedResource) -> void:
+	add_character(pc)

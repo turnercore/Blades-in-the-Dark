@@ -86,7 +86,7 @@ func save(save_game:SaveGame, id:= current_save_id, overwrite:=true)-> bool:
 	var save_file:String = save_path.plus_file(save_name+".tres")
 	if not dir.dir_exists(save_path): dir.make_dir_recursive(save_path)
 	save_game.version = version
-	save_game._save_id = id
+	save_game.id = id
 
 	#Check for duplicate files if overwrite is false
 	if not overwrite:

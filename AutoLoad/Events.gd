@@ -24,9 +24,12 @@ signal open_screen(screen)
 
 signal popup(popup, use_overlay)
 func popup(popup, use_overlay:=false)-> void:
-	var new_popup = popup
+	print(use_overlay)
+	var new_popup:PopupScreen
 	if popup is PackedScene:
 		new_popup = popup.instance()
+	elif popup is PopupScreen:
+		new_popup = popup
 	emit_signal("popup", new_popup, use_overlay)
 signal popup_finished
 signal all_popups_finished
@@ -59,17 +62,9 @@ signal clock_removed(clock_id)
 func emit_clock_removed(clock_id:String)-> void:
 	emit_signal("clock_removed", clock_id)
 
-signal map_created(map_texture_path, map_name)
-func emit_map_created(map_texture_path:String, map_name:String)->void:
-	emit_signal("map_created", map_texture_path, map_name)
-
 signal map_changed(index)
-func emit_map_changed(index: int)->void:
+func emit_map_changed(index: int = -1)->void:
 	emit_signal("map_changed", index)
-
-signal map_removed(index)
-func emit_map_removed(index: int)->void:
-	emit_signal("map_removed", index)
 
 signal map_note_clicked(note)
 signal location_updated(note)
