@@ -59,10 +59,11 @@ func send_notification(text:String, color:Color)-> void:
 	Events.emit_notification(text % "YOU", color)
 	if GameData.online and ServerConnection.is_connected_to_server:
 		var data: = {
-			"username": GameData.username,
+			"user_id": GameData.local_player.id,
+			"username": GameData.local_player.username,
 			"roll_result" : result,
 			"roll_result_raw": raw_roll,
-			"message" : text % GameData.username,
+			"message" : text % GameData.local_player.username,
 			"color" : color
 		}
 		var result:int = yield(NetworkTraffic.send_data_async(NetworkTraffic.OP_CODES.ROLL_RESULT, data), "completed")

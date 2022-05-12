@@ -63,8 +63,8 @@ signal state_updated(positions, inputs)
 #Chat
 # Emitted when the server has received a new chat message into the world channel
 signal chat_message_received(sender_id, message)
-signal user_joined(username)
-signal user_left(username)
+signal user_joined(user)
+signal user_left(user)
 
 # Emitted when the server has received the game state dump for all connected characters
 signal initial_state_received(data)
@@ -371,12 +371,12 @@ func _on_NakamaSocket_received_match_presence(new_presences: NakamaRTAPI.MatchPr
 	for leave in new_presences.leaves:
 		#warning-ignore: return_value_discarded
 		presences.erase(leave.user_id)
-		emit_signal("user_left", leave.username)
+		emit_signal("user_left", leave)
 
 	for join in new_presences.joins:
 		if not join.user_id == get_user_id():
 			presences[join.user_id] = join
-		emit_signal("user_joined", join.username)
+		emit_signal("user_joined", join)
 	emit_signal("presences_changed", presences)
 
 

@@ -126,6 +126,17 @@ func get(id:String)-> NetworkedResource:
 		result = resources[id]
 	return result
 
+
+func get_first()-> NetworkedResource:
+	var result:NetworkedResource
+
+	for key in resources:
+		result = resources[key]
+		break
+
+	return result
+
+
 func unload()-> void:
 	resources = {}
 	emit_signal("unloaded")

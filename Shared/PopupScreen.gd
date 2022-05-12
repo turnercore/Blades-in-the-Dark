@@ -15,7 +15,7 @@ func popup()-> void:
 func hide()-> void:
 	visible = false
 	set_process_input(false)
-	emit_signal("popup_hide")
+#	emit_signal("popup_hide")
 	Events.emit_signal("popup_finished")
 
 

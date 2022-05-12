@@ -1,6 +1,7 @@
 extends PopupScreen
 
 const DEFAULT_MAP: = {
+	"id" : "duskfull",
 	"name": "Doskvol"
 }
 
@@ -91,9 +92,8 @@ func setup_choices(srd:Dictionary)-> void:
 	var type:String = crew_playbook.find("type")
 	#Set the starting region
 	var all_regions = srd.map_regions
-
 	for region in all_regions:
-		if region.map == DEFAULT_MAP.name:
+		if region.map == DEFAULT_MAP.id:
 			region_choices.append(region)
 
 	for region in region_choices:
@@ -232,6 +232,17 @@ func _on_FinishedButton_pressed() -> void:
 	crew_playbook.add("important_factions.%s.status"%selected_friendly_faction.name, selected_friendly_faction.status)
 	crew_playbook.add("important_factions.%s.status"%selected_angry_faction.name, selected_angry_faction.status)
 	GameData.crew_playbook_resource = crew_playbook
+
+	var contacts = crew_playbook.find("contacts")
+	for key in contacts:
+		var contact = contacts[key]
+		GameData.contact_library.add(contact)
+
+	var cohorts = crew_playbook.find("cohorts")
+	for key in cohorts:
+		var cohort = cohorts[key]
+		GameData.cohort_library.add(cohort)
+
 	Events.emit_signal("popup_finished")
 	if on_start_screen:
 		get_tree().change_scene_to(Globals.GAME_SCENE)
@@ -372,6 +383,10 @@ func _on_friendly_interaction_item_selected(index: int) -> void:
 
 
 func _on_angry_interaction_item_selected(index: int) -> void:
+	if not selected_angry_faction:
+		angry_faction_interaction_options.selected = 0
+		angry_faction_interaction_options.text = "Please select the faction first"
+		return
 	match index:
 		1:
 			selected_angry_faction.status -= 2

@@ -12,6 +12,7 @@ var data:Dictionary
 
 
 signal property_changed(property, value)
+signal property_removed(property)
 signal deleted
 
 func setup(setup_data:Dictionary)-> void:
@@ -88,8 +89,6 @@ func find(path:String):
 
 
 func update(path:String, value, update_network: = true):
-	if value is String:
-		value = str2var(value)
 	var split:PoolStringArray = path.split(".")
 	if split.empty():
 		return
@@ -102,7 +101,7 @@ func update(path:String, value, update_network: = true):
 			if property.is_valid_integer():
 				var index:int = int(property)
 				if index < result.size() and index >= 0:
-					if result[index] != value:
+					if typeof(result[index]) == typeof(value) and result[index] != value:
 						result[index] = value
 						if update_network: send_update_over_network({path : value, "op_code":RESOURCE_OP_CODES.UPDATE})
 						emit_signal("property_changed", path, value)
@@ -112,7 +111,7 @@ func update(path:String, value, update_network: = true):
 					return
 			else:
 				if result.has(property):
-					if result[property] != value:
+					if typeof(result[property]) == typeof(value) and result[property] != value:
 						result[property] = value
 						if update_network: send_update_over_network({path : value, "op_code":RESOURCE_OP_CODES.UPDATE})
 						emit_signal("property_changed", path, value)
@@ -164,6 +163,49 @@ func add(path:String, value = "", update_network: = true)-> void:
 				if not property in result:
 					result[property] = {}
 				result = result[property]
+
+
+func remove(path:String, update_network: = true)-> void:
+	var split:PoolStringArray = path.split(".")
+	if split.empty():
+		return
+	var result = data
+	var i: = 0
+
+	for property in split:
+		#is this the last property in the array? If so do the setter function
+		if i == split.size()-1:
+			if property.is_valid_integer():
+				var index:int = int(property)
+				if index < result.size() and index >= 0:
+					result.remove(index)
+					if update_network: send_update_over_network({"property": path, "op_code":RESOURCE_OP_CODES.REMOVE})
+					emit_signal("property_removed", path)
+
+				else:
+					print("Invalid path for remove() Index out of range | Path: " + path)
+					return
+			else:
+				if result.has(property):
+					result.erase(property)
+					if update_network: send_update_over_network({"property" : path, "op_code":RESOURCE_OP_CODES.REMOVE})
+					emit_signal("property_removed", path)
+				else:
+					print("Invalid path for remove() property not in data| Path: " + path)
+					return
+		#Else Keep searching for the property
+		else:
+			if property.is_valid_integer():
+				var index:int = int(property)
+				if index >= result.size():
+					print("Invalid path for remove() Index out of range | Path: " + path)
+				else: result = result[index]
+			else:
+				if result.has(property):
+					result = result[property]
+				else:
+					print("Invalid path for remove() property not in data| Path: " + path)
+			i += 1
 
 
 func send_update_over_network(updated_data:Dictionary)-> void:

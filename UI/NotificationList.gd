@@ -34,10 +34,12 @@ func network_data_to_color(color_data:String)->Color:
 	return color
 
 #Signal Callbacks
-func _on_user_joined(username:String)-> void:
+func _on_user_joined(user)-> void:
+	var username:String = user.username
 	add_notification(username, Color.green)
 
-func _on_user_left(username:String)-> void:
+func _on_user_left(user)-> void:
+	var username:String = user.username
 	add_notification(username, Color.red)
 
 func _on_server_disconnected()-> void:
