@@ -1,4 +1,4 @@
-extends Popup
+extends PopupScreen
 
 onready var saves_list: = $LoadContainer/PanelContainer/ScrollContainer/SavesList
 onready var cancel_button: = $LoadContainer/PanelContainer/ScrollContainer/SavesList/CancelButton
@@ -33,10 +33,8 @@ func _button_clicked(id: String)-> void:
 
 
 func _on_LoadScreen_popup_hide() -> void:
-	Events.emit_signal("popup_finished")
-	queue_free()
+	hide()
 
 
 func _on_CancelButton_pressed() -> void:
-	Events.emit_signal("popup_finished")
-	queue_free()
+	hide()

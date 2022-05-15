@@ -1,5 +1,6 @@
 extends Node
 
+const DEFAULT_MAP: = "duskfull"
 const DEFAULT_MAP_NOTE_ICON: = "res://Shared/Art/Icons/MapNoteIconTex.tres"
 const DEFAULT_NOTE: = {
 	"description": "DEFAULT INFO TEXT",
@@ -83,6 +84,7 @@ func _get_srd()-> Dictionary:
 #SETUP FUNCTIONS
 func _ready() -> void:
 	setup_player()
+	GameSaver.connect("save_loaded", self, "_on_save_loaded")
 	yield(self, "save_loaded")
 	construct_libraries()
 	connect_to_signals()
@@ -119,7 +121,6 @@ func connect_to_signals()-> void:
 
 	#LOCAL EVENTS
 	Events.connect("map_changed", self, "_on_map_changed")
-	GameSaver.connect("save_loaded", self, "_on_save_loaded")
 
 	#Nakama Server Connection
 	ServerConnection.connect("match_joined", self, "_on_match_joined")
@@ -169,6 +170,7 @@ func create_save(save:SaveGame)-> void:
 
 #LOAD
 func _on_save_loaded(save:SaveGame)->void:
+	print('loading save')
 	if not save.is_setup: save.setup(DEFAULT_SRD)
 	save_game = save
 	srd = save.srd if not save.srd.empty() else srd
@@ -188,7 +190,6 @@ func _on_save_loaded(save:SaveGame)->void:
 
 	map = save.map if save.map else ""
 	maps = save.maps
-	breakpoint
 	for map_id in maps:
 		var selected = maps[map_id]
 		map_library.add(selected)

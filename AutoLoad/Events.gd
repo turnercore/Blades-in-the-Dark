@@ -22,17 +22,20 @@ signal mouse_unlocked(node)
 
 signal open_screen(screen)
 
+signal popup_finished
+signal all_popups_finished
 signal popup(popup, use_overlay)
-func popup(popup, use_overlay:=false)-> void:
-	print(use_overlay)
+func popup(popup, use_overlay:=true)-> void:
+	if popup is String:
+		emit_signal("popup", popup, use_overlay)
+		return
 	var new_popup:PopupScreen
 	if popup is PackedScene:
 		new_popup = popup.instance()
 	elif popup is PopupScreen:
 		new_popup = popup
 	emit_signal("popup", new_popup, use_overlay)
-signal popup_finished
-signal all_popups_finished
+
 
 signal map_scroll_speed_changed(scroll_speed)
 
@@ -62,9 +65,9 @@ signal clock_removed(clock_id)
 func emit_clock_removed(clock_id:String)-> void:
 	emit_signal("clock_removed", clock_id)
 
-signal map_changed(index)
-func emit_map_changed(index: int = -1)->void:
-	emit_signal("map_changed", index)
+signal map_changed(id)
+func emit_map_changed(id:String)->void:
+	emit_signal("map_changed", id)
 
 signal map_note_clicked(note)
 signal location_updated(note)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://settings/LoadButton.gd" type="Script" id=1]
 [ext_resource path="res://popups/LoadScreen.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://settings/Settings.gd" type="Script" id=13]
 [ext_resource path="res://settings/OnlineSettingsButton.gd" type="Script" id=14]
 [ext_resource path="res://settings/OnlineSettings.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Shared/PopupScreen.gd" type="Script" id=16]
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0
@@ -91,7 +92,8 @@ margin_bottom = 101.0
 text = "Edit Map"
 script = ExtResource( 12 )
 
-[node name="EditMapDialog" type="PopupDialog" parent="Settings/MenuButtons/EditMap"]
+[node name="EditMapDialog" type="Control" parent="Settings/MenuButtons/EditMap"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -100,10 +102,7 @@ margin_left = -149.0
 margin_top = -185.5
 margin_right = 140.0
 margin_bottom = -38.5
-custom_styles/panel = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 16 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings/MenuButtons/EditMap/EditMapDialog"]
 anchor_left = 0.5

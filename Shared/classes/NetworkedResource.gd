@@ -49,6 +49,15 @@ func get_color(property:String)->Color:
 	return str2var(data[property]) if data.has(property) else Color.black
 
 
+func has_property(property:String)-> bool:
+	if data.has(property):
+		if data[property] is bool:
+			return true
+		elif data[property]:
+			return true
+	return false
+
+
 func import(import_data:Dictionary, update_network: = true)-> void:
 	var updated_data: = {}
 	for property in import_data:

@@ -39,3 +39,11 @@ func _on_region_added(region:NetworkedResource)-> void:
 
 func _on_region_deleted(region:NetworkedResource)-> void:
 	remove_region(region)
+
+func _on_area_entered(area:Area2D, region:Area2D)-> void:
+	if area is Cursor:
+		print("cursor entered area " + region.name)
+
+func _on_area_exited(area:Area2D, region:Area2D)-> void:
+	if area is Cursor:
+		print("cursor left area " + region.name)

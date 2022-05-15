@@ -57,7 +57,8 @@ func setup_maps_from_srd(new_srd:Dictionary)-> void:
 		print("regions not found in srd")
 
 	srd_maps = srd.maps.duplicate(true)
-
+	var locations:Array = srd.locations.duplicate(true)
+	var regions:Array = srd.map_regions.duplicate(true)
 	#Set the srd maps into the maps array
 	for key in srd_maps:
 		if maps.has(key): continue
@@ -71,16 +72,20 @@ func setup_maps_from_srd(new_srd:Dictionary)-> void:
 				new_map.id = Globals.generate_id(6)
 
 		new_map["locations"] = {}
-		var locations:Array = srd.locations.duplicate(true)
 		for location in locations:
-			var vec2 = location.pos
-			new_map.locations[vec2] = location
-
+			if location.map == srd_map.id:
+				var pos = location.id
+				new_map.locations[pos] = location
+			else:
+				continue
 		new_map["regions"] = {}
-		var regions:Array = srd.map_regions.duplicate(true)
+
 		for region in regions:
-			var vec2 = region.pos
-			new_map.regions[vec2] = region
+			if region.map == srd_map.id:
+				var vec2 = region.pos
+				new_map.regions[vec2] = region
+			else:
+				continue
 
 		maps[new_map.id] = new_map
 

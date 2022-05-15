@@ -95,10 +95,14 @@ func remove_pin(pos:Vector2)-> void:
 
 
 func add_pin(pos:Vector2, data: = {})-> void:
-	var grid_mouse_pos:Vector2 = Globals.convert_to_grid(get_global_mouse_position())
-	for location in GameData.map.locations:
-		if grid_mouse_pos == location:
-			return
+#	var grid_mouse_pos:Vector2 = Globals.convert_to_grid(get_global_mouse_position())
+	var locations = GameData.map.find("locations")
+	for loc_id in locations:
+		var location = locations[loc_id]
+		if location is String:
+			location = str2var(location)
+#		if grid_mouse_pos == location.pos:
+#			return
 
 	var is_new: = false
 	var location_node: = map_note_scene.instance()
@@ -155,12 +159,12 @@ func zoom_out(delta:float)->void:
 	camera.zoom *= 1 + delta
 	zoom_level = camera.zoom.x
 
-func load_map(map:Dictionary)->void:
+func load_map(map:NetworkedResource)->void:
 	for child in notes.get_children():
 		child.queue_free()
 
-	if map and "image" in map and map.image:
-		var texture = load(map.image)
+	if map.has_property("image"):
+		var texture = load(map.find("image"))
 		map_texture.texture = texture
 	else:
 		var texture = Globals.DEFAULT_MAP_IMAGE
@@ -193,7 +197,7 @@ func _on_map_scroll_speed_changed(new_scroll_speed: float) -> void:
 	scroll_speed = new_scroll_speed
 
 
-func _on_map_loaded(map:Dictionary)->void:
+func _on_map_loaded(map:NetworkedResource)->void:
 	load_map(map)
 
 

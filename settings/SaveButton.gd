@@ -6,4 +6,4 @@ func _process(_delta: float) -> void:
 
 
 func _on_SaveButton_pressed() -> void:
-	GameData.save_all()
+	GameData.save_game()

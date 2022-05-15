@@ -6,7 +6,6 @@ var area_description:String
 var polygon:PoolVector2Array = [] setget _set_polygon
 var resource:NetworkedResource
 var center:Vector2 setget _set_center
-onready var grid:TileMap = get_parent().get_parent()
 onready var collison: = $CollisionPolygon2D
 onready var light: = $Light2D
 onready var light_occluder: = $LightOccluder2D
@@ -19,15 +18,19 @@ func _ready() -> void:
 	if testing:
 		var grid_pos:PoolVector2Array
 		for vec in light_occluder.occluder.polygon:
-			grid_pos.append(grid.world_to_map(vec))
+			grid_pos.append(Globals.grid.world_to_map(vec))
 		print(var2str(grid_pos))
-		print(var2str(grid.world_to_map(light.global_position)))
+		print(var2str(Globals.grid.world_to_map(light.global_position)))
 
 
 func setup(location:NetworkedResource)-> void:
+	collison = $CollisionPolygon2D
+	light = $Light2D
+	light_occluder = $LightOccluder2D
+	tween = $Tween
 	visible = false
 	resource = location
-	location.connect("property_changed", self, "_on_proeprty_changed")
+	location.connect("property_changed", self, "_on_property_changed")
 	self.polygon = location.find("boundary")
 	self.center = location.find("pos")
 	area_name = location.find("name")
@@ -45,10 +48,12 @@ func _set_polygon(region:PoolVector2Array)-> void:
 
 func _set_center(pos:Vector2)-> void:
 	center = pos
-	light.global_position = grid.map_to_world(center)
+	if not Globals.grid.is_inside_tree():
+		yield(Globals.grid, "tree_entered")
+	light.global_position = Globals.grid.map_to_world(center)
 
 
-func _on_proeprty_changed(property:String, value)-> void:
+func _on_property_changed(property:String, value)-> void:
 	match property:
 		"pos":
 			self.center = value

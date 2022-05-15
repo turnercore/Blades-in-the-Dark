@@ -66,8 +66,8 @@ func load_save(id:= current_save_id, folder:= SAVE_FOLDER):
 	else:
 		save_game = SaveGame.new()
 		save_game.setup_save(srd_json)
-
 	emit_signal("save_loaded", save_game)
+
 
 func save_resource(file_path:String, resource:Resource)-> void:
 	pass
@@ -116,7 +116,7 @@ func _on_data_changed()-> void:
 
 func _on_save_timer_timeout()-> void:
 	if data_changed:
-		GameData.save_all()
+		GameData.save_game()
 		data_changed = false
 
 

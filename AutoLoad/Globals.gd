@@ -6,8 +6,12 @@ const DEFUALT_CREW_PLAYBOOK_DATA: = {
 	"id": null
 }
 var DEFAULT_MAP_IMAGE: = preload("res://maps/blades_detailedmap_highres.jpg")
-var grid: TileMap
+var grid: = TileMap.new()
 var ids: = []
+
+
+func _ready() -> void:
+	grid.cell_size = Vector2(5, 5)
 
 #Helper Functions
 #func propagate_set_playbook_recursive(node: Node, playbook: Playbook, starting_node: Node)-> void:
