@@ -96,7 +96,6 @@ __meta__ = {
 }
 
 [connection signal="popup_hide" from="." to="." method="_on_NewGamePopup_popup_hide"]
-[connection signal="popup_hide" from="." to="." method="_on_NewGamePopup_popup_hide"]
 [connection signal="text_changed" from="MarginContainer/PopupPanel/VBoxContainer/HBoxContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
 [connection signal="pressed" from="MarginContainer/PopupPanel/VBoxContainer/CreateNewCrewButton" to="." method="_on_CreateNewCrewButton_pressed"]
 [connection signal="pressed" from="MarginContainer/PopupPanel/VBoxContainer/CreateNewCrewButton" to="MarginContainer/PopupPanel/VBoxContainer/CreateNewCrewButton" method="_on_CreateNewCrewButton_pressed"]

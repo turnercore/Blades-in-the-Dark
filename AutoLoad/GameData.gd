@@ -151,7 +151,7 @@ func load_srd_from_file(srd_file_path:String)->Dictionary:
 	return data
 
 
-#SAVEGAME
+#CREATE SAVEGAME
 func create_save(save:SaveGame)-> void:
 	self.save_game = save
 	contacts = save_game.contacts
@@ -168,7 +168,8 @@ func create_save(save:SaveGame)-> void:
 	settings = save_game.settings
 	emit_signal("save_loaded")
 
-#LOAD
+
+#LOAD SAVEGAME
 func _on_save_loaded(save:SaveGame)->void:
 	print('loading save')
 	if not save.is_setup: save.setup(DEFAULT_SRD)
@@ -211,9 +212,10 @@ func _on_save_loaded(save:SaveGame)->void:
 	self.is_game_setup = true
 	emit_signal("save_loaded")
 
-#SAVING
+
+#SAVING SAVEGAME
 func save_game()-> void:
-	#These should be connected already, but in case they aren't this makes sure
+	#These should be connected already, but in case they aren't this makes sure they are
 	save_game.contacts = contacts
 	save_game.factions = factions
 	save_game.crew_playbook = crew_playbook

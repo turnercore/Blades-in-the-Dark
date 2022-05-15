@@ -92,9 +92,35 @@ func find(path:String):
 				result = result[property]
 			else:
 				return "Invalid path for find() property not in data| Path: " + path
+
+	#Reverses any var2str data that may be in there and returns the correct value, deeply
 	if result is String:
 		result = str2var(result)
+	elif result is Dictionary or result is Array:
+		propagate_str2var(result)
+
 	return result
+
+
+func propagate_str2var(data):
+	if data is Dictionary:
+		for key in data.keys():
+			if data[key] is String:
+				data[key] = str2var(data[key])
+			elif data[key] is Dictionary or data[key] is Array:
+				propagate_str2var(data[key])
+	elif data is Array:
+		var index:int = 0
+		for property in data:
+			if property is String:
+				var formatted_property = str2var(property)
+				if not formatted_property is String:
+					data.insert(index, formatted_property)
+					data.erase(property)
+			elif property is Dictionary or property is Array:
+				propagate_str2var(property)
+			index += 1
+
 
 
 func update(path:String, value, update_network: = true):

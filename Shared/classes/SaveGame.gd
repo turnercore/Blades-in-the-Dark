@@ -8,7 +8,7 @@ export (Dictionary) var settings:Dictionary
 var debug:bool = ProjectSettings.get_setting("debug/settings/debug")
 var srd_file_path: = DEFAULT_SRD
 export (Dictionary) var srd
-export (String) var id
+export (String) var id setget _set_id
 var _save_folder: = "res://debug/save" if debug else "user://save"
 export (String) var version: String = ''
 export (String) var map:String setget _set_map
@@ -21,6 +21,8 @@ export (Dictionary) var factions: = {}
 export (Dictionary) var pc_playbooks: = {}
 export (Dictionary) var crew_playbook: = {}
 export (bool) var is_setup: = false
+
+signal id_changed(id)
 
 
 func setup(provided_srd_file_path: String = "")->void:
@@ -98,3 +100,7 @@ func _set_clocks(value:Dictionary)-> void:
 func _set_map(value:String)-> void:
 	map = value
 	if is_setup: emit_changed()
+
+func _set_id(value:String)-> void:
+	id = value
+	emit_signal("id_changed", id)

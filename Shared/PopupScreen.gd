@@ -1,20 +1,32 @@
 class_name PopupScreen
 extends Control
 
-signal popup_hide
+#signal popup_hide
 
 func _ready() -> void:
-	set_process_input(false)
+	hide()
 
 
 func popup()-> void:
 	visible = true
 	set_process_input(true)
+	set_process(true)
+	set_process_unhandled_input(true)
+	set_process_unhandled_key_input(true)
+	set_process_internal(true)
+
+
+func show()-> void:
+	popup()
 
 
 func hide()-> void:
 	visible = false
 	set_process_input(false)
+	set_process(false)
+	set_process_unhandled_input(false)
+	set_process_unhandled_key_input(false)
+	set_process_internal(false)
 #	emit_signal("popup_hide")
 	Events.emit_signal("popup_finished")
 

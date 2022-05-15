@@ -68,10 +68,6 @@ func load_save(id:= current_save_id, folder:= SAVE_FOLDER):
 		save_game.setup_save(srd_json)
 	emit_signal("save_loaded", save_game)
 
-
-func save_resource(file_path:String, resource:Resource)-> void:
-	pass
-
 #works
 func load_all(id:= current_save_id, folder:= SAVE_FOLDER)-> void:
 	self.current_save_id = id
@@ -129,3 +125,6 @@ func _set_save_on_interval(value:bool)-> void:
 	else:
 		if save_timer:
 			save_timer.stop()
+
+func _on_save_id_changed(id:String)-> void:
+	current_save_id = id
