@@ -8,7 +8,6 @@ closed = false
 polygon = PoolVector2Array( -1111, -764, -576, -1195, -25, -1263, 430, -1221, 686, -431, 904, -50, 927, 534, 867, 1043, 1079, 1620, 1070, 2015, 604, 2162, 388, 2206, 25, 1890, -289, 1514, -897, 663, -1521, 271, -1075, -758 )
 
 [node name="HighlightArea" type="Area2D"]
-position = Vector2( 21, 0 )
 script = ExtResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]

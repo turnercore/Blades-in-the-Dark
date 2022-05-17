@@ -119,6 +119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://maps/MapNote.gd"
 }, {
+"base": "Node2D",
+"class": "MapRegions",
+"language": "GDScript",
+"path": "res://maps/MapRegions.gd"
+}, {
 "base": "Control",
 "class": "MarkerButton",
 "language": "GDScript",
@@ -214,6 +219,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Shared/classes/PCConstructor.gd"
 }, {
+"base": "Node2D",
+"class": "Pings",
+"language": "GDScript",
+"path": "res://maps/Pings.gd"
+}, {
+"base": "Node2D",
+"class": "Pins",
+"language": "GDScript",
+"path": "res://maps/Pins.gd"
+}, {
 "base": "Control",
 "class": "PopupScreen",
 "language": "GDScript",
@@ -262,6 +277,7 @@ _global_script_class_icons={
 "Library": "",
 "Map": "",
 "MapNote": "",
+"MapRegions": "",
 "MarkerButton": "",
 "Markers": "",
 "NakamaAPI": "",
@@ -281,6 +297,8 @@ _global_script_class_icons={
 "NetworkedResource": "",
 "NodeReference": "",
 "PCConstructor": "",
+"Pings": "",
+"Pins": "",
 "PopupScreen": "",
 "SaveGame": "",
 "SaveableField": "",
@@ -308,7 +326,6 @@ Events="*res://AutoLoad/Events.gd"
 GameData="*res://AutoLoad/GameData.gd"
 GameSaver="*res://AutoLoad/GameSaver.gd"
 Tooltip="*res://UI/Tooltip.tscn"
-PlayerData="res://AutoLoad/PlayerData.gd"
 
 [debug]
 

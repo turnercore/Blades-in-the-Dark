@@ -4,7 +4,12 @@ extends Control
 #signal popup_hide
 
 func _ready() -> void:
-	hide()
+	visible = false
+	set_process_input(false)
+	set_process(false)
+	set_process_unhandled_input(false)
+	set_process_unhandled_key_input(false)
+	set_process_internal(false)
 
 
 func popup()-> void:

@@ -1,6 +1,6 @@
 extends Node
 
-const DEFAULT_MAP: = "duskfull"
+const DEFAULT_MAP_ID: = "doskfull"
 const DEFAULT_MAP_NOTE_ICON: = "res://Shared/Art/Icons/MapNoteIconTex.tres"
 const DEFAULT_NOTE: = {
 	"description": "DEFAULT INFO TEXT",
@@ -36,9 +36,9 @@ var active_pc: NetworkedResource setget _set_active_pc
 #Data that stores the underlying data in the libraries. Is shared by the save_game
 var contacts: = {}
 var factions: = {}
-var maps: = {}
+var maps: = {} setget _set_maps
 var cohorts: = {}
-var map setget _set_map, _get_map
+var map:NetworkedResource setget _set_map, _get_map
 var crew_playbook: = {} setget _set_crew_playbook
 var clocks: = {} #Array of data
 var roster: = {}
@@ -57,6 +57,8 @@ var faction_library: = Library.new()
 var cohort_library: = Library.new()
 var map_library: = Library.new()
 
+var creating_save: = false
+
 #Signals
 signal crew_changed
 signal map_loaded(map)
@@ -67,6 +69,7 @@ signal game_state_changed(game_state)
 signal game_setup
 signal game_state_loaded
 signal save_loaded
+signal finished_creating_save
 
 func _set_srd(new_srd:Dictionary)-> void:
 	srd = new_srd
@@ -153,25 +156,33 @@ func load_srd_from_file(srd_file_path:String)->Dictionary:
 
 #CREATE SAVEGAME
 func create_save(save:SaveGame)-> void:
+	creating_save = true
+	if not save.is_setup: save.setup()
 	self.save_game = save
-	contacts = save_game.contacts
-	contact_library.burn_down()
-	factions = save_game.factions
-	faction_library.burn_down()
-	crew_playbook = save_game.crew_playbook
-	roster = save_game.pc_playbooks
-	pc_library.burn_down()
-	map = save_game.map
-	clocks = save_game.clocks
-	clock_library.burn_down()
-	map_shortcuts = save_game.map_shortcuts
-	settings = save_game.settings
+	self.contacts = save_game.contacts
+	self.factions = save_game.factions
+	self.crew_playbook = save_game.crew_playbook
+	self.roster = save_game.pc_playbooks
+	self.maps = save_game.maps
+	self.clocks = save_game.clocks
+	self.map_shortcuts = save_game.map_shortcuts
+	self.settings = save_game.settings
 	emit_signal("save_loaded")
+	self.creating_save = false
+	emit_signal("finished_creating_save")
 
 
 #LOAD SAVEGAME
 func _on_save_loaded(save:SaveGame)->void:
-	print('loading save')
+	map_library.unload()
+	region_library.unload()
+	location_library.unload()
+	clock_library.unload()
+	pc_library.unload()
+	contact_library.unload()
+	faction_library.unload()
+	cohort_library.unload()
+
 	if not save.is_setup: save.setup(DEFAULT_SRD)
 	save_game = save
 	srd = save.srd if not save.srd.empty() else srd
@@ -189,11 +200,11 @@ func _on_save_loaded(save:SaveGame)->void:
 	clocks = save.clocks
 	clock_library.setup(clocks, true)
 
-	map = save.map if save.map else ""
 	maps = save.maps
 	for map_id in maps:
 		var selected = maps[map_id]
 		map_library.add(selected)
+	map = map_library.get(save.map) if save.map else map_library.get_first()
 	var locations:Dictionary = self.map.find("locations")
 	var regions:Dictionary = self.map.find("regions")
 	for region_id in regions:
@@ -206,21 +217,22 @@ func _on_save_loaded(save:SaveGame)->void:
 
 	location_library.setup(locations, true)
 	map_shortcuts = save.map_shortcuts
-
-	emit_signal("map_loaded", self.map)
-
 	self.is_game_setup = true
 	emit_signal("save_loaded")
+	emit_signal("map_loaded", self.map)
 
 
 #SAVING SAVEGAME
 func save_game()-> void:
+	if creating_save: yield(self, "finished_creating_save")
 	#These should be connected already, but in case they aren't this makes sure they are
 	save_game.contacts = contacts
 	save_game.factions = factions
 	save_game.crew_playbook = crew_playbook
 	save_game.pc_playbooks = roster
-	save_game.map = map
+	if map:
+		save_game.map = map.id
+	save_game.maps = maps
 	save_game.clocks = clocks
 	save_game.map_shortcuts = map_shortcuts
 	save_game.settings = settings
@@ -231,43 +243,38 @@ func save_game()-> void:
 func _on_pc_resource_added(resource:NetworkedResource)-> void:
 	#Right now the locations are calling this with add_map_note and event signals, this can be reworked now
 	roster[resource.id] = resource.data
-	save_game()
+
 
 func _on_pc_resource_removed(resource:NetworkedResource)-> void:
 	pc_library.delete_id(resource.id)
 	roster.erase(resource.id)
-	save_game()
+
 
 func _on_pc_playbook_created_network(data:Dictionary)-> void:
 	pc_library.add(data)
 	roster[data.id] = data
-	save_game()
 
 
 #CONTACTS
 func _on_contact_resource_added(contact_resource:NetworkedResource)-> void:
 	if not contacts.has(contact_resource.id):
 		contacts[contact_resource.id] = contact_resource.data
-	save_game()
 
 #FACTIONS
 func _on_faction_resource_added(faction_resource:NetworkedResource)-> void:
 	if not factions.has(faction_resource.id):
 		factions[faction_resource.id] = faction_resource.data
-	save_game()
 
 #COHORTS
 func _on_cohort_resource_added(cohort_resource:NetworkedResource)-> void:
 	if not cohorts.has(cohort_resource.id):
 		cohorts[cohort_resource.id] = cohort_resource.data
-	save_game()
 
 #CREW PLAYBOOK
 func _set_crew_playbook_resource(playbook:NetworkedResource)-> void:
 	crew_playbook_resource = playbook
 	crew_playbook= playbook.data
 	save_game.crew_playbook = crew_playbook
-	save_game()
 
 func _set_crew_playbook(data:Dictionary)-> void:
 	var playbook:NetworkedResource = NetworkedResource.new()
@@ -275,7 +282,6 @@ func _set_crew_playbook(data:Dictionary)-> void:
 	crew_playbook = data
 	save_game.crew_playbook = crew_playbook
 	crew_playbook_resource = playbook
-	save_game()
 
 #CLOCKS
 func _on_clock_resource_added(clock:NetworkedResource)-> void:
@@ -291,7 +297,8 @@ func change_map_to(id:String)-> void:
 	if not maps.has(id):
 		print("gamedata: Could not find map in map database")
 		return
-	map = id
+	if not map.id == id:
+		map = maps.get(id)
 	save_game.map = id
 	location_library.unload()
 	region_library.unload()
@@ -304,7 +311,7 @@ func change_map_to(id:String)-> void:
 	for key in regions:
 		var region = regions[key]
 		region_library.add(region)
-	save_game()
+	emit_signal("map_loaded", self.map)
 
 
 func _on_map_created(image_path: String, map_name: String)-> void:
@@ -329,25 +336,26 @@ func _on_map_removed(id:String)->void:
 	map_library.delete_id(id, false)
 
 
-func _get_map():
-	if map:
-		return map_library.get(map)
-	else:
-		var map_resource:NetworkedResource = map_library.get_first()
-		if not map_resource:
-			return null
-		self.map = map_resource.id
-		return map_resource
-
-
-func _set_map(map_id:String)-> void:
-	if not maps.has(map_id):
-		print("gamedata: map id not found in maps")
+func _set_map(value:NetworkedResource)-> void:
+	if not value:
+		print("error setting map resource, null value")
 		return
-	map = map_id
+	if map == value:
+		print("map already set to value")
+		return
+	map = value
 	location_library.unload()
 	region_library.unload()
-	change_map_to(map_id)
+	change_map_to(map.id)
+
+func _set_maps(value:Dictionary)-> void:
+	maps = value
+	map_library.setup(maps, true)
+	self.map = map_library.get(DEFAULT_MAP_ID) if map_library.has(DEFAULT_MAP_ID) else map_library.get_first()
+
+
+func _get_map()-> NetworkedResource:
+	return map if map else map_library.get(DEFAULT_MAP_ID)
 
 
 func _on_map_resource_added(map_resource:NetworkedResource)-> void:

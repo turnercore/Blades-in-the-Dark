@@ -1,8 +1,10 @@
 extends PopupScreen
 
-const DEFAULT_MAP: = {
-	"id" : "duskfull",
-	"name": "Doskvol"
+const STARTING_COINS:int = 2
+
+var DEFAULT_MAP: = {
+	"id" : Globals.DEFAULT_MAP_ID,
+	"name": Globals.DEFAULT_MAP_NAME
 }
 
 onready var pages: Array = $MarginContainer/PanelContainer/SetupPages.get_children()
@@ -10,7 +12,7 @@ var active_page = 0
 var crew_playbook: = NetworkedResource.new()
 var on_start_screen: = false
 export(NodePath) onready var type_options = get_node(type_options)
-var coins: = 2 setget _set_coins
+var coins: = STARTING_COINS setget _set_coins
 onready var coin_container: = $MarginContainer/Coins
 
 export (NodePath) onready var current_page_number_label = get_node(current_page_number_label) as Label
@@ -88,14 +90,19 @@ func _ready() -> void:
 
 
 
+
 func setup_choices(srd:Dictionary)-> void:
+	self.coins = STARTING_COINS
 	var type:String = crew_playbook.find("type")
 	#Set the starting region
 	var all_regions = srd.map_regions
+
+	region_choices.clear()
 	for region in all_regions:
 		if region.map == DEFAULT_MAP.id:
 			region_choices.append(region)
 
+	reset_option_button(lair_location_options)
 	for region in region_choices:
 		lair_location_options.add_item(region.name)
 
@@ -106,18 +113,23 @@ func setup_choices(srd:Dictionary)-> void:
 		if id.begins_with("starting_"):
 			starting_hunting_grounds.append(srd.hunting_grounds[id])
 
+	hunting_ground_choices.clear()
+	reset_option_button(hunting_ground_location_options)
 	var i: = 100
 	for ground in starting_hunting_grounds:
 		hunting_ground_location_options.add_item("%s : %s" %[ground.region.capitalize(), ground.name.capitalize()], i)
 		hunting_ground_choices[i] = ground
 		i += 1
 
+	reset_option_button(operation_type_options)
 	for operation_type in srd.crew_types[type.to_lower()].operation_types:
 		operation_type_options.add_item(operation_type)
 
 	#Set abilities
 	i = 100
 	var abilities: = []
+	ability_choices.clear()
+	reset_option_button(starting_ability_options)
 	for ability_name in srd.crew_abilities:
 		if ability_name == "Veteran": continue
 		var ability = srd.crew_abilities[ability_name]
@@ -142,6 +154,9 @@ func setup_choices(srd:Dictionary)-> void:
 	upgrade2_label.text = upgrade2.catagory.capitalize() + ": " + upgrade2.name
 
 	i = 100
+	reset_option_button(upgrade3_options)
+	reset_option_button(upgrade4_options)
+	upgrade_options.clear()
 	for upgrade in upgrades:
 		if upgrade.name == upgrade1.name or upgrade.name == upgrade2.name:
 			continue
@@ -154,6 +169,8 @@ func setup_choices(srd:Dictionary)-> void:
 	#Setup friendly faction
 	var factions = srd.factions
 	i = 100
+	faction_choices.clear()
+	reset_option_button(friendly_faction_options)
 	for faction_name in factions:
 		var faction:Dictionary = factions[faction_name]
 		var region:String = " - " + faction.region if faction.region else ""
@@ -163,14 +180,16 @@ func setup_choices(srd:Dictionary)-> void:
 
 	#Setup Angry Faction
 	i = 100
+	reset_option_button(angry_faction_options)
 	for faction_name in factions:
 		var faction:Dictionary = factions[faction_name]
 		var region:String = " - " + faction.region if faction.region else ""
 		angry_faction_options.add_item(faction_name + region, i)
 		i += 1
 
-	i = 100
 	#Setup Favorite Contact
+	i = 100
+	reset_option_button(favorite_contact_options)
 	for key in srd.contacts:
 		var contact = srd.contacts[key]
 		if contact.types.has(type):
@@ -181,6 +200,7 @@ func setup_choices(srd:Dictionary)-> void:
 
 	#Setup Favorite Contact Friendly Contact
 	i = 100
+	reset_option_button(friendly_contact_faction_options)
 	for faction_name in factions:
 		var faction:Dictionary = factions[faction_name]
 		var region:String = " - " + faction.region if faction.region else ""
@@ -189,11 +209,19 @@ func setup_choices(srd:Dictionary)-> void:
 
 	#Setup Angry Contact Friendly Contact
 	i = 100
+	reset_option_button(angry_contact_faction_options)
 	for faction_name in factions:
 		var faction:Dictionary = factions[faction_name]
 		var region:String = " - " + faction.region if faction.region else ""
 		angry_contact_faction_options.add_item(faction_name + region, i)
 		i += 1
+
+
+func reset_option_button(option_button:OptionButton)-> void:
+	var first_item:String= option_button.get_item_text(0)
+	option_button.clear()
+	option_button.add_item(first_item)
+	option_button.set_item_disabled(0, true)
 
 
 func setup_resource(type: String)-> void:

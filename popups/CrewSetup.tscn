@@ -135,10 +135,9 @@ margin_bottom = 522.0
 alignment = 1
 
 [node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/Intro2"]
-margin_top = 29.0
 margin_right = 876.0
-margin_bottom = 60.0
-size_flags_vertical = 6
+margin_bottom = 31.0
+size_flags_vertical = 1
 text = "Create your Crew:"
 align = 1
 autowrap = true
@@ -147,9 +146,10 @@ __meta__ = {
 }
 
 [node name="Text" type="Label" parent="MarginContainer/PanelContainer/SetupPages/Intro2"]
-margin_top = 106.0
+margin_top = 47.0
 margin_right = 876.0
-margin_bottom = 375.0
+margin_bottom = 316.0
+size_flags_vertical = 3
 text = "Crew creation is a team effort. The crew is the central figure throughout all the stories that you'll tell through gameplay. Scoundrels (PC Characters) come and go, they'll be lost-to-vice, die, go insane, face prison, demonic possesion, traps, and for the lucky few, retirement - but the crew is something larger. 
 
 Any part of your crew can be changed after you make it. So choose foolishly and have fun."
@@ -286,11 +286,11 @@ selected = 0
 script = ExtResource( 1 )
 field = "reputation"
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation"]
+[node name="Reputation Description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseReputation"]
 margin_top = 272.0
 margin_right = 876.0
 margin_bottom = 303.0
-text = "Your current reputation in the underworld. "
+text = "Your current reputation in the underworld. Acting on and improving this reputation is how your crew will gain experience."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

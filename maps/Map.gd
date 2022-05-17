@@ -1,40 +1,35 @@
 class_name Map
 extends Node2D
 
-const map_note_scene: = preload("res://maps/MapNote.tscn")
-
-const DEFAULT_LOCATION_DATA: = {
-	"pos": Vector2.ZERO,
-	"icon": "",
-	"location_name": "",
-	"description": ""
-}
-
 export (float) var scroll_speed:float = 500
 export (NodePath) onready var tween = get_node(tween) as Tween
 export (NodePath) onready var cursor = get_node(cursor) as Cursor
-export (NodePath) onready var notes = get_node(notes) as Node2D
+export (NodePath) onready var pins = get_node(pins) as Node2D
 export (NodePath) onready var camera = get_node(camera) as Camera2D
 export (NodePath) onready var map_texture = get_node(map_texture) as TextureRect
-export (NodePath) onready var grid = get_node(grid) as TileMap
+export(NodePath) onready var players = get_node(players) as Node2D
 export (NodePath) onready var drawing_canvas = get_node(drawing_canvas) as Node2D
+export (NodePath) onready var regions = get_node(regions) as MapRegions
+export (NodePath) onready var pings = get_node(pings) as Pings
 export (PackedScene) var player_cursor_scene
 export (PackedScene) var ping_scene
 
 var zoom_level: float
 var unfocused: = false
 onready var player_cursors: = [cursor]
-var notes_added: = []
-var pins:= {}
 
 var has_clicked: = false
 var alt_held_down: = false
 
+#TODO: move Ping code into Pings Node
+
 func _ready() -> void:
-	Globals.grid = grid
 	connect_to_events()
 	if GameData.map:
 		load_map(GameData.map)
+	else:
+		print("waiting on map to load")
+		yield(GameData, "map_loaded")
 
 	if ServerConnection.is_connected_to_server:
 		add_new_player_cursors(ServerConnection.presences)
@@ -47,12 +42,9 @@ func connect_to_events()-> void:
 	Events.connect("map_scroll_speed_changed", self, "_on_map_scroll_speed_changed")
 	Events.connect("popup", self, "_on_popup")
 	Events.connect("all_popups_finished", self, "_on_all_popups_finished")
-	Events.connect("pin_dropped", self, "_on_map_pin_dropped")
 	Events.connect("map_changed", self, "_on_map_changed")
 	ServerConnection.connect("match_joined", self, "_on_match_joined")
 	ServerConnection.connect("presences_changed", self, "_on_presences_changed")
-	GameData.location_library.connect("resource_added", self, "_on_location_added")
-	GameData.location_library.connect("resource_removed", self, "_on_location_removed")
 	NetworkTraffic.connect("player_pinged", self, "ping")
 
 
@@ -88,46 +80,6 @@ func _process(delta: float) -> void:
 		zoom_out(delta)
 
 
-func remove_pin(pos:Vector2)-> void:
-	if pins.has(pos):
-		pins[pos].queue_free()
-		pins.erase(pos)
-
-
-func add_pin(pos:Vector2, data: = {})-> void:
-#	var grid_mouse_pos:Vector2 = Globals.convert_to_grid(get_global_mouse_position())
-	var locations = GameData.map.find("locations")
-	for loc_id in locations:
-		var location = locations[loc_id]
-		if location is String:
-			location = str2var(location)
-#		if grid_mouse_pos == location.pos:
-#			return
-
-	var is_new: = false
-	var location_node: = map_note_scene.instance()
-
-	if data.empty():
-		is_new = true
-		data = DEFAULT_LOCATION_DATA.duplicate()
-		data.pos = Globals.convert_to_grid(get_global_mouse_position())
-
-	var icon: = "DEFAULT"
-	if "icon" in data and data.icon:
-		icon = data.icon
-
-
-	if "pos" in data:
-		if data.pos is String:
-			pos = str2var(data.pos)
-		elif data.pos is Vector2:
-			pos = data.pos
-
-	location_node.location = GameData.location_library.add(data)
-	grid.add_child(location_node)
-	location_node.global_position = grid.map_to_world(pos)
-
-
 func ping(ping_data:Dictionary = {})-> void:
 	var ping:Node2D = ping_scene.instance()
 	if not ping_data.empty():
@@ -136,7 +88,7 @@ func ping(ping_data:Dictionary = {})-> void:
 	else:
 		ping.pos = get_global_mouse_position()
 		ping.color = GameData.player_color
-	add_child(ping)
+	pings.add_child(ping)
 
 
 func scroll_up(delta: float)->void:
@@ -160,37 +112,10 @@ func zoom_out(delta:float)->void:
 	zoom_level = camera.zoom.x
 
 func load_map(map:NetworkedResource)->void:
-	for child in notes.get_children():
-		child.queue_free()
-
-	if map.has_property("image"):
-		var texture = load(map.find("image"))
-		map_texture.texture = texture
-	else:
-		var texture = Globals.DEFAULT_MAP_IMAGE
-		map_texture.texture = texture
-	if "locations" in map:
-		for pos in map.locations:
-			add_pin(map.locations[pos].pos, map.locations[pos])
-
-
-func _on_location_created_network(data:Dictionary)-> void:
-	if not "pos" in data:
-		print("error in network data, cant create a map note without a position")
-		return
-	add_pin(data.pos, data)
-
-
-func _on_location_removed_network(data:Dictionary)-> void:
-	if not "pos" in data:
-		print("error in network data, cant create a map note without a position")
-		return
-	else:
-		remove_pin(data.pos)
-
-
-func _on_network_map_note_deleted(note_pos:Vector2)-> void:
-	remove_pin(note_pos)
+	var texture = load(map.find("image"))
+	map_texture.texture = texture
+	pins.reset()
+	regions.reset()
 
 
 func _on_map_scroll_speed_changed(new_scroll_speed: float) -> void:
@@ -221,22 +146,8 @@ func add_new_player_cursors(presences)-> void:
 	for presence in presences:
 		var new_player = player_cursor_scene.instance()
 		new_player.setup_puppet(presence)
-		grid.add_child(new_player)
+		players.add_child(new_player)
 
-
-func _on_map_pin_dropped(pin_node:Node)-> void:
-	if not "pos" in pin_node or not "data" in pin_node:
-		return
-	add_pin(pin_node.pos, pin_node.data)
-
-
-func _on_location_added(location_resource:NetworkedResource)-> void:
-	var pos = location_resource.find("pos")
-	if pins.has(pos):
-		return
-	else:
-		notes_added.append(location_resource)
-		add_pin(pos, location_resource.data)
 
 func _on_map_changed()-> void:
-	pass
+	load_map(GameData.map)

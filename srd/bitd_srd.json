@@ -6416,9 +6416,9 @@
     }
   },
   "maps": {
-    "duskfull": {
-      "id": "duskfull",
-      "name": "Duskvol",
+    "doskfull": {
+      "id": "doskfull",
+      "name": "Doskvol",
       "description": "The full city of Doskvol",
       "image": "res://maps/District Images/Duskvol.jpg"
     },
@@ -6444,7 +6444,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6458,7 +6458,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6472,7 +6472,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6486,7 +6486,7 @@
       "tags": null,
       "icon": "NONE",
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6500,7 +6500,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6514,7 +6514,7 @@
       "tags": null,
       "icon": "NONE",
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6528,7 +6528,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6542,7 +6542,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6556,7 +6556,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6570,7 +6570,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6584,7 +6584,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6598,7 +6598,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "linked_map": null,
       "scene": null,
       "faction": null,
@@ -6614,7 +6614,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "boundary": "PoolVector2Array( -214, -112, 105, -113, 143, -153, 183, -127, 201, -85, 219, -26, 195, 100, 187, 101, 184, 121, 172, 127, 157, 127, 157, 134, -144, 134, -200, 135, -202, 163, -240, 164, -245, -124, -215, -125 )",
       "linked_map": null,
       "scene": "Clerks and government workers rush to and fro, offical papers bulging from their valises. Wealthy bankers trundle past in heavy carriages with private bodyguards arrayed in clanking armor. Students gather at stret-corner cafes to discuss Iruvian politics, the tribal lineages of the Dagger Isles, and other esoteric matters.",
@@ -6633,7 +6633,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "boundary": "PoolVector2Array( -206, 163, 108, 165, 282, -14, 203, -214, 85, -270, 48, -324, -340, -283, -306, -67, -297, 10, -266, 98, -244, 167, -198, 163 )",
       "linked_map": "bs0001",
       "scene": "Elite Bluecoat patrols, arrayed in fine armor and gleaming gun-pikes. Wealthy citizens strolling through manicured parks, attended by servants. Horse-drawn coaches and the occasional electroplasmic carriage rumbling along the avenues. Buildings: Pale stone mansions with lightning barrriers, grand manor houses, lavish townhouses, opulent theaters and restaurants, luxury shops.",
@@ -6652,7 +6652,7 @@
       "tags": null,
       "icon": null,
       "image": null,
-      "map": "duskfull",
+      "map": "doskfull",
       "boundary": "PoolVector2Array( -223, -153, -116, -239, -5, -253, 86, -245, 137, -87, 180, -10, 185, 106, 173, 208, 215, 324, 214, 403, 120, 432, 77, 441, 5, 378, -58, 302, -180, 132, -305, 54, -215, -152 )",
       "linked_map": null,
       "scene": "Soot-covered workers hacking up black bile as they trudge home from the factories. Heavy rail cargo being unloaded by crane. Street-tough waifs running wild. A factory boss lashing a worker for an infraction. Squatters cooking a meal in the coal engine of an abandoned train car.",
@@ -6672,7 +6672,8 @@
       "radius": 5,
       "description": "A sprawling collection of massive industrial workhouses. Although the workers here are poor, the industrial products they make can be quite lucrative.",
       "faction": "The Billhooks",
-      "region": "Coalridge"
+      "region": "Coalridge",
+      "map": "doskfull"
     },
     "starting_2_coalridge": {
       "id": "starting_2_coalridge",
@@ -6681,7 +6682,8 @@
       "radius": 5,
       "description": "The most densely packed residential area in Doskvol. The merchants and citizens here are no stranger to crime.",
       "faction": "Skovlander Refugees",
-      "region": "Coalridge"
+      "region": "Coalridge",
+      "map": "doskfull"
     },
     "starting_3_coalridge": {
       "id": "starting_3_coalridge",
@@ -6690,7 +6692,8 @@
       "radius": 5,
       "description": "The site of the first permanent settlement at the river delta. The mine still operates over 1000 years later, though demand for\ncoal has dropped sharply as the Imperium adopts electroplasmic power more and more widely.",
       "faction": "The Billhooks",
-      "region": "Coalridge"
+      "region": "Coalridge",
+      "map": "doskfull"
     },
     "starting_1_charterhall": {
       "id": "starting_1_charterhall",
@@ -6699,7 +6702,8 @@
       "radius": 5,
       "description": "A tavern frequented by the small army of civil servants employed by the City Council, as well as students of the University.",
       "faction": "The Ministry of Preservation",
-      "region": "Charterhall"
+      "region": "Charterhall",
+      "map": "doskfull"
     },
     "starting_2_charterhall": {
       "id": "starting_2_charterhall",
@@ -6708,7 +6712,8 @@
       "radius": 5,
       "description": "The main avenue of the district is lined with imposing governmental structures of all sorts, all tucked behind high iron fences,\rpatrolled by a mix of Bluecoats on the sidewalks and mounted Imperial cavalry on the grounds.",
       "faction": "The Ministry of Preservation",
-      "region": "Charterhall"
+      "region": "Charterhall",
+      "map": "doskfull"
     },
     "starting_3_charterhall": {
       "id": "starting_3_charterhall",
@@ -6717,7 +6722,8 @@
       "radius": 5,
       "description": "Along the ruins of the old walls is a sprawling artist's colony.",
       "faction": "The Foundation",
-      "region": "Charterhall"
+      "region": "Charterhall",
+      "map": "doskfull"
     },
     "starting_4_charterhall": {
       "id": "starting_4_charterhall",
@@ -6726,7 +6732,8 @@
       "radius": 5,
       "description": "A dozen buildings have been converted into classrooms and dormitories for the students of this modest-seeming but\nnevertheless prestigious institution. The school's massive Sparkwright Tower, where experts of spark-craft are trained, looms huge over the district.",
       "faction": "The Foundation",
-      "region": "Charterhall"
+      "region": "Charterhall",
+      "map": "doskfull"
     }
   }
 }

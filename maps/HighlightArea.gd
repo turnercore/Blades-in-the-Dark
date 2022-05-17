@@ -10,18 +10,6 @@ onready var collison: = $CollisionPolygon2D
 onready var light: = $Light2D
 onready var light_occluder: = $LightOccluder2D
 onready var tween: = $Tween
-var testing: = true
-
-
-func _ready() -> void:
-	#Quick testing function to get some correctly formatted strings to store in the srd
-	if testing:
-		var grid_pos:PoolVector2Array
-		for vec in light_occluder.occluder.polygon:
-			grid_pos.append(Globals.grid.world_to_map(vec))
-		print(var2str(grid_pos))
-		print(var2str(Globals.grid.world_to_map(light.global_position)))
-
 
 func setup(location:NetworkedResource)-> void:
 	collison = $CollisionPolygon2D
@@ -38,12 +26,18 @@ func setup(location:NetworkedResource)-> void:
 
 
 func _set_polygon(region:PoolVector2Array)-> void:
-	if polygon != region:
-		polygon = region
-		collison.polygon = polygon
-		var occluder_polygon: = OccluderPolygon2D.new()
-		occluder_polygon.polygon = polygon
-		light_occluder.occluder = occluder_polygon
+	if not Globals.grid.is_inside_tree():
+		yield(Globals.grid, "tree_entered")
+	polygon = region
+	var world_poly:PoolVector2Array
+
+	for pos in polygon:
+		world_poly.append(Globals.grid.map_to_world(pos))
+
+	collison.polygon = world_poly
+	var occluder_polygon: = OccluderPolygon2D.new()
+	occluder_polygon.polygon = world_poly
+	light_occluder.occluder = occluder_polygon
 
 
 func _set_center(pos:Vector2)-> void:

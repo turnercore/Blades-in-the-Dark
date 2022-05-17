@@ -23,16 +23,17 @@ export (Dictionary) var crew_playbook: = {}
 export (bool) var is_setup: = false
 
 signal id_changed(id)
+signal setup
 
-
-func setup(provided_srd_file_path: String = "")->void:
-	if provided_srd_file_path:
-		srd_file_path = provided_srd_file_path
+func setup(optional_srd_file_path: String = "")->void:
+	if optional_srd_file_path != "":
+		srd_file_path = optional_srd_file_path
 	if srd.empty():
 		srd = load_srd(srd_file_path)
 	if maps.empty():
 		setup_maps_from_srd(srd)
 	is_setup = true
+	emit_signal("setup")
 
 
 func load_srd(file_path:String)-> Dictionary:

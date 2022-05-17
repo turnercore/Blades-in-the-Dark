@@ -1,81 +1,88 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Shared/theme/GameTheme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/theme/gdquest.theme" type="Theme" id=1]
 [ext_resource path="res://settings/CreateNewCrewButton.gd" type="Script" id=2]
 [ext_resource path="res://popups/NewGamePopup.gd" type="Script" id=3]
 [ext_resource path="res://popups/CrewSetup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Shared/theme/menu.tres" type="StyleBox" id=5]
 
-[node name="NewGamePopup" type="Popup"]
+[node name="NewGamePopup" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="PopupPanel" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -301.5
+margin_top = -140.5
+margin_right = 301.5
+margin_bottom = 140.5
+rect_min_size = Vector2( 250, 250 )
 theme = ExtResource( 1 )
-custom_constants/margin_right = 150
-custom_constants/margin_top = 75
-custom_constants/margin_left = 150
-custom_constants/margin_bottom = 75
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PopupPanel" type="PanelContainer" parent="MarginContainer"]
-margin_left = 150.0
-margin_top = 75.0
-margin_right = 874.0
-margin_bottom = 525.0
-rect_min_size = Vector2( 250, 250 )
-theme = ExtResource( 1 )
-custom_styles/panel = ExtResource( 5 )
+[node name="MarginContainer" type="MarginContainer" parent="PopupPanel"]
+margin_right = 603.0
+margin_bottom = 281.0
+custom_constants/margin_right = 25
+custom_constants/margin_top = 25
+custom_constants/margin_left = 25
+custom_constants/margin_bottom = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PopupPanel"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 714.0
-margin_bottom = 440.0
-custom_constants/separation = 40
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/MarginContainer"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 578.0
+margin_bottom = 256.0
 
-[node name="Label" type="Label" parent="MarginContainer/PopupPanel/VBoxContainer"]
-margin_right = 704.0
-margin_bottom = 24.0
+[node name="Label" type="Label" parent="PopupPanel/MarginContainer/VBoxContainer"]
+margin_right = 553.0
+margin_bottom = 31.0
 text = "New Game"
 align = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PopupPanel/VBoxContainer"]
-margin_top = 64.0
-margin_right = 704.0
-margin_bottom = 95.0
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupPanel/MarginContainer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 553.0
+margin_bottom = 94.0
 
-[node name="Label" type="Label" parent="MarginContainer/PopupPanel/VBoxContainer/HBoxContainer"]
-margin_top = 3.0
-margin_right = 114.0
-margin_bottom = 27.0
+[node name="Label" type="Label" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_top = 8.0
+margin_right = 174.0
+margin_bottom = 39.0
 text = "Save Game ID:"
 
-[node name="TextEdit" type="LineEdit" parent="MarginContainer/PopupPanel/VBoxContainer/HBoxContainer"]
-margin_left = 118.0
-margin_right = 704.0
-margin_bottom = 31.0
+[node name="TextEdit" type="LineEdit" parent="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 190.0
+margin_right = 553.0
+margin_bottom = 47.0
 size_flags_horizontal = 3
-align = 1
 placeholder_text = "Save Game ID"
+caret_blink = true
+caret_blink_speed = 0.5
 
-[node name="CreateNewCrewButton" type="Button" parent="MarginContainer/PopupPanel/VBoxContainer"]
-margin_left = 285.0
-margin_top = 135.0
-margin_right = 419.0
-margin_bottom = 162.0
+[node name="CreateNewSaveButton" type="Button" parent="PopupPanel/MarginContainer/VBoxContainer"]
+margin_left = 151.0
+margin_top = 110.0
+margin_right = 401.0
+margin_bottom = 141.0
+rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Create New Crew"
+text = "Create New Save"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -83,11 +90,12 @@ __meta__ = {
 crew_setup_sceen = ExtResource( 4 )
 on_start_screen = true
 
-[node name="CancelButton" type="Button" parent="MarginContainer/PopupPanel/VBoxContainer"]
-margin_left = 322.0
-margin_top = 202.0
-margin_right = 382.0
-margin_bottom = 229.0
+[node name="CancelButton" type="Button" parent="PopupPanel/MarginContainer/VBoxContainer"]
+margin_left = 151.0
+margin_top = 157.0
+margin_right = 401.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 250, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Cancel"
@@ -95,8 +103,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="popup_hide" from="." to="." method="_on_NewGamePopup_popup_hide"]
-[connection signal="text_changed" from="MarginContainer/PopupPanel/VBoxContainer/HBoxContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
-[connection signal="pressed" from="MarginContainer/PopupPanel/VBoxContainer/CreateNewCrewButton" to="." method="_on_CreateNewCrewButton_pressed"]
-[connection signal="pressed" from="MarginContainer/PopupPanel/VBoxContainer/CreateNewCrewButton" to="MarginContainer/PopupPanel/VBoxContainer/CreateNewCrewButton" method="_on_CreateNewCrewButton_pressed"]
-[connection signal="pressed" from="MarginContainer/PopupPanel/VBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="text_changed" from="PopupPanel/MarginContainer/VBoxContainer/HBoxContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
+[connection signal="pressed" from="PopupPanel/MarginContainer/VBoxContainer/CreateNewSaveButton" to="." method="_on_CreateNewCrewButton_pressed"]
+[connection signal="pressed" from="PopupPanel/MarginContainer/VBoxContainer/CreateNewSaveButton" to="PopupPanel/MarginContainer/VBoxContainer/CreateNewSaveButton" method="_on_CreateNewCrewButton_pressed"]
+[connection signal="pressed" from="PopupPanel/MarginContainer/VBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]

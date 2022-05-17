@@ -5,7 +5,11 @@ const GAME_SCENE:PackedScene = preload("res://game/Game.tscn")
 const DEFUALT_CREW_PLAYBOOK_DATA: = {
 	"id": null
 }
+const DEFAULT_MAP_ID: = "doskfull"
+const DEFAULT_MAP_NAME: = "Doskvol"
 var DEFAULT_MAP_IMAGE: = preload("res://maps/blades_detailedmap_highres.jpg")
+
+
 var grid: = TileMap.new()
 var ids: = []
 

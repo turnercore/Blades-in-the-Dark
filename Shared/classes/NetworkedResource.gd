@@ -7,8 +7,8 @@ enum RESOURCE_OP_CODES {
 	DELETE
 }
 
-var id:String setget ,_get_id
-var data:Dictionary
+var id:String setget _set_id ,_get_id
+var data:Dictionary setget _set_data
 
 
 signal property_changed(property, value)
@@ -296,3 +296,13 @@ func _get_id()->String:
 	if not id or id == "":
 		id = Globals.generate_id(5)
 	return id
+
+
+func _set_id(value:String)->void:
+	id = value
+	data["id"] = self.id
+
+
+func _set_data(value:Dictionary)-> void:
+	data = value
+	data["id"] = self.id

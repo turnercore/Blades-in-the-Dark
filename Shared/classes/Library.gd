@@ -40,6 +40,15 @@ func _on_networked_resource_removed(data:Dictionary)-> void:
 		delete_id(data.id, false)
 
 
+func has(id:String)-> bool:
+	var result: = false
+	for resource_id in resources:
+		if resource_id == id or resources[resource_id] == id:
+			result = true
+			break
+	return result
+
+
 func add(book:Dictionary, send_data: = true)-> NetworkedResource:
 	var result:NetworkedResource
 	var id:String

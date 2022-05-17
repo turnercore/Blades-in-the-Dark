@@ -1,6 +1,6 @@
 extends PopupScreen
 
-onready var crew_button: = $MarginContainer/PopupPanel/VBoxContainer/CreateNewCrewButton
+onready var crew_button: = $PopupPanel/MarginContainer/VBoxContainer/CreateNewSaveButton
 var srd_path: = GameData.DEFAULT_SRD
 var save_id:String
 var new_save = SaveGame.new()
