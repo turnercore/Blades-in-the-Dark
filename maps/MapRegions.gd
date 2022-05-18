@@ -27,10 +27,12 @@ func reset()-> void:
 
 func create_region(region:NetworkedResource)-> void:
 	if regions.has(region): return
-	region.connect("deleted", self, "remove_region", [region])
+	if not region.is_connected("deleted", self, "remove_region"):
+		region.connect("deleted", self, "remove_region", [region])
 	var new_region:Area2D = highlight_area_scene.instance()
-	new_region.connect("area_entered", self, "_on_area_entered", [new_region])
-	new_region.connect("area_exited", self, "_on_area_exited", [new_region])
+	if not new_region.is_connected("area_entered", self, "_on_area_entered"):
+		new_region.connect("area_entered", self, "_on_area_entered", [new_region])
+		new_region.connect("area_exited", self, "_on_area_exited", [new_region])
 	new_region.setup(region)
 	add_child(new_region)
 	regions[region] = new_region
@@ -39,7 +41,8 @@ func create_region(region:NetworkedResource)-> void:
 func remove_region(region:NetworkedResource)-> void:
 	if regions.has(region):
 		regions[region].queue_free()
-		region.disconnect("deleted", self, "_on_region_deleted")
+		if region.is_connected("deleted", self, "_on_region_deleted"):
+			region.disconnect("deleted", self, "_on_region_deleted")
 
 
 func _on_region_added(region:NetworkedResource)-> void:
@@ -50,9 +53,9 @@ func _on_region_deleted(region:NetworkedResource)-> void:
 	remove_region(region)
 
 func _on_area_entered(area:Area2D, region:Area2D)-> void:
-	if area is Cursor:
-		print("cursor entered area " + region.name)
+	if area == GameData.local_player.cursor:
+		print("local cursor entered area" + region.name)
 
 func _on_area_exited(area:Area2D, region:Area2D)-> void:
-	if area is Cursor:
-		print("cursor left area " + region.name)
+	if area == GameData.local_player.cursor:
+		print("local cursor left area " + region.name)

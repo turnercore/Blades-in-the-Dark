@@ -137,7 +137,7 @@ func setup_option_button(option_button:OptionButton, choice_storage:Dictionary, 
 func add_playbook()-> void:
 	#First add chosen things that couldn't be added before to the playbook data, then setup the playbook, create the resource, and add it to gamedata
 	#Add selected ability
-	pc_data.abilites[chosen_ability.name] = chosen_ability
+	pc_data.abilities[chosen_ability.name] = chosen_ability
 	#Add selected friend, adjust status
 	chosen_friend.status = 2
 	pc_data.contacts[chosen_friend.name] = chosen_friend
@@ -317,7 +317,6 @@ func _on_Alias_text_changed(new_text: String) -> void:
 func _on_Name_text_changed(new_text: String) -> void:
 	if pc_data.name != new_text:
 		pc_data.name = new_text
-		$MarginContainer/PanelContainer/SetupPages/ChooseAType/VBoxContainer/HBoxContainer/name.text = new_text
 
 
 func _on_action_dot_item_selected(index: int, node:String) -> void:
@@ -338,3 +337,10 @@ func _on_action_dot_item_selected(index: int, node:String) -> void:
 			"nodes": [node]
 		}
 	disable_action_dots()
+
+
+func _on_vice_purveyor_options_item_selected(index: int) -> void:
+	var id:int = vice_purveyor_options.get_item_id(index)
+	var purveyor = vice_purveyor_choices[id]
+	breakpoint
+	chosen_vice_purveyor = purveyor

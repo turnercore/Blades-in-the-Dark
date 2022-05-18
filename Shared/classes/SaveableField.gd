@@ -16,6 +16,7 @@ func _ready() -> void:
 
 
 func _set_resource(value: NetworkedResource)-> void:
+	if resource == value: return
 	if resource:
 		resource.disconnect("property_changed", self, "_on_property_changed")
 	resource = value
@@ -25,6 +26,7 @@ func _set_resource(value: NetworkedResource)-> void:
 
 
 func _set_field(value:String)->void:
+	if field == value: return
 	field = value
 	if resource:
 		load_from_resource(resource)
@@ -74,6 +76,7 @@ func load_from_resource(load_resource:NetworkedResource)-> void:
 
 
 func _on_updated_data(data = null)-> void:
+	if not field: return
 	if not resource: return
 	var updated_value
 	updated_value = str(self.get(property)) if property == "text" else self.get(property)

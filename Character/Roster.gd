@@ -6,6 +6,7 @@ export (PackedScene) onready var character_setup_scene
 var pcs_buttons:Dictionary = {}
 
 func _ready() -> void:
+	._ready()
 	setup()
 	GameData.pc_library.connect("resource_added", self, "_on_roster_added")
 	GameData.pc_library.connect("resource_removed", self, "_on_roster_removed")
@@ -44,10 +45,7 @@ func _on_NewPlayerCharacterButton_pressed() -> void:
 	#Create new character popupx
 	var character_setup = character_setup_scene.instance()
 	Events.popup(character_setup)
-
-
-func _on_Roster_modal_closed() -> void:
-	Events.emit_signal("popup_finished")
+	hide()
 
 
 func _on_roster_removed(pc:NetworkedResource) -> void:

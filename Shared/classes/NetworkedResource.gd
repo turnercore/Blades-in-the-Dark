@@ -85,13 +85,13 @@ func find(path:String):
 		if property.is_valid_integer():
 			var index:int = int(property)
 			if index >= result.size():
-				return "Invalid path for find() Index out of range | Path: " + path
+				return "NOT_FOUND"
 			result = result[index]
 		else:
 			if property in result:
 				result = result[property]
 			else:
-				return "Invalid path for find() property not in data| Path: " + path
+				return "NOT_FOUND"
 
 	#Reverses any var2str data that may be in there and returns the correct value, deeply
 	if result is String:

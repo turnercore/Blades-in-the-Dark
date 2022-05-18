@@ -573,7 +573,8 @@ func _on_match_created()-> void:
 
 func _set_active_pc(value: NetworkedResource)->void:
 	active_pc = value
-	Events.emit_character_selected(active_pc)
+	local_player.character = value
+	Events.emit_character_selected(value)
 
 
 func _set_local_player(value:Player)-> void:
@@ -590,6 +591,8 @@ class Player:
 	var id:String setget , _get_id
 	var username:String setget , _get_username
 	var local: = false
+	var character:NetworkedResource
+	var cursor:Cursor
 
 	func _get_id()-> String:
 		if local and GameData.online:

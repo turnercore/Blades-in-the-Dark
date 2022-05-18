@@ -28,4 +28,4 @@ func setup()-> void:
 
 
 func _on_shortcut_pressed(pos: Vector2)-> void:
-	Events.move_camera(Globals.grid.map_to_world(pos))
+	Events.move_camera(Globals.map_to_world(pos))

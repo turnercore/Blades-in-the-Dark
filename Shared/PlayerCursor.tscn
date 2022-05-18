@@ -44,6 +44,7 @@ scale = Vector2( 0.75, 0.75 )
 visible = false
 scale = Vector2( 3.11, 3.11 )
 frames = SubResource( 9 )
+frame = 1
 playing = true
 
 [node name="Info" type="Sprite" parent="."]

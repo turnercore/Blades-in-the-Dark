@@ -62,5 +62,4 @@ margin_bottom = 243.0
 size_flags_horizontal = 4
 text = "Cancel"
 
-[connection signal="popup_hide" from="." to="." method="_on_LoadScreen_popup_hide"]
 [connection signal="pressed" from="LoadContainer/PanelContainer/ScrollContainer/SavesList/CancelButton" to="." method="_on_CancelButton_pressed"]

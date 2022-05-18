@@ -11,6 +11,22 @@ onready var light: = $Light2D
 onready var light_occluder: = $LightOccluder2D
 onready var tween: = $Tween
 
+
+#Just some test code to see if loading the data works.
+#func _ready() -> void:
+#	var poolvecstr:String = "PoolVector2Array( -1677, -1388, -1519.16, -178.948, -1173.93, 783.41, -905.04, 813.463, 432.783, 860.7, 507.802, 855.994, 1373.24, -21.625, 1331.43, -68.789, 995.193, -1031.11, 360.434, -1349.6, -1730.28, -1427.78 )"
+#	var location:NetworkedResource = NetworkedResource.new()
+#	var boundary:PoolVector2Array = str2var(poolvecstr)
+#	var pos:Vector2 = str2var("Vector2( 232, -482 )")
+#	var test_loc_data:Dictionary = {
+#		"boundary": boundary,
+#		"pos": pos,
+#		"name": "Brightstone"
+#	}
+#	location.setup(test_loc_data)
+#	setup(location)
+
+
 func setup(location:NetworkedResource)-> void:
 	collison = $CollisionPolygon2D
 	light = $Light2D
@@ -26,25 +42,21 @@ func setup(location:NetworkedResource)-> void:
 
 
 func _set_polygon(region:PoolVector2Array)-> void:
-	if not Globals.grid.is_inside_tree():
-		yield(Globals.grid, "tree_entered")
-	polygon = region
-	var world_poly:PoolVector2Array
-
-	for pos in polygon:
-		world_poly.append(Globals.grid.map_to_world(pos))
-
-	collison.polygon = world_poly
+	collison.polygon = region
 	var occluder_polygon: = OccluderPolygon2D.new()
-	occluder_polygon.polygon = world_poly
+	occluder_polygon.polygon = region
+	occluder_polygon.closed = false
 	light_occluder.occluder = occluder_polygon
 
 
 func _set_center(pos:Vector2)-> void:
+	if not Globals.is_inside_tree():
+		yield(Globals, "tree_entered")
+	if not self.is_inside_tree():
+		yield(self, "tree_entered")
 	center = pos
-	if not Globals.grid.is_inside_tree():
-		yield(Globals.grid, "tree_entered")
-	light.global_position = Globals.grid.map_to_world(center)
+	self.global_position = Globals.map_to_world(center)
+	light.global_position = Globals.map_to_world(center)
 
 
 func _on_property_changed(property:String, value)-> void:

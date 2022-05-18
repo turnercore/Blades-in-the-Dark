@@ -29,6 +29,7 @@ func _ready() -> void:
 		PositionUpdateTimer.wait_time = POSITION_UPDATE_INTERVAL
 		PositionUpdateTimer.autostart = true
 		add_child(PositionUpdateTimer)
+		GameData.local_player.cursor = self
 
 	ServerConnection.connect("server_connected", self, "_on_server_connected")
 	ServerConnection.connect("match_joined", self, "_on_match_joined")

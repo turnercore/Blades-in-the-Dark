@@ -616,21 +616,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Title" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
-margin_right = 876.0
+margin_right = 946.0
 margin_bottom = 31.0
 text = "Choose a Vice Purveyor"
 align = 1
 
 [node name="Intro" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
 margin_top = 47.0
-margin_right = 876.0
+margin_right = 946.0
 margin_bottom = 78.0
 text = "The purveyor of your vice, the person you go see to indulge."
 autowrap = true
 
 [node name="vice_purveyor_options" type="OptionButton" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
 margin_top = 94.0
-margin_right = 876.0
+margin_right = 946.0
 margin_bottom = 125.0
 text = "Who's the purveyor of your vice?"
 align = 1
@@ -639,27 +639,27 @@ selected = 0
 
 [node name="vice_purveyor_notes" type="LineEdit" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
 margin_top = 141.0
-margin_right = 876.0
+margin_right = 946.0
 margin_bottom = 188.0
 placeholder_text = "How do you know them?"
 
 [node name="vice_purveyor_description" type="Label" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
 margin_top = 204.0
-margin_right = 876.0
+margin_right = 946.0
 margin_bottom = 235.0
 autowrap = true
 
 [node name="HSeparator4" type="HSeparator" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2"]
 margin_top = 251.0
-margin_right = 876.0
+margin_right = 946.0
 margin_bottom = 255.0
 
 [node name="BackNextButtons" parent="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 271.0
-margin_right = 876.0
-margin_bottom = 482.0
+margin_right = 946.0
+margin_bottom = 532.0
 input_nodes = [ NodePath("../vice_purveyor_options") ]
 
 [node name="AddtionalDetails" type="ScrollContainer" parent="MarginContainer/PanelContainer/SetupPages"]
@@ -787,6 +787,7 @@ text = "1"
 [connection signal="back" from="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_back"]
 [connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_finished"]
 [connection signal="next" from="MarginContainer/PanelContainer/SetupPages/ChooseVice/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_next"]
+[connection signal="item_selected" from="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2/vice_purveyor_options" to="." method="_on_vice_purveyor_options_item_selected"]
 [connection signal="text_changed" from="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2/vice_purveyor_notes" to="." method="_on_vice_purveyor_notes_text_changed"]
 [connection signal="back" from="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_back"]
 [connection signal="finished" from="MarginContainer/PanelContainer/SetupPages/ChooseVicePurveyor/VBoxContainer2/BackNextButtons" to="." method="_on_BackNextButtons_finished"]

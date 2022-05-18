@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://maps/MainCamera.gd" type="Script" id=1]
 [ext_resource path="res://Shared/PlayerCursor.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://maps/Pins.gd" type="Script" id=8]
 [ext_resource path="res://maps/HighlightArea.tscn" type="PackedScene" id=9]
 [ext_resource path="res://maps/Pings.gd" type="Script" id=10]
+[ext_resource path="res://maps/ManualAreaCreator.tscn" type="PackedScene" id=11]
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 3 )
@@ -60,6 +61,15 @@ highlight_area_scene = ExtResource( 9 )
 
 [node name="Tween" type="Tween" parent="Regions"]
 
+[node name="AreaCreator" parent="Regions" instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 1131, -1019 )
+
+[node name="CollisionPolygon2D" parent="Regions/AreaCreator" index="0"]
+position = Vector2( 255, 294 )
+rotation = -0.00391436
+polygon = PoolVector2Array( -1376.46, -906.395, 283.536, -902.897, 469.275, -1091.17, 657.78, -964.433, 755.009, -767.051, 820.397, -610.793, 834.814, -461.736, 706.454, 140.766, 681.396, 155.668, 657.981, 261.578, 609.899, 282.39, 528.892, 284.072, 528.743, 322.072, -1379.26, 319.604, -1401.3, -947.493 )
+
 [node name="Drawings" type="Node2D" parent="."]
 script = ExtResource( 7 )
 
@@ -69,3 +79,5 @@ script = ExtResource( 7 )
 
 [node name="Pings" type="Node2D" parent="."]
 script = ExtResource( 10 )
+
+[editable path="Regions/AreaCreator"]

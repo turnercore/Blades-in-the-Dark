@@ -1,34 +1,20 @@
 extends Node
 
-#This is being used for the new game popup
 const GAME_SCENE:PackedScene = preload("res://game/Game.tscn")
-const DEFUALT_CREW_PLAYBOOK_DATA: = {
-	"id": null
-}
 const DEFAULT_MAP_ID: = "doskfull"
 const DEFAULT_MAP_NAME: = "Doskvol"
 var DEFAULT_MAP_IMAGE: = preload("res://maps/blades_detailedmap_highres.jpg")
-
+const GRID_SIZE: = Vector2(5, 5)
 
 var grid: = TileMap.new()
 var ids: = []
 
 
 func _ready() -> void:
-	grid.cell_size = Vector2(5, 5)
+	grid.cell_size = GRID_SIZE
+	add_child(grid)
 
 #Helper Functions
-#func propagate_set_playbook_recursive(node: Node, playbook: Playbook, starting_node: Node)-> void:
-#	var is_playbook_set:= false
-#	if "playbook" in node and node != starting_node:
-#		node.set("playbook", playbook)
-#	elif "_playbook" in node and node != starting_node:
-#		node.set("_playbook", playbook)
-#
-#	for child in node.get_children():
-#		propagate_set_playbook_recursive(child, playbook, starting_node)
-
-
 func list_files_in_directory(path:String)->Array:
 	var files: = []
 	var dir: = Directory.new()
@@ -78,9 +64,33 @@ func get_all_children_in_group_recursive(node: Node, group: String)->Array:
 
 
 func convert_to_grid(position:Vector2)-> Vector2:
+	if not grid.is_inside_tree():
+		grid = TileMap.new()
+		grid.cell_size = GRID_SIZE
+		add_child(grid)
 	var converted_pos:Vector2 = grid.to_local(position)
 	converted_pos = grid.world_to_map(converted_pos)
 	return converted_pos
+
+func map_to_world(map_pos:Vector2)->Vector2:
+	var world_pos: = Vector2.ZERO
+	if not grid.is_inside_tree():
+		grid = TileMap.new()
+		grid.cell_size = GRID_SIZE
+		add_child(grid)
+
+	world_pos = grid.map_to_world(map_pos)
+	return world_pos
+
+func world_to_map(world_pos:Vector2)->Vector2:
+	var map_pos: = Vector2.ZERO
+	if not grid.is_inside_tree():
+		grid = TileMap.new()
+		grid.cell_size = GRID_SIZE
+		add_child(grid)
+
+	map_pos = grid.world_to_map(world_pos)
+	return map_pos
 
 
 func str_to_vec2(string:="(0,0)")->Vector2:

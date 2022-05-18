@@ -1,7 +1,7 @@
 class_name PopupScreen
 extends Control
 
-#signal popup_hide
+signal popup_hide
 
 func _ready() -> void:
 	visible = false
@@ -10,6 +10,8 @@ func _ready() -> void:
 	set_process_unhandled_input(false)
 	set_process_unhandled_key_input(false)
 	set_process_internal(false)
+	if not self.is_connected("modal_closed", self, "hide"):
+		connect("modal_closed", self, "hide")
 
 
 func popup()-> void:
